@@ -1,6 +1,6 @@
 # AppWorld smoke test: cap-evolve (hill-climb) vs ALTK-Evolve
 
-Status: PLAN, written 2026-10-12; decisions D1 to D4 recorded 2026-10-13 (section 2). Nothing in
+Status: PLAN, written 2026-10-12; decisions D1 to D4 recorded 2026-10-13, D1 updated the same day (section 2); split rules S1 and S2 added 2026-10-13 (section 9). Nothing in
 sections 4 to 12 has run yet. The probes in section 1 have run, and their results are given there.
 
 This is a reduced first stage of the Suite F design in issue #804
@@ -17,9 +17,9 @@ Section 13 lists every deviation.
 |---|---|
 | methods compared | cap-evolve vs ALTK-Evolve. Both are scored against the same unmodified seed agent. No ACE, GEPA, SkillOpt, Trace2Skill or Tier 2 arms |
 | cap-evolve configuration | `algorithm_skill: hill-climb` (`--focus all`), deterministic orchestration, `capabilities: [system-prompt, tools]`. Intake optimizes both the prompt and the tools |
-| optimizer model, both methods | `aws/claude-sonnet-5`, through the gateway in `~/.claude/settings.json`. The requested `aws/claude-sonnet-5-5` is refused by the gateway for this team (decision D1) |
+| optimizer model, both methods | `aws/claude-sonnet-5-5`, through the gateway in `~/.claude/settings.json` (decision D1) |
 | agent under test, both methods | `openai/gpt-oss-120b-a100` on RITS, reasoning effort `medium`, temperature 0 |
-| benchmark | AppWorld. Optimize on `train` (90 tasks) and `dev` (57), report on `test_normal` (168). `test_challenge` is not used |
+| benchmark | AppWorld, **official splits only** (`data/datasets/{train,dev,test_normal,test_challenge}.txt`). Search uses `train` (90 tasks) and `dev` (57); results come from `test_normal` (168); `test_challenge` is not used. For cap-evolve, **train = val = train ∪ dev** (147 tasks). Section 9 gives the rules |
 | search seeds | 1 per method |
 | final scoring | `test_normal`, 2 trials per task, for 3 arms (seed, cap-evolve champion, ALTK-Evolve champion), in one interleaved window |
 | deliverable | a markdown results comment on issue #804 |
@@ -49,7 +49,7 @@ guideline generation, clustering and retrieval code, the MCP server and client A
 | RITS context window | `max_model_len` = **40,144 tokens**. Prompt plus `max_completion_tokens` must fit in it |
 | RITS concurrency | 16 and 48 concurrent requests (about 1.6K-token prompts, about 400 output tokens each) all returned 200. p50 latency was 17 s and 28 s, with no 429 errors |
 | RITS reasoning | `reasoning_effort: medium` is accepted, and the response carries `reasoning_content` |
-| optimizer gateway (`ANTHROPIC_BASE_URL` in settings.json) | the `x-context-guru-token` header is required (401 without it). `aws/claude-opus-5-5` and `aws/claude-sonnet-5` return 200. **`aws/claude-sonnet-5-5` returns 403 "team not allowed to access model"**, and so do `claude-sonnet-5-5` and `aws/us.claude-sonnet-5-5` |
+| optimizer gateway (`ANTHROPIC_BASE_URL` in settings.json) | the `x-context-guru-token` header is required (401 without it). `aws/claude-opus-5-5` and `aws/claude-sonnet-5` return 200. on 2026-10-12, `aws/claude-sonnet-5-5` returned 403 "team not allowed to access model" (as did `claude-sonnet-5-5` and `aws/us.claude-sonnet-5-5`). **After the user updated `settings.json` on 2026-10-13 it returns 200** |
 | AppWorld install from PyPI `appworld==0.1.3.post1` | works (seconds; data 193 MB). Split counts match the design: train 90/30, dev 57/19, test_normal 168/56, test_challenge 417/139, difficulties as listed there |
 | AppWorld ReAct agent with the PyPI release | **does not work.** The `v0.1.3.post1` tag has no `experiments/code/simplified` (only `plain/` and `recoma/`). The head agents package (`42b5bcf`) needs pydantic 2 while the 0.1.3.post1 core needs pydantic 1. The design's pin (PyPI core + head ReAct agent) cannot be installed together |
 | AppWorld core + agents both from source at `42b5bcf` | works with `git lfs pull`, `pip install -e . -e experiments[simplified]`, `appworld install --repo`, and **pydantic pinned to 2.12.x**. pydantic 2.14 breaks the import of fastapi 0.143. `appworld download data`: 198 MB, same split and difficulty counts as above |
@@ -74,10 +74,19 @@ guideline generation, clustering and retrieval code, the MCP server and client A
   `ignore_multiple_calls` true.
 - AppWorld unified mode allows one live world per process (freezegun patches time process-wide).
   Each episode must run in its own process, with a unique `experiment_name` + `task_id`.
+- AppWorld's official splits are four id files in `data/datasets/`: `train.txt` (90), `dev.txt`
+  (57), `test_normal.txt` (168), `test_challenge.txt` (417). `load_task_ids(name)` reads them, and
+  `valid_dataset_names()` is exactly these four. Verified 2026-10-13: the four sets are pairwise
+  disjoint, and train and dev share no scenario. The README says `train` is for training and
+  demonstrations, `dev` is for tuning and error analysis, and the two test sets are for aggregate
+  scoring only. AppWorld's "validation" split is `dev`; there is no other.
 - cap-evolve hill-climb: the baseline scores the seed on val and train. Each iteration copies
   the current best's **val** trajectories into the optimizer workdir, evaluates the child on val
   and applies the paired gate (accept iff mean per-task Δ > `gate_k_se` · SE). Train is scored
-  only at the baseline and at the end-of-run bookend. **With `test: []` in `split_ids_file`,
+  only at the baseline and at the end-of-run bookend. When train and val hold the same ids, the
+  baseline scores the set once (`train ids identical to val — not re-evaluated`) and every rollout
+  is written under `rollouts/val/` (verified on `toy_calc` with train = val and `test: []`).
+  **With `test: []` in `split_ids_file`,
   `cap-evolve run` completes and finalize scores 0 test tasks** (verified on `toy_calc`). The
   champion stays in `candidates/<best_id>/`, so we can score every arm on `test_normal` in one
   common window outside cap-evolve.
@@ -101,7 +110,7 @@ The user chose the recommended option for D1, D2 and D3, and the design's pin fo
 
 | id | question | options | recommendation | **decision** |
 |---|---|---|---|---|
-| **D1** | The optimizer model `aws/claude-sonnet-5-5` is refused by the gateway for this team (403) | (a) you grant this team access to `aws/claude-sonnet-5-5`, or supply a credential that has it; (b) use `aws/claude-sonnet-5` (accessible, previous Sonnet); (c) use `aws/claude-opus-5-5` (accessible, stronger and costlier) | (a) if it can be done today, otherwise (b). The model is one variable, `OPT_MODEL`, used by both methods, so the choice cannot favour one side. Whatever is used is recorded in the results | **(b) `aws/claude-sonnet-5`.** The recommendation was (a) if it could be done today, otherwise (b). On 2026-10-13 `aws/claude-sonnet-5-5` still returned 403 and `aws/claude-sonnet-5` returned 200, so (b) applies to both methods |
+| **D1** | The optimizer model `aws/claude-sonnet-5-5` is refused by the gateway for this team (403) | (a) you grant this team access to `aws/claude-sonnet-5-5`, or supply a credential that has it; (b) use `aws/claude-sonnet-5` (accessible, previous Sonnet); (c) use `aws/claude-opus-5-5` (accessible, stronger and costlier) | (a) if it can be done today, otherwise (b). The model is one variable, `OPT_MODEL`, used by both methods, so the choice cannot favour one side. Whatever is used is recorded in the results | **(a) `aws/claude-sonnet-5-5`**, for both methods. The user updated `settings.json` on 2026-10-13. After that, `aws/claude-sonnet-5-5` returned 200 on the Messages API, and `claude -p --model aws/claude-sonnet-5-5` completed (exit 0; `modelUsage` shows `aws/claude-sonnet-5-5`). The CLI prints a harmless `[claude-code:unrecognized_model]` line on stderr for its session-title helper |
 | D2 | AppWorld version: the design's pin (PyPI 0.1.3.post1 + ReAct agent at `42b5bcf`) is not installable (section 1.1) | (a) core and agents both from source at `42b5bcf`, pydantic 2.12.x; (b) PyPI 0.1.3.post1 with the older `plain` agents | (a). It is the code the design means by "the official simplified ReAct agent" | **(a)** core and agents from source at `42b5bcf`, pydantic 2.12.x |
 | D3 | Final trials per task | 1 (504 rollouts), 2 (1,008), 3 (1,512) | 2. It gives a within-task variance estimate for under an hour of extra wall time | **2 trials per task** (1,008 final episodes) |
 | D4 | ALTK-Evolve version | v1.3.0 (the design's pin) or v1.6.1 (latest) | v1.3.0, as registered in the design | **v1.3.0** (`703d033`), as in the design |
@@ -210,7 +219,7 @@ would apply the RITS header to every litellm call in the process.
 
 ### 5.3 Optimizer: the claude-code CLI for cap-evolve, litellm for ALTK-Evolve
 
-- `OPT_MODEL=aws/claude-sonnet-5` (decision D1; `aws/claude-sonnet-5-5` is refused by the gateway).
+- `OPT_MODEL=aws/claude-sonnet-5-5` (decision D1; verified through the API and the claude CLI on 2026-10-13).
 - cap-evolve: `optimizer_skill: claude-code`, `optimizer_model: $OPT_MODEL`. The `claude` CLI
   inherits `ANTHROPIC_BASE_URL`, `ANTHROPIC_AUTH_TOKEN` and `ANTHROPIC_CUSTOM_HEADERS` from the
   session environment that `settings.json` sets. Probe A1 runs `claude -p "reply ok" --model
@@ -279,8 +288,10 @@ rollout:
 
 ### 7.1 Adapter (`examples/appworld/adapters/adapter.py`, contract in `docs/ADAPTER_CONTRACT.md`)
 
-- `tasks(split)`: `train` gives the 90 train ids, `val` gives the 57 dev ids, `test` gives `[]`.
-  A seal refuses any id outside train or dev unless `AW_ALLOW_SEALED=final-eval-only` is set
+- `tasks(split)`: `train` and `val` both return the same 147 ids, the union of the official
+  `train.txt` and `dev.txt` read with `load_task_ids` (rule S2, section 9). `test` returns `[]`.
+  The ids are never typed by hand or sampled. A seal refuses any id outside train ∪ dev unless
+  `AW_ALLOW_SEALED=final-eval-only` is set
   (only the final window sets it; the same pattern as the tau2 `TAU_ALLOW_SEALED_TEST`). The
   task input holds the instruction only; difficulty is never exposed.
 - `run_trials(tasks, ctx, n_trials, base_seed)`: a `multiprocessing` spawn pool of
@@ -325,13 +336,13 @@ optimizer_instructions_file: /abs/path/.capevolve/project/optimizer/INSTRUCTIONS
 runner_repo_path: /tmp/aw_eval/reference
 capability_sources: [reference/api_index.md, reference/react_agent_notes.md]
 dataset_source: adapter
-split_ids_file: split_ids.json        # {"train": 90 train ids, "val": 57 dev ids, "test": []}
+split_ids_file: split_ids.json        # {"train": train ∪ dev (147), "val": the same 147 ids, "test": []}; built by scripts/make_splits.py from data/datasets/{train,dev}.txt
 num_trials: 1
 gate_mode: paired
 gate_k_se: 1.0
 max_iterations: 6
 stall: 0
-max_metric_calls: 500                 # 147 baseline + 6 x 57
+max_metric_calls: 1050                # 147 baseline (scored once, train = val) + 6 x 147
 protected_paths: [default]
 store: git
 ```
@@ -355,8 +366,10 @@ under `nohup`, with stderr teed to `progress/cape_hc.log`.
 The design (section 6.3, A-ALTK) is followed. It uses the library as released, because the
 authors' AppWorld harness is not released.
 
-1. **Trajectories.** The seed's 90 train rollouts are reused from the cape-hc baseline
-   (`runs/cape_hc_s0/rollouts/train/*__seed__t0.json`). It is the same seed, the same harness
+1. **Trajectories.** The seed's rollouts of the 90 official `train` ids are reused from the
+   cape-hc baseline. Because train = val there, they are under
+   `runs/cape_hc_s0/rollouts/val/<train id>__seed__t0.json`; the 57 dev ids are filtered out, so
+   ALTK mines `train` only, as in the design. It is the same seed, the same harness
    and the same rollouts, so the mining data is identical to what cap-evolve's baseline saw,
    and 90 rollouts are saved. If the cape-hc baseline fails, the altk sub-agent collects them
    itself with the same adapter.
@@ -383,22 +396,41 @@ authors' AppWorld harness is not released.
    tokens. The chosen dose is the `altk` champion. The other dose's dev score is reported as a
    diagnostic.
 
-Counted rollouts are reported beside every result: 90 (shared train seed) + 114 dev. ALTK-Evolve
+Counted rollouts are reported beside every result: 90 (shared train seed rollouts) + 114 dev. ALTK-Evolve
 needs no more natively. Budgets are therefore not matched; section 13 says so.
 
 ---
 
 ## 9. Splits, feedback and isolation
 
-| role | split | who reads it |
-|---|---|---|
-| optimization signal | `train` (90): cap-evolve baseline bookend, ALTK mining | both, at search time |
-| selection | `dev` (57): cape-hc proposer trajectories **and** its gate; altk dose choice | both, at search time |
-| held out | `test_normal` (168) | nobody until the final window |
+Two rules, set by the user on 2026-10-13:
 
-Note the asymmetry, inherent to the two methods: cap-evolve's proposer learns from dev
-trajectories and is gated on dev, while ALTK learns from train and only selects on dev. Both
-use train ∪ dev and nothing else. Dev scores are search diagnostics, never results.
+- **S1. Official splits only.** Every task id in every trial comes from AppWorld's own split
+  files (`data/datasets/*.txt`, read with `load_task_ids`), as listed in section 1.2. No
+  re-splitting, sub-sampling or hand-picked subsets in any counted rollout. The acceptance probes
+  of section 11 use a few dev ids and are not counted. The sha256 of each of the four id files
+  is recorded in `runs/manifest.json`, and `make_splits.py` refuses to run if the counts differ
+  from 90 / 57 / 168 / 417.
+- **S2. cap-evolve: train = val = train ∪ dev.** In cap-evolve's `split_ids.json`, both `train`
+  and `val` are the union of the official `train` and `dev` ids (147), and `test` is `[]`.
+  `test_normal` is scored for every arm in the common final window (section 12).
+
+| official split | cape-hc | altk | final window |
+|---|---|---|---|
+| `train` (90) | in cap-evolve's train = val: the optimizer's trajectories and the gate | mining (seed trajectories) | not used |
+| `dev` (57) | in cap-evolve's train = val: the optimizer's trajectories and the gate | dose selection | not used |
+| `test_normal` (168) | never at search time | never at search time | scored, 3 arms × 2 trials |
+| `test_challenge` (417) | not used | not used | not used |
+
+Consequences:
+- cape-hc's val score is a fit metric: the optimizer reads trajectories from the same 147 tasks
+  its gate is scored on, so the score is selection-biased. It is reported as "optimization set
+  (train = val), selection-biased", the label of `docs/HOLDOUT_PROTOCOL.md`. Only `test_normal`
+  is a held-out result.
+- Both methods use only train ∪ dev at search time. cape-hc uses all 147 tasks for proposals and
+  the gate. altk mines the 90 train tasks and selects its dose on the 57 dev tasks, following the
+  official roles, as in the design. This difference is part of the methods and is stated in the
+  results.
 
 Isolation, scaled down from the design (section 5.2 there):
 - Two data roots. Search-time processes get `APPWORLD_ROOT=root_opt`, which has no test files.
@@ -446,12 +478,12 @@ Progress log (what to watch):
 
 | id | check |
 |---|---|
-| A1 | `aws/claude-sonnet-5` answers through the claude CLI and through the ALTK litellm wrapper |
+| A1 | `aws/claude-sonnet-5-5` answers through the claude CLI (verified 2026-10-13) and through the ALTK litellm wrapper |
 | A2 | RITS through the patched client: 1 dev episode completes; the RITS key appears nowhere under `/tmp/aw_eval/runs` |
-| A3 | REPL isolation (section 9) and `root_opt` contains no test id |
+| A3 | REPL isolation (section 9) and `root_opt` contains no test id; `split_ids.json` equals train.txt ∪ dev.txt exactly (rule S2) |
 | A4 | injection: on 1 dev task, the seed prompt is byte-identical to the stock agent's first request; a playbook block appears in the right place; the helper and notes setup works and leaves `show_api_doc`'s original text unchanged; a lint-violating helper is rejected without a rollout |
 | A5 | scoring: a scripted correct solution (a train task's released solution, run through `world.execute`) gives reward 1; a no-op gives 0; the persisted metadata has no `trace`; `score` twice is identical |
-| A6 | `cap-evolve check` is `{"ok": true}`; a 1-iteration dry run on 4 dev tasks with `optimizer_skill: mock` completes |
+| A6 | `cap-evolve check` is `{"ok": true}` on the real `split_ids.json` (train = val = 147, test = []); a 1-iteration dry run on a throwaway copy whose split file holds 4 dev ids, with `optimizer_skill: mock`, completes, and its baseline logs `train ids identical to val` |
 | A7 | ALTK: one trajectory → `save_trajectory` → ≥ 1 guideline; consolidation conserves support; both renderers produce a block under the size limit |
 | A8 | context: the longest of 10 dev episodes stays under 34K prompt tokens with `max_output_length` 60000 |
 
@@ -477,7 +509,7 @@ Progress log (what to watch):
 - Cost table: target tokens per task (prompt and completion), steps per task, step-cap hits,
   context-exceeded count; memory tokens per step and guideline count (altk); optimizer input and
   output tokens and calls per method (cap-evolve from its `state.json` spend, ALTK from the
-  wrapper log); counted rollouts per method; dev score of each champion; wall time.
+  wrapper log); counted rollouts per method; search-time score of each champion (cape-hc: val = train ∪ dev, a fit metric; altk: dev); wall time.
 - Side-by-side with the colleagues' gpt-oss-120b numbers (design section 3.1: no memory 39.9 /
   21.4, ALTK-Evolve 56.0 / 37.5), compared only as gains over each side's own baseline. Their
   harness, template and dose differ (design section 3.2).
@@ -498,14 +530,14 @@ gold values are posted (AppWorld redistribution rule). The draft is written to
 |---|---|---|
 | 2 targets (DeepSeek-V3.2, gpt-oss-120b) | gpt-oss-120b only | scope 2.4 |
 | 8 CapEvolve cells, 5 Tier-1 + 4 Tier-2 competitors | `cape-hc` (prompt+tools, a cell the design does not list) + `altk` | scope 2.1, 2.2, 2.5 |
-| 3 search seeds, N* matched budget (B = 900) | 1 seed; cape-hc ≤ 500 counted rollouts, altk native (~204) | smoke scale; counts are reported beside the scores |
+| 3 search seeds, N* matched budget (B = 900) | 1 seed; cape-hc ≤ 1,050 counted rollouts, altk native (~204) | smoke scale; counts are reported beside the scores |
+| CapEvolve optimizes on `train` and gates on `dev` | cape-hc: train = val = train ∪ dev (147); its val score is a fit metric | user rule S2 (section 9) |
 | final n = 3 per arm, seed n = 10, seed-check, template panel, drift blocks | n = 2 for all three arms, one interleaved window | smoke scale (D3) |
 | Holm families F1–F6, TOST 0.10, pipeline-level t(2) | unadjusted paired cluster-bootstrap CIs, artifact level only | 1 seed and 3 arms |
 | `appworld==0.1.3.post1` + head ReAct agent | core + agents from source at `42b5bcf`, pydantic 2.12.x | the pin is not installable (section 1.1, D2) |
 | `max_completion_tokens` 8000 | 6000 + history trimming (`max_output_length` 60000) | RITS window is 40,144 tokens |
 | separate OS user, containers, closed egress, proposer sandbox | separate data roots, adapter seal, REPL guards, transcript scan | host constraints; disclosed |
 | surfaces T (helpers + notes) and M (playbook) for CapEvolve | cape-hc edits P + T; M is used only by altk | scope 2.5 ("tools and prompts") |
-| optimizer Sonnet 5.5 (`aws/claude-sonnet-5-5`) | `aws/claude-sonnet-5` for both methods (D1) | the gateway refuses Sonnet 5.5 for this team; the results comment states this |
 
 ---
 
@@ -514,12 +546,12 @@ gold values are posted (AppWorld redistribution rule). The draft is written to
 | phase | rollouts | wall time (estimate) |
 |---|---|---|
 | build + acceptance checks | ≈ 30 | 2–3 h of build work |
-| cape-hc baseline (train 90 + dev 57) | 147 | 0.5 h |
-| cape-hc 6 iterations (optimizer 15–40 min + 57 dev rollouts each) | 342 | 3–5 h |
+| cape-hc baseline (train ∪ dev, scored once since train = val) | 147 | 0.5 h |
+| cape-hc 6 iterations (optimizer 15–40 min + 147 rollouts each) | 882 | 4.5–7 h |
 | altk mining (≈ 500–800 optimizer calls) + 2 doses on dev, in parallel with cape-hc | 114 | 1.5–2 h |
 | final window | 1,008 | 2–3 h |
 | analysis, report, post | 0 | 0.5 h |
-| **total** | **≈ 1,640** | **≈ 8–12 h** after the build |
+| **total** | **≈ 2,180** | **≈ 11–15 h** after the build |
 
 Throughput basis: the probe's 30–300 s per episode, and RITS at 48 concurrent requests without
 errors. RITS has no budget. Optimizer spend: cap-evolve capped at $120 by `max_optimizer_usd`;
@@ -532,7 +564,7 @@ ALTK about 4–6M input and 0.5–1M output tokens. Both are recorded exactly.
 | optimizer gateway fails or throttles mid-run | A1 before launch; cap-evolve `--resume`; the ALTK store is idempotent per trajectory |
 | context window overflow on long episodes | `max_output_length` trimming, A8, the `context_exceeded` count per arm; the altk memory block is size-capped |
 | RITS throttling or outage during the final window | infrastructure retries with new seeds; one window, so all arms are hit equally; a pause/resume flag in the final runner |
-| cape-hc accepts nothing (inert) | that is a result: reported as "no candidate cleared the gate", with the per-iteration dev deltas |
+| cape-hc accepts nothing (inert) | that is a result: reported as "no candidate cleared the gate", with the per-iteration val (train ∪ dev) deltas |
 | gpt-oss output format (code block missing, or `complete_task` called at step 1) | that is seed behaviour; both methods may address it (prompt, or guidelines); counted per arm |
 | ALTK extraction errors on unusual trajectories | the library already logs and skips (`Standard guideline generation failed …`); the number of skipped trajectories is reported |
 | sub-agent stops mid-trial | trials are detached processes with on-disk state (`cap-evolve run --resume`; the ALTK store is idempotent per trajectory id) |
