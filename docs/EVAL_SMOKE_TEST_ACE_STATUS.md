@@ -401,3 +401,12 @@ Next: P3 ACE start.
 ```json
 {"cp": 36, "prev_cp": 35, "prev_commit": "c80f5b4e61231855e862d843d6985cb883f0cd94", "utc": "2026-10-14T21:18:33Z", "kind": "phase_done", "phase": "P2", "done_through": "P2/A10", "next": "P3/start", "counts": {"rollouts_counted": 0}, "spend": {"opt_in_tok": 0, "opt_out_tok": 0, "usd_proxy": 0}, "artifacts": {}, "code": "cf857e1d096585a5dbdf55aa40fcca80d0c0e7f6", "open_decisions": []}
 ```
+
+## CP-0037 · 2026-10-14T21:18Z · P3 ACE start · phase_done
+
+P3 done: train order = `load_task_ids("train")` (90 tasks, no shuffle), sha256 d18d8b604dc6c8d2… (ids not pushed); pb_000 = ACE's initial playbook (8 bullets, 1,469 chars, 365 tokens; lint passed), next_global_id 9; M_cap = 13,500 tokens (A8).
+Next: P4 ace/step/001/episode.
+
+```json
+{"cp": 37, "prev_cp": 36, "prev_commit": "fd795740289fd756430a89222d120815a1902882", "utc": "2026-10-14T21:18:56Z", "kind": "phase_done", "phase": "P3", "done_through": "P3/start", "next": "ace/step/001/episode", "counts": {"rollouts_counted": 0, "ace_steps": 0}, "spend": {"opt_in_tok": 0, "opt_out_tok": 0, "usd_proxy": 0}, "artifacts": {"STATE/manifest.json": "baaa0d960f9fd9000231728164b00247b078b13c29038a8fd161a48b2ca96968", "STATE/ace/playbook.txt": "3c4f46888c9159088c3eb8f70e879d4d28a5704ab9f15d132563ba0ee2730b7b", "STATE/ace/progress.json": "e8047acf98afebcdefbca49931892eed552a33d30e8fc3681a3a29d322ab09a9", "local/ace/playbooks/pb_000.txt": "3c4f46888c9159088c3eb8f70e879d4d28a5704ab9f15d132563ba0ee2730b7b"}, "code": "cf857e1d096585a5dbdf55aa40fcca80d0c0e7f6", "open_decisions": []}
+```

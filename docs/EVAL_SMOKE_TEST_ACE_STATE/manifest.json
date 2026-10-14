@@ -92,5 +92,10 @@
   "H_max": 17267,
   "min_chars_per_token": 3.475,
   "encoding": "o200k_harmony"
+ },
+ "train_order": {
+  "source": "load_task_ids('train')",
+  "n": 90,
+  "sha256": "d18d8b604dc6c8d29c8c615c8057215169244bcadb54503a258978349f628654"
  }
 }
