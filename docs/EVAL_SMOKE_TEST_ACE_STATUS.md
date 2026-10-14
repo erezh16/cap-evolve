@@ -85,3 +85,12 @@ Next: P1/B1.
 ```json
 {"cp": 1, "prev_cp": 2, "prev_commit": "d460d9700755e0e6fc3f160b6eb0b429a86ed281", "utc": "2026-10-14T14:46:46Z", "kind": "decision", "phase": "P1", "done_through": "P0/decisions", "next": "P1/B1", "counts": {"rollouts_counted": 0}, "spend": {"opt_in_tok": 0, "opt_out_tok": 0, "usd_proxy": 0}, "artifacts": {}, "code": null, "open_decisions": [], "decisions": {"issue_804_interim_updates": true}}
 ```
+
+## CP-0004 · 2026-10-14T14:49Z · P1 build · repair
+
+Repair: the entry above headed "CP-0001 · 2026-10-14T14:46Z · P1 build · decision" (json `cp`: 1) is the fourth entry of this ledger and should have been numbered **CP-0003**. Cause: an off-by-one slice in the ledger writer's header parser (`status_doc.py`), now fixed; the writer now numbers entries by their count and refuses a non-increasing number. The entry is left unedited (append-only rule); its content stands. This entry is CP-0004.
+Next: P1/B1.
+
+```json
+{"cp": 4, "prev_cp": 1, "prev_commit": "cbfb164442379f3ee5026738071938ec0a942644", "utc": "2026-10-14T14:49:01Z", "kind": "repair", "phase": "P1", "done_through": "P0/decisions", "next": "P1/B1", "counts": {"rollouts_counted": 0}, "spend": {"opt_in_tok": 0, "opt_out_tok": 0, "usd_proxy": 0}, "artifacts": {}, "code": "cbfb164442379f3ee5026738071938ec0a942644", "open_decisions": []}
+```

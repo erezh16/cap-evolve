@@ -60,7 +60,7 @@ def entries(text: str | None = None) -> list[tuple[int, str]]:
     out = []
     for i, s in enumerate(starts):
         chunk = text[s: starts[i + 1] if i + 1 < len(starts) else len(text)]
-        out.append((int(chunk[5:9]), chunk))
+        out.append((int(chunk[6:10]), chunk))
     return out
 
 
@@ -170,7 +170,9 @@ def _append_locked(kind, phase, label, prose, done_through, next_unit, extra, ar
     text = P.LEDGER.read_text()
     prev = last_entry(text)
     es = entries(text)
-    cp = es[-1][0] + 1 if es else 0
+    # entries are numbered 0, 1, 2, ... in file order; the count also covers a misnumbered entry
+    cp = max(len(es), max((n for n, _ in es), default=-1) + 1)
+    assert not es or cp > max(n for n, _ in es), "checkpoint numbers must increase"
     t = utcnow()
     head_min, head_sec = _fmt_utc(t)
     ps = P.read_json(PUSH_STATE, {}) or {}
