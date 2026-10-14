@@ -670,9 +670,10 @@ check; it cannot prevent a read of train/dev ground truth, only detect it.
 iterations from its bundled price table. The binding limits are the claude CLI's
 `--max-budget-usd 15` per iteration and `max_optimizer_usd: 120`.
 
-**F10. At temperature 0 the seed is nearly deterministic.** In A6, re-scoring the unchanged seed
-on 4 dev tasks gave identical per-task rewards (paired Δ = 0, SE = 0, gate's strict fallback).
-The 2 final trials per task may therefore add little variance information (D3).
+**F10. Temperature 0 is not deterministic at scale (corrected).** In A6, re-scoring the unchanged
+seed on 4 dev tasks gave identical rewards (paired Δ = 0, SE = 0). In the final window, however, the two
+trials of a task disagreed on 64/168 tasks (seed), 42/168 (cape-hc) and 40/168 (altk). So D3's second
+trial carries real variance information, and the search's single trial per task is a noisy measurement.
 
 **F11. The `altk-full` dose cannot be used: 1,715 guidelines, 402,775 characters.** Mining the
 90 seed train trajectories gave 1,867 guidelines (88 trajectories mined; 2 failed in the library's
@@ -775,3 +776,62 @@ which ran unguarded from 18:27 to 18:37, made directory listings only. Iteration
 | A8 | pass. 10 dev episodes, 0 infra errors, 5 passed; max prompt 12,169 tokens (limit 34,000); longest 28 steps / 530 s |
 
 None of the acceptance rollouts are counted (rule S1).
+
+---
+
+## Appendix B. Results (2026-10-14)
+
+Interim results were posted to issue #804 as they came in (updates 1–6), followed by a closing
+summary. Raw data: `/tmp/aw_eval/runs/final/results.jsonl` (one line per episode: rewards, counters and
+infra flags only) and `results.json`. The analysis is `examples/appworld/scripts/analyze.py`.
+
+### B.1 Search
+
+| | cape-hc | altk |
+|---|---|---|
+| champion | iteration 6 (`cand_0006`) | retrieval dose (`altk-ret`) |
+| search-time score | val = train ∪ dev 0.884 (seed 0.361), a fit metric | dev TGC 0.456 (seed 0.333) |
+| iterations | 1 ✓ 0.653, 2 ✓⚠ 0.707, 3 ✓ 0.776, 4–5 lost (F15), 6 ✓ 0.884, 7 ✗ 0.830, 8 ✗ 0.864 | mined 90 train trajectories → 1,867 → 1,715 guidelines |
+| counted search rollouts | 1,029 | 147 (90 shared seed train + 57 dev) |
+| optimizer | $67.84, 47.5M tokens (about $15 on 3 unscored candidates) | 1,031 calls, 2.50M in / 1.30M out tokens |
+| isolation | **breach, train/dev gold read in iteration 2 (F14)**; 0 test-id hits | 0 hits |
+
+### B.2 Final window (test_normal, 168 tasks / 56 scenarios × 2 trials, 1,008 episodes, 0 infra errors, 0 missing cells)
+
+| arm | TGC | SGC | Δ TGC vs seed [95% CI] | Δ SGC vs seed [95% CI] |
+|---|---|---|---|---|
+| seed | 35.1 | 13.4 | — | — |
+| cape-hc ⚠ isolation breach | 53.6 | 34.8 | +18.5 [+10.7, +26.2] | +21.4 [+10.7, +32.1] |
+| altk | 41.1 | 23.2 | +6.0 [−0.9, +13.1] | +9.8 [+2.7, +17.9] |
+
+cape-hc − altk: Δ TGC +12.5 [+3.9, +21.4], Δ SGC +11.6 [0.0, +23.2]. Intervals come from a
+scenario-clustered paired bootstrap (56 clusters, 10,000 resamples), unadjusted.
+
+| TGC by difficulty | Easy (57) | Medium (48) | Hard (63) |
+|---|---|---|---|
+| seed | 52.6 | 29.2 | 23.8 |
+| cape-hc | 79.8 | 52.1 | 31.0 |
+| altk | 64.0 | 28.1 | 30.2 |
+
+| per episode | prompt tok | completion tok | steps | step-cap hits | context exceeded | collateral damage | max prompt tok | fs_probe |
+|---|---|---|---|---|---|---|---|---|
+| seed | 93,302 | 5,948 | 12.7 | 4 | 0 | 9 | 19,301 | 0 |
+| cape-hc | 90,613 | 5,866 | 8.8 | 1 | 0 | 14 | 22,234 | 0 |
+| altk | 140,583 | 7,044 | 14.8 | 3 | 0 | 14 | 21,653 | 0 |
+
+### B.3 Reading
+
+- Both learned artifacts beat the seed on held-out test. For cape-hc the CI excludes 0 on both
+  metrics; for altk it excludes 0 on SGC only. cape-hc also beats altk on TGC.
+- cape-hc's gain sits on Easy and Medium tasks. On Hard tasks the two arms are level
+  (31.0 vs 30.2, against the seed's 23.8).
+- cape-hc's val (0.884) overstates its test TGC (0.536) by 35 points. Train = val makes val a fit
+  metric. The prompt and helpers fit the 147 search tasks well and transfer only partly.
+- altk costs about 50% more prompt tokens per episode (memory block plus more steps). cape-hc takes the
+  fewest steps (8.8), but it has more collateral-damage failures than the seed (14 vs 9).
+- The seed (35.1 / 13.4) is below the colleagues' no-memory gpt-oss-120b numbers (39.9 / 21.4).
+  Their ALTK gain was +16.1 / +16.1; here altk gains +6.0 / +9.8 with the retrieval dose only, since
+  the full playbook is infeasible (F11).
+- Limits: one search seed per method; unmatched budgets (1,029 vs 147 search rollouts); no multiplicity
+  correction; cape-hc's isolation breach (F14). These are statements about two artifacts, not about
+  the methods.
