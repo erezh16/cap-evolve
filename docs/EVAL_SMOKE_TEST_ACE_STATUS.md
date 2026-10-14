@@ -328,3 +328,12 @@ Next: P2/A4 cap refusal, A7 loop.
 ```json
 {"cp": 28, "prev_cp": 27, "prev_commit": "25686732b7e6cc09353ae81a43f1b385366d94f2", "utc": "2026-10-14T20:46:51Z", "kind": "decision", "phase": "P2", "done_through": "P2/A8", "next": "P2/A4", "counts": {"rollouts_counted": 0}, "spend": {"opt_in_tok": 0, "opt_out_tok": 0, "usd_proxy": 0}, "artifacts": {"STATE/manifest.json": "e07244c649b48bf76f3a40111221ed74b8ce0543e00acc3a3700ca9452c39e28"}, "code": "57f63c9ed9516f28843ac69b4248424a1c21b6a5", "open_decisions": [], "decisions": {"M_cap_tokens": 13500}}
 ```
+
+## CP-0029 · 2026-10-14T20:46Z · P2 acceptance · result
+
+A4 passed (complete): seed first request byte-identical to stock (23 messages); playbook in the memory slot before `My name is:`; a playbook of M_cap + 1 = 13,501 tokens is refused by the memory lint before any rollout.
+Next: P2/A7 ACE loop on 4 dev tasks (running).
+
+```json
+{"cp": 29, "prev_cp": 28, "prev_commit": "655b77f8975362f40d6a72b0a0dda1b0f1c54d4f", "utc": "2026-10-14T20:46:55Z", "kind": "result", "phase": "P2", "done_through": "P2/A4", "next": "P2/A7", "counts": {"rollouts_counted": 0}, "spend": {"opt_in_tok": 0, "opt_out_tok": 0, "usd_proxy": 0}, "artifacts": {}, "code": "655b77f8975362f40d6a72b0a0dda1b0f1c54d4f", "open_decisions": []}
+```
