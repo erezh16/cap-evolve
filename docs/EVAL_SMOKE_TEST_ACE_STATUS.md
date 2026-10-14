@@ -373,3 +373,12 @@ Next: P2/A7 result, A9 re-run.
 ```json
 {"cp": 33, "prev_cp": 32, "prev_commit": "7b70510f67b37f98607e0ddb276f5c4f02c5ca8d", "utc": "2026-10-14T20:54:40Z", "kind": "repair", "phase": "P2", "done_through": "P2/A4", "next": "P2/A7", "counts": {"rollouts_counted": 0}, "spend": {"opt_in_tok": 0, "opt_out_tok": 0, "usd_proxy": 0}, "artifacts": {}, "code": "7b70510f67b37f98607e0ddb276f5c4f02c5ca8d", "open_decisions": []}
 ```
+
+## CP-0034 · 2026-10-14T21:05Z · P2 acceptance · result
+
+A7 passed (design A-ACE acceptance and common acceptance iii, iv; dev ids, not counted): the ACE loop on the first 4 dev tasks into a throwaway dir: 4 episodes completed and were curated (8 optimizer calls, 0 `refusal`, 0 empty Reflector fields with the G2 prompt copies, so the gateway filter blanks nothing on real prompts); 10 bullets added with fresh ids in whitelisted sections; playbook 365 → 791 → 1,153 → 1,240 → 1,616 tokens; transcript scan over those calls: 0 test ids, 0 `test_normal` / `root_full` / `answer.json` / `ground_truth`, 0 canary. The offline part (CP-0015) holds at the final M_cap (13,500, same value): ported prompts byte-identical to ACE's own code; non-ADD skips the update, off-whitelist skips the op, invalid JSON skips; planted train 8-gram `lint_drop`ped; D5 on a synthetic 1.3·M_cap playbook: dedup 628 → 7 bullets back under the cap.
+Next: P2/A9 (running), A10.
+
+```json
+{"cp": 34, "prev_cp": 33, "prev_commit": "cf857e1d096585a5dbdf55aa40fcca80d0c0e7f6", "utc": "2026-10-14T21:05:52Z", "kind": "result", "phase": "P2", "done_through": "P2/A7", "next": "P2/A9", "counts": {"rollouts_counted": 0}, "spend": {"opt_in_tok": 0, "opt_out_tok": 0, "usd_proxy": 0}, "artifacts": {}, "code": "cf857e1d096585a5dbdf55aa40fcca80d0c0e7f6", "open_decisions": []}
+```
