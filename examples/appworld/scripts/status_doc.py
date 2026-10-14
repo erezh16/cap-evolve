@@ -30,9 +30,9 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import awpaths as P  # noqa: E402
 
-PATHSPEC = ["docs/EVAL_SMOKE_TEST_ACE_STATUS.md", "docs/EVAL_SMOKE_TEST_ACE_STATE/", "examples/appworld/"]
+PATHSPEC = [str(P.LEDGER.relative_to(P.REPO)), str(P.PUSHED.relative_to(P.REPO)) + "/", "examples/appworld/"]
 PUSH_STATE = P.AW_STATE / "ledger_push.json"
-LOCK = P.AW_STATE / "ledger.lock"
+LOCK = P.AW_STATE / f"ledger-{P.LEDGER.stem}.lock"
 HB_PID = P.AW_STATE / "HEARTBEAT.pid"
 TRAILER = "Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>"
 ENTRY_RE = re.compile(r"^## CP-(\d{4}) · ", re.M)
@@ -208,6 +208,8 @@ def _append_locked(kind, phase, label, prose, done_through, next_unit, extra, ar
         f.write(entry)
         f.flush()
         os.fsync(f.fileno())
+    if os.environ.get("AW_TEST_APPEND_PAUSE"):  # A9 only: a window to SIGKILL mid-append
+        time.sleep(float(os.environ["AW_TEST_APPEND_PAUSE"]))
     bad = check_publish(files_to_publish())
     if bad:
         git("checkout", "--", str(P.LEDGER.relative_to(P.REPO)))  # drop the uncommitted entry

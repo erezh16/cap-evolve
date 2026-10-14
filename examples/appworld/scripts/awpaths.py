@@ -11,11 +11,13 @@ import os
 import tempfile
 from pathlib import Path
 
-REPO = Path(__file__).resolve().parents[3]
-EXAMPLE = REPO / "examples" / "appworld"
-LEDGER = REPO / "docs" / "EVAL_SMOKE_TEST_ACE_STATUS.md"
-PUSHED = REPO / "docs" / "EVAL_SMOKE_TEST_ACE_STATE"
-BRANCH = "erezh-eval2-ace"
+# AW_REPO / AW_LEDGER_NAME / AW_BRANCH are overridden only by the acceptance tests A9/A10 (throwaway
+# clone, status file and branch); the evaluation itself uses the defaults.
+REPO = Path(os.environ.get("AW_REPO", Path(__file__).resolve().parents[3]))
+EXAMPLE = Path(__file__).resolve().parents[1]
+LEDGER = REPO / "docs" / os.environ.get("AW_LEDGER_NAME", "EVAL_SMOKE_TEST_ACE_STATUS.md")
+PUSHED = REPO / "docs" / (LEDGER.stem.removesuffix("_STATUS") + "_STATE")
+BRANCH = os.environ.get("AW_BRANCH", "erezh-eval2-ace")
 
 AW_HOME = Path(os.environ.get("AW_HOME", "/workspace/aw_eval_ace"))
 AW_STATE = Path(os.environ.get("AW_STATE", AW_HOME / "state"))
@@ -29,7 +31,7 @@ ROOT_OPT = AW_BUILD / "root_opt"
 HF_HOME = AW_BUILD / "hf"
 SCRATCH = Path("/tmp/aw_eval_ace/aw_outputs")
 PROGRESS = AW_STATE / "progress"
-LINT_CACHE = AW_STATE / "lint_cache.json"   # ids, instruction 8-grams, contacts (local only)
+LINT_CACHE = AW_HOME / "state" / "lint_cache.json"   # ids, instruction 8-grams, contacts (local only; fixed path)
 ENV_FILE = REPO / ".env"
 
 APPWORLD_COMMIT = "42b5bcf3cd334fee33f0c37c02070a9f5807add5"

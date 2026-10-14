@@ -1,0 +1,43 @@
+diff -u vendor/prompts/appworld_react_curator_prompt.txt prompts/appworld_react_curator_prompt.txt
+--- vendor/prompts/appworld_react_curator_prompt.txt	2026-10-14 15:03:31.944454849 +0000
++++ prompts/appworld_react_curator_prompt.txt	2026-10-14 15:25:30.060744367 +0000
+@@ -68,7 +68,7 @@
+ 
+ **Your Task:**
+ Output ONLY a valid JSON object with these exact fields:
+-- reasoning: your chain of thought / reasoning / thinking process, detailed analysis and calculations
++- reasoning: your detailed analysis and calculations
+ - operations: a list of operations to be performed on the playbook
+   - type: the type of operation to be performed
+   - section: the section to add the bullet to
+@@ -81,7 +81,7 @@
+ 
+ **RESPONSE FORMAT - Output ONLY this JSON structure (no markdown, no code blocks):**
+ {{
+-  "reasoning": "[Your chain of thought / reasoning / thinking process, detailed analysis and calculations here]",
++  "reasoning": "[Your detailed analysis and calculations here]",
+   "operations": [
+     {{
+       "type": "ADD", 
+diff -u vendor/prompts/appworld_react_reflector_no_gt_prompt.txt prompts/appworld_react_reflector_no_gt_prompt.txt
+--- vendor/prompts/appworld_react_reflector_no_gt_prompt.txt	2026-10-14 15:03:31.944345554 +0000
++++ prompts/appworld_react_reflector_no_gt_prompt.txt	2026-10-14 15:25:30.049883537 +0000
+@@ -87,7 +87,7 @@
+ 
+ **Outputs:**
+ Your output should be a json object, which contains the following fields
+-  - reasoning: your chain of thought / reasoning / thinking process, detailed analysis and calculations
++  - reasoning: your detailed analysis and calculations
+   - error_identification: what specifically went wrong in the reasoning?
+   - root_cause_analysis: why did this error occur? What concept was misunderstood?
+   - correct_approach: what should the model have done instead?
+@@ -95,7 +95,7 @@
+ 
+ **Answer in this exact JSON format:**
+ {{
+-  "reasoning": "[Your chain of thought / reasoning / thinking process, detailed analysis and calculations]",
++  "reasoning": "[Your detailed analysis and calculations]",
+   "error_identification": "[What specifically went wrong in the reasoning?]",
+   "root_cause_analysis": "[Why did this error occur? What concept was misunderstood?]",
+   "correct_approach": "[What should the model have done instead?]",
+Only in prompts: gateway-filter.diff

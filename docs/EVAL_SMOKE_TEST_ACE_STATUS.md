@@ -142,3 +142,14 @@ Next: P1/B6 code.
 ```json
 {"cp": 9, "prev_cp": 8, "prev_commit": "a0e0b0af778427c73f9ac702034b7816ba203650", "utc": "2026-10-14T15:05:17Z", "kind": "result", "phase": "P1", "done_through": "P1/B5", "next": "P1/B6", "counts": {"rollouts_counted": 0}, "spend": {"opt_in_tok": 0, "opt_out_tok": 0, "usd_proxy": 0}, "artifacts": {"STATE/manifest.json": "97240f02e49a4d03a677d819edd3925e7ac7e79f933abf381e89085bb5eb2dc1"}, "code": "a0e0b0af778427c73f9ac702034b7816ba203650", "open_decisions": []}
 ```
+
+## CP-0010 · 2026-10-14T15:26Z · P2 acceptance · result
+
+A1 passed (run early: it needs no RITS; B6 code continues, B7 .env still missing): `aws/claude-sonnet-5-5` answers through `ace/ace_llm.py` (gateway header sent, no `response_format`, no tools). On a toy message list (no task data) one Reflector call returned JSON with all 5 fields, one Curator call returned valid ACE JSON (2 ADD ops, 1 off-whitelist op skipped as in ACE). Usage 6.7K in / 1.9K out tokens.
+**Finding G1:** the gateway rejects `temperature` for this model (HTTP 400 "`temperature` is deprecated for this model"). The plan's temperature 0 for Reflector / Curator / merge cannot be sent; the client omits it (model default). Deterministic 4xx errors other than 429 are no longer retried 50 times.
+**Finding G2 (plan §15 risk, A7 remedy):** with ACE's prompts verbatim, both the Reflector and the Curator response end with `finish_reason: refusal` (Reflector cut after ~100 tokens, Curator empty), reproducibly. A 4-variant diagnosis isolated the trigger: the phrase "chain of thought / reasoning / thinking process, " in the description of the `reasoning` field (2× per prompt). Removing only that phrase fixes it (`stop`, full JSON); renaming the key alone does not. Applied: our copies `examples/appworld/ace/prompts/` drop the phrase (4 lines, diff `ace/prompts/gateway-filter.diff`); JSON field names and every other byte are unchanged; `ace/vendor/` stays unmodified. A7 re-checks this on real prompts. Both findings are deviations to be listed in the report.
+Next: P1/B6 code, then P1/B7 (.env from the user).
+
+```json
+{"cp": 10, "prev_cp": 9, "prev_commit": "a9d6fd3b8282801889c6ae4d4fde70dc41cd9949", "utc": "2026-10-14T15:26:44Z", "kind": "result", "phase": "P2", "done_through": "P2/A1", "next": "P1/B6", "counts": {"rollouts_counted": 0}, "spend": {"opt_in_tok": 0, "opt_out_tok": 0, "usd_proxy": 0}, "artifacts": {}, "code": "a9d6fd3b8282801889c6ae4d4fde70dc41cd9949", "open_decisions": [], "findings": {"G1": "temperature rejected by gateway for OPT_MODEL; omitted", "G2": "CoT phrase in reasoning-field description triggers refusal; phrase removed in our prompt copies"}}
+```
