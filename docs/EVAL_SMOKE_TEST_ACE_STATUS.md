@@ -74,3 +74,14 @@ Nothing has run. Next: P1, build step B1.
  "counts": {"rollouts_counted": 0}, "spend": {"opt_in_tok": 0, "opt_out_tok": 0, "usd_proxy": 0},
  "artifacts": {}, "code": null, "open_decisions": []}
 ```
+
+## CP-0001 · 2026-10-14T14:46Z · P1 build · decision
+
+User instruction (2026-10-14, verbatim): "Be sure to post updates periodically to issue 804 and not just wait for the final results".
+Applied: interim progress comments on skillberry-ai/cap-evolve#804 at milestones (build done, acceptance done, about every 15 ACE steps, freeze and dev diagnostic, final-window progress, any blocker), each recorded in a ledger entry with its URL. Content rules of plan §10.2 apply to every comment (counts only; no ids, task text or per-task test outcome). The final results comment (P10) is still posted once.
+Execution started: P1 build, AW_HOME=/workspace/aw_eval_ace. .env is not present yet (B7, to be supplied by the user before A2).
+Next: P1/B1.
+
+```json
+{"cp": 1, "prev_cp": 2, "prev_commit": "d460d9700755e0e6fc3f160b6eb0b429a86ed281", "utc": "2026-10-14T14:46:46Z", "kind": "decision", "phase": "P1", "done_through": "P0/decisions", "next": "P1/B1", "counts": {"rollouts_counted": 0}, "spend": {"opt_in_tok": 0, "opt_out_tok": 0, "usd_proxy": 0}, "artifacts": {}, "code": null, "open_decisions": [], "decisions": {"issue_804_interim_updates": true}}
+```
