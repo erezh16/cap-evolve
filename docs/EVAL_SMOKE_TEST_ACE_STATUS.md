@@ -382,3 +382,12 @@ Next: P2/A9 (running), A10.
 ```json
 {"cp": 34, "prev_cp": 33, "prev_commit": "cf857e1d096585a5dbdf55aa40fcca80d0c0e7f6", "utc": "2026-10-14T21:05:52Z", "kind": "result", "phase": "P2", "done_through": "P2/A7", "next": "P2/A9", "counts": {"rollouts_counted": 0}, "spend": {"opt_in_tok": 0, "opt_out_tok": 0, "usd_proxy": 0}, "artifacts": {}, "code": "cf857e1d096585a5dbdf55aa40fcca80d0c0e7f6", "open_decisions": []}
 ```
+
+## CP-0035 · 2026-10-14T21:06Z · P2 acceptance · result
+
+A9 passed, against a throwaway clone, status file and branch `acceptance/status-test` (deleted after A10): the ACE loop on 4 dev tasks was SIGKILLed three times (after a step's `episode.json`, after a `reflector.json`, and in the middle of a status append, which left a torn uncommitted ledger tail) and resumed each time with `resume.py` (torn tail dropped, uncommitted pushed state reset). Then a fresh clone of the branch with AW_STATE deleted: `resume.py` restored pb_003 from the pushed state and the loop redid only step 004 (the step in progress; its optimizer calls are the only ones after the loss). Over the whole test: 0 repeated paid calls (one call per role and step); the final playbook equals that of an uninterrupted run replayed from the same stored sub-steps (0 new calls in the replay); every ledger change is an added line (`git log -p`); the branch is pushed.
+Next: P2/A10.
+
+```json
+{"cp": 35, "prev_cp": 34, "prev_commit": "5d63a686183527818abdf58e2d0b79b418770029", "utc": "2026-10-14T21:06:55Z", "kind": "result", "phase": "P2", "done_through": "P2/A9", "next": "P2/A10", "counts": {"rollouts_counted": 0}, "spend": {"opt_in_tok": 0, "opt_out_tok": 0, "usd_proxy": 0}, "artifacts": {}, "code": "cf857e1d096585a5dbdf55aa40fcca80d0c0e7f6", "open_decisions": []}
+```
