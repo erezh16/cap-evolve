@@ -568,3 +568,210 @@ ALTK about 4–6M input and 0.5–1M output tokens. Both are recorded exactly.
 | gpt-oss output format (code block missing, or `complete_task` called at step 1) | that is seed behaviour; both methods may address it (prompt, or guidelines); counted per arm |
 | ALTK extraction errors on unusual trajectories | the library already logs and skips (`Standard guideline generation failed …`); the number of skipped trajectories is reported |
 | sub-agent stops mid-trial | trials are detached processes with on-disk state (`cap-evolve run --resume`; the ALTK store is idempotent per trajectory id) |
+
+---
+
+## Appendix A. Execution log, findings and deviations (2026-10-13)
+
+This appendix records what happened when the plan was executed, what was found that the plan
+did not anticipate, and every place where the execution differs from sections 0 to 15. Section
+numbers refer to the plan above. Results are in Appendix B.
+
+### A.1 Environment as found, and as built
+
+| item | plan assumed | found / done |
+|---|---|---|
+| Python 3.12 venv `/workspace/worktrees/base/.venv` | exists, managed by `~/.local/bin/uv` 0.13.0 | did not exist; `uv` was not installed. Installed `uv` 0.13.0 and CPython 3.12.15 with it (`uv python install 3.12`), created `.venv` (git-ignored) |
+| RITS credentials | `.env` with `RITS_API_KET` | no `.env` in the worktree at the start; the user created it (`RITS_URL`, `RITS_API_KET`). The key is read from that file by each episode worker and never exported (A.3) |
+| free disk | `/workspace` 11 GB, `/tmp` 81 GB | both on one 1.5 TB volume with 544 GB free; layout under `/tmp/aw_eval` kept as planned |
+| AppWorld build (§4 steps 1–3) | as written | worked as written: `42b5bcf`, `git lfs pull`, pydantic 2.12.5, fastapi 0.143.0, litellm 1.80.0; split counts 90/57/168/417 and scenario counts 30/19/56/139 match §1.1. `data/tasks` also holds a `_base_` dir (copied to `root_opt`) |
+| ALTK-Evolve (§4 step 5) | `uv pip install altk-evolve==1.3.0`, CPU torch | worked as written |
+
+### A.2 Code added (all under `examples/appworld/`)
+
+| file | role (plan section) |
+|---|---|
+| `patches/appworld-extra-headers.patch` | §5.2, 18 added lines in `language_model.py` (sha256 recorded in `runs/manifest.json`) |
+| `adapters/aw_agent.py` | `CapReActAgent` (§6.1) and the one-episode worker (one process per episode) |
+| `adapters/adapter.py` | the cap-evolve adapter (§7.1) |
+| `adapters/lints.py` | the candidate lints (§6.2), also runnable by the optimizer before it stops |
+| `seed_capability/` | §6.2; `policy/instructions.txt` is a byte copy of the stock prompt |
+| `capevolve.yaml`, `optimizer/INSTRUCTIONS.template.md`, `scripts/setup_project.sh` | §7.2 spec, intake-customized instructions (every `{{…}}` placeholder kept), scaffolding + `cap-evolve check` |
+| `scripts/make_roots.py`, `make_splits.py`, `make_reference.py`, `awpaths.py` | §4 step 4, rule S1/S2 split file, optimizer reference dir |
+| `scripts/check_injection.py`, `check_scoring_isolation.py`, `altk/check_altk.py` | acceptance A4, A3 + A5, A7 |
+| `altk/altk_common.py`, `to_messages.py`, `altk_mine.py`, `altk_render.py`, `select_dose.py`, `run_altk.sh` | the altk arm (§8) |
+| `scripts/final_window.py`, `analyze.py`, `scan_isolation.py`, `status.py` | §12 window and statistics, §9 scan, §10 progress page |
+
+### A.3 Findings
+
+**F1. The AppWorld REPL guard does not block file reads or the environment (affects A3 and isolation).**
+`os`, `pathlib` and `io` are on AppWorld's import allowlist (`appworld/common/safety_guard.py`,
+`ALLOWED_MODULE_NAMES`). `open()` is blocked at syntax level, but `pathlib.Path(...).read_text()`
+goes through AppWorld's read-only `open` replacement and succeeds, and `os.listdir` and
+`os.environ` work. Probe: from inside `world.execute`, the agent could list `/tmp/aw_eval` and
+read `split_ids.json`; `subprocess`, `sys`, `socket` and `io.open` were blocked. So A3's
+expectation that `import os` fails was wrong for this AppWorld version, and the agent under test
+could have read `ground_truth/answer.json` (train/dev at search time, test in the final window)
+or the RITS key. Done, identically for all three arms: (a) the episode worker removes `os`,
+`pathlib`, `io`, `shutil` and `glob` from the import allowlist; (b) the RITS key is read from
+`.env` by the worker, used to build the client, and then removed from `os.environ` before the
+world starts; (c) every episode records `fs_probe` = whether the agent's code mentions
+`ground_truth`, `answer.json`, `/data/tasks`, `APPWORLD_ROOT`, `root_full`, `root_opt` or
+`test_normal`; the count per arm is reported. With (a), A3 passes as written.
+
+**F2. `max_output_tokens_per_task` is never enforced by AppWorld at `42b5bcf`.**
+`UsageTracker.exceeded()` checks overall cost, overall input/output tokens and per-task *cost*
+only; the per-task output-token limit is stored and never read. With RITS priced at 0, the
+per-task cost cap never fires either, so only `max_steps` would bind. The episode loop in
+`aw_agent.py` enforces 100,000 completion tokens per task itself (termination `token_cap`),
+the same for every arm.
+
+**F3. The official gpt-oss-120b ReAct config differs from §5.1 in three ways.**
+`experiments/configs/simplified_react_code_agent/openai/gpt-oss-120b-medium-reasoning_openrouter`
+uses `api_type: responses`, `drop_reasoning_content: false` and `max_output_length: null` (no
+trimming), with `max_retries` 100. The plan's `hosted_vllm` chat-completions route,
+`drop_reasoning_content: true` and 60,000-character trimming are kept (they are what fits RITS's
+40K window), but they are a deviation from the official config and are listed in A.4.
+In A8 the longest of 10 dev episodes reached 12,169 prompt tokens and no trimming fired, so the
+trimming choice has not mattered so far.
+
+**F4. The setup snippet is a REPL interaction.** Defining helpers and wrapping the API-doc
+lookups goes through `world.execute`, so it appears once in AppWorld's `environment_io` log and
+counts once toward `max_interactions` (1,000). It is not an agent step and makes no app API
+call. For the seed and the altk arm (no helpers, no notes) no snippet runs at all, which keeps
+the seed byte-identical to stock (A4.1).
+
+**F5. ALTK-Evolve's structured-output path does not work with this gateway.** For an
+`anthropic/` model litellm emulates `response_format` with a forced `tool_choice`, and the
+gateway rejects that for `aws/claude-sonnet-5-5` (HTTP 400, "tool_choice: type tool and any are
+not supported for this model"). The driver reports no response-schema support for this model
+(`litellm.supports_response_schema` patched in our process before ALTK is imported), so the
+library uses its own prompt-JSON path, the one it already uses for groq models. The library is
+not modified.
+
+**F6. `save_trajectory` returns trajectory entities, not guidelines.** The miner counts each
+task's guidelines in the store by `metadata.source_task_id`. Guidelines are written with the
+library's conflict resolution on (an extra LLM call per batch), its default for this tool.
+
+**F7. `format_selection` already writes the heading.** Its block starts with "Guidelines learned
+from past task attempts (follow these carefully; …)". The memory slot adds the plan's heading
+only when the block lacks one, so the heading is not doubled.
+
+**F8. The claude-code optimizer can read the whole host.** The registry row gives it `Bash`
+(`--allowedTools Bash`), so it could read `root_opt/.../ground_truth` (train/dev gold) and any
+other file. Mitigations added beyond §9: `root_full` is `chmod 000` for the whole search phase
+and unlocked only for the final window; the RITS key is not in the environment that cap-evolve
+(and so the optimizer) inherits; AppWorld's native per-episode output dirs (which hold the
+evaluation report with gold traces) are deleted after each episode's gold-free record is read.
+The optimizer instructions say not to look for gold data. The transcript scan of §9 remains the
+check; it cannot prevent a read of train/dev ground truth, only detect it.
+
+**F9. `cap-evolve estimate` does not price this optimizer model.** It reported $0.36 for 6
+iterations from its bundled price table. The binding limits are the claude CLI's
+`--max-budget-usd 15` per iteration and `max_optimizer_usd: 120`.
+
+**F10. At temperature 0 the seed is nearly deterministic.** In A6, re-scoring the unchanged seed
+on 4 dev tasks gave identical per-task rewards (paired Δ = 0, SE = 0, gate's strict fallback).
+The 2 final trials per task may therefore add little variance information (D3).
+
+**F11. The `altk-full` dose cannot be used: 1,715 guidelines, 402,775 characters.** Mining the
+90 seed train trajectories gave 1,867 guidelines (88 trajectories mined; 2 failed in the library's
+conflict resolution, "Failed to resolve conflicts after 3 attempts"). Lossless consolidation at
+threshold 0.80 found 282 clusters and merged them to 1,715 guidelines, with support conserved
+(1,867 → 1,867). The full set rendered by `format_selection` is 402,775 characters, about 83,500
+tokens: more than twice gpt-oss-120b's whole 40,144-token window, and 13× the plan's 30,000-character
+memory cap. By the plan's own lint rule (§6.2: a violating candidate is rejected before any rollout),
+`altk-full` was infeasible and was not run. `altk-ret` (core of 18 guidelines with support ≥ 3, plus
+the top 10 retrieved per task; at most 10,729 characters, 2,086 tokens per dev task on average) was the
+only feasible dose and is the altk champion. Its dev TGC was 0.456 (57 tasks, 0 infra errors). The
+plan expected the full set to be small enough to compare; at this harness's segmentation (25–31
+guidelines per trajectory) it is not. A lossy consolidation (`lossy_target_num_guidelines` 12) would
+give a feasible "full" dose, but it is a different arm from the one the plan fixed, so it was not
+substituted. Counted altk rollouts: 90 (shared seed train rollouts) + 57 dev = 147, not 204.
+
+**F12. Lossless consolidation is slow.** It makes one LLM call per cluster, sequentially: 282
+clusters took 53 minutes (13 s per call). Mining used 8 parallel trajectories and took 30 minutes. ALTK
+optimizer usage for mining and consolidation: 1,031 calls (1 error), 2.50M input and 1.30M output
+tokens. The plan's estimate (500–800 calls, 4–6M input) was off by about 1.5× in calls and 0.5× in
+input tokens.
+
+**F13. The 30-minute wall cap fired once.** In iteration 2, one episode's first attempt passed 1,800 s;
+it was classified as infrastructure, retried once, and finished in 206 s (6 steps). No other search
+episode was retried or errored.
+
+**F14. ISOLATION BREACH in cape-hc iteration 2 (train/dev gold; test not reached).** An early
+grep of the optimizer transcripts during the run found 36 tool calls, all in iteration 2
+(`cand_0002`, accepted, val 0.653 → 0.707), made by the claude-code optimizer's parallel subagents:
+- `ls` of `root_opt/data/tasks/<id>/ground_truth/`, and `cat`/`sed` of `solution.py`,
+  `private_data.json`, `evaluation.py` and `public_data.json` for train/dev tasks (e.g. `34d9492_1`,
+  `68ee2c9_1`, `68ee2c9_2`, `7d7fbf6_1`);
+- a copy of `root_opt` to `/tmp/diag/root`, and scripts that ran released `compiled_solution.py` files
+  and the subagents' own helper code through `AppWorld(...)` and `world.evaluate(suppress_errors=False)`,
+  which prints the evaluator's gold traces (outputs under `root_opt/experiments/outputs/diag*`);
+- `find /` for task directories, and `ls root_full` (refused: `root_full` was `chmod 000`).
+No test id, test file or canary was read. Iterations 1 and 3 have no such call. This goes past
+feedback tier F1 (§7.1, §9): the optimizer saw solutions and gold traces for some train/dev tasks.
+The lints (no 8-grams, no task values, no hardcoded API chains) still passed, so what could carry over
+is knowledge of how tasks are solved and checked, not literal answers. The instruction "do not try to
+find gold answers … on disk" did not stop subagents that were exploring how to verify a helper.
+From iteration 4 on (18:37 UTC), `runs/optimizer_guard.sh` puts `root_opt` (and `/tmp/diag/root`) at
+`chmod 000` whenever an optimizer `claude -p` process runs and restores it when the process exits,
+before the harness scores the candidate. The lint then reads a pre-built cache (`lint_cache.json`:
+instruction 8-grams, supervisor contacts, app/API names) instead of `root_opt`. Iterations 3 to 6 build
+on iteration 2's accepted edits. **Decision (user, 2026-10-13): continue, and label the cape-hc arm
+"isolation breach (train/dev gold read in iteration 2)" in every result, as §9 says.** The guard is
+directory permissions under one OS user, so a determined optimizer could undo it; the full transcript
+scan after the search checks iterations 4 to 6 again.
+
+**F15. The first guard broke iterations 4–6; fixed with a synchronous `claude` shim and a resume.**
+The first guard polled once a second for an optimizer process. When iteration 4's optimizer exited
+(18:50:49), the harness asked the adapter for its tasks within the same second, while `root_opt`
+was still locked. The evaluation raised, the step was recorded as "indecisive (evaluation error)",
+and the harness launched iteration 5's optimizer at once. So the guard never saw a gap, and iterations 5
+and 6 failed the same way. After 3 consecutive evaluation errors the harness stopped the run, correctly
+calling it "a broken environment/adapter, not bad candidates". Cost: 3 optimizer calls whose candidates
+were never scored ($10.53 + $3.82 + $0.79 = $15.14 of the $48.52 spent up to then), and no rollouts.
+Fix: (a) `/tmp/aw_eval/bin/claude`, first on the cap-evolve process's PATH only, locks `root_opt`, runs
+the real CLI, and unlocks before it returns, so the lock is exactly the optimizer call; (b) the adapter
+caches the task list and waits up to 60 s for a readable root before an evaluation. The run was resumed
+on 2026-10-14 with `cap-evolve run --resume --max-iterations 8`. With 5 iterations counted as used, that
+leaves 3 more, so the run still gets 6 scored iterations (1–3, then three after the resume). The lost
+iteration-4 candidate (`work/cand_0004`, $10.53) was not scored.
+
+**F16. AppWorld's canary string is release-wide.** All 732 tasks (train, dev, test_normal,
+test_challenge) carry the same `canary_string`, so a canary hit cannot distinguish test data from
+train/dev. The post-search scan (`runs/isolation_scan.json`) therefore counts test ids as the
+test-access signal. Result: 0 test-id hits in every optimizer transcript, workdir, the cape-hc run dir
+and the ALTK store. Train/dev gold reads: iteration 2 only (F14). Iteration 1 listed one train task
+directory (it saw that a `ground_truth` folder exists) but opened nothing. Iteration 4's optimizer,
+which ran unguarded from 18:27 to 18:37, made directory listings only. Iterations 3 and 5–8: none.
+
+### A.4 Deviations from the plan
+
+| plan | done | why |
+|---|---|---|
+| §7.1 `multiprocessing` spawn pool, `maxtasksperchild=1` | a thread pool of `AW_WORKERS` that runs each episode as its own subprocess (`aw_agent.py SPEC OUT`) | the same one-world-per-process isolation, plus a real kill at the 30-minute wall cap (`subprocess` timeout) |
+| §10 sub-agents watch the trials | detached `nohup` processes (`launch_cape_hc.sh`, `altk/run_altk.sh`, `final_window.py`) with on-disk logs, watched from the main session | the work is sequenced by scripts; nothing depends on a sub-agent staying alive |
+| §5.1 model config | as planned, plus F2's token cap enforced in the loop | F2 |
+| §9 REPL guards "stay on" | stay on, and 5 modules removed from the import allowlist for every arm | F1 |
+| §8 step 3 "segmentation on" | library defaults (standard mode, segmentation on), prompt-JSON path | F5 |
+| A3 `import os` fails | passes only with F1's hardening | F1 |
+| §8 step 5: dose selection scores both doses (114 dev rollouts) | `altk-full` failed the 30,000-character memory lint and was not run; `altk-ret` was scored on dev (57 rollouts) and chosen as the only feasible dose | F11 |
+| §7.2 `max_iterations: 6` | resumed with `--max-iterations 8`: 3 iterations lost to the guard bug count as used, so 6 scored iterations remain the target | F15 |
+| §9 isolation by directory separation only | plus `optimizer_guard.sh` from iteration 4: `root_opt` locked while the optimizer runs | F14 |
+| §6.2 lint `lint_reject` "before any rollout" | the adapter runs no episode for a violating candidate and scores every task 0 with the violations as feedback; the cap-evolve gate then rejects it. These count as metric calls but cost no model call | hill-climb has no pre-gate hook (the built-in pre-gate belongs to `agent-optimize`) |
+
+### A.5 Acceptance checks (§11)
+
+| id | result |
+|---|---|
+| A1 | pass. `claude -p --model aws/claude-sonnet-5-5` answered `ok`; through the ALTK wrapper, segmentation + guideline generation on a toy trajectory made 4 calls with no error (after F5) |
+| A2 | pass. One dev episode through the patched client: success, 9 steps, max prompt 7,863 tokens, 118 s. `grep` for the key under `runs/` and AppWorld's outputs (with `lm_calls.jsonl` logging on): 0 hits |
+| A3 | pass, with F1's hardening: `import os`, `open(answer.json)` and a `pathlib` read all fail; `root_opt` holds 147 task dirs + `_base_`, only `train.txt`/`dev.txt`, 0 test-id hits; `split_ids.json` train = val = train.txt ∪ dev.txt (147), test = [] |
+| A4 | pass. Seed first request byte-identical to stock (23 messages); memory block in the final USER message before `My name is:`; helpers defined and notes appended with the original doc JSON unchanged; a violating helper is rejected with 6 violations (import, literal app/API names, `apis.<app>` chain, top-level call) |
+| A5 | pass. The released compiled solution of a train task gives reward 1, a no-op 0; scoring twice is identical; the persisted record has no failure trace and no gold answer |
+| A6 | pass. `cap-evolve check` `{"ok": true}` on the real project (147 tasks). Mock 1-iteration dry run on 4 dev ids: baseline 0.75, `train ids identical to val — not re-evaluated`, iteration completed, finalize scored 0 test tasks. (The first dry run hit an adapter bug: the candidate path was relative while the worker runs elsewhere. Fixed; the harness had correctly marked it INDECISIVE, not a rejection) |
+| A7 | pass. 2 dev trajectories → 10 and 15 guidelines; lossless consolidation 25 → 25, support 25 → 25; full block 6,389 chars, retrieval blocks ≤ 2,906 chars (limit 30,000). 18 optimizer calls |
+| A8 | pass. 10 dev episodes, 0 infra errors, 5 passed; max prompt 12,169 tokens (limit 34,000); longest 28 steps / 530 s |
+
+None of the acceptance rollouts are counted (rule S1).
