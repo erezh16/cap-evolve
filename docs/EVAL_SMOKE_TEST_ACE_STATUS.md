@@ -410,3 +410,11 @@ Next: P4 ace/step/001/episode.
 ```json
 {"cp": 37, "prev_cp": 36, "prev_commit": "fd795740289fd756430a89222d120815a1902882", "utc": "2026-10-14T21:18:56Z", "kind": "phase_done", "phase": "P3", "done_through": "P3/start", "next": "ace/step/001/episode", "counts": {"rollouts_counted": 0, "ace_steps": 0}, "spend": {"opt_in_tok": 0, "opt_out_tok": 0, "usd_proxy": 0}, "artifacts": {"STATE/manifest.json": "baaa0d960f9fd9000231728164b00247b078b13c29038a8fd161a48b2ca96968", "STATE/ace/playbook.txt": "3c4f46888c9159088c3eb8f70e879d4d28a5704ab9f15d132563ba0ee2730b7b", "STATE/ace/progress.json": "e8047acf98afebcdefbca49931892eed552a33d30e8fc3681a3a29d322ab09a9", "local/ace/playbooks/pb_000.txt": "3c4f46888c9159088c3eb8f70e879d4d28a5704ab9f15d132563ba0ee2730b7b"}, "code": "cf857e1d096585a5dbdf55aa40fcca80d0c0e7f6", "open_decisions": []}
 ```
+
+## CP-0038 · 2026-10-14T21:19Z · P4 ACE adaptation · phase_start
+
+Phase start: 90 sequential steps (episode, Reflector, Curator, apply). Runner pid 32471.
+
+```json
+{"cp": 38, "prev_cp": 37, "prev_commit": "418ecb2898c08fd797f2b0a80941ec2e0a6d01c0", "utc": "2026-10-14T21:19:17Z", "kind": "phase_start", "phase": "P4", "done_through": "P3/start", "next": "ace/step/001/episode", "counts": {"rollouts_counted": 0, "ace_steps": 0}, "spend": {"opt_in_tok": 0, "opt_out_tok": 0, "usd_proxy": 0}, "artifacts": {}, "code": "cf857e1d096585a5dbdf55aa40fcca80d0c0e7f6", "open_decisions": []}
+```
