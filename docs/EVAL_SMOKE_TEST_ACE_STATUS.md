@@ -132,3 +132,13 @@ Next: P1/B5 ACE clones, vendoring, HF model.
 ```json
 {"cp": 8, "prev_cp": 7, "prev_commit": "c37e6a38342f2cab42b579e95347adde119c5d9a", "utc": "2026-10-14T14:59:04Z", "kind": "result", "phase": "P1", "done_through": "P1/B4", "next": "P1/B5", "counts": {"rollouts_counted": 0}, "spend": {"opt_in_tok": 0, "opt_out_tok": 0, "usd_proxy": 0}, "artifacts": {"STATE/manifest.json": "8cf33d27302f78a833049ed150426693a214a587c74aed900ce5a8a22d67819c"}, "code": "c37e6a38342f2cab42b579e95347adde119c5d9a", "open_decisions": []}
 ```
+
+## CP-0009 · 2026-10-14T15:05Z · P1 build · result
+
+B5 done: `ace` cloned at 82709de0 and `ace-appworld` at 928e8687 (the D4 pins) into AW_BUILD/ace-src. Vendored unmodified into `examples/appworld/ace/vendor/`: the no-GT reflector and curator prompts, the initial playbook (1,469 chars, 8 bullets, next id 9), `playbook.py`, `utils.py`, `bulletpoint_analyzer.py`, and the Apache-2.0 LICENSE; `VENDORED.md` lists source path, commit and sha256 of each. `all-mpnet-base-v2` pre-fetched into HF_HOME (419 MB); sentence-transformers + faiss available.
+Port notes recorded for run_ace.py (from `adaptation_react.py` / `adaptation_agent.py`): Reflector prompt filled with `.replace` (its JSON examples keep literal double braces), Curator with `.format`; a non-ADD operation makes ACE skip the whole update, an off-whitelist section skips that op only; in the no-GT path Reflector + Curator run only when the episode ends by `task_completed()` or the cost limit, not at the step cap.
+Next: P1/B6 code.
+
+```json
+{"cp": 9, "prev_cp": 8, "prev_commit": "a0e0b0af778427c73f9ac702034b7816ba203650", "utc": "2026-10-14T15:05:17Z", "kind": "result", "phase": "P1", "done_through": "P1/B5", "next": "P1/B6", "counts": {"rollouts_counted": 0}, "spend": {"opt_in_tok": 0, "opt_out_tok": 0, "usd_proxy": 0}, "artifacts": {"STATE/manifest.json": "97240f02e49a4d03a677d819edd3925e7ac7e79f933abf381e89085bb5eb2dc1"}, "code": "a0e0b0af778427c73f9ac702034b7816ba203650", "open_decisions": []}
+```
