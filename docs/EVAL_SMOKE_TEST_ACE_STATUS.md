@@ -309,3 +309,12 @@ Next: P2/A2 RITS probes.
 ```json
 {"cp": 26, "prev_cp": 25, "prev_commit": "afb6fdbbf3a0422c06afeeb61d85a26b08e86ef8", "utc": "2026-10-14T20:18:14Z", "kind": "result", "phase": "P1", "done_through": "P1/B7", "next": "P2/A2", "counts": {"rollouts_counted": 0}, "spend": {"opt_in_tok": 0, "opt_out_tok": 0, "usd_proxy": 0}, "artifacts": {}, "code": "57f63c9ed9516f28843ac69b4248424a1c21b6a5", "open_decisions": []}
 ```
+
+## CP-0027 · 2026-10-14T20:21Z · P2 acceptance · result
+
+A2 passed: RITS model listing `max_model_len` = 40,144 (as planned; M_cap depends on it); 48 concurrent short requests: 48 × 200, 0 × 429 (4.3 s); one dev episode through the patched client with LM-call logging on: completed (`complete_task` called), 7 steps, max prompt 7,798 tokens, 129 s, 7 logged calls; grep for the RITS key under AW_HOME, /tmp/aw_eval_ace, the pushed state and the code: 0 hits.
+Next: P2/A8 context budget and M_cap (runs before A4 and A7).
+
+```json
+{"cp": 27, "prev_cp": 26, "prev_commit": "2d6e22adc6e03f11cd94a1ad0d83c6164d68ad49", "utc": "2026-10-14T20:21:21Z", "kind": "result", "phase": "P2", "done_through": "P2/A2", "next": "P2/A8", "counts": {"rollouts_counted": 0}, "spend": {"opt_in_tok": 0, "opt_out_tok": 0, "usd_proxy": 0}, "artifacts": {}, "code": "57f63c9ed9516f28843ac69b4248424a1c21b6a5", "open_decisions": []}
+```
