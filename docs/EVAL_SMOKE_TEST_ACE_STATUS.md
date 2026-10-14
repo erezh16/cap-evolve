@@ -355,3 +355,12 @@ Next: P2/A7 (running), A9 re-run.
 ```json
 {"cp": 31, "prev_cp": 30, "prev_commit": "9e6bfaf6d8848c5e9b525be3833e924a8feae1f9", "utc": "2026-10-14T20:51:57Z", "kind": "repair", "phase": "P2", "done_through": "P2/A4", "next": "P2/A7", "counts": {"rollouts_counted": 0}, "spend": {"opt_in_tok": 0, "opt_out_tok": 0, "usd_proxy": 0}, "artifacts": {}, "code": "9e6bfaf6d8848c5e9b525be3833e924a8feae1f9", "open_decisions": []}
 ```
+
+## CP-0032 · 2026-10-14T20:52Z · P2 acceptance · repair
+
+Repair: CP-0031 did not remove the 4 `.pyc` files (a pathspec commit re-stages tracked working-tree files); they are deleted from disk and the index in this commit. Once untracked they stay ignored.
+Next: P2/A7 (running), A9 (re-running).
+
+```json
+{"cp": 32, "prev_cp": 31, "prev_commit": "4c85a31921463eda5cee079507240fa83c85cfb8", "utc": "2026-10-14T20:52:24Z", "kind": "repair", "phase": "P2", "done_through": "P2/A4", "next": "P2/A7", "counts": {"rollouts_counted": 0}, "spend": {"opt_in_tok": 0, "opt_out_tok": 0, "usd_proxy": 0}, "artifacts": {}, "code": "9e6bfaf6d8848c5e9b525be3833e924a8feae1f9", "open_decisions": []}
+```
