@@ -318,3 +318,13 @@ Next: P2/A8 context budget and M_cap (runs before A4 and A7).
 ```json
 {"cp": 27, "prev_cp": 26, "prev_commit": "2d6e22adc6e03f11cd94a1ad0d83c6164d68ad49", "utc": "2026-10-14T20:21:21Z", "kind": "result", "phase": "P2", "done_through": "P2/A2", "next": "P2/A8", "counts": {"rollouts_counted": 0}, "spend": {"opt_in_tok": 0, "opt_out_tok": 0, "usd_proxy": 0}, "artifacts": {}, "code": "57f63c9ed9516f28843ac69b4248424a1c21b6a5", "open_decisions": []}
 ```
+
+## CP-0028 · 2026-10-14T20:46Z · P2 acceptance · decision
+
+A8 passed; **M_cap fixed at 13,500 tokens** (before any counted rollout, plan §6.2): 10 dev episodes with no playbook (0 infra errors, 6 passed, 2–18 steps, max prompt 11,751 tokens) give history ratios 3.48–4.25 chars/token; lowest 3.475 → H_max = 17,267 tokens. P_max over the 147 train ∪ dev first requests (task block + memory heading, no playbook) = 3,073 tiktoken + 157 chat-template overhead (measured vs vLLM) = 3,230. M_cap = min(30,000, 34,000 − 3,230 − 17,267) = 13,503 → 13,500 (same as the planning value). Recorded in manifest.json.
+Verification: 3 dev episodes with a 13,492-token playbook in the slot completed (7–11 steps) with max prompts 19,908–21,778 tokens (< 34,000); tiktoken's count of their first request is within 0.94% of vLLM's `prompt_tokens` (limit 2%).
+Next: P2/A4 cap refusal, A7 loop.
+
+```json
+{"cp": 28, "prev_cp": 27, "prev_commit": "25686732b7e6cc09353ae81a43f1b385366d94f2", "utc": "2026-10-14T20:46:51Z", "kind": "decision", "phase": "P2", "done_through": "P2/A8", "next": "P2/A4", "counts": {"rollouts_counted": 0}, "spend": {"opt_in_tok": 0, "opt_out_tok": 0, "usd_proxy": 0}, "artifacts": {"STATE/manifest.json": "e07244c649b48bf76f3a40111221ed74b8ce0543e00acc3a3700ca9452c39e28"}, "code": "57f63c9ed9516f28843ac69b4248424a1c21b6a5", "open_decisions": [], "decisions": {"M_cap_tokens": 13500}}
+```

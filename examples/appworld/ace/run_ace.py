@@ -32,6 +32,7 @@ EX = HERE.parent
 sys.path.insert(0, str(EX / "scripts"))
 sys.path.insert(0, str(EX / "adapters"))
 sys.path.insert(0, str(EX))
+sys.path.insert(0, str(HERE))
 import awpaths as P  # noqa: E402
 import adapter  # noqa: E402
 import lints  # noqa: E402

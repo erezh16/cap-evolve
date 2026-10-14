@@ -84,5 +84,13 @@
   "vendor_tree_sha256": "23c7b578c200b1aed49a13741d31e2074e49b0edaddfd98ad812580692fec1c1",
   "embedding_model": "sentence-transformers/all-mpnet-base-v2",
   "hf_home_tree_sha256": "cd3c0877c9ca8b98fd79c900a51db8e2d3e449b70c8996ee9111b83365649308"
+ },
+ "m_cap": {
+  "value": 13500,
+  "formula": "min(30000, 34000 - P_max - H_max), floor to 500",
+  "P_max": 3230,
+  "H_max": 17267,
+  "min_chars_per_token": 3.475,
+  "encoding": "o200k_harmony"
  }
 }
