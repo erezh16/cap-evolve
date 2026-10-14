@@ -794,3 +794,11 @@ Next: P4 ace/step/031 episode.
 ```json
 {"cp": 70, "prev_cp": 69, "prev_commit": "217387bfb4ba7149939b0c8e88faad0de4f57db9", "utc": "2026-10-14T22:44:16Z", "kind": "result", "phase": "P4", "done_through": "ace/step/030/apply", "next": "ace/step/031/episode", "counts": {"rollouts_counted": 30, "ace_steps": 30}, "spend": {"opt_in_tok": 1981731, "opt_out_tok": 85756, "usd_proxy": 4.82}, "artifacts": {"STATE/ace/playbook.txt": "3fdd56d2a1f7b1f080209445164649e9e2ef5a73b6063a4f9676c6345cc06673", "STATE/ace/progress.json": "735d9b9319619fb43bb89779d23cdab335d762d03ef4772ee2f20bbe7446fc8f", "local/ace/playbooks/pb_030.txt": "3fdd56d2a1f7b1f080209445164649e9e2ef5a73b6063a4f9676c6345cc06673"}, "code": "e40140f70bf19302ef11cb5e23860b204b7f91c8", "open_decisions": []}
 ```
+
+## CP-0071 · 2026-10-14T22:44Z · P4 interim #804 · posted
+
+Interim update 4 posted on #804: https://github.com/skillberry-ai/cap-evolve/issues/804#issuecomment-6180159467 (ACE adaptation 30/90).
+
+```json
+{"cp": 71, "prev_cp": 70, "prev_commit": "1db897626481e43a222952595ed3aa7cf87e58a0", "utc": "2026-10-14T22:44:21Z", "kind": "posted", "phase": "P4", "done_through": "ace/step/030/apply", "next": "ace/step/031/episode", "counts": {"rollouts_counted": 30, "ace_steps": 30}, "spend": {"opt_in_tok": 1981731, "opt_out_tok": 85756, "usd_proxy": 4.82}, "artifacts": {}, "code": "e40140f70bf19302ef11cb5e23860b204b7f91c8", "open_decisions": [], "post": "interim-4", "url": "https://github.com/skillberry-ai/cap-evolve/issues/804#issuecomment-6180159467"}
+```
