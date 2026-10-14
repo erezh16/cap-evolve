@@ -5,6 +5,7 @@
 
 [shr-00042] When a task says 'reply/respond ... as per their request' (text message, email, etc.), FIRST read the incoming message from that contact to get the criteria (genre, director, count, etc.). Do this before building the reply. Never send an irreversible message (send_text_message, send_email, etc.) until you have seen both the request and the full source data. Sending an unfiltered 'everything' list is almost certainly wrong.
 [shr-00054] For Venmo 'comment + like all payments I received from <friends/coworkers/...> in the last N days (including today)', follow misc-00053 exactly, whatever the relation or comment text. Use the comment string exactly as quoted in the task ('Thanks!' is not 'Thank you!'). Window start = today-(N-1), so N=7 gives today-6. Never go straight from collecting IDs to the comment/like writes. First run a READ-ONLY preview that prints (transaction_id, created_at, sender email, description, liked, comment_count) for every target. Read the like_transaction and show_transaction_comments docs before writing.
+[shr-00058] PRE-WRITE GATE for Venmo (and any irreversible bulk write): do not call create_transaction_comment/like_transaction unless the immediately preceding step printed per-target rows (id, created_at, sender email, description, liked, comment_count) and the total count. A step that prints only a list of IDs does not count. For 'last N days including today', show_transactions must not use max_created_at. Printing the IDs and calling complete_task right after the writes is a failure pattern. After the writes, a read-back verify step is required before complete_task. Also use the comment text quoted in the current task, not the example text in misc-00053 ('Thank you!').
 ## APIs TO USE FOR SPECIFIC INFORMATION
 [api-00004] You can use the "supervisor" app to get information about my accounts and use the "phone" app to get information about friends and family.
 
@@ -76,6 +77,26 @@ for e in entries:
 print(len(entries), titles, len(titles))
 ```
 This avoids index-jumping loops. Match director by case-insensitive equality (use `in` only if the note lists co-directors such as 'Joel and Ethan Coen'). Then send ', '.join(titles) in a separate step, and call complete_task() with no answer in its own step.
+[code-00057] Venmo comment+like template. Use it in 3 separate steps and substitute the exact quoted comment text, N and the relation.
+(A) READ-ONLY preview:
+```python
+from datetime import datetime, timedelta
+today = datetime.strptime(apis.phone.get_current_date_and_time()['date'], '%A, %B %d, %Y').date()
+start = today - timedelta(days=N-1)
+targets = []; pi = 0
+while True:
+    pg = apis.venmo.show_transactions(access_token=venmo_token, direction='received', min_created_at=start.isoformat(), page_index=pi, page_limit=20)  # NO max_created_at
+    if not isinstance(pg, list) or not pg: break
+    for t in pg:
+        if start.isoformat() <= t['created_at'][:10] <= today.isoformat() and t['sender']['email'] in rel_emails:
+            targets.append(t)
+    pi += 1
+for t in targets: print(t['transaction_id'], t['created_at'], t['sender']['email'], t['description'], t['liked'], t['comment_count'])
+print(len(targets), 'latest date seen:', max(t['created_at'][:10] for t in targets))
+```
+Check that today's date appears when payments were made today.
+(B) WRITE: for each target, call create_transaction_comment and compare the response with `r['message']=='Transaction comment created.' and 'comment_id' in r`. Call like_transaction only if not t['liked'], and compare with `=='Liked transaction.'`. Print every raw response and `raise` on any mismatch.
+(C) VERIFY: re-run (A), assert every target has liked==True, and call show_transaction_comments(transaction_id, access_token) to assert exactly one comment with the exact text from me. Print the counts, then call complete_task() with no answer in its own step.
 ## COMMON MISTAKES AND CORRECT STRATEGIES
 
 [cms-00015] Never silently `continue` when a per-item lookup fails or lacks the needed field; collect failures, print them, and confirm processed count == retrieved count before choosing a min/max. A strict '<' loop also hides ties by keeping the first item, so sort and print the bottom/top 3-5 values instead of tracking only a single best.
