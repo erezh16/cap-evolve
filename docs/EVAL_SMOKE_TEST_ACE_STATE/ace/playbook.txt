@@ -14,6 +14,7 @@
 [api-00027] Current date: apis.phone.get_current_date_and_time() returns {'date': 'Thursday, May 18, 2023', 'time': '09:26 PM'}, with NO 'datetime' key. Print the raw value first. Parse today with datetime.strptime(d['date'], '%A, %B %d, %Y').date().isoformat() -> '2023-05-18', and print it. Compare it with created_at[:10]. Do not guess the date or assume a year. The sandbox clock is not the real clock.
 [api-00028] Venmo schemas: venmo.login(username=<email>, password) -> access_token. show_social_feed(access_token, page_index, page_limit<=20) returns a list of dicts: transaction_id, amount, description, created_at ('YYYY-MM-DDTHH:MM:SS'), updated_at, private, like_count, comment_count, sender{name,email}, receiver{name,email}. The feed can be large (1000+ items), so paginate with while True. It has no 'liked by me' flag, so verify likes via like_count before/after or the like_transaction response. like_transaction(transaction_id, access_token) returns {'message': ...}. Identify roommates by matching sender/receiver email against the Phone roommate contacts' emails, never by name or description.
 [api-00032] file_system app: every API needs an access_token. Get it with apis.file_system.login(username=<my email>, password=<password where account_name=='file_system' in supervisor.show_account_passwords()>)['access_token']. Check show_api_doc('file_system','login') first. Parameter names are directory_path (create_directory(directory_path, access_token, recursive, allow_if_exists)) and file_path (create_file(file_path, content, access_token)), NOT `path`. '~' paths work: create_file returns {'message':'File created.','file_path':'/home/<user>/backups/spotify.csv'}. create_directory on an existing dir returns {'message':'Directory already exists.'}, which is fine. Read a file back with show_file(file_path, access_token). The `os` module is forbidden, so use plain strings like '~/backups/spotify.csv'.
+[api-00040] file_system.show_file(file_path, access_token) returns a DICT {file_id, path, content, created_at, updated_at}, NOT a string. Read the text via `content = apis.file_system.show_file(...)['content']`, then use content.splitlines() for the line count and header check. Do not use `isinstance(result, str)` as a gate, because it always fails. File created by create_file with a '~' path is stored at /home/<user>/...
 ## USEFUL CODE SNIPPETS AND TEMPLATES
 
 [code-00009] Spotify login template:
@@ -38,6 +39,20 @@ print(len(all_songs), len(rows), failed)
 print(rows[:5])
 ```
 Then, in a separate next step, check for ties at rows[0][0] and call apis.supervisor.complete_task(answer=rows[0][1]).
+[code-00039] Manual CSV builder (works in the sandbox):
+```python
+def esc(f):
+    if any(c in f for c in [',', '"', '\n']):
+        return '"' + f.replace('"', '""') + '"'
+    return f
+lines = ['Title,Artists']
+for sid in sorted(song_ids):
+    d = apis.spotify.show_song(song_id=sid)
+    lines.append(esc(d['title']) + ',' + esc('|'.join(a['name'] for a in d['artists'])))
+csv_content = '\n'.join(lines) + '\n'
+print(len(lines), lines[:3])
+```
+Also collect lookup failures in a list and print them, as in cms-00015.
 ## COMMON MISTAKES AND CORRECT STRATEGIES
 
 [cms-00015] Never silently `continue` when a per-item lookup fails or lacks the needed field; collect failures, print them, and confirm processed count == retrieved count before choosing a min/max. A strict '<' loop also hides ties by keeping the first item, so sort and print the bottom/top 3-5 values instead of tracking only a single best.
@@ -50,6 +65,7 @@ Then, in a separate next step, check for ties at rows[0][0] and call apis.superv
 [cms-00033] 'Terminate/delete my account' after a task about an app's data means THAT app's account (e.g. a Spotify backup -> apis.spotify.delete_account(access_token=spotify_token)). Never call delete_account on another app (e.g. file_system) just because its token is at hand. That deletes the wrong account and may wipe the file you just wrote. Run show_api_doc(<app>,'delete_account') first. Run the delete in its own step and print the response. Call complete_task() only in a later step.
 [cms-00034] Never alter data to make a CSV 'well-formed' (e.g. replacing commas in titles or artists with spaces). Quote fields instead: use `import csv, io; buf=io.StringIO(); w=csv.writer(buf, lineterminator='\n'); w.writerow(['Title','Artists']); w.writerow([title,'|'.join(artist_names)]); content=buf.getvalue()` (csv and io are allowed; os is not). This keeps the exact titles and artist names. Use the separator the task specifies (e.g. '|') only between artist names.
 [cms-00036] The `io` module is FORBIDDEN in this sandbox (error 'Usage of the following module is not allowed: io'), so cms-00034's io.StringIO recipe fails. Build CSV text without io. Option A: `import csv`, then use a tiny sink such as `class Sink:\n    def __init__(self): self.parts=[]\n    def write(self, s): self.parts.append(s)`, with `sink=Sink(); w=csv.writer(sink, lineterminator='\n'); w.writerow(['Title','Artists']); ...; content=''.join(sink.parts)`. Option B: write a manual escaper that quotes a field ONLY if it contains a comma, double quote or newline (doubling inner quotes). Keep the header exactly `Title,Artists` with NO quotes. Do not wrap every field in quotes, because a checker that compares raw text would see `"Title"` instead of `Title`. Join multiple artists with the requested separator (e.g. '|'). Sort rows (e.g. by song_id) so the output is deterministic rather than relying on set order.
+[cms-00038] In this sandbox `os`, `io` AND `csv.writer` (and likely the other csv write helpers) are all blocked ('Usage of the following function is not allowed: csv.writer'). This makes cms-00034 and cms-00036 Option A unusable. Do not try the csv module for writing. Go straight to the manual escaper (cms-00036 Option B) and build the text with '\n'.join(lines)+'\n'. The header is the literal line `Title,Artists`. Join artist names with '|', and quote a field only if it contains a comma, double quote or newline (doubling inner quotes).
 ## PROBLEM-SOLVING HEURISTICS AND WORKFLOWS
 [psw-00002] Remember you can use the variables in your code in subsequent code blocks.
 [psw-00007] Many APIs return items in "pages". Make sure to run through all the pages by looping over `page_index`.
@@ -59,6 +75,7 @@ Then, in a separate next step, check for ties at rows[0][0] and call apis.superv
 [vc-00012] Before submitting an extremum answer (max/min), print the winning value and the runners-up to check for ties and confirm that the correct field was used. Make sure the answer is minimal (title only, no sentence).
 [vc-00021] After any write loop (rating, liking, adding, removing), re-read the affected items from the API and print them to confirm the change took effect, and print the count of changed items vs. targeted items. Also check that the input set was complete (all pages fetched). Only then call complete_task. Do not call complete_task right after the write loop.
 [vc-00037] Before ANY irreversible account deletion (delete_account) after a backup/export, you must do a separate read-only step: call apis.file_system.show_file(file_path=..., access_token=fs_token) and print the first lines, the line count (unique songs + 1 header) and the header line, and compare them with the expected count. A 'File created.' message is not proof of correct content. Once the Spotify data is deleted, a malformed file cannot be regenerated. The sequence create_file -> show_file verify -> delete_account -> complete_task must be four separate steps.
+[vc-00041] If a verification step prints 'Unexpected result' or otherwise does not run the intended checks, the gate has NOT passed. Fix the code (e.g. use show_file(...)['content']) and re-run the check, confirming line count == unique songs + 1 and header == 'Title,Artists', BEFORE calling any irreversible delete_account. Eyeballing a long raw dump is not a substitute for the printed count.
 ## TROUBLESHOOTING AND PITFALLS:
 
 ## OTHERS
