@@ -325,6 +325,11 @@ class Runner:
             self.log(f"step {i:03d}/{self.n} episode {rec.get('termination')} success={rec.get('success')} "
                      f"steps={rec.get('steps')} prompt_max={rec.get('prompt_tokens_max')}")
         rec = json.loads(ep_path.read_text())
+        err = rec.get("error") or ""
+        if rec.get("infra_error") and (err.startswith("worker crash") or err.startswith("worker exit")):
+            # a harness/configuration failure, not a provider one: never skip the step for it
+            ep_path.rename(sd / f"episode.failed-{int(time.time())}.json")
+            raise RuntimeError(f"step {i:03d}: the episode worker failed ({err[:200]}); stopping")
         row = {"step": i, "success": rec.get("success"), "steps": rec.get("steps"),
                "termination": rec.get("termination"), "infra_retries": rec.get("infra_retries", 0),
                "prompt_tokens_max": rec.get("prompt_tokens_max"), "completion_tokens": rec.get("completion_tokens"),

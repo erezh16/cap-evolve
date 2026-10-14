@@ -42,7 +42,7 @@ def sh(*a, cwd=None, env=None, check=True):
 def test_env(clone: Path, state: Path, ledger_name: str) -> dict:
     return {**os.environ, "AW_REPO": str(clone), "AW_STATE": str(state), "AW_BRANCH": TEST_BRANCH,
             "AW_LEDGER_NAME": ledger_name, "HF_HOME": str(P.HF_HOME), "HF_HUB_OFFLINE": "1",
-            "ACE_CALLS_LOG": str(state / "ace" / "llm_calls.jsonl")}
+            "ACE_CALLS_LOG": str(state / "ace" / "llm_calls.jsonl"), "AW_ENV_FILE": str(P.ENV_FILE)}
 
 
 def fresh_clone(dest: Path, create: bool) -> None:

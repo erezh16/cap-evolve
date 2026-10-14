@@ -364,3 +364,12 @@ Next: P2/A7 (running), A9 (re-running).
 ```json
 {"cp": 32, "prev_cp": 31, "prev_commit": "4c85a31921463eda5cee079507240fa83c85cfb8", "utc": "2026-10-14T20:52:24Z", "kind": "repair", "phase": "P2", "done_through": "P2/A4", "next": "P2/A7", "counts": {"rollouts_counted": 0}, "spend": {"opt_in_tok": 0, "opt_out_tok": 0, "usd_proxy": 0}, "artifacts": {}, "code": "9e6bfaf6d8848c5e9b525be3833e924a8feae1f9", "open_decisions": []}
 ```
+
+## CP-0033 · 2026-10-14T20:54Z · P2 acceptance · repair
+
+Repair, found by the second A9 attempt: in A9's throwaway clone the episode worker found no `.env` and crashed; the adapter classed the crash as `infra_error`, so `run_ace.py` recorded the step as `skipped_infra` and moved on. In the real run a configuration fault would have skipped training steps silently. Fixed: (1) `run_ace.py` now stops (exit, `error` entry via the pipeline) when an episode fails with a worker crash or worker exit, and keeps the skip only for provider failures and the wall cap; the failed record is kept aside, not reused; (2) the `.env` path can be passed as `AW_ENV_FILE` (the acceptance tests pass the real one; the evaluation uses the worktree's). No real-run step was affected (P4 has not started). A9 is re-run from a clean throwaway branch.
+Next: P2/A7 result, A9 re-run.
+
+```json
+{"cp": 33, "prev_cp": 32, "prev_commit": "7b70510f67b37f98607e0ddb276f5c4f02c5ca8d", "utc": "2026-10-14T20:54:40Z", "kind": "repair", "phase": "P2", "done_through": "P2/A4", "next": "P2/A7", "counts": {"rollouts_counted": 0}, "spend": {"opt_in_tok": 0, "opt_out_tok": 0, "usd_proxy": 0}, "artifacts": {}, "code": "7b70510f67b37f98607e0ddb276f5c4f02c5ca8d", "open_decisions": []}
+```

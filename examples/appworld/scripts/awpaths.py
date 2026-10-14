@@ -32,7 +32,7 @@ HF_HOME = AW_BUILD / "hf"
 SCRATCH = Path("/tmp/aw_eval_ace/aw_outputs")
 PROGRESS = AW_STATE / "progress"
 LINT_CACHE = AW_HOME / "state" / "lint_cache.json"   # ids, instruction 8-grams, contacts (local only; fixed path)
-ENV_FILE = REPO / ".env"
+ENV_FILE = Path(os.environ.get("AW_ENV_FILE", REPO / ".env"))  # tests in a throwaway clone pass the real one
 
 APPWORLD_COMMIT = "42b5bcf3cd334fee33f0c37c02070a9f5807add5"
 ACE_COMMIT = "82709de050e1db6e6ef2f07bcb0393560b94992a"
