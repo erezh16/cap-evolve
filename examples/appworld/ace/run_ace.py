@@ -506,12 +506,13 @@ def main() -> int:
     os.environ.setdefault("ACE_CALLS_LOG", str(Path(args.ace_dir) / "llm_calls.jsonl"))
     ace_llm.CALLS_LOG = Path(os.environ["ACE_CALLS_LOG"])
     pid_file = P.AW_STATE / "RUNNING.pid"
-    if not args.no_ledger:
+    own_pid = not args.no_ledger and not os.environ.get("AW_UNDER_PIPELINE")
+    if own_pid:
         pid_file.write_text(f"{os.getpid()} run_ace\n")
     try:
         return Runner(args).run()
     finally:
-        if not args.no_ledger and pid_file.exists() and pid_file.read_text().split()[0] == str(os.getpid()):
+        if own_pid and pid_file.exists() and pid_file.read_text().split()[0] == str(os.getpid()):
             pid_file.unlink()
 
 

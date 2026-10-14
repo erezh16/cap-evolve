@@ -1,0 +1,174 @@
+#!/usr/bin/env python3
+"""Resume the evaluation from the last checkpoint (plan §10.4).
+
+  python3 -I examples/appworld/scripts/resume.py [--dry-run] [--reason "..."] [--no-launch]
+
+1. Read the ledger: fetch origin, fast-forward if behind, push if ahead; drop a torn uncommitted tail.
+2. Lock: refuse if RUNNING.pid names a live runner; remove a stale one.
+3. Environment: compare manifest.json with AW_BUILD; rebuild missing B steps (build.py); re-lock
+   root_full before P8.
+4. Reconcile: verify pushed files against the last entry's hashes; if AW_STATE/ace is missing, restore
+   pb_<i> and progress from the pushed state (`restore`); report local work newer than the last entry
+   (adopted by the runners, which reuse every verified record and sub-step file).
+5. Append a `resume` entry, launch pipeline.py under nohup, restart the heartbeat if it is not running.
+"""
+
+from __future__ import annotations
+
+import argparse
+import json
+import os
+import subprocess
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import awpaths as P  # noqa: E402
+import status_doc as S  # noqa: E402
+
+BEFORE_P8 = {"P0", "P1", "P2", "P3", "P4", "P5", "P6", "P7"}
+
+
+def git(*a, check=True):
+    return subprocess.run(["git", "-C", str(P.REPO), *a], capture_output=True, text=True, check=check)
+
+
+def sync_branch(plan: list[str], dry: bool) -> None:
+    git("fetch", "-q", "origin", P.BRANCH, check=False)
+    ahead_behind = git("rev-list", "--left-right", "--count", f"HEAD...origin/{P.BRANCH}", check=False).stdout.split()
+    if len(ahead_behind) == 2:
+        ahead, behind = map(int, ahead_behind)
+        if behind and not ahead:
+            plan.append(f"fast-forward {behind} commit(s) from origin")
+            if not dry:
+                git("merge", "--ff-only", f"origin/{P.BRANCH}")
+        elif behind and ahead:
+            raise SystemExit("local and origin have diverged: stop and ask the user")
+        elif ahead:
+            plan.append(f"push {ahead} unpushed checkpoint commit(s)")
+            if not dry:
+                git("push", "-q", "origin", f"HEAD:{P.BRANCH}")
+                P.write_json(S.PUSH_STATE, {"unpushed": 0})
+    ledger_rel = str(P.LEDGER.relative_to(P.REPO))
+    if git("diff", "--name-only", "--", ledger_rel).stdout.strip():
+        plan.append("drop torn uncommitted ledger tail")
+        if not dry:
+            git("checkout", "--", ledger_rel)
+
+
+def lock(plan: list[str], dry: bool) -> None:
+    pid = S.runner_pid()
+    if S.pid_alive(pid):
+        raise SystemExit(f"a runner is alive (pid {pid}); refusing to start a second one")
+    if pid:
+        plan.append(f"remove stale RUNNING.pid ({pid})")
+        if not dry:
+            (P.AW_STATE / "RUNNING.pid").unlink(missing_ok=True)
+
+
+def environment(plan: list[str], dry: bool, phase: str) -> None:
+    import build
+    missing = build.check()
+    for step in sorted(missing):
+        plan.append(f"rebuild {step} ({missing[step]})")
+        if not dry:
+            getattr(build, step)()
+            P.write_json(P.AW_STATE / "rebuilt.json", {"steps": sorted(missing)})
+    if missing and not dry:
+        again = build.check()
+        if again:
+            raise SystemExit(f"rebuild did not restore {again}: stop and ask the user")
+        m = P.manifest()
+        if P.sha256_tree(P.ROOT_OPT) != m.get("root_opt", {}).get("tree_sha256"):
+            raise SystemExit("rebuilt root_opt differs from the recorded sha256: stop and ask the user")
+    if phase in BEFORE_P8 and P.ROOT_FULL.exists() and (os.stat(P.ROOT_FULL).st_mode & 0o777):
+        plan.append("re-lock root_full (chmod 000)")
+        if not dry:
+            os.chmod(P.ROOT_FULL, 0o000)
+
+
+def reconcile(last: dict, plan: list[str], dry: bool) -> dict:
+    info = {"adopted": [], "restored": False}
+    for name, sha in (last.get("artifacts") or {}).items():
+        if name.startswith("STATE/"):
+            p = P.PUSHED / name[len("STATE/"):]
+            if not p.exists() or P.sha256_file(p) != sha:
+                # a later checkpoint may legitimately have rewritten it only if the ledger moved on; it did not
+                raise SystemExit(f"pushed file {name} does not match the last entry: stop and ask the user")
+    prog = P.read_json(P.PUSHED / "ace" / "progress.json")
+    ace = P.AW_STATE / "ace"
+    if prog:
+        last_step = prog["last_applied_step"]
+        pb_local = ace / "playbooks" / f"pb_{last_step:03d}.txt"
+        if not pb_local.exists():
+            plan.append(f"restore pb_{last_step:03d} and pb_000 from the pushed state (AW_STATE lost)")
+            info["restored"] = True
+            if not dry:
+                pb_local.parent.mkdir(parents=True, exist_ok=True)
+                P.atomic_write(pb_local, (P.PUSHED / "ace" / "playbook.txt").read_text())
+                init = (P.EXAMPLE / "ace" / "vendor" / "playbooks" / "appworld_initial_playbook.txt").read_text()
+                P.atomic_write(ace / "playbooks" / "pb_000.txt", init)
+        newer = sorted(int(p.parent.name) for p in (ace / "steps").glob("*/*.json") if p.parent.name.isdigit()
+                       and int(p.parent.name) > last_step) if (ace / "steps").exists() else []
+        if newer:
+            files = sorted({p.name for p in (ace / "steps" / f"{newer[0]:03d}").glob("*.json")})
+            info["adopted"].append(f"ace/step/{newer[0]:03d}: {', '.join(files)}")
+    for w, rel in (("p6dev", "dev/records"), ("p8final", "final/records")):
+        d = P.AW_STATE / rel
+        if d.exists():
+            n = len(list(d.glob("*.json")))
+            info["adopted"].append(f"{w}: {n} local cell records")
+    if info["restored"] and not dry:
+        S.append("restore", last.get("phase", "?"), "restore",
+                 "AW_STATE was missing: restored the current playbook (and pb_000) from the pushed state; "
+                 "spend and next_global_id come from the pushed progress.json.", subject="restore")
+    return info
+
+
+def heartbeat_alive() -> bool:
+    try:
+        return S.pid_alive(int((P.AW_STATE / "HEARTBEAT.pid").read_text().strip()))
+    except (FileNotFoundError, ValueError):
+        return False
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--reason", default="")
+    ap.add_argument("--no-launch", action="store_true")
+    a = ap.parse_args()
+    P.AW_STATE.mkdir(parents=True, exist_ok=True)
+    plan: list[str] = []
+    sync_branch(plan, a.dry_run)
+    last = S.last_entry()
+    lock(plan, a.dry_run)
+    environment(plan, a.dry_run, last.get("phase", "P0"))
+    info = reconcile(last, plan, a.dry_run)
+    nxt = last.get("next")
+    import pipeline
+    runnable = pipeline.phase_of(nxt or "") is not None
+    plan.append(f"continue at next = {nxt}" + ("" if runnable else " (not an automatic phase: run it by hand)"))
+    if not heartbeat_alive():
+        plan.append("restart the heartbeat loop")
+    print(json.dumps({"last_cp": last.get("cp"), "phase": last.get("phase"), "next": nxt, "plan": plan,
+                      "adopted": info["adopted"]}, indent=1))
+    if a.dry_run:
+        return 0
+    S.append("resume", last.get("phase", "?"), "resume",
+             f"Resume{(' (reason: ' + a.reason + ')') if a.reason else ''}. Plan: {'; '.join(plan)}.\n"
+             f"Adopted local work newer than CP-{last.get('cp', 0):04d}: {', '.join(info['adopted']) or 'none'}.\n"
+             f"Next: {nxt}.", extra={"adopted": info["adopted"], "plan": plan}, subject="resume")
+    if not heartbeat_alive():
+        subprocess.Popen(["nohup", sys.executable, "-I", str(Path(__file__).parent / "status_doc.py"), "heartbeat"],
+                         stdout=open(P.PROGRESS / "heartbeat.out", "a"), stderr=subprocess.STDOUT,
+                         start_new_session=True)
+    if runnable and not a.no_launch:
+        subprocess.Popen(["nohup", str(P.VENV_PY), "-I", str(Path(__file__).parent / "pipeline.py")],
+                         stdout=open(P.PROGRESS / "pipeline.out", "a"), stderr=subprocess.STDOUT,
+                         start_new_session=True, env={**os.environ, "HF_HOME": str(P.HF_HOME)})
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

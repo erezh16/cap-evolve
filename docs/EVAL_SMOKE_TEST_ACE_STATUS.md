@@ -161,3 +161,12 @@ Interim update 1 posted on #804: https://github.com/skillberry-ai/cap-evolve/iss
 ```json
 {"cp": 11, "prev_cp": 10, "prev_commit": "89253d9d368632aa55c3db0ee0cdba5be5f97bd2", "utc": "2026-10-14T15:28:15Z", "kind": "posted", "phase": "P2", "done_through": "P2/A1", "next": "P1/B6", "counts": {"rollouts_counted": 0}, "spend": {"opt_in_tok": 0, "opt_out_tok": 0, "usd_proxy": 0}, "artifacts": {}, "code": "89253d9d368632aa55c3db0ee0cdba5be5f97bd2", "open_decisions": [], "post": "interim-1", "url": "https://github.com/skillberry-ai/cap-evolve/issues/804#issuecomment-6171928617"}
 ```
+
+## CP-0012 · 2026-10-14T15:50Z · P2 acceptance · result
+
+A6 passed: `tasks("train")` equals `train.txt` exactly (90 ids, same order as `load_task_ids`); `tasks("test_normal")` and a test id are refused by the seal without `AW_ALLOW_SEALED=final-eval-only`.
+Next: P1/B6 (code), B7 (.env).
+
+```json
+{"cp": 12, "prev_cp": 11, "prev_commit": "5472b0b6470a69822000b0ef56f4d1f36e467462", "utc": "2026-10-14T15:50:25Z", "kind": "result", "phase": "P2", "done_through": "P2/A6", "next": "P1/B6", "counts": {"rollouts_counted": 0}, "spend": {"opt_in_tok": 0, "opt_out_tok": 0, "usd_proxy": 0}, "artifacts": {}, "code": "5472b0b6470a69822000b0ef56f4d1f36e467462", "open_decisions": []}
+```
