@@ -1,6 +1,6 @@
 {
- "last_applied_step": 32,
- "next_global_id": 82,
+ "last_applied_step": 33,
+ "next_global_id": 84,
  "rows": [
   {
    "step": 1,
@@ -1804,23 +1804,98 @@
     "ground_truth": 0,
     "canary": 0
    }
+  },
+  {
+   "step": 33,
+   "success": true,
+   "steps": 6,
+   "termination": "completed",
+   "infra_retries": 0,
+   "prompt_tokens_max": 17257,
+   "completion_tokens": 1788,
+   "context_exceeded": false,
+   "fs_probe": [],
+   "usage": {
+    "reflector": {
+     "calls": 1,
+     "input": 47515,
+     "output": 2156,
+     "truncated": 0
+    },
+    "curator": {
+     "calls": 1,
+     "input": 48468,
+     "output": 1431,
+     "truncated": 0
+    },
+    "merge": {
+     "calls": 1,
+     "input": 905,
+     "output": 607,
+     "truncated": 0
+    }
+   },
+   "ops_proposed": 2,
+   "off_whitelist": 0,
+   "parse_error": false,
+   "reflector_usage": {
+    "input": 47515,
+    "output": 2156,
+    "cache_read": 0
+   },
+   "curator_usage": {
+    "input": 48468,
+    "output": 1431,
+    "cache_read": 0
+   },
+   "curated": true,
+   "ops_applied": 2,
+   "lint_drop": 0,
+   "lint_drop_rules": [],
+   "cap_drop": 0,
+   "dedup": {
+    "bullets_before": 83,
+    "bullets_after": 82,
+    "merged_bullets": 1,
+    "tokens_before": 13520,
+    "tokens_after": 13430,
+    "merge_calls": 1
+   },
+   "pb_tokens": 13430,
+   "pb_chars": 55513,
+   "pb_bullets": 82,
+   "pb_sha256": "1ca6b6fa9a81add0636db099c015db6dd685d099d7a6682b49ab3699a2f77919",
+   "scan": {
+    "test_id": 0,
+    "test_normal": 0,
+    "root_full": 0,
+    "answer.json": 0,
+    "ground_truth": 0,
+    "canary": 0
+   }
   }
  ],
  "spend": {
   "reflector": {
-   "calls": 32,
-   "input": 1077063,
-   "output": 56571,
+   "calls": 33,
+   "input": 1124578,
+   "output": 58727,
    "truncated": 0
   },
   "curator": {
-   "calls": 32,
-   "input": 1098831,
-   "output": 34073,
+   "calls": 33,
+   "input": 1147299,
+   "output": 35504,
+   "truncated": 0
+  },
+  "merge": {
+   "calls": 1,
+   "input": 905,
+   "output": 607,
    "truncated": 0
   }
  },
- "rollouts": 32,
+ "rollouts": 33,
  "soft_cap_reached": false,
  "hard_stop": false,
  "m_cap": 13500
