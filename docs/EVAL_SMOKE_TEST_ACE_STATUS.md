@@ -123,3 +123,12 @@ Next: P1/B4 root_opt and lock root_full.
 ```json
 {"cp": 7, "prev_cp": 6, "prev_commit": "2f3ac2b1527423d2f7054b2df09e8c2047ff532d", "utc": "2026-10-14T14:57:13Z", "kind": "result", "phase": "P1", "done_through": "P1/B3", "next": "P1/B4", "counts": {"rollouts_counted": 0}, "spend": {"opt_in_tok": 0, "opt_out_tok": 0, "usd_proxy": 0}, "artifacts": {"STATE/manifest.json": "bbe7c9e4095ffc40fe79761a3a8c0cf9a9cf0d55a9b1d87ee29a29aed807765c"}, "code": "2a7044e668fe4c4a2d99cfa5d0ecbd16b45cb041", "open_decisions": []}
 ```
+
+## CP-0008 · 2026-10-14T14:59Z · P1 build · result
+
+B4 done: `make_roots.py` built root_opt = api_docs, base_dbs, 147 train + dev task dirs and `_base_` (148 dirs), datasets `train.txt` and `dev.txt` only. grep for the 585 test ids under root_opt: 0 hits (file contents and dir names). root_full is `chmod 000` (verified: unreadable) until P8. root_opt tree sha256 in manifest.json.
+Next: P1/B5 ACE clones, vendoring, HF model.
+
+```json
+{"cp": 8, "prev_cp": 7, "prev_commit": "c37e6a38342f2cab42b579e95347adde119c5d9a", "utc": "2026-10-14T14:59:04Z", "kind": "result", "phase": "P1", "done_through": "P1/B4", "next": "P1/B5", "counts": {"rollouts_counted": 0}, "spend": {"opt_in_tok": 0, "opt_out_tok": 0, "usd_proxy": 0}, "artifacts": {"STATE/manifest.json": "8cf33d27302f78a833049ed150426693a214a587c74aed900ce5a8a22d67819c"}, "code": "c37e6a38342f2cab42b579e95347adde119c5d9a", "open_decisions": []}
+```
