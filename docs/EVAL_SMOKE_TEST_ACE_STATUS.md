@@ -170,3 +170,12 @@ Next: P1/B6 (code), B7 (.env).
 ```json
 {"cp": 12, "prev_cp": 11, "prev_commit": "5472b0b6470a69822000b0ef56f4d1f36e467462", "utc": "2026-10-14T15:50:25Z", "kind": "result", "phase": "P2", "done_through": "P2/A6", "next": "P1/B6", "counts": {"rollouts_counted": 0}, "spend": {"opt_in_tok": 0, "opt_out_tok": 0, "usd_proxy": 0}, "artifacts": {}, "code": "5472b0b6470a69822000b0ef56f4d1f36e467462", "open_decisions": []}
 ```
+
+## CP-0013 · 2026-10-14T15:50Z · P2 acceptance · result
+
+A3 passed (no model call; one dev task world): with F1's hardening (`os`, `pathlib`, `io`, `shutil`, `glob` removed from AppWorld's import allowlist) `import os`, `open(answer.json)`, a `pathlib` read and an `io.open` read all fail. Without the hardening, for reference, `import os` and the `pathlib` read succeed (base finding F1 reproduced at 42b5bcf). root_opt: 148 task dirs, train/dev split files only, 0 test-id hits. root_full unreadable.
+Next: P1/B6, B7.
+
+```json
+{"cp": 13, "prev_cp": 12, "prev_commit": "3e5bba131e128f2f87481b1ab8d3932309ec4d34", "utc": "2026-10-14T15:50:29Z", "kind": "result", "phase": "P2", "done_through": "P2/A3", "next": "P1/B6", "counts": {"rollouts_counted": 0}, "spend": {"opt_in_tok": 0, "opt_out_tok": 0, "usd_proxy": 0}, "artifacts": {}, "code": "3e5bba131e128f2f87481b1ab8d3932309ec4d34", "open_decisions": []}
+```
