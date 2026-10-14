@@ -346,3 +346,12 @@ Next: P2/A7 (running), A9 re-run.
 ```json
 {"cp": 30, "prev_cp": 29, "prev_commit": "bdcc43e8f3eed6f80fc774fd40a544c0767885f6", "utc": "2026-10-14T20:51:32Z", "kind": "repair", "phase": "P2", "done_through": "P2/A4", "next": "P2/A7", "counts": {"rollouts_counted": 0}, "spend": {"opt_in_tok": 0, "opt_out_tok": 0, "usd_proxy": 0}, "artifacts": {}, "code": "655b77f8975362f40d6a72b0a0dda1b0f1c54d4f", "open_decisions": []}
 ```
+
+## CP-0031 · 2026-10-14T20:51Z · P2 acceptance · repair
+
+Repair: the force-add of CP-0030 also added 4 `__pycache__/*.pyc` files under `ace/vendor/`; they are removed from the index in this commit (the 9 vendored files stay).
+Next: P2/A7 (running), A9 re-run.
+
+```json
+{"cp": 31, "prev_cp": 30, "prev_commit": "9e6bfaf6d8848c5e9b525be3833e924a8feae1f9", "utc": "2026-10-14T20:51:57Z", "kind": "repair", "phase": "P2", "done_through": "P2/A4", "next": "P2/A7", "counts": {"rollouts_counted": 0}, "spend": {"opt_in_tok": 0, "opt_out_tok": 0, "usd_proxy": 0}, "artifacts": {}, "code": "9e6bfaf6d8848c5e9b525be3833e924a8feae1f9", "open_decisions": []}
+```
