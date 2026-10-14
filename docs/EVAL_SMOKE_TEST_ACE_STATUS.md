@@ -189,3 +189,14 @@ Next: P1/B6, B7.
 ```json
 {"cp": 14, "prev_cp": 13, "prev_commit": "ed852d660069f32bc1b2bac9267a19b0a0ad559e", "utc": "2026-10-14T15:50:32Z", "kind": "result", "phase": "P2", "done_through": "P2/A5", "next": "P1/B6", "counts": {"rollouts_counted": 0}, "spend": {"opt_in_tok": 0, "opt_out_tok": 0, "usd_proxy": 0}, "artifacts": {}, "code": "3e5bba131e128f2f87481b1ab8d3932309ec4d34", "open_decisions": []}
 ```
+
+## CP-0015 · 2026-10-14T16:00Z · P1 build · result
+
+B6 done: the code of plan §4.1 is written and committed under `examples/appworld/` (README lists the files): episode worker and runner, lints, ACE loop with the ported Reflector / Curator logic and the D5 rule, optimizer client, ledger writer, phase pipeline, resume, rebuild, status page, windows (P6, P8), freeze, isolation scan, analysis, interim-post helper, acceptance checks A1–A10.
+Unit checks passed so far: A1 (optimizer), A7 offline part (ported prompts byte-identical to ACE's own `reflector_call` / `curator_call` on a fixed message list, with both the vendored and our filtered templates; ACE's validation semantics; planted 8-gram `lint_drop`; D5 on a synthetic 1.3·M_cap playbook: 628 → 7 bullets, 6 merge calls), A3, A4 (prompt part), A5, A6. The episode loop's model path is checked by A2 and A8, which need B7.
+Fixes made while writing: `resume.py` resets uncommitted pushed-state files together with a torn ledger tail (they are regenerated from local records).
+Next: P1/B7: the user puts `.env` (`RITS_URL`, `RITS_API_KET`) in the worktree; then A2, A8, A4 (cap part), A7 loop, A9, A10.
+
+```json
+{"cp": 15, "prev_cp": 14, "prev_commit": "b7fab33381907f51cbc217582b82614abef19e67", "utc": "2026-10-14T16:00:36Z", "kind": "result", "phase": "P1", "done_through": "P1/B6", "next": "P1/B7", "counts": {"rollouts_counted": 0}, "spend": {"opt_in_tok": 0, "opt_out_tok": 0, "usd_proxy": 0}, "artifacts": {}, "code": "3e5bba131e128f2f87481b1ab8d3932309ec4d34", "open_decisions": []}
+```
