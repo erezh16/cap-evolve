@@ -94,3 +94,13 @@ Next: P1/B1.
 ```json
 {"cp": 4, "prev_cp": 1, "prev_commit": "cbfb164442379f3ee5026738071938ec0a942644", "utc": "2026-10-14T14:49:01Z", "kind": "repair", "phase": "P1", "done_through": "P0/decisions", "next": "P1/B1", "counts": {"rollouts_counted": 0}, "spend": {"opt_in_tok": 0, "opt_out_tok": 0, "usd_proxy": 0}, "artifacts": {}, "code": "cbfb164442379f3ee5026738071938ec0a942644", "open_decisions": []}
 ```
+
+## CP-0005 · 2026-10-14T14:49Z · P1 build · result
+
+B1 done: StonyBrookNLP/appworld cloned at 42b5bcf3 into AW_BUILD, git lfs pull (4 LFS files), patch `appworld-extra-headers.patch` applied (17 added lines in `experiments/code/simplified/language_model.py`: `extra_headers` forwarding, `extra_headers_env`, both scrubbed from logged calls). Patch and git-diff sha256 in manifest.json.
+Also: uv 0.13.0 installed at ~/.local/bin/uv (B2 started: venv-aw with CPython 3.11.2, CPU torch installing).
+Next: P1/B2.
+
+```json
+{"cp": 5, "prev_cp": 4, "prev_commit": "2a7044e668fe4c4a2d99cfa5d0ecbd16b45cb041", "utc": "2026-10-14T14:49:43Z", "kind": "result", "phase": "P1", "done_through": "P1/B1", "next": "P1/B2", "counts": {"rollouts_counted": 0}, "spend": {"opt_in_tok": 0, "opt_out_tok": 0, "usd_proxy": 0}, "artifacts": {"STATE/manifest.json": "82d7e68e86b8ff65a93f822feefd8d5355715729c690520076b8dd9e0a19fe8d"}, "code": "2a7044e668fe4c4a2d99cfa5d0ecbd16b45cb041", "open_decisions": []}
+```

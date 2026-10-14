@@ -1,0 +1,11 @@
+{
+ "appworld": {
+  "repo": "https://github.com/StonyBrookNLP/appworld",
+  "commit": "42b5bcf3cd334fee33f0c37c02070a9f5807add5",
+  "lfs_files": 4,
+  "patch": "examples/appworld/patches/appworld-extra-headers.patch",
+  "patch_sha256": "f2ff980d3485d32570449b05b7ad1b0493461a9544a97c8f9d207fbf7833aa6f",
+  "git_diff_sha256": "f2ff980d3485d32570449b05b7ad1b0493461a9544a97c8f9d207fbf7833aa6f"
+ },
+ "aw_home": "/workspace/aw_eval_ace"
+}
