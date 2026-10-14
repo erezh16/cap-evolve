@@ -55,3 +55,22 @@ Nothing has run. Next: P1, build step B1.
  "counts": {"rollouts_counted": 0}, "spend": {"opt_in_tok": 0, "opt_out_tok": 0, "usd_proxy": 0},
  "artifacts": {}, "code": null, "open_decisions": []}
 ```
+
+## CP-0002 · 2026-10-14T14:01Z · P0 decisions · decision
+
+Plan revised at the user's request to align with the base plan, the design and #804 in every aspect
+the user did not change (plan §16 item 8). Reverted self-introduced deviations; restored dropped base
+and design rules (difficulty-count check, RITS probes in A2, new trial seeds on infra retries, soft
+optimizer guard 8.5M, task-id lint and lint of merged bullets, A7 transcript scan); fixed counts,
+times, paths and references; phases P0–P10 now defined in plan §10. Per-task final-window outcomes
+are not pushed (content rules, plan §10.2); a host loss during P8 restarts the final window.
+Note on CP-0000: plan §16 items 11 and 13 cited there are now items 3 and 4.
+Nothing has run. Next: P1, build step B1.
+
+```json
+{"cp": 2, "prev_cp": 1, "prev_commit": "275da6860575672272664092aa48a106513bb79b", "utc": "2026-10-14T14:01:08Z",
+ "kind": "decision", "phase": "P0", "done_through": "P0/decisions", "next": "P1/B1",
+ "decisions": {"plan_alignment": "plan §16 item 8", "optimizer_guard_tokens": {"soft": 8500000, "hard": 10000000}, "final_cells_pushed": false},
+ "counts": {"rollouts_counted": 0}, "spend": {"opt_in_tok": 0, "opt_out_tok": 0, "usd_proxy": 0},
+ "artifacts": {}, "code": null, "open_decisions": []}
+```
