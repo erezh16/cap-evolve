@@ -17,6 +17,7 @@
 [api-00032] file_system app: every API needs an access_token. Get it with apis.file_system.login(username=<my email>, password=<password where account_name=='file_system' in supervisor.show_account_passwords()>)['access_token']. Check show_api_doc('file_system','login') first. Parameter names are directory_path (create_directory(directory_path, access_token, recursive, allow_if_exists)) and file_path (create_file(file_path, content, access_token)), NOT `path`. '~' paths work: create_file returns {'message':'File created.','file_path':'/home/<user>/backups/spotify.csv'}. create_directory on an existing dir returns {'message':'Directory already exists.'}, which is fine. Read a file back with show_file(file_path, access_token). The `os` module is forbidden, so use plain strings like '~/backups/spotify.csv'.
 [api-00040] file_system.show_file(file_path, access_token) returns a DICT {file_id, path, content, created_at, updated_at}, NOT a string. Read the text via `content = apis.file_system.show_file(...)['content']`, then use content.splitlines() for the line count and header check. Do not use `isinstance(result, str)` as a gate, because it always fails. File created by create_file with a '~' path is stored at /home/<user>/...
 [api-00043] Phone text messages: use apis.phone.search_text_messages (or show_text_message_window) to read what a contact sent. Read show_api_doc for both first, since they take the phone number and access_token and are paginated. Call with Christopher's phone_number, paginate with while True, and print every message (sender, text, created_at) to find the latest incoming request. Reply with send_text_message(phone_number, message, access_token), which returns {'message': 'Text message sent.', 'text_message_id': int}. Phone login uses username=<phone number> and the 'phone' password from supervisor.show_account_passwords().
+[api-00049] Phone search_text_messages items are {text_message_id, sender{contact_id,name,phone_number}, receiver{...}, message, sent_at}. The timestamp key is 'sent_at', NOT 'created_at', and the text key is 'message'. To find the incoming request, filter m['sender']['phone_number']==<contact number> and take max by sent_at. Note: search_contacts(query='Leslie') returns unrelated contacts too, so pick with next(c for c in contacts if c['first_name']=='Leslie'). simple_note.search_notes(query='movie') is a loose search that returned 20 mixed notes, including 'Movie Quotes Collection' and 'Movie Recommendations'. Pick the note by exact title match, e.g. 'Movie Recommendations', and paginate with while True if it is not on page 0. show_note returns {note_id,title,content,tags,created_at,updated_at,pinned}. The note may contain duplicate titles (e.g. Interstellar twice), so dedupe while preserving order if the reply is a list.
 ## USEFUL CODE SNIPPETS AND TEMPLATES
 
 [code-00009] Spotify login template:
@@ -55,6 +56,24 @@ csv_content = '\n'.join(lines) + '\n'
 print(len(lines), lines[:3])
 ```
 Also collect lookup failures in a list and print them, as in cms-00015.
+[code-00050] Simple Note movie-entry parser (parse ONLY, print, and send in a LATER step):
+```python
+entries=[]; cur=None
+for ln in note['content'].splitlines():
+    s=ln.strip()
+    if not s or s.startswith('#'): continue
+    if s.startswith('- director:'):
+        if cur: cur['director']=s.split(':',1)[1].strip()
+    elif s.startswith('- genre:'):
+        if cur: cur['genre']=[g.strip() for g in s.split(':',1)[1].split(',')]
+    elif not s.startswith('-'):
+        cur={'title':s,'director':'','genre':[]}; entries.append(cur)
+titles=[]
+for e in entries:
+    if e['director'].lower()=='peter jackson' and e['title'] not in titles: titles.append(e['title'])
+print(len(entries), titles, len(titles))
+```
+This avoids index-jumping loops. Match director by case-insensitive equality (use `in` only if the note lists co-directors such as 'Joel and Ethan Coen'). Then send ', '.join(titles) in a separate step, and call complete_task() with no answer in its own step.
 ## COMMON MISTAKES AND CORRECT STRATEGIES
 
 [cms-00015] Never silently `continue` when a per-item lookup fails or lacks the needed field; collect failures, print them, and confirm processed count == retrieved count before choosing a min/max. A strict '<' loop also hides ties by keeping the first item, so sort and print the bottom/top 3-5 values instead of tracking only a single best.
