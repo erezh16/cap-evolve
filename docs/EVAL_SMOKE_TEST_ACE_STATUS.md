@@ -104,3 +104,12 @@ Next: P1/B2.
 ```json
 {"cp": 5, "prev_cp": 4, "prev_commit": "2a7044e668fe4c4a2d99cfa5d0ecbd16b45cb041", "utc": "2026-10-14T14:49:43Z", "kind": "result", "phase": "P1", "done_through": "P1/B1", "next": "P1/B2", "counts": {"rollouts_counted": 0}, "spend": {"opt_in_tok": 0, "opt_out_tok": 0, "usd_proxy": 0}, "artifacts": {"STATE/manifest.json": "82d7e68e86b8ff65a93f822feefd8d5355715729c690520076b8dd9e0a19fe8d"}, "code": "2a7044e668fe4c4a2d99cfa5d0ecbd16b45cb041", "open_decisions": []}
 ```
+
+## CP-0006 · 2026-10-14T14:52Z · P1 build · result
+
+B2 done: uv 0.13.0 (installed, was missing); venv-aw with CPython 3.11.2 (system interpreter, found by uv); CPU torch 2.14.1 first, then appworld + appworld-agents (-e, 42b5bcf), pydantic 2.12.5, fastapi 0.143.1, litellm 1.80.0, cap-evolve core (-e), sentence-transformers, faiss-cpu, and tiktoken (needed for the token counts of plan §6.2; not in the B2 list, recorded in manifest). `appworld install --repo` done. `uv pip freeze` (129 packages) pushed as `STATE/venv_freeze.txt`, sha256 in manifest.
+Next: P1/B3 data download and count checks.
+
+```json
+{"cp": 6, "prev_cp": 5, "prev_commit": "1c4ff1e7ab8ff7ca0342e3dd099274490637a2c4", "utc": "2026-10-14T14:52:43Z", "kind": "result", "phase": "P1", "done_through": "P1/B2", "next": "P1/B3", "counts": {"rollouts_counted": 0}, "spend": {"opt_in_tok": 0, "opt_out_tok": 0, "usd_proxy": 0}, "artifacts": {"STATE/manifest.json": "77ff293eccd21fcaccb225709edd2b8027953f072439f56abf52a0e25b5e9052", "STATE/venv_freeze.txt": "9a267f5f8fb43e32fc42a0a4b145b598c2b3c5abd268112c0ca13e073d939283"}, "code": "2a7044e668fe4c4a2d99cfa5d0ecbd16b45cb041", "open_decisions": []}
+```

@@ -7,5 +7,23 @@
   "patch_sha256": "f2ff980d3485d32570449b05b7ad1b0493461a9544a97c8f9d207fbf7833aa6f",
   "git_diff_sha256": "f2ff980d3485d32570449b05b7ad1b0493461a9544a97c8f9d207fbf7833aa6f"
  },
- "aw_home": "/workspace/aw_eval_ace"
+ "aw_home": "/workspace/aw_eval_ace",
+ "venv": {
+  "path": "/workspace/aw_eval_ace/build/venv-aw",
+  "python": "CPython 3.11.2 (/usr/bin/python3.11)",
+  "uv": "uv 0.13.0",
+  "freeze_file": "docs/EVAL_SMOKE_TEST_ACE_STATE/venv_freeze.txt",
+  "freeze_sha256": "9a267f5f8fb43e32fc42a0a4b145b598c2b3c5abd268112c0ca13e073d939283",
+  "key_versions": {
+   "torch": "2.14.1+cpu",
+   "pydantic": "2.12.5",
+   "fastapi": "0.143.1",
+   "litellm": "1.80.0",
+   "appworld": "0.2.0.dev0 (-e, 42b5bcf)",
+   "appworld-agents": "0.1.0.dev0 (-e)"
+  },
+  "extra_vs_plan": [
+   "tiktoken (needed for the o200k_harmony token counts of plan \u00a76.2)"
+  ]
+ }
 }
