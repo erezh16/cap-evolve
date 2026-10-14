@@ -1,5 +1,5 @@
 {
- "last_applied_step": 41,
+ "last_applied_step": 42,
  "next_global_id": 84,
  "rows": [
   {
@@ -2381,19 +2381,82 @@
     "ground_truth": 0,
     "canary": 0
    }
+  },
+  {
+   "step": 42,
+   "success": true,
+   "steps": 13,
+   "termination": "completed",
+   "infra_retries": 0,
+   "prompt_tokens_max": 22324,
+   "completion_tokens": 5480,
+   "context_exceeded": false,
+   "fs_probe": [],
+   "usage": {
+    "reflector": {
+     "calls": 1,
+     "input": 55602,
+     "output": 1818,
+     "truncated": 0
+    },
+    "curator": {
+     "calls": 1,
+     "input": 56259,
+     "output": 1646,
+     "truncated": 0
+    }
+   },
+   "ops_proposed": 3,
+   "off_whitelist": 0,
+   "parse_error": false,
+   "reflector_usage": {
+    "input": 55602,
+    "output": 1818,
+    "cache_read": 0
+   },
+   "curator_usage": {
+    "input": 56259,
+    "output": 1646,
+    "cache_read": 0
+   },
+   "curated": true,
+   "ops_applied": 0,
+   "lint_drop": 0,
+   "lint_drop_rules": [],
+   "cap_drop": 3,
+   "dedup": {
+    "bullets_before": 85,
+    "bullets_after": 85,
+    "merged_bullets": 0,
+    "tokens_before": 14187,
+    "tokens_after": 14187,
+    "merge_calls": 0
+   },
+   "pb_tokens": 13430,
+   "pb_chars": 55513,
+   "pb_bullets": 82,
+   "pb_sha256": "1ca6b6fa9a81add0636db099c015db6dd685d099d7a6682b49ab3699a2f77919",
+   "scan": {
+    "test_id": 0,
+    "test_normal": 0,
+    "root_full": 0,
+    "answer.json": 0,
+    "ground_truth": 0,
+    "canary": 0
+   }
   }
  ],
  "spend": {
   "reflector": {
-   "calls": 41,
-   "input": 1563353,
-   "output": 73182,
+   "calls": 42,
+   "input": 1618955,
+   "output": 75000,
    "truncated": 0
   },
   "curator": {
-   "calls": 41,
-   "input": 1591703,
-   "output": 47444,
+   "calls": 42,
+   "input": 1647962,
+   "output": 49090,
    "truncated": 0
   },
   "merge": {
@@ -2403,7 +2466,7 @@
    "truncated": 0
   }
  },
- "rollouts": 41,
+ "rollouts": 42,
  "soft_cap_reached": false,
  "hard_stop": false,
  "m_cap": 13500
