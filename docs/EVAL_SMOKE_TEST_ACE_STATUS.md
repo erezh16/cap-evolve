@@ -300,3 +300,12 @@ Next: P1/B7.
 ```json
 {"cp": 25, "prev_cp": 24, "prev_commit": "250845d86e6faa4672b38d5f19f955b7d11702f9", "utc": "2026-10-14T20:11:12Z", "kind": "heartbeat", "phase": "P1", "done_through": "P1/B6", "next": "P1/B7", "counts": {"rollouts_counted": 0}, "spend": {"opt_in_tok": 0, "opt_out_tok": 0, "usd_proxy": 0}, "artifacts": {}, "code": "57f63c9ed9516f28843ac69b4248424a1c21b6a5", "open_decisions": [], "runner": "none"}
 ```
+
+## CP-0026 · 2026-10-14T20:18Z · P1 build · result
+
+B7 done: the user added `.env` (`RITS_URL`, `RITS_API_KET`) to the worktree; it is git-ignored and is read only by the episode worker and the A2 probe. P1 build complete (B1–B7).
+Next: P2/A2 RITS probes.
+
+```json
+{"cp": 26, "prev_cp": 25, "prev_commit": "afb6fdbbf3a0422c06afeeb61d85a26b08e86ef8", "utc": "2026-10-14T20:18:14Z", "kind": "result", "phase": "P1", "done_through": "P1/B7", "next": "P2/A2", "counts": {"rollouts_counted": 0}, "spend": {"opt_in_tok": 0, "opt_out_tok": 0, "usd_proxy": 0}, "artifacts": {}, "code": "57f63c9ed9516f28843ac69b4248424a1c21b6a5", "open_decisions": []}
+```
