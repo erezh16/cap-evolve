@@ -35,3 +35,23 @@ Next: P0, record the user's answers to D5–D7.
  "counts": {"rollouts_counted": 0}, "spend": {"opt_in_tok": 0, "opt_out_tok": 0, "usd_proxy": 0},
  "artifacts": {}, "code": null, "open_decisions": ["D5", "D6", "D7", "issue-11", "issue-13"]}
 ```
+
+## CP-0001 · 2026-10-14T13:27Z · P0 decisions · decision, phase_done
+
+User answers to the plan review (verbatim summary): 1 accepted all recommendations (D5 (a), D6 (a),
+D7 (a)); 2 install uv if missing and create a venv; 3 push whatever is needed to enable continuation
+and minimize redo; 4 accepted (publishing at every checkpoint); 5 update the report as needed;
+6 set the limit per the #804 opening post and the scope limits in EVAL_SMOKE_TEST.md §0 and §13;
+7 accepted.
+Plan updated accordingly: pushed continuation state `docs/EVAL_SMOKE_TEST_ACE_STATE/` (plan §10.3),
+uv venv on /workspace (B2), memory cap `M_cap` = min(30,000, 34,000 − P_max − H_max) tokens, about 13K,
+fixed in A8 (plan §6.2), optimizer cap 10M non-cache-read tokens, B = 900, report confounds paragraph (plan §12).
+Nothing has run. Next: P1, build step B1.
+
+```json
+{"cp": 1, "prev_cp": 0, "prev_commit": "c06102be098202aa4db2797b493127355296a5f4", "utc": "2026-10-14T13:27:45Z",
+ "kind": "decision", "phase": "P0", "done_through": "P0/decisions", "next": "P1/B1",
+ "decisions": {"D5": "a", "D6": "a", "D7": "a", "memory_cap": "min(30000, 34000 - P_max - H_max) tokens, fixed in A8", "optimizer_cap_tokens": 10000000, "rollout_cap": 900},
+ "counts": {"rollouts_counted": 0}, "spend": {"opt_in_tok": 0, "opt_out_tok": 0, "usd_proxy": 0},
+ "artifacts": {}, "code": null, "open_decisions": []}
+```

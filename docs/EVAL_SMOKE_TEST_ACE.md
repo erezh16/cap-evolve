@@ -1,9 +1,9 @@
 # AppWorld smoke test: ACE vs the seed agent
 
-Status: PLAN, written 2026-10-14. Nothing in sections 4 to 12 has run yet. Decisions D1 to D3
-carry over from the base plan; D4 is fixed by the design; **D5 to D7 are proposed and need the
-user's choice before launch** (section 2). Section 16 lists the issues found when this plan was
-reviewed.
+Status: PLAN, written 2026-10-14; decisions D5 to D7 and the review feedback recorded the same day
+(sections 2 and 16). Nothing in sections 4 to 12 has run yet. Decisions D1 to D3 carry over from
+the base plan; D4 is fixed by the design. Live progress is in
+[`EVAL_SMOKE_TEST_ACE_STATUS.md`](EVAL_SMOKE_TEST_ACE_STATUS.md).
 
 This plan is a sibling of `docs/EVAL_SMOKE_TEST.md` (referred to below as "the base plan"),
 which compared cap-evolve with ALTK-Evolve. Here the **only candidate evaluated is ACE** (Agentic
@@ -32,7 +32,8 @@ minutes old.
 | final scoring | `test_normal`, 2 trials per task, for 2 arms (seed, ACE playbook), in one interleaved window |
 | deliverable | a markdown results comment on issue #804 (`skillberry-ai/cap-evolve`) |
 | parallelism | at most 10 concurrent sub-agents (we use 2). Every long-running trial writes to a progress log |
-| resumability | every checkpoint appends an entry to `docs/EVAL_SMOKE_TEST_ACE_STATUS.md`, committed and pushed to `origin erezh-eval2-ace`; results checkpointed at once (coalesced to ≤ 1 per 5 min), heartbeat if 25 min pass without one; one command resumes from the last entry (section 10) |
+| limits | memory cap `M_cap` = min(30,000 tokens (design), what fits the RITS window (base §0/§13)) ≈ 13K tokens; optimizer ≤ 10M non-cache-read tokens and ≤ 900 counted rollouts per search (#804); 6,000 completion tokens per step, 50 steps, 30-minute wall cap per episode (base plan) |
+| resumability | every checkpoint appends an entry to `docs/EVAL_SMOKE_TEST_ACE_STATUS.md`, committed and pushed together with the continuation state `docs/EVAL_SMOKE_TEST_ACE_STATE/` to `origin erezh-eval2-ace`; results checkpointed at once (coalesced to ≤ 1 per 5 min), heartbeat if 25 min pass without one; one command resumes from the last entry (section 10) |
 
 ---
 
@@ -103,8 +104,8 @@ of that section do not apply here.
   the curator prompt and is not enforced.
 - **Size reached.** The shipped no-GT offline playbook after 1 epoch over train
   (`appworld_offline_trained_no_gt_playbook.txt`, DeepSeek-V3.1 in all roles) is **117,794
-  characters, 318 bullets, about 29K tokens**: 4× the 30,000-character memory cap of the base
-  plan (section 6.2), and close to gpt-oss-120b's whole 40,144-token window.
+  characters, 318 bullets, about 29K tokens**: about twice the memory cap of this plan (about 13K
+  tokens, section 6.2), and close to gpt-oss-120b's whole 40,144-token window.
 - **Generator template.** ACE uses its own 27,020-character prompt
   (`appworld_react_generator_prompt.txt`, about 6.8K tokens) with a `### PLAYBOOK BEGIN/END` block.
   The template params also compute `relevant_apis` from `world.task.ground_truth.required_apis`,
@@ -156,9 +157,9 @@ These are now part of the plan from the start, not findings to rediscover:
 | D2 | AppWorld version | — | — | **core and agents from source at `42b5bcf`, pydantic 2.12.x** (carried over). ACE's AppWorld fork (`appworld 0.1.4.dev0`) is not installed; only its pure ACE modules are vendored (section 8.1) |
 | D3 | final trials per task | — | — | **2** (carried over): 168 × 2 arms × 2 = 672 final episodes |
 | D4 | ACE version | — | — | **`ace@82709de0`, `ace-appworld@928e8687`**, the design's pins (still HEAD on 2026-10-14) |
-| **D5** | The ACE playbook grows without bound (official run: 117,794 characters); the memory cap is 30,000 characters (base §6.2), and the Generator must run with the playbook in its 40K context *during* adaptation | (a) **lazy grow-and-refine at the cap**: when an ADD would push the playbook over 30,000 characters, run ACE's own `BulletpointAnalyzer` (threshold 0.90, `all-mpnet-base-v2`, LLM merge with `OPT_MODEL`) once; if it is still over, drop that step's ADDs (logged as `cap_drop`) and keep adapting; (b) the same without dedup: drop ADDs at the cap; (c) let it grow, then take the last per-task snapshot ≤ 30,000 characters as the artifact; (d) let it grow, with no cap (the Generator overflows; the final artifact fails the lint) | **(a)**. It is the mechanism the paper describes ("lazily, when the context window is exceeded", appendix "Pruning Trigger"), it uses ACE's released code, it keeps every Generator episode inside the context budget, and the rule depends only on character counts, never on scores. (c) wastes the later adaptation steps; (d) repeats F11 | **pending (user)** |
-| **D6** | Adaptation set | (a) official `train` (90), dev only as a diagnostic; (b) `train ∪ dev` (147), in the spirit of base rule S2 | **(a)**. It is the official ACE config, the paper's "90 adaptation queries", the design's A-ACE, and the same as the altk arm (mine train). Rule S2 was written for cap-evolve's gate, which does not exist here | **pending (user)** |
-| **D7** | ACE batch size | (a) 1, sequential (paper, official config); (b) 4 (design: "only if wall-clock requires it") | **(a)**. About 4 to 6 h (section 14) fits the smoke budget. At HEAD, batch > 1 also turns on augmented shuffling × 2 and parallel curation, which is a different algorithm | **pending (user)** |
+| **D5** | The ACE playbook grows without bound (official run: 117,794 characters); the memory cap is `M_cap` tokens (section 6.2; planning value about 13,000), and the Generator must run with the playbook in its 40K context *during* adaptation | (a) **lazy grow-and-refine at the cap**: when an ADD would push the playbook over `M_cap`, run ACE's own `BulletpointAnalyzer` (threshold 0.90, `all-mpnet-base-v2`, LLM merge with `OPT_MODEL`) once; if it is still over, drop that step's ADDs (logged as `cap_drop`) and keep adapting; (b) the same without dedup: drop ADDs at the cap; (c) let it grow, then take the last per-task snapshot ≤ `M_cap` as the artifact; (d) let it grow, with no cap (the Generator overflows; the final artifact fails the lint) | **(a)**. It is the mechanism the paper describes ("lazily, when the context window is exceeded", appendix "Pruning Trigger"), it uses ACE's released code, it keeps every Generator episode inside the context budget, and the rule depends only on token counts, never on scores. (c) wastes the later adaptation steps; (d) repeats F11 | **(a)**, user 2026-10-14 |
+| **D6** | Adaptation set | (a) official `train` (90), dev only as a diagnostic; (b) `train ∪ dev` (147), in the spirit of base rule S2 | **(a)**. It is the official ACE config, the paper's "90 adaptation queries", the design's A-ACE, and the same as the altk arm (mine train). Rule S2 was written for cap-evolve's gate, which does not exist here | **(a)**, user 2026-10-14 |
+| **D7** | ACE batch size | (a) 1, sequential (paper, official config); (b) 4 (design: "only if wall-clock requires it") | **(a)**. About 4 to 6 h (section 14) fits the smoke budget. At HEAD, batch > 1 also turns on augmented shuffling × 2 and parallel curation, which is a different algorithm | **(a)**, user 2026-10-14 |
 
 ---
 
@@ -176,54 +177,69 @@ Both arms use the same harness, model client, decoding parameters, step cap and 
 
 ## 4. Environment
 
-The first run's state under `/tmp` was lost between sessions (section 1.1), so this plan splits
-the layout in two:
-- **durable state**, needed to resume and to report, on `/workspace`:
-  `AW_STATE=/workspace/aw_eval_ace/`;
-- **scratch**, which can be rebuilt from the manifest, on `/tmp`: `AW_SCRATCH=/tmp/aw_eval_ace/`.
+The first run's state under `/tmp` was lost between sessions (section 1.1). Free space is no
+longer the constraint the base plan worked around (one 1.5 TB volume, 535 GB free), so this plan
+keeps everything that is costly to rebuild on `/workspace`, and pushes what is needed to continue
+(section 10.3):
+- **pushed state**, in git on branch `erezh-eval2-ace`: the ledger
+  `docs/EVAL_SMOKE_TEST_ACE_STATUS.md`, the state folder `docs/EVAL_SMOKE_TEST_ACE_STATE/`, and the
+  code `examples/appworld/`;
+- **durable local state**, outside git: `AW_HOME=/workspace/aw_eval_ace/` with `state/` (detail
+  records that may not be published) and `build/` (clones, venv, data roots, model cache);
+- **scratch** on `/tmp/aw_eval_ace/`: AppWorld's native per-episode output dirs only.
 
 ```
-/workspace/aw_eval_ace/            # AW_STATE (durable detail records; outside git, never pushed; section 10.3)
-/workspace/worktrees/base/docs/EVAL_SMOKE_TEST_ACE_STATUS.md   # THE LEDGER (section 10.2): in git, pushed at every checkpoint
-  RUNNING.pid                      # the live phase runner (resume lock)
-  manifest.json                    # commits, patch sha256, data tree sha256, split-file sha256, venv freeze hashes
-  records/<phase>/<unit>.json      # one gold-free record per unit of work (episode, ACE step, check)
-  ace/playbooks/pb_<iii>.txt       # playbook after training task iii (000 = initial)
-  ace/steps/<iii>/{episode,reflector,curator,apply}.json
-  ace/llm_calls.jsonl              # every Reflector / Curator / merge call: prompt hash, response, tokens
-  final/                           # frozen artifacts, order file, window records, RESULTS.md
-  progress/                        # one progress log per trial + PROGRESS.md
-/tmp/aw_eval_ace/                  # AW_SCRATCH (rebuildable)
-  appworld/                        # git clone StonyBrookNLP/appworld @ 42b5bcf3cd334fee33f0c37c02070a9f5807add5 (+ git lfs pull, + our patch)
-  ace-src/{ace,ace-appworld}/      # clones at the D4 pins, read-only (vendoring source)
-  venv-aw/                         # python3.11: appworld (-e), appworld-agents (-e experiments[simplified]), pydantic>=2.12,<2.13, cap-evolve core (-e core), sentence-transformers, faiss-cpu, torch (CPU)
-  root_full/                       # APPWORLD_ROOT with all splits; final window only; chmod 000 during search
-  root_opt/                        # APPWORLD_ROOT for search: api_docs, base_dbs, tasks/<train+dev ids>, datasets/{train,dev}.txt
-  hf/                              # HF_HOME (all-mpnet-base-v2)
-  aw_outputs/                      # AppWorld native per-episode output dirs, deleted after each record is written
+/workspace/worktrees/base/                   # the repo, branch erezh-eval2-ace (pushed at every checkpoint)
+  docs/EVAL_SMOKE_TEST_ACE_STATUS.md         # THE LEDGER (section 10.2)
+  docs/EVAL_SMOKE_TEST_ACE_STATE/            # pushed continuation state (section 10.3)
+    manifest.json                            # commits, patch sha256, data / split-file / venv-freeze hashes, order seeds and order-file sha256, M_cap
+    ace/playbook.txt                         # the current ACE playbook (lint-checked; overwritten each step; git history keeps every snapshot)
+    ace/progress.json                        # last applied step, next_global_id, one summary row per step, spend, per-step isolation-scan counts
+    dev/cells.csv, final/cells.csv           # one row per finished cell: order index, arm, trial, reward, steps, tokens, termination, infra flag (no task ids)
+    final/artifacts/ace/playbook.md          # the frozen artifact; analysis.json, RESULTS.md (draft) at the end
+  examples/appworld/                         # the code (section 4.1)
+/workspace/aw_eval_ace/                      # AW_HOME (durable, outside git, never pushed)
+  state/                                     # AW_STATE
+    RUNNING.pid                              # the live phase runner (resume lock)
+    records/<phase>/<unit>.json              # one gold-free record per unit of work (episode, ACE step, check); hold task ids
+    ace/steps/<iii>/{episode,reflector,curator,apply}.json   # hold trajectories and task text
+    ace/llm_calls.jsonl                      # every Reflector / Curator / merge call: prompt, response, tokens
+    final/order.json                         # the window order with task ids (regenerable from the seed in manifest.json)
+    progress/                                # one progress log per trial + PROGRESS.md
+  build/                                     # AW_BUILD (rebuildable from manifest.json, kept to avoid redoing it)
+    appworld/                                # git clone StonyBrookNLP/appworld @ 42b5bcf3cd334fee33f0c37c02070a9f5807add5 (+ git lfs pull, + our patch)
+    ace-src/{ace,ace-appworld}/              # clones at the D4 pins, read-only (vendoring source)
+    venv-aw/                                 # uv venv, CPython 3.11 (section 4, B2)
+    root_full/                               # APPWORLD_ROOT with all splits; final window only; chmod 000 during search
+    root_opt/                                # APPWORLD_ROOT for search: api_docs, base_dbs, tasks/<train+dev ids>, datasets/{train,dev}.txt
+    hf/                                      # HF_HOME (all-mpnet-base-v2)
+/tmp/aw_eval_ace/aw_outputs/                 # AppWorld native per-episode output dirs, deleted after each record is written
 ```
 
 Build steps (each one checkpoint, each idempotent, each under 30 minutes):
-- **B1.** `git clone`, `git checkout 42b5bcf3…`, `git lfs install --local && git lfs pull`, apply
-  `examples/appworld/patches/appworld-extra-headers.patch` (section 5.2), record `git diff` and
-  its sha256 in `manifest.json`.
-- **B2.** `python3.11 -m venv venv-aw`; `pip install -e appworld -e
-  "appworld/experiments[simplified]" "pydantic>=2.12,<2.13"`; `pip install -e
-  /workspace/worktrees/base/core` (provides the `Rollout` type of the shared adapter; cap-evolve
-  itself is not run); `pip install sentence-transformers faiss-cpu` with torch from
-  `https://download.pytorch.org/whl/cpu`; `appworld install --repo`. Record `pip freeze` and its sha256.
+- **B1.** In `AW_BUILD`: `git clone`, `git checkout 42b5bcf3…`, `git lfs install --local && git lfs
+  pull`, apply `examples/appworld/patches/appworld-extra-headers.patch` (section 5.2), record `git
+  diff` and its sha256 in `manifest.json`.
+- **B2. uv and the venv.** If `~/.local/bin/uv` is missing, install it
+  (`curl -LsSf https://astral.sh/uv/0.13.0/install.sh | sh`, the version the first smoke test used),
+  and record `uv --version`. If no CPython 3.11 is found, `uv python install 3.11`. Then
+  `uv venv -p 3.11 $AW_BUILD/venv-aw`, and with `uv pip install -p $AW_BUILD/venv-aw`: first `torch`
+  from `--index-url https://download.pytorch.org/whl/cpu` (CPU wheels only), then `-e appworld -e
+  "appworld/experiments[simplified]" "pydantic>=2.12,<2.13"`, `-e /workspace/worktrees/base/core`
+  (the `Rollout` type of the shared adapter; cap-evolve itself is not run), `sentence-transformers
+  faiss-cpu`. Then `appworld install --repo` with the venv's `appworld`. Record `uv pip freeze` and
+  its sha256. The venv is outside git and outside `/tmp`, so a session restart does not lose it.
 - **B3.** `appworld download data --root root_full`. Check split counts (90 / 57 / 168 / 417) and
   scenario counts (30 / 19 / 56 / 139); stop on any mismatch. Record the data tree sha256.
 - **B4.** `examples/appworld/scripts/make_roots.py` builds `root_opt` (train + dev ids and
-  `_base_`); `grep` finds none of the 585 test ids under it.
+  `_base_`); `grep` finds none of the 585 test ids under it. `chmod 000 root_full`.
 - **B5.** Clone `ace` and `ace-appworld` at the D4 pins into `ace-src/`; vendor the files of
   section 8.1 into `examples/appworld/ace/vendor/` with a `VENDORED.md` that lists source path,
   commit and sha256 of each file. Pre-fetch `all-mpnet-base-v2` into `HF_HOME`.
-- **B6.** Write the code of section 4.1, and commit it **locally** to the working branch after each
-  file group passes its unit check. These commits go to branch `erezh-eval2-ace` and are pushed
-  with the next checkpoint (section 10.2); the checkpoint records the code sha.
+- **B6.** Write the code of section 4.1, and commit it after each file group passes its unit check.
+  The commits go to branch `erezh-eval2-ace` and are pushed with the next checkpoint (section 10.2).
 - **B7.** The user puts `.env` (`RITS_URL`, `RITS_API_KET`) in the worktree if it is missing. It
-  is git-ignored and is never copied into `AW_STATE` or `AW_SCRATCH`.
+  is git-ignored and is never copied into `AW_HOME` or the pushed state.
 
 ### 4.1 Code (all under `examples/appworld/`)
 
@@ -291,10 +307,13 @@ A2.
 - Every call is appended to `AW_STATE/ace/llm_calls.jsonl`: role, step, prompt sha256, full prompt
   and response text, input and output tokens, latency, error. The prompt text is kept so that the
   isolation scan (section 9) can read exactly what the optimizer saw.
-- Spend is metered from the logged usage at proxy list prices ($2 / $10 per Mtok input / output),
-  labelled "proxy". Soft cap: **$60** for the ACE search. Above it, the loop stops after the
-  current step and a `cap_spend` checkpoint is written. The cumulative spend is recomputed from
-  `llm_calls.jsonl` on resume, so the cap survives restarts.
+- Optimizer cap, from the #804 opening post: **10M non-cache-read tokens (input + output) per
+  search**, Reflector, Curator and merge calls together. When it is reached, the loop stops after
+  the current step and a `cap_spend` checkpoint is written. Spend is also shown in USD at proxy list
+  prices ($2 / $10 per Mtok input / output), labelled "proxy". The cumulative count is kept in the
+  pushed `ace/progress.json`, so the cap survives restarts and the loss of `AW_STATE`.
+- Counted-rollout cap, from the same post: B = 900 per search. ACE's native count (90 adaptation
+  episodes; 57 dev diagnostic) is far below it, so it never binds; it is checked anyway.
 
 ---
 
@@ -318,9 +337,30 @@ tools/api_notes.json      # {} (unused by both arms)
 memory/                   # empty for the seed; playbook.md for ace
 ```
 
-Lints, as in the base plan. Here only the memory block varies: **at most 30,000 characters**
-(about 8K tokens), checked at every playbook write during adaptation (section 8.4) and again at
-freeze. A playbook that fails is never used for a rollout.
+Lints, as in the base plan. Here only the memory block varies. Its cap, `M_cap`, follows the design
+(#804; design section 4.4: the M surface holds at most 30,000 tokens) within the scope limits of
+the base plan (§0 and §13: gpt-oss-120b on RITS, a 40,144-token window, 6,000 completion tokens,
+history trimmed at 60,000 characters):
+
+```
+M_cap = min(30,000, 34,000 − P_max − H_max) tokens, rounded down to a multiple of 500
+```
+
+- 34,000 is the base plan's prompt limit (A8), 40,144 − 6,000 rounded down.
+- `P_max` is the largest stock prompt over train ∪ dev, rendered with the task block and the
+  memory heading but no playbook. It is measured once over all 147 tasks (prompt only, no model
+  call). Planning value about 3.5K tokens.
+- `H_max` is the token count of 60,000 characters of agent history at the lowest characters-per-token
+  ratio seen in A8's 10 dev episodes. Planning value about 17K tokens.
+- Tokens are counted with gpt-oss's encoding (tiktoken `o200k_harmony`), cross-checked in A8 against
+  vLLM's reported `prompt_tokens`.
+
+Planning value: `M_cap` ≈ 13,000 tokens (about 50,000 characters). The design's 30,000 tokens does
+not fit the RITS window, so the scope limit binds. With this cap no episode can overflow the window
+because of the playbook, whatever the history length. `M_cap` is fixed in P2 (A8), before any
+counted rollout, and recorded in `manifest.json` and in a `decision` checkpoint. It is checked at
+every playbook write during adaptation (section 8.4) and again at freeze. A playbook over the cap is
+never used for a rollout.
 
 ---
 
@@ -390,8 +430,10 @@ next starts:
    message list. Writes `curator.json` (raw response, parsed operations or the parse error).
 4. **apply**: per-bullet filter (section 8.3), then `apply_curator_operations`, then the size rule
    (section 8.4). Writes `pb_<i>.txt` and `apply.json` (ops proposed / applied / `lint_drop` /
-   `cap_drop`, dedup run or not, characters, bullets, sha256), then the checkpoint entry for
-   step *i*.
+   `cap_drop`, dedup run or not, tokens, characters, bullets, sha256). It also scans this step's
+   Reflector and Curator inputs and outputs for the isolation patterns of section 9. Then the
+   checkpoint for step *i* copies `pb_<i>` to the pushed `ace/playbook.txt`, adds the step's row to
+   `ace/progress.json`, and appends the ledger entry, all in one commit.
 
 A resumed run reuses every sub-step file that exists and verifies, so no paid call is repeated
 and the trajectory a reflection was made from never changes (section 10.4).
@@ -405,16 +447,16 @@ and logged (`lint_drop`, with the rule); the rest of the step's operations are a
 the base plan's lint, applied per bullet because ACE has no candidate-level reject step; section
 13 lists it.
 
-### 8.4 Size rule (D5; option (a) is shown, change it if the user chooses otherwise)
+### 8.4 Size rule (D5 (a))
 
-After the per-bullet filter, if `len(pb_{i-1} + ADDs) > 30,000` characters:
+After the per-bullet filter, if `tokens(pb_{i-1} + ADDs) > M_cap`:
 1. run `BulletpointAnalyzer.analyze(threshold=0.90, merge=True)` on the playbook *with* the new
    bullets, with merges made by `OPT_MODEL` through `ace_llm.py` (role `merge`, logged and metered);
-2. if the result is ≤ 30,000 characters, it becomes `pb_<i>`;
+2. if the result is ≤ `M_cap` tokens, it becomes `pb_<i>`;
 3. otherwise the step's ADDs are dropped (`cap_drop`), `pb_<i> = pb_{i-1}`, and adaptation goes on
    (later steps may still add once a dedup has made room).
 
-The rule reads character counts only. The number of dedup runs, merged bullets and `cap_drop`
+The rule reads token counts only. The number of dedup runs, merged bullets and `cap_drop`
 bullets is reported.
 
 ### 8.5 Freeze and the dev diagnostic
@@ -490,7 +532,8 @@ is and what comes next, and `AW_STATE` holds the detail behind it.**
 - `AW_STATE/progress/PROGRESS.md`: one table (trial, phase, % done, last event, rollouts used,
   optimizer tokens and proxy USD, playbook size, ETA, **last checkpoint number, its age, and whether it is pushed**), regenerated
   every 5 minutes by `scripts/status.py`.
-- To watch: `watch -n 60 cat /workspace/aw_eval_ace/progress/PROGRESS.md`.
+- To watch: `watch -n 60 cat /workspace/aw_eval_ace/state/progress/PROGRESS.md`, or the last entry of the
+  ledger on GitHub.
 
 ### 10.2 The checkpoint ledger: `docs/EVAL_SMOKE_TEST_ACE_STATUS.md`
 
@@ -526,15 +569,19 @@ Next: P4 ace/step/042 episode.
   The prose lines are for people; the fenced `json` block is what `resume.py` parses. Its
   `artifacts` map names files in `AW_STATE` by sha256 (section 10.4).
 - `kind` is one of `phase_start`, `result`, `phase_done`, `heartbeat`, `decision` (user decisions,
-  verbatim), `abort`, `resume`, `rebuild`, `repair`, `error`, `cap_spend`, `posted`.
+  verbatim), `abort`, `resume`, `restore`, `rebuild`, `repair`, `error`, `cap_spend`, `posted`.
 
-**Content rules (the document is published by every push).** No secret or key, no gold value or
-solution, **no task id**, no task instruction or supervisor detail from any split, no trajectory
-text, no playbook text. Units are named by phase and index (`ace/step/041`, `final cell 312/672`),
-never by task id. Final-window entries carry counts and progress only until P9, when the aggregate
-results (the main table of section 12) are added. `scripts/status_doc.py` refuses to write an entry
-that contains any of the 732 task ids, any string from `.env`, or the text of any train or dev
-instruction 8-gram, and logs the refusal locally.
+**Content rules (everything pushed is published).** For the ledger and every file in
+`docs/EVAL_SMOKE_TEST_ACE_STATE/`: no secret or key, no gold value or solution, **no task id**, no
+task instruction or supervisor detail from any split, no trajectory text, no Reflector or Curator
+text. Units are named by phase and index (`ace/step/041`, `final cell 312/672`), never by task id.
+The one piece of learned text that is pushed is the ACE playbook (`ace/playbook.txt`). Each of its
+bullets has passed the per-bullet lint (section 8.3), and the user accepted publishing it
+(2026-10-14). Final-window entries carry counts and progress only until P9, when the aggregate
+results (the main table of section 12) are added. Before every commit, `scripts/status_doc.py`
+checks all staged pushed files and refuses the checkpoint if any contains one of the 732 task ids,
+a string from `.env`, a train or dev instruction 8-gram, or a supervisor name, email or phone. A
+refusal is logged locally and stops the runner.
 
 **When a checkpoint is written.** Every new result is checkpointed promptly, and nothing goes more
 than 30 minutes without a checkpoint:
@@ -554,33 +601,48 @@ window entries, heartbeats), each 6–15 lines.
 
 **How a checkpoint is committed and pushed** (`scripts/status_doc.py append`, the only writer, under
 `flock`):
-1. Append the entry to the document, `fsync`.
-2. `git commit -m "status: CP-0042 P4 ace/step/041" -- docs/EVAL_SMOKE_TEST_ACE_STATUS.md`. The
-   pathspec commits this one file only, never other work in the tree.
+1. Update the pushed state files the checkpoint reports (section 10.3), each written atomically;
+   then append the entry to the ledger, `fsync`.
+2. `git commit -m "status: CP-0042 P4 ace/step/041" -- docs/EVAL_SMOKE_TEST_ACE_STATUS.md
+   docs/EVAL_SMOKE_TEST_ACE_STATE/ examples/appworld/`. The pathspec commits only these paths, never
+   other work in the tree. The ledger entry and the state it describes are always in the same commit.
 3. `git push origin erezh-eval2-ace`. Never `--force`. If the push fails (network, auth), the commit
    stays local, the failure is noted in the next entry, and the next checkpoint pushes both. If the
    push is rejected as non-fast-forward (someone else pushed to the branch), the writer stops pushing,
    keeps committing locally, and the next status check asks the user.
 
-Code commits of B6 go to the same branch and are pushed with the next checkpoint; the entry records
-the code sha.
+Code changes (B6, or a fix during the run) are committed under the same pathspec and pushed with the
+next checkpoint. The entry records the code sha.
 
-### 10.3 Detail records in `AW_STATE` (not pushed)
+### 10.3 What is pushed, what stays local
 
-The status document holds the state and the resume point. The bulky or sensitive detail behind it
-stays in the durable, git-ignored `AW_STATE` (section 4) and is referenced from the document by
-sha256:
-- per-unit records `records/<phase>/<unit>.json`, written to a temp file, `fsync`ed and renamed
-  (atomic) **before** the checkpoint that reports them;
-- ACE sub-step files `ace/steps/<i>/{episode,reflector,curator,apply}.json`, playbook snapshots
-  `ace/playbooks/pb_<i>.txt`, `ace/llm_calls.jsonl`;
-- `final/` (order file, per-cell records, which contain test ids).
+The aim is that a resume redoes as little as possible, **even if this host is lost entirely**.
+Everything a later phase needs, and that may be published, is pushed with every checkpoint.
 
-A unit is done if its record exists and verifies, whether or not a checkpoint entry has reported it
-yet (results between two coalesced checkpoints are safe on disk). **Worst-case loss on an abort**:
-the in-flight episodes (at most 30 minutes each, re-run from scratch with the same seed), at most
-one in-flight optimizer call (re-made), and the build or analysis step in progress (idempotent, at
-most 30 minutes).
+| item | where | why it can or cannot be pushed |
+|---|---|---|
+| ledger | `docs/EVAL_SMOKE_TEST_ACE_STATUS.md` | the state and the resume point |
+| manifest: commits, patch, data / split-file / venv hashes, `M_cap`, the order seeds and order-file sha256 | `…_STATE/manifest.json` | hashes and numbers only. The window orders are **regenerated** from the seed and `load_task_ids`, and checked against the sha256, so no id is pushed |
+| current ACE playbook `pb_<i>` | `…_STATE/ace/playbook.txt` (git history holds every `pb_<i>`) | lint-checked generic guidance |
+| ACE progress: last applied step, `next_global_id`, one row per step (episode success, steps, tokens, ops proposed / applied / `lint_drop` / `cap_drop`, dedup, playbook tokens), optimizer tokens per role, per-step isolation-scan counts | `…_STATE/ace/progress.json` | counts only; a step is named by its index in the official train order |
+| dev and final cells: order index, arm, trial, reward, steps, tokens, termination, infra flag and retries | `…_STATE/dev/cells.csv`, `…_STATE/final/cells.csv` | no ids; joined to ids only locally, by regenerating the order |
+| frozen artifact, `analysis.json`, `RESULTS.md` draft | `…_STATE/final/` | contain no ids or task text |
+| code | `examples/appworld/` | — |
+| episode records, `messages.json`, Reflector and Curator text, `llm_calls.jsonl`, `order.json` | `AW_STATE` only | contain task ids, task text or trajectories (AppWorld's redistribution rule) |
+| clones, venv, data roots, model cache | `AW_BUILD` only | rebuildable from `manifest.json` (B1–B5) |
+
+Local records are written to a temp file, `fsync`ed and renamed (atomic) **before** the checkpoint
+that reports them. A unit is done if its local record exists and verifies, or if its pushed row
+exists.
+
+**Worst-case redo after an abort**:
+- **host intact**: the in-flight episodes (at most 30 minutes each, re-run from scratch with the same
+  seed), at most one in-flight optimizer call, and the build or analysis step in progress
+  (idempotent, at most 30 minutes);
+- **host lost** (`/workspace` gone): additionally the build (B1–B5, about 1–2 h), the cells finished
+  since the last coalesced checkpoint (at most 5 minutes of window work), and in P4 the one ACE step
+  in progress. The isolation scan of earlier steps is not lost: it is done per step and its counts
+  are pushed.
 
 ### 10.4 Resume
 
@@ -593,23 +655,25 @@ plan). It works the same after a crash, a kill, a host restart or a new Claude s
    uncommitted), drop the uncommitted tail with `git checkout -- docs/EVAL_SMOKE_TEST_ACE_STATUS.md`;
    the records it would have reported are adopted in step 4.
 2. **Lock**: refuse if `RUNNING.pid` names a live runner (no double runs). Stale pid files are removed.
-3. **Environment**: compare `manifest.json` with scratch. A missing or mismatched clone, venv or data
-   root is rebuilt by re-running its B step (idempotent), checked against the recorded sha256. If a
+3. **Environment**: compare `manifest.json` with `AW_BUILD`. A missing or mismatched clone, venv or
+   data root is rebuilt by re-running its B step (idempotent; B2 reinstalls uv if needed), checked
+   against the recorded sha256. If a
    rebuilt hash differs (e.g. upstream data changed), stop and ask the user. Re-apply
    `chmod 000 root_full` if the phase is before P8.
-4. **Reconcile `AW_STATE` with the last entry.** Verify every artifact the last entry names, by
-   sha256. Records that exist and verify but are newer than the last entry are adopted (they are
-   reported in the `resume` entry). Temp files without a rename are deleted. **If `AW_STATE` is
-   missing or an artifact the ledger names is missing or wrong, stop and ask the user**: the document
-   says exactly which phase and unit were reached, but the playbook snapshots and records are not in
-   git (section 16, issue 11). From P1–P3 and P8 onwards, phases can be re-run from their start. P4
-   cannot restart mid-way without `pb_<i>`.
+4. **Reconcile local state with the pushed state.** Verify the pushed files against the hashes in the
+   last entry. Local records that verify but are newer than the last entry are adopted and reported in
+   the `resume` entry. Temp files without a rename are deleted. If `AW_STATE` is missing, it is
+   re-created from the pushed state: `pb_<i>` from `ace/playbook.txt`, `next_global_id` and spend from
+   `ace/progress.json`, the window orders regenerated from their seeds and checked against their
+   sha256, and finished cells from `cells.csv`. This is logged as `restore`. A hash mismatch between
+   the ledger and the pushed files stops the resume and asks the user.
 5. **Continue** at the `next` unit:
    - P1/P2: re-run the first unfinished B or A step.
-   - P4: load `pb_<last apply>` and `next_global_id`, and start at the first missing sub-step. An
-     existing `episode.json` is never re-run, and an existing `reflector.json` or `curator.json` is
-     never re-requested.
-   - P6 and P8: skip every cell with a done record, and run the rest in the recorded order with the
+   - P4: load `pb_<last apply>` and `next_global_id`, and start at the first missing sub-step of step
+     *last apply* + 1. An existing local `episode.json` is never re-run, and an existing
+     `reflector.json` or `curator.json` is never re-requested. If they were lost with the host, that
+     one step is redone from its episode.
+   - P6 and P8: skip every cell with a done local record or a pushed row, and run the rest in the recorded order with the
      recorded seeds. Infrastructure retries count from the records, so a resume does not reset them.
    - P10: if a `posted` entry exists, never post again.
 6. Append a `resume` entry (what was adopted, what was skipped, what will run, and the user's reason if
@@ -627,14 +691,14 @@ entry, and stops the heartbeat. A plain kill is also safe; the next resume handl
 | id | check |
 |---|---|
 | A1 | `aws/claude-sonnet-5-5` answers through `ace_llm.py` (the gateway header is sent; no `response_format`); one Reflector and one Curator call on a toy message list return parseable JSON |
-| A2 | RITS through the patched client: 1 dev episode completes; the RITS key appears nowhere under `AW_STATE` or `AW_SCRATCH` |
+| A2 | RITS through the patched client: 1 dev episode completes; the RITS key appears nowhere under `AW_HOME`, `/tmp/aw_eval_ace` or the pushed files |
 | A3 | REPL isolation with F1's hardening (`import os`, `open(answer.json)`, a `pathlib` read all fail); `root_opt` has no test id; `root_full` is unreadable during search |
-| A4 | injection: on 1 dev task the seed's first request is byte-identical to the stock agent's; a playbook appears in the slot before `My name is:`; a 30,001-character playbook is refused before any rollout |
+| A4 | injection: on 1 dev task the seed's first request is byte-identical to the stock agent's; a playbook appears in the slot before `My name is:`; a playbook of `M_cap` + 1 tokens is refused before any rollout |
 | A5 | scoring: a train task's released compiled solution gives reward 1, a no-op 0; the record has no `trace`; scoring twice is identical |
 | A6 | split and seal: `tasks("train")` = `train.txt` exactly (90, same order as `load_task_ids`); a test id is refused without `AW_ALLOW_SEALED` |
-| A7 | ACE loop on 3 dev tasks into a throwaway state dir (not counted): the ported reflector and curator prompts are byte-identical to ACE's rendering on a fixed message list; ≥ 1 bullet is added with a fresh id in a whitelisted section; a non-`ADD` or off-whitelist operation is skipped as in ACE; a planted bullet with a train 8-gram is `lint_drop`ped; a synthetic 40,000-character playbook triggers the D5 rule, and its outcome is logged |
-| A8 | context: the longest of 10 dev episodes **with a 30,000-character playbook in the slot** stays under 34K prompt tokens with `max_output_length` 60000 |
-| A9 | resume, ACE: run the A7 loop against a **throwaway status file and branch** (`acceptance/status-test`, deleted afterwards) and kill it (SIGKILL) three times, once each after `episode.json`, after `reflector.json` and in the middle of a status append; resume each time; the final playbook equals that of an uninterrupted run from the same stored sub-steps, no paid call is repeated (count in `llm_calls.jsonl`), every entry is a committed, pushed, append-only addition (`git log -p` shows only added lines), and a resume from a fresh clone of the branch finds the same `next` unit |
+| A7 | ACE loop on 3 dev tasks into a throwaway state dir (not counted): the ported reflector and curator prompts are byte-identical to ACE's rendering on a fixed message list; ≥ 1 bullet is added with a fresh id in a whitelisted section; a non-`ADD` or off-whitelist operation is skipped as in ACE; a planted bullet with a train 8-gram is `lint_drop`ped; a synthetic playbook of 1.3 × `M_cap` tokens triggers the D5 rule, and its outcome is logged |
+| A8 | context and `M_cap`: 10 dev episodes with no playbook give the characters-per-token ratio of history (lowest one used); `P_max` is measured over the 147 train ∪ dev prompts; `M_cap` is computed (section 6.2) and recorded; then 3 dev episodes with an `M_cap`-token playbook in the slot stay under 34K prompt tokens (vLLM's `prompt_tokens`), and tiktoken's count is within 2% of vLLM's |
+| A9 | resume, ACE: run the A7 loop against a **throwaway status file and branch** (`acceptance/status-test`, deleted afterwards) and kill it (SIGKILL) three times, once each after `episode.json`, after `reflector.json` and in the middle of a status append; resume each time; the final playbook equals that of an uninterrupted run from the same stored sub-steps, no paid call is repeated (count in `llm_calls.jsonl`), every entry is a committed, pushed, append-only addition (`git log -p` shows only added lines), and a resume from a fresh clone of the branch **with `AW_STATE` deleted** restores `pb_<i>` and continues at the same `next` unit, redoing only the step in progress |
 | A10 | resume and publishing, windows: a 12-cell mini window on dev ids, killed mid-way and resumed: no cell is run twice, all 12 cells are done, the order is the recorded one; cells arriving fast are coalesced into ≤ 1 entry per 5 min (tested with a 1-min setting); a heartbeat entry appears after 25 minutes of silence (tested with 1 min) and marks a killed runner `stalled`; a push failure (bad remote URL) leaves a local commit that the next checkpoint pushes; the content filter refuses an entry that contains a task id or a string from `.env` |
 
 None of the acceptance rollouts are counted (rule S1).
@@ -670,7 +734,19 @@ Results comment on #804 (markdown): setup block (commits, models, settings, D1�
 table (TGC, SGC, Δ vs seed with CI); the difficulty table; the cost table; what changed (playbook
 size, number of bullets by section, 3 example bullets checked by the lint); isolation scan counts;
 resume history (number of aborts and resumes, units re-run, from the status document); deviations (section 13)
-and what the numbers cannot support (one search seed, one method, no matched budget, no TOST). No
+and what the numbers cannot support (one search seed, one method, no matched budget, no TOST).
+A **"What this ACE is and is not"** paragraph, placed directly under the main table, states the
+choices that make this ACE differ from the paper's and from the colleagues' runs, and why any of them
+could explain the result as well as ACE itself could:
+1. the common template (the stock AppWorld prompt with a memory slot), not ACE's 27K-character
+   Generator prompt;
+2. Sonnet 5.5 as Reflector and Curator, a stronger model than the target (the paper uses the target);
+3. 1 epoch and 1 reflection per task (the paper allows up to 5 of each);
+4. the `M_cap` size rule (D5), with the number of dedup runs and `cap_drop`s;
+5. the no-GT Reflector, which is never told whether a task passed;
+6. 50 steps instead of ACE's 40.
+The paragraph says plainly that a null or small result is a result about *this configuration*, not
+evidence that ACE does not work. No
 task text, ids, solutions or gold values are posted (AppWorld redistribution rule), and example
 bullets are checked for task-specific content before posting. The draft is written to
 `final/RESULTS.md` first and shown to the user; then it is posted with
@@ -686,12 +762,12 @@ bullets are checked for task-specific content before posting. The draft is writt
 | base plan | here | why |
 |---|---|---|
 | arms seed, cape-hc, altk | seed, ace | task scope: ACE is the only candidate |
-| all state under `/tmp/aw_eval` | durable `AW_STATE` on `/workspace`, rebuildable scratch on `/tmp` | `/tmp` was wiped between sessions (section 1.1); resume needs durable state |
+| all state under `/tmp/aw_eval` | pushed state in git, build and detail records on `/workspace`, only AppWorld's native outputs on `/tmp` | `/tmp` was wiped between sessions (section 1.1); continuation with the least redo (user, 2026-10-14) |
 | progress log + `PROGRESS.md` | the same, plus the cumulative ledger `docs/EVAL_SMOKE_TEST_ACE_STATUS.md` pushed to `erezh-eval2-ace` at every checkpoint, the heartbeat and `resume.py` | new requirement (section 10) |
 | rule S2 (cap-evolve train = val) | not applicable; ACE adapts on train (D6) | no cap-evolve arm |
-| memory lint: size only | size, plus the prompt's 8-gram and supervisor-contact checks per bullet | ACE's Curator reads the task instruction verbatim (section 8.3) |
+| memory lint: at most 30,000 characters | at most `M_cap` tokens (≈ 13K, about 50,000 characters), plus the prompt's 8-gram and supervisor-contact checks per bullet | cap: the design's M cap within the base scope limits (user, 2026-10-14); per-bullet checks: ACE's Curator reads the task instruction verbatim (section 8.3) |
 | final window 1,008 episodes | 672 | 2 arms |
-| venv-altk (Python 3.12) | not needed; ACE's vendored modules run in `venv-aw` (3.11; `ace-appworld` needs ≥ 3.11) | no ALTK arm |
+| venv-altk (Python 3.12), `venv-aw` via `python3.11 -m venv` | one uv-managed venv, `venv-aw` (CPython 3.11), uv installed if missing; ACE's vendored modules run in it (`ace-appworld` needs ≥ 3.11) | no ALTK arm; uv was missing on the host (user, 2026-10-14) |
 | optimizer via claude CLI + litellm wrapper | litellm client only (`ace_llm.py`) | ACE's optimizer roles are plain LLM calls |
 | `optimizer_guard.sh`, claude shim (F14, F15) | not needed | the optimizer has no tools |
 | posting `gh issue comment 804` | `-R skillberry-ai/cap-evolve`, after the user sees the draft | the fork has issues disabled |
@@ -707,11 +783,14 @@ bullets are checked for task-specific content before posting. The draft is writt
 | Holm families, TOST | one unadjusted paired cluster-bootstrap CI | one contrast, one seed |
 | ACE paper: target model as Reflector and Curator | `OPT_MODEL` (Sonnet 5.5) | design primary (matched optimizer); `ace-target` exploratory cell not run |
 | ACE paper: up to 5 epochs and 5 reflection rounds | 1 epoch, 1 reflection per task | official no-GT config and the paper's own AppWorld cost setting; in the no-GT code there are no rounds (section 1.3) |
-| design A-ACE: "reflection rounds 5" | 1 | the parameter exists only in the with-GT path (section 16, issue 3) |
+| design A-ACE: "reflection rounds 5" | 1 | the parameter exists only in the with-GT path (section 16, remaining open points) |
 | design A-ACE acceptance: "bullets with counters" | bullets with ids, no counters | the AppWorld ACE code has no counters (section 1.3) |
 | ACE's own Generator template (27K chars) | stock template + memory slot | design: one template for every arm; template panel not run |
 | ACE config `max_steps` 40, `use_cache` true | 50, false | common harness; repeated trials must hit the model |
-| ACE playbook unbounded | 30,000-character cap with D5's rule | gpt-oss's 40K window and the base plan's memory lint |
+| ACE playbook unbounded | `M_cap` ≈ 13K tokens with D5's rule | gpt-oss's 40K window |
+| design M cap 30,000 tokens | `M_cap` = min(30,000, what fits the window) ≈ 13K tokens | base scope §0/§13 (RITS window, 6,000 completion tokens); user instruction 2026-10-14 |
+| #804: 90-minute wall cap per rollout | 30 minutes, as in the base plan (§7.1) | base rule kept; in the first smoke test it fired once and the retry finished in 206 s (F13); it also bounds the work an abort can lose |
+| #804: optimizer cap 10M non-cache-read tokens, B = 900 rollouts per search | the same | — |
 | ACE with-GT, online mode, `ace-native` | not run | Tier F2 feedback; out of scope |
 | `appworld==0.1.3.post1` + head ReAct agent | source at `42b5bcf`, pydantic 2.12.x | as in the base plan (D2) |
 | `max_completion_tokens` 8000 | 6000 + trimming | RITS window |
@@ -732,7 +811,7 @@ bullets are checked for task-specific content before posting. The draft is writt
 
 Optimizer: per task, the Reflector and the Curator each read about 15–40K tokens (prompt, playbook up
 to about 8K tokens, trajectory), so about 5–7M input and 0.3–0.5M output tokens for 90 tasks, plus
-dedup merges, about $15–25 at proxy prices (soft cap $60). The ACE paper reports 39.3M input tokens for
+dedup merges, about $15–25 at proxy prices, well under the 10M-token cap. The ACE paper reports 39.3M input tokens for
 its AppWorld adaptation with the target in all three roles, about 8.2M of it Reflector and Curator
 (design section 9). RITS has no budget. All usage is recorded exactly and reported per provider
 (RITS for the agent, the gateway for `OPT_MODEL`).
@@ -743,7 +822,7 @@ its AppWorld adaptation with the target in all three roles, about 8.2M of it Ref
 
 | risk | mitigation |
 |---|---|
-| abort, crash, host restart, `/tmp` wiped | the pushed status document + durable `AW_STATE` + `resume.py` (section 10); scratch is rebuilt from the manifest |
+| abort, crash, host restart, `/tmp` wiped, host lost | ledger and continuation state pushed at every checkpoint, build and records on `/workspace`, `resume.py` restores from git if needed (section 10) |
 | two runners at once after a confused resume | `RUNNING.pid` lock; resume refuses while a runner is alive |
 | ledger damage or divergence | append-only entries, one commit per checkpoint, never force-pushed; torn uncommitted tail dropped; non-fast-forward or missing artifact stops and asks |
 | a checkpoint publishes something it must not | content rules and the `status_doc.py` filter (task ids, `.env` strings, instruction 8-grams); A10 tests the filter |
@@ -759,61 +838,44 @@ its AppWorld adaptation with the target in all three roles, about 8.2M of it Ref
 
 ---
 
-## 16. Review: issues found in this plan
+## 16. Review: issues found in this plan, and how they were resolved
 
-Found when the plan was checked on 2026-10-14. Items 1 to 3, 11 and 13 need the user's answer before launch.
+Found when the plan was checked on 2026-10-14. The user answered the same day; each item gives the
+resolution, and the plan above has been updated to match.
 
-1. **D5, D6 and D7 are open.** The size rule (D5) is the most consequential: ACE's official
-   playbook is 4× the memory cap, and the Generator needs the playbook in context *during*
-   adaptation, so this choice shapes the artifact. The plan is written for the recommended options.
-2. **Nothing from the first smoke test is on disk.** `examples/appworld/` (Appendix A.2 of the base
-   plan) was never committed, and `/tmp/aw_eval`, `.venv`, `.env` and `uv` are gone. The build is
-   from scratch (3–4 h, not the 2–3 h of the base plan), and the base plan's acceptance results do
-   not carry over. `.env` with the RITS key must be supplied again (B7).
-3. **The design's A-ACE spec does not match ACE's AppWorld code** in two places: "reflection rounds
-   5" exists only in the with-GT path, and "bullets with counters" does not exist in the AppWorld
-   variant. The plan follows the code (1 reflection per task, no counters) and says so. If the
-   design meant the paper's 5 rounds, that would need ground truth (excluded) or a new retry loop
-   that ACE does not ship.
-4. **The comparison is confounded by design choices, and the report must say so.** It uses the common
-   template instead of ACE's 27K-character Generator prompt, a stronger Reflector/Curator model
-   than the target (the paper uses the target), 1 epoch, and, under D5, a size cap ACE does not
-   have. A null result could come from any of these, not from ACE itself. The base plan accepted the
-   same trade-off for ALTK-Evolve.
-5. **The no-GT Reflector sees no outcome at all.** It is not told whether the task passed. This is
-   ACE's setting, and less feedback than the F1 tier the base plan gave cap-evolve. It is disclosed.
-6. **Sequential adaptation is the critical path** (4–6 h with one RITS request in flight). D7 (b)
-   would shorten it, but at HEAD it also turns on augmented shuffling and parallel curation.
-7. **Dev is barely used.** Under D6 (a), dev only gives a diagnostic score. This follows the
-   official roles and ACE's lack of a selection step, but it leaves 57 tasks of search-time data
-   unused by the method.
-8. **The per-bullet lint is a rule addition** (section 8.3). It is stricter than the base plan's
-   memory lint and may remove useful generic bullets that happen to share an 8-gram with an
-   instruction. The `lint_drop` count is reported.
-9. **The memory cap is in characters (30,000), while the design's M surface cap is 30,000 tokens.**
-   The plan keeps the base plan's character cap (rule unchanged), which is about 4× tighter than the
-   design's. A8 checks that the cap fits; it could be relaxed to about 60,000 characters within the
-   34K-token prompt budget if the user prefers, but that would change a base-plan rule.
-10. **Base-plan inconsistencies inherited or noticed:** the base plan says "Results are in Appendix B",
-    which does not exist; its posting command lacks `-R skillberry-ai/cap-evolve`, needed from this
-    clone (fixed here); its §0 still says "we use 3" sub-agents, while Appendix A.4 records that the work
-    was watched from the main session.
-11. **The pushed ledger alone cannot restore a mid-adaptation run.** By the content rules, the
-    status document holds counts, hashes and the resume point but no playbook text and no records.
-    If `AW_STATE` on `/workspace` is lost during P4, the document says exactly where the run was, but
-    the run must restart P4 from step 1 (P6 and P8 restart only their own window). Option, needing the
-    user's decision: also push each lint-checked playbook snapshot `pb_<i>.txt` (generic guidelines,
-    no ids, already checked for instruction 8-grams and supervisor contacts) to the same branch. That
-    makes P4 restorable from GitHub alone, at the cost of publishing the playbook as it grows.
-12. **Heartbeat ≠ progress.** A heartbeat proves the ledger is alive, not that the runner is
-    advancing. A single episode can take up to 30 minutes, so a sequential ACE step can legitimately
-    go 30+ minutes without a `result` entry. `status.py` flags a runner as stuck, and the next heartbeat entry
-    says so, if no `result` entry has appeared for 45 minutes while its PID is alive.
-13. **Publishing at every checkpoint.** The branch is pushed about 150–250 times. Anyone with access
-    to the `erezh16/cap-evolve` fork sees the live state, including dev diagnostic scores and, after
-    P9, the test results before the #804 comment is posted. The content filter keeps out ids, task
-    text and secrets, but the user should confirm the fork's visibility is acceptable. The branch
-    history also gets one commit per checkpoint; squash it before any PR to `main`.
-14. **"Adds on top" was read as append-only, oldest first** (the newest entry last). If newest-first is
-    wanted, `status_doc.py` would insert after the header instead; earlier entries are still never
-    edited.
+1. **D5, D6 and D7 were open.** *Resolved:* the user accepted the recommendations: D5 (a) lazy dedup at
+   the cap and `cap_drop` beyond it; D6 (a) adapt on train; D7 (a) batch size 1 (section 2).
+2. **Nothing from the first smoke test is on disk** (`examples/appworld/`, `/tmp/aw_eval`, `.venv`,
+   `.env`, `uv`). *Resolved:* B2 installs uv 0.13.0 if it is missing and creates the uv venv `venv-aw`
+   (CPython 3.11) on `/workspace`. The build is from scratch (3–4 h). `.env` must still be supplied (B7).
+3. **The pushed ledger alone could not restore a mid-run state.** *Resolved:* everything needed to
+   continue that may be published is pushed at every checkpoint (section 10.3): the current playbook,
+   ACE progress and spend, the cell results without ids, the manifest with the order seeds, and the
+   code. A resume on a fresh host redoes only the build, the work in flight and at most 5 minutes of
+   window cells.
+4. **Publishing at every checkpoint** (fork visibility, about 150–250 commits). *Accepted* by the user.
+   Squash the branch history before any PR to `main`.
+5. **The comparison is confounded by design choices.** *Resolved:* the results comment gets a fixed
+   "What this ACE is and is not" paragraph under the main table (section 12).
+6. **Smaller points.**
+   - *Memory cap units:* resolved per the user's instruction. The cap follows the design's M cap
+     (30,000 tokens) within the base plan's scope limits (§0, §13: the RITS window, 6,000 completion
+     tokens, 60,000-character trimming): `M_cap = min(30,000, 34,000 − P_max − H_max)` ≈ 13K tokens,
+     measured in A8 (section 6.2). The other #804 limits are adopted too: the optimizer cap of 10M
+     non-cache-read tokens per search (it replaces the $60 soft cap of the first draft, which had no
+     source) and B = 900. The #804 90-minute wall cap per rollout is *not* adopted: the base plan's 30
+     minutes is kept (base rule, F13), and section 13.2 lists this.
+   - Still true, and disclosed in the report: sequential adaptation is the critical path (4–6 h);
+     the no-GT Reflector sees no outcome; dev is used only as a diagnostic; the per-bullet lint is a
+     rule addition; a heartbeat proves the ledger is alive, not that the runner is advancing
+     (`status.py` flags no `result` entry for 45 minutes while the runner is alive).
+7. **Base-plan inconsistencies** (missing Appendix B, posting command without `-R`, "we use 3"
+   sub-agents). *Accepted.* This plan uses `-R skillberry-ai/cap-evolve`. The base plan is left as
+   the record of its own run.
+
+Remaining open points:
+- **Design vs code:** the design's A-ACE "reflection rounds 5" and "bullets with counters" do not
+  exist in ACE's no-GT AppWorld code. The plan follows the code, and section 13.2 says so.
+- **Ledger order:** "adds on top" was read as append-only, oldest first (newest entry last). Earlier
+  entries are never edited in either reading.
+- **The first push of state uses the real branch.** A9's throwaway branch tests the mechanism first.
