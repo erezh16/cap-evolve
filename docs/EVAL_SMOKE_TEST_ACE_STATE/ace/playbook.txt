@@ -132,6 +132,28 @@ def paginate(api_func, **kw):
         pi += 1
 ```
 Use: `for a in paginate(apis.spotify.show_album_library, access_token=spotify_token): ids.update(a['song_ids'])`. Do not print the full access token in the login step, just confirm that it was obtained.
+[code-00081] [code] Artist-follow audit and verify snippets (use as two separate steps, with complete_task() in a third).
+AUDIT (read-only, before any follow call):
+```python
+rows=[]; failed=[]; artists={}
+for sid in sorted(song_ids):
+    d=apis.spotify.show_song(song_id=sid)
+    if not isinstance(d,dict) or 'genre' not in d or 'artists' not in d:
+        failed.append((sid,d)); continue
+    if d['genre'].strip().lower()=='reggae':
+        rows.append((sid,d['title'],d['genre'],[(a['id'],a['name']) for a in d['artists']]))
+        for a in d['artists']: artists[a['id']]=a['name']
+assert len(rows)+len(failed)<=len(song_ids)
+for r in rows: print(r)
+print(len(song_ids),len(rows),failed,artists)
+```
+VERIFY (after the follow writes):
+```python
+bad=[a for a in artists if apis.spotify.show_artist_following(artist_id=a,access_token=spotify_token).get('following') is not True]
+print(len(artists),len(artists)-len(bad),bad)
+assert not bad
+```
+Check `['following'] is True` explicitly, because the response is a dict and is always truthy. Also confirm the non-reggae count by printing the set of distinct genres seen (e.g. via Counter of d['genre']) so you can see the exact genre string. Reference from a second account (sanity only): 60 unique playlist songs, 9 reggae, 5 artists (13, 15, 18, 22, 30), none followed beforehand.
 ## COMMON MISTAKES AND CORRECT STRATEGIES
 
 [cms-00015] Never silently `continue` when a per-item lookup fails or lacks the needed field; collect failures, print them, and confirm processed count == retrieved count before choosing a min/max. A strict '<' loop also hides ties by keeping the first item, so sort and print the bottom/top 3-5 values instead of tracking only a single best.
