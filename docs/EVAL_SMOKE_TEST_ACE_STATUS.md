@@ -391,3 +391,13 @@ Next: P2/A10.
 ```json
 {"cp": 35, "prev_cp": 34, "prev_commit": "5d63a686183527818abdf58e2d0b79b418770029", "utc": "2026-10-14T21:06:55Z", "kind": "result", "phase": "P2", "done_through": "P2/A9", "next": "P2/A10", "counts": {"rollouts_counted": 0}, "spend": {"opt_in_tok": 0, "opt_out_tok": 0, "usd_proxy": 0}, "artifacts": {}, "code": "cf857e1d096585a5dbdf55aa40fcca80d0c0e7f6", "open_decisions": []}
 ```
+
+## CP-0036 · 2026-10-14T21:18Z · P2 acceptance · phase_done
+
+A10 passed (same throwaway clone and branch; dev ids, not counted): a 12-cell mini window (6 dev tasks × seed, ace-initial-playbook × 1 trial, 3 workers) SIGKILLed after 4 cells and resumed: all 12 cells done, no finished cell re-run, order = the recorded one; results coalesced at the 1-minute test setting (7 entries, gaps ≥ 63 s); after 1 min of silence a heartbeat entry marked the killed runner `stalled`; with a bad remote URL a checkpoint stayed a local commit (`unpushed: 1`) and the next checkpoint pushed both, noting the failure; the content filter refused an entry with a task id and one with an `.env` string; the ledger is append-only. Throwaway branch `acceptance/status-test` deleted, local throwaway dirs removed.
+**P2 acceptance complete: A1–A10 all passed** (findings G1, G2; repairs CP-0030 to CP-0033 to the code before any counted rollout). Acceptance used about 40 uncounted dev/train episodes.
+Next: P3 ACE start.
+
+```json
+{"cp": 36, "prev_cp": 35, "prev_commit": "c80f5b4e61231855e862d843d6985cb883f0cd94", "utc": "2026-10-14T21:18:33Z", "kind": "phase_done", "phase": "P2", "done_through": "P2/A10", "next": "P3/start", "counts": {"rollouts_counted": 0}, "spend": {"opt_in_tok": 0, "opt_out_tok": 0, "usd_proxy": 0}, "artifacts": {}, "code": "cf857e1d096585a5dbdf55aa40fcca80d0c0e7f6", "open_decisions": []}
+```
