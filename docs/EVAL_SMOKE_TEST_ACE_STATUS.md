@@ -418,3 +418,11 @@ Phase start: 90 sequential steps (episode, Reflector, Curator, apply). Runner pi
 ```json
 {"cp": 38, "prev_cp": 37, "prev_commit": "418ecb2898c08fd797f2b0a80941ec2e0a6d01c0", "utc": "2026-10-14T21:19:17Z", "kind": "phase_start", "phase": "P4", "done_through": "P3/start", "next": "ace/step/001/episode", "counts": {"rollouts_counted": 0, "ace_steps": 0}, "spend": {"opt_in_tok": 0, "opt_out_tok": 0, "usd_proxy": 0}, "artifacts": {}, "code": "cf857e1d096585a5dbdf55aa40fcca80d0c0e7f6", "open_decisions": []}
 ```
+
+## CP-0039 · 2026-10-14T21:20Z · P4 interim #804 · posted
+
+Interim update 2 posted on #804: https://github.com/skillberry-ai/cap-evolve/issues/804#issuecomment-6178749708 (acceptance passed, ACE adaptation started).
+
+```json
+{"cp": 39, "prev_cp": 38, "prev_commit": "225d3d79705e92613dc87d8a94623a2c9b3c86ab", "utc": "2026-10-14T21:20:02Z", "kind": "posted", "phase": "P4", "done_through": "P3/start", "next": "ace/step/001/episode", "counts": {"rollouts_counted": 0, "ace_steps": 0}, "spend": {"opt_in_tok": 0, "opt_out_tok": 0, "usd_proxy": 0}, "artifacts": {}, "code": "cf857e1d096585a5dbdf55aa40fcca80d0c0e7f6", "open_decisions": [], "post": "interim-2", "url": "https://github.com/skillberry-ai/cap-evolve/issues/804#issuecomment-6178749708"}
+```
