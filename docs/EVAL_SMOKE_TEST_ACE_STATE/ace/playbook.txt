@@ -7,6 +7,7 @@
 [api-00004] You can use the "supervisor" app to get information about my accounts and use the "phone" app to get information about friends and family.
 
 [api-00011] Spotify schemas: show_playlist_library returns a list of dicts with playlist_id, title, is_public, rating, like_count, review_count, owner, created_at and song_ids (a list of ints). spotify.show_song(song_id=...) needs no access_token and returns a dict with song_id, title, album_title, artists, genre, play_count, rating, like_count and review_count. Other lists: show_song_library, show_liked_songs, show_album_library, show_liked_albums.
+[api-00013] show_song_library (and show_liked_songs) items contain only song_id, title, album_id, album_title, duration, artists, added_at: NO play_count, rating, genre or like_count. For popularity/play/rating questions (least/most played, highest rated) call spotify.show_song(song_id=...) for every song_id (no token needed) and read play_count/rating from it. Note play_count is a float.
 ## USEFUL CODE SNIPPETS AND TEMPLATES
 
 [code-00009] Spotify login template:
@@ -17,8 +18,24 @@ spotify_token = apis.spotify.login(username='<my email>', password=spotify_passw
 ```
 Filter with `next(... for ... if ...)`. Do NOT use `[x['account_name']=='spotify' for x in passwords][0]['password']`, which builds booleans and fails. Use the same variable name for the token that you defined (e.g. spotify_token), not an undefined one.
 [code-00010] Full pagination template: `page_index=0; items=[]; while True: page=apis.spotify.show_playlist_library(access_token=tok, page_index=page_index, page_limit=20); if not page: break; items.extend(page); page_index+=1`. Use `while True` until an empty page, with no fixed cap such as `page_index < 10`. page_limit max is 20. Check that `page` is a list, since an error dict {'message':...} is truthy.
+[code-00014] Enrich-then-rank template (run as its own step, NO complete_task in it):
+```python
+rows=[]; failed=[]
+for s in all_songs:
+    d=apis.spotify.show_song(song_id=s['song_id'])
+    if isinstance(d,dict) and 'play_count' in d:
+        rows.append((d['play_count'], d['title'], s['song_id']))
+    else:
+        failed.append((s['song_id'], d))
+rows.sort()
+print(len(all_songs), len(rows), failed)
+print(rows[:5])
+```
+Then, in a separate next step, check for ties at rows[0][0] and call apis.supervisor.complete_task(answer=rows[0][1]).
 ## COMMON MISTAKES AND CORRECT STRATEGIES
 
+[cms-00015] Never silently `continue` when a per-item lookup fails or lacks the needed field; collect failures, print them, and confirm processed count == retrieved count before choosing a min/max. A strict '<' loop also hides ties by keeping the first item, so sort and print the bottom/top 3-5 values instead of tracking only a single best.
+[cms-00016] Do not put apis.supervisor.complete_task(...) in the same code block as the computation of the answer. Compute and print evidence first; submit the title/number alone in a later step (complete_task is irreversible).
 ## PROBLEM-SOLVING HEURISTICS AND WORKFLOWS
 [psw-00002] Remember you can use the variables in your code in subsequent code blocks.
 [psw-00007] Many APIs return items in "pages". Make sure to run through all the pages by looping over `page_index`.
