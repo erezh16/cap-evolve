@@ -210,3 +210,13 @@ Next: P1/B7.
 ```json
 {"cp": 16, "prev_cp": 15, "prev_commit": "57f63c9ed9516f28843ac69b4248424a1c21b6a5", "utc": "2026-10-14T16:25:41Z", "kind": "heartbeat", "phase": "P1", "done_through": "P1/B6", "next": "P1/B7", "counts": {"rollouts_counted": 0}, "spend": {"opt_in_tok": 0, "opt_out_tok": 0, "usd_proxy": 0}, "artifacts": {}, "code": "57f63c9ed9516f28843ac69b4248424a1c21b6a5", "open_decisions": [], "runner": "none"}
 ```
+
+## CP-0017 · 2026-10-14T16:50Z · P1 heartbeat · heartbeat
+
+No checkpoint for 25 min. Phase P1, last result: P1/B6.
+Runner: no runner. Last log line: ` + typing-extensions==4.16.0`.
+Next: P1/B7.
+
+```json
+{"cp": 17, "prev_cp": 16, "prev_commit": "dfb8b8901e61376dea12ef2b0ce708ce28159e63", "utc": "2026-10-14T16:50:44Z", "kind": "heartbeat", "phase": "P1", "done_through": "P1/B6", "next": "P1/B7", "counts": {"rollouts_counted": 0}, "spend": {"opt_in_tok": 0, "opt_out_tok": 0, "usd_proxy": 0}, "artifacts": {}, "code": "57f63c9ed9516f28843ac69b4248424a1c21b6a5", "open_decisions": [], "runner": "none"}
+```
