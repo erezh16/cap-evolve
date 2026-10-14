@@ -179,3 +179,13 @@ Next: P1/B6, B7.
 ```json
 {"cp": 13, "prev_cp": 12, "prev_commit": "3e5bba131e128f2f87481b1ab8d3932309ec4d34", "utc": "2026-10-14T15:50:29Z", "kind": "result", "phase": "P2", "done_through": "P2/A3", "next": "P1/B6", "counts": {"rollouts_counted": 0}, "spend": {"opt_in_tok": 0, "opt_out_tok": 0, "usd_proxy": 0}, "artifacts": {}, "code": "3e5bba131e128f2f87481b1ab8d3932309ec4d34", "open_decisions": []}
 ```
+
+## CP-0014 · 2026-10-14T15:50Z · P2 acceptance · result
+
+A5 passed: on a train task the released compiled solution scores reward 1 (twice, identical), a no-op scores 0; the records hold no evaluator `trace`.
+Also A4 (part, no model call): the seed's first request (23 messages) is byte-identical to the stock agent's; a playbook lands in the final USER message under the memory heading, before `My name is:`. The M_cap refusal part of A4 waits for A8.
+Next: P1/B6, B7.
+
+```json
+{"cp": 14, "prev_cp": 13, "prev_commit": "ed852d660069f32bc1b2bac9267a19b0a0ad559e", "utc": "2026-10-14T15:50:32Z", "kind": "result", "phase": "P2", "done_through": "P2/A5", "next": "P1/B6", "counts": {"rollouts_counted": 0}, "spend": {"opt_in_tok": 0, "opt_out_tok": 0, "usd_proxy": 0}, "artifacts": {}, "code": "3e5bba131e128f2f87481b1ab8d3932309ec4d34", "open_decisions": []}
+```
