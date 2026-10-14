@@ -802,3 +802,15 @@ Interim update 4 posted on #804: https://github.com/skillberry-ai/cap-evolve/iss
 ```json
 {"cp": 71, "prev_cp": 70, "prev_commit": "1db897626481e43a222952595ed3aa7cf87e58a0", "utc": "2026-10-14T22:44:21Z", "kind": "posted", "phase": "P4", "done_through": "ace/step/030/apply", "next": "ace/step/031/episode", "counts": {"rollouts_counted": 30, "ace_steps": 30}, "spend": {"opt_in_tok": 1981731, "opt_out_tok": 85756, "usd_proxy": 4.82}, "artifacts": {}, "code": "e40140f70bf19302ef11cb5e23860b204b7f91c8", "open_decisions": [], "post": "interim-4", "url": "https://github.com/skillberry-ai/cap-evolve/issues/804#issuecomment-6180159467"}
 ```
+
+## CP-0072 · 2026-10-14T22:46Z · P4 ACE adaptation · result
+
+ACE step 031 done (episode pass, 7 steps, completed; +2 bullets; 0 lint_drop, 0 cap_drop); 1 counted rollout.
+Totals: rollouts counted 31 (ace 31, seed 0); playbook 80 bullets, 52,879 chars, 12,767 tokens (M_cap 13,500); optimizer 2.08M in / 0.09M out tok, $5.05 proxy.
+Isolation scan this step: no hits.
+Runner: alive (pid 32508).
+Next: P4 ace/step/032 episode.
+
+```json
+{"cp": 72, "prev_cp": 71, "prev_commit": "d915d91f21df9101f9b8f8adc42a50153ca27f64", "utc": "2026-10-14T22:46:27Z", "kind": "result", "phase": "P4", "done_through": "ace/step/031/apply", "next": "ace/step/032/episode", "counts": {"rollouts_counted": 31, "ace_steps": 31}, "spend": {"opt_in_tok": 2080763, "opt_out_tok": 88768, "usd_proxy": 5.05}, "artifacts": {"STATE/ace/playbook.txt": "bff8b209fe947ac2d67913df7f48a53a151511b7c440780d617db7f0f11af5e2", "STATE/ace/progress.json": "83c23789a3d9349505415a56fe6235facbac919904e2e605aa35bf3b76f6540c", "local/ace/playbooks/pb_031.txt": "bff8b209fe947ac2d67913df7f48a53a151511b7c440780d617db7f0f11af5e2"}, "code": "e40140f70bf19302ef11cb5e23860b204b7f91c8", "open_decisions": []}
+```
