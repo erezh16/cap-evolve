@@ -337,3 +337,12 @@ Next: P2/A7 ACE loop on 4 dev tasks (running).
 ```json
 {"cp": 29, "prev_cp": 28, "prev_commit": "655b77f8975362f40d6a72b0a0dda1b0f1c54d4f", "utc": "2026-10-14T20:46:55Z", "kind": "result", "phase": "P2", "done_through": "P2/A4", "next": "P2/A7", "counts": {"rollouts_counted": 0}, "spend": {"opt_in_tok": 0, "opt_out_tok": 0, "usd_proxy": 0}, "artifacts": {}, "code": "655b77f8975362f40d6a72b0a0dda1b0f1c54d4f", "open_decisions": []}
 ```
+
+## CP-0030 · 2026-10-14T20:51Z · P2 acceptance · repair
+
+Repair, found by A9 before it could resume anything: the repository's `.gitignore` has a `vendor/` rule, so `examples/appworld/ace/vendor/` (the unmodified ACE files of plan §8.1 and `VENDORED.md`) was never committed; a fresh clone of the branch could not import `ace.vendor.playbook`. Fixed: the directory is force-added in this commit (sha256s as in `VENDORED.md`); no other file under `examples/appworld/` is ignored. Also: `resume.py --no-launch` no longer starts a heartbeat (the first A9 attempt left one on its throwaway ledger; stopped). The first A9 attempt ran no episode and made no optimizer call; its throwaway branch is cleaned and A9 is re-run.
+Next: P2/A7 (running), A9 re-run.
+
+```json
+{"cp": 30, "prev_cp": 29, "prev_commit": "bdcc43e8f3eed6f80fc774fd40a544c0767885f6", "utc": "2026-10-14T20:51:32Z", "kind": "repair", "phase": "P2", "done_through": "P2/A4", "next": "P2/A7", "counts": {"rollouts_counted": 0}, "spend": {"opt_in_tok": 0, "opt_out_tok": 0, "usd_proxy": 0}, "artifacts": {}, "code": "655b77f8975362f40d6a72b0a0dda1b0f1c54d4f", "open_decisions": []}
+```

@@ -158,7 +158,7 @@ def main() -> int:
     import pipeline
     runnable = pipeline.phase_of(nxt or "") is not None
     plan.append(f"continue at next = {nxt}" + ("" if runnable else " (not an automatic phase: run it by hand)"))
-    if not heartbeat_alive():
+    if not heartbeat_alive() and not a.no_launch:
         plan.append("restart the heartbeat loop")
     print(json.dumps({"last_cp": last.get("cp"), "phase": last.get("phase"), "next": nxt, "plan": plan,
                       "adopted": info["adopted"]}, indent=1))
@@ -168,7 +168,7 @@ def main() -> int:
              f"Resume{(' (reason: ' + a.reason + ')') if a.reason else ''}. Plan: {'; '.join(plan)}.\n"
              f"Adopted local work newer than CP-{last.get('cp', 0):04d}: {', '.join(info['adopted']) or 'none'}.\n"
              f"Next: {nxt}.", extra={"adopted": info["adopted"], "plan": plan}, subject="resume")
-    if not heartbeat_alive():
+    if not heartbeat_alive() and not a.no_launch:
         subprocess.Popen(["nohup", sys.executable, "-I", str(Path(__file__).parent / "status_doc.py"), "heartbeat"],
                          stdout=open(P.PROGRESS / "heartbeat.out", "a"), stderr=subprocess.STDOUT,
                          start_new_session=True)
