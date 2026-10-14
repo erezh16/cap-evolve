@@ -113,3 +113,13 @@ Next: P1/B3 data download and count checks.
 ```json
 {"cp": 6, "prev_cp": 5, "prev_commit": "1c4ff1e7ab8ff7ca0342e3dd099274490637a2c4", "utc": "2026-10-14T14:52:43Z", "kind": "result", "phase": "P1", "done_through": "P1/B2", "next": "P1/B3", "counts": {"rollouts_counted": 0}, "spend": {"opt_in_tok": 0, "opt_out_tok": 0, "usd_proxy": 0}, "artifacts": {"STATE/manifest.json": "77ff293eccd21fcaccb225709edd2b8027953f072439f56abf52a0e25b5e9052", "STATE/venv_freeze.txt": "9a267f5f8fb43e32fc42a0a4b145b598c2b3c5abd268112c0ca13e073d939283"}, "code": "2a7044e668fe4c4a2d99cfa5d0ecbd16b45cb041", "open_decisions": []}
 ```
+
+## CP-0007 · 2026-10-14T14:57Z · P1 build · result
+
+B3 done: `appworld download data --root root_full` (198 MB). Split counts 90 / 57 / 168 / 417 via `load_task_ids` (identical to the split files), pairwise disjoint, train and dev share no scenario; scenarios 30 / 19 / 56 / 139; difficulty levels 1/2/3: train 36/36/18, dev 30/24/3, test_normal 57/48/63, test_challenge 72/150/195. All match design §2. Data tree and split-file sha256 in manifest.json.
+Local lint cache built (AW_STATE, not pushed): 732 task ids, 1,528 train/dev instruction 8-grams, 249 train/dev supervisor contacts. The publishing filter of plan §10.2 is now fully active.
+Next: P1/B4 root_opt and lock root_full.
+
+```json
+{"cp": 7, "prev_cp": 6, "prev_commit": "2f3ac2b1527423d2f7054b2df09e8c2047ff532d", "utc": "2026-10-14T14:57:13Z", "kind": "result", "phase": "P1", "done_through": "P1/B3", "next": "P1/B4", "counts": {"rollouts_counted": 0}, "spend": {"opt_in_tok": 0, "opt_out_tok": 0, "usd_proxy": 0}, "artifacts": {"STATE/manifest.json": "bbe7c9e4095ffc40fe79761a3a8c0cf9a9cf0d55a9b1d87ee29a29aed807765c"}, "code": "2a7044e668fe4c4a2d99cfa5d0ecbd16b45cb041", "open_decisions": []}
+```
