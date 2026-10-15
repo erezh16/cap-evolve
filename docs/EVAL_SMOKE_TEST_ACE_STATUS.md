@@ -1895,3 +1895,12 @@ Next: p8final remaining cells.
 ```json
 {"cp": 170, "prev_cp": 169, "prev_commit": "07fc24a16b719e6fa9e9771cb7b207589f79cae8", "utc": "2026-10-15T10:21:51Z", "kind": "result", "phase": "P8", "done_through": "p8final/48", "next": "p8final/cells", "counts": {"rollouts_counted": 90, "ace_steps": 90}, "spend": {"opt_in_tok": 8388301, "opt_out_tok": 272174, "usd_proxy": 19.5}, "artifacts": {"STATE/final/progress.json": "edb2a38714737fe8373e1b1b0faf1514f9567c33526aed2e6e9a886c694f945e"}, "code": "9918abfaef689edfd068dbd626485e345e0e9b5d", "open_decisions": [], "window": {"name": "p8final", "done": 48, "total": 672, "order_sha256": "2f164401305d124b40bc2fea2e52441184c7fcee5ae39ba128ca975412b7941e"}}
 ```
+
+## CP-0171 · 2026-10-15T10:26Z · P8 final window · result
+
+final window: 51 cells done since the last entry (order positions 4–138); 99/672 done (ace 58, seed 41); infra retries 0, cells still infra-failed 0, context_exceeded 0.
+Next: p8final remaining cells.
+
+```json
+{"cp": 171, "prev_cp": 170, "prev_commit": "756aca8b70596114cad30bf915c5255e0fc131b8", "utc": "2026-10-15T10:26:54Z", "kind": "result", "phase": "P8", "done_through": "p8final/99", "next": "p8final/cells", "counts": {"rollouts_counted": 90, "ace_steps": 90}, "spend": {"opt_in_tok": 8388301, "opt_out_tok": 272174, "usd_proxy": 19.5}, "artifacts": {"STATE/final/progress.json": "c8163b11483b2b1265368c7db5eec0c0661b8ace7bed9f44b137c1fb0f88ecee"}, "code": "9918abfaef689edfd068dbd626485e345e0e9b5d", "open_decisions": [], "window": {"name": "p8final", "done": 99, "total": 672, "order_sha256": "2f164401305d124b40bc2fea2e52441184c7fcee5ae39ba128ca975412b7941e"}}
+```
