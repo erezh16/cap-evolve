@@ -2061,3 +2061,11 @@ Next: P10 report.
 ```json
 {"cp": 188, "prev_cp": 187, "prev_commit": "e9d1c1c9da00a6cc063839a176a6a5ac7b93e7a1", "utc": "2026-10-15T11:38:46Z", "kind": "phase_done", "phase": "P9", "done_through": "P9/analysis", "next": "P10/report", "counts": {"rollouts_counted": 90, "ace_steps": 90}, "spend": {"opt_in_tok": 8388301, "opt_out_tok": 272174, "usd_proxy": 19.5}, "artifacts": {"STATE/final/analysis.json": "e269d9099cf0c166ef12436bd00c12ca33153cef752abf351ae4e6350c9d6c7c"}, "code": "9918abfaef689edfd068dbd626485e345e0e9b5d", "open_decisions": [], "results": {"seed": [34.2, 13.4], "ace": [64.0, 46.4], "delta": {"tgc": 29.8, "sgc": 33.0, "ci95": {"tgc": [21.4, 38.1], "sgc": [20.5, 45.5], "resamples": 10000, "clusters": 56}}}}
 ```
+
+## CP-0189 · 2026-10-15T11:41Z · P10 report · posted
+
+Results comment posted on #804: https://github.com/skillberry-ai/cap-evolve/issues/804#issuecomment-6191203655. Draft: `STATE/final/RESULTS.md`.
+
+```json
+{"cp": 189, "prev_cp": 188, "prev_commit": "3d72bc69fa64a202e3c85ec1e7b1303946a571c7", "utc": "2026-10-15T11:41:17Z", "kind": "posted", "phase": "P10", "done_through": "P10/posted", "next": "done", "counts": {"rollouts_counted": 90, "ace_steps": 90}, "spend": {"opt_in_tok": 8388301, "opt_out_tok": 272174, "usd_proxy": 19.5}, "artifacts": {"STATE/final/RESULTS.md": "d01d54ff45f4e7a7ab137278fbd724b95194cedccbdb2caac329a0f80bd39377"}, "code": "9918abfaef689edfd068dbd626485e345e0e9b5d", "open_decisions": [], "post": "final", "url": "https://github.com/skillberry-ai/cap-evolve/issues/804#issuecomment-6191203655"}
+```

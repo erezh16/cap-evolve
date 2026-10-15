@@ -63,8 +63,9 @@ def example_bullets(pb: str, k: int = 3) -> list[str]:
     bs = lints.bullets(pb)
     init = set(lints.bullets((EX / "ace/vendor/playbooks/appworld_initial_playbook.txt").read_text()))
     new = [b for b in bs if b not in init]
+    new = [b for b in new if len(b[1]) >= 120]  # skip multi-line bullets whose first line is a heading
     pick = [new[len(new) * i // k] for i in range(k)] if len(new) >= k else new
-    return [f"`[{i}]` {c[:400]}" for i, c in pick]
+    return [f"`[{i}]` {c[:400]}{'…' if len(c) > 400 else ''}" for i, c in pick]
 
 
 def render() -> str:
@@ -92,7 +93,8 @@ def render() -> str:
     led = ledger_facts()
     dev = dev_summary()
     by = lambda arm, lvl: a["arms"][arm]["by_difficulty"].get(lvl, {})  # noqa: E731
-    secs = "; ".join(f"{k.title()} {v}" for k, v in fr["sections"].items())
+    secs = "; ".join(f"{k.rstrip(':').lower()} {v}" for k, v in fr["sections"].items() if v)
+    last_add = max((r["step"] for r in rows if r.get("ops_applied")), default=0)
     rt = led["times"]
     lines = [
         "## Results: AppWorld smoke test, ACE vs the seed agent, gpt-oss-120b (held-out test_normal)",
@@ -130,7 +132,19 @@ def render() -> str:
         f"4. the M_cap size rule (D5): {len(dedup)} dedup runs, {capd} `cap_drop` bullets;",
         "5. the no-GT Reflector, which is never told whether a task passed;",
         "6. 50 steps instead of ACE's 40.",
-        "A null or small result is a result about *this configuration*, not evidence that ACE does not work.",
+        "A null or small result would be a result about *this configuration*, not evidence that ACE does not work; "
+        "in the same way, the gain below is a result about this configuration (in particular a stronger optimizer "
+        "model than the target, item 2), not a measurement of ACE as published.",
+        "",
+        "**Side by side** (compared only as gains over each side's own no-memory baseline, design §9.2 rule 1; "
+        "harness, template, Reflector model and epochs differ, so the levels are not comparable):",
+        "",
+        "| source | baseline TGC / SGC | with ACE TGC / SGC | gain TGC / SGC |",
+        "|---|---|---|---|",
+        f"| this smoke test (common harness, Sonnet 5.5 Reflector / Curator, 1 epoch, M_cap) | {s['tgc']} / {s['sgc']} | "
+        f"{c['tgc']} / {c['sgc']} | {d['tgc']:+} / {d['sgc']:+} |",
+        "| colleagues' gpt-oss-120b (no memory → ReAct + ACE) | 39.9 / 21.4 | 54.8 / 35.7 | +14.9 / +14.3 |",
+        "| ACE paper, gpt-oss-120b (ReAct → ACE offline, no GT) | 54.8 / 33.9 | 58.3 / 41.1 | +3.5 / +7.2 |",
         "",
         "**By difficulty (TGC / SGC).**",
         "",
@@ -174,8 +188,12 @@ def render() -> str:
         f"section: {secs}. Adaptation: {cur} of {len(rows)} steps curated (episode terminations: "
         + ", ".join(f"{k} {v}" for k, v in sorted(term.items())) + f"); {lint} bullets dropped by the per-bullet lint "
         f"(task data such as supervisor phone numbers), {len(dedup)} dedup runs, {capd} `cap_drop` bullets. "
-        f"Training episodes passing during adaptation: {sum(1 for r in rows if r.get('success'))} of {len(rows)} "
-        "(search-time, not a result). Three example bullets:",
+        f"The playbook reached the cap at step {last_add} and did not change afterwards: from then on ACE's dedup at "
+        f"threshold 0.90 found almost no merges, so the later steps' bullets were all `cap_drop`ped; the artifact is the "
+        f"step-{last_add} playbook. With it, ACE's longest prompt in the test window was {c['max_prompt_tokens']:,} tokens "
+        f"(limit 34,000; 0 context overflows); ACE's agent reads about {c['mean_prompt_tokens_per_task'] / max(1, s['mean_prompt_tokens_per_task']):.1f}× "
+        f"the seed's prompt tokens per task. Training episodes passing during adaptation: "
+        f"{sum(1 for r in rows if r.get('success'))} of {len(rows)} (search-time, not a result). Three example bullets:",
     ]
     lines += [f"- {b}" for b in example_bullets(pb)]
     ts = sum(scan.get(k, {}).get("test_id", 0) for k in ("llm_calls", "steps_files", "playbooks"))
@@ -191,8 +209,12 @@ def render() -> str:
         "",
         f"**Resume history.** {led['n']} ledger entries; aborts {led['kinds'].get('abort', 0)}, resumes "
         f"{led['kinds'].get('resume', 0)}, restores {led['kinds'].get('restore', 0)}, errors {led['kinds'].get('error', 0)}, "
-        f"repairs {led['kinds'].get('repair', 0)} (all before any counted rollout), heartbeats {led['kinds'].get('heartbeat', 0)}. "
-        f"Wall time: adaptation {rt.get('P4', 0)} h, dev diagnostic {rt.get('P6', 0)} h, final window {rt.get('P8', 0)} h.",
+        f"repairs {led['kinds'].get('repair', 0)} (5 code fixes before any counted rollout; 1 correcting the P7 scan "
+        f"counts, a scanner false positive), heartbeats {led['kinds'].get('heartbeat', 0)}. The one error and resume: the "
+        f"optimizer gateway's shared team budget ran out at the step-54 Reflector call (HTTP 429 `budget_exceeded`); the "
+        f"run resumed about 8 h later from the saved episode, with no repeated episode or paid call. Wall time: "
+        f"adaptation {rt.get('P4', 0)} h including that stop (about 4.4 h running), dev diagnostic {rt.get('P6', 0)} h, "
+        f"final window {rt.get('P8', 0)} h.",
         "",
         "**Deviations** (plan §13; new in execution):",
         "- G1: the gateway rejects `temperature` for `aws/claude-sonnet-5-5`; Reflector, Curator and merge ran at the "
