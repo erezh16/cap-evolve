@@ -1862,3 +1862,11 @@ Next: P8 final window.
 ```json
 {"cp": 166, "prev_cp": 165, "prev_commit": "8801cb7a980a962df8d8bf7df9a3a4eea107e620", "utc": "2026-10-15T10:16:43Z", "kind": "phase_done", "phase": "P7", "done_through": "P7/scan", "next": "P8/final", "counts": {"rollouts_counted": 90, "ace_steps": 90}, "spend": {"opt_in_tok": 8388301, "opt_out_tok": 272174, "usd_proxy": 19.5}, "artifacts": {"STATE/isolation_scan.json": "848f04ec1da368ffa2c316eed70edd1dd50f0ccc35f5eb31d3364bf512a37679"}, "code": "e40140f70bf19302ef11cb5e23860b204b7f91c8", "open_decisions": [], "scan": {"breach": true}}
 ```
+
+## CP-0167 · 2026-10-15T10:16Z · P8 final window · phase_start
+
+Phase start: 672 cells (168 test_normal × seed, ace × 2 trials), 48 workers. Runner pid 81067.
+
+```json
+{"cp": 167, "prev_cp": 166, "prev_commit": "3cf934b2e64eac1558258ecab905619fe97b5cd0", "utc": "2026-10-15T10:16:46Z", "kind": "phase_start", "phase": "P8", "done_through": "P7/scan", "next": "P8/final", "counts": {"rollouts_counted": 90, "ace_steps": 90}, "spend": {"opt_in_tok": 8388301, "opt_out_tok": 272174, "usd_proxy": 19.5}, "artifacts": {}, "code": "e40140f70bf19302ef11cb5e23860b204b7f91c8", "open_decisions": []}
+```
