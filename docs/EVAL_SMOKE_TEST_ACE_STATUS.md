@@ -1878,3 +1878,11 @@ Repair of CP-0166 (the P7 entry stands as written; this entry supersedes its cou
 ```json
 {"cp": 168, "prev_cp": 167, "prev_commit": "e41d565d20cd253bba26ae1eba0c4cc7462ae354", "utc": "2026-10-15T10:18:24Z", "kind": "repair", "phase": "P7", "done_through": "P7/scan", "next": "P8/final", "counts": {"rollouts_counted": 90, "ace_steps": 90}, "spend": {"opt_in_tok": 8388301, "opt_out_tok": 272174, "usd_proxy": 19.5}, "artifacts": {"STATE/isolation_scan.json": "9e6b30a673f6d2e4d4db7222458ca9a2ea3735168fda26e18c019eb798efdec0"}, "code": "e40140f70bf19302ef11cb5e23860b204b7f91c8", "open_decisions": [], "scan": {"breach": false, "corrects_cp": 166}}
 ```
+
+## CP-0169 · 2026-10-15T10:19Z · P7 interim #804 · posted
+
+Interim update 10 posted on #804: https://github.com/skillberry-ai/cap-evolve/issues/804#issuecomment-6189796077 (dev diagnostic and isolation scan done, test window started).
+
+```json
+{"cp": 169, "prev_cp": 168, "prev_commit": "9918abfaef689edfd068dbd626485e345e0e9b5d", "utc": "2026-10-15T10:19:17Z", "kind": "posted", "phase": "P7", "done_through": "P7/scan", "next": "P8/final", "counts": {"rollouts_counted": 90, "ace_steps": 90}, "spend": {"opt_in_tok": 8388301, "opt_out_tok": 272174, "usd_proxy": 19.5}, "artifacts": {}, "code": "9918abfaef689edfd068dbd626485e345e0e9b5d", "open_decisions": [], "post": "interim-10", "url": "https://github.com/skillberry-ai/cap-evolve/issues/804#issuecomment-6189796077"}
+```
