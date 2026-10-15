@@ -1,0 +1,18 @@
+{
+ "window": "p8final",
+ "cells_total": 672,
+ "cells_done": 48,
+ "per_arm": {
+  "seed": {
+   "done": 19,
+   "infra_retries": 0,
+   "infra_missing": 0
+  },
+  "ace": {
+   "done": 29,
+   "infra_retries": 0,
+   "infra_missing": 0
+  }
+ },
+ "order_sha256": "2f164401305d124b40bc2fea2e52441184c7fcee5ae39ba128ca975412b7941e"
+}
