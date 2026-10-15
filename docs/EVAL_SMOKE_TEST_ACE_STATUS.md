@@ -1762,3 +1762,11 @@ Next: P4 ace/step/090 episode.
 ```json
 {"cp": 155, "prev_cp": 154, "prev_commit": "c657da5d2326f1dadf33831d4beebdaa81284da4", "utc": "2026-10-15T09:46:59Z", "kind": "result", "phase": "P4", "done_through": "ace/step/089/apply", "next": "ace/step/090/episode", "counts": {"rollouts_counted": 89, "ace_steps": 89}, "spend": {"opt_in_tok": 8280977, "opt_out_tok": 269240, "usd_proxy": 19.25}, "artifacts": {"STATE/ace/playbook.txt": "1ca6b6fa9a81add0636db099c015db6dd685d099d7a6682b49ab3699a2f77919", "STATE/ace/progress.json": "2cf99a99bfaf8d1430a88ce852dfb8f0c5bae4129f6fcd111f4b547c53de877c", "local/ace/playbooks/pb_089.txt": "1ca6b6fa9a81add0636db099c015db6dd685d099d7a6682b49ab3699a2f77919"}, "code": "e40140f70bf19302ef11cb5e23860b204b7f91c8", "open_decisions": []}
 ```
+
+## CP-0156 · 2026-10-15T09:47Z · P4 ACE adaptation · cap_spend
+
+Optimizer soft guard reached: 8,550,218 non-cache-read tokens ≥ 8.5M after step 089. The run continues (hard stop at 10M).
+
+```json
+{"cp": 156, "prev_cp": 155, "prev_commit": "3b6e05a84b65436066700235df126ac7406332c4", "utc": "2026-10-15T09:47:03Z", "kind": "cap_spend", "phase": "P4", "done_through": "ace/step/089/apply", "next": "ace/step/090/episode", "counts": {"rollouts_counted": 89, "ace_steps": 89}, "spend": {"opt_in_tok": 8280977, "opt_out_tok": 269240, "usd_proxy": 19.25}, "artifacts": {"STATE/ace/progress.json": "fd334b81f32bded2bfb1f8acc0d725e3ef7efe2369530b3ca4704a9872234fc8"}, "code": "e40140f70bf19302ef11cb5e23860b204b7f91c8", "open_decisions": [], "cap": "soft", "tokens": 8550218}
+```

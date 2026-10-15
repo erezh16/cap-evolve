@@ -5442,7 +5442,7 @@
   }
  },
  "rollouts": 89,
- "soft_cap_reached": false,
+ "soft_cap_reached": true,
  "hard_stop": false,
  "m_cap": 13500
 }
