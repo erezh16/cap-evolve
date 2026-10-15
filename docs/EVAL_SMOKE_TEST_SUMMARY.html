@@ -69,18 +69,19 @@ a { color: var(--cape); }
 <body>
 <main>
 <h1>AppWorld smoke test: cap-evolve vs ALTK-Evolve</h1>
-<p class="sub">Summary of the final results, run 13–14 October 2026. Results were first reported on
+<p class="sub">Summary of the final results, run 13–15 October 2026. Results were first reported on
 <a href="https://github.com/skillberry-ai/cap-evolve/issues/804">issue #804</a>.</p>
 
 <div class="key">
 <strong>In short</strong>
 <ul>
-<li>Both methods helped the AI agent on tasks it had never seen. ALTK-Evolve's gain is smaller and less certain.</li>
-<li>cap-evolve improved it more: <strong>53.6%</strong> of tasks solved,
-against <strong>41.1%</strong> for ALTK-Evolve and <strong>35.1%</strong> with no learning.</li>
-<li><strong>Caveat:</strong> during its training, cap-evolve broke an isolation rule. It looked at answers
-for some practice tasks, though never for the test tasks. So its lead over ALTK-Evolve may be partly
-unfair. See <a href="#breach">the reservation below</a>.</li>
+<li>Both methods made the AI agent better at tasks it had never seen.</li>
+<li>cap-evolve improved it more: <strong>57.1%</strong> of tasks solved,
+against <strong>47.3%</strong> for ALTK-Evolve and <strong>31.5%</strong> with no learning.
+The lead over ALTK-Evolve, about 10 points, is real but not large compared with the run-to-run noise.</li>
+<li>A fair cap-evolve result took three training runs: in the first two, its AI assistant found
+answer material for practice tasks. These numbers come from the third run, which never saw any.
+See <a href="#breach">the reservations</a>.</li>
 </ul>
 </div>
 
@@ -111,31 +112,33 @@ neither had seen. Each test task was run twice per method.</p>
 <title id="c1t">Success rates on the 168 test tasks, by method</title>
 <line x1="44" x2="628" y1="260.0" y2="260.0" class="grid base"/>
 <text x="38" y="264.0" class="tick" text-anchor="end">0%</text>
-<line x1="44" x2="628" y1="219.3" y2="219.3" class="grid"/>
-<text x="38" y="223.3" class="tick" text-anchor="end">10%</text>
-<line x1="44" x2="628" y1="178.7" y2="178.7" class="grid"/>
-<text x="38" y="182.7" class="tick" text-anchor="end">20%</text>
-<line x1="44" x2="628" y1="138.0" y2="138.0" class="grid"/>
-<text x="38" y="142.0" class="tick" text-anchor="end">30%</text>
-<line x1="44" x2="628" y1="97.3" y2="97.3" class="grid"/>
-<text x="38" y="101.3" class="tick" text-anchor="end">40%</text>
-<line x1="44" x2="628" y1="56.7" y2="56.7" class="grid"/>
-<text x="38" y="60.7" class="tick" text-anchor="end">50%</text>
+<line x1="44" x2="628" y1="225.1" y2="225.1" class="grid"/>
+<text x="38" y="229.1" class="tick" text-anchor="end">10%</text>
+<line x1="44" x2="628" y1="190.3" y2="190.3" class="grid"/>
+<text x="38" y="194.3" class="tick" text-anchor="end">20%</text>
+<line x1="44" x2="628" y1="155.4" y2="155.4" class="grid"/>
+<text x="38" y="159.4" class="tick" text-anchor="end">30%</text>
+<line x1="44" x2="628" y1="120.6" y2="120.6" class="grid"/>
+<text x="38" y="124.6" class="tick" text-anchor="end">40%</text>
+<line x1="44" x2="628" y1="85.7" y2="85.7" class="grid"/>
+<text x="38" y="89.7" class="tick" text-anchor="end">50%</text>
+<line x1="44" x2="628" y1="50.9" y2="50.9" class="grid"/>
+<text x="38" y="54.9" class="tick" text-anchor="end">60%</text>
 <line x1="44" x2="628" y1="16.0" y2="16.0" class="grid"/>
-<text x="38" y="20.0" class="tick" text-anchor="end">60%</text>
-<path d="M100.0,260.0 V121.2 Q100.0,117.2 104.0,117.2 H152.0 Q156.0,117.2 156.0,121.2 V260.0 Z" class="bar s-base"><title>Baseline (no learning), task success: 35.1%</title></path>
-<text x="128.0" y="111.2" class="val" text-anchor="middle">35.1%</text>
-<path d="M162.0,260.0 V46.1 Q162.0,42.1 166.0,42.1 H214.0 Q218.0,42.1 218.0,46.1 V260.0 Z" class="bar s-cape"><title>cap-evolve, task success: 53.6%</title></path>
-<text x="190.0" y="36.1" class="val" text-anchor="middle">53.6%</text>
-<path d="M224.0,260.0 V97.0 Q224.0,93.0 228.0,93.0 H276.0 Q280.0,93.0 280.0,97.0 V260.0 Z" class="bar s-altk"><title>ALTK-Evolve, task success: 41.1%</title></path>
-<text x="252.0" y="87.0" class="val" text-anchor="middle">41.1%</text>
+<text x="38" y="20.0" class="tick" text-anchor="end">70%</text>
+<path d="M100.0,260.0 V154.0 Q100.0,150.0 104.0,150.0 H152.0 Q156.0,150.0 156.0,154.0 V260.0 Z" class="bar s-base"><title>Baseline (no learning), task success: 31.5%</title></path>
+<text x="128.0" y="144.0" class="val" text-anchor="middle">31.5%</text>
+<path d="M162.0,260.0 V64.8 Q162.0,60.8 166.0,60.8 H214.0 Q218.0,60.8 218.0,64.8 V260.0 Z" class="bar s-cape"><title>cap-evolve, task success: 57.1%</title></path>
+<text x="190.0" y="54.8" class="val" text-anchor="middle">57.1%</text>
+<path d="M224.0,260.0 V99.1 Q224.0,95.1 228.0,95.1 H276.0 Q280.0,95.1 280.0,99.1 V260.0 Z" class="bar s-altk"><title>ALTK-Evolve, task success: 47.3%</title></path>
+<text x="252.0" y="89.1" class="val" text-anchor="middle">47.3%</text>
 <text x="190.0" y="286" class="cat" text-anchor="middle">Task success</text>
-<path d="M392.0,260.0 V209.5 Q392.0,205.5 396.0,205.5 H444.0 Q448.0,205.5 448.0,209.5 V260.0 Z" class="bar s-base"><title>Baseline (no learning), scenario success: 13.4%</title></path>
-<text x="420.0" y="199.5" class="val" text-anchor="middle">13.4%</text>
-<path d="M454.0,260.0 V122.4 Q454.0,118.4 458.0,118.4 H506.0 Q510.0,118.4 510.0,122.4 V260.0 Z" class="bar s-cape"><title>cap-evolve, scenario success: 34.8%</title></path>
-<text x="482.0" y="112.4" class="val" text-anchor="middle">34.8%</text>
-<path d="M516.0,260.0 V169.6 Q516.0,165.6 520.0,165.6 H568.0 Q572.0,165.6 572.0,169.6 V260.0 Z" class="bar s-altk"><title>ALTK-Evolve, scenario success: 23.2%</title></path>
-<text x="544.0" y="159.6" class="val" text-anchor="middle">23.2%</text>
+<path d="M392.0,260.0 V226.7 Q392.0,222.7 396.0,222.7 H444.0 Q448.0,222.7 448.0,226.7 V260.0 Z" class="bar s-base"><title>Baseline (no learning), scenario success: 10.7%</title></path>
+<text x="420.0" y="216.7" class="val" text-anchor="middle">10.7%</text>
+<path d="M454.0,260.0 V123.9 Q454.0,119.9 458.0,119.9 H506.0 Q510.0,119.9 510.0,123.9 V260.0 Z" class="bar s-cape"><title>cap-evolve, scenario success: 40.2%</title></path>
+<text x="482.0" y="113.9" class="val" text-anchor="middle">40.2%</text>
+<path d="M516.0,260.0 V180.0 Q516.0,176.0 520.0,176.0 H568.0 Q572.0,176.0 572.0,180.0 V260.0 Z" class="bar s-altk"><title>ALTK-Evolve, scenario success: 24.1%</title></path>
+<text x="544.0" y="170.0" class="val" text-anchor="middle">24.1%</text>
 <text x="482.0" y="286" class="cat" text-anchor="middle">Scenario success</text>
 </svg>
 <figcaption>Share of the 168 test tasks solved. Higher is better.</figcaption>
@@ -146,14 +149,14 @@ neither had seen. Each test task was run twice per method.</p>
 <thead><tr><th>Method</th><th>Task success</th><th>Scenario success</th>
 <th>Gain in task success*</th><th>Gain in scenario success*</th></tr></thead>
 <tbody>
-<tr><td>Baseline (no learning)</td><td>35.1%</td><td>13.4%</td><td>—</td><td>—</td></tr>
-<tr><td>cap-evolve ⚠</td><td>53.6%</td><td>34.8%</td><td>+18.5 <span class="muted">(+10.7 to +26.2)</span></td><td>+21.4 <span class="muted">(+10.7 to +32.1)</span></td></tr>
-<tr><td>ALTK-Evolve</td><td>41.1%</td><td>23.2%</td><td>+6.0 <span class="muted">(-0.9 to +13.1)</span></td><td>+9.8 <span class="muted">(+2.7 to +17.9)</span></td></tr>
+<tr><td>Baseline (no learning)</td><td>31.5%</td><td>10.7%</td><td>—</td><td>—</td></tr>
+<tr><td>cap-evolve †</td><td>57.1%</td><td>40.2%</td><td>+25.6 <span class="muted">(+17.6 to +33.9)</span></td><td>+29.5 <span class="muted">(+19.6 to +40.2)</span></td></tr>
+<tr><td>ALTK-Evolve</td><td>47.3%</td><td>24.1%</td><td>+15.8 <span class="muted">(+8.3 to +23.2)</span></td><td>+13.4 <span class="muted">(+4.5 to +23.2)</span></td></tr>
 </tbody>
 </table>
 </div>
 <p class="muted">* Percentage points above the baseline. The range in brackets is the 95% range (explained below).
-⚠ = see the reservation about the isolation breach.</p>
+† Third training run; see reservation 1.</p>
 
 <h3>How to read these numbers</h3>
 <dl>
@@ -173,33 +176,37 @@ likely lies inside this range. If the whole range is above zero, the gain is unl
 <title id="c2t">Improvement over the baseline, in percentage points, with 95% ranges</title>
 <line x1="110.0" x2="110.0" y1="38" y2="248" class="grid"/>
 <text x="110.0" y="264" class="tick" text-anchor="middle">-5</text>
-<line x1="173.8" x2="173.8" y1="38" y2="248" class="grid base"/>
-<text x="173.8" y="264" class="tick" text-anchor="middle">0</text>
-<line x1="237.5" x2="237.5" y1="38" y2="248" class="grid"/>
-<text x="237.5" y="264" class="tick" text-anchor="middle">+5</text>
-<line x1="301.3" x2="301.3" y1="38" y2="248" class="grid"/>
-<text x="301.3" y="264" class="tick" text-anchor="middle">+10</text>
+<line x1="161.0" x2="161.0" y1="38" y2="248" class="grid base"/>
+<text x="161.0" y="264" class="tick" text-anchor="middle">0</text>
+<line x1="212.0" x2="212.0" y1="38" y2="248" class="grid"/>
+<text x="212.0" y="264" class="tick" text-anchor="middle">+5</text>
+<line x1="263.0" x2="263.0" y1="38" y2="248" class="grid"/>
+<text x="263.0" y="264" class="tick" text-anchor="middle">+10</text>
+<line x1="314.0" x2="314.0" y1="38" y2="248" class="grid"/>
+<text x="314.0" y="264" class="tick" text-anchor="middle">+15</text>
 <line x1="365.0" x2="365.0" y1="38" y2="248" class="grid"/>
-<text x="365.0" y="264" class="tick" text-anchor="middle">+15</text>
-<line x1="428.8" x2="428.8" y1="38" y2="248" class="grid"/>
-<text x="428.8" y="264" class="tick" text-anchor="middle">+20</text>
-<line x1="492.5" x2="492.5" y1="38" y2="248" class="grid"/>
-<text x="492.5" y="264" class="tick" text-anchor="middle">+25</text>
-<line x1="556.2" x2="556.2" y1="38" y2="248" class="grid"/>
-<text x="556.2" y="264" class="tick" text-anchor="middle">+30</text>
+<text x="365.0" y="264" class="tick" text-anchor="middle">+20</text>
+<line x1="416.0" x2="416.0" y1="38" y2="248" class="grid"/>
+<text x="416.0" y="264" class="tick" text-anchor="middle">+25</text>
+<line x1="467.0" x2="467.0" y1="38" y2="248" class="grid"/>
+<text x="467.0" y="264" class="tick" text-anchor="middle">+30</text>
+<line x1="518.0" x2="518.0" y1="38" y2="248" class="grid"/>
+<text x="518.0" y="264" class="tick" text-anchor="middle">+35</text>
+<line x1="569.0" x2="569.0" y1="38" y2="248" class="grid"/>
+<text x="569.0" y="264" class="tick" text-anchor="middle">+40</text>
 <line x1="620.0" x2="620.0" y1="38" y2="248" class="grid"/>
-<text x="620.0" y="264" class="tick" text-anchor="middle">+35</text>
+<text x="620.0" y="264" class="tick" text-anchor="middle">+45</text>
 <text x="365.0" y="284" class="tick" text-anchor="middle">percentage points above the baseline (0 = no gain)</text>
 <text x="0" y="28.0" class="cat">Task success</text>
 <text x="100" y="64.0" class="tick" text-anchor="end">cap-evolve</text>
-<g><title>cap-evolve, task success: +18.5 points (95% range +10.7 to +26.2)</title><rect x="110.0" y="38.0" width="510.0" height="44" class="hit"/><line x1="310.4" x2="507.7" y1="60.0" y2="60.0" class="range s-cape"/><line x1="310.4" x2="310.4" y1="54.0" y2="66.0" class="range s-cape"/><line x1="507.7" x2="507.7" y1="54.0" y2="66.0" class="range s-cape"/><circle cx="409.0" cy="60.0" r="6" class="dot s-cape"/><text x="409.0" y="49.0" class="val" text-anchor="middle">+18.5</text></g>
+<g><title>cap-evolve, task success: +25.6 points (95% range +17.6 to +33.9)</title><rect x="110.0" y="38.0" width="510.0" height="44" class="hit"/><line x1="340.1" x2="507.1" y1="60.0" y2="60.0" class="range s-cape"/><line x1="340.1" x2="340.1" y1="54.0" y2="66.0" class="range s-cape"/><line x1="507.1" x2="507.1" y1="54.0" y2="66.0" class="range s-cape"/><circle cx="422.1" cy="60.0" r="6" class="dot s-cape"/><text x="422.1" y="49.0" class="val" text-anchor="middle">+25.6</text></g>
 <text x="100" y="108.0" class="tick" text-anchor="end">ALTK-Evolve</text>
-<g><title>ALTK-Evolve, task success: +6.0 points (95% range -0.9 to +13.1)</title><rect x="110.0" y="82.0" width="510.0" height="44" class="hit"/><line x1="162.4" x2="340.7" y1="104.0" y2="104.0" class="range s-altk"/><line x1="162.4" x2="162.4" y1="98.0" y2="110.0" class="range s-altk"/><line x1="340.7" x2="340.7" y1="98.0" y2="110.0" class="range s-altk"/><circle cx="249.6" cy="104.0" r="6" class="dot s-altk"/><text x="249.6" y="93.0" class="val" text-anchor="middle">+6.0</text></g>
+<g><title>ALTK-Evolve, task success: +15.8 points (95% range +8.3 to +23.2)</title><rect x="110.0" y="82.0" width="510.0" height="44" class="hit"/><line x1="246.0" x2="397.8" y1="104.0" y2="104.0" class="range s-altk"/><line x1="246.0" x2="246.0" y1="98.0" y2="110.0" class="range s-altk"/><line x1="397.8" x2="397.8" y1="98.0" y2="110.0" class="range s-altk"/><circle cx="321.9" cy="104.0" r="6" class="dot s-altk"/><text x="321.9" y="93.0" class="val" text-anchor="middle">+15.8</text></g>
 <text x="0" y="144.0" class="cat">Scenario success</text>
 <text x="100" y="180.0" class="tick" text-anchor="end">cap-evolve</text>
-<g><title>cap-evolve, scenario success: +21.4 points (95% range +10.7 to +32.1)</title><rect x="110.0" y="154.0" width="510.0" height="44" class="hit"/><line x1="310.4" x2="583.6" y1="176.0" y2="176.0" class="range s-cape"/><line x1="310.4" x2="310.4" y1="170.0" y2="182.0" class="range s-cape"/><line x1="583.6" x2="583.6" y1="170.0" y2="182.0" class="range s-cape"/><circle cx="447.0" cy="176.0" r="6" class="dot s-cape"/><text x="447.0" y="165.0" class="val" text-anchor="middle">+21.4</text></g>
+<g><title>cap-evolve, scenario success: +29.5 points (95% range +19.6 to +40.2)</title><rect x="110.0" y="154.0" width="510.0" height="44" class="hit"/><line x1="361.4" x2="570.8" y1="176.0" y2="176.0" class="range s-cape"/><line x1="361.4" x2="361.4" y1="170.0" y2="182.0" class="range s-cape"/><line x1="570.8" x2="570.8" y1="170.0" y2="182.0" class="range s-cape"/><circle cx="461.5" cy="176.0" r="6" class="dot s-cape"/><text x="461.5" y="165.0" class="val" text-anchor="middle">+29.5</text></g>
 <text x="100" y="224.0" class="tick" text-anchor="end">ALTK-Evolve</text>
-<g><title>ALTK-Evolve, scenario success: +9.8 points (95% range +2.7 to +17.9)</title><rect x="110.0" y="198.0" width="510.0" height="44" class="hit"/><line x1="207.9" x2="401.4" y1="220.0" y2="220.0" class="range s-altk"/><line x1="207.9" x2="207.9" y1="214.0" y2="226.0" class="range s-altk"/><line x1="401.4" x2="401.4" y1="214.0" y2="226.0" class="range s-altk"/><circle cx="299.0" cy="220.0" r="6" class="dot s-altk"/><text x="299.0" y="209.0" class="val" text-anchor="middle">+9.8</text></g>
+<g><title>ALTK-Evolve, scenario success: +13.4 points (95% range +4.5 to +23.2)</title><rect x="110.0" y="198.0" width="510.0" height="44" class="hit"/><line x1="206.5" x2="397.8" y1="220.0" y2="220.0" class="range s-altk"/><line x1="206.5" x2="206.5" y1="214.0" y2="226.0" class="range s-altk"/><line x1="397.8" x2="397.8" y1="214.0" y2="226.0" class="range s-altk"/><circle cx="297.6" cy="220.0" r="6" class="dot s-altk"/><text x="297.6" y="209.0" class="val" text-anchor="middle">+13.4</text></g>
 </svg>
 <figcaption>Gain over the baseline. The dot is the measured gain; the line is its 95% range.
 A line that reaches 0 means the gain could be zero.</figcaption>
@@ -207,24 +214,23 @@ A line that reaches 0 means the gain could be zero.</figcaption>
 
 <p>Reading the chart:</p>
 <ul>
-<li><strong>cap-evolve</strong>: its gain is clearly above zero on both measures.</li>
-<li><strong>ALTK-Evolve</strong>: its gain in scenario success is above zero. Its gain in task success
-(+6.0 points) is smaller, and its range starts just below zero, so on that
-measure the gain is not certain.</li>
-<li><strong>Head to head</strong>: cap-evolve solved 12.5 percentage points more tasks than
-ALTK-Evolve (95% range +3.9 to +21.4), subject to reservation 1.</li>
+<li><strong>Both methods</strong>: their gains are clearly above zero on both measures.</li>
+<li><strong>Head to head</strong>: cap-evolve solved 9.8 percentage points more tasks than
+ALTK-Evolve (95% range +1.2 to +18.5). The range only just stays above zero,
+so see reservation 2 before relying on the size of this gap. On scenario success the lead is clearer:
++16.1 points (+6.2 to +25.9).</li>
 </ul>
 
 <h3>By task difficulty</h3>
 <p>AppWorld labels each task easy, medium or hard. cap-evolve's lead comes from easy and medium tasks.
-On hard tasks the two methods are level, and both gain only a few points.</p>
+On hard tasks the two methods are level, and both about double the baseline.</p>
 <div class="tablewrap">
 <table>
 <thead><tr><th>Task success</th><th>Easy (57 tasks)</th><th>Medium (48)</th><th>Hard (63)</th></tr></thead>
 <tbody>
-<tr><td>Baseline (no learning)</td><td>52.6%</td><td>29.2%</td><td>23.8%</td></tr>
-<tr><td>cap-evolve ⚠</td><td>79.8%</td><td>52.1%</td><td>31.0%</td></tr>
-<tr><td>ALTK-Evolve</td><td>64.0%</td><td>28.1%</td><td>30.2%</td></tr>
+<tr><td>Baseline (no learning)</td><td>50.0%</td><td>31.2%</td><td>15.1%</td></tr>
+<tr><td>cap-evolve †</td><td>80.7%</td><td>65.6%</td><td>29.4%</td></tr>
+<tr><td>ALTK-Evolve</td><td>71.1%</td><td>40.6%</td><td>31.0%</td></tr>
 </tbody>
 </table>
 </div>
@@ -232,63 +238,69 @@ On hard tasks the two methods are level, and both gain only a few points.</p>
 <h2 id="breach">Reservations</h2>
 
 <div class="warn">
-<strong>1. cap-evolve broke an isolation rule during training</strong>
-<p>To be fair, a learning method must only see whether each practice attempt passed, and which checks
-failed. It must never see the answers. cap-evolve's AI assistant can run shell commands on the
-machine. In its second training round, helper processes it started opened the answer files and
-reference solutions of some <em>practice</em> tasks. They also ran the official grader to test their
-own code.</p>
-<p><strong>What this does not affect:</strong> the test tasks were locked away the whole time, and a scan
-of every log found no access to them. The test score was not obtained by seeing test answers.</p>
-<p><strong>What it does affect:</strong> later rounds built on round 2's changes, which may include
-know-how taken from the practice answers. ALTK-Evolve had no such access. So cap-evolve's lead over
-ALTK-Evolve may be partly an unfair advantage. We added a lock for the later rounds. A clean re-run
-is needed to settle the comparison.</p>
+<strong>1. Making cap-evolve's training fair took three runs</strong>
+<p>A fair learning method may only see whether each practice attempt passed and which checks failed,
+never the answers. cap-evolve's AI assistant can run shell commands on the machine, so we had to keep
+the answers out of its reach:</p>
+<ul>
+<li><strong>Run 1</strong>: its helper processes opened answer files of some practice tasks and ran the
+official grader. Result discarded.</li>
+<li><strong>Run 2</strong>: with the answers hidden, it found AppWorld's task-generator code for six
+practice scenarios, which shows how they are solved and checked. Result discarded.</li>
+<li><strong>Run 3</strong> (the results above): answers, grader, task generators and test data were all
+hidden. A check of all 566 commands it ran confirms it touched none of them.</li>
+</ul>
+<p><strong>One remaining point:</strong> in run 3 it read the source code of AppWorld's simulated apps,
+that is, how the apps work inside. That is not answers, and it is the same for every task, but it is more
+than the public documentation the plan intended, and more than ALTK-Evolve had.</p>
 </div>
 
-<h3>2. One run of each method</h3>
-<p>Each method trained once. Another training run could produce a better or worse result. These
-numbers describe the two trained agents, not the methods in general.</p>
+<h3>2. Results vary between runs</h3>
+<p>We ran the same baseline and ALTK-Evolve agents, unchanged, in two separate test runs. The baseline
+went from 35.1% to 31.5%, ALTK-Evolve from
+41.1% to 47.3%. Results therefore move by several
+points between runs, even for identical agents. That is why all three methods were scored together in
+one run, and why a gap of about 10 points between two methods should be read with care.</p>
 
-<h3>3. Unequal training effort</h3>
-<p>cap-evolve used about 1,030 practice attempts while training, and ALTK-Evolve about 150. This is how
-each method normally works, but the effort was not matched.</p>
+<h3>3. One training run of each method</h3>
+<p>Each method's scored agent comes from one training run. Another run could produce a better or worse
+agent. These numbers describe the two trained agents, not the methods in general.</p>
 
-<h3>4. ALTK-Evolve had to run in its reduced mode</h3>
+<h3>4. Unequal training effort</h3>
+<p>cap-evolve used 882 practice attempts while training, ALTK-Evolve 147. This is how each method
+normally works, but the effort was not matched.</p>
+
+<h3>5. ALTK-Evolve had to run in its reduced mode</h3>
 <p>ALTK-Evolve produced 1,715 lessons. All together they would take about 83,000 tokens of text,
 about twice what this model can read at once (about 40,000 tokens). So it could only use its
 "retrieval" mode: 18 always-on lessons plus the 10 most relevant to each task. Published ALTK-Evolve
 results for this model used a different test setup, so they are not directly comparable.</p>
 
-<h3>5. Practice scores overstate real performance</h3>
-<p>cap-evolve solved 88% of its practice tasks, but only 53.6% of the new test tasks. It was
+<h3>6. Practice scores overstate real performance</h3>
+<p>cap-evolve solved 78.9% of its practice tasks, but 57.1% of the new test tasks. It was
 tuned on the very tasks it was scored on during training, so its practice score is optimistic. Only
 the test scores above are a fair measure.</p>
-
-<h3>6. Results vary between runs</h3>
-<p>Running the same task twice gave a different outcome on roughly a quarter to a third of the tasks.
-That is why each task ran twice, and why the results are given with ranges.</p>
 
 <h2>Cost</h2>
 <div class="tablewrap">
 <table>
 <thead><tr><th></th><th>cap-evolve</th><th>ALTK-Evolve</th></tr></thead>
 <tbody>
-<tr><td>Training: practice attempts</td><td>1,029</td><td>147</td></tr>
-<tr><td>Training: AI assistant (Claude Sonnet 5.5)</td><td>$67.84*</td><td>1,031 calls, 3.8M tokens</td></tr>
-<tr><td>Solving test tasks: average steps per task</td><td>8.8</td><td>14.8</td></tr>
-<tr><td>Solving test tasks: input tokens per task</td><td>91K</td><td>141K</td></tr>
+<tr><td>Training: practice attempts</td><td>882</td><td>147</td></tr>
+<tr><td>Training: AI assistant (Claude Sonnet 5.5)</td><td>$54.16*</td><td>1,031 calls, 3.8M tokens</td></tr>
+<tr><td>Solving test tasks: average steps per task</td><td>9.9</td><td>14.6</td></tr>
+<tr><td>Solving test tasks: input tokens per task</td><td>91K</td><td>138K</td></tr>
 </tbody>
 </table>
 </div>
-<p class="muted">* About $15 of this went to three candidate changes that were never scored, because of a
-bug in our test setup. ALTK-Evolve's spend was logged as tokens, not dollars. The baseline agent takes
-12.7 steps and 93K input tokens per task.</p>
+<p class="muted">* Third run only. The two discarded runs cost a further $67.84 and $44.23. ALTK-Evolve's
+spend was logged as tokens, not dollars. The baseline agent takes
+12.3 steps and 90K input tokens per task.</p>
 
 <footer>
 Source: final results posted on
 <a href="https://github.com/skillberry-ai/cap-evolve/issues/804">issue #804</a>. Full method, findings and
-deviations: <code>docs/EVAL_SMOKE_TEST.md</code> (appendices A and B). AppWorld commit 42b5bcf; 1,008 test
+deviations: <code>docs/EVAL_SMOKE_TEST.md</code> (appendices A–C). AppWorld commit 42b5bcf; 1,008 test
 runs (168 tasks × 3 methods × 2 runs), with no failed runs.
 </footer>
 </main>

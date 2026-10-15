@@ -1,5 +1,10 @@
 # AppWorld smoke test: what to fix and what to run again
 
+**Status: executed 2026-10-15.** Training ran twice more. The first re-run (`cape_hc_s1`) leaked
+practice-task generator code and was discarded (F19). The second (`cape_hc_s2`) is clean of answers,
+with one disclosed deviation (F20). The final window was re-run for all three methods. Results: plan
+Appendix C, and issue #804 updates 7–22.
+
 Follow-up to the [summary](EVAL_SMOKE_TEST_SUMMARY.html) and the plan
 ([EVAL_SMOKE_TEST.md](EVAL_SMOKE_TEST.md)). Codes like "F14" point to the findings in its Appendix A.
 

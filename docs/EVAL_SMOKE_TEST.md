@@ -781,6 +781,22 @@ and the lint still work), and A9 also plants a secret in the generator dir. **De
 2026-10-15): run the training a third time (`cape_hc_s2`). `cape_hc_s1` is kept as a labelled
 diagnostic and is not scored.**
 
+**F20. The third training run (`cape_hc_s2`) is clean of answers, but it read AppWorld's app source.**
+Search: rounds 1, 3 and 4 accepted (0.361 → 0.673 → 0.728 → 0.789); rounds 2, 5 and 6 rejected (0.694,
+0.823, 0.823; each Δ below one SE). Champion: round 4. 882 metric calls; $54.16; 37.5M optimizer
+tokens; 0 infra errors. Isolation scan: 0 test-id hits. 0 of 566 tool calls named answer files,
+solutions, the grader, test data or the task generators; the remaining word matches are directory
+listings and our adapter's own source. **Deviation (not a breach):** in rounds 4–6 the optimizer read
+the implementation of AppWorld's simulated apps (`src/appworld/apps/*/apis.py`, `models.py`; e.g.
+`play_music`, the song queue, `move_file`, `show_directory`). It also listed how AppWorld packages its
+encrypted source bundles, without trying to decrypt them. This is environment code shared by every
+task, test tasks included; it holds no task answers, solutions or evaluation logic. But the plan's
+read-only context for the optimizer was the public API docs, the README and the stock prompt
+(§4), and ALTK-Evolve had nothing comparable. It was reachable because the allowlist kept
+`appworld/src` for the venv's editable installs. The optimizer never needs AppWorld importable (its lint
+and helper tests do not import it), so future runs should drop AppWorld from the allowlist entirely.
+The final window (`runs/final2`) scores this champion, labelled with this deviation.
+
 ### A.4 Deviations from the plan
 
 | plan | done | why |
@@ -869,3 +885,62 @@ scenario-clustered paired bootstrap (56 clusters, 10,000 resamples), unadjusted.
 - Limits: one search seed per method; unmatched budgets (1,029 vs 147 search rollouts); no multiplicity
   correction; cape-hc's isolation breach (F14). These are statements about two artifacts, not about
   the methods.
+
+---
+
+## Appendix C. The fix: re-run training and final window (2026-10-15)
+
+Executed per `docs/EVAL_SMOKE_TEST_FIX.md`, with all of the original plan's rules: official splits,
+train = val = train ∪ dev, test sealed and `root_full` locked during search, F1 feedback, lints, the
+same spec and budget, 24 workers in search and 48 in the window, and progress posted to #804
+(updates 7–22).
+
+### C.1 Training runs
+
+| run | isolation | outcome | status |
+|---|---|---|---|
+| `cape_hc_s0` (first run) | file permissions only | champion round 6, val 0.884; round 2 read train/dev answers and ran the grader (F14) | discarded |
+| `cape_hc_s1` | namespace wrapper; whole AppWorld clone visible | champion round 1, val 0.769; round 1 read the task generators of 6 train/dev scenarios (F19) | discarded, diagnostic only |
+| `cape_hc_s2` | namespace wrapper; only AppWorld `src/` + `experiments/` visible | champion round 4, val 0.789; 0 answer, test or generator access; read app implementation source in rounds 4–6 (F20, disclosed) | **scored** |
+
+All three reuse the same seed baseline (val 0.361). Each scored run used 882 or 1,029 metric calls;
+`cape_hc_s2` cost $54.16 (37.5M optimizer tokens). Before each re-run, check A9 passed in the launch
+configuration.
+
+### C.2 Second final window (`runs/final2`; 1,008 episodes; 0 infra errors; 0 missing cells)
+
+The seed and ALTK-Evolve artifacts are byte-identical to the first window (same tree hashes).
+
+| arm | TGC | SGC | Δ TGC vs seed [95% CI] | Δ SGC vs seed [95% CI] |
+|---|---|---|---|---|
+| seed | 31.5 | 10.7 | — | — |
+| cape-hc (`cape_hc_s2`, round 4) | 57.1 | 40.2 | +25.6 [+17.6, +33.9] | +29.5 [+19.6, +40.2] |
+| ALTK-Evolve (retrieval dose) | 47.3 | 24.1 | +15.8 [+8.3, +23.2] | +13.4 [+4.5, +23.2] |
+
+cape-hc − ALTK-Evolve: Δ TGC +9.8 [+1.2, +18.5], Δ SGC +16.1 [+6.2, +25.9].
+
+| TGC by difficulty | Easy (57) | Medium (48) | Hard (63) |
+|---|---|---|---|
+| seed | 50.0 | 31.2 | 15.1 |
+| cape-hc | 80.7 | 65.6 | 29.4 |
+| altk | 71.1 | 40.6 | 31.0 |
+
+**Window-to-window stability (identical artifacts):** seed TGC 35.1 → 31.5
+(pooled 4 trials 33.3); ALTK-Evolve 41.1 → 47.3 (pooled
+44.2). Only 54% (seed) and 67% (ALTK-Evolve) of
+tasks had the same mean result in both windows. The model behind RITS returns noticeably different
+results between windows, so comparisons are valid only inside one window, and a gap of about 10
+points between arms is near the edge of what one window can resolve.
+
+### C.3 Reading
+
+- Inside one window, cape-hc beats the seed by +25.6 TGC and ALTK-Evolve by +9.8 TGC; both CIs exclude
+  0, the second only barely (+1.2). On SGC the lead over ALTK-Evolve is clearer (+16.1 [+6.2, +25.9]).
+- cape-hc's lead comes from Easy and Medium tasks. On Hard tasks the two are level (29.4 vs 31.0).
+- The clean cape-hc's search score (0.789, a fit metric) overstates its test TGC (57.1) by 22 points,
+  against 35 points for the breached first run.
+- Training runs `cape_hc_s1` and `cape_hc_s2` reached their first champion at 0.769 and 0.673. The
+  run that read 6 generators started higher; one pair proves nothing, but it fits with the generators
+  helping.
+- Remaining limits: one clean search seed per method; unmatched budgets (882 vs 147 search episodes);
+  no multiplicity correction; the F20 deviation; the window-to-window drift above.
