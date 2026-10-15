@@ -1,15 +1,15 @@
 {
  "window": "p8final",
  "cells_total": 672,
- "cells_done": 559,
+ "cells_done": 598,
  "per_arm": {
   "ace": {
-   "done": 288,
+   "done": 308,
    "infra_retries": 0,
    "infra_missing": 0
   },
   "seed": {
-   "done": 271,
+   "done": 290,
    "infra_retries": 0,
    "infra_missing": 0
   }
