@@ -1853,3 +1853,12 @@ Next: P7/scan.
 ```json
 {"cp": 165, "prev_cp": 164, "prev_commit": "e31cc76d03cd4776c7cd42debeea58ce697f7ae1", "utc": "2026-10-15T10:16:39Z", "kind": "phase_done", "phase": "P6", "done_through": "p6dev/114", "next": "P7/scan", "counts": {"rollouts_counted": 90, "ace_steps": 90}, "spend": {"opt_in_tok": 8388301, "opt_out_tok": 272174, "usd_proxy": 19.5}, "artifacts": {"STATE/dev/cells.csv": "6afb6bbd88d262c96ad88bd0bd88f81985ab5b6f91ce68795d53e25ff699ccbd"}, "code": "e40140f70bf19302ef11cb5e23860b204b7f91c8", "open_decisions": [], "window": {"name": "p6dev", "done": 114, "total": 114, "order_sha256": "5a7e1a3bc7476fb41b136bc7bbb15d4d30d80dd59a6d2efae302318a7beee5c7"}}
 ```
+
+## CP-0166 · 2026-10-15T10:16Z · P7 isolation scan · phase_done
+
+Isolation scan done over 182 optimizer calls, 451 ACE step files and 91 playbook snapshots: test ids 0, `test_normal`/`root_full` 180, `answer.json`/`ground_truth` 180; canary (release-wide, reported only) 0; episode fs_probe hits 0. Breach: True.
+Next: P8 final window.
+
+```json
+{"cp": 166, "prev_cp": 165, "prev_commit": "8801cb7a980a962df8d8bf7df9a3a4eea107e620", "utc": "2026-10-15T10:16:43Z", "kind": "phase_done", "phase": "P7", "done_through": "P7/scan", "next": "P8/final", "counts": {"rollouts_counted": 90, "ace_steps": 90}, "spend": {"opt_in_tok": 8388301, "opt_out_tok": 272174, "usd_proxy": 19.5}, "artifacts": {"STATE/isolation_scan.json": "848f04ec1da368ffa2c316eed70edd1dd50f0ccc35f5eb31d3364bf512a37679"}, "code": "e40140f70bf19302ef11cb5e23860b204b7f91c8", "open_decisions": [], "scan": {"breach": true}}
+```
