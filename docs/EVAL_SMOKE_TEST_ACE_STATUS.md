@@ -1948,3 +1948,12 @@ Interim update 11 posted on #804: https://github.com/skillberry-ai/cap-evolve/is
 ```json
 {"cp": 176, "prev_cp": 175, "prev_commit": "c0439a33e9748a6b27dc7c6cad870162786b8611", "utc": "2026-10-15T10:51:45Z", "kind": "posted", "phase": "P8", "done_through": "p8final/310", "next": "p8final/cells", "counts": {"rollouts_counted": 90, "ace_steps": 90}, "spend": {"opt_in_tok": 8388301, "opt_out_tok": 272174, "usd_proxy": 19.5}, "artifacts": {}, "code": "9918abfaef689edfd068dbd626485e345e0e9b5d", "open_decisions": [], "post": "interim-11", "url": "https://github.com/skillberry-ai/cap-evolve/issues/804#issuecomment-6190343232"}
 ```
+
+## CP-0177 · 2026-10-15T10:52Z · P8 final window · result
+
+final window: 44 cells done since the last entry (order positions 198–380); 354/672 done (ace 187, seed 167); infra retries 0, cells still infra-failed 0, context_exceeded 0.
+Next: p8final remaining cells.
+
+```json
+{"cp": 177, "prev_cp": 176, "prev_commit": "75d89180f43084a341f8000e85af853bdc0d6a2d", "utc": "2026-10-15T10:52:11Z", "kind": "result", "phase": "P8", "done_through": "p8final/354", "next": "p8final/cells", "counts": {"rollouts_counted": 90, "ace_steps": 90}, "spend": {"opt_in_tok": 8388301, "opt_out_tok": 272174, "usd_proxy": 19.5}, "artifacts": {"STATE/final/progress.json": "22ef8416aee9324ce180a7273c7b2b93781d391df66bdf4ab5b53b6e404d55d0"}, "code": "9918abfaef689edfd068dbd626485e345e0e9b5d", "open_decisions": [], "window": {"name": "p8final", "done": 354, "total": 672, "order_sha256": "2f164401305d124b40bc2fea2e52441184c7fcee5ae39ba128ca975412b7941e"}}
+```
