@@ -1296,3 +1296,13 @@ Next: ace/step/054/episode.
 ```json
 {"cp": 115, "prev_cp": 114, "prev_commit": "8f91e6ad88221bf9b91f8c9d327f589886e5c9b3", "utc": "2026-10-15T08:16:16Z", "kind": "heartbeat", "phase": "P4", "done_through": "ace/step/053/apply", "next": "ace/step/054/episode", "counts": {"rollouts_counted": 53, "ace_steps": 53}, "spend": {"opt_in_tok": 4473365, "opt_out_tok": 165015, "usd_proxy": 10.6}, "artifacts": {}, "code": "e40140f70bf19302ef11cb5e23860b204b7f91c8", "open_decisions": [], "runner": "none"}
 ```
+
+## CP-0116 · 2026-10-15T08:23Z · P4 resume · resume
+
+Resume (reason: optimizer gateway team budget exceeded (HTTP 429 budget_exceeded) at step 054 Reflector, 2026-10-15T00:09Z; gateway answers again at 08:25Z). Plan: continue at next = ace/step/054/episode.
+Adopted local work newer than CP-0115: ace/step/054: episode.json, messages.json.
+Next: ace/step/054/episode.
+
+```json
+{"cp": 116, "prev_cp": 115, "prev_commit": "01f73c3bb37e4662df6d88573c8337b41b1873e3", "utc": "2026-10-15T08:23:26Z", "kind": "resume", "phase": "P4", "done_through": "ace/step/053/apply", "next": "ace/step/054/episode", "counts": {"rollouts_counted": 53, "ace_steps": 53}, "spend": {"opt_in_tok": 4473365, "opt_out_tok": 165015, "usd_proxy": 10.6}, "artifacts": {}, "code": "e40140f70bf19302ef11cb5e23860b204b7f91c8", "open_decisions": [], "adopted": ["ace/step/054: episode.json, messages.json"], "plan": ["continue at next = ace/step/054/episode"]}
+```
