@@ -1844,3 +1844,12 @@ Next: p6dev remaining cells.
 ```json
 {"cp": 164, "prev_cp": 163, "prev_commit": "6d131a33e894b89bac7bf22f31cf080ae0619b58", "utc": "2026-10-15T10:09:13Z", "kind": "result", "phase": "P6", "done_through": "p6dev/113", "next": "p6dev/cells", "counts": {"rollouts_counted": 90, "ace_steps": 90}, "spend": {"opt_in_tok": 8388301, "opt_out_tok": 272174, "usd_proxy": 19.5}, "artifacts": {"STATE/dev/cells.csv": "a58735c2faff24d2d349da46d029c59e767a99c5822b028b4a46bbcdd11a6c84"}, "code": "e40140f70bf19302ef11cb5e23860b204b7f91c8", "open_decisions": [], "window": {"name": "p6dev", "done": 113, "total": 114, "order_sha256": "5a7e1a3bc7476fb41b136bc7bbb15d4d30d80dd59a6d2efae302318a7beee5c7"}}
 ```
+
+## CP-0165 · 2026-10-15T10:16Z · P6 dev diagnostic · phase_done
+
+dev diagnostic: 1 cells done since the last entry (order positions 109–109); 114/114 done (ace 57, seed 57); infra retries 0, cells still infra-failed 0, context_exceeded 0.
+Next: P7/scan.
+
+```json
+{"cp": 165, "prev_cp": 164, "prev_commit": "e31cc76d03cd4776c7cd42debeea58ce697f7ae1", "utc": "2026-10-15T10:16:39Z", "kind": "phase_done", "phase": "P6", "done_through": "p6dev/114", "next": "P7/scan", "counts": {"rollouts_counted": 90, "ace_steps": 90}, "spend": {"opt_in_tok": 8388301, "opt_out_tok": 272174, "usd_proxy": 19.5}, "artifacts": {"STATE/dev/cells.csv": "6afb6bbd88d262c96ad88bd0bd88f81985ab5b6f91ce68795d53e25ff699ccbd"}, "code": "e40140f70bf19302ef11cb5e23860b204b7f91c8", "open_decisions": [], "window": {"name": "p6dev", "done": 114, "total": 114, "order_sha256": "5a7e1a3bc7476fb41b136bc7bbb15d4d30d80dd59a6d2efae302318a7beee5c7"}}
+```

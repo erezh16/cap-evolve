@@ -107,6 +107,7 @@ idx,arm,reward,steps,prompt_tokens_max,completion_tokens,termination,infra_error
 105,seed,0.0,7,7109,1865,completed,False,0
 106,seed,0.0,3,4504,2273,completed,False,0
 107,ace,1.0,5,19854,2103,completed,False,0
+108,seed,0.0,50,16358,30245,step_cap,False,0
 109,ace,1.0,3,17309,1103,completed,False,0
 110,seed,1.0,4,6168,1775,completed,False,0
 111,seed,0.0,10,6776,4771,completed,False,0
