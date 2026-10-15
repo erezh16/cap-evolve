@@ -1126,3 +1126,13 @@ Next: ace/step/054/episode.
 ```json
 {"cp": 98, "prev_cp": 97, "prev_commit": "b82558bff67bd1dfc43ffd36c40c0ceb61da046f", "utc": "2026-10-15T01:10:19Z", "kind": "heartbeat", "phase": "P4", "done_through": "ace/step/053/apply", "next": "ace/step/054/episode", "counts": {"rollouts_counted": 53, "ace_steps": 53}, "spend": {"opt_in_tok": 4473365, "opt_out_tok": 165015, "usd_proxy": 10.6}, "artifacts": {}, "code": "e40140f70bf19302ef11cb5e23860b204b7f91c8", "open_decisions": [], "runner": "none"}
 ```
+
+## CP-0099 · 2026-10-15T01:35Z · P4 heartbeat · heartbeat
+
+No checkpoint for 25 min. Phase P4, last result: ace/step/053/apply.
+Runner: no runner. Last log line: `2026-10-15T00:09:06Z | ace | P4 | step 054/90 episode completed success=True steps=10 prompt_max=21370`.
+Next: ace/step/054/episode.
+
+```json
+{"cp": 99, "prev_cp": 98, "prev_commit": "e9c6410703a0976ae6f60dc3d9ca4c8f7271f4ef", "utc": "2026-10-15T01:35:22Z", "kind": "heartbeat", "phase": "P4", "done_through": "ace/step/053/apply", "next": "ace/step/054/episode", "counts": {"rollouts_counted": 53, "ace_steps": 53}, "spend": {"opt_in_tok": 4473365, "opt_out_tok": 165015, "usd_proxy": 10.6}, "artifacts": {}, "code": "e40140f70bf19302ef11cb5e23860b204b7f91c8", "open_decisions": [], "runner": "none"}
+```
