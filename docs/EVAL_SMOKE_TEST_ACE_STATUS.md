@@ -1940,3 +1940,11 @@ Next: p8final remaining cells.
 ```json
 {"cp": 175, "prev_cp": 174, "prev_commit": "2e2137b6d367b820086f8b8489fa2c04a5452680", "utc": "2026-10-15T10:47:07Z", "kind": "result", "phase": "P8", "done_through": "p8final/310", "next": "p8final/cells", "counts": {"rollouts_counted": 90, "ace_steps": 90}, "spend": {"opt_in_tok": 8388301, "opt_out_tok": 272174, "usd_proxy": 19.5}, "artifacts": {"STATE/final/progress.json": "4bdfe716bef0b021d5914c8d1ab7328596b41c81d8e73c252f1067d3d49672d3"}, "code": "9918abfaef689edfd068dbd626485e345e0e9b5d", "open_decisions": [], "window": {"name": "p8final", "done": 310, "total": 672, "order_sha256": "2f164401305d124b40bc2fea2e52441184c7fcee5ae39ba128ca975412b7941e"}}
 ```
+
+## CP-0176 · 2026-10-15T10:51Z · P8 interim #804 · posted
+
+Interim update 11 posted on #804: https://github.com/skillberry-ai/cap-evolve/issues/804#issuecomment-6190343232 (test window halfway).
+
+```json
+{"cp": 176, "prev_cp": 175, "prev_commit": "c0439a33e9748a6b27dc7c6cad870162786b8611", "utc": "2026-10-15T10:51:45Z", "kind": "posted", "phase": "P8", "done_through": "p8final/310", "next": "p8final/cells", "counts": {"rollouts_counted": 90, "ace_steps": 90}, "spend": {"opt_in_tok": 8388301, "opt_out_tok": 272174, "usd_proxy": 19.5}, "artifacts": {}, "code": "9918abfaef689edfd068dbd626485e345e0e9b5d", "open_decisions": [], "post": "interim-11", "url": "https://github.com/skillberry-ai/cap-evolve/issues/804#issuecomment-6190343232"}
+```
