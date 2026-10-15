@@ -97,5 +97,29 @@
   "source": "load_task_ids('train')",
   "n": 90,
   "sha256": "d18d8b604dc6c8d29c8c615c8057215169244bcadb54503a258978349f628654"
+ },
+ "freeze": {
+  "ace_step": 90,
+  "guard_stop": false,
+  "tree_sha256": {
+   "seed": "8838f9d7ef4553e2b8b643cb295451d85f6e4aa9beaaba57d29cdc39d8a02c81",
+   "ace": "e92fbff4b652aaaa8cce0e46bd9556b4706141834f1486245d7b9edc919b117f"
+  },
+  "playbook_sha256": "1ca6b6fa9a81add0636db099c015db6dd685d099d7a6682b49ab3699a2f77919",
+  "tokens": 13430,
+  "chars": 55513,
+  "bullets": 82,
+  "sections": {
+   "STRATEGIES AND HARD RULES": 10,
+   "APIs TO USE FOR SPECIFIC INFORMATION": 16,
+   "USEFUL CODE SNIPPETS AND TEMPLATES": 9,
+   "COMMON MISTAKES AND CORRECT STRATEGIES": 18,
+   "PROBLEM-SOLVING HEURISTICS AND WORKFLOWS": 2,
+   "VERIFICATION CHECKLIST": 11,
+   "TROUBLESHOOTING AND PITFALLS:": 0,
+   "OTHERS": 16
+  },
+  "identical_to_own_seed": false,
+  "inert": false
  }
 }
