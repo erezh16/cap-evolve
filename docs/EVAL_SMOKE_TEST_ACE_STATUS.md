@@ -1792,3 +1792,11 @@ Next: P6 dev diagnostic.
 ```json
 {"cp": 158, "prev_cp": 157, "prev_commit": "b8b8af31a621d272377c0e18a72e1d904f2a631d", "utc": "2026-10-15T09:48:55Z", "kind": "phase_done", "phase": "P5", "done_through": "P5/freeze", "next": "P6/dev", "counts": {"rollouts_counted": 90, "ace_steps": 90}, "spend": {"opt_in_tok": 8388301, "opt_out_tok": 272174, "usd_proxy": 19.5}, "artifacts": {"STATE/manifest.json": "8ad08c9e6958057ade8c841266cd0693054437bef91cc1dc2af423f8769a88f2", "STATE/final/artifacts/ace/memory/playbook.md": "1ca6b6fa9a81add0636db099c015db6dd685d099d7a6682b49ab3699a2f77919"}, "code": "e40140f70bf19302ef11cb5e23860b204b7f91c8", "open_decisions": [], "freeze": {"ace_step": 90, "guard_stop": false, "tree_sha256": {"seed": "8838f9d7ef4553e2b8b643cb295451d85f6e4aa9beaaba57d29cdc39d8a02c81", "ace": "e92fbff4b652aaaa8cce0e46bd9556b4706141834f1486245d7b9edc919b117f"}, "playbook_sha256": "1ca6b6fa9a81add0636db099c015db6dd685d099d7a6682b49ab3699a2f77919", "tokens": 13430, "chars": 55513, "bullets": 82, "sections": {"STRATEGIES AND HARD RULES": 10, "APIs TO USE FOR SPECIFIC INFORMATION": 16, "USEFUL CODE SNIPPETS AND TEMPLATES": 9, "COMMON MISTAKES AND CORRECT STRATEGIES": 18, "PROBLEM-SOLVING HEURISTICS AND WORKFLOWS": 2, "VERIFICATION CHECKLIST": 11, "TROUBLESHOOTING AND PITFALLS:": 0, "OTHERS": 16}, "identical_to_own_seed": false, "inert": false}}
 ```
+
+## CP-0159 · 2026-10-15T09:48Z · P6 dev diagnostic · phase_start
+
+Phase start: 114 cells (57 dev × seed, ace × 1 trial), 24 workers. Runner pid 81067.
+
+```json
+{"cp": 159, "prev_cp": 158, "prev_commit": "cd1ad139d88482b0dc09e6cf49e9348563aba6af", "utc": "2026-10-15T09:48:58Z", "kind": "phase_start", "phase": "P6", "done_through": "P5/freeze", "next": "P6/dev", "counts": {"rollouts_counted": 90, "ace_steps": 90}, "spend": {"opt_in_tok": 8388301, "opt_out_tok": 272174, "usd_proxy": 19.5}, "artifacts": {}, "code": "e40140f70bf19302ef11cb5e23860b204b7f91c8", "open_decisions": []}
+```
