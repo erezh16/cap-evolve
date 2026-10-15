@@ -1318,3 +1318,11 @@ Next: P4 ace/step/055 episode.
 ```json
 {"cp": 117, "prev_cp": 116, "prev_commit": "fa91d6d4b06b6c78798e077f9c2a791b392c94ac", "utc": "2026-10-15T08:24:25Z", "kind": "result", "phase": "P4", "done_through": "ace/step/054/apply", "next": "ace/step/055/episode", "counts": {"rollouts_counted": 54, "ace_steps": 54}, "spend": {"opt_in_tok": 4583153, "opt_out_tok": 169205, "usd_proxy": 10.86}, "artifacts": {"STATE/ace/playbook.txt": "1ca6b6fa9a81add0636db099c015db6dd685d099d7a6682b49ab3699a2f77919", "STATE/ace/progress.json": "bbb2a07e3124c8fce4877263ad048a3d4019205a0af27158362229795374c3ba", "local/ace/playbooks/pb_054.txt": "1ca6b6fa9a81add0636db099c015db6dd685d099d7a6682b49ab3699a2f77919"}, "code": "e40140f70bf19302ef11cb5e23860b204b7f91c8", "open_decisions": []}
 ```
+
+## CP-0118 · 2026-10-15T08:24Z · P4 interim #804 · posted
+
+Interim update 6 posted on #804: https://github.com/skillberry-ai/cap-evolve/issues/804#issuecomment-6187788533 (stopped by the gateway budget at step 54, resumed).
+
+```json
+{"cp": 118, "prev_cp": 117, "prev_commit": "b03eb6f00bd5e539b95d07e479c743c0ff9d8392", "utc": "2026-10-15T08:24:29Z", "kind": "posted", "phase": "P4", "done_through": "ace/step/054/apply", "next": "ace/step/055/episode", "counts": {"rollouts_counted": 54, "ace_steps": 54}, "spend": {"opt_in_tok": 4583153, "opt_out_tok": 169205, "usd_proxy": 10.86}, "artifacts": {}, "code": "e40140f70bf19302ef11cb5e23860b204b7f91c8", "open_decisions": [], "post": "interim-6", "url": "https://github.com/skillberry-ai/cap-evolve/issues/804#issuecomment-6187788533"}
+```
