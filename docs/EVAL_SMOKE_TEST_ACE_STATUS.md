@@ -1770,3 +1770,15 @@ Optimizer soft guard reached: 8,550,218 non-cache-read tokens ≥ 8.5M after ste
 ```json
 {"cp": 156, "prev_cp": 155, "prev_commit": "3b6e05a84b65436066700235df126ac7406332c4", "utc": "2026-10-15T09:47:03Z", "kind": "cap_spend", "phase": "P4", "done_through": "ace/step/089/apply", "next": "ace/step/090/episode", "counts": {"rollouts_counted": 89, "ace_steps": 89}, "spend": {"opt_in_tok": 8280977, "opt_out_tok": 269240, "usd_proxy": 19.25}, "artifacts": {"STATE/ace/progress.json": "fd334b81f32bded2bfb1f8acc0d725e3ef7efe2369530b3ca4704a9872234fc8"}, "code": "e40140f70bf19302ef11cb5e23860b204b7f91c8", "open_decisions": [], "cap": "soft", "tokens": 8550218}
 ```
+
+## CP-0157 · 2026-10-15T09:48Z · P4 ACE adaptation · result
+
+ACE step 090 done (episode pass, 8 steps, completed; +0 bullets; 1 lint_drop, 0 cap_drop); 1 counted rollout.
+Totals: rollouts counted 90 (ace 90, seed 0); playbook 82 bullets, 55,513 chars, 13,430 tokens (M_cap 13,500); optimizer 8.39M in / 0.27M out tok, $19.50 proxy.
+Isolation scan this step: no hits.
+Runner: alive (pid 81069).
+Next: P5 freeze.
+
+```json
+{"cp": 157, "prev_cp": 156, "prev_commit": "437e711dee0a5e19e8d71d7c4f641f900a73ff4b", "utc": "2026-10-15T09:48:51Z", "kind": "result", "phase": "P4", "done_through": "ace/step/090/apply", "next": "P5/freeze", "counts": {"rollouts_counted": 90, "ace_steps": 90}, "spend": {"opt_in_tok": 8388301, "opt_out_tok": 272174, "usd_proxy": 19.5}, "artifacts": {"STATE/ace/playbook.txt": "1ca6b6fa9a81add0636db099c015db6dd685d099d7a6682b49ab3699a2f77919", "STATE/ace/progress.json": "c6a764875513c4775966f0be93deb87c61280e1217f54977b76a5629e1ac58bb", "local/ace/playbooks/pb_090.txt": "1ca6b6fa9a81add0636db099c015db6dd685d099d7a6682b49ab3699a2f77919"}, "code": "e40140f70bf19302ef11cb5e23860b204b7f91c8", "open_decisions": []}
+```
