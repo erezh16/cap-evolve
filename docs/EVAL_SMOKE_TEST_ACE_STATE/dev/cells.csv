@@ -55,6 +55,7 @@ idx,arm,reward,steps,prompt_tokens_max,completion_tokens,termination,infra_error
 53,ace,1.0,9,20234,1336,completed,False,0
 54,seed,1.0,8,6479,2187,completed,False,0
 55,ace,1.0,4,17357,1282,completed,False,0
+56,seed,0.0,38,14333,18714,completed,False,0
 57,ace,1.0,5,17897,1991,completed,False,0
 58,ace,1.0,10,22500,4410,completed,False,0
 59,ace,1.0,8,22154,2698,completed,False,0
