@@ -1,0 +1,116 @@
+{
+ "n_tasks": 168,
+ "n_scenarios": 56,
+ "trials": 2,
+ "arms": {
+  "seed": {
+   "tgc": 34.2,
+   "sgc": 13.4,
+   "tgc_missing_excluded": 34.2,
+   "sgc_missing_excluded": 13.4,
+   "by_difficulty": {
+    "easy": {
+     "n": 57,
+     "tgc": 51.8,
+     "sgc": 21.1
+    },
+    "medium": {
+     "n": 48,
+     "tgc": 32.3,
+     "sgc": 12.5
+    },
+    "hard": {
+     "n": 63,
+     "tgc": 19.8,
+     "sgc": 7.1
+    }
+   },
+   "cells": 336,
+   "missing_infra": 0,
+   "infra_retries": 0,
+   "context_exceeded": 0,
+   "step_cap": 2,
+   "token_cap": 0,
+   "mean_steps": 13,
+   "mean_prompt_tokens_per_task": 96878,
+   "mean_completion_tokens_per_task": 6173,
+   "max_prompt_tokens": 19764,
+   "fs_probe_hits": 0,
+   "trial_agreement": 73.2
+  },
+  "ace": {
+   "tgc": 64.0,
+   "sgc": 46.4,
+   "tgc_missing_excluded": 64.0,
+   "sgc_missing_excluded": 46.4,
+   "by_difficulty": {
+    "easy": {
+     "n": 57,
+     "tgc": 87.7,
+     "sgc": 78.9
+    },
+    "medium": {
+     "n": 48,
+     "tgc": 69.8,
+     "sgc": 46.9
+    },
+    "hard": {
+     "n": 63,
+     "tgc": 38.1,
+     "sgc": 16.7
+    }
+   },
+   "cells": 336,
+   "missing_infra": 0,
+   "infra_retries": 0,
+   "context_exceeded": 0,
+   "step_cap": 0,
+   "token_cap": 0,
+   "mean_steps": 11.44,
+   "mean_prompt_tokens_per_task": 233513,
+   "mean_completion_tokens_per_task": 4887,
+   "max_prompt_tokens": 32828,
+   "fs_probe_hits": 0,
+   "trial_agreement": 80.4
+  }
+ },
+ "delta": {
+  "tgc": 29.8,
+  "sgc": 33.0,
+  "ci95": {
+   "tgc": [
+    21.4,
+    38.1
+   ],
+   "sgc": [
+    20.5,
+    45.5
+   ],
+   "resamples": 10000,
+   "clusters": 56
+  }
+ },
+ "optimizer": {
+  "spend": {
+   "reflector": {
+    "calls": 90,
+    "input": 4162983,
+    "output": 160063,
+    "truncated": 0
+   },
+   "curator": {
+    "calls": 90,
+    "input": 4224414,
+    "output": 111504,
+    "truncated": 0
+   },
+   "merge": {
+    "calls": 1,
+    "input": 905,
+    "output": 607,
+    "truncated": 0
+   }
+  },
+  "rows": 90
+ }
+}

@@ -2047,3 +2047,17 @@ Next: P9/analysis.
 ```json
 {"cp": 187, "prev_cp": 186, "prev_commit": "5fa9bfc595e80d77538c23b2c34268c60ed9ba02", "utc": "2026-10-15T11:38:39Z", "kind": "phase_done", "phase": "P8", "done_through": "p8final/672", "next": "P9/analysis", "counts": {"rollouts_counted": 90, "ace_steps": 90}, "spend": {"opt_in_tok": 8388301, "opt_out_tok": 272174, "usd_proxy": 19.5}, "artifacts": {"STATE/final/progress.json": "f654dd9e02ef30ed1758f2bc1bfcce3fcc04aa50b559c16b210b56d5fedb37be"}, "code": "9918abfaef689edfd068dbd626485e345e0e9b5d", "open_decisions": [], "window": {"name": "p8final", "done": 672, "total": 672, "order_sha256": "2f164401305d124b40bc2fea2e52441184c7fcee5ae39ba128ca975412b7941e"}}
 ```
+
+## CP-0188 · 2026-10-15T11:38Z · P9 analysis · phase_done
+
+Analysis done (held-out test_normal, 168 tasks / 56 scenarios × 2 trials):
+| arm | TGC | SGC |
+|---|---|---|
+| seed | 34.2 | 13.4 |
+| ace | 64.0 | 46.4 |
+Δ ace − seed: TGC +29.8 [+21.4, +38.1], SGC +33.0 [+20.5, +45.5] (scenario-clustered paired bootstrap, 95%).
+Next: P10 report.
+
+```json
+{"cp": 188, "prev_cp": 187, "prev_commit": "e9d1c1c9da00a6cc063839a176a6a5ac7b93e7a1", "utc": "2026-10-15T11:38:46Z", "kind": "phase_done", "phase": "P9", "done_through": "P9/analysis", "next": "P10/report", "counts": {"rollouts_counted": 90, "ace_steps": 90}, "spend": {"opt_in_tok": 8388301, "opt_out_tok": 272174, "usd_proxy": 19.5}, "artifacts": {"STATE/final/analysis.json": "e269d9099cf0c166ef12436bd00c12ca33153cef752abf351ae4e6350c9d6c7c"}, "code": "9918abfaef689edfd068dbd626485e345e0e9b5d", "open_decisions": [], "results": {"seed": [34.2, 13.4], "ace": [64.0, 46.4], "delta": {"tgc": 29.8, "sgc": 33.0, "ci95": {"tgc": [21.4, 38.1], "sgc": [20.5, 45.5], "resamples": 10000, "clusters": 56}}}}
+```
