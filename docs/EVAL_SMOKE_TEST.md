@@ -747,6 +747,25 @@ and the ALTK store. Train/dev gold reads: iteration 2 only (F14). Iteration 1 li
 directory (it saw that a `ground_truth` folder exists) but opened nothing. Iteration 4's optimizer,
 which ran unguarded from 18:27 to 18:37, made directory listings only. Iterations 3 and 5–8: none.
 
+**F17. Claude Code's sandbox cannot start in this container (2026-10-15).** bubblewrap 0.8.0 and
+socat 1.7.4.4 were installed in user space (Debian packages, checksums verified, no root). The
+sandbox detects them and fails closed. Every Bash command fails with "Can't bind mount
+/oldroot/dev/null … Unable to remount destination", and the escape-hatch retry is refused. The cause
+is the container: its `/dev/null` is bound in from the host, and no remount of that bind is allowed
+from inside a user namespace, not even one that changes nothing. Remounting a regular file works.
+Claude Code covers every protected path that does not exist (`.claude/*`, `.mcp.json`, in the
+working dir and in every parent dir) with `/dev/null`, so pre-creating files is no way out.
+bubblewrap 0.12 has the same remount logic, and `enableWeakerNestedSandbox` fails the same way.
+Check A9 results: sandbox mode, 0 of 6 planted secrets leaked, but no Bash command could run, so it
+fails. The `permissions.deny` rules did block the Read and Grep tools on their own. Namespace mode
+(the allowlist wrapper `examples/appworld/sandbox/claude`): pass, 0 of 6 leaked, files written and
+lint ran. The re-run uses the wrapper (`docs/EVAL_SMOKE_TEST_FIX.md` §4).
+
+**F18. A `bwrap`-based wrapper was tested and dropped.** Calling `bwrap` directly, without the
+`/dev/null` step (F17), gave the same allowlist view and passed A9. It added `--die-with-parent`,
+`--cap-drop ALL` and similar options, but no extra protection for the answer files. A private process
+list is refused by this container. So the plain namespace wrapper is kept as the only one.
+
 ### A.4 Deviations from the plan
 
 | plan | done | why |
