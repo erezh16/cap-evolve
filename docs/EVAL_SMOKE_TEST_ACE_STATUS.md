@@ -1526,3 +1526,15 @@ Next: P4 ace/step/071 episode.
 ```json
 {"cp": 135, "prev_cp": 134, "prev_commit": "4bd498bfc40589760d1b2ce2af12c96c34c14a1e", "utc": "2026-10-15T09:03:42Z", "kind": "result", "phase": "P4", "done_through": "ace/step/070/apply", "next": "ace/step/071/episode", "counts": {"rollouts_counted": 70, "ace_steps": 70}, "spend": {"opt_in_tok": 6270716, "opt_out_tok": 217410, "usd_proxy": 14.72}, "artifacts": {"STATE/ace/playbook.txt": "1ca6b6fa9a81add0636db099c015db6dd685d099d7a6682b49ab3699a2f77919", "STATE/ace/progress.json": "e4950044ea8467c8e7afb6eac5be3582f781471cd9cad15d7421a8be27afd737", "local/ace/playbooks/pb_070.txt": "1ca6b6fa9a81add0636db099c015db6dd685d099d7a6682b49ab3699a2f77919"}, "code": "e40140f70bf19302ef11cb5e23860b204b7f91c8", "open_decisions": []}
 ```
+
+## CP-0136 · 2026-10-15T09:05Z · P4 ACE adaptation · result
+
+ACE step 071 done (episode pass, 7 steps, completed; +0 bullets; 0 lint_drop, 3 cap_drop; dedup 85→85 bullets); 1 counted rollout.
+Totals: rollouts counted 71 (ace 71, seed 0); playbook 82 bullets, 55,513 chars, 13,430 tokens (M_cap 13,500); optimizer 6.37M in / 0.22M out tok, $14.94 proxy.
+Isolation scan this step: no hits.
+Runner: alive (pid 81069).
+Next: P4 ace/step/072 episode.
+
+```json
+{"cp": 136, "prev_cp": 135, "prev_commit": "35df94c199936ba1e517218cede9770e8177aa1f", "utc": "2026-10-15T09:05:36Z", "kind": "result", "phase": "P4", "done_through": "ace/step/071/apply", "next": "ace/step/072/episode", "counts": {"rollouts_counted": 71, "ace_steps": 71}, "spend": {"opt_in_tok": 6372131, "opt_out_tok": 219721, "usd_proxy": 14.94}, "artifacts": {"STATE/ace/playbook.txt": "1ca6b6fa9a81add0636db099c015db6dd685d099d7a6682b49ab3699a2f77919", "STATE/ace/progress.json": "c9951cf07b89284ce5922d59cdbbbb410fc031ba83b921b59f47e9b9ae037cef", "local/ace/playbooks/pb_071.txt": "1ca6b6fa9a81add0636db099c015db6dd685d099d7a6682b49ab3699a2f77919"}, "code": "e40140f70bf19302ef11cb5e23860b204b7f91c8", "open_decisions": []}
+```
