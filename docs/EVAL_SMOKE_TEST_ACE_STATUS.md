@@ -1870,3 +1870,11 @@ Phase start: 672 cells (168 test_normal × seed, ace × 2 trials), 48 workers. R
 ```json
 {"cp": 167, "prev_cp": 166, "prev_commit": "3cf934b2e64eac1558258ecab905619fe97b5cd0", "utc": "2026-10-15T10:16:46Z", "kind": "phase_start", "phase": "P8", "done_through": "P7/scan", "next": "P8/final", "counts": {"rollouts_counted": 90, "ace_steps": 90}, "spend": {"opt_in_tok": 8388301, "opt_out_tok": 272174, "usd_proxy": 19.5}, "artifacts": {}, "code": "e40140f70bf19302ef11cb5e23860b204b7f91c8", "open_decisions": []}
 ```
+
+## CP-0168 · 2026-10-15T10:18Z · P7 isolation scan · repair
+
+Repair of CP-0166 (the P7 entry stands as written; this entry supersedes its counts): the "Breach: True" with 180 `test_normal`/`root_full` and 180 `answer.json`/`ground_truth` hits was a false positive of the scanner itself. Every hit was in the 90 `apply.json` files, exactly once per pattern per file: the per-step isolation counts that `run_ace.py` stores there are keyed by the pattern names. Outside that field: 0 hits. Fixed (`scan_isolation.py` drops the stored counts before scanning) and re-run: over 182 optimizer calls, 451 ACE step files and 91 playbook snapshots, 0 test ids, 0 `test_normal` / `root_full` / `answer.json` / `ground_truth`, 0 canary; agent `fs_probe` hits 0 in 90 adaptation and 114 dev episodes. **Breach: False.** This agrees with the 90 per-step scans (all 0). The P8 final window, started at CP-0167, is unaffected and continues; its fs_probe counts are added at P9.
+
+```json
+{"cp": 168, "prev_cp": 167, "prev_commit": "e41d565d20cd253bba26ae1eba0c4cc7462ae354", "utc": "2026-10-15T10:18:24Z", "kind": "repair", "phase": "P7", "done_through": "P7/scan", "next": "P8/final", "counts": {"rollouts_counted": 90, "ace_steps": 90}, "spend": {"opt_in_tok": 8388301, "opt_out_tok": 272174, "usd_proxy": 19.5}, "artifacts": {"STATE/isolation_scan.json": "9e6b30a673f6d2e4d4db7222458ca9a2ea3735168fda26e18c019eb798efdec0"}, "code": "e40140f70bf19302ef11cb5e23860b204b7f91c8", "open_decisions": [], "scan": {"breach": false, "corrects_cp": 166}}
+```

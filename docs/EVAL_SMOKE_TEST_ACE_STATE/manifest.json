@@ -126,5 +126,10 @@
   "seed": 804006,
   "sha256": "5a7e1a3bc7476fb41b136bc7bbb15d4d30d80dd59a6d2efae302318a7beee5c7",
   "cells": 114
+ },
+ "final_order": {
+  "seed": 804008,
+  "sha256": "2f164401305d124b40bc2fea2e52441184c7fcee5ae39ba128ca975412b7941e",
+  "cells": 672
  }
 }

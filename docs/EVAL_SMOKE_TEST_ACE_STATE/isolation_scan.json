@@ -1,27 +1,27 @@
 {
  "llm_calls": {
   "ground_truth": 0,
-  "root_full": 0,
-  "test_normal": 0,
   "answer.json": 0,
-  "canary": 0,
-  "test_id": 0
+  "test_id": 0,
+  "test_normal": 0,
+  "root_full": 0,
+  "canary": 0
  },
  "steps_files": {
-  "ground_truth": 90,
-  "root_full": 90,
-  "test_normal": 90,
-  "answer.json": 90,
-  "canary": 0,
-  "test_id": 0
+  "ground_truth": 0,
+  "answer.json": 0,
+  "test_id": 0,
+  "test_normal": 0,
+  "root_full": 0,
+  "canary": 0
  },
  "playbooks": {
   "ground_truth": 0,
-  "root_full": 0,
-  "test_normal": 0,
   "answer.json": 0,
-  "canary": 0,
-  "test_id": 0
+  "test_id": 0,
+  "test_normal": 0,
+  "root_full": 0,
+  "canary": 0
  },
  "scanned": {
   "llm_calls": 182,
@@ -44,7 +44,8 @@
     "episodes": 57,
     "fs_probe_hits": 0
    }
-  }
+  },
+  "final": {}
  },
- "breach": true
+ "breach": false
 }

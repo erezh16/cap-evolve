@@ -58,7 +58,12 @@ def main() -> int:
             res["llm_calls"] = add(res["llm_calls"], counts(json.dumps(c["messages"]) + (c["response"] or ""), test_ids))
     files = [p for p in (ace / "steps").rglob("*") if p.is_file() and "cap" not in p.relative_to(ace / "steps").parts]
     for p in files:
-        res["steps_files"] = add(res["steps_files"], counts(p.read_text(errors="replace"), test_ids))
+        text = p.read_text(errors="replace")
+        if p.name == "apply.json":  # its `scan` field holds the per-step counts, keyed by the pattern names
+            a = json.loads(text)
+            a.pop("scan", None)
+            text = json.dumps(a)
+        res["steps_files"] = add(res["steps_files"], counts(text, test_ids))
     pbs = sorted((ace / "playbooks").glob("pb_*.txt"))
     for p in pbs:
         res["playbooks"] = add(res["playbooks"], counts(p.read_text(), test_ids))
