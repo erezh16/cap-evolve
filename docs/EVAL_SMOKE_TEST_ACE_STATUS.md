@@ -1800,3 +1800,11 @@ Phase start: 114 cells (57 dev × seed, ace × 1 trial), 24 workers. Runner pid 
 ```json
 {"cp": 159, "prev_cp": 158, "prev_commit": "cd1ad139d88482b0dc09e6cf49e9348563aba6af", "utc": "2026-10-15T09:48:58Z", "kind": "phase_start", "phase": "P6", "done_through": "P5/freeze", "next": "P6/dev", "counts": {"rollouts_counted": 90, "ace_steps": 90}, "spend": {"opt_in_tok": 8388301, "opt_out_tok": 272174, "usd_proxy": 19.5}, "artifacts": {}, "code": "e40140f70bf19302ef11cb5e23860b204b7f91c8", "open_decisions": []}
 ```
+
+## CP-0160 · 2026-10-15T09:50Z · P6 interim #804 · posted
+
+Interim update 9 posted on #804: https://github.com/skillberry-ai/cap-evolve/issues/804#issuecomment-6189280599 (ACE adaptation done, playbook frozen).
+
+```json
+{"cp": 160, "prev_cp": 159, "prev_commit": "de4800ad2b090aa43ca3eabe03179ad9d942bf5d", "utc": "2026-10-15T09:50:00Z", "kind": "posted", "phase": "P6", "done_through": "P5/freeze", "next": "P6/dev", "counts": {"rollouts_counted": 90, "ace_steps": 90}, "spend": {"opt_in_tok": 8388301, "opt_out_tok": 272174, "usd_proxy": 19.5}, "artifacts": {}, "code": "e40140f70bf19302ef11cb5e23860b204b7f91c8", "open_decisions": [], "post": "interim-9", "url": "https://github.com/skillberry-ai/cap-evolve/issues/804#issuecomment-6189280599"}
+```
