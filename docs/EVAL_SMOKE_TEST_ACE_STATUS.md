@@ -1808,3 +1808,12 @@ Interim update 9 posted on #804: https://github.com/skillberry-ai/cap-evolve/iss
 ```json
 {"cp": 160, "prev_cp": 159, "prev_commit": "de4800ad2b090aa43ca3eabe03179ad9d942bf5d", "utc": "2026-10-15T09:50:00Z", "kind": "posted", "phase": "P6", "done_through": "P5/freeze", "next": "P6/dev", "counts": {"rollouts_counted": 90, "ace_steps": 90}, "spend": {"opt_in_tok": 8388301, "opt_out_tok": 272174, "usd_proxy": 19.5}, "artifacts": {}, "code": "e40140f70bf19302ef11cb5e23860b204b7f91c8", "open_decisions": [], "post": "interim-9", "url": "https://github.com/skillberry-ai/cap-evolve/issues/804#issuecomment-6189280599"}
 ```
+
+## CP-0161 · 2026-10-15T09:54Z · P6 dev diagnostic · result
+
+dev diagnostic: 40 cells done since the last entry (order positions 1–45); 40/114 done (ace 22, seed 18); infra retries 0, cells still infra-failed 0, context_exceeded 0.
+Next: p6dev remaining cells.
+
+```json
+{"cp": 161, "prev_cp": 160, "prev_commit": "e5b5cb4ad22d3ea92732f93ebb4ef98c35c9f1da", "utc": "2026-10-15T09:54:02Z", "kind": "result", "phase": "P6", "done_through": "p6dev/40", "next": "p6dev/cells", "counts": {"rollouts_counted": 90, "ace_steps": 90}, "spend": {"opt_in_tok": 8388301, "opt_out_tok": 272174, "usd_proxy": 19.5}, "artifacts": {"STATE/dev/cells.csv": "babe481089756f00149671df8a2fef4321f3d8c47691804b899616a12bf810ab"}, "code": "e40140f70bf19302ef11cb5e23860b204b7f91c8", "open_decisions": [], "window": {"name": "p6dev", "done": 40, "total": 114, "order_sha256": "5a7e1a3bc7476fb41b136bc7bbb15d4d30d80dd59a6d2efae302318a7beee5c7"}}
+```
