@@ -1086,3 +1086,23 @@ Next: P4 ace/step/054 episode.
 ```json
 {"cp": 95, "prev_cp": 94, "prev_commit": "5220d5cf9d72156bbc99e129e5c98826777ec0ce", "utc": "2026-10-14T23:56:43Z", "kind": "result", "phase": "P4", "done_through": "ace/step/053/apply", "next": "ace/step/054/episode", "counts": {"rollouts_counted": 53, "ace_steps": 53}, "spend": {"opt_in_tok": 4473365, "opt_out_tok": 165015, "usd_proxy": 10.6}, "artifacts": {"STATE/ace/playbook.txt": "1ca6b6fa9a81add0636db099c015db6dd685d099d7a6682b49ab3699a2f77919", "STATE/ace/progress.json": "bac1a3ac8dd14c3198392de8a28ec3e0b1e8d2f1d6b097a3b0a184bd014e9e66", "local/ace/playbooks/pb_053.txt": "1ca6b6fa9a81add0636db099c015db6dd685d099d7a6682b49ab3699a2f77919"}, "code": "e40140f70bf19302ef11cb5e23860b204b7f91c8", "open_decisions": []}
 ```
+
+## CP-0096 · 2026-10-15T00:19Z · P4 runner error · error
+
+Phase P4 runner exited with code 1. The pipeline stopped; see the local log `progress/p4.out`. Resume with `resume.py` after the cause is fixed.
+Log tail:
+```
+ - 1])
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/worktrees/base/examples/appworld/ace/run_ace.py", line 353, in step
+    out = ace_llm.generate([{"role": "user", "content": prompt}], role="reflector", step=i)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/worktrees/base/examples/appworld/ace/ace_llm.py", line 100, in generate
+    raise RuntimeError(f"optimizer call failed after {RETRIES} attempts: {last_err}")
+RuntimeError: optimizer call failed after 50 attempts: RateLimitError: litellm.RateLimitError: AnthropicException - {"error":{"message":"Budget has been exceeded! Team=69d32ea8-a596-4aea-9f69-c24e8c49d111 Current cost: 300.0473713279995, Max budget: 300.0","type":"budget_exceeded","param":null,"code":"429"}}
+
+```
+
+```json
+{"cp": 96, "prev_cp": 95, "prev_commit": "4bf7a4a44b28442fbcf874cd4986c2c43f729db7", "utc": "2026-10-15T00:19:38Z", "kind": "error", "phase": "P4", "done_through": "ace/step/053/apply", "next": "ace/step/054/episode", "counts": {"rollouts_counted": 53, "ace_steps": 53}, "spend": {"opt_in_tok": 4473365, "opt_out_tok": 165015, "usd_proxy": 10.6}, "artifacts": {}, "code": "e40140f70bf19302ef11cb5e23860b204b7f91c8", "open_decisions": [], "rc": 1}
+```
