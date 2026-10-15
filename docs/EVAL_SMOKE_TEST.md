@@ -766,6 +766,21 @@ lint ran. The re-run uses the wrapper (`docs/EVAL_SMOKE_TEST_FIX.md` §4).
 `--cap-drop ALL` and similar options, but no extra protection for the answer files. A private process
 list is refused by this container. So the plain namespace wrapper is kept as the only one.
 
+**F19. The fix run (`cape_hc_s1`) leaked train/dev solution logic through AppWorld's own repo.**
+The namespace wrapper's allowlist exposed the whole AppWorld clone (`$AW_EVAL/appworld`), because the
+venv's editable installs need it. But `appworld/generate/tasks/task_generators/` holds the task
+generators. They are released for all 30 train and 19 dev scenarios, and for none of the 56
+test_normal or 139 test_challenge ones. Each generator holds a scenario's task template, solution
+logic and evaluation logic. In round 1, the round that produced the champion (val 0.769), one
+optimizer subagent made 5 tool calls: it grepped for 6 failing train/dev scenarios and read their
+generator code. It opened no `ground_truth` file and ran no grader, and rounds 2–6 made no such call.
+The post-run scan found 0 test-id hits. Search outcome: round 1 accepted (0.361 → 0.769, Δ +0.408),
+rounds 2–6 rejected (0.748, 0.741, 0.755, 0.776, 0.803; each Δ within one SE of round 1); 882 metric
+calls; $44.23. Fix: the allowlist now exposes only `appworld/src` and `appworld/experiments` (imports
+and the lint still work), and A9 also plants a secret in the generator dir. **Decision (user,
+2026-10-15): run the training a third time (`cape_hc_s2`). `cape_hc_s1` is kept as a labelled
+diagnostic and is not scored.**
+
 ### A.4 Deviations from the plan
 
 | plan | done | why |
