@@ -984,3 +984,11 @@ One fix during the check: denying Claude's whole temp root broke the CLI's per-c
 ```json
 {"cp": 4, "prev_cp": 3, "prev_commit": "c2df2d095a57bcf06018b87a957969c59b167169", "utc": "2026-10-17T23:38:09Z", "kind": "result", "phase": "P2", "done_through": "P2/A9", "next": "P2/A10", "candidate": null, "counts": {}, "spend": {}, "artifacts": {"STATE/acceptance.json": "ad97a1567098259cf5bc7f6309617e97b3bb329193e5319ea92d6623314b03cb"}, "code": "c2df2d095a57bcf06018b87a957969c59b167169", "open_decisions": []}
 ```
+
+## CP-0005 · 2026-10-17T23:38Z · P2 code · result
+
+B6 code committed so far: shared evaluator, gateway shim, sandbox settings, window runner (dev + final), resume/pipeline, acceptance checks A1–A10, the gepa and skillopt drivers. Next: A10.
+
+```json
+{"cp": 5, "prev_cp": 4, "prev_commit": "c130d33a8b5229f90e151fd5458e3972e0bd14ce", "utc": "2026-10-17T23:38:59Z", "kind": "result", "phase": "P2", "done_through": "P2/A9", "next": "P2/A10", "candidate": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "c130d33a8b5229f90e151fd5458e3972e0bd14ce", "open_decisions": []}
+```
