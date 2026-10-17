@@ -187,62 +187,81 @@ def a7() -> int:
 
 
 def a8() -> int:
-    """Context and M_cap: P_max over the 147 train∪dev stock prompts, H_max from 10 dev episodes,
-    M_cap = min(30,000 chars, 34,000 − P_max − H_max tokens); then 3 dev episodes with an M_cap memory."""
+    """Context and M_cap, as the ACE sibling measured it (its A8): H_max = 60,000 / the lowest chars-per-token
+    of the agent history in 10 dev episodes (the 60,000-char trim bounds the history); P_max = the largest
+    stock first request over the 147 train∪dev tasks (tiktoken o200k_harmony on the message contents + the
+    chat-template overhead measured against vLLM); M_cap = min(30,000 chars, 34,000 − P_max − H_max tokens),
+    floored to 500. Then 3 dev episodes with the largest memory the lint allows stay < 34K prompt tokens and
+    tiktoken is within 2% of vLLM on their first request."""
     import tiktoken
-    enc = tiktoken.get_encoding("o200k_base")
     from jinja2 import Template
-    tmpl = (P.SEED_CAP / "policy" / "instructions.txt").read_text()
-    import adapter as A
-    ids = P.read_split("train") + P.read_split("dev")
-    p_max = 0
-    for tid in ids:
+    import aw_agent
+    from appworld_agents.code.simplified.react_code_agent import SimplifiedReActCodeAgent
+    enc = tiktoken.get_encoding("o200k_harmony")
+    tok = lambda t: len(enc.encode(t, disallowed_special=()))  # noqa: E731
+    tmpl = (P.SEED_CAP / "policy" / "instructions.txt").read_text().lstrip()
+
+    def first_msgs(tid: str, memory: str = "") -> list[dict]:
         spec = json.loads((P.ROOT_OPT / "data" / "tasks" / tid / "specs.json").read_text())
-        sup = spec["supervisor"]
-        # app_descriptions: the same json the agent renders (AppWorld's app descriptions)
-        descr = _app_descriptions()
-        text = Template(tmpl).render(instruction=spec["instruction"], main_user=sup, app_descriptions=descr)
-        p_max = max(p_max, len(enc.encode(text)))
+        out = Template(tmpl).render(instruction=spec["instruction"], main_user=spec["supervisor"],
+                                    app_descriptions=_app_descriptions())
+        if memory:
+            out = aw_agent.insert_before_final_block(out, aw_agent.MEMORY_HEADING + "\n" + memory)
+        return SimplifiedReActCodeAgent.text_to_messages(None, out + "\n\n")
+
     import evaluator as E
     dev = E.split_ids("dev")
-    recs = E.evaluate("acc_a8", E.materialize("acc_a8"), dev[:10], phase="A8", split="dev")
+    recs = E.evaluate("acc_a8", E.materialize("acc_a8"), dev[:10], phase="A8", split="dev", reuse=True)
     infra = sum(1 for r in recs if r.get("error"))
-    # history = the largest per-step prompt minus the stock prompt of that episode
-    h_max = 0
+    ratios, overhead = [], []
     for r in recs:
-        spec = json.loads((P.ROOT_OPT / "data" / "tasks" / r["task_id"] / "specs.json").read_text())
-        stock = len(enc.encode(Template(tmpl).render(instruction=spec["instruction"], main_user=spec["supervisor"],
-                                                     app_descriptions=_app_descriptions())))
-        h_max = max(h_max, int(r.get("max_prompt_tokens") or 0) - stock)
-    max_prompt_nomem = max(int(r.get("max_prompt_tokens") or 0) for r in recs)
-    cap_tokens = min(34000 - p_max - h_max, 30000 // 3)
-    # a 30,000-char memory is ~6–8K tokens; the token rule binds only if smaller
-    filler = _filler_memory(enc, cap_tokens)
-    mem_tokens = len(enc.encode(filler))
-    cd = E.materialize("acc_a8", {"memory/playbook.md": filler})
-    recs_m = E.evaluate("acc_a8", cd, dev[10:13], phase="A8m", split="dev")
-    vllm_first = []
+        st = r.get("steps") or []
+        hist = "".join("ASSISTANT:\n" + (s.get("thought") or "") + "\n```python\n" + (s.get("code") or "")
+                       + "\n```USER:\nOutput:\n" + (s.get("output") or "") for s in st)
+        if len(hist) > 2000:
+            ratios.append(len(hist) / tok(hist))
+        if st:
+            overhead.append(int(st[0]["prompt_tokens"]) - sum(tok(m["content"]) for m in first_msgs(r["task_id"])))
+    min_ratio = min(ratios)
+    h_max = int(60000 / min_ratio + 0.999)
+    ids = P.read_split("train") + P.read_split("dev")
+    p_tok = max(sum(tok(m["content"]) for m in first_msgs(t, " ")) for t in ids)
+    p_max = p_tok + max(overhead)
+    m_cap_raw = 34000 - p_max - h_max
+    m_cap = (m_cap_raw // 500) * 500
+    P.update_manifest(m_cap={"tokens": m_cap, "chars": 30000, "P_max": p_max, "H_max": h_max,
+                             "min_chars_per_token": round(min_ratio, 3), "template_overhead_max": max(overhead),
+                             "encoding": "o200k_harmony",
+                             "rule": "min(30000 chars, 34000 - P_max - H_max tokens), tokens floored to 500"})
+    # the largest memory the lint allows: M_cap tokens or 30,000 chars, whichever binds first
+    words = ["check", "the", "api", "docs", "before", "calling", "pagination", "page_index", "always", "verify",
+             "results", "then", "complete", "task", "with", "answer", "loop", "until", "empty", "list"]
+    rnd = random.Random(0)
+    lines: list[str] = []
+    while True:
+        line = "- " + " ".join(rnd.choice(words) for _ in range(12)) + "."
+        cand = "\n".join(lines + [line])
+        if len(cand) > 30000 or tok(cand) > m_cap:
+            break
+        lines.append(line)
+    mem = "\n".join(lines)
+    recs_m = E.evaluate("acc_a8", E.materialize("acc_a8", {"memory/playbook.md": mem}), dev[10:13], phase="A8m",
+                        split="dev", reuse=True)
+    eps = []
     for r in recs_m:
         st = r.get("steps") or []
-        if st:
-            vllm_first.append(int(st[0]["prompt_tokens"]))
-    # tiktoken vs vLLM on the first request of a memory episode (prompt + memory + heading)
-    spec = json.loads((P.ROOT_OPT / "data" / "tasks" / recs_m[0]["task_id"] / "specs.json").read_text())
-    import aw_agent
-    rendered = Template(tmpl).render(instruction=spec["instruction"], main_user=spec["supervisor"],
-                                     app_descriptions=_app_descriptions())
-    rendered = aw_agent.insert_before_final_block(rendered, aw_agent.MEMORY_HEADING + "\n" + filler)
-    tk = len(enc.encode(rendered))
-    ratio = (vllm_first[0] / tk) if vllm_first and tk else None
-    max_prompt_mem = max(int(r.get("max_prompt_tokens") or 0) for r in recs_m)
-    m_cap = {"tokens": cap_tokens, "chars": 30000, "p_max": p_max, "h_max": h_max,
-             "rule": "min(30000 chars, 34000 - P_max - H_max tokens)"}
-    P.update_manifest(m_cap=m_cap)
-    res = {"p_max": p_max, "h_max": h_max, "m_cap_tokens": cap_tokens, "max_prompt_no_memory": max_prompt_nomem,
-           "infra_no_memory": infra, "memory_tokens_tested": mem_tokens, "max_prompt_with_memory": max_prompt_mem,
-           "vllm_over_tiktoken_first_request": round(ratio, 4) if ratio else None,
-           "ok": max_prompt_nomem < 34000 and max_prompt_mem < 34000 and ratio is not None and abs(ratio - 1) <= 0.02
-           and infra == 0}
+        vt = int(st[0]["prompt_tokens"]) if st else None
+        tt = sum(tok(m["content"]) for m in first_msgs(r["task_id"], mem)) + max(overhead)
+        eps.append({"termination": r.get("termination"), "max_prompt_tokens": r.get("max_prompt_tokens"),
+                    "lint_reject": r.get("lint_reject"), "rel_diff": round(abs(vt - tt) / vt, 4) if vt else None})
+    res = {"history_ratios": [round(x, 3) for x in ratios], "H_max": h_max, "P_max": p_max,
+           "template_overhead": overhead, "M_cap_tokens": m_cap, "memory_chars_tested": len(mem),
+           "memory_tokens_tested": tok(mem), "max_prompt_no_memory": max(int(r.get("max_prompt_tokens") or 0) for r in recs),
+           "infra_no_memory": infra, "memory_episodes": eps}
+    res["ok"] = (infra == 0 and len(ratios) >= 5 and m_cap > 0 and res["max_prompt_no_memory"] < 34000
+                 and all(e["max_prompt_tokens"] and e["max_prompt_tokens"] < 34000 and not e["lint_reject"]
+                         and e["termination"] != "context_exceeded" and e["rel_diff"] is not None
+                         and e["rel_diff"] <= 0.02 for e in eps))
     return done("a8", res)
 
 
@@ -258,18 +277,6 @@ def _app_descriptions() -> str:
         d = get_app_to_description()
         _APPS = json.dumps([{"name": k, "description": d[k]} for k in get_all_apps(skip_admin=True)], indent=1)
     return _APPS
-
-
-def _filler_memory(enc, tokens: int) -> str:
-    rnd = random.Random(0)
-    words = ["check", "the", "api", "docs", "before", "calling", "pagination", "page_index", "always", "verify",
-             "results", "then", "complete", "task", "with", "answer", "loop", "until", "empty", "list"]
-    lines, n = [], 0
-    while n < tokens - 30:
-        line = "- " + " ".join(rnd.choice(words) for _ in range(12)) + "."
-        lines.append(line)
-        n += len(enc.encode(line)) + 1
-    return "\n".join(lines)
 
 
 if __name__ == "__main__":

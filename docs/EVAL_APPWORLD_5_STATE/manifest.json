@@ -113,5 +113,15 @@
   "seed": 2026101705,
   "sha256": "30d7ccfa1260ce30516a39184d3994993a6921aab5e7bb988c14cfdf7dd8ce0b",
   "cells": 342
+ },
+ "m_cap": {
+  "tokens": 13500,
+  "chars": 30000,
+  "P_max": 3230,
+  "H_max": 16930,
+  "min_chars_per_token": 3.544,
+  "template_overhead_max": 157,
+  "encoding": "o200k_harmony",
+  "rule": "min(30000 chars, 34000 - P_max - H_max tokens), tokens floored to 500"
  }
 }

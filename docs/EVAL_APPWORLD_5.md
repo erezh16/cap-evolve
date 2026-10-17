@@ -966,3 +966,12 @@ Container: 10 concurrent episodes peak about 4.1 GB anonymous memory (≈0.4 GB 
 ```json
 {"cp": 2, "prev_cp": 1, "prev_commit": "a47ec421713a0c7da9221f6949f4fcb2aef9c21c", "utc": "2026-10-17T23:24:38Z", "kind": "result", "phase": "P2", "done_through": "P2/A7", "next": "P2/A8", "candidate": null, "counts": {}, "spend": {}, "artifacts": {"STATE/acceptance.json": "d68ff21a459d746edee5992aca70a8f35c0ead30e200c4c206cfacd600eb694d", "STATE/manifest.json": "7c991829b9684fcd144d8ac4eb2f117fe074fe44adf8150943e9a40a80f39981"}, "code": "e9ed3d1bf0bd4f44ffa3a63f48093c08bdd4e384", "open_decisions": []}
 ```
+
+## CP-0003 · 2026-10-17T23:33Z · P2 acceptance A8 · result
+
+A8 pass: 10 no-memory dev episodes (0 infra errors), longest prompt 10,985 tokens; lowest history chars/token 3.544 → H_max 16,930; P_max 3,230 over the 147 train ∪ dev stock prompts (chat-template overhead 157 tokens, constant). M_cap = min(30,000 chars, 34,000 − P_max − H_max) = 13,500 tokens (floored to 500; the ACE sibling found the same). With the largest memory the lint allows (30,000 chars ≈ 5,341 tokens, so the char cap binds first) 3 dev episodes peaked at 14,129 prompt tokens; tiktoken o200k_harmony matched vLLM exactly on their first request.
+Next: A9 (sandbox isolation for the agentic arms) and A10 (ledger/resume), then the per-candidate checks.
+
+```json
+{"cp": 3, "prev_cp": 2, "prev_commit": "6297dae8d43497ce8f0e57fe1d7fe3545a32ba28", "utc": "2026-10-17T23:33:43Z", "kind": "result", "phase": "P2", "done_through": "P2/A8", "next": "P2/A9", "candidate": null, "counts": {}, "spend": {}, "artifacts": {"STATE/acceptance.json": "4d502505b3d1eef1650e7ab84637add1f3bd430619569fbf2759067bd28989db", "STATE/manifest.json": "79a254c9371e2a21f30c8ccdb840ca13fe66e762301eeaf37fcd375724d65b1c"}, "code": "6297dae8d43497ce8f0e57fe1d7fe3545a32ba28", "open_decisions": []}
+```

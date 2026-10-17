@@ -24,5 +24,13 @@
  },
  "a7": {
   "ok": true
+ },
+ "a8": {
+  "ok": true,
+  "P_max": 3230,
+  "H_max": 16930,
+  "M_cap_tokens": 13500,
+  "max_prompt_no_memory": 10985,
+  "max_prompt_with_memory": 14129
  }
 }
