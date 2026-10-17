@@ -948,3 +948,12 @@ Host: memcheck limit 32,768 MB, cpu_limit 8, oom.group 1. Next: P1 build.
 ```json
 {"cp": 0, "prev_cp": null, "prev_commit": "cb68423b4335d0f2d99f14603980a657b754da0f", "utc": "2026-10-17T23:14:03Z", "kind": "decision", "phase": "P0", "done_through": "P0/decisions", "next": "P1/B1", "candidate": null, "counts": {}, "spend": {}, "artifacts": {"STATE/manifest.json": "3c4c9266ad803a11d4b66a5f85c31f2192412c8615beb530a82d2bcc3120246c"}, "code": "ec30d13ae3acc7595248614c52c93e9d833c100a", "open_decisions": [], "issues": {"gepa": 881, "skillopt": 882, "wikiskill": 883, "evoskill": 884, "metaharness": 885}}
 ```
+
+## CP-0001 · 2026-10-17T23:14Z · P1 build · result
+
+B1–B5 and B7 done. B1: AppWorld @42b5bcf + LFS + extra-headers patch (diff sha256 recorded). B2: venv-aw (CPython 3.11, pydantic 2.12.5, gepa 0.1.4 installed alongside). B3: data downloaded; splits 90/57/168/417, scenarios 30/19/56/139, difficulty counts match; publishing cache built. B4: root_opt 148 task dirs (train+dev+_base_), 0 test-id hits; lint cache and optimizer reference dir built; root_full chmod 000. B5: five candidate repos cloned at their D4 pins (all verified); venv-skillopt (3.11) and venv-evoskill (3.12) built; wikiskill and metaharness drivers run in venv-aw. B7: .env present with variable names ['RITS_API_KET', 'RITS_URL'] (values not read here).
+B6 (drivers) comes next together with acceptance; one dev episode already ran end to end through the shared evaluator (not counted). Next: P2 acceptance A1.
+
+```json
+{"cp": 1, "prev_cp": 0, "prev_commit": "e9ed3d1bf0bd4f44ffa3a63f48093c08bdd4e384", "utc": "2026-10-17T23:14:28Z", "kind": "result", "phase": "P1", "done_through": "P1/B5", "next": "P2/A1", "candidate": null, "counts": {}, "spend": {}, "artifacts": {"STATE/manifest.json": "3c4c9266ad803a11d4b66a5f85c31f2192412c8615beb530a82d2bcc3120246c"}, "code": "e9ed3d1bf0bd4f44ffa3a63f48093c08bdd4e384", "open_decisions": []}
+```
