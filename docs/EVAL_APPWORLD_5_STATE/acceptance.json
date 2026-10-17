@@ -47,5 +47,35 @@
   "unix_socket_blocked": true,
   "workspace_write_ok": true,
   "lint_ran": true
+ },
+ "a10": {
+  "first_append": true,
+  "heartbeat_stalled": true,
+  "killed_after_cells": 4,
+  "all_done": true,
+  "cells_rerun": 0,
+  "resume_exit": 0,
+  "coalesced_entries": 1,
+  "append_only": true,
+  "push_failure_kept_local": true,
+  "next_checkpoint_pushed": true,
+  "filter_refused_task_id": true,
+  "filter_refused_env_value": true,
+  "ok": true
+ },
+ "a_gepa": {
+  "metric_calls": 14,
+  "candidates": 2,
+  "counters": {
+   "lint_reject": 0,
+   "parse_fail": 0,
+   "refusals": 0,
+   "gave_up": 0
+  },
+  "reflection_calls": 1,
+  "errors": 0,
+  "refusals": 0,
+  "best_lints_clean": true,
+  "ok": true
  }
 }

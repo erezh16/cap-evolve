@@ -12,9 +12,10 @@ Runs the shared adapter's ``run_trials`` (one subprocess per episode, AW_WORKERS
 ``score`` (reward 0/1 + feedback tier F1). 1 trial per task, trial seed 100 (§0). Every fresh episode is
 appended to ``AW_STATE/<cand>/rollouts.jsonl`` and counts against the candidate's hard cap (B=900 unless
 the driver passes another, §7); a batch that would cross it raises ``BudgetExceeded`` before it starts.
-``reuse=True`` replays an identical (candidate tree, task, seed) episode from the local record instead of
-re-running it (used for gate / val re-evaluations, which the methods cache natively); a replay is not
-counted. Must run in venv-aw (the adapter imports AppWorld types); ``evaluate`` falls back to a venv-aw
+``reuse=True`` replays an identical (candidate tree, ``tag``, task, seed) episode from the local record
+instead of re-running it; a replay is not counted. Drivers pass a ``tag`` naming the call site and step
+(GEPA iteration, SkillOpt step dir, WikiSkill iteration), so a replay happens only when a resumed run
+repeats the same in-flight step, never where the method itself means to re-run a task. Must run in venv-aw (the adapter imports AppWorld types); ``evaluate`` falls back to a venv-aw
 subprocess when called from a candidate venv.
 """
 
@@ -114,8 +115,10 @@ def counted(cand: str) -> int:
     return len(P.read_jsonl(P.AW_STATE / cand / "rollouts.jsonl"))
 
 
-def _rec_path(cand: str, h: str, tid: str, seed: int) -> Path:
-    return P.AW_STATE / cand / "episodes" / h / f"{tid}__s{seed}.json"
+def _rec_path(cand: str, h: str, tid: str, seed: int, tag: str = "") -> Path:
+    import re
+    t = re.sub(r"[^A-Za-z0-9._-]+", "_", tag).strip("_")
+    return P.AW_STATE / cand / "episodes" / h / (t or "_") / f"{tid}__s{seed}.json"
 
 
 def _record(task, rollout, score) -> dict:
@@ -131,7 +134,7 @@ def _record(task, rollout, score) -> dict:
 
 
 def _evaluate_local(cand: str, cdir: Path, task_ids: list[str], phase: str, split: str, reuse: bool,
-                    hard_cap: int, seed: int) -> list[dict]:
+                    hard_cap: int, seed: int, tag: str = "") -> list[dict]:
     sys.path.insert(0, str(HERE.parent / "adapters"))
     import adapter as A
     ad = A.Adapter()
@@ -140,7 +143,7 @@ def _evaluate_local(cand: str, cdir: Path, task_ids: list[str], phase: str, spli
     out: dict[str, dict] = {}
     todo = []
     for tid in task_ids:
-        rp = _rec_path(cand, h, tid, seed)
+        rp = _rec_path(cand, h, tid, seed, tag)
         if reuse and rp.exists():
             out[tid] = dict(json.loads(rp.read_text()), replayed=True)
         else:
@@ -165,9 +168,9 @@ def _evaluate_local(cand: str, cdir: Path, task_ids: list[str], phase: str, spli
             for t in tasks:
                 r = res[t.id][0]
                 rec = _record(t, r, ad.score(t, r))
-                P.atomic_write(_rec_path(cand, h, t.id, seed), json.dumps(rec))
+                P.atomic_write(_rec_path(cand, h, t.id, seed, tag), json.dumps(rec))
                 P.append_jsonl(P.AW_STATE / cand / "rollouts.jsonl", {
-                    "t": P.utcnow(), "phase": phase, "split": split, "cand": h, "reward": rec["reward"],
+                    "t": P.utcnow(), "phase": phase, "split": split, "cand": h, "tag": tag, "reward": rec["reward"],
                     "infra": bool(rec["error"]), "steps": rec.get("n_steps"), "prompt_tokens": rec.get("prompt_tokens"),
                     "completion_tokens": rec.get("completion_tokens"), "seconds": rec.get("episode_seconds"),
                     "termination": rec.get("termination"), "fs_probe": rec.get("fs_probe")})
@@ -176,11 +179,11 @@ def _evaluate_local(cand: str, cdir: Path, task_ids: list[str], phase: str, spli
 
 
 def evaluate(cand: str, cdir: Path, task_ids: list[str], *, phase: str, split: str, reuse: bool = False,
-             hard_cap: int = P.BUDGET_ROLLOUTS, seed: int = P.SEARCH_SEED_BASE) -> list[dict]:
+             hard_cap: int = P.BUDGET_ROLLOUTS, seed: int = P.SEARCH_SEED_BASE, tag: str = "") -> list[dict]:
     if _in_venv_aw():
-        return _evaluate_local(cand, cdir, task_ids, phase, split, reuse, hard_cap, seed)
+        return _evaluate_local(cand, cdir, task_ids, phase, split, reuse, hard_cap, seed, tag)
     req = {"cand": cand, "cdir": str(cdir), "task_ids": task_ids, "phase": phase, "split": split, "reuse": reuse,
-           "hard_cap": hard_cap, "seed": seed}
+           "hard_cap": hard_cap, "seed": seed, "tag": tag}
     work = P.AW_STATE / cand / "evalreq"
     work.mkdir(parents=True, exist_ok=True)
     rq = work / f"{os.getpid()}_{threading.get_ident()}.json"
@@ -208,7 +211,7 @@ def _serve(path: str) -> int:
     out = Path(path).with_suffix(".out")
     try:
         recs = _evaluate_local(rq["cand"], Path(rq["cdir"]), rq["task_ids"], rq["phase"], rq["split"], rq["reuse"],
-                               rq["hard_cap"], rq["seed"])
+                               rq["hard_cap"], rq["seed"], rq.get("tag", ""))
         out.write_text(json.dumps({"records": recs}))
         return 0
     except BudgetExceeded as e:

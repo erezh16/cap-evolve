@@ -992,3 +992,12 @@ B6 code committed so far: shared evaluator, gateway shim, sandbox settings, wind
 ```json
 {"cp": 5, "prev_cp": 4, "prev_commit": "c130d33a8b5229f90e151fd5458e3972e0bd14ce", "utc": "2026-10-17T23:38:59Z", "kind": "result", "phase": "P2", "done_through": "P2/A9", "next": "P2/A10", "candidate": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "c130d33a8b5229f90e151fd5458e3972e0bd14ce", "open_decisions": []}
 ```
+
+## CP-0006 · 2026-10-17T23:56Z · P2 acceptance A10, A-gepa · result
+
+A10 pass (throwaway clone + branch, deleted afterwards): a 12-cell mini window SIGKILLed after 4 cells and resumed ran 0 cells twice and finished all 12 in the recorded order; entries coalesced; history append-only; a heartbeat after 60 s of silence marked the killed runner stalled; a push failure kept the commit local and the next checkpoint pushed it; the content filter refused an entry with a task id and one with an .env value.
+A-gepa pass (3 dev tasks as trainset, 1 as valset, throwaway, not counted): GEPA 0.1.4 ran 3 iterations / 14 metric calls; the <new_text> reflection parsed on the first call (0 parse failures, 0 lint rejects, 0 refusals, 0 gateway errors, no temperature); the accepted child lints clean. Fix found by this check: the evaluator replayed GEPA's repeated parent-minibatch evaluations from the cache, which GEPA counts as fresh metric calls; replays are now keyed by call site + iteration (GEPA, SkillOpt step dir, WikiSkill iteration), so only a resumed step is replayed. Next: A-skillopt, A-wikiskill, then the agentic arms.
+
+```json
+{"cp": 6, "prev_cp": 5, "prev_commit": "33409f881fbd48075e2bcb4a97ec33fc434f57cc", "utc": "2026-10-17T23:56:32Z", "kind": "result", "phase": "P2", "done_through": "P2/A-gepa", "next": "P2/A-skillopt", "candidate": null, "counts": {}, "spend": {}, "artifacts": {"STATE/acceptance.json": "e68275246b4f424494ded1245effe81045c9f7629009845a12206b551cb0e254"}, "code": "33409f881fbd48075e2bcb4a97ec33fc434f57cc", "open_decisions": []}
+```

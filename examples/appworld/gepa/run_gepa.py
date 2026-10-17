@@ -115,14 +115,15 @@ class AppWorldGEPAAdapter:
     def __init__(self, cand: str, hard_cap: int):
         self.cand, self.hard_cap = cand, hard_cap
         self.lock = threading.Lock()
+        self.tag = "seed"  # set to it<i> at each iteration start (Progress callback)
 
     def _eval(self, batch: list[dict], candidate: dict[str, str]) -> list[dict]:
         cdir = E.materialize(self.cand, dict(candidate))
         split = batch[0]["split"] if batch else "?"
-        # an identical (candidate, task, seed) cell is replayed rather than re-run: GEPA re-evaluates the
-        # seed on every resume (engine.py) and that must not spend counted rollouts twice
+        # replayed only when the same iteration repeats the same (candidate, task): GEPA re-evaluates the
+        # seed on every resume (engine.py) and re-runs the iteration it was in; neither may spend twice
         return E.evaluate(self.cand, cdir, [b["id"] for b in batch], phase="P3", split=split, reuse=True,
-                          hard_cap=self.hard_cap)
+                          hard_cap=self.hard_cap, tag=self.tag)
 
     def evaluate(self, batch, candidate, capture_traces=False):
         from gepa.core.adapter import EvaluationBatch
@@ -197,9 +198,13 @@ def make_proposer(cand: str, counters: dict):
 class Progress:
     """GEPA callback: one progress line + a pushed progress.json + a ledger checkpoint per iteration."""
 
-    def __init__(self, cand: str, ledger: bool):
-        self.cand, self.ledger = cand, ledger
+    def __init__(self, cand: str, ledger: bool, adapter=None):
+        self.cand, self.ledger, self.adapter = cand, ledger, adapter
         self.rows = (P.read_json(P.PUSHED / cand / "progress.json", {}) or {}).get("rows", []) if ledger else []
+
+    def on_iteration_start(self, ev):
+        if self.adapter is not None:
+            self.adapter.tag = f"it{ev['iteration']}"
 
     def on_valset_evaluated(self, ev):
         P.progress_log(self.cand, "P3", f"val: candidate {ev['candidate_idx']} dev mean {ev['average_score']:.3f}"
@@ -252,12 +257,13 @@ def run(train_ids, val_ids, run_dir: Path, max_calls: int, hard_cap: int, ledger
     counters = P.read_json(STATE / "proposer_counters.json", None) or {"lint_reject": 0, "parse_fail": 0,
                                                                         "refusals": 0, "gave_up": 0}
     run_dir.mkdir(parents=True, exist_ok=True)
+    adapter = AppWorldGEPAAdapter(CAND, hard_cap)
     return gepa.optimize(
         seed_candidate=seed_candidate(), trainset=_data("train", train_ids), valset=_data("dev", val_ids),
-        adapter=AppWorldGEPAAdapter(CAND, hard_cap), custom_candidate_proposer=make_proposer(CAND, counters),
+        adapter=adapter, custom_candidate_proposer=make_proposer(CAND, counters),
         candidate_selection_strategy="pareto", skip_perfect_score=True, perfect_score=1.0,
         reflection_minibatch_size=MINIBATCH, module_selector="round_robin", use_merge=False,
-        max_metric_calls=max_calls, run_dir=str(run_dir), callbacks=[Progress(CAND, ledger)],
+        max_metric_calls=max_calls, run_dir=str(run_dir), callbacks=[Progress(CAND, ledger, adapter)],
         use_wandb=False, use_mlflow=False, track_best_outputs=True, display_progress_bar=False,
         cache_evaluation=False, seed=0, raise_on_exception=True, acceptance_criterion="strict_improvement")
 

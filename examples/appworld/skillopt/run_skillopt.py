@@ -16,8 +16,8 @@ own scripts/train.py load_config), the plan's settings in appworld.yaml, and the
   final ``{"role": "system"}`` F1 report; dev (gate) rollouts write nothing the optimizer reads;
 * no ``reference_text`` is ever set (SkillOpt's "Hidden Reference" never appears); eval_test false, test = [];
 * a skill over M_cap / 30,000 chars is lint-rejected by the evaluator (scored 0, not run).
-An identical (skill, task, seed) episode is replayed from its record instead of re-run (SkillOpt's own
-selection cache does the same for the gate); replays are not counted.
+Only a resumed step's own episodes are replayed from their records (tag = SkillOpt's step dir); every other
+rollout runs as SkillOpt asks (its selection cache already skips identical gates).
 """
 
 from __future__ import annotations
@@ -90,9 +90,10 @@ def _conversation(rec: dict, with_report: bool) -> list[dict]:
     return msgs
 
 
-def make_adapter(cand: str, train_items: list[dict], val_items: list[dict], hard_cap: int):
+def make_adapter(cand: str, train_items: list[dict], val_items: list[dict], hard_cap: int, out_root: Path):
     from skillopt.datasets.base import SplitDataLoader
     from skillopt.envs.base import EnvAdapter
+    cfg_out_root = [str(out_root)]
 
     class _Loader(SplitDataLoader):
         def setup(self, cfg):  # in-memory splits: train = official train, val = dev, test = []
@@ -130,8 +131,10 @@ def make_adapter(cand: str, train_items: list[dict], val_items: list[dict], hard
                 return []
             split = items[0]["split"]
             cdir = E.materialize(cand, {"memory/playbook.md": skill_content or ""})
+            # tag = the call site + step (SkillOpt's own dir layout), so only a resumed step is replayed
+            tag = os.path.relpath(out_dir, cfg_out_root[0]) if cfg_out_root else "x"
             recs = E.evaluate(cand, cdir, [it["id"] for it in items], phase="P3", split=split, reuse=True,
-                              hard_cap=hard_cap)
+                              hard_cap=hard_cap, tag=tag)
             out = []
             for it, r in zip(items, recs):
                 n, passed = int(r.get("num_tests") or 0), int(r.get("pass_count") or 0)
@@ -236,7 +239,7 @@ def search() -> int:
         cfg = build_cfg(OUT_ROOT, len(tr), NUM_EPOCHS)
         P.write_json(STATE / "cfg.json", {k: v for k, v in cfg.items() if "key" not in k.lower()})
         try:
-            train(cfg, make_adapter(CAND, tr, dv, P.BUDGET_ROLLOUTS))
+            train(cfg, make_adapter(CAND, tr, dv, P.BUDGET_ROLLOUTS, OUT_ROOT))
             end = "done"
         except (E.BudgetExceeded, opt_llm.BudgetExceeded) as e:
             end = f"stopped at the cap ({e})"
@@ -259,7 +262,7 @@ def accept() -> int:
     cfg = build_cfg(out_root, len(tr), 1, batch_size=3)
     cfg.update({"use_slow_update": False, "use_meta_skill": False})
     patch_optimizer(CAND)
-    ad = make_adapter(CAND, tr, dv, 100)
+    ad = make_adapter(CAND, tr, dv, 100, out_root)
     train(cfg, ad)
     calls = P.read_jsonl(opt_llm.usage_path(CAND))
     hist = P.read_json(out_root / "history.json", []) or []
