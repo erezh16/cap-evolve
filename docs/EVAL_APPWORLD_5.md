@@ -938,3 +938,13 @@ episodes are the parallel unit (`AW_WORKERS` sized by `memcheck`).
 > The first entry (CP-0000) records the five tracking-issue numbers. Content rules: section 10.2.
 
 <!-- CHECKPOINTS BELOW THIS LINE -->
+
+## CP-0000 · 2026-10-17T23:14Z · P0 decisions · decision
+
+Execution of the eval-5 plan starts. Decisions D1–D8 (section 2) are taken as written; no open decision.
+Tracking issues (skillberry-ai/cap-evolve): gepa #881, skillopt #882, wikiskill #883, evoskill #884, metaharness #885; each already carries its plan projection as the first post.
+Host: memcheck limit 32,768 MB, cpu_limit 8, oom.group 1. Next: P1 build.
+
+```json
+{"cp": 0, "prev_cp": null, "prev_commit": "cb68423b4335d0f2d99f14603980a657b754da0f", "utc": "2026-10-17T23:14:03Z", "kind": "decision", "phase": "P0", "done_through": "P0/decisions", "next": "P1/B1", "candidate": null, "counts": {}, "spend": {}, "artifacts": {"STATE/manifest.json": "3c4c9266ad803a11d4b66a5f85c31f2192412c8615beb530a82d2bcc3120246c"}, "code": "ec30d13ae3acc7595248614c52c93e9d833c100a", "open_decisions": [], "issues": {"gepa": 881, "skillopt": 882, "wikiskill": 883, "evoskill": 884, "metaharness": 885}}
+```
