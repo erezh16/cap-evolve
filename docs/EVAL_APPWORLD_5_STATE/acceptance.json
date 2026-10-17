@@ -1,0 +1,28 @@
+{
+ "a1": {
+  "ok": true
+ },
+ "a2": {
+  "ok": true,
+  "max_model_len": 40144,
+  "concurrency": {
+   "n": 48,
+   "status_200": 48,
+   "status_429": 0,
+   "wall_s": 12.3
+  },
+  "key_hits": 0
+ },
+ "a3a5": {
+  "ok": true
+ },
+ "a4": {
+  "ok": true
+ },
+ "a6": {
+  "ok": true
+ },
+ "a7": {
+  "ok": true
+ }
+}

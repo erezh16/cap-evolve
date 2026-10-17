@@ -957,3 +957,12 @@ B6 (drivers) comes next together with acceptance; one dev episode already ran en
 ```json
 {"cp": 1, "prev_cp": 0, "prev_commit": "e9ed3d1bf0bd4f44ffa3a63f48093c08bdd4e384", "utc": "2026-10-17T23:14:28Z", "kind": "result", "phase": "P1", "done_through": "P1/B5", "next": "P2/A1", "candidate": null, "counts": {}, "spend": {}, "artifacts": {"STATE/manifest.json": "3c4c9266ad803a11d4b66a5f85c31f2192412c8615beb530a82d2bcc3120246c"}, "code": "e9ed3d1bf0bd4f44ffa3a63f48093c08bdd4e384", "open_decisions": []}
 ```
+
+## CP-0002 · 2026-10-17T23:24Z · P2 acceptance · result
+
+A1 pass: aws/claude-sonnet-5-5 answers through the shared gateway shim (header sent, no temperature, JSON parses) and through the claude CLI (modelUsage = aws/claude-sonnet-5-5). A2 pass: RITS max_model_len 40,144; 48/48 concurrent requests 200, 0 × 429; 1 dev episode with lm_calls logging; RITS key found nowhere under AW_HOME, /tmp/aw_eval5, the pushed state or the code. A3+A5 pass (base checks unchanged: import os / open / pathlib reads blocked; root_opt has no test data; released solution → 1, no-op → 0, scoring deterministic, no trace/gold persisted; root_full locked). A4 pass (seed byte-identical to stock, 23 messages; memory slot before 'My name is:'; helpers + notes; a lint-violating candidate rejected with 0 rollouts counted). A6 pass (train order = load_task_ids; outside id and test split refused). A7 pass (dev-diagnostic order reproducible from its seed, 342 cells).
+Container: 10 concurrent episodes peak about 4.1 GB anonymous memory (≈0.4 GB each), so 24 search workers and 48 final-window workers fit the 32 GB limit. Next: A8 (running), then A9/A10 and the per-candidate checks.
+
+```json
+{"cp": 2, "prev_cp": 1, "prev_commit": "a47ec421713a0c7da9221f6949f4fcb2aef9c21c", "utc": "2026-10-17T23:24:38Z", "kind": "result", "phase": "P2", "done_through": "P2/A7", "next": "P2/A8", "candidate": null, "counts": {}, "spend": {}, "artifacts": {"STATE/acceptance.json": "d68ff21a459d746edee5992aca70a8f35c0ead30e200c4c206cfacd600eb694d", "STATE/manifest.json": "7c991829b9684fcd144d8ac4eb2f117fe074fe44adf8150943e9a40a80f39981"}, "code": "e9ed3d1bf0bd4f44ffa3a63f48093c08bdd4e384", "open_decisions": []}
+```

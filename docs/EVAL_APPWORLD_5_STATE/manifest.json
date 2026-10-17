@@ -108,5 +108,10 @@
   "optimizer": "aws/claude-sonnet-5-5",
   "agent": "openai/gpt-oss-120b-a100"
  },
- "search_trial_seed": 100
+ "search_trial_seed": 100,
+ "dev_order": {
+  "seed": 2026101705,
+  "sha256": "30d7ccfa1260ce30516a39184d3994993a6921aab5e7bb988c14cfdf7dd8ce0b",
+  "cells": 342
+ }
 }
