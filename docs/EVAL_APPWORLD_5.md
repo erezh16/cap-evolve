@@ -1752,3 +1752,11 @@ Posted 'correction to the freeze note' on #882 (skillopt): https://github.com/sk
 ```json
 {"cp": 92, "prev_cp": 91, "prev_commit": "9cc7d6762ff5275a96be2794f1120ffa32b10129", "utc": "2026-10-18T14:41:36Z", "kind": "posted", "phase": "P3", "done_through": "skillopt/scan", "next": "wikiskill/search", "candidate": null, "counts": {"skillopt": {"counted_rollouts": 900}}, "spend": {"skillopt": {"in": 2331763, "out": 180038, "proxy_usd": 9.7}}, "artifacts": {}, "code": "9cc7d6762ff5275a96be2794f1120ffa32b10129", "open_decisions": [], "post": "skillopt/erratum_label", "url": "https://github.com/skillberry-ai/cap-evolve/issues/882#issuecomment-6251213851"}
 ```
+
+## CP-0093 · 2026-10-18T14:42Z · P3 posted skillopt · posted
+
+Posted 'correction to the correction' on #882 (skillopt): https://github.com/skillberry-ai/cap-evolve/issues/882#issuecomment-6251221364
+
+```json
+{"cp": 93, "prev_cp": 92, "prev_commit": "4aa8691b34dfbf5b915ba87916b14d0e74bf4120", "utc": "2026-10-18T14:42:20Z", "kind": "posted", "phase": "P3", "done_through": "skillopt/scan", "next": "wikiskill/search", "candidate": null, "counts": {"skillopt": {"counted_rollouts": 900}}, "spend": {"skillopt": {"in": 2331763, "out": 180038, "proxy_usd": 9.7}}, "artifacts": {}, "code": "9cc7d6762ff5275a96be2794f1120ffa32b10129", "open_decisions": [], "post": "skillopt/erratum_baseline", "url": "https://github.com/skillberry-ai/cap-evolve/issues/882#issuecomment-6251221364"}
+```
