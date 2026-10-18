@@ -1,0 +1,12 @@
+{
+ "candidate": "wikiskill",
+ "label": "",
+ "r_best": 0.6140350877192983,
+ "skills": [
+  "appworld_data_extraction_and_answer_hygiene"
+ ],
+ "memory_chars": 7859,
+ "memory_tokens": 1907,
+ "iterations": 5,
+ "tree_sha256": "eee01ab4d8475e3bdf1507b3172b60bb6dd0110850dc4b7ea24676caf276732e"
+}

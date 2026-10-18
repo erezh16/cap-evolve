@@ -1887,3 +1887,11 @@ WikiSkill search finished: R_best 0.614, 1 accepted skill(s). Next: freeze.
 ```json
 {"cp": 107, "prev_cp": 106, "prev_commit": "9f47b07faae23847257e1d76249c311253683ed8", "utc": "2026-10-18T18:25:06Z", "kind": "phase_done", "phase": "P3", "done_through": "wikiskill/search", "next": "wikiskill/freeze", "candidate": "wikiskill", "counts": {"wikiskill": {"counted_rollouts": 792}}, "spend": {"wikiskill": {"in": 1775943, "out": 94851, "proxy_usd": 6.75}}, "artifacts": {}, "code": "4e27c54e4a6a144d0c96918ab4db534478a59a6e", "open_decisions": []}
 ```
+
+## CP-0108 · 2026-10-18T18:25Z · P3 step done · phase_done
+
+Step `wikiskill/freeze` done. Next: wikiskill/scan.
+
+```json
+{"cp": 108, "prev_cp": 107, "prev_commit": "c87206387c82ff3a51d70e6b2f5327b3494c3fb6", "utc": "2026-10-18T18:25:08Z", "kind": "phase_done", "phase": "P3", "done_through": "wikiskill/freeze", "next": "wikiskill/scan", "candidate": "wikiskill", "counts": {"wikiskill": {"counted_rollouts": 792}}, "spend": {"wikiskill": {"in": 1775943, "out": 94851, "proxy_usd": 6.75}}, "artifacts": {}, "code": "4e27c54e4a6a144d0c96918ab4db534478a59a6e", "open_decisions": []}
+```
