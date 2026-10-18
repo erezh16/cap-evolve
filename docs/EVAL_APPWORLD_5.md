@@ -2101,3 +2101,11 @@ EvoSkill eval_result 12: val-subset 0.65. Counted rollouts 318/900; optimizer 24
 ```json
 {"cp": 133, "prev_cp": 132, "prev_commit": "4cb622eda83de48b1abd979652e27986567bd64c", "utc": "2026-10-18T22:35:22Z", "kind": "result", "phase": "P3", "done_through": "evoskill/search/eval_result 12: val-subset 0.65", "next": "evoskill/search", "candidate": "evoskill", "counts": {"evoskill": {"counted_rollouts": 318}}, "spend": {"evoskill": {"in": 669508, "out": 62103, "usd": 3.17}}, "artifacts": {"STATE/evoskill/progress.json": "dff781ebe930ff69ba9ce5c0e831700289bf671f2a0e3a6dca7c0fd86bb08e1a"}, "code": "5ed4347dbfaabaea97c0a0bec47102aa2513cfa5", "open_decisions": []}
 ```
+
+## CP-0134 · 2026-10-18T23:00Z · P3 evoskill search · result
+
+EvoSkill eval_result 13: val-subset 0.65. Counted rollouts 344/900; optimizer 26 agent runs, 0.73M in / 0.07M out tok, $3.43 (SDK-reported).
+
+```json
+{"cp": 134, "prev_cp": 133, "prev_commit": "625cd783b077e5d5e72c9e7801e5bfb2a06953fb", "utc": "2026-10-18T23:00:48Z", "kind": "result", "phase": "P3", "done_through": "evoskill/search/eval_result 13: val-subset 0.65", "next": "evoskill/search", "candidate": "evoskill", "counts": {"evoskill": {"counted_rollouts": 344}}, "spend": {"evoskill": {"in": 726104, "out": 66002, "usd": 3.43}}, "artifacts": {"STATE/evoskill/progress.json": "b955d2170c76a6bfefff5b83bfe29a26c70ce99801dabdeec3c7401e96d58932"}, "code": "5ed4347dbfaabaea97c0a0bec47102aa2513cfa5", "open_decisions": []}
+```
