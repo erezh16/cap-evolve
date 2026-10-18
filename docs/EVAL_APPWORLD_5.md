@@ -1779,3 +1779,12 @@ Counted rollouts 204/900; optimizer 12 calls, 0.29M in / 0.02M out tok, $1.11 pr
 ```json
 {"cp": 95, "prev_cp": 94, "prev_commit": "23068f82d3483f040a8c93bbb8b134e4f1662804", "utc": "2026-10-18T15:22:22Z", "kind": "result", "phase": "P3", "done_through": "wikiskill/search/iter1", "next": "wikiskill/search", "candidate": "wikiskill", "counts": {"wikiskill": {"counted_rollouts": 204}}, "spend": {"wikiskill": {"in": 286129, "out": 16782, "proxy_usd": 1.11}}, "artifacts": {"STATE/wikiskill/progress.json": "4f81e1bd01c747d075193048567b6331de96dc4c3ed7818898a49f2df5fe65be"}, "code": "9cc7d6762ff5275a96be2794f1120ffa32b10129", "open_decisions": []}
 ```
+
+## CP-0096 · 2026-10-18T15:45Z · P3 wikiskill search · result
+
+WikiSkill iteration 2/5: proposal patch → val 0.45614035087719296 (not accepted); R_best 0.456; 1 active skill(s), 3,947 chars.
+Counted rollouts 351/900; optimizer 24 calls, 0.65M in / 0.03M out tok, $2.37 proxy.
+
+```json
+{"cp": 96, "prev_cp": 95, "prev_commit": "54578f49c3b5b2f02f4b12b060d0636baca8aaa7", "utc": "2026-10-18T15:45:40Z", "kind": "result", "phase": "P3", "done_through": "wikiskill/search/iter2", "next": "wikiskill/search", "candidate": "wikiskill", "counts": {"wikiskill": {"counted_rollouts": 351}}, "spend": {"wikiskill": {"in": 653416, "out": 27015, "proxy_usd": 2.37}}, "artifacts": {"STATE/wikiskill/progress.json": "bbb92b026e944a0aac708df031cbe063bfcac74e069fd9dc1e1b98842b573c45"}, "code": "9cc7d6762ff5275a96be2794f1120ffa32b10129", "open_decisions": []}
+```

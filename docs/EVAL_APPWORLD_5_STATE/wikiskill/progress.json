@@ -7,20 +7,26 @@
    "action": "create",
    "val_score": 0.45614035087719296,
    "accepted": true
+  },
+  {
+   "iteration": 2,
+   "action": "patch",
+   "val_score": 0.45614035087719296,
+   "accepted": false
   }
  ],
  "r_best": 0.45614035087719296,
  "skills": 1,
  "playbook_chars": 3947,
- "counted_rollouts": 204,
+ "counted_rollouts": 351,
  "cap": 900,
  "optimizer": {
-  "calls": 12,
+  "calls": 24,
   "errors": 0,
-  "prompt_tokens": 286129,
-  "completion_tokens": 16782,
+  "prompt_tokens": 653416,
+  "completion_tokens": 27015,
   "cache_read": 0,
-  "seconds": 148.3,
-  "proxy_usd": 1.11
+  "seconds": 240.5,
+  "proxy_usd": 2.37
  }
 }
