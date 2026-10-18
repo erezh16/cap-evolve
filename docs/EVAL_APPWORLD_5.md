@@ -1390,3 +1390,11 @@ Next: gepa/search.
 ```json
 {"cp": 50, "prev_cp": 49, "prev_commit": "b2438b44bf91b6ed11f944ee3a3246b965e07ab3", "utc": "2026-10-18T08:37:39Z", "kind": "heartbeat", "phase": "P3", "done_through": "gepa/search/iteration 21", "next": "gepa/search", "candidate": "gepa", "counts": {"gepa": {"counted_rollouts": 687}}, "spend": {"gepa": {"in": 557710, "out": 134684, "proxy_usd": 3.69}}, "artifacts": {}, "code": "fa4c0da596a1c226f8a81881775447a18f6caede", "open_decisions": [], "runner": "alive"}
 ```
+
+## CP-0051 · 2026-10-18T08:41Z · P3 posted gepa · posted
+
+Posted 'gepa search progress' on #881 (gepa): https://github.com/skillberry-ai/cap-evolve/issues/881#issuecomment-6247747664
+
+```json
+{"cp": 51, "prev_cp": 50, "prev_commit": "e81c4cdc2f33aef66c422ab1eeed5d5979d4c630", "utc": "2026-10-18T08:41:24Z", "kind": "posted", "phase": "P3", "done_through": "gepa/search/iteration 21", "next": "gepa/search", "candidate": "gepa", "counts": {"gepa": {"counted_rollouts": 687}}, "spend": {"gepa": {"in": 557710, "out": 134684, "proxy_usd": 3.69}}, "artifacts": {}, "code": "fa4c0da596a1c226f8a81881775447a18f6caede", "open_decisions": [], "post": "gepa/auto_248932", "url": "https://github.com/skillberry-ai/cap-evolve/issues/881#issuecomment-6247747664"}
+```
