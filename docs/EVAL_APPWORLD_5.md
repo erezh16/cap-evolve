@@ -1704,3 +1704,11 @@ Post-search isolation scan (counts only): skillopt: test-id hits 0. Literal-stri
 ```json
 {"cp": 86, "prev_cp": 85, "prev_commit": "c4b91c619690e2a6935428b1272ff94cbfbc7646", "utc": "2026-10-18T14:40:37Z", "kind": "result", "phase": "P7", "done_through": "skillopt/freeze", "next": "skillopt/scan", "candidate": null, "counts": {"skillopt": {"counted_rollouts": 900}}, "spend": {"skillopt": {"in": 2331763, "out": 180038, "proxy_usd": 9.7}}, "artifacts": {"STATE/isolation_scan.json": "07e44e51bb9f0e2367aff2022ba78937f69bcc2a356c7eefb4777688bedc2fec"}, "code": "cbe11f7f0971f28ffa36a8d756e99dff5a1a826c", "open_decisions": []}
 ```
+
+## CP-0087 · 2026-10-18T14:40Z · P7 step done · phase_done
+
+Step `skillopt/scan` done. Next: wikiskill/search.
+
+```json
+{"cp": 87, "prev_cp": 86, "prev_commit": "add788caa70722b9c31e4c1c5b5b3c34d4322cf5", "utc": "2026-10-18T14:40:38Z", "kind": "phase_done", "phase": "P7", "done_through": "skillopt/scan", "next": "wikiskill/search", "candidate": null, "counts": {"skillopt": {"counted_rollouts": 900}}, "spend": {"skillopt": {"in": 2331763, "out": 180038, "proxy_usd": 9.7}}, "artifacts": {}, "code": "cbe11f7f0971f28ffa36a8d756e99dff5a1a826c", "open_decisions": []}
+```
