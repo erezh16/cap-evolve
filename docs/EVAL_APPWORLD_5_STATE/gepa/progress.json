@@ -126,9 +126,18 @@
    "metric_calls": 537,
    "counted_rollouts": 537,
    "utc": "2026-10-18T06:17:24Z"
+  },
+  {
+   "iteration": 15,
+   "accepted": false,
+   "n_candidates": 8,
+   "best_dev": 0.6842,
+   "metric_calls": 540,
+   "counted_rollouts": 540,
+   "utc": "2026-10-18T06:28:55Z"
   }
  ],
- "counted_rollouts": 537,
+ "counted_rollouts": 540,
  "cap": 900,
  "optimizer": {
   "calls": 17,
