@@ -1823,3 +1823,11 @@ Posted 'clarification: search vs test' on #882 (skillopt): https://github.com/sk
 ```json
 {"cp": 100, "prev_cp": 99, "prev_commit": "4e27c54e4a6a144d0c96918ab4db534478a59a6e", "utc": "2026-10-18T16:34:52Z", "kind": "posted", "phase": "P3", "done_through": "wikiskill/search/iter3", "next": "wikiskill/search", "candidate": "wikiskill", "counts": {"wikiskill": {"counted_rollouts": 498}}, "spend": {"wikiskill": {"in": 1053546, "out": 64076, "proxy_usd": 4.12}}, "artifacts": {}, "code": "4e27c54e4a6a144d0c96918ab4db534478a59a6e", "open_decisions": [], "post": "skillopt/clarify_test", "url": "https://github.com/skillberry-ai/cap-evolve/issues/882#issuecomment-6252362129"}
 ```
+
+## CP-0101 · 2026-10-18T16:41Z · P3 posted wikiskill · posted
+
+Posted 'wikiskill search progress' on #883 (wikiskill): https://github.com/skillberry-ai/cap-evolve/issues/883#issuecomment-6252430474
+
+```json
+{"cp": 101, "prev_cp": 100, "prev_commit": "b5ea17adcb311e78b20df453f80b83fbc2a0e40b", "utc": "2026-10-18T16:41:32Z", "kind": "posted", "phase": "P3", "done_through": "wikiskill/search/iter3", "next": "wikiskill/search", "candidate": "wikiskill", "counts": {"wikiskill": {"counted_rollouts": 498}}, "spend": {"wikiskill": {"in": 1053546, "out": 64076, "proxy_usd": 4.12}}, "artifacts": {}, "code": "4e27c54e4a6a144d0c96918ab4db534478a59a6e", "open_decisions": [], "post": "wikiskill/auto_248936", "url": "https://github.com/skillberry-ai/cap-evolve/issues/883#issuecomment-6252430474"}
+```
