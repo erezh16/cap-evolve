@@ -1228,3 +1228,11 @@ Counted rollouts 540/900; optimizer 17 calls, 0.35M in / 0.09M out tok, $2.4 pro
 ```json
 {"cp": 31, "prev_cp": 30, "prev_commit": "5cedd76a7942d9533b2ef28547a35f3ee0969706", "utc": "2026-10-18T06:28:55Z", "kind": "result", "phase": "P3", "done_through": "gepa/search/iteration 15", "next": "gepa/search", "candidate": "gepa", "counts": {"gepa": {"counted_rollouts": 540}}, "spend": {"gepa": {"in": 349364, "out": 90050, "proxy_usd": 2.4}}, "artifacts": {"STATE/gepa/progress.json": "c11244d34feadc5536f674cdff35013314a7130a1736d2d0a717b2fe8940b592"}, "code": "03367bc299b4cf7366e491d7d12ba5e346b93f39", "open_decisions": []}
 ```
+
+## CP-0032 · 2026-10-18T06:39Z · P3 user decisions · decision
+
+User decisions (2026-10-18), verbatim in substance: (1) "Yes to posting. You are EXPECTED to update each of the issues about progress for its respective candidate, periodically." — progress updates and results are posted on #881–#885, each issue getting its own candidate's progress. (2) "Yes about meta-harness. Just record this decision in your reports and status." — the Meta-Harness proposer runs with --permission-mode acceptEdits inside Claude Code's sandbox (the A9-checked configuration) instead of the vendored claude_wrapper's --dangerously-skip-permissions; recorded here and to be stated in the metaharness reports.
+
+```json
+{"cp": 32, "prev_cp": 31, "prev_commit": "fb26ab04b95de83de1a7f9e90f16e976c317273b", "utc": "2026-10-18T06:39:41Z", "kind": "decision", "phase": "P3", "done_through": "gepa/search/iteration 15", "next": "gepa/search", "candidate": "gepa", "counts": {"gepa": {"counted_rollouts": 540}}, "spend": {"gepa": {"in": 349364, "out": 90050, "proxy_usd": 2.4}}, "artifacts": {}, "code": "03367bc299b4cf7366e491d7d12ba5e346b93f39", "open_decisions": [], "decisions": ["D9: post progress + results on #881-885, per candidate, periodically", "D10: metaharness proposer = acceptEdits + sandbox instead of --dangerously-skip-permissions"]}
+```
