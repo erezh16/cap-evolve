@@ -1895,3 +1895,11 @@ Step `wikiskill/freeze` done. Next: wikiskill/scan.
 ```json
 {"cp": 108, "prev_cp": 107, "prev_commit": "c87206387c82ff3a51d70e6b2f5327b3494c3fb6", "utc": "2026-10-18T18:25:08Z", "kind": "phase_done", "phase": "P3", "done_through": "wikiskill/freeze", "next": "wikiskill/scan", "candidate": "wikiskill", "counts": {"wikiskill": {"counted_rollouts": 792}}, "spend": {"wikiskill": {"in": 1775943, "out": 94851, "proxy_usd": 6.75}}, "artifacts": {}, "code": "4e27c54e4a6a144d0c96918ab4db534478a59a6e", "open_decisions": []}
 ```
+
+## CP-0109 · 2026-10-18T18:25Z · P7 isolation scan · result
+
+Post-search isolation scan (counts only): wikiskill: test-id hits 0. Literal-string counts per location are in the pushed scan file.
+
+```json
+{"cp": 109, "prev_cp": 108, "prev_commit": "9da7d69d24772e174f96a209db81f16a228346f4", "utc": "2026-10-18T18:25:18Z", "kind": "result", "phase": "P7", "done_through": "wikiskill/freeze", "next": "wikiskill/scan", "candidate": null, "counts": {"wikiskill": {"counted_rollouts": 792}}, "spend": {"wikiskill": {"in": 1775943, "out": 94851, "proxy_usd": 6.75}}, "artifacts": {"STATE/isolation_scan.json": "f2f7e39af0b6ac309e6cc7fdfe9478084cd476113a766624b9d8b91d8172e35a"}, "code": "4e27c54e4a6a144d0c96918ab4db534478a59a6e", "open_decisions": []}
+```
