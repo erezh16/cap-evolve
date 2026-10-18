@@ -1696,3 +1696,11 @@ Step `skillopt/freeze` done. Next: skillopt/scan.
 ```json
 {"cp": 85, "prev_cp": 84, "prev_commit": "cbe11f7f0971f28ffa36a8d756e99dff5a1a826c", "utc": "2026-10-18T14:40:30Z", "kind": "phase_done", "phase": "P3", "done_through": "skillopt/freeze", "next": "skillopt/scan", "candidate": "skillopt", "counts": {"skillopt": {"counted_rollouts": 900}}, "spend": {"skillopt": {"in": 2331763, "out": 180038, "proxy_usd": 9.7}}, "artifacts": {}, "code": "cbe11f7f0971f28ffa36a8d756e99dff5a1a826c", "open_decisions": []}
 ```
+
+## CP-0086 · 2026-10-18T14:40Z · P7 isolation scan · result
+
+Post-search isolation scan (counts only): skillopt: test-id hits 0. Literal-string counts per location are in the pushed scan file.
+
+```json
+{"cp": 86, "prev_cp": 85, "prev_commit": "c4b91c619690e2a6935428b1272ff94cbfbc7646", "utc": "2026-10-18T14:40:37Z", "kind": "result", "phase": "P7", "done_through": "skillopt/freeze", "next": "skillopt/scan", "candidate": null, "counts": {"skillopt": {"counted_rollouts": 900}}, "spend": {"skillopt": {"in": 2331763, "out": 180038, "proxy_usd": 9.7}}, "artifacts": {"STATE/isolation_scan.json": "07e44e51bb9f0e2367aff2022ba78937f69bcc2a356c7eefb4777688bedc2fec"}, "code": "cbe11f7f0971f28ffa36a8d756e99dff5a1a826c", "open_decisions": []}
+```
