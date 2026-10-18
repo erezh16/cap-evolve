@@ -1653,3 +1653,12 @@ Counted rollouts 880/900; optimizer 74 calls, 2.33M in / 0.18M out tok, $9.7 pro
 ```json
 {"cp": 80, "prev_cp": 79, "prev_commit": "043ccfac904983c6f89ffd17784d588fc1bc66e8", "utc": "2026-10-18T14:24:25Z", "kind": "result", "phase": "P3", "done_through": "skillopt/search/step 9", "next": "skillopt/search", "candidate": "skillopt", "counts": {"skillopt": {"counted_rollouts": 880}}, "spend": {"skillopt": {"in": 2331763, "out": 180038, "proxy_usd": 9.7}}, "artifacts": {"STATE/skillopt/progress.json": "121e767a42370e36b281cb03b975cf2e61f51030518db123061fb1d546211f14"}, "code": "b191cc5bc59825b7a262254ebc2a52b5ec266316", "open_decisions": []}
 ```
+
+## CP-0081 · 2026-10-18T14:32Z · P3 skillopt search · phase_done
+
+SkillOpt search finished: stopped at the cap: 9 steps on record; best skill 24,118 chars.
+Counted rollouts 900/900; optimizer 74 calls, 2.33M in / 0.18M out tok, $9.7 proxy.
+
+```json
+{"cp": 81, "prev_cp": 80, "prev_commit": "c7b3f4eb1090f84f0c2ef2a4e6bea7dbd92e6c51", "utc": "2026-10-18T14:32:12Z", "kind": "phase_done", "phase": "P3", "done_through": "skillopt/search/search finished: stopped at the cap", "next": "skillopt/freeze", "candidate": "skillopt", "counts": {"skillopt": {"counted_rollouts": 900}}, "spend": {"skillopt": {"in": 2331763, "out": 180038, "proxy_usd": 9.7}}, "artifacts": {"STATE/skillopt/progress.json": "74691b357cb5c114284ec0f3befbc13e9163f103f6d687fbe9d2a497a611cb77"}, "code": "b191cc5bc59825b7a262254ebc2a52b5ec266316", "open_decisions": []}
+```

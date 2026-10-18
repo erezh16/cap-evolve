@@ -75,7 +75,7 @@
    "skill_len": 24118
   }
  ],
- "counted_rollouts": 880,
+ "counted_rollouts": 900,
  "cap": 900,
  "best_skill_chars": 24118,
  "optimizer": {
