@@ -1678,3 +1678,13 @@ Posted 'skillopt freeze' on #882 (skillopt): https://github.com/skillberry-ai/ca
 ```json
 {"cp": 83, "prev_cp": 82, "prev_commit": "b580b11458e14ac0a73ae754e0494be4ffff7a9c", "utc": "2026-10-18T14:32:53Z", "kind": "posted", "phase": "P3", "done_through": "skillopt/search/search finished: stopped at the cap", "next": "skillopt/freeze", "candidate": "skillopt", "counts": {"skillopt": {"counted_rollouts": 900}}, "spend": {"skillopt": {"in": 2331763, "out": 180038, "proxy_usd": 9.7}}, "artifacts": {}, "code": "b191cc5bc59825b7a262254ebc2a52b5ec266316", "open_decisions": [], "post": "skillopt/m_freeze", "url": "https://github.com/skillberry-ai/cap-evolve/issues/882#issuecomment-6251126576"}
 ```
+
+## CP-0084 · 2026-10-18T14:40Z · P3 resume · resume
+
+Resume (reason: skillopt freeze failed: lint ran in venv-skillopt without jinja2; lint now runs in venv-aw). Plan: re-lock root_full (chmod 000); continue at next = skillopt/freeze.
+Local work on record: gepa: 900 counted rollouts on record, skillopt: 900 counted rollouts on record.
+Next: skillopt/freeze.
+
+```json
+{"cp": 84, "prev_cp": 83, "prev_commit": "74d5186e00a69fe92d4f1ff3906f8377aa3d0bcd", "utc": "2026-10-18T14:40:27Z", "kind": "resume", "phase": "P3", "done_through": "skillopt/search/search finished: stopped at the cap", "next": "skillopt/freeze", "candidate": "skillopt", "counts": {"skillopt": {"counted_rollouts": 900}}, "spend": {"skillopt": {"in": 2331763, "out": 180038, "proxy_usd": 9.7}}, "artifacts": {}, "code": "b191cc5bc59825b7a262254ebc2a52b5ec266316", "open_decisions": [], "adopted": ["gepa: 900 counted rollouts on record", "skillopt: 900 counted rollouts on record"], "plan": ["re-lock root_full (chmod 000)", "continue at next = skillopt/freeze"]}
+```

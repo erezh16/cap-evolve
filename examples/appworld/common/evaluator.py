@@ -101,7 +101,11 @@ def m_cap_tokens() -> int | None:
 def lint(cdir: Path) -> list[str]:
     """The shared lint, plus two eval-5 rules for the memory slot (§1.3, §6): the 8-gram / supervisor-contact
     check the shared lint applies to the prompt, helpers and notes (lints.py checks only the memory's length),
-    and the token cap M_cap."""
+    and the token cap M_cap. Runs in venv-aw (jinja2, tiktoken); from a candidate venv it shells out there."""
+    if not _in_venv_aw():
+        r = subprocess.run([str(P.VENV_PY), "-I", str(Path(__file__)), "lint", str(cdir)], capture_output=True,
+                           text=True, env=P.setup_env(dict(os.environ)))
+        return json.loads(r.stdout)["violations"]
     sys.path.insert(0, str(HERE.parent / "adapters"))
     import lints
     v = lints.lint_candidate(Path(cdir))
