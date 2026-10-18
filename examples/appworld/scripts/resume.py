@@ -151,6 +151,14 @@ def main() -> int:
         subprocess.Popen(["nohup", sys.executable, "-I", str(Path(__file__).parent / "status_doc.py"), "heartbeat"],
                          stdout=open(P.PROGRESS / "heartbeat.out", "a"), stderr=subprocess.STDOUT,
                          start_new_session=True, cwd=str(P.REPO))
+    try:
+        ap_alive = S.pid_alive(int((P.AW_STATE / "AUTOPOST.pid").read_text().strip()))
+    except (FileNotFoundError, ValueError):
+        ap_alive = False
+    if not ap_alive and not a.no_launch:  # periodic per-candidate issue updates (user decision D9)
+        subprocess.Popen(["nohup", sys.executable, "-I", str(Path(__file__).parent / "autopost5.py"), "loop"],
+                         stdout=open(P.PROGRESS / "autopost.out", "a"), stderr=subprocess.STDOUT,
+                         start_new_session=True, cwd=str(P.REPO))
     if runnable and not a.no_launch:
         subprocess.Popen(["nohup", str(P.VENV_PY), "-I", str(Path(__file__).parent / "pipeline5.py")],
                          stdout=open(P.PROGRESS / "pipeline.out", "a"), stderr=subprocess.STDOUT,

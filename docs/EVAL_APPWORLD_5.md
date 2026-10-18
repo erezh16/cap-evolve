@@ -1316,3 +1316,11 @@ Posted 'queued behind GEPA; permission-mode decision' on #885 (metaharness): htt
 ```json
 {"cp": 42, "prev_cp": 41, "prev_commit": "1bc87ced3c736d3888f1633858a8a193081db096", "utc": "2026-10-18T06:40:33Z", "kind": "posted", "phase": "P3", "done_through": "gepa/search/iteration 15", "next": "gepa/search", "candidate": "gepa", "counts": {"gepa": {"counted_rollouts": 540}}, "spend": {"gepa": {"in": 349364, "out": 90050, "proxy_usd": 2.4}}, "artifacts": {}, "code": "03367bc299b4cf7366e491d7d12ba5e346b93f39", "open_decisions": [], "post": "metaharness/wait", "url": "https://github.com/skillberry-ai/cap-evolve/issues/885#issuecomment-6246660727"}
 ```
+
+## CP-0043 · 2026-10-18T06:41Z · P3 posting · result
+
+Posting enabled (D9): the queued acceptance update was posted on #881–#885; a GEPA progress post on #881; a 'queued behind GEPA' note on #882–#884 and on #885 with the recorded D10 decision. autopost5.py (nohup loop, relaunched by resume.py) now posts a milestone comment on a candidate's issue when its search starts / ends / is frozen / is scanned, and a progress comment every 2 h while its search runs. GEPA search continues.
+
+```json
+{"cp": 43, "prev_cp": 42, "prev_commit": "96ae2b86d6aa66e8cad187dd6bc9100fdf60461d", "utc": "2026-10-18T06:41:46Z", "kind": "result", "phase": "P3", "done_through": "gepa/search/iteration 15", "next": "gepa/search", "candidate": "gepa", "counts": {"gepa": {"counted_rollouts": 540}}, "spend": {"gepa": {"in": 349364, "out": 90050, "proxy_usd": 2.4}}, "artifacts": {}, "code": "03367bc299b4cf7366e491d7d12ba5e346b93f39", "open_decisions": []}
+```
