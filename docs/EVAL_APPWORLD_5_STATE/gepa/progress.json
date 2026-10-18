@@ -1,0 +1,31 @@
+{
+ "candidate": "gepa",
+ "rows": [
+  {
+   "iteration": 1,
+   "accepted": false,
+   "n_candidates": 1,
+   "best_dev": 0.4211,
+   "metric_calls": 63,
+   "counted_rollouts": 63,
+   "utc": "2026-10-18T01:40:46Z"
+  }
+ ],
+ "counted_rollouts": 63,
+ "cap": 900,
+ "optimizer": {
+  "calls": 1,
+  "errors": 0,
+  "prompt_tokens": 21768,
+  "completion_tokens": 6923,
+  "cache_read": 0,
+  "seconds": 42.1,
+  "proxy_usd": 0.17
+ },
+ "proposer": {
+  "lint_reject": 0,
+  "parse_fail": 0,
+  "refusals": 0,
+  "gave_up": 0
+ }
+}
