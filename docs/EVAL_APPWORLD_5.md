@@ -1688,3 +1688,11 @@ Next: skillopt/freeze.
 ```json
 {"cp": 84, "prev_cp": 83, "prev_commit": "74d5186e00a69fe92d4f1ff3906f8377aa3d0bcd", "utc": "2026-10-18T14:40:27Z", "kind": "resume", "phase": "P3", "done_through": "skillopt/search/search finished: stopped at the cap", "next": "skillopt/freeze", "candidate": "skillopt", "counts": {"skillopt": {"counted_rollouts": 900}}, "spend": {"skillopt": {"in": 2331763, "out": 180038, "proxy_usd": 9.7}}, "artifacts": {}, "code": "b191cc5bc59825b7a262254ebc2a52b5ec266316", "open_decisions": [], "adopted": ["gepa: 900 counted rollouts on record", "skillopt: 900 counted rollouts on record"], "plan": ["re-lock root_full (chmod 000)", "continue at next = skillopt/freeze"]}
 ```
+
+## CP-0085 · 2026-10-18T14:40Z · P3 step done · phase_done
+
+Step `skillopt/freeze` done. Next: skillopt/scan.
+
+```json
+{"cp": 85, "prev_cp": 84, "prev_commit": "cbe11f7f0971f28ffa36a8d756e99dff5a1a826c", "utc": "2026-10-18T14:40:30Z", "kind": "phase_done", "phase": "P3", "done_through": "skillopt/freeze", "next": "skillopt/scan", "candidate": "skillopt", "counts": {"skillopt": {"counted_rollouts": 900}}, "spend": {"skillopt": {"in": 2331763, "out": 180038, "proxy_usd": 9.7}}, "artifacts": {}, "code": "cbe11f7f0971f28ffa36a8d756e99dff5a1a826c", "open_decisions": []}
+```
