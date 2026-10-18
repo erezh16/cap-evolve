@@ -1860,3 +1860,13 @@ Next: wikiskill/search.
 ```json
 {"cp": 104, "prev_cp": 103, "prev_commit": "27a9cf04abe047754bad725e5fe21016d87dd3a4", "utc": "2026-10-18T17:56:48Z", "kind": "heartbeat", "phase": "P3", "done_through": "wikiskill/search/iter4", "next": "wikiskill/search", "candidate": "wikiskill", "counts": {"wikiskill": {"counted_rollouts": 645}}, "spend": {"wikiskill": {"in": 1394021, "out": 81998, "proxy_usd": 5.41}}, "artifacts": {}, "code": "4e27c54e4a6a144d0c96918ab4db534478a59a6e", "open_decisions": [], "runner": "alive"}
 ```
+
+## CP-0105 · 2026-10-18T18:21Z · P3 heartbeat · heartbeat
+
+No checkpoint for 25 min. Phase P3, last result: wikiskill/search/iter4.
+Runner: alive (pid 151614). Last log line: `2026-10-18T18:21:48Z | wikiskill | P3/val | 35/57 episodes, passed 23, infra errors 0`.
+Next: wikiskill/search.
+
+```json
+{"cp": 105, "prev_cp": 104, "prev_commit": "06a2c857fbddbe7d5e70716979ad0f72ece21213", "utc": "2026-10-18T18:21:50Z", "kind": "heartbeat", "phase": "P3", "done_through": "wikiskill/search/iter4", "next": "wikiskill/search", "candidate": "wikiskill", "counts": {"wikiskill": {"counted_rollouts": 645}}, "spend": {"wikiskill": {"in": 1394021, "out": 81998, "proxy_usd": 5.41}}, "artifacts": {}, "code": "4e27c54e4a6a144d0c96918ab4db534478a59a6e", "open_decisions": [], "runner": "alive"}
+```
