@@ -1720,3 +1720,11 @@ Posted 'skillopt scan' on #882 (skillopt): https://github.com/skillberry-ai/cap-
 ```json
 {"cp": 88, "prev_cp": 87, "prev_commit": "e86f35eb528e0361ad08f08259a762b54eebfc34", "utc": "2026-10-18T14:40:55Z", "kind": "posted", "phase": "P7", "done_through": "skillopt/scan", "next": "wikiskill/search", "candidate": null, "counts": {"skillopt": {"counted_rollouts": 900}}, "spend": {"skillopt": {"in": 2331763, "out": 180038, "proxy_usd": 9.7}}, "artifacts": {}, "code": "cbe11f7f0971f28ffa36a8d756e99dff5a1a826c", "open_decisions": [], "post": "skillopt/m_scan", "url": "https://github.com/skillberry-ai/cap-evolve/issues/882#issuecomment-6251206946"}
 ```
+
+## CP-0089 · 2026-10-18T14:40Z · P7 posted wikiskill · posted
+
+Posted 'wikiskill search' on #883 (wikiskill): https://github.com/skillberry-ai/cap-evolve/issues/883#issuecomment-6251207466
+
+```json
+{"cp": 89, "prev_cp": 88, "prev_commit": "f7bf6d2fdb0794220bc1bd96abbe32f837a604da", "utc": "2026-10-18T14:40:58Z", "kind": "posted", "phase": "P7", "done_through": "skillopt/scan", "next": "wikiskill/search", "candidate": null, "counts": {"skillopt": {"counted_rollouts": 900}}, "spend": {"skillopt": {"in": 2331763, "out": 180038, "proxy_usd": 9.7}}, "artifacts": {}, "code": "cbe11f7f0971f28ffa36a8d756e99dff5a1a826c", "open_decisions": [], "post": "wikiskill/m_search", "url": "https://github.com/skillberry-ai/cap-evolve/issues/883#issuecomment-6251207466"}
+```
