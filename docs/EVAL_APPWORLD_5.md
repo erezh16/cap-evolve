@@ -1300,3 +1300,11 @@ Posted 'queued behind GEPA' on #883 (wikiskill): https://github.com/skillberry-a
 ```json
 {"cp": 40, "prev_cp": 39, "prev_commit": "ac6c89ab7c34975c2bf2c3ba31fef7094bf06203", "utc": "2026-10-18T06:40:29Z", "kind": "posted", "phase": "P3", "done_through": "gepa/search/iteration 15", "next": "gepa/search", "candidate": "gepa", "counts": {"gepa": {"counted_rollouts": 540}}, "spend": {"gepa": {"in": 349364, "out": 90050, "proxy_usd": 2.4}}, "artifacts": {}, "code": "03367bc299b4cf7366e491d7d12ba5e346b93f39", "open_decisions": [], "post": "wikiskill/wait", "url": "https://github.com/skillberry-ai/cap-evolve/issues/883#issuecomment-6246660111"}
 ```
+
+## CP-0041 · 2026-10-18T06:40Z · P3 posted evoskill · posted
+
+Posted 'queued behind GEPA' on #884 (evoskill): https://github.com/skillberry-ai/cap-evolve/issues/884#issuecomment-6246660438
+
+```json
+{"cp": 41, "prev_cp": 40, "prev_commit": "e10d613259ba0bf2d6957e9548859d6005ee991b", "utc": "2026-10-18T06:40:31Z", "kind": "posted", "phase": "P3", "done_through": "gepa/search/iteration 15", "next": "gepa/search", "candidate": "gepa", "counts": {"gepa": {"counted_rollouts": 540}}, "spend": {"gepa": {"in": 349364, "out": 90050, "proxy_usd": 2.4}}, "artifacts": {}, "code": "03367bc299b4cf7366e491d7d12ba5e346b93f39", "open_decisions": [], "post": "evoskill/wait", "url": "https://github.com/skillberry-ai/cap-evolve/issues/884#issuecomment-6246660438"}
+```
