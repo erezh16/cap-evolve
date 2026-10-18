@@ -86,21 +86,37 @@ def milestone_body(c: str, what: str) -> str:
     raise ValueError(what)
 
 
+def _milestones_since(cp: int) -> list[tuple[int, str]]:
+    """Every (cp, next) of ledger entries after `cp` whose `next` names a candidate phase."""
+    out = []
+    for n, chunk in S.entries():
+        if n <= cp:
+            continue
+        m = S.JSON_RE.search(chunk)
+        nxt = (json.loads(m.group(1)).get("next") or "") if m else ""
+        out.append((n, nxt))
+    return out
+
+
 def once(every: int) -> None:
-    st = P.read_json(STATE, {"last_next": None, "last_progress": {}}) or {}
-    nxt = (S.last_entry().get("next") or "")
-    parts = nxt.split("/")
-    if nxt != st.get("last_next"):
-        prev = (st.get("last_next") or "").split("/")
-        if len(parts) >= 2 and parts[0] in P.CANDIDATES:
+    st = P.read_json(STATE, {"last_cp": -1, "last_progress": {}}) or {}
+    st.setdefault("last_cp", -1)
+    seen_next = st.get("last_next")
+    for cp, nxt in _milestones_since(st["last_cp"]):
+        st["last_cp"] = cp
+        if nxt == seen_next:
+            continue
+        parts, prev = nxt.split("/"), (seen_next or "").split("/")
+        if len(parts) >= 2 and parts[0] in P.CANDIDATES and parts[1] in ("search", "freeze", "scan"):
             post5.post(parts[0], f"m_{parts[1]}", f"{parts[0]} {parts[1]}", milestone_body(parts[0], parts[1]))
         if len(prev) >= 2 and prev[0] in P.CANDIDATES and prev[1] == "scan" and parts[0] != prev[0]:
             post5.post(prev[0], "m_scanned", f"{prev[0]} scanned", milestone_body(prev[0], "scanned"))
-        st["last_next"] = nxt
+        seen_next = nxt
+    st["last_next"] = seen_next
+    parts = (seen_next or "").split("/")
     if len(parts) >= 2 and parts[0] in P.CANDIDATES and parts[1] == "search":
         c = parts[0]
-        last = st["last_progress"].get(c, time.time())
-        st["last_progress"].setdefault(c, last)
+        last = st["last_progress"].setdefault(c, time.time())
         if time.time() - last >= every:
             k = int(time.time() // every)
             post5.post(c, f"auto_{k}", f"{c} search progress", progress_body(c))
