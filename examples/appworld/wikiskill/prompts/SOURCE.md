@@ -7,6 +7,6 @@ CC BY 4.0), extracted from the arXiv HTML on 2026-10-17. Paragraph breaks are no
 otherwise as published. The plan (§7.3) asks to restore them in place of the condensed prompts of the
 kenhuangus/wikiskill reimplementation (vendor/prompts.py, kept unmodified for reference).
 
-The driver adds, outside the paper's text: the AppWorld task description for `{task_desc}`, a short
+The driver adds, outside the paper's text: the AppWorld task description for `{task_desc}`, a "How to call the tools" section (one JSON tool call per reply — the paper names read_file and finish but not their call syntax, and the vendored ReAct parser expects JSON), a short
 "## Budget and AppWorld rules" section (the 30,000-char / M_cap budget for all skills together and the
 generic-guidance rule of the lints), and nothing else.

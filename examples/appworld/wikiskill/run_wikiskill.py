@@ -63,9 +63,20 @@ WM_SYSTEM = (HERE / "prompts" / "wiki_maintainer.paper.txt").read_text()
 SP_SYSTEM = (HERE / "prompts" / "skill_proposer.paper.txt").read_text().replace("{task_desc}", TASK_DESC)
 
 
+TOOL_FORMAT = """
+## How to call the tools
+
+Reply with exactly ONE tool call per message, as a single JSON object and nothing else:
+- read a file: {"tool": "read_file", "path": "<relative path>"}
+- finish: {"tool": "finish", "action": "create", "name": "...", "skill_md": "...", "purpose_md": "..."}
+  (or "action": "patch" with "name" and "edits", or "action": "no_action").
+The file content comes back in the next message.
+"""
+
+
 def budget_text() -> str:
     cap = E.m_cap_tokens()
-    return (f"\n## Budget and AppWorld rules\n\n- All active skills together are injected verbatim into the agent's "
+    return (TOOL_FORMAT + f"\n## Budget and AppWorld rules\n\n- All active skills together are injected verbatim into the agent's "
             f"prompt and must fit in 30,000 characters"
             + (f" and {cap:,} tokens" if cap else "") + "; a proposal that would exceed it is rejected without "
             "being evaluated. Current total: {used} characters.\n- Skills are general guidance for AppWorld tasks: "
@@ -257,6 +268,10 @@ class PaperProposer(VA.SkillProposer):
 
         def chat(messages, **kw):
             text = orig_chat(messages, **kw)
+            # an XML-style call (<invoke name="read_file"><parameter name="path">…) is read like the JSON form
+            m = re.search(r'<parameter name="path">\s*([^<\s]+)\s*</parameter>', text)
+            if m and not re.search(r'"path"\s*:\s*"', text):
+                text = json.dumps({"tool": "read_file", "path": m.group(1)})
             p = VA.extract_json(text)
             if isinstance(p, dict) and isinstance(p.get("proposal"), dict):  # finish({"proposal": {...}})
                 p = p["proposal"]

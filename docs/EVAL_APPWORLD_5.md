@@ -1009,3 +1009,11 @@ A9 pass for the Agent-SDK path with EvoSkill's de-fanged options (Proposer Read/
 ```json
 {"cp": 7, "prev_cp": 6, "prev_commit": "412da03013bc80c32a9803181f9628d9f0fe0548", "utc": "2026-10-18T00:04:44Z", "kind": "result", "phase": "P2", "done_through": "P2/A9-evoskill", "next": "P2/A-skillopt", "candidate": null, "counts": {}, "spend": {}, "artifacts": {"STATE/acceptance.json": "2cc77d5f54b1c0e28fa30ff3c4fc1e2c67af9c15b92e6878322f82cc208eb22c"}, "code": "412da03013bc80c32a9803181f9628d9f0fe0548", "open_decisions": []}
 ```
+
+## CP-0008 · 2026-10-18T00:19Z · P2 acceptance A-skillopt · result
+
+A-skillopt pass (1 epoch / 1 step, 3 dev tasks as train, 1 as val, throwaway, not counted): ReflACTTrainer ran with SkillOpt's own defaults; the monkeypatched optimizer (openai_compatible.chat_optimizer → gateway shim) answered the analyst stage with a parseable patch (0 errors, no temperature); rollouts wrote memory/playbook.md, ran the agent and returned hard/soft; 3 compacted conversation.json files carry the gold-free F1 report as the final system message; the gate rejected the step (val did not strictly improve); an over-cap skill (54,000 chars) was lint-rejected without a rollout; 'Hidden Reference' never appears in any optimizer prompt. Next: A-wikiskill (re-run after a fix), A-evoskill, A-metaharness.
+
+```json
+{"cp": 8, "prev_cp": 7, "prev_commit": "c904bb72e7544eb50dbfb0b58e886ebe77103996", "utc": "2026-10-18T00:19:42Z", "kind": "result", "phase": "P2", "done_through": "P2/A-skillopt", "next": "P2/A-wikiskill", "candidate": null, "counts": {}, "spend": {}, "artifacts": {"STATE/acceptance.json": "644a314c71e3f9c83803f481836ba7d46f9f803672e4acbddeb4255d4693a438"}, "code": "c904bb72e7544eb50dbfb0b58e886ebe77103996", "open_decisions": []}
+```

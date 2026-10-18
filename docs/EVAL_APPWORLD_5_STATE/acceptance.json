@@ -94,5 +94,19 @@
   "workspace_write_ok": true,
   "tried": true,
   "ok": true
+ },
+ "a_skillopt": {
+  "optimizer_calls": 1,
+  "errors": 0,
+  "stages": [
+   "analyst"
+  ],
+  "steps": 1,
+  "conversations": 3,
+  "eval_report_in_conversation": true,
+  "over_cap_rejected": true,
+  "hidden_reference_absent": true,
+  "best_skill_exists": true,
+  "ok": true
  }
 }

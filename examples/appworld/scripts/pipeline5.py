@@ -24,7 +24,7 @@ DRIVERS = {
     "skillopt": (P.VENVS / "venv-skillopt" / "bin" / "python", EX / "skillopt" / "run_skillopt.py"),
     "wikiskill": (P.VENV_PY, EX / "wikiskill" / "run_wikiskill.py"),
     "evoskill": (P.VENVS / "venv-evoskill" / "bin" / "python", EX / "evoskill" / "run_evoskill.py"),
-    "metaharness": (P.VENV_PY, EX / "metaharness" / "run_metaharness.py"),
+    "metaharness": (P.VENV_PY, EX / "metaharness" / "meta_harness_appworld.py"),
 }
 
 
