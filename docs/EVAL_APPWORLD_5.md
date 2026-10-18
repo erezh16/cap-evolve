@@ -2001,3 +2001,13 @@ EvoSkill search crashed in iteration 4 (driver bug): the iteration-4 child's pla
 ```json
 {"cp": 121, "prev_cp": 120, "prev_commit": "88bb13008748c9ecc6795b3113f4ac3e3d312d06", "utc": "2026-10-18T19:55:51Z", "kind": "error", "phase": "P3", "done_through": "evoskill/search/eval_result 4: val-subset 0.45", "next": "evoskill/search", "candidate": "evoskill", "counts": {"evoskill": {"counted_rollouts": 98}}, "spend": {"evoskill": {"in": 150091, "out": 19910, "usd": 0.77}}, "artifacts": {}, "code": "4e27c54e4a6a144d0c96918ab4db534478a59a6e", "open_decisions": []}
 ```
+
+## CP-0122 · 2026-10-18T19:55Z · P3 resume · resume
+
+Resume (reason: evoskill driver KeyError on a lint-rejected child; fixed). Plan: re-lock root_full (chmod 000); continue at next = evoskill/search.
+Local work on record: gepa: 900 counted rollouts on record, skillopt: 900 counted rollouts on record, wikiskill: 792 counted rollouts on record, evoskill: 104 counted rollouts on record.
+Next: evoskill/search.
+
+```json
+{"cp": 122, "prev_cp": 121, "prev_commit": "5ed4347dbfaabaea97c0a0bec47102aa2513cfa5", "utc": "2026-10-18T19:55:53Z", "kind": "resume", "phase": "P3", "done_through": "evoskill/search/eval_result 4: val-subset 0.45", "next": "evoskill/search", "candidate": "evoskill", "counts": {"evoskill": {"counted_rollouts": 98}}, "spend": {"evoskill": {"in": 150091, "out": 19910, "usd": 0.77}}, "artifacts": {}, "code": "5ed4347dbfaabaea97c0a0bec47102aa2513cfa5", "open_decisions": [], "adopted": ["gepa: 900 counted rollouts on record", "skillopt: 900 counted rollouts on record", "wikiskill: 792 counted rollouts on record", "evoskill: 104 counted rollouts on record"], "plan": ["re-lock root_full (chmod 000)", "continue at next = evoskill/search"]}
+```
