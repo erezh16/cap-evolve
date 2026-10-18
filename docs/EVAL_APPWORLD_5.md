@@ -1607,3 +1607,12 @@ Posted 'skillopt search progress' on #882 (skillopt): https://github.com/skillbe
 ```json
 {"cp": 75, "prev_cp": 74, "prev_commit": "19e7d1d20db2157557364d49d8975eeb7e454d4f", "utc": "2026-10-18T12:48:50Z", "kind": "posted", "phase": "P3", "done_through": "skillopt/search/step 5", "next": "skillopt/search", "candidate": "skillopt", "counts": {"skillopt": {"counted_rollouts": 512}}, "spend": {"skillopt": {"in": 1258789, "out": 102507, "proxy_usd": 5.31}}, "artifacts": {}, "code": "b191cc5bc59825b7a262254ebc2a52b5ec266316", "open_decisions": [], "post": "skillopt/auto_248934", "url": "https://github.com/skillberry-ai/cap-evolve/issues/882#issuecomment-6250106789"}
 ```
+
+## CP-0076 · 2026-10-18T12:58Z · P3 skillopt search · result
+
+SkillOpt step 6: 6 steps on record; best skill 15,536 chars.
+Counted rollouts 579/900; optimizer 47 calls, 1.35M in / 0.11M out tok, $5.68 proxy.
+
+```json
+{"cp": 76, "prev_cp": 75, "prev_commit": "49053fdcf31f009c9b31dc20145c1f42359fd27f", "utc": "2026-10-18T12:58:21Z", "kind": "result", "phase": "P3", "done_through": "skillopt/search/step 6", "next": "skillopt/search", "candidate": "skillopt", "counts": {"skillopt": {"counted_rollouts": 579}}, "spend": {"skillopt": {"in": 1348007, "out": 108876, "proxy_usd": 5.68}}, "artifacts": {"STATE/skillopt/progress.json": "b926f53125763c780db4ce078a978e2cea2f7a950911ecf65019fb7698aec601"}, "code": "b191cc5bc59825b7a262254ebc2a52b5ec266316", "open_decisions": []}
+```
