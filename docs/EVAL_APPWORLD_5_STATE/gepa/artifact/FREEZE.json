@@ -1,0 +1,10 @@
+{
+ "candidate": "gepa",
+ "label": "",
+ "best_idx": 12,
+ "best_dev": 0.7192982456140351,
+ "seed_dev": 0.42105263157894735,
+ "num_candidates": 13,
+ "metric_calls": 897,
+ "tree_sha256": "9df978d9782b440e8e10319090f5e5b05329272094ed36a69f2702f3bb023aa9"
+}

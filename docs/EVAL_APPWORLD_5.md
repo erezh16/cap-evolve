@@ -1488,3 +1488,11 @@ Counted rollouts 900/900; optimizer 33 calls, 0.76M in / 0.18M out tok, $5.06 pr
 ```json
 {"cp": 61, "prev_cp": 60, "prev_commit": "87d12af78f5b22a5e82cdc4680fa7a57852c1412", "utc": "2026-10-18T10:48:07Z", "kind": "phase_done", "phase": "P3", "done_through": "gepa/search/search finished: rollout cap B reached", "next": "gepa/freeze", "candidate": "gepa", "counts": {"gepa": {"counted_rollouts": 900}}, "spend": {"gepa": {"in": 761846, "out": 184757, "proxy_usd": 5.06}}, "artifacts": {"STATE/gepa/progress.json": "5e6ba2edae4105c8b678a70a96b0e4fcfb1a79bf3a4d264011a9e655441b5068"}, "code": "fa4c0da596a1c226f8a81881775447a18f6caede", "open_decisions": []}
 ```
+
+## CP-0062 · 2026-10-18T10:48Z · P3 step done · phase_done
+
+Step `gepa/freeze` done. Next: gepa/scan.
+
+```json
+{"cp": 62, "prev_cp": 61, "prev_commit": "02d44edcdb32c551485a0b28e508c01e3a2434d1", "utc": "2026-10-18T10:48:09Z", "kind": "phase_done", "phase": "P3", "done_through": "gepa/freeze", "next": "gepa/scan", "candidate": "gepa", "counts": {"gepa": {"counted_rollouts": 900}}, "spend": {"gepa": {"in": 761846, "out": 184757, "proxy_usd": 5.06}}, "artifacts": {}, "code": "fa4c0da596a1c226f8a81881775447a18f6caede", "open_decisions": []}
+```
