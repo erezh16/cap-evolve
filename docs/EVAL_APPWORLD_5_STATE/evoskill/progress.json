@@ -112,17 +112,25 @@
    "parent_score": 0.65,
    "added": false,
    "n_skills": 2
+  },
+  {
+   "event": "eval_result",
+   "utc": "2026-10-18T23:36:33Z",
+   "score": 0.5,
+   "parent_score": 0.65,
+   "added": false,
+   "n_skills": 2
   }
  ],
  "val_subset": 20,
- "counted_rollouts": 370,
+ "counted_rollouts": 396,
  "cap": 900,
  "optimizer": {
-  "calls": 28,
-  "prompt_tokens": 787559,
-  "completion_tokens": 69355,
-  "cache_read": 1069714,
-  "cost_usd": 3.7,
+  "calls": 30,
+  "prompt_tokens": 868464,
+  "completion_tokens": 74689,
+  "cache_read": 1205162,
+  "cost_usd": 4.09,
   "errors": 0
  }
 }
