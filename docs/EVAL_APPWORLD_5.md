@@ -1985,3 +1985,11 @@ EvoSkill eval_result 4: val-subset 0.45. Counted rollouts 98/900; optimizer 6 ag
 ```json
 {"cp": 119, "prev_cp": 118, "prev_commit": "17f6ef8e4597c62ba472645d073a0d172df58293", "utc": "2026-10-18T19:41:24Z", "kind": "result", "phase": "P3", "done_through": "evoskill/search/eval_result 4: val-subset 0.45", "next": "evoskill/search", "candidate": "evoskill", "counts": {"evoskill": {"counted_rollouts": 98}}, "spend": {"evoskill": {"in": 150091, "out": 19910, "usd": 0.77}}, "artifacts": {"STATE/evoskill/progress.json": "a273b6617225febee50357513f798d8bcaf409fc4fc3b083d7693784b0a22f14"}, "code": "4e27c54e4a6a144d0c96918ab4db534478a59a6e", "open_decisions": []}
 ```
+
+## CP-0120 · 2026-10-18T19:52Z · P7 step failed · error
+
+Step `evoskill/search` exited 1; see the local progress logs. Runner stopped.
+
+```json
+{"cp": 120, "prev_cp": 119, "prev_commit": "e69093cd699fc10eb8d8f044279d41c049a577b0", "utc": "2026-10-18T19:52:01Z", "kind": "error", "phase": "P7", "done_through": "evoskill/search/eval_result 4: val-subset 0.45", "next": "evoskill/search", "candidate": "evoskill", "counts": {"evoskill": {"counted_rollouts": 98}}, "spend": {"evoskill": {"in": 150091, "out": 19910, "usd": 0.77}}, "artifacts": {}, "code": "4e27c54e4a6a144d0c96918ab4db534478a59a6e", "open_decisions": []}
+```
