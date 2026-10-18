@@ -1599,3 +1599,11 @@ Counted rollouts 512/900; optimizer 43 calls, 1.26M in / 0.10M out tok, $5.31 pr
 ```json
 {"cp": 74, "prev_cp": 73, "prev_commit": "ff1addab592ee7af548646aa9f474ea296a0887e", "utc": "2026-10-18T12:43:19Z", "kind": "result", "phase": "P3", "done_through": "skillopt/search/step 5", "next": "skillopt/search", "candidate": "skillopt", "counts": {"skillopt": {"counted_rollouts": 512}}, "spend": {"skillopt": {"in": 1258789, "out": 102507, "proxy_usd": 5.31}}, "artifacts": {"STATE/skillopt/progress.json": "ea87b978452a8353fb8e3bffbcd8f8659357cce2754f265ad7afb5c67b68c792"}, "code": "b191cc5bc59825b7a262254ebc2a52b5ec266316", "open_decisions": []}
 ```
+
+## CP-0075 · 2026-10-18T12:48Z · P3 posted skillopt · posted
+
+Posted 'skillopt search progress' on #882 (skillopt): https://github.com/skillberry-ai/cap-evolve/issues/882#issuecomment-6250106789
+
+```json
+{"cp": 75, "prev_cp": 74, "prev_commit": "19e7d1d20db2157557364d49d8975eeb7e454d4f", "utc": "2026-10-18T12:48:50Z", "kind": "posted", "phase": "P3", "done_through": "skillopt/search/step 5", "next": "skillopt/search", "candidate": "skillopt", "counts": {"skillopt": {"counted_rollouts": 512}}, "spend": {"skillopt": {"in": 1258789, "out": 102507, "proxy_usd": 5.31}}, "artifacts": {}, "code": "b191cc5bc59825b7a262254ebc2a52b5ec266316", "open_decisions": [], "post": "skillopt/auto_248934", "url": "https://github.com/skillberry-ai/cap-evolve/issues/882#issuecomment-6250106789"}
+```
