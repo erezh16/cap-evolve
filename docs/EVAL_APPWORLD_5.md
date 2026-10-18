@@ -1496,3 +1496,11 @@ Step `gepa/freeze` done. Next: gepa/scan.
 ```json
 {"cp": 62, "prev_cp": 61, "prev_commit": "02d44edcdb32c551485a0b28e508c01e3a2434d1", "utc": "2026-10-18T10:48:09Z", "kind": "phase_done", "phase": "P3", "done_through": "gepa/freeze", "next": "gepa/scan", "candidate": "gepa", "counts": {"gepa": {"counted_rollouts": 900}}, "spend": {"gepa": {"in": 761846, "out": 184757, "proxy_usd": 5.06}}, "artifacts": {}, "code": "fa4c0da596a1c226f8a81881775447a18f6caede", "open_decisions": []}
 ```
+
+## CP-0063 · 2026-10-18T10:48Z · P7 isolation scan · result
+
+Post-search isolation scan (counts only): gepa: test-id hits 0. Literal-string counts per location are in the pushed scan file.
+
+```json
+{"cp": 63, "prev_cp": 62, "prev_commit": "bfbeeea1a5a88b9b707eb63eb81a6e59cea36954", "utc": "2026-10-18T10:48:12Z", "kind": "result", "phase": "P7", "done_through": "gepa/freeze", "next": "gepa/scan", "candidate": null, "counts": {"gepa": {"counted_rollouts": 900}}, "spend": {"gepa": {"in": 761846, "out": 184757, "proxy_usd": 5.06}}, "artifacts": {"STATE/isolation_scan.json": "26ba3d98706b206558ddbaf86ef8afd967ad0e004344c15c18e86a419994b89a"}, "code": "fa4c0da596a1c226f8a81881775447a18f6caede", "open_decisions": []}
+```

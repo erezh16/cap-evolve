@@ -1,0 +1,24 @@
+{
+ "gepa": {
+  "locations": {
+   "optimizer calls": {
+    "files": 1,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "gepa run dir": {
+    "files": 91,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "frozen artifact": {
+    "files": 5,
+    "files_hit": 0,
+    "counts": {}
+   }
+  },
+  "proposer_files_read_by_top_dir": {},
+  "test_id_hits": 0,
+  "isolation_breach": false
+ }
+}
