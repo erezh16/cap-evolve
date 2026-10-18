@@ -1662,3 +1662,11 @@ Counted rollouts 900/900; optimizer 74 calls, 2.33M in / 0.18M out tok, $9.7 pro
 ```json
 {"cp": 81, "prev_cp": 80, "prev_commit": "c7b3f4eb1090f84f0c2ef2a4e6bea7dbd92e6c51", "utc": "2026-10-18T14:32:12Z", "kind": "phase_done", "phase": "P3", "done_through": "skillopt/search/search finished: stopped at the cap", "next": "skillopt/freeze", "candidate": "skillopt", "counts": {"skillopt": {"counted_rollouts": 900}}, "spend": {"skillopt": {"in": 2331763, "out": 180038, "proxy_usd": 9.7}}, "artifacts": {"STATE/skillopt/progress.json": "74691b357cb5c114284ec0f3befbc13e9163f103f6d687fbe9d2a497a611cb77"}, "code": "b191cc5bc59825b7a262254ebc2a52b5ec266316", "open_decisions": []}
 ```
+
+## CP-0082 · 2026-10-18T14:32Z · P3 step failed · error
+
+Step `skillopt/freeze` exited 1; see the local progress logs. Runner stopped.
+
+```json
+{"cp": 82, "prev_cp": 81, "prev_commit": "3cff4816da4f99cbb8c888525448b787109017dc", "utc": "2026-10-18T14:32:14Z", "kind": "error", "phase": "P3", "done_through": "skillopt/search/search finished: stopped at the cap", "next": "skillopt/freeze", "candidate": "skillopt", "counts": {"skillopt": {"counted_rollouts": 900}}, "spend": {"skillopt": {"in": 2331763, "out": 180038, "proxy_usd": 9.7}}, "artifacts": {}, "code": "b191cc5bc59825b7a262254ebc2a52b5ec266316", "open_decisions": []}
+```
