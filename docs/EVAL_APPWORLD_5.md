@@ -1033,3 +1033,12 @@ A-metaharness pass (throwaway workspace, 4 dev tasks as the search set, not coun
 ```json
 {"cp": 10, "prev_cp": 9, "prev_commit": "0739f3e146060520e19dbfcc9391a7b6d0ad140d", "utc": "2026-10-18T00:56:25Z", "kind": "result", "phase": "P2", "done_through": "P2/A-metaharness", "next": "P2/A-evoskill", "candidate": null, "counts": {}, "spend": {}, "artifacts": {"STATE/acceptance.json": "cbabb2ad366e1c50e4dd95f04262c5ecb4d7a869bf52438313fd116ecb1bbed0"}, "code": "0739f3e146060520e19dbfcc9391a7b6d0ad140d", "open_decisions": []}
 ```
+
+## CP-0011 · 2026-10-18T01:12Z · P2 acceptance done · phase_done
+
+A-evoskill pass on the third run (2 iterations on 6 dev tasks as the train pool and 3 as val, scratch git project root, not counted): the Proposer's queries carry no 'Ground Truth' line and no reference answer (the de-fanged query and prompt copy), the Skill Builder wrote a SKILL.md with Read/Write/Edit/Glob/Grep only (no Bash or web), the program's skills rendered into a 3,289-char playbook, the run returned a reward-only AgentTrace with a gold-free result, structured output worked, usage was logged per role. Fixes found here: Claude Code protects .claude/ even under acceptEdits, so a can_use_tool write gate now allows Write/Edit only to program-skill files (never the meta-skills, settings or hooks), and Write/Edit are left out of allowed_tools so the gate is not shadowed.
+All acceptance checks pass (a1, a10, a2, a3a5, a4, a6, a7, a8, a9_cli, a9_sdk_evoskill, a_evoskill, a_gepa, a_metaharness, a_skillopt, a_wikiskill). P2 done. Next: P3 counted searches, one candidate at a time (gepa → skillopt → wikiskill → evoskill → metaharness), each search → freeze → per-candidate scan, run by pipeline5.py under nohup.
+
+```json
+{"cp": 11, "prev_cp": 10, "prev_commit": "1b13eb8f8c842f568049cc9cfbc8f17d1a51ee90", "utc": "2026-10-18T01:12:31Z", "kind": "phase_done", "phase": "P2", "done_through": "P2/done", "next": "gepa/search", "candidate": null, "counts": {}, "spend": {}, "artifacts": {"STATE/acceptance.json": "f9021a177b26592cc4f8fb33e432b7bb2836c7fcb610bcd426d82048d052eaa7"}, "code": "1b13eb8f8c842f568049cc9cfbc8f17d1a51ee90", "open_decisions": []}
+```

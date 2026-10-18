@@ -140,5 +140,14 @@
   "proposer_exit": 0,
   "proposer_tool_calls": 28,
   "ok": true
+ },
+ "a_evoskill": {
+  "iterations": 2,
+  "proposer_calls": 1,
+  "builder_calls": 1,
+  "ground_truth_in_queries": false,
+  "playbook_chars": 3289,
+  "usage_rows": 2,
+  "ok": true
  }
 }

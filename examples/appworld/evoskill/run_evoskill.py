@@ -240,7 +240,9 @@ def make_agents(registry: dict, hard_cap: int):
     def opts(system, schema, tools, gate=None):
         return ClaudeAgentOptions(can_use_tool=gate,
             system_prompt={"type": "preset", "preset": "claude_code", "append": system.strip()},
-            output_format={"type": "json_schema", "schema": schema}, tools=list(tools), allowed_tools=list(tools),
+            # Write/Edit are not pre-approved: they fall through to the write gate (allowed_tools would shadow it)
+            output_format={"type": "json_schema", "schema": schema}, tools=list(tools),
+            allowed_tools=[t for t in tools if gate is None or t not in ("Write", "Edit")],
             disallowed_tools=REMOVED, cwd=str(PROJECT), model=P.OPT_MODEL, setting_sources=[],
             settings=str(sf), env=SB.claude_env(), permission_mode="acceptEdits", strict_mcp_config=True)
 

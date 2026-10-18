@@ -1,7 +1,7 @@
 """The phase runner of eval 5 (docs/EVAL_APPWORLD_5.md §10): continues at the ledger's `next` unit.
 
   venv-aw/bin/python -I pipeline5.py            # run from the last entry's `next` until a manual step
-Candidates run one at a time (§11), in the order of aw5.CANDIDATES; each is `search` → `freeze`. After the
+Candidates run one at a time (§11), in the order of aw5.CANDIDATES; each is `search` → `freeze` → `scan`. After the
 five: P6 dev diagnostic, P7 scan, P8 final window, P9 analysis. Posting (P10) and every acceptance check
 are manual steps (they need a person to read them first). Each step is its own subprocess and is
 resumable on its own (GEPA run_dir, SkillOpt runtime_state, evaluator episode records, window cells).
@@ -31,14 +31,16 @@ DRIVERS = {
 def step_of(nxt: str):
     """`next` unit -> (argv, the unit that follows when it succeeds), or None for a manual step."""
     parts = nxt.split("/")
-    if parts[0] in DRIVERS and len(parts) >= 2 and parts[1] in ("search", "freeze"):
+    if parts[0] in DRIVERS and len(parts) >= 2 and parts[1] in ("search", "freeze", "scan"):
         c, what = parts[0], parts[1]
         py, script = DRIVERS[c]
         if what == "search":
             return [str(py), "-I", str(script), "search"], f"{c}/freeze"
-        i = P.CANDIDATES.index(c)
-        after = f"{P.CANDIDATES[i + 1]}/accept" if i + 1 < len(P.CANDIDATES) else "P6/freeze"
-        return [str(py), "-I", str(script), "freeze"], after
+        if what == "freeze":
+            return [str(py), "-I", str(script), "freeze"], f"{c}/scan"
+        i = P.CANDIDATES.index(c)  # per-candidate isolation scan, then the next candidate's search (§10)
+        after = f"{P.CANDIDATES[i + 1]}/search" if i + 1 < len(P.CANDIDATES) else "P6/freeze"
+        return [str(P.VENV_PY), "-I", str(HERE / "scan5.py"), c], after
     if nxt == "P6/freeze":
         return [str(P.VENV_PY), "-I", str(HERE / "window5.py"), "freeze"], "p6dev/cells"
     if nxt.startswith("p6dev"):
