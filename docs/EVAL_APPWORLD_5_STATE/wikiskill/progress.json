@@ -1,0 +1,26 @@
+{
+ "candidate": "wikiskill",
+ "K": 5,
+ "rows": [
+  {
+   "iteration": 1,
+   "action": "create",
+   "val_score": 0.45614035087719296,
+   "accepted": true
+  }
+ ],
+ "r_best": 0.45614035087719296,
+ "skills": 1,
+ "playbook_chars": 3947,
+ "counted_rollouts": 204,
+ "cap": 900,
+ "optimizer": {
+  "calls": 12,
+  "errors": 0,
+  "prompt_tokens": 286129,
+  "completion_tokens": 16782,
+  "cache_read": 0,
+  "seconds": 148.3,
+  "proxy_usd": 1.11
+ }
+}
