@@ -2067,3 +2067,13 @@ EvoSkill eval_result 10: val-subset 0.5. Counted rollouts 260/900; optimizer 20 
 ```json
 {"cp": 129, "prev_cp": 128, "prev_commit": "35899e23c456724e4d0525681acfff7b94076a22", "utc": "2026-10-18T21:43:53Z", "kind": "result", "phase": "P3", "done_through": "evoskill/search/eval_result 10: val-subset 0.5", "next": "evoskill/search", "candidate": "evoskill", "counts": {"evoskill": {"counted_rollouts": 260}}, "spend": {"evoskill": {"in": 559385, "out": 53568, "usd": 2.68}}, "artifacts": {"STATE/evoskill/progress.json": "b5721993bc002b4f4d266a9f4fd50045d0983cc3f3401734ade40218285425e6"}, "code": "5ed4347dbfaabaea97c0a0bec47102aa2513cfa5", "open_decisions": []}
 ```
+
+## CP-0130 · 2026-10-18T22:08Z · P3 heartbeat · heartbeat
+
+No checkpoint for 25 min. Phase P3, last result: evoskill/search/eval_result 10: val-subset 0.5.
+Runner: alive (pid 203847). Last log line: `2026-10-18T22:08:51Z | evoskill | P3/dev | 8/20 episodes, passed 6, infra errors 0`.
+Next: evoskill/search.
+
+```json
+{"cp": 130, "prev_cp": 129, "prev_commit": "6494b7224c10193990fda397af83308ef4a12f42", "utc": "2026-10-18T22:08:53Z", "kind": "heartbeat", "phase": "P3", "done_through": "evoskill/search/eval_result 10: val-subset 0.5", "next": "evoskill/search", "candidate": "evoskill", "counts": {"evoskill": {"counted_rollouts": 260}}, "spend": {"evoskill": {"in": 559385, "out": 53568, "usd": 2.68}}, "artifacts": {}, "code": "5ed4347dbfaabaea97c0a0bec47102aa2513cfa5", "open_decisions": [], "runner": "alive"}
+```
