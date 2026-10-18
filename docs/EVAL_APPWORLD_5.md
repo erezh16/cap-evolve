@@ -1712,3 +1712,11 @@ Step `skillopt/scan` done. Next: wikiskill/search.
 ```json
 {"cp": 87, "prev_cp": 86, "prev_commit": "add788caa70722b9c31e4c1c5b5b3c34d4322cf5", "utc": "2026-10-18T14:40:38Z", "kind": "phase_done", "phase": "P7", "done_through": "skillopt/scan", "next": "wikiskill/search", "candidate": null, "counts": {"skillopt": {"counted_rollouts": 900}}, "spend": {"skillopt": {"in": 2331763, "out": 180038, "proxy_usd": 9.7}}, "artifacts": {}, "code": "cbe11f7f0971f28ffa36a8d756e99dff5a1a826c", "open_decisions": []}
 ```
+
+## CP-0088 · 2026-10-18T14:40Z · P7 posted skillopt · posted
+
+Posted 'skillopt scan' on #882 (skillopt): https://github.com/skillberry-ai/cap-evolve/issues/882#issuecomment-6251206946
+
+```json
+{"cp": 88, "prev_cp": 87, "prev_commit": "e86f35eb528e0361ad08f08259a762b54eebfc34", "utc": "2026-10-18T14:40:55Z", "kind": "posted", "phase": "P7", "done_through": "skillopt/scan", "next": "wikiskill/search", "candidate": null, "counts": {"skillopt": {"counted_rollouts": 900}}, "spend": {"skillopt": {"in": 2331763, "out": 180038, "proxy_usd": 9.7}}, "artifacts": {}, "code": "cbe11f7f0971f28ffa36a8d756e99dff5a1a826c", "open_decisions": [], "post": "skillopt/m_scan", "url": "https://github.com/skillberry-ai/cap-evolve/issues/882#issuecomment-6251206946"}
+```
