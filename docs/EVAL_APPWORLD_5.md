@@ -1831,3 +1831,13 @@ Posted 'wikiskill search progress' on #883 (wikiskill): https://github.com/skill
 ```json
 {"cp": 101, "prev_cp": 100, "prev_commit": "b5ea17adcb311e78b20df453f80b83fbc2a0e40b", "utc": "2026-10-18T16:41:32Z", "kind": "posted", "phase": "P3", "done_through": "wikiskill/search/iter3", "next": "wikiskill/search", "candidate": "wikiskill", "counts": {"wikiskill": {"counted_rollouts": 498}}, "spend": {"wikiskill": {"in": 1053546, "out": 64076, "proxy_usd": 4.12}}, "artifacts": {}, "code": "4e27c54e4a6a144d0c96918ab4db534478a59a6e", "open_decisions": [], "post": "wikiskill/auto_248936", "url": "https://github.com/skillberry-ai/cap-evolve/issues/883#issuecomment-6252430474"}
 ```
+
+## CP-0102 · 2026-10-18T17:06Z · P3 heartbeat · heartbeat
+
+No checkpoint for 25 min. Phase P3, last result: wikiskill/search/iter3.
+Runner: alive (pid 151614). Last log line: `2026-10-18T17:01:39Z | wikiskill | P3/val | 45/57 episodes, passed 30, infra errors 0`.
+Next: wikiskill/search.
+
+```json
+{"cp": 102, "prev_cp": 101, "prev_commit": "1bb80c1a88390268615ea6702bc09a1aa4cac5b5", "utc": "2026-10-18T17:06:47Z", "kind": "heartbeat", "phase": "P3", "done_through": "wikiskill/search/iter3", "next": "wikiskill/search", "candidate": "wikiskill", "counts": {"wikiskill": {"counted_rollouts": 498}}, "spend": {"wikiskill": {"in": 1053546, "out": 64076, "proxy_usd": 4.12}}, "artifacts": {}, "code": "4e27c54e4a6a144d0c96918ab4db534478a59a6e", "open_decisions": [], "runner": "alive"}
+```
