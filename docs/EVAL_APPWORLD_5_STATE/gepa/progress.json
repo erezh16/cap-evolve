@@ -27,18 +27,36 @@
    "metric_calls": 75,
    "counted_rollouts": 75,
    "utc": "2026-10-18T02:14:46Z"
+  },
+  {
+   "iteration": 4,
+   "accepted": false,
+   "n_candidates": 1,
+   "best_dev": 0.4211,
+   "metric_calls": 78,
+   "counted_rollouts": 78,
+   "utc": "2026-10-18T02:16:51Z"
+  },
+  {
+   "iteration": 5,
+   "accepted": true,
+   "n_candidates": 2,
+   "best_dev": 0.6842,
+   "metric_calls": 141,
+   "counted_rollouts": 141,
+   "utc": "2026-10-18T02:41:22Z"
   }
  ],
- "counted_rollouts": 75,
+ "counted_rollouts": 141,
  "cap": 900,
  "optimizer": {
-  "calls": 3,
+  "calls": 4,
   "errors": 0,
-  "prompt_tokens": 76804,
-  "completion_tokens": 15433,
+  "prompt_tokens": 95869,
+  "completion_tokens": 22407,
   "cache_read": 0,
-  "seconds": 108.3,
-  "proxy_usd": 0.46
+  "seconds": 148.4,
+  "proxy_usd": 0.62
  },
  "proposer": {
   "lint_reject": 0,
