@@ -44,7 +44,7 @@ def progress_body(c: str) -> str:
         lines += [f"- iterations: {r.get('iteration')}, accepted children: {sum(1 for x in rows if x.get('accepted'))}, "
                   f"candidates: {r.get('n_candidates')}", f"- best dev TGC: {r.get('best_dev')} (seed 0.421)"]
     elif c == "skillopt":
-        acc = [x for x in rows if x.get("accepted")]
+        acc = [x for x in rows if x.get("accepted") or str(x.get("action", "")).startswith("accept")]
         lines += [f"- steps on record: {len(rows)}, accepted by the gate: {len(acc)}",
                   f"- best skill so far: {pr.get('best_skill_chars', 0):,} chars"]
     elif c == "wikiskill":

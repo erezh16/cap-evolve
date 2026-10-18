@@ -1736,3 +1736,11 @@ Posted 'skillopt scanned' on #882 (skillopt): https://github.com/skillberry-ai/c
 ```json
 {"cp": 90, "prev_cp": 89, "prev_commit": "0862f7a2b090eb65c2256892cfc6c5aa8359cbad", "utc": "2026-10-18T14:41:02Z", "kind": "posted", "phase": "P7", "done_through": "skillopt/scan", "next": "wikiskill/search", "candidate": null, "counts": {"skillopt": {"counted_rollouts": 900}}, "spend": {"skillopt": {"in": 2331763, "out": 180038, "proxy_usd": 9.7}}, "artifacts": {}, "code": "cbe11f7f0971f28ffa36a8d756e99dff5a1a826c", "open_decisions": [], "post": "skillopt/m_scanned", "url": "https://github.com/skillberry-ai/cap-evolve/issues/882#issuecomment-6251208034"}
 ```
+
+## CP-0091 · 2026-10-18T14:41Z · P3 skillopt freeze label · repair
+
+Repair: the skillopt freeze labelled the arm 'inert' because the check read a field SkillOpt's history does not have ('accepted'; the field is 'action'). The artifact itself is correct (best_skill.md = step 8, dev hard 0.754; 24,118 chars, 5,707 tokens, lint clean; tree sha256 unchanged). Label corrected to not inert in FREEZE.json; the freeze code is fixed. Also: the first freeze attempt failed because the lint ran in venv-skillopt (no jinja2); lint now always runs in venv-aw. Resumed (CP above).
+
+```json
+{"cp": 91, "prev_cp": 90, "prev_commit": "ebe474b013f38f52011a2169e3d2927fee9f3b0d", "utc": "2026-10-18T14:41:34Z", "kind": "repair", "phase": "P3", "done_through": "skillopt/scan", "next": "wikiskill/search", "candidate": null, "counts": {"skillopt": {"counted_rollouts": 900}}, "spend": {"skillopt": {"in": 2331763, "out": 180038, "proxy_usd": 9.7}}, "artifacts": {"STATE/skillopt/artifact/FREEZE.json": "1e07017893964fab4b481ae801a157ce4dbbf1ea3a9076d6dc2f830118217215"}, "code": "cbe11f7f0971f28ffa36a8d756e99dff5a1a826c", "open_decisions": []}
+```

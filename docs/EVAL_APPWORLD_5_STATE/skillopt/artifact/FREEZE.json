@@ -1,9 +1,15 @@
 {
  "candidate": "skillopt",
- "label": "inert",
+ "label": "",
  "best_score": 0.7543859649122807,
  "steps": 9,
  "memory_chars": 24118,
  "memory_tokens": 5707,
- "tree_sha256": "2b90b8084d39dc8bedf8e8f47fbf02dcc529b506e1e5a96bb1421b87e3f6f578"
+ "tree_sha256": "2b90b8084d39dc8bedf8e8f47fbf02dcc529b506e1e5a96bb1421b87e3f6f578",
+ "accepted_steps": [
+  1,
+  2,
+  8
+ ],
+ "best_step": 8
 }

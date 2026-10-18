@@ -288,7 +288,7 @@ def freeze() -> int:
     text = best.read_text() if best.exists() else ""
     rs = P.read_json(OUT_ROOT / "runtime_state.json", {}) or {}
     hist = P.read_json(OUT_ROOT / "history.json", []) or []
-    inert = not text.strip() or not any(h.get("accepted") for h in hist)
+    inert = not text.strip() or not any(str(h.get("action", "")).startswith("accept") for h in hist)
     cdir = E.materialize(CAND, {"memory/playbook.md": text})
     v = E.lint(cdir)
     if v:
