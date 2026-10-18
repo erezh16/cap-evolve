@@ -1201,3 +1201,12 @@ Next: gepa/search.
 ```json
 {"cp": 28, "prev_cp": 27, "prev_commit": "0ec2b5e87e0b9c2d928857e1d68edccecc96cbab", "utc": "2026-10-18T05:47:35Z", "kind": "heartbeat", "phase": "P3", "done_through": "gepa/search/iteration 12", "next": "gepa/search", "candidate": "gepa", "counts": {"gepa": {"counted_rollouts": 468}}, "spend": {"gepa": {"in": 292157, "out": 73364, "proxy_usd": 1.98}}, "artifacts": {}, "code": "03367bc299b4cf7366e491d7d12ba5e346b93f39", "open_decisions": [], "runner": "alive"}
 ```
+
+## CP-0029 · 2026-10-18T06:09Z · P3 gepa search · result
+
+GEPA iteration 13: accepted=True, candidates 8, best dev 0.6842, metric calls 531/987.
+Counted rollouts 531/900; optimizer 15 calls, 0.32M in / 0.08M out tok, $2.19 proxy; reflection lint rejects 2, parse fails 1, refusals 0.
+
+```json
+{"cp": 29, "prev_cp": 28, "prev_commit": "031e67e45e753b6b150de2cda44e0db4dd2a5b7d", "utc": "2026-10-18T06:09:02Z", "kind": "result", "phase": "P3", "done_through": "gepa/search/iteration 13", "next": "gepa/search", "candidate": "gepa", "counts": {"gepa": {"counted_rollouts": 531}}, "spend": {"gepa": {"in": 324879, "out": 81342, "proxy_usd": 2.19}}, "artifacts": {"STATE/gepa/progress.json": "7bfcdc34ca60fc50341cac18f55d9f4529150afde283cac6ddac47d74c2c2e3e"}, "code": "03367bc299b4cf7366e491d7d12ba5e346b93f39", "open_decisions": []}
+```
