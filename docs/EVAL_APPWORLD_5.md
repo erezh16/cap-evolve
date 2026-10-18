@@ -1943,3 +1943,11 @@ Posted 'wikiskill scanned' on #883 (wikiskill): https://github.com/skillberry-ai
 ```json
 {"cp": 114, "prev_cp": 113, "prev_commit": "7cbd6159808c6664b45fbca8847ecd1d70cc5492", "utc": "2026-10-18T18:25:45Z", "kind": "posted", "phase": "P7", "done_through": "wikiskill/scan", "next": "evoskill/search", "candidate": null, "counts": {"wikiskill": {"counted_rollouts": 792}}, "spend": {"wikiskill": {"in": 1775943, "out": 94851, "proxy_usd": 6.75}}, "artifacts": {}, "code": "4e27c54e4a6a144d0c96918ab4db534478a59a6e", "open_decisions": [], "post": "wikiskill/m_scanned", "url": "https://github.com/skillberry-ai/cap-evolve/issues/883#issuecomment-6253507298"}
 ```
+
+## CP-0115 · 2026-10-18T18:39Z · P3 evoskill search · result
+
+EvoSkill baseline 1: val-subset 0.3. Counted rollouts 20/900; optimizer 0 agent runs, 0.00M in / 0.00M out tok, $0.00 (SDK-reported).
+
+```json
+{"cp": 115, "prev_cp": 114, "prev_commit": "e9156f5d741a9e2b3837d4f088b3be0860f602cb", "utc": "2026-10-18T18:39:42Z", "kind": "result", "phase": "P3", "done_through": "evoskill/search/baseline 1: val-subset 0.3", "next": "evoskill/search", "candidate": "evoskill", "counts": {"evoskill": {"counted_rollouts": 20}}, "spend": {"evoskill": {"in": 0, "out": 0, "usd": 0}}, "artifacts": {"STATE/evoskill/progress.json": "17fff6666eb9040fafb54126933f2dd506f7657ce1e7d1cb4c9fc8fca171b164"}, "code": "4e27c54e4a6a144d0c96918ab4db534478a59a6e", "open_decisions": []}
+```

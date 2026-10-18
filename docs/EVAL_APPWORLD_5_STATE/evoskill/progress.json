@@ -1,0 +1,24 @@
+{
+ "candidate": "evoskill",
+ "iterations": [
+  {
+   "event": "baseline",
+   "utc": "2026-10-18T18:39:42Z",
+   "score": 0.3,
+   "parent_score": null,
+   "added": null,
+   "n_skills": 2
+  }
+ ],
+ "val_subset": 20,
+ "counted_rollouts": 20,
+ "cap": 900,
+ "optimizer": {
+  "calls": 0,
+  "prompt_tokens": 0,
+  "completion_tokens": 0,
+  "cache_read": 0,
+  "cost_usd": 0,
+  "errors": 0
+ }
+}
