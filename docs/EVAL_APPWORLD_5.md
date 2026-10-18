@@ -1268,3 +1268,11 @@ Posted 'build and acceptance done' on #884 (evoskill): https://github.com/skillb
 ```json
 {"cp": 36, "prev_cp": 35, "prev_commit": "3cd5c2d9a3e5bd87d70f18fabc1ed80ec176469c", "utc": "2026-10-18T06:39:50Z", "kind": "posted", "phase": "P3", "done_through": "gepa/search/iteration 15", "next": "gepa/search", "candidate": "gepa", "counts": {"gepa": {"counted_rollouts": 540}}, "spend": {"gepa": {"in": 349364, "out": 90050, "proxy_usd": 2.4}}, "artifacts": {}, "code": "03367bc299b4cf7366e491d7d12ba5e346b93f39", "open_decisions": [], "post": "evoskill/accept", "url": "https://github.com/skillberry-ai/cap-evolve/issues/884#issuecomment-6246654194"}
 ```
+
+## CP-0037 · 2026-10-18T06:39Z · P3 posted metaharness · posted
+
+Posted 'build and acceptance done' on #885 (metaharness): https://github.com/skillberry-ai/cap-evolve/issues/885#issuecomment-6246654436
+
+```json
+{"cp": 37, "prev_cp": 36, "prev_commit": "911174aeb53b993becbb2b51dec85416417bb0bd", "utc": "2026-10-18T06:39:52Z", "kind": "posted", "phase": "P3", "done_through": "gepa/search/iteration 15", "next": "gepa/search", "candidate": "gepa", "counts": {"gepa": {"counted_rollouts": 540}}, "spend": {"gepa": {"in": 349364, "out": 90050, "proxy_usd": 2.4}}, "artifacts": {}, "code": "03367bc299b4cf7366e491d7d12ba5e346b93f39", "open_decisions": [], "post": "metaharness/accept", "url": "https://github.com/skillberry-ai/cap-evolve/issues/885#issuecomment-6246654436"}
+```
