@@ -1841,3 +1841,12 @@ Next: wikiskill/search.
 ```json
 {"cp": 102, "prev_cp": 101, "prev_commit": "1bb80c1a88390268615ea6702bc09a1aa4cac5b5", "utc": "2026-10-18T17:06:47Z", "kind": "heartbeat", "phase": "P3", "done_through": "wikiskill/search/iter3", "next": "wikiskill/search", "candidate": "wikiskill", "counts": {"wikiskill": {"counted_rollouts": 498}}, "spend": {"wikiskill": {"in": 1053546, "out": 64076, "proxy_usd": 4.12}}, "artifacts": {}, "code": "4e27c54e4a6a144d0c96918ab4db534478a59a6e", "open_decisions": [], "runner": "alive"}
 ```
+
+## CP-0103 · 2026-10-18T17:31Z · P3 wikiskill search · result
+
+WikiSkill iteration 4/5: proposal patch → val 0.6140350877192983 (accepted); R_best 0.614; 1 active skill(s), 7,859 chars.
+Counted rollouts 645/900; optimizer 42 calls, 1.39M in / 0.08M out tok, $5.41 proxy.
+
+```json
+{"cp": 103, "prev_cp": 102, "prev_commit": "ab58a68618742d1145ee59619bc4556cc937d691", "utc": "2026-10-18T17:31:18Z", "kind": "result", "phase": "P3", "done_through": "wikiskill/search/iter4", "next": "wikiskill/search", "candidate": "wikiskill", "counts": {"wikiskill": {"counted_rollouts": 645}}, "spend": {"wikiskill": {"in": 1394021, "out": 81998, "proxy_usd": 5.41}}, "artifacts": {"STATE/wikiskill/progress.json": "da2d493d069ec35d1c524d59f6f892de7ccdea104c29c8afc61cd322aac9314d"}, "code": "4e27c54e4a6a144d0c96918ab4db534478a59a6e", "open_decisions": []}
+```

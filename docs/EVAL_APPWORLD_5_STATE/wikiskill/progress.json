@@ -19,20 +19,26 @@
    "action": "patch",
    "val_score": 0.5614035087719298,
    "accepted": true
+  },
+  {
+   "iteration": 4,
+   "action": "patch",
+   "val_score": 0.6140350877192983,
+   "accepted": true
   }
  ],
- "r_best": 0.5614035087719298,
+ "r_best": 0.6140350877192983,
  "skills": 1,
- "playbook_chars": 5932,
- "counted_rollouts": 498,
+ "playbook_chars": 7859,
+ "counted_rollouts": 645,
  "cap": 900,
  "optimizer": {
-  "calls": 33,
+  "calls": 42,
   "errors": 0,
-  "prompt_tokens": 1053546,
-  "completion_tokens": 64076,
+  "prompt_tokens": 1394021,
+  "completion_tokens": 81998,
   "cache_read": 0,
-  "seconds": 502.5,
-  "proxy_usd": 4.12
+  "seconds": 651.8,
+  "proxy_usd": 5.41
  }
 }
