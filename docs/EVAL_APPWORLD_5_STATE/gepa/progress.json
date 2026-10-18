@@ -180,18 +180,27 @@
    "metric_calls": 681,
    "counted_rollouts": 681,
    "utc": "2026-10-18T07:59:19Z"
+  },
+  {
+   "iteration": 21,
+   "accepted": false,
+   "n_candidates": 10,
+   "best_dev": 0.6842,
+   "metric_calls": 687,
+   "counted_rollouts": 687,
+   "utc": "2026-10-18T08:12:02Z"
   }
  ],
- "counted_rollouts": 681,
+ "counted_rollouts": 687,
  "cap": 900,
  "optimizer": {
-  "calls": 24,
+  "calls": 25,
   "errors": 0,
-  "prompt_tokens": 523365,
-  "completion_tokens": 127089,
+  "prompt_tokens": 557710,
+  "completion_tokens": 134684,
   "cache_read": 0,
-  "seconds": 798.7,
-  "proxy_usd": 3.48
+  "seconds": 845.2,
+  "proxy_usd": 3.69
  },
  "proposer": {
   "lint_reject": 6,
