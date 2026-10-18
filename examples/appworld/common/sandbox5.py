@@ -30,7 +30,7 @@ HOME = Path.home()
 def deny_paths() -> list[Path]:
     """Every location an optimizer must not read (§8): gold, test data, AppWorld, the evaluator, secrets, transcripts."""
     return [
-        P.ROOT_OPT, P.ROOT_FULL, P.APPWORLD_SRC, P.AW_STATE, P.CLONES, P.REFERENCE.parent / "hf",
+        P.ROOT_OPT, P.ROOT_FULL, P.APPWORLD_SRC, P.AW_STATE, P.CLONES, P.REFERENCE.parent / "hf", P.VENVS,
         P.SCRATCH,                                  # AppWorld's native per-episode outputs (evaluation reports)
         P.REPO.parent,                              # every checkout: the evaluator, adapters, ledger, .env
         Path("/workspace/src"), Path("/workspace/inbox"), Path("/workspace/.devagent"),
@@ -47,6 +47,28 @@ def _other_session_tmp() -> list[Path]:
     return [p for p in root.iterdir() if p.is_dir() and not p.name.startswith("-tmp-aw5-opt")] if root.exists() else []
 
 
+LINT_VENV = OPT_ROOT / "venv-lint"           # jinja2 + tiktoken only: the optimizers' own lint runs here
+TIKTOKEN_CACHE = OPT_ROOT / "tiktoken_cache"
+
+
+def ensure_lint_venv() -> Path:
+    """A small venv for the workspace lint (no AppWorld), and a tiktoken cache (the network is closed)."""
+    import shutil
+    import subprocess
+    py = LINT_VENV / "bin" / "python"
+    if not py.exists():
+        uv = shutil.which("uv") or "/usr/local/bin/uv"
+        subprocess.run([uv, "venv", "-q", "-p", "3.11", str(LINT_VENV)], check=True)
+        subprocess.run([uv, "pip", "install", "-q", "-p", str(LINT_VENV), "jinja2", "tiktoken"], check=True)
+    if not TIKTOKEN_CACHE.exists():
+        TIKTOKEN_CACHE.mkdir(parents=True)
+        for f in Path("/tmp/data-gym-cache").glob("*"):
+            shutil.copy2(f, TIKTOKEN_CACHE / f.name)
+        subprocess.run([str(py), "-c", "import tiktoken; tiktoken.get_encoding('o200k_base')"], check=True,
+                       env={**os.environ, "TIKTOKEN_CACHE_DIR": str(TIKTOKEN_CACHE)})
+    return py
+
+
 def claude_env(extra: dict | None = None) -> dict:
     s = json.loads((HOME / ".claude" / "settings.json").read_text()).get("env", {})
     env = {k: v for k, v in os.environ.items() if k not in ("RITS_API_KET", "RITS_API_KEY")}
@@ -58,6 +80,7 @@ def claude_env(extra: dict | None = None) -> dict:
               "ANTHROPIC_DEFAULT_SONNET_MODEL", "ANTHROPIC_DEFAULT_HAIKU_MODEL", "CLAUDE_CODE_SUBAGENT_MODEL"):
         env[k] = P.OPT_MODEL                         # every role of the optimizer is the one optimizer model (D1)
     env["DEVAGENT_BWRAP_NETWORK"] = "restrict"
+    env["TIKTOKEN_CACHE_DIR"] = str(TIKTOKEN_CACHE)
     env.pop("CLAUDECODE", None)
     env.update(extra or {})
     return env

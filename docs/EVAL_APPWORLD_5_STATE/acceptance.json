@@ -126,5 +126,19 @@
   "playbook_chars": 3180,
   "playbook_lints": true,
   "ok": true
+ },
+ "a_metaharness": {
+  "rejects_extra_file": true,
+  "rejects_task_id": true,
+  "accepts_seed": true,
+  "per_task_dirs": 8,
+  "gold_free_runs": true,
+  "new_files_outside_allowed": [],
+  "iterations": 1,
+  "pending_eval_valid": true,
+  "outcome_iter1": "25.0%",
+  "proposer_exit": 0,
+  "proposer_tool_calls": 28,
+  "ok": true
  }
 }

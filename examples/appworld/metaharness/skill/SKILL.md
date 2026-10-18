@@ -32,7 +32,7 @@ You are evolving the harness of the official AppWorld simplified ReAct code agen
 - `tools/api_notes.json` — notes appended to the agent's API-doc lookups (`"app"` or `"app.api"` → note ≤ 400 chars).
 - `memory/playbook.md` — an optional static guidance block inserted right before the final task block (≤ 30,000 characters).
 
-The lint rules are in `reference/react_agent_notes.md` and are enforced by `tools/lints.py`.
+The lint rules are in `reference/react_agent_notes.md` and are enforced by `tools/lint` (a wrapper around `tools/lints.py` with its own Python).
 
 ## CANDIDATE DESIGN
 
@@ -78,7 +78,7 @@ The subagent should:
 
 1. Copy the parent: `cp -r candidates/<parent> candidates/<snake_case_name>`.
 2. Make targeted changes according to the instructions.
-3. **Smoke check** (pure Python only — never the agent or AppWorld): `python3 -I tools/lints.py candidates/<name>` must print `"ok": true`, and if helpers changed, `python3 -I -c "import ast,sys; ast.parse(open('candidates/<name>/tools/helpers.py').read())"`.
+3. **Smoke check** (pure Python only — never the agent or AppWorld): `tools/lint candidates/<name>` must print `"ok": true`, and if helpers changed, `python3 -I -c "import ast,sys; ast.parse(open('candidates/<name>/tools/helpers.py').read())"`.
 4. Return: directory path, lint status
 
 ### Step 3: Write pending_eval.json

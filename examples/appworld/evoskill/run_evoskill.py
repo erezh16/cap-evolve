@@ -212,7 +212,20 @@ def make_agents(registry: dict, hard_cap: int):
     from src.schemas import AgentResponse, SkillProposerResponse, ToolGeneratorResponse
     from src.agent_profiles.skill_proposer.prompt import SKILL_PROPOSER_SYSTEM_PROMPT
     from src.agent_profiles.skill_generator.prompt import SKILL_GENERATOR_SYSTEM_PROMPT
-    from claude_agent_sdk import ClaudeAgentOptions
+    from claude_agent_sdk import ClaudeAgentOptions, PermissionResultAllow, PermissionResultDeny
+
+    proj = os.path.realpath(PROJECT)
+
+    async def write_gate(tool, inp, ctx):
+        """Writes only to program skills (Claude Code protects .claude/ even under acceptEdits); never the
+        meta-skills, settings, hooks or anything outside the project's .claude/skills/."""
+        p = os.path.realpath(os.path.join(proj, inp.get("file_path") or inp.get("notebook_path") or ""))
+        if tool in ("Write", "Edit") and p.startswith(proj + "/.claude/skills/") and \
+                not any(f"/.claude/skills/{m}/" in p for m in META_SKILLS):
+            return PermissionResultAllow()
+        if tool in ("Read", "Glob", "Grep"):
+            return PermissionResultAllow()
+        return PermissionResultDeny(message="only skill files under .claude/skills/<new-or-existing-skill>/ may be written")
 
     proposer_prompt = SKILL_PROPOSER_SYSTEM_PROMPT
     for a, b in DEFANG:
@@ -224,8 +237,8 @@ def make_agents(registry: dict, hard_cap: int):
 
     sf = SB.settings_file(CAND, PROJECT)
 
-    def opts(system, schema, tools):
-        return ClaudeAgentOptions(
+    def opts(system, schema, tools, gate=None):
+        return ClaudeAgentOptions(can_use_tool=gate,
             system_prompt={"type": "preset", "preset": "claude_code", "append": system.strip()},
             output_format={"type": "json_schema", "schema": schema}, tools=list(tools), allowed_tools=list(tools),
             disallowed_tools=REMOVED, cwd=str(PROJECT), model=P.OPT_MODEL, setting_sources=[],
@@ -235,7 +248,7 @@ def make_agents(registry: dict, hard_cap: int):
                      SkillProposerResponse)
     proposer._aw_role = "proposer"
     builder = Agent(lambda: opts(SKILL_GENERATOR_SYSTEM_PROMPT, ToolGeneratorResponse.model_json_schema(),
-                                 BUILDER_TOOLS), ToolGeneratorResponse)
+                                 BUILDER_TOOLS, write_gate), ToolGeneratorResponse)
     builder._aw_role = "skill_builder"
 
     class AppWorldAgent(Agent):
@@ -497,7 +510,15 @@ def accept() -> int:
            "ground_truth_in_queries": "Ground Truth" in queries or SENTINEL in queries.replace("Evaluation feedback", ""),
            "skills": [n for n, _ in program_skills(PROJECT)], "playbook_chars": len(pb),
            "usage_rows": len(P.read_jsonl(STATE / "optimizer_usage.jsonl"))}
-    out["ok"] = out["proposer_calls"] >= 1 and not out["ground_truth_in_queries"] and out["usage_rows"] >= 1
+    from src.registry import ProgramManager
+    mgr = ProgramManager(cwd=str(PROJECT))
+    written = {}
+    for name, _ in mgr.get_frontier_with_scores():
+        mgr.switch_to(name)
+        written[name] = [n for n, _ in program_skills(PROJECT)]
+    out["skills_by_program"] = written
+    out["ok"] = (out["proposer_calls"] >= 1 and not out["ground_truth_in_queries"] and out["usage_rows"] >= 1
+                 and any(written.values()))
     P.write_json(P.AW_STATE / "acceptance" / "a_evoskill.json", out)
     print(json.dumps(out))
     return 0 if out["ok"] else 1

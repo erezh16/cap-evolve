@@ -78,8 +78,12 @@ def setup_workspace(fresh: bool) -> None:
     shutil.copy2(HERE.parent / "adapters" / "lints.py", WS / "tools" / "lints.py")
     shutil.copy2(P.LINT_CACHE, WS / "tools" / "lint_cache.json")
     # the lint inside the workspace reads its own copy of the lint data (instruction 8-grams, contacts, names)
-    (WS / "tools" / "README.md").write_text("Run the lint with: AW_LINT_CACHE=tools/lint_cache.json python3 -I "
-                                            "tools/lints.py candidates/<name>\n")
+    # and runs in a small venv with jinja2 + tiktoken only (AppWorld is not in the proposer's view)
+    py = SB.ensure_lint_venv()
+    (WS / "tools" / "lint").write_text(f"#!/bin/sh\nAW_LINT_CACHE=\"$(dirname \"$0\")/lint_cache.json\" exec {py} -I "
+                                       f"\"$(dirname \"$0\")/lints.py\" \"$@\"\n")
+    os.chmod(WS / "tools" / "lint", 0o755)
+    (WS / "tools" / "README.md").write_text(f"Run the lint with: tools/lint candidates/<name>   (python with jinja2: {py})\n")
 
 
 def task_label(i: int) -> str:
