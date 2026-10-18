@@ -1001,3 +1001,11 @@ A-gepa pass (3 dev tasks as trainset, 1 as valset, throwaway, not counted): GEPA
 ```json
 {"cp": 6, "prev_cp": 5, "prev_commit": "33409f881fbd48075e2bcb4a97ec33fc434f57cc", "utc": "2026-10-17T23:56:32Z", "kind": "result", "phase": "P2", "done_through": "P2/A-gepa", "next": "P2/A-skillopt", "candidate": null, "counts": {}, "spend": {}, "artifacts": {"STATE/acceptance.json": "e68275246b4f424494ded1245effe81045c9f7629009845a12206b551cb0e254"}, "code": "33409f881fbd48075e2bcb4a97ec33fc434f57cc", "open_decisions": []}
 ```
+
+## CP-0007 · 2026-10-18T00:04Z · P2 acceptance A9 (Agent SDK, evoskill) · result
+
+A9 pass for the Agent-SDK path with EvoSkill's de-fanged options (Proposer Read/Glob/Grep; Skill Builder Read/Write/Edit/Glob/Grep; Bash, WebFetch, WebSearch, Skill, TodoWrite, BashOutput removed and disallowed; setting_sources []; the same sandbox settings; scratch git project root). 11 planted secrets, 0 leaked; tool uses {'Read': 22, 'Grep': 1, 'Glob': 1, 'StructuredOutput': 2, 'Write': 2} (no Bash or web tool); the builder wrote in its workspace. G3 exception checked: the SDK's structured output (output_format json_schema) works through the gateway for both roles, so no text-JSON fallback is needed. Next: A-skillopt, A-wikiskill (running), A-evoskill, A-metaharness.
+
+```json
+{"cp": 7, "prev_cp": 6, "prev_commit": "412da03013bc80c32a9803181f9628d9f0fe0548", "utc": "2026-10-18T00:04:44Z", "kind": "result", "phase": "P2", "done_through": "P2/A9-evoskill", "next": "P2/A-skillopt", "candidate": null, "counts": {}, "spend": {}, "artifacts": {"STATE/acceptance.json": "2cc77d5f54b1c0e28fa30ff3c4fc1e2c67af9c15b92e6878322f82cc208eb22c"}, "code": "412da03013bc80c32a9803181f9628d9f0fe0548", "open_decisions": []}
+```
