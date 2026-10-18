@@ -1191,3 +1191,13 @@ Counted rollouts 468/900; optimizer 14 calls, 0.29M in / 0.07M out tok, $1.98 pr
 ```json
 {"cp": 27, "prev_cp": 26, "prev_commit": "64d08aaceb0c1b8925ccac153afd8c21fba39edd", "utc": "2026-10-18T05:22:15Z", "kind": "result", "phase": "P3", "done_through": "gepa/search/iteration 12", "next": "gepa/search", "candidate": "gepa", "counts": {"gepa": {"counted_rollouts": 468}}, "spend": {"gepa": {"in": 292157, "out": 73364, "proxy_usd": 1.98}}, "artifacts": {"STATE/gepa/progress.json": "f6cb102e8dcf97735b837f7ccd89894298c844ccba57c11fcdd622951aa1b012"}, "code": "03367bc299b4cf7366e491d7d12ba5e346b93f39", "open_decisions": []}
 ```
+
+## CP-0028 · 2026-10-18T05:47Z · P3 heartbeat · heartbeat
+
+No checkpoint for 25 min. Phase P3, last result: gepa/search/iteration 12.
+Runner: alive (pid 32143). Last log line: `2026-10-18T05:45:42Z | gepa | P3/dev | 50/57 episodes, passed 25, infra errors 0`.
+Next: gepa/search.
+
+```json
+{"cp": 28, "prev_cp": 27, "prev_commit": "0ec2b5e87e0b9c2d928857e1d68edccecc96cbab", "utc": "2026-10-18T05:47:35Z", "kind": "heartbeat", "phase": "P3", "done_through": "gepa/search/iteration 12", "next": "gepa/search", "candidate": "gepa", "counts": {"gepa": {"counted_rollouts": 468}}, "spend": {"gepa": {"in": 292157, "out": 73364, "proxy_usd": 1.98}}, "artifacts": {}, "code": "03367bc299b4cf7366e491d7d12ba5e346b93f39", "open_decisions": [], "runner": "alive"}
+```
