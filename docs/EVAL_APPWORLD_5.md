@@ -1626,3 +1626,12 @@ Next: skillopt/search.
 ```json
 {"cp": 77, "prev_cp": 76, "prev_commit": "a479061a94557c4f0e766fd49aa099c2d6068c50", "utc": "2026-10-18T13:23:43Z", "kind": "heartbeat", "phase": "P3", "done_through": "skillopt/search/step 6", "next": "skillopt/search", "candidate": "skillopt", "counts": {"skillopt": {"counted_rollouts": 579}}, "spend": {"skillopt": {"in": 1348007, "out": 108876, "proxy_usd": 5.68}}, "artifacts": {}, "code": "b191cc5bc59825b7a262254ebc2a52b5ec266316", "open_decisions": [], "runner": "alive"}
 ```
+
+## CP-0078 · 2026-10-18T13:44Z · P3 skillopt search · result
+
+SkillOpt step 7: 7 steps on record; best skill 15,536 chars.
+Counted rollouts 716/900; optimizer 59 calls, 1.86M in / 0.14M out tok, $7.74 proxy.
+
+```json
+{"cp": 78, "prev_cp": 77, "prev_commit": "64841a903b9a8a49b099203e4888cb6f221fb443", "utc": "2026-10-18T13:44:22Z", "kind": "result", "phase": "P3", "done_through": "skillopt/search/step 7", "next": "skillopt/search", "candidate": "skillopt", "counts": {"skillopt": {"counted_rollouts": 716}}, "spend": {"skillopt": {"in": 1855766, "out": 144824, "proxy_usd": 7.74}}, "artifacts": {"STATE/skillopt/progress.json": "ceb484dc8d99fedbfdb2fe7222b36241f9101b3437568856c3ac669d9075585b"}, "code": "b191cc5bc59825b7a262254ebc2a52b5ec266316", "open_decisions": []}
+```
