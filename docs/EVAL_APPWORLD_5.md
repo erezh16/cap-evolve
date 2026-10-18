@@ -1324,3 +1324,12 @@ Posting enabled (D9): the queued acceptance update was posted on #881–#885; a 
 ```json
 {"cp": 43, "prev_cp": 42, "prev_commit": "96ae2b86d6aa66e8cad187dd6bc9100fdf60461d", "utc": "2026-10-18T06:41:46Z", "kind": "result", "phase": "P3", "done_through": "gepa/search/iteration 15", "next": "gepa/search", "candidate": "gepa", "counts": {"gepa": {"counted_rollouts": 540}}, "spend": {"gepa": {"in": 349364, "out": 90050, "proxy_usd": 2.4}}, "artifacts": {}, "code": "03367bc299b4cf7366e491d7d12ba5e346b93f39", "open_decisions": []}
 ```
+
+## CP-0044 · 2026-10-18T06:54Z · P3 gepa search · result
+
+GEPA iteration 16: accepted=False, candidates 8, best dev 0.6842, metric calls 546/987.
+Counted rollouts 546/900; optimizer 20 calls, 0.45M in / 0.11M out tok, $3.05 proxy; reflection lint rejects 5, parse fails 1, refusals 0.
+
+```json
+{"cp": 44, "prev_cp": 43, "prev_commit": "fa4c0da596a1c226f8a81881775447a18f6caede", "utc": "2026-10-18T06:54:34Z", "kind": "result", "phase": "P3", "done_through": "gepa/search/iteration 16", "next": "gepa/search", "candidate": "gepa", "counts": {"gepa": {"counted_rollouts": 546}}, "spend": {"gepa": {"in": 447523, "out": 114091, "proxy_usd": 3.05}}, "artifacts": {"STATE/gepa/progress.json": "030fb4fbc1ea227a07ca7ef710e966533d38a581e18baff1f771fb3978636d1a"}, "code": "fa4c0da596a1c226f8a81881775447a18f6caede", "open_decisions": []}
+```
