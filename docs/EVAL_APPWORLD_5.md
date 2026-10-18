@@ -1993,3 +1993,11 @@ Step `evoskill/search` exited 1; see the local progress logs. Runner stopped.
 ```json
 {"cp": 120, "prev_cp": 119, "prev_commit": "e69093cd699fc10eb8d8f044279d41c049a577b0", "utc": "2026-10-18T19:52:01Z", "kind": "error", "phase": "P7", "done_through": "evoskill/search/eval_result 4: val-subset 0.45", "next": "evoskill/search", "candidate": "evoskill", "counts": {"evoskill": {"counted_rollouts": 98}}, "spend": {"evoskill": {"in": 150091, "out": 19910, "usd": 0.77}}, "artifacts": {}, "code": "4e27c54e4a6a144d0c96918ab4db534478a59a6e", "open_decisions": []}
 ```
+
+## CP-0121 · 2026-10-18T19:55Z · P3 evoskill crash · error
+
+EvoSkill search crashed in iteration 4 (driver bug): the iteration-4 child's playbook was lint-rejected (a skill quoted a train/dev supervisor's name; the lint scored all 20 val tasks 0 without running them, as designed) and the lint-reject records lacked the 'instruction' field the trace renderer reads (KeyError). Fixed: lint-reject records now carry the instruction; renderers tolerate its absence. On record before the crash: base 0.30 on the 20-task val subset, children 0.40, 0.55, 0.45 (all admitted); 104 counted rollouts. Resume uses EvoSkill's own continue mode (checkpoint after iteration 3), running only the remaining 18 of 22 iterations; the unscored iteration-4 child (lint-rejected, would have scored 0 and been discarded) gets no feedback_history entry — disclosed.
+
+```json
+{"cp": 121, "prev_cp": 120, "prev_commit": "88bb13008748c9ecc6795b3113f4ac3e3d312d06", "utc": "2026-10-18T19:55:51Z", "kind": "error", "phase": "P3", "done_through": "evoskill/search/eval_result 4: val-subset 0.45", "next": "evoskill/search", "candidate": "evoskill", "counts": {"evoskill": {"counted_rollouts": 98}}, "spend": {"evoskill": {"in": 150091, "out": 19910, "usd": 0.77}}, "artifacts": {}, "code": "4e27c54e4a6a144d0c96918ab4db534478a59a6e", "open_decisions": []}
+```

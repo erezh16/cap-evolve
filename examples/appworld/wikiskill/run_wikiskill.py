@@ -103,7 +103,7 @@ class GatewayLLM:
 
 
 def _transcript(rec: dict) -> list[dict]:
-    msgs = [{"role": "user", "content": f"Task: {rec['instruction']}"}]
+    msgs = [{"role": "user", "content": f"Task: {rec.get('instruction', '')}"}]
     for s in rec.get("steps") or []:
         o = (s.get("output") or "")[:STEP_OUT]
         th = (s.get("thought") or "").strip()

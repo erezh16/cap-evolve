@@ -68,7 +68,7 @@ def patch_optimizer(cand: str) -> None:
 
 
 def _conversation(rec: dict, with_report: bool) -> list[dict]:
-    msgs = [{"role": "user", "content": f"Task: {rec['instruction']}"}]
+    msgs = [{"role": "user", "content": f"Task: {rec.get('instruction', '')}"}]
     steps = rec.get("steps") or []
     outs = [(s.get("output") or "")[:CONV_OUT_CHARS] for s in steps]
     for s, o in zip(steps, outs):

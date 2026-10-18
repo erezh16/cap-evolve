@@ -42,7 +42,9 @@ def scan(c: str, id_re: re.Pattern) -> dict:
     for name, root in locations(c).items():
         if not root.exists():
             continue
-        files = [root] if root.is_file() else [p for p in root.rglob("*") if p.is_file()]
+        # the harness's own sandbox settings name the denied paths; they are not optimizer output
+        files = [root] if root.is_file() else [p for p in root.rglob("*") if p.is_file()
+                                                and not p.name.endswith("settings.json")]
         counts: Counter = Counter()
         n_hit = 0
         for p in files:

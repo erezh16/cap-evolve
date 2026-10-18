@@ -159,7 +159,7 @@ def gold_free_result(rec: dict) -> str:
         o = (s.get("output") or "")[:STEP_OUT]
         lines.append(f"### Step {s.get('step')}\n{(s.get('thought') or '').strip()[:800]}\n```python\n"
                      f"{(s.get('code') or '').strip()}\n```\nOutput:\n{o}")
-    text = f"## Task\n{rec['instruction']}\n\n" + "\n\n".join(lines)
+    text = f"## Task\n{rec.get('instruction', '')}\n\n" + "\n\n".join(lines)
     if len(text) > RESULT_MAX:
         text = text[:RESULT_MAX // 2] + "\n\n[... truncated ...]\n\n" + text[-RESULT_MAX // 2:]
     return text + f"\n\n## Evaluation feedback\n{rec['feedback']}"
@@ -403,6 +403,10 @@ def search() -> int:
         P.update_manifest(evoskill_val_subset={"seed": VAL_SEED, "n": len(vs),
                                                "sha256": P.sha256_bytes(json.dumps(vs).encode())})
         loop, reg = build_loop(P.read_split("train"), vs, MAX_ITER, P.BUDGET_ROLLOUTS, continue_mode=cont)
+        if cont:  # continue mode runs max_iterations MORE: only the remainder of the 22 (iteration ids continue)
+            done = loop._get_highest_iteration()
+            loop.config.max_iterations = max(0, MAX_ITER - done)
+            P.progress_log(CAND, "P3", f"resume: {done} iterations on record, {loop.config.max_iterations} to go")
         orig_emit = loop._emit
 
         def emit(event, **data):

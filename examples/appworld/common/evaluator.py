@@ -161,7 +161,9 @@ def _evaluate_local(cand: str, cdir: Path, task_ids: list[str], phase: str, spli
         v = lint(cdir)
         if v:  # rejected before any rollout (§6): every task 0, the violations as feedback, nothing counted
             for tid in todo:
-                out[tid] = {"task_id": tid, "reward": 0.0, "lint_reject": True, "steps": [],
+                spec = json.loads((P.ROOT_OPT / "data" / "tasks" / tid / "specs.json").read_text())
+                out[tid] = {"task_id": tid, "instruction": spec["instruction"], "reward": 0.0, "lint_reject": True,
+                            "steps": [], "num_tests": 0, "pass_count": 0,
                             "feedback": "LINT_REJECT (candidate not run): " + "; ".join(v), "error": None}
             P.progress_log(cand, phase, f"lint_reject {h}: {len(v)} violation(s), {len(todo)} tasks scored 0")
         else:
