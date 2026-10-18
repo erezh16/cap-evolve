@@ -1935,3 +1935,11 @@ Posted 'evoskill search' on #884 (evoskill): https://github.com/skillberry-ai/ca
 ```json
 {"cp": 113, "prev_cp": 112, "prev_commit": "a51b3a17c2847f970256aaefa0e0784aa4cc9e66", "utc": "2026-10-18T18:25:43Z", "kind": "posted", "phase": "P7", "done_through": "wikiskill/scan", "next": "evoskill/search", "candidate": null, "counts": {"wikiskill": {"counted_rollouts": 792}}, "spend": {"wikiskill": {"in": 1775943, "out": 94851, "proxy_usd": 6.75}}, "artifacts": {}, "code": "4e27c54e4a6a144d0c96918ab4db534478a59a6e", "open_decisions": [], "post": "evoskill/m_search", "url": "https://github.com/skillberry-ai/cap-evolve/issues/884#issuecomment-6253506830"}
 ```
+
+## CP-0114 · 2026-10-18T18:25Z · P7 posted wikiskill · posted
+
+Posted 'wikiskill scanned' on #883 (wikiskill): https://github.com/skillberry-ai/cap-evolve/issues/883#issuecomment-6253507298
+
+```json
+{"cp": 114, "prev_cp": 113, "prev_commit": "7cbd6159808c6664b45fbca8847ecd1d70cc5492", "utc": "2026-10-18T18:25:45Z", "kind": "posted", "phase": "P7", "done_through": "wikiskill/scan", "next": "evoskill/search", "candidate": null, "counts": {"wikiskill": {"counted_rollouts": 792}}, "spend": {"wikiskill": {"in": 1775943, "out": 94851, "proxy_usd": 6.75}}, "artifacts": {}, "code": "4e27c54e4a6a144d0c96918ab4db534478a59a6e", "open_decisions": [], "post": "wikiskill/m_scanned", "url": "https://github.com/skillberry-ai/cap-evolve/issues/883#issuecomment-6253507298"}
+```
