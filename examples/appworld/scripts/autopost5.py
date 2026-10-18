@@ -70,7 +70,8 @@ def milestone_body(c: str, what: str) -> str:
                 f"B = {P.BUDGET_ROLLOUTS} counted rollouts and 10M optimizer tokens, with gold-free F1 feedback; "
                 f"root_full stays locked. Progress posts follow every few hours.")
     if what == "freeze":
-        return f"**{c}: search finished.**\n\n" + progress_body(c).split("\n", 2)[2] + "\n\nNext: freeze the champion."
+        return f"**{c}: search finished.**\n\n" + progress_body(c).split("\n", 2)[2] + ("\n\nThis ends the **search only**. The champion's test_normal score comes from the one common final "
+               "window (6 arms × 168 tasks × 2 trials), which runs after all five searches. Next: freeze the champion.")
     if what == "scan":
         fz = P.read_json(P.PUSHED / c / "artifact" / "FREEZE.json", {}) or {}
         keep = {k: v for k, v in fz.items() if k not in ("tree_sha256",) and not isinstance(v, (list, dict))}

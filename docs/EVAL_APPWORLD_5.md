@@ -1807,3 +1807,11 @@ Counted rollouts 498/900; optimizer 33 calls, 1.05M in / 0.06M out tok, $4.12 pr
 ```json
 {"cp": 98, "prev_cp": 97, "prev_commit": "47bbd0458fab6249484a4021f8d580f8cfb427ee", "utc": "2026-10-18T16:13:18Z", "kind": "result", "phase": "P3", "done_through": "wikiskill/search/iter3", "next": "wikiskill/search", "candidate": "wikiskill", "counts": {"wikiskill": {"counted_rollouts": 498}}, "spend": {"wikiskill": {"in": 1053546, "out": 64076, "proxy_usd": 4.12}}, "artifacts": {"STATE/wikiskill/progress.json": "655673fa3ef8cdd3c1209f6b8ca8f17a44d1d261cab14b63305afd42f212417d"}, "code": "9cc7d6762ff5275a96be2794f1120ffa32b10129", "open_decisions": []}
 ```
+
+## CP-0099 · 2026-10-18T16:34Z · P3 posted gepa · posted
+
+Posted 'clarification: search vs test' on #881 (gepa): https://github.com/skillberry-ai/cap-evolve/issues/881#issuecomment-6252358723
+
+```json
+{"cp": 99, "prev_cp": 98, "prev_commit": "c21e93a533090425e9610db12d7427fe6a60372f", "utc": "2026-10-18T16:34:32Z", "kind": "posted", "phase": "P3", "done_through": "wikiskill/search/iter3", "next": "wikiskill/search", "candidate": "wikiskill", "counts": {"wikiskill": {"counted_rollouts": 498}}, "spend": {"wikiskill": {"in": 1053546, "out": 64076, "proxy_usd": 4.12}}, "artifacts": {}, "code": "9cc7d6762ff5275a96be2794f1120ffa32b10129", "open_decisions": [], "post": "gepa/clarify_test", "url": "https://github.com/skillberry-ai/cap-evolve/issues/881#issuecomment-6252358723"}
+```
