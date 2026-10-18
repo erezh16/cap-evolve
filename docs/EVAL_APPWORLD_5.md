@@ -1760,3 +1760,13 @@ Posted 'correction to the correction' on #882 (skillopt): https://github.com/ski
 ```json
 {"cp": 93, "prev_cp": 92, "prev_commit": "4aa8691b34dfbf5b915ba87916b14d0e74bf4120", "utc": "2026-10-18T14:42:20Z", "kind": "posted", "phase": "P3", "done_through": "skillopt/scan", "next": "wikiskill/search", "candidate": null, "counts": {"skillopt": {"counted_rollouts": 900}}, "spend": {"skillopt": {"in": 2331763, "out": 180038, "proxy_usd": 9.7}}, "artifacts": {}, "code": "9cc7d6762ff5275a96be2794f1120ffa32b10129", "open_decisions": [], "post": "skillopt/erratum_baseline", "url": "https://github.com/skillberry-ai/cap-evolve/issues/882#issuecomment-6251221364"}
 ```
+
+## CP-0094 · 2026-10-18T15:07Z · P3 heartbeat · heartbeat
+
+No checkpoint for 25 min. Phase P3, last result: skillopt/scan.
+Runner: alive (pid 151614). Last log line: `2026-10-18T15:07:31Z | wikiskill | P3/train | 81/90 episodes, passed 32, infra errors 0`.
+Next: wikiskill/search.
+
+```json
+{"cp": 94, "prev_cp": 93, "prev_commit": "9504f1ee47ae9272d47b8257c4e58dbe34f6d6f8", "utc": "2026-10-18T15:07:45Z", "kind": "heartbeat", "phase": "P3", "done_through": "skillopt/scan", "next": "wikiskill/search", "candidate": null, "counts": {"skillopt": {"counted_rollouts": 900}}, "spend": {"skillopt": {"in": 2331763, "out": 180038, "proxy_usd": 9.7}}, "artifacts": {}, "code": "9cc7d6762ff5275a96be2794f1120ffa32b10129", "open_decisions": [], "runner": "alive"}
+```
