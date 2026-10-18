@@ -1,0 +1,26 @@
+{
+ "candidate": "skillopt",
+ "epochs": 3,
+ "rows": [
+  {
+   "step": 1,
+   "epoch": 1,
+   "action": "accept_new_best",
+   "selection_hard": 0.6491228070175439,
+   "selection_soft": 0.8322890559732665,
+   "skill_len": 8886
+  }
+ ],
+ "counted_rollouts": 154,
+ "cap": 900,
+ "best_skill_chars": 8886,
+ "optimizer": {
+  "calls": 10,
+  "errors": 0,
+  "prompt_tokens": 284216,
+  "completion_tokens": 26271,
+  "cache_read": 0,
+  "seconds": 204.2,
+  "proxy_usd": 1.25
+ }
+}
