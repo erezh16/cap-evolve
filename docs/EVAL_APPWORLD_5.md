@@ -1042,3 +1042,13 @@ All acceptance checks pass (a1, a10, a2, a3a5, a4, a6, a7, a8, a9_cli, a9_sdk_ev
 ```json
 {"cp": 11, "prev_cp": 10, "prev_commit": "1b13eb8f8c842f568049cc9cfbc8f17d1a51ee90", "utc": "2026-10-18T01:12:31Z", "kind": "phase_done", "phase": "P2", "done_through": "P2/done", "next": "gepa/search", "candidate": null, "counts": {}, "spend": {}, "artifacts": {"STATE/acceptance.json": "f9021a177b26592cc4f8fb33e432b7bb2836c7fcb610bcd426d82048d052eaa7"}, "code": "1b13eb8f8c842f568049cc9cfbc8f17d1a51ee90", "open_decisions": []}
 ```
+
+## CP-0012 · 2026-10-18T01:38Z · P2 heartbeat · heartbeat
+
+No checkpoint for 25 min. Phase P2, last result: P2/done.
+Runner: alive (pid 32143). Last log line: `2026-10-18T01:37:40Z | gepa | P3/train | 1/3 episodes, passed 0, infra errors 0`.
+Next: gepa/search.
+
+```json
+{"cp": 12, "prev_cp": 11, "prev_commit": "f0e15476f6777e7d776b120a5ce8e71c46372d1c", "utc": "2026-10-18T01:38:29Z", "kind": "heartbeat", "phase": "P2", "done_through": "P2/done", "next": "gepa/search", "candidate": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "f0e15476f6777e7d776b120a5ce8e71c46372d1c", "open_decisions": [], "runner": "alive"}
+```
