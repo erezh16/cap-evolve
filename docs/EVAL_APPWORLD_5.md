@@ -2027,3 +2027,11 @@ Posted 'evoskill search progress' on #884 (evoskill): https://github.com/skillbe
 ```json
 {"cp": 124, "prev_cp": 123, "prev_commit": "85ab2a3c17f29691c44ec1278a708bbe2e075f7b", "utc": "2026-10-18T20:25:48Z", "kind": "posted", "phase": "P3", "done_through": "evoskill/search/eval_result 5: val-subset 0.6", "next": "evoskill/search", "candidate": "evoskill", "counts": {"evoskill": {"counted_rollouts": 130}}, "spend": {"evoskill": {"in": 298956, "out": 32343, "usd": 1.49}}, "artifacts": {}, "code": "5ed4347dbfaabaea97c0a0bec47102aa2513cfa5", "open_decisions": [], "post": "evoskill/auto_248938", "url": "https://github.com/skillberry-ai/cap-evolve/issues/884#issuecomment-6254737729"}
 ```
+
+## CP-0125 · 2026-10-18T20:33Z · P3 evoskill search · result
+
+EvoSkill eval_result 6: val-subset 0.45. Counted rollouts 156/900; optimizer 12 agent runs, 0.37M in / 0.04M out tok, $1.84 (SDK-reported).
+
+```json
+{"cp": 125, "prev_cp": 124, "prev_commit": "0e3a392244edb765a923ecfb328245fdbde5839c", "utc": "2026-10-18T20:33:09Z", "kind": "result", "phase": "P3", "done_through": "evoskill/search/eval_result 6: val-subset 0.45", "next": "evoskill/search", "candidate": "evoskill", "counts": {"evoskill": {"counted_rollouts": 156}}, "spend": {"evoskill": {"in": 369853, "out": 40109, "usd": 1.84}}, "artifacts": {"STATE/evoskill/progress.json": "e4ee31fae23640babbb8b8d31499a0b96ffc501d1a58bb11eaf2a110c0c31ec3"}, "code": "5ed4347dbfaabaea97c0a0bec47102aa2513cfa5", "open_decisions": []}
+```
