@@ -1544,3 +1544,13 @@ Posted 'gepa scanned' on #881 (gepa): https://github.com/skillberry-ai/cap-evolv
 ```json
 {"cp": 68, "prev_cp": 67, "prev_commit": "6956980f61c1e25ad9c8f545d31719198a2edf75", "utc": "2026-10-18T10:49:46Z", "kind": "posted", "phase": "P7", "done_through": "gepa/scan", "next": "skillopt/search", "candidate": null, "counts": {"gepa": {"counted_rollouts": 900}}, "spend": {"gepa": {"in": 761846, "out": 184757, "proxy_usd": 5.06}}, "artifacts": {}, "code": "b191cc5bc59825b7a262254ebc2a52b5ec266316", "open_decisions": [], "post": "gepa/m_scanned", "url": "https://github.com/skillberry-ai/cap-evolve/issues/881#issuecomment-6248939639"}
 ```
+
+## CP-0069 · 2026-10-18T11:15Z · P7 heartbeat · heartbeat
+
+No checkpoint for 25 min. Phase P7, last result: gepa/scan.
+Runner: alive (pid 106747). Last log line: `2026-10-18T11:15:30Z | skillopt | P3/dev | 20/57 episodes, passed 13, infra errors 0`.
+Next: skillopt/search.
+
+```json
+{"cp": 69, "prev_cp": 68, "prev_commit": "ef7a6a2ee9f35bdec0c6891fee3a207ed6a3d4ed", "utc": "2026-10-18T11:15:42Z", "kind": "heartbeat", "phase": "P7", "done_through": "gepa/scan", "next": "skillopt/search", "candidate": null, "counts": {"gepa": {"counted_rollouts": 900}}, "spend": {"gepa": {"in": 761846, "out": 184757, "proxy_usd": 5.06}}, "artifacts": {}, "code": "b191cc5bc59825b7a262254ebc2a52b5ec266316", "open_decisions": [], "runner": "alive"}
+```
