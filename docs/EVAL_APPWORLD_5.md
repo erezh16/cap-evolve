@@ -1528,3 +1528,11 @@ Posted 'gepa freeze' on #881 (gepa): https://github.com/skillberry-ai/cap-evolve
 ```json
 {"cp": 66, "prev_cp": 65, "prev_commit": "5020e6e9d48870a4c35413e69c92b3e71208ca31", "utc": "2026-10-18T10:49:42Z", "kind": "posted", "phase": "P7", "done_through": "gepa/scan", "next": "skillopt/search", "candidate": null, "counts": {"gepa": {"counted_rollouts": 900}}, "spend": {"gepa": {"in": 761846, "out": 184757, "proxy_usd": 5.06}}, "artifacts": {}, "code": "fa4c0da596a1c226f8a81881775447a18f6caede", "open_decisions": [], "post": "gepa/m_freeze", "url": "https://github.com/skillberry-ai/cap-evolve/issues/881#issuecomment-6248939057"}
 ```
+
+## CP-0067 · 2026-10-18T10:49Z · P7 posted gepa · posted
+
+Posted 'gepa scan' on #881 (gepa): https://github.com/skillberry-ai/cap-evolve/issues/881#issuecomment-6248939319
+
+```json
+{"cp": 67, "prev_cp": 66, "prev_commit": "b191cc5bc59825b7a262254ebc2a52b5ec266316", "utc": "2026-10-18T10:49:44Z", "kind": "posted", "phase": "P7", "done_through": "gepa/scan", "next": "skillopt/search", "candidate": null, "counts": {"gepa": {"counted_rollouts": 900}}, "spend": {"gepa": {"in": 761846, "out": 184757, "proxy_usd": 5.06}}, "artifacts": {}, "code": "b191cc5bc59825b7a262254ebc2a52b5ec266316", "open_decisions": [], "post": "gepa/m_scan", "url": "https://github.com/skillberry-ai/cap-evolve/issues/881#issuecomment-6248939319"}
+```
