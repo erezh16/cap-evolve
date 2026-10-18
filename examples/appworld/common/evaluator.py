@@ -99,14 +99,19 @@ def m_cap_tokens() -> int | None:
 
 
 def lint(cdir: Path) -> list[str]:
+    """The shared lint, plus two eval-5 rules for the memory slot (§1.3, §6): the 8-gram / supervisor-contact
+    check the shared lint applies to the prompt, helpers and notes (lints.py checks only the memory's length),
+    and the token cap M_cap."""
     sys.path.insert(0, str(HERE.parent / "adapters"))
     import lints
     v = lints.lint_candidate(Path(cdir))
     pb = Path(cdir) / "memory" / "playbook.md"
-    cap = m_cap_tokens()
-    if cap and pb.is_file():
-        n = memory_tokens(pb.read_text(encoding="utf-8"))
-        if n > cap:
+    if pb.is_file():
+        text = pb.read_text(encoding="utf-8")
+        v += lints._leaks(text, "memory/playbook.md")
+        cap = m_cap_tokens()
+        n = memory_tokens(text)
+        if cap and n > cap:
             v.append(f"memory/playbook.md: {n} tokens > M_cap {cap}")
     return v
 

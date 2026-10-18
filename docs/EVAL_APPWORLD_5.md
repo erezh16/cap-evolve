@@ -1017,3 +1017,11 @@ A-skillopt pass (1 epoch / 1 step, 3 dev tasks as train, 1 as val, throwaway, no
 ```json
 {"cp": 8, "prev_cp": 7, "prev_commit": "c904bb72e7544eb50dbfb0b58e886ebe77103996", "utc": "2026-10-18T00:19:42Z", "kind": "result", "phase": "P2", "done_through": "P2/A-skillopt", "next": "P2/A-wikiskill", "candidate": null, "counts": {}, "spend": {}, "artifacts": {"STATE/acceptance.json": "644a314c71e3f9c83803f481836ba7d46f9f803672e4acbddeb4255d4693a438"}, "code": "c904bb72e7544eb50dbfb0b58e886ebe77103996", "open_decisions": []}
 ```
+
+## CP-0009 · 2026-10-18T00:38Z · P2 acceptance A-wikiskill · result
+
+A-wikiskill pass on the second run (2 iterations, 3 dev tasks as train, 2 as val, throwaway workspace, not counted): the gateway LLM answered the Wiki Maintainer (3 pattern pages written) and the ReAct Skill Proposer (reads of wiki pages and traces/<task> paths resolved), one skill was created and accepted (val 0.5 → 1.0), rendered into memory/playbook.md (3,180 chars, lint clean), every raw trace ends with the F1 EVALUATION message, and the full proposal text is in skill-impact.md; 0 gateway errors. The first run produced no proposal: with the paper's Appendix E prompt (which names read_file/finish but no call syntax) the model emitted XML-style tool calls, the vendored parser did not recognize them, and one turn hit max_tokens. Fixes: a short 'How to call the tools' section (one JSON tool call per reply) appended to our copy of the prompt, and XML-style calls read as JSON (recorded in wikiskill/prompts/SOURCE.md). Also added to the shared candidate lint: the memory slot now gets the same 8-gram / supervisor-contact check as the prompt, helpers and notes (the base lint checked only its length). Next: A-evoskill, A-metaharness (running).
+
+```json
+{"cp": 9, "prev_cp": 8, "prev_commit": "d7fbe4c0fd7bda052fa86f268b25b3ae59663978", "utc": "2026-10-18T00:38:48Z", "kind": "result", "phase": "P2", "done_through": "P2/A-wikiskill", "next": "P2/A-evoskill", "candidate": null, "counts": {}, "spend": {}, "artifacts": {"STATE/acceptance.json": "810b42d99dae527a7cec1c551ce68c43afe72a68fba23de8303eb5b43013c209"}, "code": "d7fbe4c0fd7bda052fa86f268b25b3ae59663978", "open_decisions": []}
+```

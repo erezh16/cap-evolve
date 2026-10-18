@@ -200,6 +200,7 @@ class Progress:
 
     def __init__(self, cand: str, ledger: bool, adapter=None):
         self.cand, self.ledger, self.adapter = cand, ledger, adapter
+        self.last_cp = 0.0
         self.rows = (P.read_json(P.PUSHED / cand / "progress.json", {}) or {}).get("rows", []) if ledger else []
 
     def on_iteration_start(self, ev):
@@ -220,8 +221,11 @@ class Progress:
         self.rows.append(row)
         P.progress_log(self.cand, "P3", f"iter {row['iteration']} accepted={row['accepted']} candidates={row['n_candidates']} "
                                          f"best_dev={row['best_dev']} metric_calls={row['metric_calls']} counted={row['counted_rollouts']}")
-        if self.ledger:
+        import time as _t
+        # an accepted child is checkpointed at once; rejected iterations are coalesced to ≤ 1 entry per 5 min (§10.2)
+        if self.ledger and (row["accepted"] or _t.time() - self.last_cp >= 300):
             checkpoint(self.cand, self.rows, f"iteration {row['iteration']}")
+            self.last_cp = _t.time()
 
 
 def checkpoint(cand: str, rows: list, what: str, kind: str = "result", next_unit: str | None = None) -> None:
@@ -269,14 +273,27 @@ def run(train_ids, val_ids, run_dir: Path, max_calls: int, hard_cap: int, ledger
 
 
 def search() -> int:
+    """GEPA's own stopper is max_metric_calls = 987 (§7.1); the evaluator's hard cap is B = 900 (§0, D7). If the
+    cap is reached inside an iteration, that iteration's evaluation is abandoned and the result is GEPA's state
+    as saved before it (gepa_state.bin is written at the top of every iteration)."""
     pidf = P.AW_STATE / "RUNNING.pid"
     pidf.write_text(f"{os.getpid()} {CAND} search\n")
     try:
-        res = run(E.split_ids("train"), E.split_ids("dev"), RUN_DIR, MAX_METRIC_CALLS, 1100, ledger=True)
-        P.write_json(STATE / "result.json", {"best_idx": res.best_idx, "val_aggregate_scores": res.val_aggregate_scores,
+        try:
+            res = run(E.split_ids("train"), E.split_ids("dev"), RUN_DIR, MAX_METRIC_CALLS, P.BUDGET_ROLLOUTS, ledger=True)
+            end = "max_metric_calls reached"
+        except E.BudgetExceeded as e:
+            from gepa.core.result import GEPAResult
+            from gepa.core.state import GEPAState
+            res = GEPAResult.from_state(GEPAState.load(str(RUN_DIR)), run_dir=str(RUN_DIR), seed=0)
+            end = f"rollout cap B reached ({e}); result = state before the abandoned iteration"
+        P.progress_log(CAND, "P3", f"search end: {end}")
+        P.write_json(STATE / "result.json", {"end": end, "best_idx": res.best_idx, "val_aggregate_scores": res.val_aggregate_scores,
                                              "total_metric_calls": res.total_metric_calls,
                                              "num_candidates": res.num_candidates, "parents": res.parents,
                                              "best_candidate": res.best_candidate})
+        rows = (P.read_json(P.PUSHED / CAND / "progress.json", {}) or {}).get("rows", [])
+        checkpoint(CAND, rows, "search finished: " + end.split(" (")[0], kind="phase_done", next_unit=f"{CAND}/freeze")
         return 0
     finally:
         pidf.unlink(missing_ok=True)

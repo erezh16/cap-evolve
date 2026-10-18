@@ -108,5 +108,23 @@
   "hidden_reference_absent": true,
   "best_skill_exists": true,
   "ok": true
+ },
+ "a_wikiskill": {
+  "iterations": 2,
+  "roles": [
+   "maintainer",
+   "proposer"
+  ],
+  "calls": 71,
+  "errors": 0,
+  "wiki_pages": 3,
+  "skills": [
+   "spotify_library_top_songs"
+  ],
+  "proposals_recorded": 1,
+  "evaluation_message": true,
+  "playbook_chars": 3180,
+  "playbook_lints": true,
+  "ok": true
  }
 }

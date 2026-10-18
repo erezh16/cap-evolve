@@ -68,9 +68,11 @@ def setup_workspace(fresh: bool) -> None:
         shutil.rmtree(WS, ignore_errors=True)
     for d in ("candidates", "runs", "logs", "reference", "tools"):
         (WS / d).mkdir(parents=True, exist_ok=True)
-    if not (WS / "candidates" / "seed").exists():
-        shutil.copytree(P.SEED_CAP, WS / "candidates" / "seed")
-        (WS / "candidates" / "seed" / "memory").mkdir(exist_ok=True)
+    if not (WS / "candidates" / "seed").exists():  # the four harness files only
+        for rel in SURFACES:
+            if (P.SEED_CAP / rel).is_file():
+                (WS / "candidates" / "seed" / rel).parent.mkdir(parents=True, exist_ok=True)
+                shutil.copy2(P.SEED_CAP / rel, WS / "candidates" / "seed" / rel)
     for f in ("api_index.md", "react_agent_notes.md"):
         shutil.copy2(P.REFERENCE / f, WS / "reference" / f)
     shutil.copy2(HERE.parent / "adapters" / "lints.py", WS / "tools" / "lints.py")
@@ -260,9 +262,9 @@ def propose(it: int, name: str) -> tuple[int, Path | None, dict]:
         cmd = [c for c in cmd if c != "--dangerously-skip-permissions"]
         return cmd[:1] + ["--permission-mode", "acceptEdits", "--settings", str(sf)] + cmd[1:]
     CW.build_command = build_command
-    old_env = dict(os.environ)
+    old_env, new_env = dict(os.environ), SB.claude_env()
     os.environ.clear()
-    os.environ.update(SB.claude_env())
+    os.environ.update(new_env)
     try:
         t0 = time.time()
         res = CW.run(render_task_prompt(it), model=P.OPT_MODEL, allowed_tools=TOOLS, cwd=str(WS),
@@ -386,6 +388,8 @@ def accept() -> int:
     allowed files. Throwaway (AW_CAND=acc_metaharness)."""
     global search_ids
     setup_workspace(fresh=True)
+    (STATE / "loop_state.json").unlink(missing_ok=True)
+    shutil.rmtree(STATE / "claude_sessions", ignore_errors=True)
     out: dict = {}
     bad1 = WS / "candidates" / "bad_extra"
     shutil.copytree(WS / "candidates" / "seed", bad1)
@@ -393,6 +397,7 @@ def accept() -> int:
     bad2 = WS / "candidates" / "bad_id"
     shutil.copytree(WS / "candidates" / "seed", bad2)
     tid = P.read_split("dev")[0]
+    (bad2 / "memory").mkdir(exist_ok=True)
     (bad2 / "memory" / "playbook.md").write_text(f"- remember task {tid}\n")
     out["rejects_extra_file"] = bool(validate("bad_extra"))
     out["rejects_task_id"] = bool(validate("bad_id"))
