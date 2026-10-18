@@ -65,18 +65,26 @@
    "selection_hard": 0.7543859649122807,
    "selection_soft": 0.9135756056808687,
    "skill_len": 24118
+  },
+  {
+   "step": 9,
+   "epoch": 3,
+   "action": "reject",
+   "selection_hard": 0.7192982456140351,
+   "selection_soft": 0.9062656641604008,
+   "skill_len": 24118
   }
  ],
- "counted_rollouts": 813,
+ "counted_rollouts": 880,
  "cap": 900,
  "best_skill_chars": 24118,
  "optimizer": {
-  "calls": 69,
+  "calls": 74,
   "errors": 0,
-  "prompt_tokens": 2220914,
-  "completion_tokens": 174093,
+  "prompt_tokens": 2331763,
+  "completion_tokens": 180038,
   "cache_read": 0,
-  "seconds": 1382.8,
-  "proxy_usd": 9.27
+  "seconds": 1448.1,
+  "proxy_usd": 9.7
  }
 }
