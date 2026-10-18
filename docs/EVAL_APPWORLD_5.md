@@ -1284,3 +1284,11 @@ Posted 'GEPA search progress 1' on #881 (gepa): https://github.com/skillberry-ai
 ```json
 {"cp": 38, "prev_cp": 37, "prev_commit": "791257706211942c14a9e1c5a5ae91ce9a0bcbc2", "utc": "2026-10-18T06:40:25Z", "kind": "posted", "phase": "P3", "done_through": "gepa/search/iteration 15", "next": "gepa/search", "candidate": "gepa", "counts": {"gepa": {"counted_rollouts": 540}}, "spend": {"gepa": {"in": 349364, "out": 90050, "proxy_usd": 2.4}}, "artifacts": {}, "code": "03367bc299b4cf7366e491d7d12ba5e346b93f39", "open_decisions": [], "post": "gepa/p1", "url": "https://github.com/skillberry-ai/cap-evolve/issues/881#issuecomment-6246659572"}
 ```
+
+## CP-0039 · 2026-10-18T06:40Z · P3 posted skillopt · posted
+
+Posted 'queued behind GEPA' on #882 (skillopt): https://github.com/skillberry-ai/cap-evolve/issues/882#issuecomment-6246659816
+
+```json
+{"cp": 39, "prev_cp": 38, "prev_commit": "19128d0ad7fa52741be4df6e077c4048f82de31b", "utc": "2026-10-18T06:40:26Z", "kind": "posted", "phase": "P3", "done_through": "gepa/search/iteration 15", "next": "gepa/search", "candidate": "gepa", "counts": {"gepa": {"counted_rollouts": 540}}, "spend": {"gepa": {"in": 349364, "out": 90050, "proxy_usd": 2.4}}, "artifacts": {}, "code": "03367bc299b4cf7366e491d7d12ba5e346b93f39", "open_decisions": [], "post": "skillopt/wait", "url": "https://github.com/skillberry-ai/cap-evolve/issues/882#issuecomment-6246659816"}
+```
