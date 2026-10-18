@@ -1788,3 +1788,13 @@ Counted rollouts 351/900; optimizer 24 calls, 0.65M in / 0.03M out tok, $2.37 pr
 ```json
 {"cp": 96, "prev_cp": 95, "prev_commit": "54578f49c3b5b2f02f4b12b060d0636baca8aaa7", "utc": "2026-10-18T15:45:40Z", "kind": "result", "phase": "P3", "done_through": "wikiskill/search/iter2", "next": "wikiskill/search", "candidate": "wikiskill", "counts": {"wikiskill": {"counted_rollouts": 351}}, "spend": {"wikiskill": {"in": 653416, "out": 27015, "proxy_usd": 2.37}}, "artifacts": {"STATE/wikiskill/progress.json": "bbb92b026e944a0aac708df031cbe063bfcac74e069fd9dc1e1b98842b573c45"}, "code": "9cc7d6762ff5275a96be2794f1120ffa32b10129", "open_decisions": []}
 ```
+
+## CP-0097 · 2026-10-18T16:10Z · P3 heartbeat · heartbeat
+
+No checkpoint for 25 min. Phase P3, last result: wikiskill/search/iter2.
+Runner: alive (pid 151614). Last log line: `2026-10-18T16:10:44Z | wikiskill | P3/val | 50/57 episodes, passed 28, infra errors 0`.
+Next: wikiskill/search.
+
+```json
+{"cp": 97, "prev_cp": 96, "prev_commit": "4f01f5b00b7e1136c77b22a32b963be8c8552e18", "utc": "2026-10-18T16:10:46Z", "kind": "heartbeat", "phase": "P3", "done_through": "wikiskill/search/iter2", "next": "wikiskill/search", "candidate": "wikiskill", "counts": {"wikiskill": {"counted_rollouts": 351}}, "spend": {"wikiskill": {"in": 653416, "out": 27015, "proxy_usd": 2.37}}, "artifacts": {}, "code": "9cc7d6762ff5275a96be2794f1120ffa32b10129", "open_decisions": [], "runner": "alive"}
+```
