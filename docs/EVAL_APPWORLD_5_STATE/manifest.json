@@ -123,5 +123,10 @@
   "template_overhead_max": 157,
   "encoding": "o200k_harmony",
   "rule": "min(30000 chars, 34000 - P_max - H_max tokens), tokens floored to 500"
+ },
+ "evoskill_val_subset": {
+  "seed": 2026101704,
+  "n": 20,
+  "sha256": "abb050d22da349593d76c0fa94911c162d26a0c9d3710da9f897ac7b048d14f0"
  }
 }
