@@ -2377,3 +2377,12 @@ Posted 'metaharness scanned' on #885 (metaharness): https://github.com/skillberr
 ```json
 {"cp": 167, "prev_cp": 166, "prev_commit": "69d127063512fb3c624319d56b0db8814aad2319", "utc": "2026-10-19T03:29:14Z", "kind": "posted", "phase": "P7", "done_through": "P6/freeze", "next": "p6dev/cells", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 591}}, "spend": {"metaharness": {"in": 1261205, "out": 4920, "usd": 14.21}}, "artifacts": {}, "code": "7ac8201b08fa1e0021ff5e3d06a8db43a9b9ec76", "open_decisions": [], "post": "metaharness/m_scanned", "url": "https://github.com/skillberry-ai/cap-evolve/issues/885#issuecomment-6259018302"}
 ```
+
+## CP-0168 · 2026-10-19T03:33Z · P6 dev diagnostic · result
+
+dev diagnostic: 34 cells since the last entry; 34/342 done (evoskill 3, gepa 4, metaharness 8, seed 9, skillopt 5, wikiskill 5); infra still missing 0, retries 0.
+Next: p6dev remaining cells.
+
+```json
+{"cp": 168, "prev_cp": 167, "prev_commit": "e8c653e98cfc59b3b7ae498744243fabb54892ac", "utc": "2026-10-19T03:33:30Z", "kind": "result", "phase": "P6", "done_through": "p6dev/34", "next": "p6dev/cells", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 591}}, "spend": {"metaharness": {"in": 1261205, "out": 4920, "usd": 14.21}}, "artifacts": {"STATE/p6dev/progress.json": "e1e85be6255ff6cbfbaebb268345435bd0001135243614d52135fe64e4d0db1e"}, "code": "7ac8201b08fa1e0021ff5e3d06a8db43a9b9ec76", "open_decisions": [], "window": {"window": "p6dev", "cells_total": 342, "cells_done": 34, "order_sha256": "30d7ccfa1260ce30516a39184d3994993a6921aab5e7bb988c14cfdf7dd8ce0b"}}
+```
