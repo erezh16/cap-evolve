@@ -2297,3 +2297,11 @@ Meta-Harness iteration 4: best search-set TGC 0.5850340136054422. Counted rollou
 ```json
 {"cp": 157, "prev_cp": 156, "prev_commit": "12497f7c919cdcfdf5a3ef625c9e611fb2f98c10", "utc": "2026-10-19T02:54:31Z", "kind": "result", "phase": "P3", "done_through": "metaharness/search/iteration 4", "next": "metaharness/search", "candidate": "metaharness", "counts": {"metaharness": {"counted_rollouts": 443}}, "spend": {"metaharness": {"in": 1126822, "out": 3865, "usd": 12.94}}, "artifacts": {"STATE/metaharness/progress.json": "47ab83720e1944dd7c1468a1eecacb28e09550d15625a3471a131a49c49f34ec"}, "code": "7ac8201b08fa1e0021ff5e3d06a8db43a9b9ec76", "open_decisions": []}
 ```
+
+## CP-0158 · 2026-10-19T03:16Z · P3 posted metaharness · posted
+
+Posted 'metaharness search progress' on #885 (metaharness): https://github.com/skillberry-ai/cap-evolve/issues/885#issuecomment-6258873194
+
+```json
+{"cp": 158, "prev_cp": 157, "prev_commit": "791fadf05d3362a3c474aba4631b27272f47603b", "utc": "2026-10-19T03:16:08Z", "kind": "posted", "phase": "P3", "done_through": "metaharness/search/iteration 4", "next": "metaharness/search", "candidate": "metaharness", "counts": {"metaharness": {"counted_rollouts": 443}}, "spend": {"metaharness": {"in": 1126822, "out": 3865, "usd": 12.94}}, "artifacts": {}, "code": "7ac8201b08fa1e0021ff5e3d06a8db43a9b9ec76", "open_decisions": [], "post": "metaharness/auto_248941", "url": "https://github.com/skillberry-ai/cap-evolve/issues/885#issuecomment-6258873194"}
+```
