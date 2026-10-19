@@ -2842,3 +2842,11 @@ D11 under way: the Meta-Harness search was relaunched with AW_MH_ITERS=7 (loop_s
 ```json
 {"cp": 219, "prev_cp": 218, "prev_commit": "236924b8e70e86232bac80609c97a0fa2c0145a0", "utc": "2026-10-19T07:50:11Z", "kind": "result", "phase": "P3", "done_through": "P8/void_1", "next": "metaharness/rerun", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 591}}, "spend": {"metaharness": {"in": 1261205, "out": 4920, "usd": 14.21}}, "artifacts": {}, "code": "7ac8201b08fa1e0021ff5e3d06a8db43a9b9ec76", "open_decisions": []}
 ```
+
+## CP-0220 · 2026-10-19T07:50Z · P3 posted metaharness · posted
+
+Posted 'Meta-Harness replacement iterations' on #885 (metaharness): https://github.com/skillberry-ai/cap-evolve/issues/885#issuecomment-6262362561
+
+```json
+{"cp": 220, "prev_cp": 219, "prev_commit": "1279e22c2a35307e03687d73691bf62aa81a8d59", "utc": "2026-10-19T07:50:13Z", "kind": "posted", "phase": "P3", "done_through": "P8/void_1", "next": "metaharness/rerun", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 591}}, "spend": {"metaharness": {"in": 1261205, "out": 4920, "usd": 14.21}}, "artifacts": {}, "code": "1279e22c2a35307e03687d73691bf62aa81a8d59", "open_decisions": [], "post": "metaharness/rerun", "url": "https://github.com/skillberry-ai/cap-evolve/issues/885#issuecomment-6262362561"}
+```
