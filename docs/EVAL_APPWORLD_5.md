@@ -3763,3 +3763,11 @@ Posted 'gepa hourly status' on #881 (gepa): https://github.com/skillberry-ai/cap
 ```json
 {"cp": 322, "prev_cp": 321, "prev_commit": "2d3ebbc74616f0cef1ad1c3ffae30a1ac0d0b6d4", "utc": "2026-10-19T23:20:57Z", "kind": "posted", "phase": "P8", "done_through": "p8final/1301", "next": "p8final/cells", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {}, "code": "ff9d29e4c6b75fbe2bf7871aa804fc4e452c2874", "open_decisions": [], "post": "gepa/status_497903", "url": "https://github.com/skillberry-ai/cap-evolve/issues/881#issuecomment-6279519311"}
 ```
+
+## CP-0323 · 2026-10-19T23:20Z · P8 posted skillopt · posted
+
+Posted 'skillopt hourly status' on #882 (skillopt): https://github.com/skillberry-ai/cap-evolve/issues/882#issuecomment-6279519819
+
+```json
+{"cp": 323, "prev_cp": 322, "prev_commit": "355c3990822d4d17c3247e0e6474ee7d7d69d74d", "utc": "2026-10-19T23:20:59Z", "kind": "posted", "phase": "P8", "done_through": "p8final/1301", "next": "p8final/cells", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {}, "code": "ff9d29e4c6b75fbe2bf7871aa804fc4e452c2874", "open_decisions": [], "post": "skillopt/status_497903", "url": "https://github.com/skillberry-ai/cap-evolve/issues/882#issuecomment-6279519819"}
+```
