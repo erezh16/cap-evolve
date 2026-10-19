@@ -3483,3 +3483,11 @@ Posted 'metaharness hourly status' on #885 (metaharness): https://github.com/ski
 ```json
 {"cp": 290, "prev_cp": 289, "prev_commit": "0b75ddd9d022d737bb274f4f4daca8f7f2fec0c2", "utc": "2026-10-19T21:20:13Z", "kind": "posted", "phase": "P8", "done_through": "p8final/580", "next": "p8final/cells", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {}, "code": "db8db585ea2e3c046dd44f9851f41edcebf479ed", "open_decisions": [], "post": "metaharness/status_497901", "url": "https://github.com/skillberry-ai/cap-evolve/issues/885#issuecomment-6277566334"}
 ```
+
+## CP-0291 · 2026-10-19T21:20Z · P8 hourly updates · decision
+
+User instruction (2026-10-19): post an update for each evaluation now, then every hour check status and post an update for every evaluation, each on its own issue. Done: a status post on each of #881–#885 (stage, search budget used, optimizer spend, dev diagnostic, scan, final-window progress with counts only — no per-cell or per-arm test outcome until the analysis, per §10.2). autopost5 now posts this status hourly on all five issues until each results comment is posted (resume.py relaunches it with the hourly setting).
+
+```json
+{"cp": 291, "prev_cp": 290, "prev_commit": "7bb70fb913a4abf9124496f92d10b8e7bad97557", "utc": "2026-10-19T21:20:41Z", "kind": "decision", "phase": "P8", "done_through": "p8final/580", "next": "p8final/cells", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {}, "code": "db8db585ea2e3c046dd44f9851f41edcebf479ed", "open_decisions": []}
+```

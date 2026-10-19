@@ -156,7 +156,7 @@ def main() -> int:
     except (FileNotFoundError, ValueError):
         ap_alive = False
     if not ap_alive and not a.no_launch:  # periodic per-candidate issue updates (user decision D9)
-        subprocess.Popen(["nohup", sys.executable, "-I", str(Path(__file__).parent / "autopost5.py"), "loop"],
+        subprocess.Popen(["nohup", sys.executable, "-I", str(Path(__file__).parent / "autopost5.py"), "loop", "--every", "3600"],
                          stdout=open(P.PROGRESS / "autopost.out", "a"), stderr=subprocess.STDOUT,
                          start_new_session=True, cwd=str(P.REPO))
     if runnable and not a.no_launch:
