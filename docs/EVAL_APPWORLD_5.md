@@ -3011,3 +3011,11 @@ D11 result: replacement iterations 6 (api_quirk_notes_contacts_helper, 0.578) an
 ```json
 {"cp": 239, "prev_cp": 238, "prev_commit": "f1ae115143f77ac8ca73495a9c454ee2b57cf52e", "utc": "2026-10-19T09:57:00Z", "kind": "result", "phase": "P8", "done_through": "P7/scan", "next": "P8/final", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {}, "code": "1279e22c2a35307e03687d73691bf62aa81a8d59", "open_decisions": []}
 ```
+
+## CP-0240 · 2026-10-19T09:57Z · P8 posted metaharness · posted
+
+Posted 'Meta-Harness search finished' on #885 (metaharness): https://github.com/skillberry-ai/cap-evolve/issues/885#issuecomment-6264558917
+
+```json
+{"cp": 240, "prev_cp": 239, "prev_commit": "26447ab21c0e2a8e185a9c87d1c536216899e522", "utc": "2026-10-19T09:57:02Z", "kind": "posted", "phase": "P8", "done_through": "P7/scan", "next": "P8/final", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {}, "code": "26447ab21c0e2a8e185a9c87d1c536216899e522", "open_decisions": [], "post": "metaharness/search_final", "url": "https://github.com/skillberry-ai/cap-evolve/issues/885#issuecomment-6264558917"}
+```
