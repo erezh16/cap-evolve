@@ -3043,3 +3043,11 @@ Posted 'final window running' on #883 (wikiskill): https://github.com/skillberry
 ```json
 {"cp": 243, "prev_cp": 242, "prev_commit": "85dfbf00026b262e7a0e53f706cf11090259dae2", "utc": "2026-10-19T09:57:09Z", "kind": "posted", "phase": "P8", "done_through": "P7/scan", "next": "P8/final", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {}, "code": "26447ab21c0e2a8e185a9c87d1c536216899e522", "open_decisions": [], "post": "wikiskill/window2", "url": "https://github.com/skillberry-ai/cap-evolve/issues/883#issuecomment-6264561046"}
 ```
+
+## CP-0244 · 2026-10-19T09:57Z · P8 posted evoskill · posted
+
+Posted 'final window running' on #884 (evoskill): https://github.com/skillberry-ai/cap-evolve/issues/884#issuecomment-6264561792
+
+```json
+{"cp": 244, "prev_cp": 243, "prev_commit": "2f818161b87d4dbb821f7ef06a856cc1dbfbb758", "utc": "2026-10-19T09:57:12Z", "kind": "posted", "phase": "P8", "done_through": "P7/scan", "next": "P8/final", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {}, "code": "26447ab21c0e2a8e185a9c87d1c536216899e522", "open_decisions": [], "post": "evoskill/window2", "url": "https://github.com/skillberry-ai/cap-evolve/issues/884#issuecomment-6264561792"}
+```
