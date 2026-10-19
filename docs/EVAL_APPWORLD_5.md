@@ -2962,3 +2962,11 @@ Step `metaharness/freeze` done. Next: metaharness/scan.
 ```json
 {"cp": 233, "prev_cp": 232, "prev_commit": "8f9addcf31399794d862ba148b0145bb1625867f", "utc": "2026-10-19T09:55:14Z", "kind": "phase_done", "phase": "P3", "done_through": "metaharness/freeze", "next": "metaharness/scan", "candidate": "metaharness", "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {}, "code": "1279e22c2a35307e03687d73691bf62aa81a8d59", "open_decisions": []}
 ```
+
+## CP-0234 · 2026-10-19T09:55Z · P7 isolation scan · result
+
+Post-search isolation scan (counts only): metaharness: test-id hits 0. Literal-string counts per location are in the pushed scan file.
+
+```json
+{"cp": 234, "prev_cp": 233, "prev_commit": "70129faf774206e294720b61407a64835d6993b8", "utc": "2026-10-19T09:55:30Z", "kind": "result", "phase": "P7", "done_through": "metaharness/freeze", "next": "metaharness/scan", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {"STATE/isolation_scan.json": "dfa1fb0f275dbded9a81c7a0f39245eb16561e29ff03d75555f5ce44019b3086"}, "code": "1279e22c2a35307e03687d73691bf62aa81a8d59", "open_decisions": []}
+```

@@ -1,101 +1,13 @@
 {
- "gepa": {
-  "locations": {
-   "optimizer calls": {
-    "files": 1,
-    "files_hit": 0,
-    "counts": {}
-   },
-   "gepa run dir": {
-    "files": 91,
-    "files_hit": 0,
-    "counts": {}
-   },
-   "frozen artifact": {
-    "files": 5,
-    "files_hit": 0,
-    "counts": {}
-   }
-  },
-  "proposer_files_read_by_top_dir": {},
-  "test_id_hits": 0,
-  "isolation_breach": false
- },
- "skillopt": {
-  "locations": {
-   "optimizer calls": {
-    "files": 1,
-    "files_hit": 0,
-    "counts": {}
-   },
-   "skillopt out_root": {
-    "files": 447,
-    "files_hit": 0,
-    "counts": {}
-   },
-   "frozen artifact": {
-    "files": 5,
-    "files_hit": 0,
-    "counts": {}
-   }
-  },
-  "proposer_files_read_by_top_dir": {},
-  "test_id_hits": 0,
-  "isolation_breach": false
- },
- "wikiskill": {
-  "locations": {
-   "optimizer calls": {
-    "files": 1,
-    "files_hit": 0,
-    "counts": {}
-   },
-   "wikiskill workspace": {
-    "files": 805,
-    "files_hit": 0,
-    "counts": {}
-   },
-   "frozen artifact": {
-    "files": 5,
-    "files_hit": 0,
-    "counts": {}
-   }
-  },
-  "proposer_files_read_by_top_dir": {},
-  "test_id_hits": 0,
-  "isolation_breach": false
- },
- "evoskill": {
-  "locations": {
-   "optimizer calls": {
-    "files": 1,
-    "files_hit": 0,
-    "counts": {}
-   },
-   "optimizer workspace (/tmp)": {
-    "files": 338,
-    "files_hit": 0,
-    "counts": {}
-   },
-   "frozen artifact": {
-    "files": 5,
-    "files_hit": 0,
-    "counts": {}
-   }
-  },
-  "proposer_files_read_by_top_dir": {},
-  "test_id_hits": 0,
-  "isolation_breach": false
- },
  "metaharness": {
   "locations": {
    "proposer sessions": {
-    "files": 182,
+    "files": 306,
     "files_hit": 0,
     "counts": {}
    },
    "optimizer workspace (/tmp)": {
-    "files": 1391,
+    "files": 2111,
     "files_hit": 1,
     "counts": {
      "root_full": 13,
@@ -109,8 +21,9 @@
    }
   },
   "proposer_files_read_by_top_dir": {
-   "reference": 4,
-   "candidates": 1
+   "reference": 6,
+   "logs": 2,
+   "candidates": 7
   },
   "test_id_hits": 0,
   "isolation_breach": false
