@@ -299,6 +299,12 @@ def main() -> int:
         (rp / "models_common.json").unlink()
         bb.jdump(models, rp / "models.json")
         (rp / "REPRODUCE.md").write_text(reproduce_md(run, attempts, common["commits"]))
+        # refresh the run's docs/ to the latest committed versions (the plan and appendices changed after capture)
+        for dname in ("EVAL_SMOKE_TEST.md", "EVAL_SMOKE_TEST_FIX.md", "EVAL_SMOKE_TEST_SUMMARY.html", "BACKUP_BOX.md"):
+            if (REPO / "docs" / dname).is_file():
+                bb.cp(REPO / "docs" / dname, root / "docs" / dname)
+        bb.cp(RUNS / "posts" / "24_subagent_model.md", root / "posts" / "local_drafts" / "24_subagent_model.md")
+        bb.cp(REPO / "examples/appworld", root / "env" / "examples_appworld")   # now includes the backup tools
         n = orchestrator_record(rp)
         if run == bb.R1:
             # R1's adapter code was never committed: rebuild it from the session (byte-checked against the run copy)

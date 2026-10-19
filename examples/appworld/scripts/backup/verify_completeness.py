@@ -26,7 +26,7 @@ def files(p: Path):
         yield p
     elif p.is_dir():
         for f in p.rglob("*"):
-            if f.is_file() and not f.is_symlink():
+            if f.is_file() and not f.is_symlink() and "__pycache__" not in f.parts:
                 yield f
 
 
