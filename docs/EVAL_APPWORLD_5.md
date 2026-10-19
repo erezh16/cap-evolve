@@ -2249,3 +2249,11 @@ Meta-Harness phase 0 (seed) TGC 0.401: best search-set TGC 0.4013605442176871. C
 ```json
 {"cp": 151, "prev_cp": 150, "prev_commit": "643a6dba8dbd72e382355754cdb9ae70f54cecae", "utc": "2026-10-19T01:35:05Z", "kind": "result", "phase": "P3", "done_through": "metaharness/search/phase 0 (seed) TGC 0.401", "next": "metaharness/search", "candidate": "metaharness", "counts": {"metaharness": {"counted_rollouts": 147}}, "spend": {"metaharness": {"in": 0, "out": 0, "usd": 0}}, "artifacts": {"STATE/metaharness/progress.json": "9b5e3c643b0dc852388b1c0d37af5b52ab6e44a03c69ffa4c43b7074e39c2047"}, "code": "5ed4347dbfaabaea97c0a0bec47102aa2513cfa5", "open_decisions": []}
 ```
+
+## CP-0152 · 2026-10-19T01:40Z · P3 posted metaharness · posted
+
+Posted 'Meta-Harness iteration 1' on #885 (metaharness): https://github.com/skillberry-ai/cap-evolve/issues/885#issuecomment-6257838148
+
+```json
+{"cp": 152, "prev_cp": 151, "prev_commit": "aa727e8aee484ffbb871bbcde2d1477cc195110f", "utc": "2026-10-19T01:40:37Z", "kind": "posted", "phase": "P3", "done_through": "metaharness/search/phase 0 (seed) TGC 0.401", "next": "metaharness/search", "candidate": "metaharness", "counts": {"metaharness": {"counted_rollouts": 147}}, "spend": {"metaharness": {"in": 0, "out": 0, "usd": 0}}, "artifacts": {}, "code": "5ed4347dbfaabaea97c0a0bec47102aa2513cfa5", "open_decisions": [], "post": "metaharness/iter1", "url": "https://github.com/skillberry-ai/cap-evolve/issues/885#issuecomment-6257838148"}
+```
