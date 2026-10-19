@@ -3003,3 +3003,11 @@ Post-search isolation scan (counts only): gepa: test-id hits 0; skillopt: test-i
 ```json
 {"cp": 238, "prev_cp": 237, "prev_commit": "b8ae3bbff955a6e2ce661c35efa2dcc3608142cf", "utc": "2026-10-19T09:56:08Z", "kind": "result", "phase": "P7", "done_through": "P7/scan", "next": "P8/final", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {"STATE/isolation_scan.json": "29b7fb7fb6df16c43b60a6843fe01870d9428a36d4718e9cc778b1b267866468"}, "code": "1279e22c2a35307e03687d73691bf62aa81a8d59", "open_decisions": []}
 ```
+
+## CP-0239 · 2026-10-19T09:57Z · P8 final window 2 · result
+
+D11 result: replacement iterations 6 (api_quirk_notes_contacts_helper, 0.578) and 7 (verify_target_set_before_mutation, 0.571) did not beat fetch_all_pages_helper (0.585), so the Meta-Harness champion and its tree hash are unchanged; the P6 refreeze found 0 changed arms and kept all 342 dev cells. Meta-Harness used 887 of 900 counted rollouts over 7 iterations (5 with candidates). Full isolation scan: 0 test-id hits for every arm (the pushed scan file now merges per-candidate scans). The new final window p8final started from cell 1 (same order seed, 2,016 cells) at 24 workers (plan allows 48; kept at 24 for memory headroom; recorded as a deviation). The voided window stays archived as p8final_void_1.
+
+```json
+{"cp": 239, "prev_cp": 238, "prev_commit": "f1ae115143f77ac8ca73495a9c454ee2b57cf52e", "utc": "2026-10-19T09:57:00Z", "kind": "result", "phase": "P8", "done_through": "P7/scan", "next": "P8/final", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {}, "code": "1279e22c2a35307e03687d73691bf62aa81a8d59", "open_decisions": []}
+```

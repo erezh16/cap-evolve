@@ -77,8 +77,10 @@ def main() -> int:
     c = json.loads(P.PUBLISH_CACHE.read_text())
     id_re = re.compile("|".join(re.escape(t) for t in c["test_ids"]))
     res = {cand: scan(cand, id_re) for cand in cands}
-    P.write_json(P.AW_STATE / "scan.json", res)
-    P.write_json(P.PUSHED / "isolation_scan.json", res)
+    # merge: a per-candidate scan updates its own entry and keeps the others
+    merged = {**(P.read_json(P.PUSHED / "isolation_scan.json", {}) or {}), **res}
+    P.write_json(P.AW_STATE / "scan.json", merged)
+    P.write_json(P.PUSHED / "isolation_scan.json", merged)
     import status_doc
     status_doc.append("result", "P7", "isolation scan",
                       "Post-search isolation scan (counts only): " + "; ".join(
