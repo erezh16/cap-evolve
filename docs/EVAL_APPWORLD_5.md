@@ -3632,3 +3632,11 @@ Next: p8final remaining cells.
 ```json
 {"cp": 307, "prev_cp": 306, "prev_commit": "cb984988c175cdaf88ceef5b3bbbbe3734ef2bd2", "utc": "2026-10-19T22:20:49Z", "kind": "result", "phase": "P8", "done_through": "p8final/1021", "next": "p8final/cells", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {"STATE/p8final/progress.json": "bfcd30c4acb76604dcaa206f05039c79865653fbe989a7ec8abe922cdf6af61a"}, "code": "ff9d29e4c6b75fbe2bf7871aa804fc4e452c2874", "open_decisions": [], "window": {"window": "p8final", "cells_total": 2016, "cells_done": 1021, "order_sha256": "202efd8153925ef4d74fdfbf6897d0663c2d6519b0867a314b1084b0f60d3e29"}}
 ```
+
+## CP-0308 · 2026-10-19T22:20Z · P8 posted wikiskill · posted
+
+Posted 'wikiskill hourly status' on #883 (wikiskill): https://github.com/skillberry-ai/cap-evolve/issues/883#issuecomment-6278641604
+
+```json
+{"cp": 308, "prev_cp": 307, "prev_commit": "d0263766a33d36084dcc6c722273a4c73fd3d060", "utc": "2026-10-19T22:20:50Z", "kind": "posted", "phase": "P8", "done_through": "p8final/1021", "next": "p8final/cells", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {}, "code": "ff9d29e4c6b75fbe2bf7871aa804fc4e452c2874", "open_decisions": [], "post": "wikiskill/status_497902", "url": "https://github.com/skillberry-ai/cap-evolve/issues/883#issuecomment-6278641604"}
+```
