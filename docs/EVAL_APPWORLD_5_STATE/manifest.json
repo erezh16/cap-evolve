@@ -147,5 +147,13 @@
    "metaharness": ""
   },
   "utc": "2026-10-19T03:28:28Z"
+ },
+ "final_order": {
+  "seed": 2026101708,
+  "sha256": "202efd8153925ef4d74fdfbf6897d0663c2d6519b0867a314b1084b0f60d3e29",
+  "cells": 2016,
+  "trials": 2,
+  "trial_seeds": "5000 + trial",
+  "infra_retries": 3
  }
 }

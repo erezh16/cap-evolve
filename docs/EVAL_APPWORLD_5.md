@@ -2475,3 +2475,12 @@ Post-search isolation scan (counts only): gepa: test-id hits 0; skillopt: test-i
 ```json
 {"cp": 178, "prev_cp": 177, "prev_commit": "1b18f6780195b86b58de74b6d2a44f9cd73e781e", "utc": "2026-10-19T04:18:10Z", "kind": "result", "phase": "P7", "done_through": "P7/scan", "next": "P8/final", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 591}}, "spend": {"metaharness": {"in": 1261205, "out": 4920, "usd": 14.21}}, "artifacts": {"STATE/isolation_scan.json": "0d0fce1ffb916cd8d4c1303aab50beef2a27b11ca6f33a1bb5475e5a80a12319"}, "code": "7ac8201b08fa1e0021ff5e3d06a8db43a9b9ec76", "open_decisions": []}
 ```
+
+## CP-0179 · 2026-10-19T04:23Z · P8 final window · result
+
+final window: 21 cells since the last entry; 21/2016 done (evoskill 4, gepa 4, metaharness 5, seed 2, skillopt 3, wikiskill 3); infra still missing 0, retries 0.
+Next: p8final remaining cells.
+
+```json
+{"cp": 179, "prev_cp": 178, "prev_commit": "d843a0b476f7468b68fec7af7f6c039733e58869", "utc": "2026-10-19T04:23:12Z", "kind": "result", "phase": "P8", "done_through": "p8final/21", "next": "p8final/cells", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 591}}, "spend": {"metaharness": {"in": 1261205, "out": 4920, "usd": 14.21}}, "artifacts": {"STATE/p8final/progress.json": "580042f72f1f14800c5a5a08c24f7a70111dd75df53b3b623b2fde1a0aedfc2f"}, "code": "7ac8201b08fa1e0021ff5e3d06a8db43a9b9ec76", "open_decisions": [], "window": {"window": "p8final", "cells_total": 2016, "cells_done": 21, "order_sha256": "202efd8153925ef4d74fdfbf6897d0663c2d6519b0867a314b1084b0f60d3e29"}}
+```
