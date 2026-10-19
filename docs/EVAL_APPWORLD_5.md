@@ -3623,3 +3623,12 @@ Posted 'skillopt hourly status' on #882 (skillopt): https://github.com/skillberr
 ```json
 {"cp": 306, "prev_cp": 305, "prev_commit": "c4748853304dba23215b7b20308619cee0d9dda1", "utc": "2026-10-19T22:20:47Z", "kind": "posted", "phase": "P8", "done_through": "p8final/998", "next": "p8final/cells", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {}, "code": "ff9d29e4c6b75fbe2bf7871aa804fc4e452c2874", "open_decisions": [], "post": "skillopt/status_497902", "url": "https://github.com/skillberry-ai/cap-evolve/issues/882#issuecomment-6278641036"}
 ```
+
+## CP-0307 · 2026-10-19T22:20Z · P8 final window · result
+
+final window: 23 cells since the last entry; 1021/2016 done (evoskill 169, gepa 177, metaharness 172, seed 163, skillopt 178, wikiskill 162); infra still missing 0, retries 2.
+Next: p8final remaining cells.
+
+```json
+{"cp": 307, "prev_cp": 306, "prev_commit": "cb984988c175cdaf88ceef5b3bbbbe3734ef2bd2", "utc": "2026-10-19T22:20:49Z", "kind": "result", "phase": "P8", "done_through": "p8final/1021", "next": "p8final/cells", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {"STATE/p8final/progress.json": "bfcd30c4acb76604dcaa206f05039c79865653fbe989a7ec8abe922cdf6af61a"}, "code": "ff9d29e4c6b75fbe2bf7871aa804fc4e452c2874", "open_decisions": [], "window": {"window": "p8final", "cells_total": 2016, "cells_done": 1021, "order_sha256": "202efd8153925ef4d74fdfbf6897d0663c2d6519b0867a314b1084b0f60d3e29"}}
+```
