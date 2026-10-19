@@ -1,49 +1,49 @@
 {
  "window": "p6dev",
  "cells_total": 342,
- "cells_done": 34,
+ "cells_done": 70,
  "per_arm": {
-  "wikiskill": {
-   "done": 5,
+  "evoskill": {
+   "done": 10,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0,
-   "tgc": 0.6
+   "tgc": 0.8
+  },
+  "wikiskill": {
+   "done": 13,
+   "infra_missing": 0,
+   "infra_retries": 0,
+   "context_exceeded": 0,
+   "tgc": 0.6923
   },
   "metaharness": {
-   "done": 8,
-   "infra_missing": 0,
-   "infra_retries": 0,
-   "context_exceeded": 0,
-   "tgc": 0.125
-  },
-  "evoskill": {
-   "done": 3,
-   "infra_missing": 0,
-   "infra_retries": 0,
-   "context_exceeded": 0,
-   "tgc": 0.6667
-  },
-  "seed": {
-   "done": 9,
-   "infra_missing": 0,
-   "infra_retries": 0,
-   "context_exceeded": 0,
-   "tgc": 0.4444
-  },
-  "gepa": {
-   "done": 4,
+   "done": 12,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0,
    "tgc": 0.25
   },
-  "skillopt": {
-   "done": 5,
+  "gepa": {
+   "done": 13,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0,
-   "tgc": 0.8
+   "tgc": 0.6154
+  },
+  "seed": {
+   "done": 13,
+   "infra_missing": 0,
+   "infra_retries": 0,
+   "context_exceeded": 0,
+   "tgc": 0.3846
+  },
+  "skillopt": {
+   "done": 9,
+   "infra_missing": 0,
+   "infra_retries": 0,
+   "context_exceeded": 0,
+   "tgc": 0.7778
   }
  },
  "order_sha256": "30d7ccfa1260ce30516a39184d3994993a6921aab5e7bb988c14cfdf7dd8ce0b"
