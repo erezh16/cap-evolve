@@ -2858,3 +2858,11 @@ Posted 'final window restarted' on #881 (gepa): https://github.com/skillberry-ai
 ```json
 {"cp": 221, "prev_cp": 220, "prev_commit": "d2798420c30235267a68ea433684b028b202cfac", "utc": "2026-10-19T07:50:39Z", "kind": "posted", "phase": "P3", "done_through": "P8/void_1", "next": "metaharness/rerun", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 591}}, "spend": {"metaharness": {"in": 1261205, "out": 4920, "usd": 14.21}}, "artifacts": {}, "code": "1279e22c2a35307e03687d73691bf62aa81a8d59", "open_decisions": [], "post": "gepa/window_void", "url": "https://github.com/skillberry-ai/cap-evolve/issues/881#issuecomment-6262369119"}
 ```
+
+## CP-0222 · 2026-10-19T07:50Z · P3 posted skillopt · posted
+
+Posted 'final window restarted' on #882 (skillopt): https://github.com/skillberry-ai/cap-evolve/issues/882#issuecomment-6262369678
+
+```json
+{"cp": 222, "prev_cp": 221, "prev_commit": "9ad1b8e0e3c27c962f890d44e75d010cb236065a", "utc": "2026-10-19T07:50:41Z", "kind": "posted", "phase": "P3", "done_through": "P8/void_1", "next": "metaharness/rerun", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 591}}, "spend": {"metaharness": {"in": 1261205, "out": 4920, "usd": 14.21}}, "artifacts": {}, "code": "1279e22c2a35307e03687d73691bf62aa81a8d59", "open_decisions": [], "post": "skillopt/window_void", "url": "https://github.com/skillberry-ai/cap-evolve/issues/882#issuecomment-6262369678"}
+```
