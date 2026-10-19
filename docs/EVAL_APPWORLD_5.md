@@ -2345,3 +2345,11 @@ Step `metaharness/scan` done. Next: P6/freeze.
 ```json
 {"cp": 163, "prev_cp": 162, "prev_commit": "9cad1d4ab0d791d63d3385472bc74235dca25352", "utc": "2026-10-19T03:28:26Z", "kind": "phase_done", "phase": "P7", "done_through": "metaharness/scan", "next": "P6/freeze", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 591}}, "spend": {"metaharness": {"in": 1261205, "out": 4920, "usd": 14.21}}, "artifacts": {}, "code": "7ac8201b08fa1e0021ff5e3d06a8db43a9b9ec76", "open_decisions": []}
 ```
+
+## CP-0164 · 2026-10-19T03:28Z · P7 step done · phase_done
+
+Step `P6/freeze` done. Next: p6dev/cells.
+
+```json
+{"cp": 164, "prev_cp": 163, "prev_commit": "54c998b79c592f929956baa7b285fab5cd127066", "utc": "2026-10-19T03:28:28Z", "kind": "phase_done", "phase": "P7", "done_through": "P6/freeze", "next": "p6dev/cells", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 591}}, "spend": {"metaharness": {"in": 1261205, "out": 4920, "usd": 14.21}}, "artifacts": {}, "code": "7ac8201b08fa1e0021ff5e3d06a8db43a9b9ec76", "open_decisions": []}
+```

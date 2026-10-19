@@ -128,5 +128,24 @@
   "seed": 2026101704,
   "n": 20,
   "sha256": "abb050d22da349593d76c0fa94911c162d26a0c9d3710da9f897ac7b048d14f0"
+ },
+ "freeze": {
+  "tree_sha256": {
+   "seed": "15f064896f554d5affba8808923c05b3b5edc245ba9a34ba3dc903a530871c86",
+   "gepa": "26403e2c5e50ed9243c750457cb9f317f28970271c00b799f1d9018a1cdeffc6",
+   "skillopt": "8314b3340e1c0d8569f3785608186d9eb2cf65782f9be2bc17de0ca94319ca04",
+   "wikiskill": "3895752eb7b9759b4455aabf9ddde54b27442ad405245ec3272906cfa145b167",
+   "evoskill": "23f5f8f76cf504aee5eba4edbe4c209c160395f428bb39f11b36799ede22a804",
+   "metaharness": "ea0f2f68e37742b8b45fc2a257ad309fac85ebaf3ed00cf0cf60ee2a7cd0fe16"
+  },
+  "labels": {
+   "seed": "seed",
+   "gepa": "",
+   "skillopt": "",
+   "wikiskill": "",
+   "evoskill": "",
+   "metaharness": ""
+  },
+  "utc": "2026-10-19T03:28:28Z"
  }
 }
