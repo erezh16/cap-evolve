@@ -159,6 +159,14 @@ def main() -> int:
         subprocess.Popen(["nohup", sys.executable, "-I", str(Path(__file__).parent / "autopost5.py"), "loop", "--every", "3600"],
                          stdout=open(P.PROGRESS / "autopost.out", "a"), stderr=subprocess.STDOUT,
                          start_new_session=True, cwd=str(P.REPO))
+    try:
+        mg_alive = S.pid_alive(int((P.AW_STATE / "MEMGUARD.pid").read_text().strip()))
+    except (FileNotFoundError, ValueError):
+        mg_alive = False
+    if not mg_alive and not a.no_launch:  # memory watermarks: pause new episodes at 90%, resume below 80%
+        subprocess.Popen(["nohup", sys.executable, "-I", str(Path(__file__).parent / "memguard5.py"), "loop",
+                          "--high", "90", "--low", "80"], stdout=open(P.PROGRESS / "memguard.out", "a"),
+                         stderr=subprocess.STDOUT, start_new_session=True, cwd=str(P.REPO))
     if runnable and not a.no_launch:
         subprocess.Popen(["nohup", str(P.VENV_PY), "-I", str(Path(__file__).parent / "pipeline5.py")],
                          stdout=open(P.PROGRESS / "pipeline.out", "a"), stderr=subprocess.STDOUT,

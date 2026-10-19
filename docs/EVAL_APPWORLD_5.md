@@ -3590,3 +3590,11 @@ Next: p8final remaining cells.
 ```json
 {"cp": 302, "prev_cp": 301, "prev_commit": "5b5b1ce824c0415f5cd6d64bb7f2f0536782814f", "utc": "2026-10-19T22:10:45Z", "kind": "result", "phase": "P8", "done_through": "p8final/977", "next": "p8final/cells", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {"STATE/p8final/progress.json": "08a6e8feecca5d66e0d9ed331f7f3afa49e3ced8418cfbf66797cebec8e73852"}, "code": "69364fed2e23b7d9d80453e3313cf9fb93f6a28f", "open_decisions": [], "window": {"window": "p8final", "cells_total": 2016, "cells_done": 977, "order_sha256": "202efd8153925ef4d74fdfbf6897d0663c2d6519b0867a314b1084b0f60d3e29"}}
 ```
+
+## CP-0303 · 2026-10-19T22:12Z · P8 memory watermarks · decision
+
+User instruction (2026-10-19): memory limit at 90% of the container capacity with simple watermarks. memguard5.py (nohup loop, relaunched by resume.py) reads the cgroup every 15 s (anon + shmem over memory.max/high; page cache excluded). At ≥ 90% it pauses new episodes of the running window (PAUSE file; in-flight episodes finish); below 80% it resumes. The watcher now wakes the session at ≥ 90% (was memcheck's 75% CAUTION). Current: 43.8% at 24 workers.
+
+```json
+{"cp": 303, "prev_cp": 302, "prev_commit": "122aa34bd3612dbb0db246f23ced8744228483da", "utc": "2026-10-19T22:12:18Z", "kind": "decision", "phase": "P8", "done_through": "p8final/977", "next": "p8final/cells", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {}, "code": "69364fed2e23b7d9d80453e3313cf9fb93f6a28f", "open_decisions": []}
+```
