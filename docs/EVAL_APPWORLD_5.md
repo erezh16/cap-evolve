@@ -2826,3 +2826,11 @@ Next: p8final remaining cells.
 ```json
 {"cp": 217, "prev_cp": 216, "prev_commit": "f89e36b4bd82b474028bea79863028e4e941d6f3", "utc": "2026-10-19T07:47:50Z", "kind": "result", "phase": "P8", "done_through": "p8final/1001", "next": "p8final/cells", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 591}}, "spend": {"metaharness": {"in": 1261205, "out": 4920, "usd": 14.21}}, "artifacts": {"STATE/p8final/progress.json": "c708791561214649254e8cd28d8072d0177fc58cfd0a3f8e0966ee9fe09cc940"}, "code": "7ac8201b08fa1e0021ff5e3d06a8db43a9b9ec76", "open_decisions": [], "window": {"window": "p8final", "cells_total": 2016, "cells_done": 1001, "order_sha256": "202efd8153925ef4d74fdfbf6897d0663c2d6519b0867a314b1084b0f60d3e29"}}
 ```
+
+## CP-0218 · 2026-10-19T07:48Z · P8 decision D11 · decision
+
+User decision D11 (2026-10-19, via AskUserQuestion): re-run 2 Meta-Harness iterations. Iterations 2 and 4 produced no candidate because claude -p in print mode ends background sub-agents after 600 s (the CLAUDE_CODE_PRINT_BG_WAIT_CEILING_MS fix was made while the search process was already running, so it never took effect). Correction to the question as asked: P6 (dev diagnostic) and P7 (scan, 0 test-id hits for all arms) had already finished, and P8 had 1,001/2,016 cells done. The final window was stopped gracefully (in-flight cells finished) and root_full was relocked. Its records are archived as p8final_void_1, a labelled diagnostic never used for results: the window must score one fixed artifact set. Plan: 2 replacement Meta-Harness iterations with the fix (2×148 rollouts → ≤ 887 of 900), re-freeze, re-scan, re-run the dev diagnostic, then a full new final window from cell 1 (same order seed).
+
+```json
+{"cp": 218, "prev_cp": 217, "prev_commit": "e39ba511b607f690b8525d7bb9531ef7af1a6bfb", "utc": "2026-10-19T07:48:42Z", "kind": "decision", "phase": "P8", "done_through": "P8/void_1", "next": "metaharness/rerun", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 591}}, "spend": {"metaharness": {"in": 1261205, "out": 4920, "usd": 14.21}}, "artifacts": {}, "code": "7ac8201b08fa1e0021ff5e3d06a8db43a9b9ec76", "open_decisions": [], "decision": "D11"}
+```
