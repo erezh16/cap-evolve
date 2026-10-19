@@ -3019,3 +3019,11 @@ Posted 'Meta-Harness search finished' on #885 (metaharness): https://github.com/
 ```json
 {"cp": 240, "prev_cp": 239, "prev_commit": "26447ab21c0e2a8e185a9c87d1c536216899e522", "utc": "2026-10-19T09:57:02Z", "kind": "posted", "phase": "P8", "done_through": "P7/scan", "next": "P8/final", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {}, "code": "26447ab21c0e2a8e185a9c87d1c536216899e522", "open_decisions": [], "post": "metaharness/search_final", "url": "https://github.com/skillberry-ai/cap-evolve/issues/885#issuecomment-6264558917"}
 ```
+
+## CP-0241 · 2026-10-19T09:57Z · P8 posted gepa · posted
+
+Posted 'final window running' on #881 (gepa): https://github.com/skillberry-ai/cap-evolve/issues/881#issuecomment-6264559606
+
+```json
+{"cp": 241, "prev_cp": 240, "prev_commit": "5920d4b79081c57bf7962db73d5addeb55400c1a", "utc": "2026-10-19T09:57:04Z", "kind": "posted", "phase": "P8", "done_through": "P7/scan", "next": "P8/final", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {}, "code": "26447ab21c0e2a8e185a9c87d1c536216899e522", "open_decisions": [], "post": "gepa/window2", "url": "https://github.com/skillberry-ai/cap-evolve/issues/881#issuecomment-6264559606"}
+```
