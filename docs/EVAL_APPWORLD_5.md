@@ -2273,3 +2273,11 @@ Meta-Harness iteration 2: best search-set TGC 0.5578231292517006. Counted rollou
 ```json
 {"cp": 154, "prev_cp": 153, "prev_commit": "1efb2a45e8620af55fba65aa8b362c7b560d49f9", "utc": "2026-10-19T02:12:41Z", "kind": "result", "phase": "P3", "done_through": "metaharness/search/iteration 2", "next": "metaharness/search", "candidate": "metaharness", "counts": {"metaharness": {"counted_rollouts": 295}}, "spend": {"metaharness": {"in": 494368, "out": 1985, "usd": 6.14}}, "artifacts": {"STATE/metaharness/progress.json": "237926be6fa3fff66f8aa9732d35f52b91b29d2f1f7df0cee7a0059a5e2417b2"}, "code": "5ed4347dbfaabaea97c0a0bec47102aa2513cfa5", "open_decisions": []}
 ```
+
+## CP-0155 · 2026-10-19T02:36Z · P3 metaharness iteration 2 · result
+
+Meta-Harness iteration 2 produced no candidate: the proposer session (exit 0, 609 s, ~$4.07 CLI-reported) was ended by the CLI's -p-mode limit on background sub-agents (600 s; its analysis sub-agent was still running), so no pending_eval.json was written; 0 rollouts were spent, and it counts as one of the 5 iterations (as in the TB2 loop, a failed proposal is logged and skipped). Fix for iterations 4-5: CLAUDE_CODE_PRINT_BG_WAIT_CEILING_MS=0 for the proposer (the wrapper's 2400 s timeout still bounds it); the running process picks it up at the next proposer call. Iteration 1: no_answer_on_action_tasks, search-set TGC 0.558 (seed 0.401); iteration 3 (fetch_all_pages_helper) is being evaluated.
+
+```json
+{"cp": 155, "prev_cp": 154, "prev_commit": "a12364d90ba5aaa4e5ab190c89e6c5adfe947397", "utc": "2026-10-19T02:36:59Z", "kind": "result", "phase": "P3", "done_through": "metaharness/search/iteration 2", "next": "metaharness/search", "candidate": "metaharness", "counts": {"metaharness": {"counted_rollouts": 295}}, "spend": {"metaharness": {"in": 494368, "out": 1985, "usd": 6.14}}, "artifacts": {}, "code": "5ed4347dbfaabaea97c0a0bec47102aa2513cfa5", "open_decisions": []}
+```

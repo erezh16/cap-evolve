@@ -266,7 +266,9 @@ def propose(it: int, name: str) -> tuple[int, Path | None, dict]:
         cmd = [c for c in cmd if c != "--dangerously-skip-permissions"]
         return cmd[:1] + ["--permission-mode", "acceptEdits", "--settings", str(sf)] + cmd[1:]
     CW.build_command = build_command
-    old_env, new_env = dict(os.environ), SB.claude_env()
+    # -p mode terminates background sub-agents after 600 s unless told to wait; the wrapper's own
+    # 2400 s timeout (PROPOSE_TIMEOUT) still bounds the session
+    old_env, new_env = dict(os.environ), SB.claude_env({"CLAUDE_CODE_PRINT_BG_WAIT_CEILING_MS": "0"})
     os.environ.clear()
     os.environ.update(new_env)
     try:
