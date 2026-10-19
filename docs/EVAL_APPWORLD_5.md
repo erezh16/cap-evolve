@@ -2986,3 +2986,12 @@ Step `P6/refreeze` done. Next: p6dev/cells.
 ```json
 {"cp": 236, "prev_cp": 235, "prev_commit": "a5f50341caf0b8ad9bbd3f800612ff108c5ceb32", "utc": "2026-10-19T09:55:33Z", "kind": "phase_done", "phase": "P7", "done_through": "P6/refreeze", "next": "p6dev/cells", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {}, "code": "1279e22c2a35307e03687d73691bf62aa81a8d59", "open_decisions": []}
 ```
+
+## CP-0237 · 2026-10-19T09:55Z · P6 dev diagnostic · phase_done
+
+dev diagnostic: 0 cells since the last entry; 342/342 done (evoskill 57, gepa 57, metaharness 57, seed 57, skillopt 57, wikiskill 57); infra still missing 0, retries 0.
+Next: P7/scan.
+
+```json
+{"cp": 237, "prev_cp": 236, "prev_commit": "a1ed9d72ef6fc2c24850159fde2c55649915d053", "utc": "2026-10-19T09:55:34Z", "kind": "phase_done", "phase": "P6", "done_through": "p6dev/342", "next": "P7/scan", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {"STATE/p6dev/progress.json": "05a525e622b652b2bde0dd6d640915d57775ca7b6fc63f1a8502316478ff9c4c"}, "code": "1279e22c2a35307e03687d73691bf62aa81a8d59", "open_decisions": [], "window": {"window": "p6dev", "cells_total": 342, "cells_done": 342, "order_sha256": "30d7ccfa1260ce30516a39184d3994993a6921aab5e7bb988c14cfdf7dd8ce0b"}}
+```
