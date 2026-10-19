@@ -1,40 +1,40 @@
 {
  "window": "p8final",
  "cells_total": 2016,
- "cells_done": 405,
+ "cells_done": 431,
  "per_arm": {
   "evoskill": {
-   "done": 72,
+   "done": 74,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
   },
   "gepa": {
-   "done": 54,
+   "done": 65,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
   },
   "wikiskill": {
-   "done": 59,
-   "infra_missing": 0,
-   "infra_retries": 0,
-   "context_exceeded": 0
-  },
-  "skillopt": {
-   "done": 86,
-   "infra_missing": 0,
-   "infra_retries": 1,
-   "context_exceeded": 0
-  },
-  "metaharness": {
    "done": 64,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
   },
+  "skillopt": {
+   "done": 87,
+   "infra_missing": 0,
+   "infra_retries": 1,
+   "context_exceeded": 0
+  },
+  "metaharness": {
+   "done": 67,
+   "infra_missing": 0,
+   "infra_retries": 0,
+   "context_exceeded": 0
+  },
   "seed": {
-   "done": 70,
+   "done": 74,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
