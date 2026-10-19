@@ -2918,3 +2918,13 @@ Posted 'metaharness search progress' on #885 (metaharness): https://github.com/s
 ```json
 {"cp": 228, "prev_cp": 227, "prev_commit": "2ff224c0f25e1b4e1f85155ac0bdf34a1f4be0c3", "utc": "2026-10-19T08:47:19Z", "kind": "posted", "phase": "P3", "done_through": "metaharness/search/iteration 6", "next": "metaharness/search", "candidate": "metaharness", "counts": {"metaharness": {"counted_rollouts": 739}}, "spend": {"metaharness": {"in": 1684990, "out": 6084, "usd": 22.32}}, "artifacts": {}, "code": "1279e22c2a35307e03687d73691bf62aa81a8d59", "open_decisions": [], "post": "metaharness/auto_248944", "url": "https://github.com/skillberry-ai/cap-evolve/issues/885#issuecomment-6263334676"}
 ```
+
+## CP-0229 · 2026-10-19T09:13Z · P3 heartbeat · heartbeat
+
+No checkpoint for 25 min. Phase P3, last result: metaharness/search/iteration 6.
+Runner: alive (pid 338762). Last log line: `2026-10-19T09:11:50Z | metaharness | P3/train+dev | 42/147 episodes, passed 24, infra errors 0`.
+Next: metaharness/search.
+
+```json
+{"cp": 229, "prev_cp": 228, "prev_commit": "ab0bd969955967965d3a92039502c4dc105679de", "utc": "2026-10-19T09:13:01Z", "kind": "heartbeat", "phase": "P3", "done_through": "metaharness/search/iteration 6", "next": "metaharness/search", "candidate": "metaharness", "counts": {"metaharness": {"counted_rollouts": 739}}, "spend": {"metaharness": {"in": 1684990, "out": 6084, "usd": 22.32}}, "artifacts": {}, "code": "1279e22c2a35307e03687d73691bf62aa81a8d59", "open_decisions": [], "runner": "alive"}
+```
