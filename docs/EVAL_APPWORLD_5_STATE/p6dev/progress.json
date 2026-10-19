@@ -1,14 +1,14 @@
 {
  "window": "p6dev",
  "cells_total": 342,
- "cells_done": 334,
+ "cells_done": 342,
  "per_arm": {
   "metaharness": {
-   "done": 55,
+   "done": 57,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0,
-   "tgc": 0.5091
+   "tgc": 0.5088
   },
   "evoskill": {
    "done": 57,
@@ -18,25 +18,25 @@
    "tgc": 0.7018
   },
   "wikiskill": {
-   "done": 55,
+   "done": 57,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0,
-   "tgc": 0.5273
+   "tgc": 0.5439
   },
   "skillopt": {
-   "done": 55,
+   "done": 57,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0,
-   "tgc": 0.7636
+   "tgc": 0.7368
   },
   "seed": {
-   "done": 55,
+   "done": 57,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0,
-   "tgc": 0.3636
+   "tgc": 0.3684
   },
   "gepa": {
    "done": 57,
