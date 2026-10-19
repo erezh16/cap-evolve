@@ -2995,3 +2995,11 @@ Next: P7/scan.
 ```json
 {"cp": 237, "prev_cp": 236, "prev_commit": "a1ed9d72ef6fc2c24850159fde2c55649915d053", "utc": "2026-10-19T09:55:34Z", "kind": "phase_done", "phase": "P6", "done_through": "p6dev/342", "next": "P7/scan", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {"STATE/p6dev/progress.json": "05a525e622b652b2bde0dd6d640915d57775ca7b6fc63f1a8502316478ff9c4c"}, "code": "1279e22c2a35307e03687d73691bf62aa81a8d59", "open_decisions": [], "window": {"window": "p6dev", "cells_total": 342, "cells_done": 342, "order_sha256": "30d7ccfa1260ce30516a39184d3994993a6921aab5e7bb988c14cfdf7dd8ce0b"}}
 ```
+
+## CP-0238 · 2026-10-19T09:56Z · P7 isolation scan · result
+
+Post-search isolation scan (counts only): gepa: test-id hits 0; skillopt: test-id hits 0; wikiskill: test-id hits 0; evoskill: test-id hits 0; metaharness: test-id hits 0. Literal-string counts per location are in the pushed scan file.
+
+```json
+{"cp": 238, "prev_cp": 237, "prev_commit": "b8ae3bbff955a6e2ce661c35efa2dcc3608142cf", "utc": "2026-10-19T09:56:08Z", "kind": "result", "phase": "P7", "done_through": "P7/scan", "next": "P8/final", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {"STATE/isolation_scan.json": "29b7fb7fb6df16c43b60a6843fe01870d9428a36d4718e9cc778b1b267866468"}, "code": "1279e22c2a35307e03687d73691bf62aa81a8d59", "open_decisions": []}
+```
