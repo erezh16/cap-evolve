@@ -1,13 +1,13 @@
 {
- "wikiskill": {
+ "evoskill": {
   "locations": {
    "optimizer calls": {
     "files": 1,
     "files_hit": 0,
     "counts": {}
    },
-   "wikiskill workspace": {
-    "files": 805,
+   "optimizer workspace (/tmp)": {
+    "files": 338,
     "files_hit": 0,
     "counts": {}
    },

@@ -2201,3 +2201,11 @@ Step `evoskill/freeze` done. Next: evoskill/scan.
 ```json
 {"cp": 145, "prev_cp": 144, "prev_commit": "23bbe8568d7003085e09ced94c3aa0c8f64d62f8", "utc": "2026-10-19T01:15:47Z", "kind": "phase_done", "phase": "P3", "done_through": "evoskill/freeze", "next": "evoskill/scan", "candidate": "evoskill", "counts": {"evoskill": {"counted_rollouts": 492}}, "spend": {"evoskill": {"in": 1057898, "out": 84274, "usd": 4.91}}, "artifacts": {}, "code": "5ed4347dbfaabaea97c0a0bec47102aa2513cfa5", "open_decisions": []}
 ```
+
+## CP-0146 · 2026-10-19T01:15Z · P7 isolation scan · result
+
+Post-search isolation scan (counts only): evoskill: test-id hits 0. Literal-string counts per location are in the pushed scan file.
+
+```json
+{"cp": 146, "prev_cp": 145, "prev_commit": "c0a4d370074e3e0b10476242f87644361863f3f5", "utc": "2026-10-19T01:15:50Z", "kind": "result", "phase": "P7", "done_through": "evoskill/freeze", "next": "evoskill/scan", "candidate": null, "counts": {"evoskill": {"counted_rollouts": 492}}, "spend": {"evoskill": {"in": 1057898, "out": 84274, "usd": 4.91}}, "artifacts": {"STATE/isolation_scan.json": "9ef6313253b5f066b01803289fe70a4d0999268fac325fd3010c2487042f9b79"}, "code": "5ed4347dbfaabaea97c0a0bec47102aa2513cfa5", "open_decisions": []}
+```
