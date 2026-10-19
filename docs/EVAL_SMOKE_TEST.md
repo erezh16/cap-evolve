@@ -797,6 +797,25 @@ read-only context for the optimizer was the public API docs, the README and the 
 and helper tests do not import it), so future runs should drop AppWorld from the allowlist entirely.
 The final window (`runs/final2`) scores this champion, labelled with this deviation.
 
+**F21. The optimizer's subagents ran on Claude Opus 5.5, not Sonnet 5.5 (found 2026-10-19).** The
+plan and every result post say the optimizer was `aws/claude-sonnet-5-5`. That is true for the
+claude-code main loop (`--model aws/claude-sonnet-5-5`). But its parallel subagents, which do most of the
+failure diagnosis, ran on `aws/claude-opus-5-5`: the CLI inherits the user setting
+`CLAUDE_CODE_SUBAGENT_MODEL=aws/claude-opus-5-5[1m]` from `~/.claude/settings.json`. Assistant messages
+by model, from the transcripts:
+
+| run | main loop | subagents |
+|---|---|---|
+| R1 `cape_hc_s0` | Sonnet 5.5: 856 | Sonnet 5.5: 249, Opus 5.5: 220 |
+| R3 `cape_hc_s1` | Sonnet 5.5: 551 | Opus 5.5: 360, Haiku 4.5: 2 |
+| R3 `cape_hc_s2` | Sonnet 5.5: 651 | Opus 5.5: 403 |
+
+ALTK-Evolve's optimizer calls were all Sonnet 5.5 (litellm, no subagents). So the two methods did not use
+the same optimizer model: cap-evolve had Opus 5.5 subagents. The optimizer spend figures include them. A
+repeat must set `CLAUDE_CODE_SUBAGENT_MODEL` explicitly, to Sonnet 5.5 for a same-model comparison.
+Claude Code was 2.1.270 in every run. Details: `docs/BACKUP_BOX.md` §3a and each run's
+`reproduce/models.json`.
+
 ### A.4 Deviations from the plan
 
 | plan | done | why |

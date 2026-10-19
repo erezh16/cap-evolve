@@ -92,11 +92,50 @@ instructions, trajectories and test results. **Decision (owner, 2026-10-19): the
 access-restricted team archive, so the tree is uploaded unencrypted as planned.** Each run root gets a
 `NOTICE.md` that states the rule and says not to make the folder public unencrypted.
 
+## 3a. Reproducibility
+
+**Goal:** each run folder must hold enough for someone else to repeat the run without this host.
+Model sampling is not deterministic (F10: at temperature 0, trials still disagree), so "repeat" means
+the same procedure, configuration and inputs, not the same bytes. Each run folder gets a
+`reproduce/` subfolder. It is the single place to start.
+
+**What a repeat needs, and where it is:**
+
+| need | where | notes |
+|---|---|---|
+| exact cap-evolve code (core, skills, templates, CI tools, example) | `reproduce/code/capevolve_erezh-eval1.bundle` (git bundle, full history; verified, every commit checks out) + `code_commits.json` | per run: R1 at `32df0f1`; R3 attempt 1 at `95433f3`; attempt 2 at `95433f3` with the `sandbox/claude` allowlist of `ec30d13` (the wrapper is read at call time) |
+| R1's example code (never committed) | `reproduce/code/r1_adapters_reconstructed/` | R1 ran before `examples/appworld` was committed, and its project copy was overwritten at the resume. The three adapter files are **rebuilt by replaying every recorded edit** from the session transcript, at the 3 points they were copied in (launch, round 4, resume); v3 is byte-identical to the run's own copy, and all compile. The other example files are rebuilt as of the first window |
+| AppWorld code | `env/appworld_commit.txt` (`42b5bcf3…`), `env/appworld_git_diff.patch` | the public repo; git-lfs bundles are fetched by `git lfs pull` |
+| AppWorld data | `reproduce/appworld_data.json`: version `0.2.0`, bundle URL, the tree hash of `root_full/data`, split-file hashes, counts | **not copied** (license: encrypted redistribution). `appworld download data` fetches the same version; the hashes prove identity |
+| search data root | `reproduce/make_roots` command, the `root_opt` tree hash | rebuilt from the data by `scripts/make_roots.py` |
+| Python environments | `reproduce/env/requirements-venv-aw.txt`, `requirements-venv-altk.txt` (exact `pip freeze`), interpreters (3.11.2, 3.12.15), `uv` 0.13.0, CPU torch index | |
+| embedding model (ALTK) | `reproduce/models.json`: `sentence-transformers/all-MiniLM-L6-v2` @ revision `1110a243…` | public on Hugging Face |
+| agent model | `reproduce/models.json`: `openai/gpt-oss-120b-a100` on IBM RITS (vLLM, `max_model_len` 40,144), the full litellm config (`adapters/aw_agent.py` MODEL_CONFIG), seeds `100 + trial` (search) and `5000 + trial` (final) | the endpoint's backend version is not visible from the client: a known limit |
+| optimizer | `reproduce/models.json` + `reproduce/optimizer_cli.json`: Claude Code **2.1.270**; main loop `aws/claude-sonnet-5-5`; **subagents `aws/claude-opus-5-5`** (from the user settings `CLAUDE_CODE_SUBAGENT_MODEL`, confirmed in the transcripts); haiku for small helpers; `CLAUDE_CODE_DISABLE_EXPERIMENTAL_BETAS=1`; effort `high`; the CLI flags | the subagent model was **not** stated in the plan, and a repeat that leaves it out runs a different optimizer |
+| optimizer's inherited config | `reproduce/env/claude_settings.redacted.json` (secrets removed), installed plugins and their versions | it inherits the user settings by design |
+| exact launch | per attempt: `host/launch_args.json`, the spec, the rendered INSTRUCTIONS, the env vars (names and values without secrets), the wrapper + its settings | |
+| orchestration record | `reproduce/orchestrator/`: the session transcript that ran the whole evaluation (every command, decision and check), its subagents, tool outputs, the host agent's own journal/audit, and the session memory | the most complete "how it was done" record; secrets redacted |
+| host | `reproduce/env/host.json`: OS, kernel, container facts (rootless podman, `/dev/null` host bind, user namespaces on) | needed to reproduce the isolation behaviour (F17) |
+| steps | `reproduce/REPRODUCE.md`: commands in order, for this run only | |
+
+**Found while checking reproducibility** (not stated in the plan, and a repeat that leaves them out
+runs a different setup):
+- The optimizer's **subagents ran on `aws/claude-opus-5-5`**, not Sonnet 5.5: 220 / 359 / 403 subagent
+  messages in R1 / R3a1 / R3a2 (plus 2 Haiku 4.5 helper calls). The main loop was Sonnet 5.5 throughout.
+  The cause is the user setting `CLAUDE_CODE_SUBAGENT_MODEL`, which `claude -p` inherits.
+- Claude Code **2.1.270** in every run (from the transcripts); `effortLevel: high` and
+  `alwaysThinkingEnabled` were also inherited.
+- R1's code is reconstructed (above).
+
+**Reproducibility check before upload:** the assembler cross-checks that every hash in
+`reproduce/` (data tree, split files, patch, champion trees) matches the files it refers to, and that
+the git bundle verifies (`git bundle verify`) and contains every commit named in `code_commits.json`.
+
 ## 4. What is not copied, and why
 
 | item | why | how it stays reproducible |
 |---|---|---|
-| `venv-aw`, `.venv`, `venv-pw`, `hf/` model cache | environments (396 MB+) | `pip freeze` and `uv` freeze in `env/manifest.json` |
+| `venv-aw`, `.venv`, `venv-pw`, `hf/` model cache | environments (396 MB+), rebuildable | exact freezes, interpreter versions and the model revision in `reproduce/` (§3a) |
 | AppWorld clone, `root_full`, `root_opt` data | public, and the data is under a redistribution rule | commit `42b5bcf`, the patch, `sha256_tree` of `root_full/data` and `root_opt` |
 | `.env`, `~/.claude/settings.json`, rclone config | secrets | names of the variables only |
 | acceptance probes A1–A8, `a6_dry` | not counted runs (rule S1) | one copy under R1 `isolation/acceptance/` (A6 dry run, A8 table, check outputs) |
