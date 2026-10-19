@@ -2413,3 +2413,12 @@ Next: p6dev remaining cells.
 ```json
 {"cp": 171, "prev_cp": 170, "prev_commit": "3fedabf5c8ceb2654057b82a708c5b0790eea945", "utc": "2026-10-19T03:48:33Z", "kind": "result", "phase": "P6", "done_through": "p6dev/150", "next": "p6dev/cells", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 591}}, "spend": {"metaharness": {"in": 1261205, "out": 4920, "usd": 14.21}}, "artifacts": {"STATE/p6dev/progress.json": "a4ef50cd2641e33c52b44d19f3e7e7f7d6d87e4eb2c194cb3776647dec79b049"}, "code": "7ac8201b08fa1e0021ff5e3d06a8db43a9b9ec76", "open_decisions": [], "window": {"window": "p6dev", "cells_total": 342, "cells_done": 150, "order_sha256": "30d7ccfa1260ce30516a39184d3994993a6921aab5e7bb988c14cfdf7dd8ce0b"}}
 ```
+
+## CP-0172 · 2026-10-19T03:53Z · P6 dev diagnostic · result
+
+dev diagnostic: 33 cells since the last entry; 183/342 done (evoskill 27, gepa 30, metaharness 30, seed 37, skillopt 30, wikiskill 29); infra still missing 0, retries 0.
+Next: p6dev remaining cells.
+
+```json
+{"cp": 172, "prev_cp": 171, "prev_commit": "22ff13d6f10090e427bdd17732e7be22ac51d740", "utc": "2026-10-19T03:53:34Z", "kind": "result", "phase": "P6", "done_through": "p6dev/183", "next": "p6dev/cells", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 591}}, "spend": {"metaharness": {"in": 1261205, "out": 4920, "usd": 14.21}}, "artifacts": {"STATE/p6dev/progress.json": "0ec7244e525f557b366e8058fb0dac74d18df61065798cac9a37576457231f09"}, "code": "7ac8201b08fa1e0021ff5e3d06a8db43a9b9ec76", "open_decisions": [], "window": {"window": "p6dev", "cells_total": 342, "cells_done": 183, "order_sha256": "30d7ccfa1260ce30516a39184d3994993a6921aab5e7bb988c14cfdf7dd8ce0b"}}
+```
