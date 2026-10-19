@@ -2183,3 +2183,13 @@ Posted 'evoskill freeze' on #884 (evoskill): https://github.com/skillberry-ai/ca
 ```json
 {"cp": 143, "prev_cp": 142, "prev_commit": "5bbbdb02b51bdf86c4536ba7e4057a3e6a159b70", "utc": "2026-10-19T00:42:56Z", "kind": "posted", "phase": "P3", "done_through": "evoskill/search/search finished: done: best iter-skill-26 0.750, 18 iterations", "next": "evoskill/freeze", "candidate": "evoskill", "counts": {"evoskill": {"counted_rollouts": 492}}, "spend": {"evoskill": {"in": 1057898, "out": 84274, "usd": 4.91}}, "artifacts": {}, "code": "5ed4347dbfaabaea97c0a0bec47102aa2513cfa5", "open_decisions": [], "post": "evoskill/m_freeze", "url": "https://github.com/skillberry-ai/cap-evolve/issues/884#issuecomment-6257240434"}
 ```
+
+## CP-0144 · 2026-10-19T01:07Z · P3 heartbeat · heartbeat
+
+No checkpoint for 25 min. Phase P3, last result: evoskill/search/search finished: done: best iter-skill-26 0.750, 18 iterations.
+Runner: no runner. Last log line: `2026-10-19T01:07:37Z | evoskill | P3/dev | 20/57 episodes, passed 16, infra errors 0`.
+Next: evoskill/freeze.
+
+```json
+{"cp": 144, "prev_cp": 143, "prev_commit": "38e21b6074208160db23054978262d4d493b1bdf", "utc": "2026-10-19T01:07:56Z", "kind": "heartbeat", "phase": "P3", "done_through": "evoskill/search/search finished: done: best iter-skill-26 0.750, 18 iterations", "next": "evoskill/freeze", "candidate": "evoskill", "counts": {"evoskill": {"counted_rollouts": 492}}, "spend": {"evoskill": {"in": 1057898, "out": 84274, "usd": 4.91}}, "artifacts": {}, "code": "5ed4347dbfaabaea97c0a0bec47102aa2513cfa5", "open_decisions": [], "runner": "none"}
+```
