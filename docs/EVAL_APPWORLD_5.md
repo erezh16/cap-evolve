@@ -3572,3 +3572,12 @@ The container restarted at ~21:57 UTC (container_age 32 s at check; memory.oom.g
 ```json
 {"cp": 300, "prev_cp": 299, "prev_commit": "b4f5599fec86ff99e0ac8e70900c0d88ab7b7e00", "utc": "2026-10-19T22:01:31Z", "kind": "restore", "phase": "P8", "done_through": "p8final/927", "next": "p8final/cells", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {}, "code": "69364fed2e23b7d9d80453e3313cf9fb93f6a28f", "open_decisions": []}
 ```
+
+## CP-0301 · 2026-10-19T22:05Z · P8 final window · result
+
+final window: 5 cells since the last entry; 957/2016 done (evoskill 159, gepa 164, metaharness 158, seed 153, skillopt 172, wikiskill 151); infra still missing 0, retries 2.
+Next: p8final remaining cells.
+
+```json
+{"cp": 301, "prev_cp": 300, "prev_commit": "627df7e080d775afe1cbc0376ddd913ca1038b14", "utc": "2026-10-19T22:05:44Z", "kind": "result", "phase": "P8", "done_through": "p8final/957", "next": "p8final/cells", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {"STATE/p8final/progress.json": "5a22055072d7a0205610ef8a5559cab3f372fa6491162d55de11221be4560881"}, "code": "69364fed2e23b7d9d80453e3313cf9fb93f6a28f", "open_decisions": [], "window": {"window": "p8final", "cells_total": 2016, "cells_done": 957, "order_sha256": "202efd8153925ef4d74fdfbf6897d0663c2d6519b0867a314b1084b0f60d3e29"}}
+```
