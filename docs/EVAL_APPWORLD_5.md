@@ -3554,3 +3554,13 @@ Next: p8final remaining cells.
 ```json
 {"cp": 298, "prev_cp": 297, "prev_commit": "f5dc34fa820a9c82c836cbac952b0b71089da4eb", "utc": "2026-10-19T21:53:33Z", "kind": "result", "phase": "P8", "done_through": "p8final/927", "next": "p8final/cells", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {"STATE/p8final/progress.json": "f16661756e01cad804e9712407df757f093fcb3c7d5fc8a76720160c7002d1d8"}, "code": "69364fed2e23b7d9d80453e3313cf9fb93f6a28f", "open_decisions": [], "window": {"window": "p8final", "cells_total": 2016, "cells_done": 927, "order_sha256": "202efd8153925ef4d74fdfbf6897d0663c2d6519b0867a314b1084b0f60d3e29"}}
 ```
+
+## CP-0299 · 2026-10-19T22:00Z · P8 resume · resume
+
+Resume (reason: container restarted at ~21:59 UTC during the final window at 48 workers (container_age 32 s, oom.group=1: treated as an OOM); relaunching at 24 workers per CONTAINER_AGENT.md §2.5). Plan: remove stale RUNNING.pid (400869); continue at next = p8final/cells; restart the heartbeat loop.
+Local work on record: gepa: 900 counted rollouts on record, skillopt: 900 counted rollouts on record, wikiskill: 792 counted rollouts on record, evoskill: 663 counted rollouts on record, metaharness: 887 counted rollouts on record, p6dev: 342 local cell records, p8final: 952 local cell records.
+Next: p8final/cells.
+
+```json
+{"cp": 299, "prev_cp": 298, "prev_commit": "d927545afc78d439c79253dbfe8733e65cec51ee", "utc": "2026-10-19T22:00:42Z", "kind": "resume", "phase": "P8", "done_through": "p8final/927", "next": "p8final/cells", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {}, "code": "69364fed2e23b7d9d80453e3313cf9fb93f6a28f", "open_decisions": [], "adopted": ["gepa: 900 counted rollouts on record", "skillopt: 900 counted rollouts on record", "wikiskill: 792 counted rollouts on record", "evoskill: 663 counted rollouts on record", "metaharness: 887 counted rollouts on record", "p6dev: 342 local cell records", "p8final: 952 local cell records"], "plan": ["remove stale RUNNING.pid (400869)", "continue at next = p8final/cells", "restart the heartbeat loop"]}
+```
