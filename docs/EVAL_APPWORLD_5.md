@@ -3266,3 +3266,13 @@ Next: p8final/cells.
 ```json
 {"cp": 266, "prev_cp": 265, "prev_commit": "8bfc911275b78bd328c86298809cfc48f17cd16b", "utc": "2026-10-19T17:28:29Z", "kind": "heartbeat", "phase": "P8", "done_through": "p8final/59", "next": "p8final/cells", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {}, "code": "26447ab21c0e2a8e185a9c87d1c536216899e522", "open_decisions": [], "runner": "none"}
 ```
+
+## CP-0267 · 2026-10-19T17:53Z · P8 heartbeat · heartbeat
+
+No checkpoint for 25 min. Phase P8, last result: p8final/59.
+Runner: no runner. Last log line: `2026-10-19T10:22:29Z | p8final | P8 | 59/2016 cells`.
+Next: p8final/cells.
+
+```json
+{"cp": 267, "prev_cp": 266, "prev_commit": "ba4f86fea467495c4a4244c2032e63f0c819c99d", "utc": "2026-10-19T17:53:30Z", "kind": "heartbeat", "phase": "P8", "done_through": "p8final/59", "next": "p8final/cells", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {}, "code": "26447ab21c0e2a8e185a9c87d1c536216899e522", "open_decisions": [], "runner": "none"}
+```
