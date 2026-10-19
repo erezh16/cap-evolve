@@ -1,23 +1,29 @@
 {
- "evoskill": {
+ "metaharness": {
   "locations": {
-   "optimizer calls": {
-    "files": 1,
+   "proposer sessions": {
+    "files": 182,
     "files_hit": 0,
     "counts": {}
    },
    "optimizer workspace (/tmp)": {
-    "files": 338,
-    "files_hit": 0,
-    "counts": {}
+    "files": 1391,
+    "files_hit": 1,
+    "counts": {
+     "root_full": 13,
+     "ground_truth": 7
+    }
    },
    "frozen artifact": {
-    "files": 5,
+    "files": 4,
     "files_hit": 0,
     "counts": {}
    }
   },
-  "proposer_files_read_by_top_dir": {},
+  "proposer_files_read_by_top_dir": {
+   "reference": 4,
+   "candidates": 1
+  },
   "test_id_hits": 0,
   "isolation_breach": false
  }
