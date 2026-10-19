@@ -64,6 +64,48 @@ def progress_body(c: str) -> str:
     return "\n".join(lines)
 
 
+def _window_line(c: str) -> str:
+    """Counts only (plan §10.2: no per-cell test outcome is published before P9)."""
+    prog = P.read_json(P.PUSHED / "p8final" / "progress.json", {}) or {}
+    if not prog:
+        return "- final window: not started"
+    recs = sorted((P.AW_STATE / "p8final" / "records").glob("*.json"), key=lambda q: q.stat().st_mtime)
+    eta = ""
+    recent = [q.stat().st_mtime for q in recs if q.stat().st_mtime > time.time() - 3600]
+    left = prog["cells_total"] - prog["cells_done"]
+    if len(recent) >= 10 and left > 0:
+        rate = len(recent) / max(60.0, time.time() - min(recent))
+        eta = f"; at the last hour's rate ({3600 * rate:.0f} cells/h) about {left / rate / 3600:.1f} h left"
+    arm = (prog.get("per_arm") or {}).get(c, {})
+    return (f"- **final window** (168 test_normal × 6 arms × 2 trials, one shuffled order): "
+            f"{prog['cells_done']}/{prog['cells_total']} cells done{eta}. This arm: {arm.get('done', 0)}/336 cells, "
+            f"infra still failed {arm.get('infra_missing', 0)}. Test scores are not shown until the window completes "
+            f"and the analysis runs.")
+
+
+def status_body(c: str) -> str:
+    """Hourly per-candidate status, any phase (user instruction 2026-10-19)."""
+    nxt = (S.last_entry().get("next") or "")
+    fz = P.read_json(P.PUSHED / c / "artifact" / "FREEZE.json", {}) or {}
+    pr = P.read_json(P.PUSHED / c / "progress.json", {}) or {}
+    dev = ((P.read_json(P.PUSHED / "p6dev" / "progress.json", {}) or {}).get("per_arm") or {})
+    scan = (P.read_json(P.PUSHED / "isolation_scan.json", {}) or {}).get(c, {})
+    stage = ("search running" if nxt.startswith(f"{c}/search") else
+             "final window running" if nxt.startswith("p8final") or nxt.startswith("P8") else
+             "analysis" if nxt.startswith("P9") else "results posting" if nxt.startswith("P10") else nxt)
+    lines = [f"**Hourly status — {c}** ({P.utcnow()}). Evaluation stage: {stage}.", "",
+             f"- search: {'finished; champion frozen' if fz else 'in progress'}"
+             + (f" ({pr.get('counted_rollouts')} of {P.BUDGET_ROLLOUTS} counted rollouts)" if pr else ""),
+             f"- optimizer spend for this arm: {_opt(pr)}" if pr else "- optimizer spend: n/a"]
+    if dev.get(c):
+        lines.append(f"- dev diagnostic (57 dev tasks, 1 trial; selection-biased): {c} {dev[c].get('tgc')} vs seed "
+                     f"{(dev.get('seed') or {}).get('tgc')}")
+    if scan:
+        lines.append(f"- isolation scan: {scan.get('test_id_hits')} test-id hits")
+    lines.append(_window_line(c))
+    return "\n".join(lines)
+
+
 def milestone_body(c: str, what: str) -> str:
     if what == "search":
         return (f"**{c}: counted search started.** Settings follow plan §7 for this candidate. The cap is "
@@ -114,14 +156,14 @@ def once(every: int) -> None:
             post5.post(prev[0], "m_scanned", f"{prev[0]} scanned", milestone_body(prev[0], "scanned"))
         seen_next = nxt
     st["last_next"] = seen_next
-    parts = (seen_next or "").split("/")
-    if len(parts) >= 2 and parts[0] in P.CANDIDATES and parts[1] == "search":
-        c = parts[0]
-        last = st["last_progress"].setdefault(c, time.time())
-        if time.time() - last >= every:
-            k = int(time.time() // every)
-            post5.post(c, f"auto_{k}", f"{c} search progress", progress_body(c))
-            st["last_progress"][c] = time.time()
+    # hourly status on every candidate's issue, in every phase, until the results are posted
+    last = st.setdefault("last_status", 0)
+    done_all = all(f"{c}/results" in (P.read_json(post5.POSTS, {}) or {}) for c in P.CANDIDATES)
+    if not done_all and time.time() - last >= every:
+        k = int(time.time() // every)
+        for c in P.CANDIDATES:
+            post5.post(c, f"status_{k}", f"{c} hourly status", status_body(c))
+        st["last_status"] = time.time()
     P.write_json(STATE, st)
 
 

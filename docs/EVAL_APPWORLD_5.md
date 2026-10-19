@@ -3443,3 +3443,11 @@ Next: p8final remaining cells.
 ```json
 {"cp": 285, "prev_cp": 284, "prev_commit": "add289707886851fd82a55debcd6ee789c3a529b", "utc": "2026-10-19T21:18:23Z", "kind": "result", "phase": "P8", "done_through": "p8final/580", "next": "p8final/cells", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {"STATE/p8final/progress.json": "0deef71fbe9cbd2f9e7e9f1394610b1528e85ad01090123de6f97758494f8a11"}, "code": "26447ab21c0e2a8e185a9c87d1c536216899e522", "open_decisions": [], "window": {"window": "p8final", "cells_total": 2016, "cells_done": 580, "order_sha256": "202efd8153925ef4d74fdfbf6897d0663c2d6519b0867a314b1084b0f60d3e29"}}
 ```
+
+## CP-0286 · 2026-10-19T21:20Z · P8 posted gepa · posted
+
+Posted 'gepa hourly status' on #881 (gepa): https://github.com/skillberry-ai/cap-evolve/issues/881#issuecomment-6277563507
+
+```json
+{"cp": 286, "prev_cp": 285, "prev_commit": "77d349f8f01096f5d3ee3f6ebb754038b1076e9e", "utc": "2026-10-19T21:20:04Z", "kind": "posted", "phase": "P8", "done_through": "p8final/580", "next": "p8final/cells", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {}, "code": "26447ab21c0e2a8e185a9c87d1c536216899e522", "open_decisions": [], "post": "gepa/status_497901", "url": "https://github.com/skillberry-ai/cap-evolve/issues/881#issuecomment-6277563507"}
+```
