@@ -222,3 +222,12 @@ files, not by bandwidth. Capture is under 15 s because it is local copying.
   after committing the tools. The figures above are the clean runs.
 - F21 (optimizer subagents ran on Opus 5.5) was found while building `reproduce/`. It is not yet
   reflected in the run-folder names; that depends on the decision about the scored run.
+
+**Added 2026-10-19: `data/metrics_full.jsonl`** in every run folder (and in each R3 attempt), with a
+README. It holds reward, tokens, latency and cost in one file, at four levels: each held-out episode, each search round,
+each ALTK optimizer call, and a run total. It is needed because the CI-format `metrics.jsonl` from
+`metrics.py suite` has no optimized-side values for these runs. Cost coverage: the cap-evolve optimizer cost is the
+CLI's own report; the ALTK optimizer cost is an **estimate** at the Claude Sonnet 5.5 list price ($2 / $10 per MTok;
+$18.04 for 3.81M tokens); the **agent's cost is not measured** (IBM RITS does not price calls), so tokens stand in for it.
+Upload of the 13 new and changed files: 94.0 s; check: 95.5 s, 0 differences. Box now holds 307 + 3,679 + 5,428 run
+files.
