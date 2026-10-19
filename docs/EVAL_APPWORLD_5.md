@@ -2225,3 +2225,11 @@ Posted 'evoskill scan' on #884 (evoskill): https://github.com/skillberry-ai/cap-
 ```json
 {"cp": 148, "prev_cp": 147, "prev_commit": "fbad3abbb3f62bbfba79aa90ba3227a559e4c5e0", "utc": "2026-10-19T01:15:59Z", "kind": "posted", "phase": "P7", "done_through": "evoskill/scan", "next": "metaharness/search", "candidate": null, "counts": {"evoskill": {"counted_rollouts": 492}}, "spend": {"evoskill": {"in": 1057898, "out": 84274, "usd": 4.91}}, "artifacts": {}, "code": "5ed4347dbfaabaea97c0a0bec47102aa2513cfa5", "open_decisions": [], "post": "evoskill/m_scan", "url": "https://github.com/skillberry-ai/cap-evolve/issues/884#issuecomment-6257582459"}
 ```
+
+## CP-0149 · 2026-10-19T01:16Z · P7 posted metaharness · posted
+
+Posted 'metaharness search' on #885 (metaharness): https://github.com/skillberry-ai/cap-evolve/issues/885#issuecomment-6257582977
+
+```json
+{"cp": 149, "prev_cp": 148, "prev_commit": "d8d2a01f4432579047ab0a22279111865298a07c", "utc": "2026-10-19T01:16:02Z", "kind": "posted", "phase": "P7", "done_through": "evoskill/scan", "next": "metaharness/search", "candidate": null, "counts": {"evoskill": {"counted_rollouts": 492}}, "spend": {"evoskill": {"in": 1057898, "out": 84274, "usd": 4.91}}, "artifacts": {}, "code": "5ed4347dbfaabaea97c0a0bec47102aa2513cfa5", "open_decisions": [], "post": "metaharness/m_search", "url": "https://github.com/skillberry-ai/cap-evolve/issues/885#issuecomment-6257582977"}
+```
