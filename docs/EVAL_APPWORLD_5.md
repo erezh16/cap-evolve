@@ -3336,3 +3336,11 @@ Next: p8final/cells.
 ```json
 {"cp": 273, "prev_cp": 272, "prev_commit": "66a450a00e955fe43dff2e780a9d254bd4fa6d6c", "utc": "2026-10-19T20:23:07Z", "kind": "resume", "phase": "P8", "done_through": "p8final/59", "next": "p8final/cells", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {}, "code": "26447ab21c0e2a8e185a9c87d1c536216899e522", "open_decisions": [], "adopted": ["gepa: 900 counted rollouts on record", "skillopt: 900 counted rollouts on record", "wikiskill: 792 counted rollouts on record", "evoskill: 663 counted rollouts on record", "metaharness: 887 counted rollouts on record", "p6dev: 342 local cell records", "p8final: 59 local cell records"], "plan": ["continue at next = p8final/cells"]}
 ```
+
+## CP-0274 · 2026-10-19T20:23Z · P8 window stall · repair
+
+Repair: the final window was idle from 10:22 to 20:23 UTC (59/2,016 cells). After it was stopped to raise workers 24→48 (plan §12), the wait-for-drain loop that should have resumed it used pgrep -f with a pattern matching its own command line, so it never saw the window stop. No work was lost (cell records are per cell); only wall time (~10 h). Resumed at 48 workers; the watcher script had the same pattern and is fixed. Model-drift note: all cells of this window are in one shuffled order, so the pause hits all arms alike.
+
+```json
+{"cp": 274, "prev_cp": 273, "prev_commit": "ec68453ed301910f6fa31173e7270d19c5e2858b", "utc": "2026-10-19T20:23:43Z", "kind": "repair", "phase": "P8", "done_through": "p8final/59", "next": "p8final/cells", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {}, "code": "26447ab21c0e2a8e185a9c87d1c536216899e522", "open_decisions": []}
+```
