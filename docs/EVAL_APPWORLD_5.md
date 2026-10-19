@@ -3326,3 +3326,13 @@ Next: p8final/cells.
 ```json
 {"cp": 272, "prev_cp": 271, "prev_commit": "05765b2bd7bba814533afb89d68db60f2a59824f", "utc": "2026-10-19T19:58:39Z", "kind": "heartbeat", "phase": "P8", "done_through": "p8final/59", "next": "p8final/cells", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {}, "code": "26447ab21c0e2a8e185a9c87d1c536216899e522", "open_decisions": [], "runner": "none"}
 ```
+
+## CP-0273 · 2026-10-19T20:23Z · P8 resume · resume
+
+Resume (reason: the 24->48 worker restart stalled ~10 h: the drain-wait loop's pgrep matched its own command line; resuming at 48 workers). Plan: continue at next = p8final/cells.
+Local work on record: gepa: 900 counted rollouts on record, skillopt: 900 counted rollouts on record, wikiskill: 792 counted rollouts on record, evoskill: 663 counted rollouts on record, metaharness: 887 counted rollouts on record, p6dev: 342 local cell records, p8final: 59 local cell records.
+Next: p8final/cells.
+
+```json
+{"cp": 273, "prev_cp": 272, "prev_commit": "66a450a00e955fe43dff2e780a9d254bd4fa6d6c", "utc": "2026-10-19T20:23:07Z", "kind": "resume", "phase": "P8", "done_through": "p8final/59", "next": "p8final/cells", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {}, "code": "26447ab21c0e2a8e185a9c87d1c536216899e522", "open_decisions": [], "adopted": ["gepa: 900 counted rollouts on record", "skillopt: 900 counted rollouts on record", "wikiskill: 792 counted rollouts on record", "evoskill: 663 counted rollouts on record", "metaharness: 887 counted rollouts on record", "p6dev: 342 local cell records", "p8final: 59 local cell records"], "plan": ["continue at next = p8final/cells"]}
+```
