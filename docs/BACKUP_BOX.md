@@ -184,3 +184,41 @@ v1.75.1 (released 2026-09-04): the official linux-amd64 build, SHA256-checked ag
 published `SHA256SUMS`, installed to `~/.local/bin` without root. The newer v1.75.2 was released less
 than two weeks ago, so it was not used. The `eval-data` remote is already configured (a Box alias) and
 was tested read-only (`rclone lsf`, `about`).
+
+## 8. Result (executed 2026-10-19)
+
+Uploaded to `eval-data:appworld/`, as plain folder trees (no compression; one uncompressed tar for the
+sealed gold copy, §3). `rclone check` against Box SHA-1 reports **0 differences** in every run.
+
+| run | files | size |
+|---|---|---|
+| R1 `2026-10-13-appworld-capevolve-hillclimb-gptoss120b-sonnet55-original-breach` | 3,678 | 315.0 MB |
+| R2 `2026-10-13-appworld-altkevolve-v130-retrieval-gptoss120b-sonnet55-original` | 306 | 86.6 MB |
+| R3 `2026-10-15-appworld-capevolve-hillclimb-gptoss120b-sonnet55-fix-clean` | 5,423 | 214.5 MB |
+| + `BACKUP_LOG.json`, `timing.json` | 2 | |
+| **Box total** | **9,406** | **587.6 MiB** |
+
+**Timing** (rclone install not timed):
+
+| step | seconds |
+|---|---|
+| capture and organize, phase 1 (assemble, derive, tool checks, secret scan, manifests) | 9.9 |
+| capture, phase 2 (`reproduce/` per run, added after the reproducibility requirement) | 3.2 |
+| **capture total** | **13.1** |
+| transfer, phase 1 (R1 2,278 s · R2 197 s · R3 2,899 s) | 5,373.3 |
+| transfer, phase 2 (new and changed files only) | 213.2 |
+| **transfer total** | **5,586.5 (1 h 33 min)** |
+| verification on Box (`rclone check`, both phases) | 202.0 |
+
+The transfer is bound by the per-file overhead on Box, about 1 file/s for roughly 9,400 mostly small
+files, not by bandwidth. Capture is under 15 s because it is local copying.
+
+**Notes from execution**
+- Phase-1 `rclone check` failed for R1 on one file only: `SYMLINKS.txt`, written after that run's copy had
+  started. Phase 2 uploaded it, and the final check is clean.
+- 9 symlinks (claude task-output links and an A9 test link) cannot be stored on Box. Each run lists its
+  links in `SYMLINKS.txt`. Every target is either a file already in the backup or a file outside the run.
+- Two capture attempts were discarded locally before the timed capture: a tool-check bug, and a rebuild
+  after committing the tools. The figures above are the clean runs.
+- F21 (optimizer subagents ran on Opus 5.5) was found while building `reproduce/`. It is not yet
+  reflected in the run-folder names; that depends on the decision about the scored run.
