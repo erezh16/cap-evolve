@@ -12,6 +12,12 @@
    "avg_pass_rate": 0.5578231292517006,
    "outcome": "55.8%",
    "delta": 0.0
+  },
+  {
+   "iteration": 2,
+   "avg_pass_rate": null,
+   "outcome": "proposer failed (exit 0, pending_eval missing)",
+   "delta": null
   }
  ],
  "best": {
@@ -21,10 +27,10 @@
  "counted_rollouts": 295,
  "cap": 900,
  "optimizer": {
-  "calls": 1,
-  "prompt_tokens": 192789,
-  "completion_tokens": 1097,
-  "cache_read": 2709684,
-  "cost_usd": 2.07
+  "calls": 2,
+  "prompt_tokens": 494368,
+  "completion_tokens": 1985,
+  "cache_read": 9318107,
+  "cost_usd": 6.14
  }
 }
