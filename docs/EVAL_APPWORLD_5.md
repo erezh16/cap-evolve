@@ -2281,3 +2281,11 @@ Meta-Harness iteration 2 produced no candidate: the proposer session (exit 0, 60
 ```json
 {"cp": 155, "prev_cp": 154, "prev_commit": "a12364d90ba5aaa4e5ab190c89e6c5adfe947397", "utc": "2026-10-19T02:36:59Z", "kind": "result", "phase": "P3", "done_through": "metaharness/search/iteration 2", "next": "metaharness/search", "candidate": "metaharness", "counts": {"metaharness": {"counted_rollouts": 295}}, "spend": {"metaharness": {"in": 494368, "out": 1985, "usd": 6.14}}, "artifacts": {}, "code": "5ed4347dbfaabaea97c0a0bec47102aa2513cfa5", "open_decisions": []}
 ```
+
+## CP-0156 · 2026-10-19T02:44Z · P3 metaharness search · result
+
+Meta-Harness iteration 3: best search-set TGC 0.5850340136054422. Counted rollouts 443/900; proposer 3 session(s), 0.80M in / 0.00M out tok (+13.04M cache reads), $9.08 (CLI-reported).
+
+```json
+{"cp": 156, "prev_cp": 155, "prev_commit": "7ac8201b08fa1e0021ff5e3d06a8db43a9b9ec76", "utc": "2026-10-19T02:44:20Z", "kind": "result", "phase": "P3", "done_through": "metaharness/search/iteration 3", "next": "metaharness/search", "candidate": "metaharness", "counts": {"metaharness": {"counted_rollouts": 443}}, "spend": {"metaharness": {"in": 799507, "out": 2901, "usd": 9.08}}, "artifacts": {"STATE/metaharness/progress.json": "9ad3db55e6c866c5923f0fc91b5ecea3cbf8912f5c4c9b47baa9f9a0b91ec71b"}, "code": "7ac8201b08fa1e0021ff5e3d06a8db43a9b9ec76", "open_decisions": []}
+```
