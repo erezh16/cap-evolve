@@ -2978,3 +2978,11 @@ Step `metaharness/scan` done. Next: P6/refreeze.
 ```json
 {"cp": 235, "prev_cp": 234, "prev_commit": "e6db00545b391fc246b57f68005676c00f3b5efb", "utc": "2026-10-19T09:55:31Z", "kind": "phase_done", "phase": "P7", "done_through": "metaharness/scan", "next": "P6/refreeze", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {}, "code": "1279e22c2a35307e03687d73691bf62aa81a8d59", "open_decisions": []}
 ```
+
+## CP-0236 · 2026-10-19T09:55Z · P7 step done · phase_done
+
+Step `P6/refreeze` done. Next: p6dev/cells.
+
+```json
+{"cp": 236, "prev_cp": 235, "prev_commit": "a5f50341caf0b8ad9bbd3f800612ff108c5ceb32", "utc": "2026-10-19T09:55:33Z", "kind": "phase_done", "phase": "P7", "done_through": "P6/refreeze", "next": "p6dev/cells", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {}, "code": "1279e22c2a35307e03687d73691bf62aa81a8d59", "open_decisions": []}
+```
