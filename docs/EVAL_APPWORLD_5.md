@@ -2353,3 +2353,11 @@ Step `P6/freeze` done. Next: p6dev/cells.
 ```json
 {"cp": 164, "prev_cp": 163, "prev_commit": "54c998b79c592f929956baa7b285fab5cd127066", "utc": "2026-10-19T03:28:28Z", "kind": "phase_done", "phase": "P7", "done_through": "P6/freeze", "next": "p6dev/cells", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 591}}, "spend": {"metaharness": {"in": 1261205, "out": 4920, "usd": 14.21}}, "artifacts": {}, "code": "7ac8201b08fa1e0021ff5e3d06a8db43a9b9ec76", "open_decisions": []}
 ```
+
+## CP-0165 · 2026-10-19T03:29Z · P7 posted metaharness · posted
+
+Posted 'metaharness freeze' on #885 (metaharness): https://github.com/skillberry-ai/cap-evolve/issues/885#issuecomment-6259017691
+
+```json
+{"cp": 165, "prev_cp": 164, "prev_commit": "877a9283079cdcd43d1014ca2838e8e8b6c35074", "utc": "2026-10-19T03:29:10Z", "kind": "posted", "phase": "P7", "done_through": "P6/freeze", "next": "p6dev/cells", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 591}}, "spend": {"metaharness": {"in": 1261205, "out": 4920, "usd": 14.21}}, "artifacts": {}, "code": "7ac8201b08fa1e0021ff5e3d06a8db43a9b9ec76", "open_decisions": [], "post": "metaharness/m_freeze", "url": "https://github.com/skillberry-ai/cap-evolve/issues/885#issuecomment-6259017691"}
+```
