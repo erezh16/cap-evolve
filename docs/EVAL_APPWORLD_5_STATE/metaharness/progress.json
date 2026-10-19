@@ -1,0 +1,24 @@
+{
+ "candidate": "metaharness",
+ "rows": [
+  {
+   "iteration": 0,
+   "avg_pass_rate": 0.4013605442176871,
+   "outcome": "40.1%",
+   "delta": 0.0
+  }
+ ],
+ "best": {
+  "avg_pass_rate": 0.4013605442176871,
+  "avg_tokens": 72474.05442176871
+ },
+ "counted_rollouts": 147,
+ "cap": 900,
+ "optimizer": {
+  "calls": 0,
+  "prompt_tokens": 0,
+  "completion_tokens": 0,
+  "cache_read": 0,
+  "cost_usd": 0
+ }
+}

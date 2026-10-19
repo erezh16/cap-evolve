@@ -2241,3 +2241,11 @@ Posted 'evoskill scanned' on #884 (evoskill): https://github.com/skillberry-ai/c
 ```json
 {"cp": 150, "prev_cp": 149, "prev_commit": "ac44dd13a1a70acfadfed771ebc0c728e0960a38", "utc": "2026-10-19T01:16:05Z", "kind": "posted", "phase": "P7", "done_through": "evoskill/scan", "next": "metaharness/search", "candidate": null, "counts": {"evoskill": {"counted_rollouts": 492}}, "spend": {"evoskill": {"in": 1057898, "out": 84274, "usd": 4.91}}, "artifacts": {}, "code": "5ed4347dbfaabaea97c0a0bec47102aa2513cfa5", "open_decisions": [], "post": "evoskill/m_scanned", "url": "https://github.com/skillberry-ai/cap-evolve/issues/884#issuecomment-6257583497"}
 ```
+
+## CP-0151 · 2026-10-19T01:35Z · P3 metaharness search · result
+
+Meta-Harness phase 0 (seed) TGC 0.401: best search-set TGC 0.4013605442176871. Counted rollouts 147/900; proposer 0 session(s), 0.00M in / 0.00M out tok (+0.00M cache reads), $0.00 (CLI-reported).
+
+```json
+{"cp": 151, "prev_cp": 150, "prev_commit": "643a6dba8dbd72e382355754cdb9ae70f54cecae", "utc": "2026-10-19T01:35:05Z", "kind": "result", "phase": "P3", "done_through": "metaharness/search/phase 0 (seed) TGC 0.401", "next": "metaharness/search", "candidate": "metaharness", "counts": {"metaharness": {"counted_rollouts": 147}}, "spend": {"metaharness": {"in": 0, "out": 0, "usd": 0}}, "artifacts": {"STATE/metaharness/progress.json": "9b5e3c643b0dc852388b1c0d37af5b52ab6e44a03c69ffa4c43b7074e39c2047"}, "code": "5ed4347dbfaabaea97c0a0bec47102aa2513cfa5", "open_decisions": []}
+```
