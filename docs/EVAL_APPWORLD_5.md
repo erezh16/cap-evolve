@@ -2217,3 +2217,11 @@ Step `evoskill/scan` done. Next: metaharness/search.
 ```json
 {"cp": 147, "prev_cp": 146, "prev_commit": "e3784a377d5002e8fb3cf14930241b534d5bb621", "utc": "2026-10-19T01:15:51Z", "kind": "phase_done", "phase": "P7", "done_through": "evoskill/scan", "next": "metaharness/search", "candidate": null, "counts": {"evoskill": {"counted_rollouts": 492}}, "spend": {"evoskill": {"in": 1057898, "out": 84274, "usd": 4.91}}, "artifacts": {}, "code": "5ed4347dbfaabaea97c0a0bec47102aa2513cfa5", "open_decisions": []}
 ```
+
+## CP-0148 · 2026-10-19T01:15Z · P7 posted evoskill · posted
+
+Posted 'evoskill scan' on #884 (evoskill): https://github.com/skillberry-ai/cap-evolve/issues/884#issuecomment-6257582459
+
+```json
+{"cp": 148, "prev_cp": 147, "prev_commit": "fbad3abbb3f62bbfba79aa90ba3227a559e4c5e0", "utc": "2026-10-19T01:15:59Z", "kind": "posted", "phase": "P7", "done_through": "evoskill/scan", "next": "metaharness/search", "candidate": null, "counts": {"evoskill": {"counted_rollouts": 492}}, "spend": {"evoskill": {"in": 1057898, "out": 84274, "usd": 4.91}}, "artifacts": {}, "code": "5ed4347dbfaabaea97c0a0bec47102aa2513cfa5", "open_decisions": [], "post": "evoskill/m_scan", "url": "https://github.com/skillberry-ai/cap-evolve/issues/884#issuecomment-6257582459"}
+```
