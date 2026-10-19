@@ -3491,3 +3491,12 @@ User instruction (2026-10-19): post an update for each evaluation now, then ever
 ```json
 {"cp": 291, "prev_cp": 290, "prev_commit": "7bb70fb913a4abf9124496f92d10b8e7bad97557", "utc": "2026-10-19T21:20:41Z", "kind": "decision", "phase": "P8", "done_through": "p8final/580", "next": "p8final/cells", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {}, "code": "db8db585ea2e3c046dd44f9851f41edcebf479ed", "open_decisions": []}
 ```
+
+## CP-0292 · 2026-10-19T21:23Z · P8 final window · result
+
+final window: 43 cells since the last entry; 623/2016 done (evoskill 109, gepa 104, metaharness 90, seed 108, skillopt 122, wikiskill 90); infra still missing 0, retries 0.
+Next: p8final remaining cells.
+
+```json
+{"cp": 292, "prev_cp": 291, "prev_commit": "69364fed2e23b7d9d80453e3313cf9fb93f6a28f", "utc": "2026-10-19T21:23:25Z", "kind": "result", "phase": "P8", "done_through": "p8final/623", "next": "p8final/cells", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {"STATE/p8final/progress.json": "4f5704d51a45165a1c9e31707e3e1d152f003249fc4f5dfc1254821f4e99b6c7"}, "code": "69364fed2e23b7d9d80453e3313cf9fb93f6a28f", "open_decisions": [], "window": {"window": "p8final", "cells_total": 2016, "cells_done": 623, "order_sha256": "202efd8153925ef4d74fdfbf6897d0663c2d6519b0867a314b1084b0f60d3e29"}}
+```
