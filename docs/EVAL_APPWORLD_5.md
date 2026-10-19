@@ -3598,3 +3598,12 @@ User instruction (2026-10-19): memory limit at 90% of the container capacity wit
 ```json
 {"cp": 303, "prev_cp": 302, "prev_commit": "122aa34bd3612dbb0db246f23ced8744228483da", "utc": "2026-10-19T22:12:18Z", "kind": "decision", "phase": "P8", "done_through": "p8final/977", "next": "p8final/cells", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {}, "code": "69364fed2e23b7d9d80453e3313cf9fb93f6a28f", "open_decisions": []}
 ```
+
+## CP-0304 · 2026-10-19T22:15Z · P8 final window · result
+
+final window: 21 cells since the last entry; 998/2016 done (evoskill 164, gepa 175, metaharness 167, seed 159, skillopt 176, wikiskill 157); infra still missing 0, retries 2.
+Next: p8final remaining cells.
+
+```json
+{"cp": 304, "prev_cp": 303, "prev_commit": "ff9d29e4c6b75fbe2bf7871aa804fc4e452c2874", "utc": "2026-10-19T22:15:47Z", "kind": "result", "phase": "P8", "done_through": "p8final/998", "next": "p8final/cells", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {"STATE/p8final/progress.json": "7135dc2eba1206b6515c0f98712cbaf225c7e0c3ef0c10ca4f25ce1d46acac3a"}, "code": "ff9d29e4c6b75fbe2bf7871aa804fc4e452c2874", "open_decisions": [], "window": {"window": "p8final", "cells_total": 2016, "cells_done": 998, "order_sha256": "202efd8153925ef4d74fdfbf6897d0663c2d6519b0867a314b1084b0f60d3e29"}}
+```
