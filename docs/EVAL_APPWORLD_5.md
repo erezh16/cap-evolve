@@ -2928,3 +2928,13 @@ Next: metaharness/search.
 ```json
 {"cp": 229, "prev_cp": 228, "prev_commit": "ab0bd969955967965d3a92039502c4dc105679de", "utc": "2026-10-19T09:13:01Z", "kind": "heartbeat", "phase": "P3", "done_through": "metaharness/search/iteration 6", "next": "metaharness/search", "candidate": "metaharness", "counts": {"metaharness": {"counted_rollouts": 739}}, "spend": {"metaharness": {"in": 1684990, "out": 6084, "usd": 22.32}}, "artifacts": {}, "code": "1279e22c2a35307e03687d73691bf62aa81a8d59", "open_decisions": [], "runner": "alive"}
 ```
+
+## CP-0230 · 2026-10-19T09:38Z · P3 heartbeat · heartbeat
+
+No checkpoint for 25 min. Phase P3, last result: metaharness/search/iteration 6.
+Runner: alive (pid 338762). Last log line: `2026-10-19T09:26:57Z | metaharness | P3/train+dev | 140/147 episodes, passed 81, infra errors 0`.
+Next: metaharness/search.
+
+```json
+{"cp": 230, "prev_cp": 229, "prev_commit": "702e441acc08a65fa7e80872cc91d3ea9abca448", "utc": "2026-10-19T09:38:03Z", "kind": "heartbeat", "phase": "P3", "done_through": "metaharness/search/iteration 6", "next": "metaharness/search", "candidate": "metaharness", "counts": {"metaharness": {"counted_rollouts": 739}}, "spend": {"metaharness": {"in": 1684990, "out": 6084, "usd": 22.32}}, "artifacts": {}, "code": "1279e22c2a35307e03687d73691bf62aa81a8d59", "open_decisions": [], "runner": "alive"}
+```
