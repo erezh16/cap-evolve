@@ -2834,3 +2834,11 @@ User decision D11 (2026-10-19, via AskUserQuestion): re-run 2 Meta-Harness itera
 ```json
 {"cp": 218, "prev_cp": 217, "prev_commit": "e39ba511b607f690b8525d7bb9531ef7af1a6bfb", "utc": "2026-10-19T07:48:42Z", "kind": "decision", "phase": "P8", "done_through": "P8/void_1", "next": "metaharness/rerun", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 591}}, "spend": {"metaharness": {"in": 1261205, "out": 4920, "usd": 14.21}}, "artifacts": {}, "code": "7ac8201b08fa1e0021ff5e3d06a8db43a9b9ec76", "open_decisions": [], "decision": "D11"}
 ```
+
+## CP-0219 · 2026-10-19T07:50Z · P3 metaharness rerun · result
+
+D11 under way: the Meta-Harness search was relaunched with AW_MH_ITERS=7 (loop_state at 5 done, so 2 replacement iterations, 6 and 7) and the sub-agent wait fix active. When it exits, pipeline5 continues: metaharness freeze → scan → P6 refreeze (only the changed arm's 57 dev cells re-run) → P7 full scan → P8 final window from cell 1.
+
+```json
+{"cp": 219, "prev_cp": 218, "prev_commit": "236924b8e70e86232bac80609c97a0fa2c0145a0", "utc": "2026-10-19T07:50:11Z", "kind": "result", "phase": "P3", "done_through": "P8/void_1", "next": "metaharness/rerun", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 591}}, "spend": {"metaharness": {"in": 1261205, "out": 4920, "usd": 14.21}}, "artifacts": {}, "code": "7ac8201b08fa1e0021ff5e3d06a8db43a9b9ec76", "open_decisions": []}
+```

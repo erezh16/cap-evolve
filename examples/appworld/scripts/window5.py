@@ -193,6 +193,23 @@ def _own_pid(tag: str):
     return pidf
 
 
+def refreeze() -> int:
+    """Re-freeze after a candidate's artifact changed (D11): drop that arm's P6 dev records only, then freeze."""
+    old = (P.manifest().get("freeze") or {}).get("tree_sha256", {})
+    freeze()
+    new = P.manifest()["freeze"]["tree_sha256"]
+    changed = [a for a in P.ARMS if old.get(a) != new.get(a)]
+    order = P.read_json(P.AW_STATE / "p6dev" / "order.json") or make_order(P.read_split("dev"), list(P.ARMS), 1,
+                                                                           DEV_ORDER_SEED)
+    dropped = 0
+    for c in order:
+        if c["arm"] in changed and (P.AW_STATE / "p6dev" / "records" / f"{c['idx']}.json").exists():
+            (P.AW_STATE / "p6dev" / "records" / f"{c['idx']}.json").unlink()
+            dropped += 1
+    P.progress_log("p6dev", "P6", f"refreeze: changed arms {changed}; dropped {dropped} dev cells to re-run")
+    return 0
+
+
 def dev() -> int:
     """P6: the dev diagnostic of every arm's frozen artifact (1 trial, seed 100, dev = a tuning split)."""
     ids = P.read_split("dev")
@@ -201,6 +218,7 @@ def dev() -> int:
     if m.get("dev_order", {}).get("sha256") not in (None, order_sha(order)):
         raise SystemExit("regenerated dev order differs from the recorded sha256")
     P.update_manifest(dev_order={"seed": DEV_ORDER_SEED, "sha256": order_sha(order), "cells": len(order)})
+    P.write_json(P.AW_STATE / "p6dev" / "order.json", order)
     caps = {a: ART / a for a in P.ARMS}
     for a in P.ARMS:
         if P.sha256_tree(caps[a]) != m["freeze"]["tree_sha256"][a]:
@@ -243,4 +261,4 @@ def final() -> int:
 
 
 if __name__ == "__main__":
-    raise SystemExit({"freeze": freeze, "dev": dev, "final": final}[sys.argv[1]]())
+    raise SystemExit({"freeze": freeze, "refreeze": refreeze, "dev": dev, "final": final}[sys.argv[1]]())

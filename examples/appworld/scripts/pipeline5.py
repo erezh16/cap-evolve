@@ -39,8 +39,12 @@ def step_of(nxt: str):
         if what == "freeze":
             return [str(py), "-I", str(script), "freeze"], f"{c}/scan"
         i = P.CANDIDATES.index(c)  # per-candidate isolation scan, then the next candidate's search (§10)
-        after = f"{P.CANDIDATES[i + 1]}/search" if i + 1 < len(P.CANDIDATES) else "P6/freeze"
+        after = f"{P.CANDIDATES[i + 1]}/search" if i + 1 < len(P.CANDIDATES) else "P6/refreeze"
         return [str(P.VENV_PY), "-I", str(HERE / "scan5.py"), c], after
+    if nxt == "metaharness/rerun":  # D11: 2 replacement iterations, then freeze → scan → P6 (only the changed arm re-runs)
+        return [str(P.VENV_PY), "-I", str(EX / "metaharness" / "meta_harness_appworld.py"), "search"], "metaharness/freeze"
+    if nxt == "P6/refreeze":
+        return [str(P.VENV_PY), "-I", str(HERE / "window5.py"), "refreeze"], "p6dev/cells"
     if nxt == "P6/freeze":
         return [str(P.VENV_PY), "-I", str(HERE / "window5.py"), "freeze"], "p6dev/cells"
     if nxt.startswith("p6dev"):
