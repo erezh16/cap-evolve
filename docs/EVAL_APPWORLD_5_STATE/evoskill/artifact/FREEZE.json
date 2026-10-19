@@ -1,0 +1,29 @@
+{
+ "candidate": "evoskill",
+ "label": "",
+ "program": "iter-skill-25",
+ "full_dev": 0.7543859649122807,
+ "frontier": [
+  {
+   "program": "iter-skill-26",
+   "val_score": 0.75,
+   "full_dev": 0.7368421052631579,
+   "chars": 19521
+  },
+  {
+   "program": "iter-skill-25",
+   "val_score": 0.75,
+   "full_dev": 0.7543859649122807,
+   "chars": 18319
+  },
+  {
+   "program": "iter-skill-17",
+   "val_score": 0.65,
+   "full_dev": 0.7017543859649122,
+   "chars": 16534
+  }
+ ],
+ "memory_chars": 18319,
+ "memory_tokens": 4546,
+ "tree_sha256": "752986f79f5f3818aa440edf686477560b3b6da534089a95a6fc9747c7c80a3e"
+}
