@@ -2209,3 +2209,11 @@ Post-search isolation scan (counts only): evoskill: test-id hits 0. Literal-stri
 ```json
 {"cp": 146, "prev_cp": 145, "prev_commit": "c0a4d370074e3e0b10476242f87644361863f3f5", "utc": "2026-10-19T01:15:50Z", "kind": "result", "phase": "P7", "done_through": "evoskill/freeze", "next": "evoskill/scan", "candidate": null, "counts": {"evoskill": {"counted_rollouts": 492}}, "spend": {"evoskill": {"in": 1057898, "out": 84274, "usd": 4.91}}, "artifacts": {"STATE/isolation_scan.json": "9ef6313253b5f066b01803289fe70a4d0999268fac325fd3010c2487042f9b79"}, "code": "5ed4347dbfaabaea97c0a0bec47102aa2513cfa5", "open_decisions": []}
 ```
+
+## CP-0147 · 2026-10-19T01:15Z · P7 step done · phase_done
+
+Step `evoskill/scan` done. Next: metaharness/search.
+
+```json
+{"cp": 147, "prev_cp": 146, "prev_commit": "e3784a377d5002e8fb3cf14930241b534d5bb621", "utc": "2026-10-19T01:15:51Z", "kind": "phase_done", "phase": "P7", "done_through": "evoskill/scan", "next": "metaharness/search", "candidate": null, "counts": {"evoskill": {"counted_rollouts": 492}}, "spend": {"evoskill": {"in": 1057898, "out": 84274, "usd": 4.91}}, "artifacts": {}, "code": "5ed4347dbfaabaea97c0a0bec47102aa2513cfa5", "open_decisions": []}
+```
