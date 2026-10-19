@@ -2970,3 +2970,11 @@ Post-search isolation scan (counts only): metaharness: test-id hits 0. Literal-s
 ```json
 {"cp": 234, "prev_cp": 233, "prev_commit": "70129faf774206e294720b61407a64835d6993b8", "utc": "2026-10-19T09:55:30Z", "kind": "result", "phase": "P7", "done_through": "metaharness/freeze", "next": "metaharness/scan", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {"STATE/isolation_scan.json": "dfa1fb0f275dbded9a81c7a0f39245eb16561e29ff03d75555f5ce44019b3086"}, "code": "1279e22c2a35307e03687d73691bf62aa81a8d59", "open_decisions": []}
 ```
+
+## CP-0235 · 2026-10-19T09:55Z · P7 step done · phase_done
+
+Step `metaharness/scan` done. Next: P6/refreeze.
+
+```json
+{"cp": 235, "prev_cp": 234, "prev_commit": "e6db00545b391fc246b57f68005676c00f3b5efb", "utc": "2026-10-19T09:55:31Z", "kind": "phase_done", "phase": "P7", "done_through": "metaharness/scan", "next": "P6/refreeze", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {}, "code": "1279e22c2a35307e03687d73691bf62aa81a8d59", "open_decisions": []}
+```
