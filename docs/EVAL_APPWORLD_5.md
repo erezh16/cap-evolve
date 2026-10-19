@@ -2369,3 +2369,11 @@ Posted 'metaharness scan' on #885 (metaharness): https://github.com/skillberry-a
 ```json
 {"cp": 166, "prev_cp": 165, "prev_commit": "08d458d3e6c8177a2277514919b678f70a3bf69a", "utc": "2026-10-19T03:29:12Z", "kind": "posted", "phase": "P7", "done_through": "P6/freeze", "next": "p6dev/cells", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 591}}, "spend": {"metaharness": {"in": 1261205, "out": 4920, "usd": 14.21}}, "artifacts": {}, "code": "7ac8201b08fa1e0021ff5e3d06a8db43a9b9ec76", "open_decisions": [], "post": "metaharness/m_scan", "url": "https://github.com/skillberry-ai/cap-evolve/issues/885#issuecomment-6259018009"}
 ```
+
+## CP-0167 · 2026-10-19T03:29Z · P7 posted metaharness · posted
+
+Posted 'metaharness scanned' on #885 (metaharness): https://github.com/skillberry-ai/cap-evolve/issues/885#issuecomment-6259018302
+
+```json
+{"cp": 167, "prev_cp": 166, "prev_commit": "69d127063512fb3c624319d56b0db8814aad2319", "utc": "2026-10-19T03:29:14Z", "kind": "posted", "phase": "P7", "done_through": "P6/freeze", "next": "p6dev/cells", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 591}}, "spend": {"metaharness": {"in": 1261205, "out": 4920, "usd": 14.21}}, "artifacts": {}, "code": "7ac8201b08fa1e0021ff5e3d06a8db43a9b9ec76", "open_decisions": [], "post": "metaharness/m_scanned", "url": "https://github.com/skillberry-ai/cap-evolve/issues/885#issuecomment-6259018302"}
+```
