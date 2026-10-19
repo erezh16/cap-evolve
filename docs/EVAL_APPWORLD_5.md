@@ -3564,3 +3564,11 @@ Next: p8final/cells.
 ```json
 {"cp": 299, "prev_cp": 298, "prev_commit": "d927545afc78d439c79253dbfe8733e65cec51ee", "utc": "2026-10-19T22:00:42Z", "kind": "resume", "phase": "P8", "done_through": "p8final/927", "next": "p8final/cells", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {}, "code": "69364fed2e23b7d9d80453e3313cf9fb93f6a28f", "open_decisions": [], "adopted": ["gepa: 900 counted rollouts on record", "skillopt: 900 counted rollouts on record", "wikiskill: 792 counted rollouts on record", "evoskill: 663 counted rollouts on record", "metaharness: 887 counted rollouts on record", "p6dev: 342 local cell records", "p8final: 952 local cell records"], "plan": ["remove stale RUNNING.pid (400869)", "continue at next = p8final/cells", "restart the heartbeat loop"]}
 ```
+
+## CP-0300 · 2026-10-19T22:01Z · P8 container restart · restore
+
+The container restarted at ~21:57 UTC (container_age 32 s at check; memory.oom.group=1, so the cgroup counters were reset and an OOM cannot be confirmed; treated as one per CONTAINER_AGENT.md §2.5). The final window had run at 48 workers since 20:23 UTC (peak memory before that was ~25 GB of 32 GB during the voided window, so 48 workers plus the session is plausibly too much). Nothing durable was lost: 952/2,016 cell records were on /workspace; in-flight episodes were lost and are re-run with their recorded seeds. Resumed with resume.py at **24 workers** (relaunch smaller, never unchanged); heartbeat and the hourly autoposter were relaunched. Deviation from §12's 48 workers recorded; it only changes wall time.
+
+```json
+{"cp": 300, "prev_cp": 299, "prev_commit": "b4f5599fec86ff99e0ac8e70900c0d88ab7b7e00", "utc": "2026-10-19T22:01:31Z", "kind": "restore", "phase": "P8", "done_through": "p8final/927", "next": "p8final/cells", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {}, "code": "69364fed2e23b7d9d80453e3313cf9fb93f6a28f", "open_decisions": []}
+```
