@@ -1,0 +1,9 @@
+{
+ "candidate": "metaharness",
+ "label": "",
+ "best": "fetch_all_pages_helper",
+ "search_tgc": 0.5850340136054422,
+ "seed_search_tgc": 0.4013605442176871,
+ "iterations": 5,
+ "tree_sha256": "7e8d593ef479ebcd9c305b3035e6067f2dcb61702bcfef12a429f8c65beb0662"
+}

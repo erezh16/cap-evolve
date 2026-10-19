@@ -2321,3 +2321,11 @@ Meta-Harness search finished after 5 iteration(s): best search-set TGC 0.5850340
 ```json
 {"cp": 160, "prev_cp": 159, "prev_commit": "6a8b4be457bef1edd4d2935c359222035849e8ff", "utc": "2026-10-19T03:28:13Z", "kind": "phase_done", "phase": "P3", "done_through": "metaharness/search/search finished after 5 iteration(s)", "next": "metaharness/freeze", "candidate": "metaharness", "counts": {"metaharness": {"counted_rollouts": 591}}, "spend": {"metaharness": {"in": 1261205, "out": 4920, "usd": 14.21}}, "artifacts": {"STATE/metaharness/progress.json": "7d946e83b5d67e16501b374e1a71740288289da521e37c8cebd4b3d264205061"}, "code": "7ac8201b08fa1e0021ff5e3d06a8db43a9b9ec76", "open_decisions": []}
 ```
+
+## CP-0161 · 2026-10-19T03:28Z · P3 step done · phase_done
+
+Step `metaharness/freeze` done. Next: metaharness/scan.
+
+```json
+{"cp": 161, "prev_cp": 160, "prev_commit": "240fb31b8f4320df671588b181f4e6a70d1f087c", "utc": "2026-10-19T03:28:15Z", "kind": "phase_done", "phase": "P3", "done_through": "metaharness/freeze", "next": "metaharness/scan", "candidate": "metaharness", "counts": {"metaharness": {"counted_rollouts": 591}}, "spend": {"metaharness": {"in": 1261205, "out": 4920, "usd": 14.21}}, "artifacts": {}, "code": "7ac8201b08fa1e0021ff5e3d06a8db43a9b9ec76", "open_decisions": []}
+```
