@@ -1439,3 +1439,11 @@ Posted 'Trace2Skill hourly status' on #899 (trace2skill): https://github.com/ski
 ```json
 {"cp": 16, "prev_cp": 15, "prev_commit": "780950a7effb82a582e970d93cf5fd22db2af77b", "utc": "2026-10-20T21:38:01Z", "kind": "posted", "phase": "P2", "done_through": "P2/a9", "next": "P2/a10", "candidate": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "90b80d34b10b928cd7078db818109b6935dbca00", "open_decisions": [], "post": "trace2skill/status_20261020T2138", "url": "https://github.com/skillberry-ai/cap-evolve/issues/899#issuecomment-6302095888"}
 ```
+
+## CP-0017 · 2026-10-20T21:38Z · P2 posted gepa_full · posted
+
+Posted 'GEPA-Full hourly status' on #900 (gepa_full): https://github.com/skillberry-ai/cap-evolve/issues/900#issuecomment-6302096867
+
+```json
+{"cp": 17, "prev_cp": 16, "prev_commit": "b1e4cc448c8d4abdc66c9fb25b4be39b25e800d8", "utc": "2026-10-20T21:38:03Z", "kind": "posted", "phase": "P2", "done_through": "P2/a9", "next": "P2/a10", "candidate": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "90b80d34b10b928cd7078db818109b6935dbca00", "open_decisions": [], "post": "gepa_full/status_20261020T2138", "url": "https://github.com/skillberry-ai/cap-evolve/issues/900#issuecomment-6302096867"}
+```
