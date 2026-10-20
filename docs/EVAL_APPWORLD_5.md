@@ -4067,3 +4067,11 @@ Posted 'skillopt hourly status' on #882 (skillopt): https://github.com/skillberr
 ```json
 {"cp": 357, "prev_cp": 356, "prev_commit": "1a7b311160fb68c5f7b1ca75c28c286a2445be9e", "utc": "2026-10-20T01:21:24Z", "kind": "posted", "phase": "P8", "done_through": "p8final/1982", "next": "p8final/cells", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {}, "code": "e313482906b2361bebf1affee386553a26d3006f", "open_decisions": [], "post": "skillopt/status_497905", "url": "https://github.com/skillberry-ai/cap-evolve/issues/882#issuecomment-6281090658"}
 ```
+
+## CP-0358 · 2026-10-20T01:21Z · P8 posted wikiskill · posted
+
+Posted 'wikiskill hourly status' on #883 (wikiskill): https://github.com/skillberry-ai/cap-evolve/issues/883#issuecomment-6281091102
+
+```json
+{"cp": 358, "prev_cp": 357, "prev_commit": "077096494b7fa2842bd953d05c772e4f21931ebc", "utc": "2026-10-20T01:21:27Z", "kind": "posted", "phase": "P8", "done_through": "p8final/1982", "next": "p8final/cells", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {}, "code": "e313482906b2361bebf1affee386553a26d3006f", "open_decisions": [], "post": "wikiskill/status_497905", "url": "https://github.com/skillberry-ai/cap-evolve/issues/883#issuecomment-6281091102"}
+```
