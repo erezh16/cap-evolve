@@ -1383,3 +1383,11 @@ B6 common code written: scripts/awrest.py (constants, global slot pool with floc
 ```json
 {"cp": 9, "prev_cp": 8, "prev_commit": "71778190de84f60b6a61943a0aaf83df875aa7d9", "utc": "2026-10-20T20:53:04Z", "kind": "result", "phase": "P1", "done_through": "P1/b6-common", "next": "P1/b7", "candidate": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "71778190de84f60b6a61943a0aaf83df875aa7d9", "open_decisions": []}
 ```
+
+## CP-0010 · 2026-10-20T20:56Z · P1 B7 drivers · phase_start
+
+B7 started: five candidate drivers are being written in parallel sub-agents (rule R4), one per candidate, each in examples/appworld/<cand>/, each given section 4 verbatim, dev ids only, acceptance-namespace episodes only (not counted). memcheck before the spawn: 1.7% used, 32 sub-agents fit. In parallel the main session writes the common A-checks, the windows, the scan, the analysis and resume. Next: P2 common acceptance checks.
+
+```json
+{"cp": 10, "prev_cp": 9, "prev_commit": "b25b5b6bd8ae9a8fdc06e90ea3dc06b4105ec9d0", "utc": "2026-10-20T20:56:25Z", "kind": "phase_start", "phase": "P1", "done_through": "P1/b6", "next": "P1/b7", "candidate": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "b25b5b6bd8ae9a8fdc06e90ea3dc06b4105ec9d0", "open_decisions": []}
+```
