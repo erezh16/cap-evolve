@@ -1,0 +1,47 @@
+{
+ "run_pair_v0_cache": {
+  "records": 3,
+  "first_cache_hits": 3,
+  "second_cache_hits": 3,
+  "pass": true
+ },
+ "probe_cache_hits": 4,
+ "experience_call": {
+  "reusable": 3,
+  "needs_adjustment": 2,
+  "pass": true
+ },
+ "analyzer_call": {
+  "reusable_candidates": 6,
+  "adjustment_candidates": 1,
+  "pass": true
+ },
+ "editor_sandbox": {
+  "changed": "<list 1>",
+  "lint": "<list 0>",
+  "files_outside_tree": "<list 0>",
+  "pass": true
+ },
+ "preflight_rejects_broken_helper": {
+  "violations": 2,
+  "rollouts_run": 0,
+  "pass": true
+ },
+ "mock_reward_dry_run": {
+  "final": "v0",
+  "evaluation_mode": "standard",
+  "screen_review": "<str>",
+  "review": "<str>",
+  "confirmation_ran": false,
+  "channels": "<list 1>",
+  "fallbacks": "<list 0>",
+  "invalid_attempts_retried": 0,
+  "minutes": 3.3,
+  "stop_reason": "<str>",
+  "pass": true
+ },
+ "acceptance_usage_relocated": {
+  "optimizer_usage.jsonl": 35,
+  "llm_calls.jsonl": 34
+ }
+}
