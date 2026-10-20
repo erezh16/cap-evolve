@@ -4126,3 +4126,11 @@ Step `P9/analysis` done. Next: P10/post.
 ```json
 {"cp": 364, "prev_cp": 363, "prev_commit": "20f84ef0cd91f559f9e35f109da7855137abf911", "utc": "2026-10-20T01:29:22Z", "kind": "phase_done", "phase": "P8", "done_through": "P9/analysis", "next": "P10/post", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {}, "code": "e313482906b2361bebf1affee386553a26d3006f", "open_decisions": []}
 ```
+
+## CP-0365 · 2026-10-20T01:30Z · P9 analysis · phase_done
+
+P8 final window complete: 2,016/2,016 cells, 0 missing, 5 infra retries in total; root_full relocked. P9 analysis (scenario-clustered paired bootstrap, 56 clusters, 10,000 resamples, unadjusted): TGC seed 34.2 · gepa 60.1 (Δ +25.9 [18.5, 33.3]) · skillopt 59.2 (+25.0 [18.5, 31.8]) · wikiskill 55.1 (+20.8 [14.0, 28.0]) · evoskill 54.8 (+20.5 [13.7, 27.4]) · metaharness 52.1 (+17.9 [10.1, 25.3]); every candidate's CI excludes 0 on TGC and SGC. Aggregates in STATE/final/analysis.json and RESULTS.md. Next: P10, one results comment per issue.
+
+```json
+{"cp": 365, "prev_cp": 364, "prev_commit": "119ef4c0b7c3f97e4ad6d37c2f73c97df102c745", "utc": "2026-10-20T01:30:13Z", "kind": "phase_done", "phase": "P9", "done_through": "P9/analysis", "next": "P10/post", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {"STATE/final/analysis.json": "7042a17634249ff960e70caf17d1c8d3e5c64bcf1f8b825dac5a89da6ae1ef79", "STATE/final/RESULTS.md": "b274d31e85befd41ce2123bcb7020cf6e17e61c3875171720f9276cb26b26e60"}, "code": "e313482906b2361bebf1affee386553a26d3006f", "open_decisions": []}
+```
