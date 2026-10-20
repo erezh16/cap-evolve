@@ -14,13 +14,13 @@ A skill folder must satisfy all of the following rules:
 
 ### File Size Limits
 - SKILL.md must remain under 500 lines
-- Each `references/*.md` file must remain under 300 lines
-- If SKILL.md would exceed the line limit, extract self-contained subsections into separate `references/*.md` files and replace the moved content with a brief summary and a `references/filename.md` link
+- The SKILL.md body must stay under {m_cap_tokens} tokens; if it is over, shorten and merge guidance
+- No `references/` files are allowed: delete them and fold needed content into SKILL.md (the agent cannot open files)
 
 ### Writing Quality (preserve, do not degrade)
 - The SKILL.md body (after the frontmatter) is Markdown instructions — use imperative form ("Do X", "Return Y")
 - Explain *why* constraints matter rather than relying solely on ALWAYS/NEVER capitalization
-- Reference files are loaded on-demand; keep them focused and self-contained
+- Keep guidance generic (no task-specific values, names or answers)
 
 ## Output Format
 

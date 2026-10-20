@@ -299,10 +299,10 @@ def make_proposer(cand: str, stats: dict, lm=None):
             return lm(msgs, role)
         return opt_llm.chat(msgs, cand=cand, role=role, max_tokens=16000)
 
-    pc = stats.setdefault("proposer", {"lint_reject": 0, "invalid_block": 0, "parse_fail": 0, "refusals": 0,
-                                       "gave_up": 0, "calls": 0})
-
     def propose(candidate, reflective_dataset, components_to_update):
+        # looked up per call: on resume set_adapter_state replaces stats["proposer"] with the saved counters
+        pc = stats.setdefault("proposer", {"lint_reject": 0, "invalid_block": 0, "parse_fail": 0, "refusals": 0,
+                                           "gave_up": 0, "calls": 0})
         out = {}
         for comp in components_to_update:
             records = reflective_dataset.get(comp) or []

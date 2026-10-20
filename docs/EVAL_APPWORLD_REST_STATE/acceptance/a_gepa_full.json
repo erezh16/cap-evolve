@@ -1,0 +1,119 @@
+{
+ "1_seed_components": {
+  "n": 13,
+  "apps": [
+   "amazon",
+   "api_docs",
+   "file_system",
+   "gmail",
+   "phone",
+   "simple_note",
+   "splitwise",
+   "spotify",
+   "supervisor",
+   "todoist",
+   "venmo"
+  ],
+  "all_notes_keys": true,
+  "renders_to_seed_hash": true
+ },
+ "2_budget_identity": {
+  "total_num_evals": 64,
+  "cache_hits": 29,
+  "fresh": 35,
+  "ok": true,
+  "overshoot": 4,
+  "overshoot_bound": 11,
+  "visits": {
+   "policy/instructions.txt": 1,
+   "tools/helpers.py": 1,
+   "api_notes:amazon": 1,
+   "api_notes:api_docs": 1,
+   "api_notes:file_system": 1,
+   "api_notes:gmail": 1,
+   "api_notes:phone": 1,
+   "api_notes:simple_note": 1,
+   "api_notes:splitwise": 1
+  }
+ },
+ "3_rejections": {
+  "oversize_note_dropped": true,
+  "oversize_attempts": 3,
+  "invalid_helper_dropped": true,
+  "proposer": {
+   "lint_reject": 3,
+   "invalid_block": 3,
+   "parse_fail": 0,
+   "refusals": 0,
+   "gave_up": 2,
+   "calls": 6
+  },
+  "evaluator_lint_reject": true,
+  "evaluator_fresh_episodes": 0,
+  "accept_rollouts_logged": 2
+ },
+ "4_datasets": {
+  "apps_used_per_task_count": {
+   "amazon": 0,
+   "api_docs": 3,
+   "file_system": 0,
+   "gmail": 0,
+   "phone": 0,
+   "simple_note": 0,
+   "splitwise": 0,
+   "spotify": 4,
+   "supervisor": 4,
+   "todoist": 0,
+   "venmo": 0
+  },
+  "touched_app_records": 3,
+  "untouched_app": "amazon",
+  "untouched_fallback": 1,
+  "touched_fallback": 0,
+  "seed_rewards": [
+   1.0,
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ "5_forced_component": {
+  "component": "api_notes:spotify",
+  "visits": 1,
+  "proposals": 1,
+  "proposer": {
+   "lint_reject": 0,
+   "invalid_block": 2,
+   "parse_fail": 0,
+   "refusals": 0,
+   "gave_up": 0,
+   "calls": 3
+  },
+  "reflection_calls": 3,
+  "reflection_errors": 0,
+  "minibatch_seed_rewards": [
+   0.0,
+   1.0,
+   1.0
+  ],
+  "num_candidates": 1,
+  "child_text_reaches_candidate": true,
+  "total_metric_calls": 7,
+  "fresh_episodes": 3,
+  "cache_hits": 4,
+  "identity_ok": true,
+  "child_rejected_by_gate": true
+ },
+ "6_canary": {
+  "app": "spotify",
+  "lint": [],
+  "episode_error": null,
+  "steps": 3,
+  "lookups_of_app": 1,
+  "lookups_of_other_apps": 0,
+  "steps_with_canary_from_app_lookup": 1,
+  "steps_with_canary_elsewhere": 0,
+  "ok": true
+ },
+ "real_episodes_this_check": 6
+}

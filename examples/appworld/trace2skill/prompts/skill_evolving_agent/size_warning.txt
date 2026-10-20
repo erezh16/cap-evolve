@@ -1,2 +1,2 @@
 
-**WARNING**: SKILL.md is approaching the line limit. Consider extracting detailed content into references/ files.
+**WARNING**: SKILL.md is approaching the line limit. Shorten and merge guidance; do not create reference files.

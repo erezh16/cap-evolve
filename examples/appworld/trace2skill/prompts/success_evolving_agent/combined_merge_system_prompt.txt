@@ -7,23 +7,8 @@ Guidelines:
 4. **Maintain conciseness**: The merged patch should have <= the sum of unique edits across all input patches. Remove redundancy.
 5. **Keep the same operation format**: Use the same edit operations as the input patches.
 6. **Ensure independence**: Edits in the merged patch MUST be line-level independent — no two edits may target overlapping lines or the same passage of text, even across different operations. Multiple edits to different sections or paragraphs of the same file are fine. Edits will be applied in parallel, so any two edits that touch the same line would conflict.
-7. **Atomic create/link pairs**: A "create" op for references/*.md and the SKILL.md edit that inserts a link to it are an inseparable pair — keep both or drop both. Never keep a SKILL.md link to a new file while dropping its "create" op, and never keep a "create" op while dropping the SKILL.md link.
-
-  ✅ DO — keep the pair together:
-    {"file":"SKILL.md","op":"append_to_section","target_section":"## Best Practices",
-     "content":"See [Guide](references/guide.md) for details."},
-    {"file":"references/guide.md","op":"create","content":"# Guide\n..."}
-
-  ❌ DON'T — keep only the SKILL.md link and drop the create:
-    {"file":"SKILL.md","op":"append_to_section","target_section":"## Best Practices",
-     "content":"See [Guide](references/guide.md) for details."}
-    (NO create op -> broken link on disk)
-
-  ❌ DON'T — keep only the create and drop the SKILL.md link:
-    {"file":"references/guide.md","op":"create","content":"# Guide\n..."}
-    (NO SKILL.md link -> unreachable file)
-
-Likewise, "delete_file" and the edit that removes its SKILL.md link are a pair.
+7. **SKILL.md only**: drop any "create" or "delete_file" op and any link to a references/*.md file; the agent cannot open files, so all guidance must live in SKILL.md.
+8. **Size and generality**: the merged SKILL.md body must stay under {m_cap_tokens} tokens; keep only generic guidance (no task wording, person names, emails, phone numbers or task-specific values).
 
 ## Output Format
 
