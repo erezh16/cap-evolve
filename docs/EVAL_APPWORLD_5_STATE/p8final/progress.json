@@ -1,28 +1,28 @@
 {
  "window": "p8final",
  "cells_total": 2016,
- "cells_done": 1610,
+ "cells_done": 1642,
  "per_arm": {
   "evoskill": {
-   "done": 271,
+   "done": 279,
    "infra_missing": 0,
    "infra_retries": 1,
    "context_exceeded": 0
   },
   "seed": {
-   "done": 264,
+   "done": 272,
    "infra_missing": 0,
    "infra_retries": 1,
    "context_exceeded": 0
   },
   "metaharness": {
-   "done": 265,
+   "done": 267,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
   },
   "wikiskill": {
-   "done": 254,
+   "done": 262,
    "infra_missing": 0,
    "infra_retries": 1,
    "context_exceeded": 0
@@ -34,7 +34,7 @@
    "context_exceeded": 0
   },
   "skillopt": {
-   "done": 272,
+   "done": 278,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0

@@ -3894,3 +3894,12 @@ Next: p8final remaining cells.
 ```json
 {"cp": 337, "prev_cp": 336, "prev_commit": "7ed18ada5299993123ea23512ff977788984c44e", "utc": "2026-10-20T00:11:19Z", "kind": "result", "phase": "P8", "done_through": "p8final/1610", "next": "p8final/cells", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {"STATE/p8final/progress.json": "979845c18dc19a548bb4c6f0c9da6a8c5a9e3750d555f33365648ac29fb25a97"}, "code": "ff9d29e4c6b75fbe2bf7871aa804fc4e452c2874", "open_decisions": [], "window": {"window": "p8final", "cells_total": 2016, "cells_done": 1610, "order_sha256": "202efd8153925ef4d74fdfbf6897d0663c2d6519b0867a314b1084b0f60d3e29"}}
 ```
+
+## CP-0338 · 2026-10-20T00:16Z · P8 final window · result
+
+final window: 32 cells since the last entry; 1642/2016 done (evoskill 279, gepa 284, metaharness 267, seed 272, skillopt 278, wikiskill 262); infra still missing 0, retries 3.
+Next: p8final remaining cells.
+
+```json
+{"cp": 338, "prev_cp": 337, "prev_commit": "fdba6bbf905aa202ea46b479c4489b37c63372d3", "utc": "2026-10-20T00:16:20Z", "kind": "result", "phase": "P8", "done_through": "p8final/1642", "next": "p8final/cells", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {"STATE/p8final/progress.json": "9b6370e816dfa1a394de2ebb4b577314386a53d01926889f3e7bc389994ed17b"}, "code": "ff9d29e4c6b75fbe2bf7871aa804fc4e452c2874", "open_decisions": [], "window": {"window": "p8final", "cells_total": 2016, "cells_done": 1642, "order_sha256": "202efd8153925ef4d74fdfbf6897d0663c2d6519b0867a314b1084b0f60d3e29"}}
+```
