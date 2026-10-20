@@ -4182,3 +4182,11 @@ Posted 'Meta-Harness results' on #885 (metaharness): https://github.com/skillber
 ```json
 {"cp": 371, "prev_cp": 370, "prev_commit": "1652302206fe91a0559542d70b9f2591e123e05a", "utc": "2026-10-20T01:35:13Z", "kind": "posted", "phase": "P10", "done_through": "P9/analysis", "next": "P10/post", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {}, "code": "0b33760c3e12190eb1854ec0ca4604ac1392fc17", "open_decisions": [], "post": "metaharness/results", "url": "https://github.com/skillberry-ai/cap-evolve/issues/885#issuecomment-6281258441"}
 ```
+
+## CP-0372 · 2026-10-20T01:35Z · P10 evaluation complete · phase_done
+
+P10 done: one results comment per candidate (#881 gepa, #882 skillopt, #883 wikiskill, #884 evoskill, #885 metaharness). Cross-candidate summary, side by side, not a ranking (unmatched budgets and surfaces; one search seed each; window-to-window drift ~4-6 TGC points): delta TGC vs seed on test_normal (seed 34.2) - GEPA +25.9 [18.5, 33.3], SkillOpt +25.0 [18.5, 31.8], WikiSkill +20.8 [14.0, 28.0], EvoSkill +20.5 [13.7, 27.4], Meta-Harness +17.9 [10.1, 25.3]; every CI excludes 0 on TGC and SGC; 0 test-id hits for every arm. Optimizer spend about 54.60 USD over the five searches (+ about 5.60 USD acceptance). Hourly status posts end now (each issue has its results comment). Background loops (heartbeat, autoposter, memory guard) stopped; root_full relocked. The evaluation is complete.
+
+```json
+{"cp": 372, "prev_cp": 371, "prev_commit": "0f24b0c4c999a7447ee78a6be8a25eab51a38538", "utc": "2026-10-20T01:35:44Z", "kind": "phase_done", "phase": "P10", "done_through": "P10/posted", "next": "done", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {}, "code": "0b33760c3e12190eb1854ec0ca4604ac1392fc17", "open_decisions": []}
+```
