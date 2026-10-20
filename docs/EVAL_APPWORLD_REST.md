@@ -1615,3 +1615,11 @@ Posted 'correction' on #901 (cape_improve): https://github.com/skillberry-ai/cap
 ```json
 {"cp": 38, "prev_cp": 37, "prev_commit": "4444d522ef9e88fd696a171b44f1a3298da74283", "utc": "2026-10-20T22:17:28Z", "kind": "posted", "phase": "P4", "done_through": "P2/done", "next": "P4/searches", "candidate": "gepa_full", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": [], "post": "cape_improve/correction_launch1", "url": "https://github.com/skillberry-ai/cap-evolve/issues/901#issuecomment-6303020043"}
 ```
+
+## CP-0039 · 2026-10-20T22:17Z · P4 cape_improve search · phase_start
+
+P4: cape_improve chain started (search, freeze, isolation scan), pid file AW_STATE/p4/cape_improve.pid. Running chains: cape_improve, gepa_full. Global slots 24; memory 7.47%.
+
+```json
+{"cp": 39, "prev_cp": 38, "prev_commit": "9a7394fa1393b5795bd6e9cde24d9266c5069bbc", "utc": "2026-10-20T22:17:29Z", "kind": "phase_start", "phase": "P4", "done_through": "P2/done", "next": "P4/searches", "candidate": "cape_improve", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": []}
+```
