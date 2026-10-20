@@ -1703,3 +1703,11 @@ Posted 'GEPA-Full: accepted candidate' on #900 (gepa_full): https://github.com/s
 ```json
 {"cp": 49, "prev_cp": 48, "prev_commit": "dc0570f9c35ee347df6117f790fa58bbd492e3e5", "utc": "2026-10-20T22:57:47Z", "kind": "posted", "phase": "P4", "done_through": "gepa_full/search/iteration 1", "next": "gepa_full/search", "candidate": "gepa_full", "counts": {"gepa_full": {"counted_rollouts": 60}}, "spend": {"gepa_full": {"in": 22690, "out": 7155, "proxy_usd": 0.12}}, "artifacts": {}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": [], "post": "gepa_full/accept_it1", "url": "https://github.com/skillberry-ai/cap-evolve/issues/900#issuecomment-6303653230"}
 ```
+
+## CP-0050 · 2026-10-20T22:58Z · P4 posted gepa_full · posted
+
+Posted 'GEPA-Full new best search-time score' on #900 (gepa_full): https://github.com/skillberry-ai/cap-evolve/issues/900#issuecomment-6303666499
+
+```json
+{"cp": 50, "prev_cp": 49, "prev_commit": "52df5ebf2dc77a1bed57b82422f201db31e0db42", "utc": "2026-10-20T22:58:43Z", "kind": "posted", "phase": "P4", "done_through": "gepa_full/search/iteration 1", "next": "gepa_full/search", "candidate": "gepa_full", "counts": {"gepa_full": {"counted_rollouts": 60}}, "spend": {"gepa_full": {"in": 22690, "out": 7155, "proxy_usd": 0.12}}, "artifacts": {}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": [], "post": "gepa_full/m4_best_0.6667", "url": "https://github.com/skillberry-ai/cap-evolve/issues/900#issuecomment-6303666499"}
+```
