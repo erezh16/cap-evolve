@@ -1,0 +1,21 @@
+{
+ "counted_rollouts": 0,
+ "cache_hits": 351,
+ "optimizer": {
+  "calls": 74,
+  "errors": 0,
+  "prompt_tokens": 266064,
+  "completion_tokens": 51579,
+  "cache_read": 0,
+  "cache_write": 0,
+  "seconds": 450.2,
+  "proxy_usd": 1.05
+ },
+ "updated": "2026-10-20T22:28:37Z",
+ "stage": "search running",
+ "demo_pool": 34,
+ "minibatch_trials": 0,
+ "full_evals": 1,
+ "best_search_score": 0.3333,
+ "best_search_label": "dev TGC of the best full-eval program (selection-biased)"
+}

@@ -1639,3 +1639,11 @@ P4 wave 1 running: cape_improve (relaunched 22:17; IMP launch checks passed; bas
 ```json
 {"cp": 41, "prev_cp": 40, "prev_commit": "093a7a32ec9c8004d75bdfb30b799c33eb79ba7f", "utc": "2026-10-20T22:22:43Z", "kind": "result", "phase": "P4", "done_through": "P2/done", "next": "P4/searches", "candidate": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": []}
 ```
+
+## CP-0042 · 2026-10-20T22:28Z · P4 miprov2 search · result
+
+MIPROv2 search: 0 minibatch trials, 1 full evals after the default; best full-eval dev score 33.33; counted rollouts 0 of 900.
+
+```json
+{"cp": 42, "prev_cp": 41, "prev_commit": "c10e61eea292ba9ed720a8450dc2fe6510389b5a", "utc": "2026-10-20T22:28:37Z", "kind": "result", "phase": "P4", "done_through": "P2/done", "next": "P4/searches", "candidate": "miprov2", "counts": {"miprov2": {"counted_rollouts": 0}}, "spend": {}, "artifacts": {}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": []}
+```
