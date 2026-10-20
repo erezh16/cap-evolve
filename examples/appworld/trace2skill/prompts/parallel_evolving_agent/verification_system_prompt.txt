@@ -14,7 +14,7 @@ A skill folder must satisfy all of the following rules:
 
 ### File Size Limits
 - SKILL.md must remain under 500 lines
-- The SKILL.md body must stay under {m_cap_tokens} tokens; if it is over, shorten and merge guidance
+- The SKILL.md body must stay under @@M_CAP_TOKENS@@ tokens; if it is over, shorten and merge guidance
 - No `references/` files are allowed: delete them and fold needed content into SKILL.md (the agent cannot open files)
 
 ### Writing Quality (preserve, do not degrade)

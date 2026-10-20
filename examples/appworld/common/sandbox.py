@@ -40,12 +40,17 @@ def deny_paths() -> list[Path]:
         HOME / ".claude" / "projects", HOME / ".claude" / "todos", HOME / ".config" / "gh",
         Path("/tmp/data-gym-cache"),
         OPT_ROOT / "_probe",                        # A9's planted secrets outside every workspace
+        CAPE_RUN / ".capevolve" / "project" / "adapters",   # cape_improve's adapter code (calls the evaluator)
     ] + _other_session_tmp()
+
+
+# cape_improve's cap-evolve run dir: the optimizer's workdirs are <run>/work/<cid> inside it (decision CP-0014)
+CAPE_RUN = P.AW_HOME / "cape_run"
 
 
 def deny_paths_for(cand: str) -> list[Path]:
     """deny_paths() plus every other candidate's optimizer workspaces (§10: AW_SCRATCH except the call's own)."""
-    return deny_paths() + [OPT_ROOT / c for c in P.CANDIDATES if c != cand]
+    return deny_paths() + [OPT_ROOT / c for c in P.CANDIDATES if c != cand] + ([CAPE_RUN] if cand != "cape_improve" else [])
 
 
 def _other_session_tmp() -> list[Path]:

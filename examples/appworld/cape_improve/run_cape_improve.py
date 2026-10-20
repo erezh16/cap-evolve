@@ -51,7 +51,10 @@ REQUIRED_STRINGS = ["## Strategies for selecting improvements", "**Optimize code
                     "**On tools, use the whole tools skill.**",
                     "# Optimize the capability — ship the edit with the largest expected reward gain",
                     "## AppWorld facts for THIS run"]
-FORBIDDEN_STRINGS = ["THREE TESTS", "VERIFY-THE-FIX", "{AW_", "{{"]
+FORBIDDEN_STRINGS = ["THREE TESTS", "VERIFY-THE-FIX", "{AW_"]
+# an unfilled cap-evolve placeholder ({{FAILURES}}, {{PARALLEL_NOTE}}, ...). The prompt's own Jinja variables
+# ({{ instruction }}), quoted on purpose in the AppWorld facts block, are lower case with spaces.
+UNFILLED_RE = re.compile(r"\{\{[A-Z][A-Z0-9_]*\}\}")
 GUIDANCE = {"tools": SKILLS / "capabilities" / "tools" / "SKILL.md",
             "system-prompt": SKILLS / "capabilities" / "system-prompt" / "SKILL.md",
             "diagnose": SKILLS / "phases" / "diagnose" / "SKILL.md"}
@@ -209,7 +212,7 @@ def _imp_run(proj: Path, run_dir: Path) -> dict:
     for w in works:
         t = w.read_text(encoding="utf-8")
         inst.append({"cid": w.parent.name, "has": {s: (s in t) for s in REQUIRED_STRINGS},
-                     "forbidden": [s for s in FORBIDDEN_STRINGS if s in t]})
+                     "forbidden": [s for s in FORBIDDEN_STRINGS if s in t] + sorted(set(UNFILLED_RE.findall(t)))})
     diff = (PUSHED / "instructions.diff").read_text() if (PUSHED / "instructions.diff").exists() else ""
     out["5_instructions"] = {"ok": bool(inst) and all(all(i["has"].values()) and not i["forbidden"] for i in inst)
                              and diff_only_insertion(diff), "iterations": len(inst),

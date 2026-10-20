@@ -6,7 +6,7 @@ For each source module, copies the named top-level definitions (functions, class
 everything they reference inside the vendored set (transitive closure), byte-for-byte from the pinned
 clone, in source order. Imports between vendored modules are rewritten to the vendor package; any name
 that resolves to a non-vendored module is listed in VENDORED.md as external and must be provided by
-vendor/_external.py (only names on code paths the port never takes). Writes VENDORED.md with the source
+hl_vendor/_external.py (only names on code paths the port never takes). Writes VENDORED.md with the source
 path, commit and sha256 of every source file.
 """
 
@@ -48,7 +48,8 @@ ROOTS = {
         "canonicalize_main_decision", "validate_main_decision", "build_exploration_status",
         "_baseline_evidence_summary", "validate_final_decision", "canonicalize_final_decision",
         "_attributable_positive_task_ids", "uncertain_recovery_task_ids", "_required_metric",
-        "deterministic_reject_decision", "_final_review_attempts"],
+        "deterministic_reject_decision", "_final_review_attempts", "GLOBAL_INSTRUCTION_CHANNELS",
+        "validate_candidate_channel_combination"],
     "harnesslens/evolution/controller.py": [
         "reference_metrics_from_comparison_index", "select_confirmation_task_ids", "_evaluation_requires_confirmation",
         "advance_cumulative_version", "assert_candidate_extends_champion", "assert_confirmed_promotion",
@@ -57,6 +58,7 @@ ROOTS = {
     "harnesslens/evolution/harness_editor.py": ["EDITOR_SYSTEM_PROMPT", "EDITOR_TOOLS"],
     "harnesslens/harnesses/channel_preflight.py": ["PREFLIGHT_CREATION_COST"],
     "harnesslens/core/artifacts.py": ["write_json", "write_text", "read_json", "content_digest"],
+    "harnesslens/benchmarks/task_data.py": ["evaluation_contract"],
 }
 
 

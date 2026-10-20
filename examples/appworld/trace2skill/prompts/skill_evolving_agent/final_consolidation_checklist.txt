@@ -5,4 +5,4 @@ All error records have been processed. Review the complete skill folder:
 4. Merge overlapping warnings
 5. Ensure consistent style (imperative form)
 6. Keep only generic, reusable guidance (no task-specific values, names or answers)
-7. Make the SKILL.md body fit under {m_cap_tokens} tokens (about {m_cap_chars} characters): shorten, merge and drop the least-supported guidance; do NOT move content into reference files
+7. Make the SKILL.md body fit under @@M_CAP_TOKENS@@ tokens (and @@M_CAP_CHARS@@ characters): shorten, merge and drop the least-supported guidance; do NOT move content into reference files

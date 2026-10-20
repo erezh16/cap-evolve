@@ -48,8 +48,8 @@ def real_claude() -> str:
 
 def main() -> int:
     args = sys.argv[1:]
-    if any(a in ("--dangerously-skip-permissions", "--settings") for a in args):
-        sys.exit("sandbox_cc/claude: refusing a caller-supplied --settings or permission bypass")
+    if any(a in ("--dangerously-skip-permissions", "--settings", "--setting-sources") for a in args):
+        sys.exit("sandbox_cc/claude: refusing a caller-supplied --settings/--setting-sources or permission bypass")
     workdir = Path.cwd().resolve()
     extra = [Path(p) for p in os.environ.get("AW_CAPE_EXTRA_DENY", "").split(os.pathsep) if p]
     sf = SB.settings_file(CAND, workdir, extra)       # also refuses a workspace under a denied path
@@ -59,7 +59,10 @@ def main() -> int:
     s["env"].update({k: P.OPT_MODEL for k in MODEL_VARS})
     s["env"]["CLAUDE_CODE_PRINT_BG_WAIT_CEILING_MS"] = SB.PRINT_BG_WAIT_MS
     P.atomic_write(sf, json.dumps(s, indent=1))
-    argv = [real_claude(), *args, "--settings", str(sf)]
+    # --setting-sources "": user/project settings must not load. ~/.claude/settings.json allows WebFetch(domain:*),
+    # which Claude Code merges into the sandbox proxy's domain allowlist (A9 found the network open without this).
+    # Managed settings (sandbox.bwrapPath) still load. The registry flags in `args` are passed unchanged.
+    argv = [real_claude(), *args, "--settings", str(sf), "--setting-sources", ""]
     if os.environ.get("AW_SHIM_PRINT_ONLY") == "1":
         print(json.dumps({"argv": argv, "cwd": str(workdir), "settings": str(sf)}))
         return 0

@@ -1,187 +1,265 @@
-"""Analysis + results draft for the final window (README: Final window).
+"""P8: analysis of the one final window of eval REST (docs/EVAL_APPWORLD_REST.md §14, §5.2).
 
-    python analyze.py      # reads runs/final/results.jsonl, writes runs/final/results.json and RESULTS.md
+  venv-aw/bin/python -I analyze.py      # reads AW_STATE/final/{order.json,records/}; writes final/analysis.json
+                                        # + final/RESULTS.md (pushed; aggregates only) and per-candidate drafts
 
-TGC = mean over tasks of the mean over trials of success; SGC = a scenario passes in trial k iff
-all its tasks pass in trial k, averaged over k and scenarios. Paired differences use a
-scenario-clustered paired bootstrap (56 clusters, 10,000 resamples), 95% percentile CI, no
-multiplicity correction. A cell that is still infra-errored is scored 0 (primary) and dropped in
-the sensitivity analysis. Only rewards and counters are read; no test trajectory is opened.
+ARMS = seed + the five candidates. TGC = mean over tasks of the mean over trials of success; SGC = a scenario
+passes in trial k iff all its tasks pass in trial k, averaged over k and scenarios; both by difficulty (Easy /
+Medium / Hard). For each candidate, the paired difference `<cand> − seed` with a scenario-clustered paired
+bootstrap (56 clusters, 10,000 resamples) 95% percentile CI, unadjusted. An infra-failed cell is scored 0
+(primary) and dropped in the sensitivity analysis. Only rewards, counters and infra flags are read; no test
+trajectory is opened. Cost/tokens/latency per arm come from the window's own records (agent side) and from
+each candidate's optimizer_usage.jsonl and rollouts.jsonl (optimizer side, search).
 """
 
 from __future__ import annotations
 
 import json
+import os
 import random
 import statistics
 import sys
 from collections import defaultdict
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
-from awpaths import CAPE_RUN, FINAL, MANIFEST, ROOT_FULL, RUNS, read_split  # noqa: E402
+HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE))
+import awrest as P  # noqa: E402
+sys.path.insert(0, str(HERE.parent / "common"))
+import opt_llm  # noqa: E402
 
-ARMS = ("seed", "cape-hc", "altk")
+ARMS = P.ARMS
 TRIALS = 2
 DIFF = {1: "Easy", 2: "Medium", 3: "Hard"}
-B = 10000
-PAIRS = (("cape-hc", "seed"), ("altk", "seed"), ("cape-hc", "altk"))
-COLLEAGUES = {"no memory": (39.9, 21.4), "ALTK-Evolve": (56.0, 37.5)}
+B = int(os.environ.get("AW_BOOTSTRAP", 10000))
 
 
-def load_cells(ids: list[str]) -> tuple[dict, dict]:
-    """(arm, task, trial) -> record; the last non-error attempt wins, else the last error."""
-    cells: dict = {}
-    for line in (FINAL / "results.jsonl").read_text().splitlines():
-        r = json.loads(line)
-        key = (r["arm"], r["task_id"], r["trial"])
-        if key not in cells or cells[key].get("infra_error") or not r.get("infra_error"):
-            cells[key] = r
-    missing = {k: v for k, v in cells.items() if v.get("infra_error")}
-    for arm in ARMS:
-        for t in ids:
-            for k in range(TRIALS):
-                if (arm, t, k) not in cells:
-                    missing[(arm, t, k)] = {"infra_error": "never ran"}
-    return cells, missing
+def load():
+    order = P.read_json(P.AW_STATE / "final" / "order.json")
+    recs = {}
+    for p in (P.AW_STATE / "final" / "records").glob("*.json"):
+        recs[int(p.stem)] = json.loads(p.read_text())
+    cells = {}
+    for c in order:
+        r = recs.get(c["idx"])
+        cells[(c["arm"], c["task_id"], c["trial"])] = r if r is not None else {"infra_error": "never ran"}
+    return order, cells
 
 
-def succ(cells, arm, t, k, drop_missing=False):
+def succ(cells, arm, t, k, drop=False):
     r = cells.get((arm, t, k))
     if r is None or r.get("infra_error"):
-        return None if drop_missing else 0.0
+        return None if drop else 0.0
     return 1.0 if r.get("success") else 0.0
 
 
-def tgc(cells, arm, tasks, drop_missing=False):
+def tgc(cells, arm, tasks, drop=False):
     per = []
     for t in tasks:
-        v = [x for k in range(TRIALS) if (x := succ(cells, arm, t, k, drop_missing)) is not None]
+        v = [x for k in range(TRIALS) if (x := succ(cells, arm, t, k, drop)) is not None]
         if v:
             per.append(sum(v) / len(v))
     return sum(per) / len(per) if per else float("nan")
 
 
-def sgc(cells, arm, scen_tasks: dict, drop_missing=False):
+def sgc(cells, arm, scen, drop=False):
     vals = []
     for k in range(TRIALS):
-        for s, ts in scen_tasks.items():
-            v = [succ(cells, arm, t, k, drop_missing) for t in ts]
-            if drop_missing and any(x is None for x in v):
+        for s, ts in scen.items():
+            v = [succ(cells, arm, t, k, drop) for t in ts]
+            if drop and any(x is None for x in v):
                 continue
             vals.append(1.0 if all(x == 1.0 for x in v) else 0.0)
     return sum(vals) / len(vals) if vals else float("nan")
 
 
-def bootstrap(cells, a, b, scen_tasks, rng):
-    scens = sorted(scen_tasks)
-    d_t, d_s = [], []
+def bootstrap(cells, a, b, scen, rng):
+    scens = sorted(scen)
+    dt, ds = [], []
     for _ in range(B):
         pick = [rng.choice(scens) for _ in scens]
-        tasks = [t for s in pick for t in scen_tasks[s]]
-        st = {f"{s}#{i}": scen_tasks[s] for i, s in enumerate(pick)}
-        d_t.append(tgc(cells, a, tasks) - tgc(cells, b, tasks))
-        d_s.append(sgc(cells, a, st) - sgc(cells, b, st))
+        tasks = [t for s in pick for t in scen[s]]
+        st = {f"{s}#{i}": scen[s] for i, s in enumerate(pick)}
+        dt.append(tgc(cells, a, tasks) - tgc(cells, b, tasks))
+        ds.append(sgc(cells, a, st) - sgc(cells, b, st))
 
     def ci(xs):
         xs = sorted(xs)
         return [xs[int(0.025 * B)], xs[int(0.975 * B) - 1]]
-    return ci(d_t), ci(d_s)
+    return ci(dt), ci(ds)
+
+
+def by_difficulty(cells, arm, ids, scen, diff, d) -> dict:
+    """TGC over the tasks of difficulty d; SGC over the scenarios whose tasks are all of difficulty d."""
+    ts = [t for t in ids if diff[t] == d]
+    sc = {s: v for s, v in scen.items() if all(diff[t] == d for t in v)}
+    return {"n": len(ts), "tgc": tgc(cells, arm, ts), "n_scenarios": len(sc), "sgc": sgc(cells, arm, sc) if sc else None}
+
+
+def _q(xs: list[float], q: float):
+    xs = sorted(x for x in xs if x is not None)
+    if not xs:
+        return None
+    return xs[min(len(xs) - 1, int(q * len(xs)))]
+
+
+def _dist(rows: list[dict], k: str) -> dict:
+    v = [float(r[k]) for r in rows if r.get(k) is not None]
+    return {"mean": round(statistics.mean(v), 1) if v else None, "p50": _q(v, 0.5), "p90": _q(v, 0.9)}
+
+
+def search_side(c: str) -> dict:
+    """§5.2 search-phase rows, from shared code only: the evaluator's rollouts/cache/lint logs and the usage log."""
+    u = P.read_jsonl(P.AW_STATE / c / "optimizer_usage.jsonl")
+    ro = P.read_jsonl(P.AW_STATE / c / "rollouts.jsonl")
+    t = opt_llm.totals(c)
+    models = sorted({r.get("model") for r in u if r.get("model")})
+    roles: dict = defaultdict(lambda: {"calls": 0, "in": 0, "out": 0, "cache_read": 0, "cache_write": 0})
+    for r in u:
+        x = roles[r.get("role") or "?"]
+        x["calls"] += 1
+        x["in"] += int(r.get("prompt_tokens") or 0)
+        x["out"] += int(r.get("completion_tokens") or 0)
+        x["cache_read"] += int(r.get("cache_read") or 0)
+        x["cache_write"] += int(r.get("cache_write") or 0)
+    secs = [float(r.get("seconds") or 0) for r in u]
+    fz = P.read_json(P.PUSHED / c / "artifact" / "FREEZE.json", {}) or {}
+    return {"optimizer": {"calls": len(u), "errors": sum(1 for r in u if r.get("error")), "models": models,
+                          "input_tokens": t["prompt_tokens"], "output_tokens": t["completion_tokens"],
+                          "cache_read_tokens": t["cache_read"], "cache_write_tokens": t["cache_write"],
+                          "proxy_usd": opt_llm.proxy_usd(t),
+                          "cli_reported_usd": round(sum(float(r.get("total_cost_usd") or 0) for r in u), 2) or None,
+                          "per_role": dict(roles), "call_seconds_mean": round(statistics.mean(secs), 1) if secs else None,
+                          "call_seconds_p90": _q(secs, 0.9), "optimizer_seconds_total": round(sum(secs))},
+            "rollouts": {"counted": len(ro), "cache_hits": len(P.read_jsonl(P.AW_STATE / c / "cache_hits.jsonl")),
+                         "lint_reject_batches": len(P.read_jsonl(P.AW_STATE / c / "lint_rejects.jsonl")),
+                         "infra": sum(1 for r in ro if r.get("infra")),
+                         "mean_reward_counted": round(statistics.mean([r["reward"] for r in ro]), 4) if ro else None,
+                         "prompt_tokens": _dist(ro, "prompt_tokens"), "completion_tokens": _dist(ro, "completion_tokens"),
+                         "max_prompt_tokens": max((int(r.get("max_prompt_tokens") or 0) for r in ro), default=0),
+                         "steps": _dist(ro, "steps"), "episode_seconds": _dist(ro, "seconds"),
+                         "step_cap_hits": sum(1 for r in ro if r.get("termination") == "max_steps"),
+                         "token_cap_hits": sum(1 for r in ro if r.get("termination") == "token_cap"),
+                         "context_exceeded": sum(1 for r in ro if r.get("termination") == "context_exceeded"),
+                         "search_wall": [ro[0]["t"], ro[-1]["t"]] if ro else None},
+            "champion_search_score": fz.get("search_score"), "champion_search_label": fz.get("search_label"),
+            "time_to_champion": fz.get("time_to_champion"), "freeze": fz}
+
+
+def seed_baseline() -> dict:
+    ro = P.read_jsonl(P.AW_STATE / "seed" / "rollouts.jsonl")
+    tr, dv = set(P.read_split("train")), set(P.read_split("dev"))
+    return {"rollouts": len(ro), "prompt_tokens": _dist(ro, "prompt_tokens"), "episode_seconds": _dist(ro, "seconds"),
+            **(P.read_json(P.PUSHED / "seed" / "baseline.json", {}) or {})}
+
+
+def dev_diag() -> dict:
+    prog = P.read_json(P.PUSHED / "p5dev" / "progress.json", {}) or {}
+    return {a: v.get("tgc") for a, v in (prog.get("per_arm") or {}).items()}
+
+
+def usd(o: dict) -> str:
+    """The list-price proxy (Sonnet 5.5: $2 in, $10 out, $0.20 cache read, $2.50 cache write per MTok), plus the
+    CLI-reported total where a CLI was used (labelled)."""
+    return f"${o['proxy_usd']} (proxy)" + (f"; ${o['cli_reported_usd']} (CLI-reported)" if o.get("cli_reported_usd") else "")
 
 
 def pct(x):
     return f"{100 * x:.1f}"
 
 
-def optimizer_usage() -> dict:
-    out = {}
-    st = CAPE_RUN / "state.json"
-    if st.is_file():
-        sp = json.loads(st.read_text()).get("spent", {})
-        out["cape-hc"] = {"usd": sp.get("optimizer_usd"), "tokens": sp.get("optimizer_tokens"),
-                          "iterations": sp.get("iterations"), "metric_calls": sp.get("metric_calls"),
-                          "best_val": sp.get("best_val")}
-    u = RUNS / "altk/optimizer_usage.jsonl"
-    if u.is_file():
-        rows = [json.loads(l) for l in u.read_text().splitlines()]
-        out["altk"] = {"calls": len(rows), "errors": sum(bool(r.get("error")) for r in rows),
-                       "prompt_tokens": sum(int(r.get("prompt_tokens") or 0) for r in rows),
-                       "completion_tokens": sum(int(r.get("completion_tokens") or 0) for r in rows)}
-    return out
-
-
 def main() -> int:
-    ids = read_split("test_normal")
-    diff = {t: json.loads((ROOT_FULL / "data/tasks" / t / "ground_truth/metadata.json").read_text())["difficulty"]
+    os.chmod(P.ROOT_FULL, 0o755) if (os.stat(P.ROOT_FULL).st_mode & 0o777) == 0 else None
+    ids = P.read_split("test_normal", P.ROOT_FULL)
+    diff = {t: json.loads((P.ROOT_FULL / "data/tasks" / t / "ground_truth/metadata.json").read_text())["difficulty"]
             for t in ids}
-    scen: dict = defaultdict(list)
+    scen = defaultdict(list)
     for t in ids:
         scen[t.split("_")[0]].append(t)
-    cells, missing = load_cells(ids)
+    order, cells = load()
     rng = random.Random(0)
-    res: dict = {"n_tasks": len(ids), "n_scenarios": len(scen), "trials": TRIALS, "arms": {}, "pairs": {},
-                 "missing_cells": {f"{a}|{t}|{k}": v.get("infra_error") for (a, t, k), v in missing.items()}}
+    res: dict = {"n_tasks": len(ids), "n_scenarios": len(scen), "trials": TRIALS, "cells": len(order),
+                 "bootstrap_resamples": B, "arms": {}, "vs_seed": {}}
     for arm in ARMS:
-        recs = [r for (a, _, _), r in cells.items() if a == arm and not r.get("infra_error")]
-        by_d = {}
-        for d, name in DIFF.items():
-            ts = [t for t in ids if diff[t] == d]
-            by_d[name] = {"n": len(ts), "tgc": tgc(cells, arm, ts)}
-        def mean(key):
-            v = [float(r.get(key) or 0) for r in recs]
+        rs = [r for (a, _, _), r in cells.items() if a == arm and not r.get("infra_error")]
+        agree = sum(1 for t in ids if succ(cells, arm, t, 0) == succ(cells, arm, t, 1))
+
+        def mean(k):
+            v = [float(r.get(k) or 0) for r in rs]
             return statistics.mean(v) if v else float("nan")
+
+        def q(k, x):
+            return _q([float(r.get(k) or 0) for r in rs], x)
         res["arms"][arm] = {
             "tgc": tgc(cells, arm, ids), "sgc": sgc(cells, arm, scen),
             "tgc_drop_missing": tgc(cells, arm, ids, True), "sgc_drop_missing": sgc(cells, arm, scen, True),
-            "by_difficulty": by_d,
-            "episodes": len(recs), "missing": sum(1 for (a, _, _) in missing if a == arm),
+            "by_difficulty": {n: by_difficulty(cells, arm, ids, scen, diff, d) for d, n in DIFF.items()},
+            "episodes": len(rs), "missing": sum(1 for (a, _, _), r in cells.items() if a == arm and r.get("infra_error")),
             "prompt_tokens_per_task": mean("prompt_tokens"), "completion_tokens_per_task": mean("completion_tokens"),
-            "steps_per_task": mean("n_steps"),
-            "step_cap_hits": sum(1 for r in recs if r.get("termination") == "max_steps"),
-            "context_exceeded": sum(1 for r in recs if r.get("termination") == "context_exceeded"),
-            "token_cap_hits": sum(1 for r in recs if r.get("termination") == "token_cap"),
-            "complete_task_not_called": sum(1 for r in recs if not r.get("complete_task_called")),
-            "collateral_damage": sum(1 for r in recs if r.get("collateral_damage")),
-            "fs_probe": sum(1 for r in recs if r.get("fs_probe")),
-            "max_prompt_tokens": max((int(r.get("max_prompt_tokens") or 0) for r in recs), default=0),
-        }
-    for a, b in PAIRS:
-        ci_t, ci_s = bootstrap(cells, a, b, scen, rng)
-        res["pairs"][f"{a} - {b}"] = {"d_tgc": res["arms"][a]["tgc"] - res["arms"][b]["tgc"], "ci_tgc": ci_t,
-                                      "d_sgc": res["arms"][a]["sgc"] - res["arms"][b]["sgc"], "ci_sgc": ci_s}
-    res["optimizer_usage"] = optimizer_usage()
-    sel = RUNS / "altk/dose_selection.json"
-    res["altk_dose_selection"] = json.loads(sel.read_text()) if sel.is_file() else None
-    ms = RUNS / "altk/mining_summary.json"
-    res["altk_mining"] = json.loads(ms.read_text()) if ms.is_file() else None
-    res["manifest"] = {k: v for k, v in json.loads(MANIFEST.read_text()).items() if not k.endswith("freeze")}
-    (FINAL / "results.json").write_text(json.dumps(res, indent=1))
+            "steps_per_task": mean("n_steps"), "episode_seconds": mean("episode_seconds"),
+            "step_cap_hits": sum(1 for r in rs if r.get("termination") == "max_steps"),
+            "token_cap_hits": sum(1 for r in rs if r.get("termination") == "token_cap"),
+            "context_exceeded": sum(1 for r in rs if r.get("termination") == "context_exceeded"),
+            "collateral_damage": sum(1 for r in rs if r.get("collateral_damage")),
+            "complete_task_not_called": sum(1 for r in rs if not r.get("complete_task_called")),
+            "fs_probe": sum(1 for r in rs if r.get("fs_probe")),
+            "max_prompt_tokens": max((int(r.get("max_prompt_tokens") or 0) for r in rs), default=0),
+            "trials_agree_share": agree / len(ids),
+            "prompt_tokens_p50": q("prompt_tokens", 0.5), "prompt_tokens_p90": q("prompt_tokens", 0.9),
+            "completion_tokens_p50": q("completion_tokens", 0.5), "completion_tokens_p90": q("completion_tokens", 0.9),
+            "episode_seconds_p50": q("episode_seconds", 0.5), "episode_seconds_p90": q("episode_seconds", 0.9),
+            "pass_fraction": (sum(int(r.get("pass_count") or 0) for r in rs) / max(1, sum(int(r.get("num_tests") or 0) for r in rs))),
+            "infra_retries": sum(int(r.get("attempt") or 0) for r in rs)}
+    for c in P.CANDIDATES:
+        ct, cs = bootstrap(cells, c, "seed", scen, rng)
+        res["vs_seed"][c] = {"d_tgc": res["arms"][c]["tgc"] - res["arms"]["seed"]["tgc"], "ci_tgc": ct,
+                             "d_sgc": res["arms"][c]["sgc"] - res["arms"]["seed"]["sgc"], "ci_sgc": cs}
+    res["search"] = {c: search_side(c) for c in P.CANDIDATES}
+    res["seed_baseline"] = seed_baseline()
+    res["spend_per_provider"] = {"RITS (agent, unpriced)": "n/a (unpriced); tokens in the arm tables",
+                                 "gateway (optimizer)": {c: res["search"][c]["optimizer"]["proxy_usd"] for c in P.CANDIDATES}}
+    rec = sorted((P.AW_STATE / "final" / "records").glob("*.json"), key=lambda p: p.stat().st_mtime)
+    res["window_wall"] = [P._dt.datetime.utcfromtimestamp(rec[0].stat().st_mtime).isoformat() + "Z",
+                          P._dt.datetime.utcfromtimestamp(rec[-1].stat().st_mtime).isoformat() + "Z"] if rec else None
+    res["dev_diagnostic_tgc"] = dev_diag()
+    m = P.manifest()
+    res["manifest"] = {k: m.get(k) for k in ("appworld", "candidates", "m_cap", "final_order", "freeze", "opt_model",
+                                             "agent_model", "budget", "trials", "prices_usd_per_mtok")}
+    scan = P.read_json(P.PUSHED / "isolation_scan.json", {}) or {}
+    res["isolation"] = {c: {"test_id_hits": (scan.get(c) or {}).get("test_id_hits"),
+                            "breach": (scan.get(c) or {}).get("isolation_breach")} for c in P.CANDIDATES}
+    os.chmod(P.ROOT_FULL, 0o000) if os.environ.get("AW_RELOCK") == "1" else None
+    P.write_json(P.PUSHED / "final" / "analysis.json", res)
 
-    L = ["| arm | TGC | SGC | Δ TGC vs seed [95% CI] | Δ SGC vs seed [95% CI] | missing cells |", "|---|---|---|---|---|---|"]
-    for arm in ARMS:
-        r = res["arms"][arm]
-        p = res["pairs"].get(f"{arm} - seed")
-        dt = f"{pct(p['d_tgc'])} [{pct(p['ci_tgc'][0])}, {pct(p['ci_tgc'][1])}]" if p else "—"
-        ds = f"{pct(p['d_sgc'])} [{pct(p['ci_sgc'][0])}, {pct(p['ci_sgc'][1])}]" if p else "—"
-        L.append(f"| {arm} | {pct(r['tgc'])} | {pct(r['sgc'])} | {dt} | {ds} | {r['missing']} |")
-    p = res["pairs"]["cape-hc - altk"]
-    L += ["", f"cape-hc − altk: Δ TGC {pct(p['d_tgc'])} [{pct(p['ci_tgc'][0])}, {pct(p['ci_tgc'][1])}], "
-              f"Δ SGC {pct(p['d_sgc'])} [{pct(p['ci_sgc'][0])}, {pct(p['ci_sgc'][1])}]."]
+    L = ["| arm | TGC | SGC | Δ TGC vs seed [95% CI] | Δ SGC vs seed [95% CI] | missing |", "|---|---|---|---|---|---|"]
+    for a in ARMS:
+        r = res["arms"][a]
+        v = res["vs_seed"].get(a)
+        dt = f"{pct(v['d_tgc'])} [{pct(v['ci_tgc'][0])}, {pct(v['ci_tgc'][1])}]" if v else "—"
+        ds = f"{pct(v['d_sgc'])} [{pct(v['ci_sgc'][0])}, {pct(v['ci_sgc'][1])}]" if v else "—"
+        L.append(f"| {a} | {pct(r['tgc'])} | {pct(r['sgc'])} | {dt} | {ds} | {r['missing']} |")
     D = ["| arm | " + " | ".join(f"{n} (n={res['arms']['seed']['by_difficulty'][n]['n']})" for n in DIFF.values()) + " |",
          "|---|---|---|---|"]
-    for arm in ARMS:
-        D.append(f"| {arm} | " + " | ".join(pct(res["arms"][arm]["by_difficulty"][n]["tgc"]) for n in DIFF.values()) + " |")
-    C = ["| arm | prompt tok/task | completion tok/task | steps/task | step-cap hits | context exceeded | "
-         "complete_task not called | collateral damage | max prompt tok |", "|---|---|---|---|---|---|---|---|---|"]
-    for arm in ARMS:
-        r = res["arms"][arm]
-        C.append(f"| {arm} | {r['prompt_tokens_per_task']:,.0f} | {r['completion_tokens_per_task']:,.0f} | "
-                 f"{r['steps_per_task']:.1f} | {r['step_cap_hits']} | {r['context_exceeded']} | "
-                 f"{r['complete_task_not_called']} | {r['collateral_damage']} | {r['max_prompt_tokens']:,} |")
-    (FINAL / "tables.md").write_text("## Main\n\n" + "\n".join(L) + "\n\n## By difficulty (TGC)\n\n" + "\n".join(D)
-                                     + "\n\n## Target cost per episode (final window)\n\n" + "\n".join(C) + "\n")
-    print((FINAL / "tables.md").read_text())
-    print(json.dumps(res["optimizer_usage"], indent=1))
+    for a in ARMS:
+        D.append(f"| {a} | " + " | ".join(pct(res["arms"][a]["by_difficulty"][n]["tgc"]) for n in DIFF.values()) + " |")
+    C = ["| arm | prompt tok/ep | completion tok/ep | steps/ep | s/ep | step-cap | ctx-exceeded | collateral | max prompt | trials agree |",
+         "|---|---|---|---|---|---|---|---|---|---|"]
+    for a in ARMS:
+        r = res["arms"][a]
+        C.append(f"| {a} | {r['prompt_tokens_per_task']:,.0f} | {r['completion_tokens_per_task']:,.0f} | {r['steps_per_task']:.1f} | "
+                 f"{r['episode_seconds']:.0f} | {r['step_cap_hits']} | {r['context_exceeded']} | {r['collateral_damage']} | "
+                 f"{r['max_prompt_tokens']:,} | {100 * r['trials_agree_share']:.0f}% |")
+    O = ["| candidate | counted rollouts (of 900) | cache hits | lint rejects | optimizer calls | input tok | output tok | cache-read tok | cache-write tok | USD | optimizer s |",
+         "|---|---|---|---|---|---|---|---|---|---|---|"]
+    for c in P.CANDIDATES:
+        o, rr = res["search"][c]["optimizer"], res["search"][c]["rollouts"]
+        O.append(f"| {c} | {rr['counted']} | {rr['cache_hits']} | {rr['lint_reject_batches']} | {o['calls']} | {o['input_tokens']:,} | "
+                 f"{o['output_tokens']:,} | {o['cache_read_tokens']:,} | {o['cache_write_tokens']:,} | {usd(o)} | {o['optimizer_seconds_total']:,} |")
+    md = ("## Final window: test_normal, 168 tasks / 56 scenarios × 2 trials × 6 arms\n\n" + "\n".join(L)
+          + "\n\n## TGC by difficulty\n\n" + "\n".join(D) + "\n\n## Agent cost, tokens and latency per episode (final window)\n\n"
+          + "\n".join(C) + "\n\n## Optimizer side (search; shared seed baseline of 147 rollouts counted once, not charged)\n\n" + "\n".join(O) + "\n")
+    P.atomic_write(P.PUSHED / "final" / "RESULTS.md", md)
+    print(md)
     return 0
 
 

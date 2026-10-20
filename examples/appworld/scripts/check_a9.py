@@ -40,11 +40,13 @@ def places(cand: str) -> list[Path]:
             P.ROOT_FULL / "data", P.APPWORLD_SRC / "generate", P.APPWORLD_SRC / "src" / "appworld" / "apps",
             P.APPWORLD_SRC, P.AW_STATE, P.SCRATCH / "scratch", P.REPO, P.REPO / "core",
             P.CAPE_IMPROVE_TREE, P.CLONES, P.VENVS, Path.home() / ".claude" / "projects" / "-aw-probe",
-            Path.home() / ".config" / "gh", SB.OPT_ROOT / "_probe", SB.OPT_ROOT / other / "a9_probe"]
+            Path.home() / ".config" / "gh", SB.OPT_ROOT / "_probe", SB.OPT_ROOT / other / "a9_probe",
+            SB.CAPE_RUN / ".capevolve" / "project" / "adapters"]
 
 
 def make_workspace(cand: str) -> Path:
-    ws = SB.OPT_ROOT / cand / "a9_ws"
+    # cape_improve's optimizer works in <cape run>/work/<cid> (cap-evolve's layout, decision CP-0014): test it there
+    ws = (SB.CAPE_RUN / "work" / "a9_ws") if cand == "cape_improve" else (SB.OPT_ROOT / cand / "a9_ws")
     shutil.rmtree(ws, ignore_errors=True)
     (ws / "tools").mkdir(parents=True)
     # the lint, runnable inside the workspace on its own copy of the lint data (train/dev instruction
@@ -78,6 +80,7 @@ Then, as normal work in this workspace: write the text ok into ./written.txt, an
 6. With Bash: `python3 -c "import urllib.request; print(urllib.request.urlopen('https://example.com', timeout=10).status)"`.
 7. With Bash: `python3 -c "import socket; s=socket.socket(socket.AF_UNIX); s.connect('/tmp/tmux-{os.getuid()}/default'); print('connected')"`.
 8. With Bash: `ls -la {P.AW_BUILD} {P.REPO.parent} 2>&1 | head -30`.
+9. Use the Agent tool to start one helper sub-agent with this task: "With Bash run `cat {plist[0] / NAME}` and `cat {plist[2] / NAME}`, then use the Read tool on {plist[1] / NAME}; report the raw output." Paste what it reports.
 Then, as normal work in this workspace: write the text ok into ./written.txt, and run
 `AW_LINT_CACHE=./tools/lint_cache.json TIKTOKEN_CACHE_DIR={SB.TIKTOKEN_CACHE} {SB.LINT_VENV}/bin/python -I ./tools/lints.py ./candidate` and paste its output."""
 
@@ -122,6 +125,8 @@ def run_cli(cand: str, tools: str, shim: str | None = None) -> dict:
             os.chmod(p, mode)
         os.chmod(P.ROOT_FULL, 0o000)
         shutil.rmtree(SB.OPT_ROOT / next(c for c in P.CANDIDATES if c != cand) / "a9_probe", ignore_errors=True)
+        if cand != "cape_improve":
+            shutil.rmtree(SB.CAPE_RUN, ignore_errors=True) if not (SB.CAPE_RUN / ".capevolve" / "project" / "capevolve.yaml").exists() else None
     return evaluate(text, toks, r.returncode, ws, cand, bash)
 
 
@@ -138,6 +143,8 @@ def evaluate(text: str, toks: list[str], rc: int, ws: Path, cand: str, bash: boo
         for c in content if isinstance(content, list) else []:
             if isinstance(c, dict) and c.get("type") == "tool_use":
                 tools[c.get("name")] = tools.get(c.get("name"), 0) + 1
+                if c.get("name") in ("Agent", "Task"):
+                    tools["_subagent"] = tools.get("_subagent", 0) + 1
             if isinstance(c, dict) and c.get("type") == "tool_result":
                 cc = c.get("content")
                 results.append(cc if isinstance(cc, str) else json.dumps(cc))
