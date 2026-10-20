@@ -93,8 +93,57 @@ def mark_posted(c: str) -> None:
     P.write_json(STATE, st)
 
 
+def milestones(c: str) -> list[tuple[str, str, str]]:
+    """§8 search milestones, derived uniformly for every candidate from its pushed progress.json and its counted
+    rollouts: search started, every 25% of B, a new best search-time score (an accepted candidate), search ended,
+    frozen. Each milestone has a stable key so it is posted once. Drivers that post their own milestones use
+    different keys; a duplicate message is possible but harmless."""
+    pr = P.read_json(P.PUSHED / c / "progress.json", {}) or {}
+    counted = len(P.read_jsonl(P.AW_STATE / c / "rollouts.jsonl"))
+    stage = str(pr.get("stage") or "")
+    out = []
+    if counted > 0 or stage.startswith("search"):
+        out.append(("m4_search_start", "search started",
+                    f"**{P.METHOD_NAMES[c]}: counted search started.** Settings as plan §9 for this candidate; "
+                    f"B = {P.BUDGET_ROLLOUTS} counted rollouts and 10M optimizer tokens; gold-free F1 feedback; "
+                    f"baseline = the shared seed run (P3). Hourly status posts follow."))
+    for q in (1, 2, 3, 4):
+        if counted >= q * P.BUDGET_ROLLOUTS // 4:
+            out.append((f"m4_budget_{25 * q}", f"{25 * q}% of B",
+                        f"**{P.METHOD_NAMES[c]}: {25 * q}% of the search budget used** ({counted} of "
+                        f"{P.BUDGET_ROLLOUTS} counted rollouts).\n\n" + status_body(c).split("\n", 2)[2]))
+    best = pr.get("best_search_score")
+    if best is not None:
+        out.append((f"m4_best_{best}", "new best search-time score",
+                    f"**{P.METHOD_NAMES[c]}: new best search-time score {best}** "
+                    f"({pr.get('best_search_label', 'selection-biased')}; a search-set number, not a test result)."))
+    if "finished" in stage or "stopped" in stage:
+        out.append(("m4_search_end", "search ended", f"**{P.METHOD_NAMES[c]}: search ended** ({stage}).\n\n"
+                    + status_body(c).split("\n", 2)[2]))
+    fz = P.read_json(P.PUSHED / c / "artifact" / "FREEZE.json", {}) or {}
+    if fz:
+        keep = {k: v for k, v in fz.items() if isinstance(v, (int, float, bool, str)) and len(str(v)) <= 80}
+        out.append(("m4_frozen", "champion frozen", f"**{P.METHOD_NAMES[c]}: champion frozen** (lint-clean, "
+                    f"published in `docs/EVAL_APPWORLD_REST_STATE/{c}/artifact/`).\n\n"
+                    + "\n".join(f"- {k}: {v}" for k, v in keep.items())))
+    scan = (P.read_json(P.PUSHED / "isolation_scan.json", {}) or {}).get(c)
+    if scan:
+        out.append(("m4_scanned", "isolation scan", f"**{P.METHOD_NAMES[c]}: isolation scan done.** Test-id hits in "
+                    f"every optimizer-side record and workspace: {scan.get('test_id_hits')}"
+                    + (" — ISOLATION BREACH" if scan.get("isolation_breach") else "") + ". Literal-string counts are "
+                    "in `docs/EVAL_APPWORLD_REST_STATE/isolation_scan.json`."))
+    return out
+
+
 def once(every: int, force: bool = False) -> list[str]:
     out = []
+    posts = P.read_json(post.POSTS, {}) or {}
+    for c in P.CANDIDATES:
+        for key, title, body in milestones(c):
+            if f"{c}/{key}" not in posts:
+                url = post.post(c, key, f"{P.METHOD_NAMES[c]} {title}", body)
+                mark_posted(c)
+                out.append(f"{c} {key} {url}")
     posts = P.read_json(post.POSTS, {}) or {}
     for c in P.CANDIDATES:
         if f"{c}/results" in posts:

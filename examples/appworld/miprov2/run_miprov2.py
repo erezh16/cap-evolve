@@ -217,7 +217,8 @@ class AppWorldAgent(dspy.Module):
         try:
             ids = self._ids.get(task) or []
             if len(ids) != 1:
-                raise KeyError(f"instruction maps to {len(ids)} task ids")
+                P.append_jsonl(ST / "forward_ambiguous.jsonl", {"t": P.utcnow(), "n_ids": len(ids)})
+                raise KeyError(f"FORWARD_AMBIGUOUS: instruction maps to {len(ids)} task ids")
             rec = E.evaluate(CAND, self.candidate_dir(), ids, phase=self._phase, tag="forward")[0]
             return dspy.Prediction(reward=float(rec["reward"]))
         except (E.BudgetExceeded, E.SeedRerunRefused) as e:
@@ -515,6 +516,12 @@ def examples_for(records: list[dict], ids_of: dict[int, str]) -> tuple[list, dic
         ids_of[id(ex)] = r["task_id"]
         by_ins.setdefault(r["instruction"], []).append(r["task_id"])
         exs.append(ex)
+    # AppWorld repeats instruction texts within a split (same text, different supervisor/world state). Scoring never
+    # uses this text map: BatchEvaluate maps each Example object to its own task id (ids_of). Only a direct
+    # program(task=...) call would use by_ins; it refuses an ambiguous text (FORWARD_AMBIGUOUS) instead of scoring 0.
+    dup = sum(1 for v in by_ins.values() if len(v) > 1)
+    P.progress_log(CAND, "search", f"instruction map: {len(records)} records, {len(by_ins)} distinct texts, "
+                                   f"{dup} repeated (scored per example object, unaffected)")
     return exs, by_ins
 
 
