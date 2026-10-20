@@ -1559,3 +1559,11 @@ P4: cape_improve step `search` exited 3; the chain stopped. See AW_STATE/progres
 ```json
 {"cp": 31, "prev_cp": 30, "prev_commit": "02ea90a546d3a8660f020838c43d67de45e2f976", "utc": "2026-10-20T22:14:28Z", "kind": "error", "phase": "P4", "done_through": "P2/done", "next": "P4/searches", "candidate": "cape_improve", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "1a169611692049cccc4805374df8aded204958a6", "open_decisions": []}
 ```
+
+## CP-0032 · 2026-10-20T22:14Z · P4 posted cape_improve · posted
+
+Posted 'Cap-Evolve-improve search started' on #901 (cape_improve): https://github.com/skillberry-ai/cap-evolve/issues/901#issuecomment-6302979634
+
+```json
+{"cp": 32, "prev_cp": 31, "prev_commit": "f433e89f5ed34b53150a2db209c9556a4d079ec1", "utc": "2026-10-20T22:14:57Z", "kind": "posted", "phase": "P4", "done_through": "P2/done", "next": "P4/searches", "candidate": "cape_improve", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "1a169611692049cccc4805374df8aded204958a6", "open_decisions": [], "post": "cape_improve/m4_search_start", "url": "https://github.com/skillberry-ai/cap-evolve/issues/901#issuecomment-6302979634"}
+```
