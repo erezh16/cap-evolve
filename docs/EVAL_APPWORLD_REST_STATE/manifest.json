@@ -172,5 +172,9 @@
   "trials": 2,
   "trial_seeds": "5000 + trial",
   "infra_retries": 3
+ },
+ "seed": {
+  "SEED_HASH": "85a0da9cec2206a7bc683c11d60b5cb0acac7328d43c6e9197324d1e45971f3c",
+  "baseline": "STATE/seed/baseline.json"
  }
 }

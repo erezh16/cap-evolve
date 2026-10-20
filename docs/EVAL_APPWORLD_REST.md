@@ -1479,3 +1479,11 @@ A-harnesslens PASS (driver examples/appworld/harnesslens/run_harnesslens.py, ven
 ```json
 {"cp": 21, "prev_cp": 20, "prev_commit": "5600b00ee9a97a078e21b97b3411b93577aa7153", "utc": "2026-10-20T22:03:50Z", "kind": "result", "phase": "P2", "done_through": "P2/a-harnesslens", "next": "P3/seed", "candidate": null, "counts": {}, "spend": {}, "artifacts": {"STATE/acceptance/a_harnesslens.json": "8dcb54bb374864f5e84ed88657b94996d7b53ca7ebe1144261894fdd9d0fc48c"}, "code": "5600b00ee9a97a078e21b97b3411b93577aa7153", "open_decisions": []}
 ```
+
+## CP-0022 · 2026-10-20T22:07Z · P3 shared seed baseline · phase_done
+
+P3 done: the seed (SEED_HASH 85a0da9cec2206a7) on 90 train + 57 dev tasks, 1 trial, seed 100. Train TGC 0.4, dev TGC 0.3333 (selection sets, 1 trial). 147 fresh episode rows (0 infra rows retried), counted once as the shared seed baseline and charged to no candidate. From now on a fresh seed episode raises SeedRerunRefused. Next: P4 candidate searches.
+
+```json
+{"cp": 22, "prev_cp": 21, "prev_commit": "a0c85b4f974cfc89726eac6de8b78c8fd931fffc", "utc": "2026-10-20T22:07:49Z", "kind": "phase_done", "phase": "P3", "done_through": "P3/seed", "next": "P4/searches", "candidate": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {"STATE/seed/baseline.json": "c4549916483d21da80d409bcc9a8a4b45831b8d20df6f5d99fe3165ae9617212", "STATE/manifest.json": "e4b1415334614e77209ab658ae6c0c5d70e4d222052024cdea3f59524a3fe980"}, "code": "a0c85b4f974cfc89726eac6de8b78c8fd931fffc", "open_decisions": []}
+```

@@ -1,0 +1,51 @@
+{
+ "seed_hash": "85a0da9cec2206a7bc683c11d60b5cb0acac7328d43c6e9197324d1e45971f3c",
+ "train": {
+  "n": 90,
+  "tgc": 0.4,
+  "pass_fraction": 0.7785,
+  "prompt_tokens_mean": 66367,
+  "completion_tokens_mean": 4034,
+  "max_prompt_tokens": 16016,
+  "steps_mean": 10.36,
+  "episode_seconds_mean": 193.0,
+  "step_cap_hits": 0,
+  "token_cap_hits": 0,
+  "context_exceeded": 0,
+  "fs_probe": 0
+ },
+ "dev": {
+  "n": 57,
+  "tgc": 0.3333,
+  "pass_fraction": 0.7148,
+  "prompt_tokens_mean": 61725,
+  "completion_tokens_mean": 3867,
+  "max_prompt_tokens": 12996,
+  "steps_mean": 9.89,
+  "episode_seconds_mean": 177.7,
+  "step_cap_hits": 0,
+  "token_cap_hits": 0,
+  "context_exceeded": 0,
+  "fs_probe": 0
+ },
+ "union": {
+  "n": 147,
+  "tgc": 0.3741,
+  "pass_fraction": 0.7548,
+  "prompt_tokens_mean": 64567,
+  "completion_tokens_mean": 3969,
+  "max_prompt_tokens": 16016,
+  "steps_mean": 10.18,
+  "episode_seconds_mean": 187.1,
+  "step_cap_hits": 0,
+  "token_cap_hits": 0,
+  "context_exceeded": 0,
+  "fs_probe": 0
+ },
+ "fresh_episodes_on_record": 147,
+ "infra_rows": 0,
+ "wall": [
+  "2026-10-20T21:44:37Z",
+  "2026-10-20T22:07:49Z"
+ ]
+}
