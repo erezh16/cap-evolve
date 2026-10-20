@@ -1623,3 +1623,11 @@ P4: cape_improve chain started (search, freeze, isolation scan), pid file AW_STA
 ```json
 {"cp": 39, "prev_cp": 38, "prev_commit": "9a7394fa1393b5795bd6e9cde24d9266c5069bbc", "utc": "2026-10-20T22:17:29Z", "kind": "phase_start", "phase": "P4", "done_through": "P2/done", "next": "P4/searches", "candidate": "cape_improve", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": []}
 ```
+
+## CP-0040 · 2026-10-20T22:19Z · P4 miprov2 search · phase_start
+
+P4: miprov2 chain started (search, freeze, isolation scan), pid file AW_STATE/p4/miprov2.pid. Running chains: cape_improve, gepa_full, miprov2. Global slots 24; memory 8.2%.
+
+```json
+{"cp": 40, "prev_cp": 39, "prev_commit": "6cab518c89654ab204c5da892a33c90e3b9c0682", "utc": "2026-10-20T22:19:30Z", "kind": "phase_start", "phase": "P4", "done_through": "P2/done", "next": "P4/searches", "candidate": "miprov2", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": []}
+```
