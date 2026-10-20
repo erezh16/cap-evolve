@@ -1,0 +1,15 @@
+{
+ "base_check": true,
+ "lines": [
+  "A3.1 import os / open(answer.json) / pathlib read all fail:True",
+  "A3.2 root_opt:True",
+  "A3.3 split_ids.json train = val = train.txt ∪ dev.txt (147), test = []:True",
+  "A5.1 released solution -> reward 1.0 (solution output:'Execution successful.Execution successful.')",
+  "A5.2 no-op -> reward 0.0:A5.2 no-op -> reward 0.0",
+  "A5.3 score twice identical:True",
+  "A5.4 persisted metadata has no failure trace:True",
+  "A3+A5 PASS:A3+A5 PASS"
+ ],
+ "root_full_locked": true,
+ "ok": true
+}

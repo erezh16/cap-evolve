@@ -1,0 +1,28 @@
+# cap-evolve spec of the cape_improve arm (docs/EVAL_APPWORLD_REST.md §9.5 "Spec"), cap-evolve-improve @ 470f3fa.
+# run_cape_improve.py setup renders @INSTRUCTIONS@ and @REFERENCE@ and writes it into the project.
+capabilities: [system-prompt, tools]
+capability_path: seed_capability
+actions: [edit]
+optimizer_skill: claude-code
+optimizer_model: aws/claude-sonnet-5-5
+optimizer_max_turns: 200
+optimizer_usd_per_iter: 15.0
+max_optimizer_usd: 120.0
+target_model: openai/gpt-oss-120b-a100
+algorithm_skill: hill-climb
+algorithm_focus: all
+orchestration_mode: deterministic
+memory_skill: md-files
+optimizer_instructions_file: @INSTRUCTIONS@
+runner_repo_path: @REFERENCE@
+capability_sources: [reference/api_index.md, reference/react_agent_notes.md]
+dataset_source: adapter
+split_ids_file: split_ids.json      # train = val = official train ∪ dev (147), test = [] (base rule S2)
+num_trials: 1
+gate_mode: paired
+gate_k_se: 0.5                      # I1: the improved version's value. MUST be explicit (core default is 1.0)
+max_iterations: 6
+stall: 0
+max_metric_calls: 1029              # 147 baseline (cached) + 6 × 147
+protected_paths: [default]
+store: git

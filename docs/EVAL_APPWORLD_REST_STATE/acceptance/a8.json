@@ -1,0 +1,54 @@
+{
+ "history_ratios": [
+  4.974,
+  4.157,
+  3.786,
+  3.875,
+  4.139,
+  3.969,
+  3.628,
+  3.609,
+  3.611,
+  3.872
+ ],
+ "H_max": 16625,
+ "P_max": 3230,
+ "template_overhead": [
+  157,
+  157,
+  157,
+  157,
+  157,
+  157,
+  157,
+  157,
+  157,
+  157
+ ],
+ "M_cap_tokens": 14000,
+ "memory_chars_tested": 29990,
+ "memory_tokens_tested": 5341,
+ "max_prompt_no_memory": 10937,
+ "infra_no_memory": 0,
+ "memory_episodes": [
+  {
+   "termination": "completed",
+   "max_prompt_tokens": 13036,
+   "lint_reject": false,
+   "rel_diff": 0.0
+  },
+  {
+   "termination": "completed",
+   "max_prompt_tokens": 13662,
+   "lint_reject": false,
+   "rel_diff": 0.0
+  },
+  {
+   "termination": "completed",
+   "max_prompt_tokens": 11311,
+   "lint_reject": false,
+   "rel_diff": 0.0
+  }
+ ],
+ "ok": true
+}

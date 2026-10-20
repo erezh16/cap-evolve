@@ -1,0 +1,15 @@
+{
+ "shim": {
+  "reply_ok": true,
+  "seconds": 1.2,
+  "json_parse": true
+ },
+ "cli": {
+  "exit": 0,
+  "reply_ok": true,
+  "models": [
+   "aws/claude-sonnet-5-5"
+  ]
+ },
+ "ok": true
+}

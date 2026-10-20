@@ -154,5 +154,23 @@
    "freeze_sha256": "941f9293e74eba47a37ce8ad3720010705c012968f1898716a7758aa2ac084a9",
    "packages": 123
   }
+ },
+ "m_cap": {
+  "tokens": 14000,
+  "chars": 30000,
+  "P_max": 3230,
+  "H_max": 16625,
+  "min_chars_per_token": 3.609,
+  "template_overhead_max": 157,
+  "encoding": "o200k_harmony",
+  "rule": "min(30000 chars, 34000 - P_max - H_max tokens), tokens floored to 500"
+ },
+ "final_order": {
+  "seed": 2026102007,
+  "sha256": "1903a7f797ac0155773c2b71ce8fdbd590180df8ce86dd60deba45a384997962",
+  "cells": 2016,
+  "trials": 2,
+  "trial_seeds": "5000 + trial",
+  "infra_retries": 3
  }
 }
