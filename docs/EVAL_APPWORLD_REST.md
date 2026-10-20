@@ -1319,3 +1319,11 @@ B1 to B4 done as eval 5 section 4, under /workspace/aw_rest. B1: AppWorld at 42b
 ```json
 {"cp": 1, "prev_cp": 0, "prev_commit": "b6442f3497e35f54953973f97fe9af0cd399462b", "utc": "2026-10-20T20:38:18Z", "kind": "result", "phase": "P1", "done_through": "P1/b4", "next": "P1/b5", "candidate": null, "counts": {}, "spend": {}, "artifacts": {"STATE/manifest.json": "9f4a017e248bf85af70443328e9c5872f6e3fda4859f1d3a055460439919acde"}, "code": "b6442f3497e35f54953973f97fe9af0cd399462b", "open_decisions": []}
 ```
+
+## CP-0002 · 2026-10-20T20:38Z · P1 posted harnesslens · posted
+
+Posted 'HarnessLens hourly status' on #897 (harnesslens): https://github.com/skillberry-ai/cap-evolve/issues/897#issuecomment-6300961668
+
+```json
+{"cp": 2, "prev_cp": 1, "prev_commit": "b922eb7ebac986f29904ae152b1d32fa49362943", "utc": "2026-10-20T20:38:40Z", "kind": "posted", "phase": "P1", "done_through": "P1/b4", "next": "P1/b5", "candidate": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "b922eb7ebac986f29904ae152b1d32fa49362943", "open_decisions": [], "post": "harnesslens/status_20261020T2038", "url": "https://github.com/skillberry-ai/cap-evolve/issues/897#issuecomment-6300961668"}
+```
