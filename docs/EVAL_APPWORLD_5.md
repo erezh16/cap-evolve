@@ -4134,3 +4134,11 @@ P8 final window complete: 2,016/2,016 cells, 0 missing, 5 infra retries in total
 ```json
 {"cp": 365, "prev_cp": 364, "prev_commit": "119ef4c0b7c3f97e4ad6d37c2f73c97df102c745", "utc": "2026-10-20T01:30:13Z", "kind": "phase_done", "phase": "P9", "done_through": "P9/analysis", "next": "P10/post", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {"STATE/final/analysis.json": "7042a17634249ff960e70caf17d1c8d3e5c64bcf1f8b825dac5a89da6ae1ef79", "STATE/final/RESULTS.md": "b274d31e85befd41ce2123bcb7020cf6e17e61c3875171720f9276cb26b26e60"}, "code": "e313482906b2361bebf1affee386553a26d3006f", "open_decisions": []}
 ```
+
+## CP-0366 · 2026-10-20T01:35Z · P10 results drafts · result
+
+P10: the five per-candidate results comments are drafted in docs/EVAL_APPWORLD_5_STATE/<cand>/RESULTS.md (built by report5.py only from final/analysis.json and the pushed state; each passed the content filter). Claims checked against the local records before posting: GEPA reflection counters (7 lint rejects, 1 parse failure, re-asked each time), GEPA helpers/notes identical to the seed, EvoSkill stop reason (iteration cap, not the no-improvement limit), and Meta-Harness literal-string hits (only in the A9 probe transcript). Next: post.
+
+```json
+{"cp": 366, "prev_cp": 365, "prev_commit": "c7037636dae910c225e709b0d232295f714249a6", "utc": "2026-10-20T01:35:02Z", "kind": "result", "phase": "P10", "done_through": "P9/analysis", "next": "P10/post", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {"STATE/gepa/RESULTS.md": "d6e7dca73f76fc8822d8b529db19101157036df96119cc0941153102dc50fd97", "STATE/skillopt/RESULTS.md": "db36a6eaf087a42812ce5aec34f857eb78d62dda4b7aafe4caf4f12c31fa983b", "STATE/wikiskill/RESULTS.md": "07074a037cacebe2c8866ecf91daa7a7876faa0c13112d02977885b6f119eb09", "STATE/evoskill/RESULTS.md": "50886269124a3317cecca802a2ff18bac933705316e45c44f4c37f218b93b524", "STATE/metaharness/RESULTS.md": "c0bbf953f8895e1bd2cdf1e6a04f5d3ca24920810cd4047baa9bae384a26c512"}, "code": "e313482906b2361bebf1affee386553a26d3006f", "open_decisions": []}
+```
