@@ -309,12 +309,41 @@ def heartbeat_once(silence: int) -> bool:
     return True
 
 
+def watch_once() -> None:
+    """§8 / R2 watch duties of the heartbeat: every issue posted to within the hour; the memory guard alive."""
+    import autopost
+    late = autopost.check_ages(3600)
+    st = P.read_json(P.AW_STATE / "watch.json", {}) or {}
+    if late and st.get("late") != late:
+        prev = last_entry()
+        append("error", prev.get("phase", "?"), "hourly posts late",
+               f"The last post on the issue of {', '.join(late)} is older than 60 minutes (section 8). The "
+               "auto-poster is restarted by resume.py; checking it now.", subject="hourly posts late")
+    st["late"] = late
+    P.write_json(P.AW_STATE / "watch.json", st)
+    if P.memstate().get("stale"):
+        subprocess.Popen(["nohup", sys.executable, "-I", str(Path(__file__).parent / "memguard.py"), "loop"],
+                         stdout=open(P.PROGRESS / "memguard.out", "a"), stderr=subprocess.STDOUT,
+                         start_new_session=True)
+        P.progress_log("ledger", "heartbeat", "memguard sample stale: guard restarted")
+    try:
+        ap = int((P.AW_STATE / "AUTOPOST.pid").read_text().strip())
+    except (FileNotFoundError, ValueError):
+        ap = None
+    if not pid_alive(ap):
+        subprocess.Popen(["nohup", sys.executable, "-I", str(Path(__file__).parent / "autopost.py"), "loop",
+                          "--every", "3600"], stdout=open(P.PROGRESS / "autopost.out", "a"),
+                         stderr=subprocess.STDOUT, start_new_session=True, cwd=str(P.REPO))
+        P.progress_log("ledger", "heartbeat", "autopost not running: restarted")
+
+
 def heartbeat_loop(every: int, silence: int) -> None:
     P.write_json(HB_PID, {"pid": os.getpid()})
     (P.AW_STATE / "HEARTBEAT.pid").write_text(str(os.getpid()))
     while True:
         try:
             heartbeat_once(silence)
+            watch_once()
         except Exception as e:  # keep the loop alive; the failure is in the local log
             P.progress_log("ledger", "heartbeat", f"error {type(e).__name__}: {e}"[:300])
         time.sleep(every)
