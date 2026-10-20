@@ -1303,3 +1303,11 @@ All usage is recorded exactly.
 > the decisions. Content rules: section 12.2.
 
 <!-- CHECKPOINTS BELOW THIS LINE -->
+
+## CP-0000 · 2026-10-20T20:36Z · P0 decisions · decision
+
+Execution of the eval REST plan starts. Decisions D1 to D9 (section 2) are taken as written; no open decision. Tracking issues (skillberry-ai/cap-evolve): harnesslens #897, miprov2 #898, trace2skill #899, gepa_full #900, cape_improve #901; each already carries its plan projection as the first post. Host: memcheck limit 32,768 MB, cpu_limit 8, oom.group 1, container_age 9.6 ks. B0 done: worktree eval-rest (from origin/eval5, pushed as origin/eval-rest), worktree cape-improve detached at 470f3fa, session deny rules written (R1.5, .claude/settings.local.json in both worktrees, git-excluded), memguard.py running (5 s, 90/85). Next: P1 build B1 to B4.
+
+```json
+{"cp": 0, "prev_cp": null, "prev_commit": "ffe35e9149aba2b68df193a8e67560b7b8144782", "utc": "2026-10-20T20:36:50Z", "kind": "decision", "phase": "P0", "done_through": "P0/decisions", "next": "P1/b1", "candidate": null, "counts": {}, "spend": {}, "artifacts": {"STATE/manifest.json": "58456826314cff9c47963871419539afdb51819a027c5f3f3de467998ae7313f"}, "code": "0b33760c3e12190eb1854ec0ca4604ac1392fc17", "open_decisions": [], "issues": {"harnesslens": 897, "miprov2": 898, "trace2skill": 899, "gepa_full": 900, "cape_improve": 901}}
+```

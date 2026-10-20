@@ -1,0 +1,49 @@
+{
+ "plan": "docs/EVAL_APPWORLD_REST.md",
+ "branch": "eval-rest",
+ "issues": {
+  "harnesslens": 897,
+  "miprov2": 898,
+  "trace2skill": 899,
+  "gepa_full": 900,
+  "cape_improve": 901
+ },
+ "issue_repo": "skillberry-ai/cap-evolve",
+ "pins": {
+  "harnesslens": "369a5c8",
+  "miprov2": "3.4.1",
+  "trace2skill": "3d0b52a",
+  "gepa_full": "8b0ce6cd99a234f6b74daf37558a2ac0ce18f975",
+  "cape_improve": "470f3fabdad780a2a791037067a73ae9b0295473"
+ },
+ "appworld_commit": "42b5bcf3cd334fee33f0c37c02070a9f5807add5",
+ "opt_model": "aws/claude-sonnet-5-5",
+ "agent_model": "openai/gpt-oss-120b-a100",
+ "budget": {
+  "rollouts": 900,
+  "opt_tokens": 10000000
+ },
+ "trials": {
+  "search": 1,
+  "search_seed": 100,
+  "final": 2,
+  "final_seed_base": 5000
+ },
+ "prices_usd_per_mtok": {
+  "in": 2.0,
+  "out": 10.0,
+  "cache_read": 0.2,
+  "cache_write": 2.5
+ },
+ "global_slots_start": 24,
+ "memguard": {
+  "high": 90,
+  "low": 85,
+  "every_s": 5
+ },
+ "host": {
+  "limit_MB": 32768,
+  "cpu_limit": 8,
+  "oom_group": 1
+ }
+}

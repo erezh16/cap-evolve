@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""The only writer of the checkpoint ledger: section 15 of docs/EVAL_APPWORLD_5.md (plan §10.2).
+"""The only writer of the checkpoint ledger: section 18 of docs/EVAL_APPWORLD_REST.md (plan §12.2).
 
   status_doc.py append --kind result --phase P4 --label "ACE adaptation" --prose "..." \
       --done-through ace/step/041/apply --next ace/step/042/episode [--set key=<json>]... \
@@ -28,11 +28,11 @@ import time
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-import aw5 as P  # noqa: E402
+import awrest as P  # noqa: E402
 
 PATHSPEC = [str(P.LEDGER.relative_to(P.REPO)), str(P.PUSHED.relative_to(P.REPO)) + "/", "examples/appworld/"]
 PUSH_STATE = P.AW_STATE / "ledger_push.json"
-LOCK = P.AW_STATE / f"ledger-{P.LEDGER.stem}.lock"
+LOCK = P.AW_STATE / "ledger.lock"                      # rule R3
 HB_PID = P.AW_STATE / "HEARTBEAT.pid"
 TRAILER = "Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>"
 ENTRY_RE = re.compile(r"^## CP-(\d{4}) · ", re.M)
@@ -98,7 +98,7 @@ def ngrams8(text: str) -> set[str]:
 
 
 def violations(text: str, env_values: list[str] | None = None) -> list[str]:
-    """Content rules of §10.2. Returns rule names (never the matched text)."""
+    """Content rules of §12.2. Returns rule names (never the matched text)."""
     out = []
     env_values = [v for v in (env_values if env_values is not None else P.read_env_file().values())
                   if len(v) >= 8]
