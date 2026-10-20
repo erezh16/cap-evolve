@@ -1,5 +1,5 @@
-"""A10: ledger / resume / publishing (docs/EVAL_APPWORLD_5.md §10, §11) against a throwaway clone, ledger and
-branch (`acceptance/eval5-status-test`, deleted afterwards). Dev ids only; nothing is counted.
+"""A10: ledger / resume / publishing (docs/EVAL_APPWORLD_REST.md §12, §13) against a throwaway clone, ledger and
+branch in a LOCAL bare remote (nothing is pushed to GitHub). Dev ids only; nothing is counted.
 
   python3 -I check_a10.py run | cleanup
 1. a 12-cell mini window (2 arms × 6 dev tasks, coalescing at 60 s) is SIGKILLed mid-way and resumed:
@@ -7,7 +7,8 @@ branch (`acceptance/eval5-status-test`, deleted afterwards). Dev ids only; nothi
 2. the coalesced entries are ≤ 1 per 60 s; every pushed commit only adds ledger lines (append-only);
 3. a heartbeat with a 60 s silence setting marks the killed runner `stalled`;
 4. a push failure (bad remote) leaves a local commit that the next checkpoint pushes;
-5. the content filter refuses an entry with a task id and one with an `.env` value.
+5. the content filter refuses an entry with a task id and one with an `.env` value (a fake .env with a random value);
+6. concurrent `status_doc.py append` calls from 3 processes all land, none lost, numbers unique (the flock test).
 Prints flags and counts only.
 """
 
@@ -24,13 +25,17 @@ from pathlib import Path
 
 EX = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(EX / "scripts"))
-import aw5 as P  # noqa: E402
+import awrest as P  # noqa: E402
 
-BR = "acceptance/eval5-status-test"
+BR = "acceptance/eval-rest-status-test"
 BASE = P.AW_HOME / "acceptance_a10"
-ORIGIN = subprocess.run(["git", "-C", str(P.REPO), "remote", "get-url", "origin"], capture_output=True,
-                        text=True).stdout.strip()
+ORIGIN = str(P.AW_HOME / "acceptance_a10_remote.git")       # a local bare remote: the test never touches GitHub
 LEDGER = "EVAL_A10_TEST.md"
+
+
+def _q(x):
+    import shlex
+    return shlex.quote(str(x))
 
 
 def sh(*a, cwd=None, env=None, check=True):
@@ -39,14 +44,14 @@ def sh(*a, cwd=None, env=None, check=True):
 
 def env_for(clone: Path, state: Path) -> dict:
     e = {**os.environ, "AW_REPO": str(clone), "AW_STATE": str(state), "AW_BRANCH": BR,
-         "AW_LEDGER_NAME": LEDGER, "AW_ENV_FILE": str(P.ENV_FILE)}
+         "AW_LEDGER_NAME": LEDGER, "AW_ENV_FILE": str(BASE / "fake.env"), "AW_SECRETS_FILE": str(P.ENV_FILE)}
     return P.setup_env(e)
 
 
 MINI = r'''
 import json, os, sys, random
 sys.path.insert(0, %(scripts)r)
-import aw5 as P, window5 as W
+import awrest as P, window as W
 ids = P.read_split("dev")[:6]
 order = W.make_order(ids, ["seed", "seed2"], 1, 7)
 m = P.manifest()
@@ -62,9 +67,14 @@ w.run()
 
 
 def run() -> int:
+    import secrets as _s
     shutil.rmtree(BASE, ignore_errors=True)
+    shutil.rmtree(ORIGIN, ignore_errors=True)
     BASE.mkdir(parents=True)
+    fake_secret = "FAKEKEY" + _s.token_hex(16)
+    (BASE / "fake.env").write_text(f"RITS_URL=https://example.invalid\nRITS_API_KET={fake_secret}\n")
     clone, state = BASE / "clone", BASE / "state"
+    sh("git", "clone", "-q", "--bare", "--branch", P.BRANCH, str(P.REPO), ORIGIN)
     sh("git", "clone", "-q", "--branch", P.BRANCH, ORIGIN, str(clone))
     sh("git", "checkout", "-q", "-b", BR, cwd=clone)
     for k, v in (("user.email", "devagent@localhost"), ("user.name", "devagent")):
@@ -120,7 +130,7 @@ def run() -> int:
             deletions += int(st[1])
     res["append_only"] = deletions == 0
     # 4. push failure, then recovery
-    sh("git", "remote", "set-url", "origin", "git@github.com:invalid/invalid-nonexistent.git", cwd=clone)
+    sh("git", "remote", "set-url", "origin", str(BASE / "no-such-remote.git"), cwd=clone)
     sh(*sd, "append", "--kind", "result", "--phase", "A10", "--label", "pushfail", "--prose", "push failure test.",
        env=env, cwd=clone, check=False)
     ps = json.loads((state / "ledger_push.json").read_text())
@@ -137,15 +147,31 @@ def run() -> int:
     tid = P.read_split("dev")[0]
     r1 = sh(*sd, "append", "--kind", "result", "--phase", "A10", "--label", "x", "--prose", f"cell {tid} done",
             env=env, cwd=clone, check=False)
-    secret = P.read_env_file()["RITS_API_KET"]
+    secret = fake_secret
     r2 = sh(*sd, "append", "--kind", "result", "--phase", "A10", "--label", "x", "--prose", f"key {secret}",
             env=env, cwd=clone, check=False)
     led2 = (clone / "docs" / LEDGER).read_text()
     res["filter_refused_task_id"] = r1.returncode != 0 and tid not in led2
     res["filter_refused_env_value"] = r2.returncode != 0 and secret not in led2
+    # 6. three concurrent writers, 4 appends each: all 12 land, numbers unique and increasing
+    import re as _re
+    n0 = len(_re.findall(r"(?m)^## CP-\d{4} ", led2))
+    ws = [subprocess.Popen(["/bin/sh", "-c", " ; ".join(" ".join(map(_q, sd + ["append", "--kind", "result", "--phase",
+                            "A10", "--label", f"w{w}-{i}", "--prose", f"writer {w} append {i}", "--no-push"]))
+                            for i in range(4))], env=env, cwd=clone) for w in range(3)]
+    for w in ws:
+        w.wait()
+    led3 = (clone / "docs" / LEDGER).read_text()
+    nums = [int(x) for x in _re.findall(r"(?m)^## CP-(\d{4}) ", led3)]
+    labels = _re.findall(r"(?m)^## CP-\d{4} · \S+ · A10 (w\d-\d) ·", led3)
+    res["concurrent_appends_landed"] = len(nums) - n0 == 12 and len(set(labels)) == 12
+    res["concurrent_numbers_unique_increasing"] = nums == sorted(set(nums))
+    res["concurrent_all_committed"] = sh("git", "status", "--porcelain", "--", f"docs/{LEDGER}", cwd=clone).stdout == ""
     res["ok"] = all([res["first_append"], res["heartbeat_stalled"], res["all_done"], res["cells_rerun"] == 0,
                      res["append_only"], res["push_failure_kept_local"], res["next_checkpoint_pushed"],
-                     res["filter_refused_task_id"], res["filter_refused_env_value"], 0 < n_before_kill < 12])
+                     res["filter_refused_task_id"], res["filter_refused_env_value"], 0 < n_before_kill < 12,
+                     res["concurrent_appends_landed"], res["concurrent_numbers_unique_increasing"],
+                     res["concurrent_all_committed"]])
     P.write_json(P.AW_STATE / "acceptance" / "a10.json", res)
     print(json.dumps(res))
     cleanup()
@@ -153,8 +179,8 @@ def run() -> int:
 
 
 def cleanup() -> int:
-    sh("git", "-C", str(P.REPO), "push", "-q", "origin", "--delete", BR, check=False)
     shutil.rmtree(BASE, ignore_errors=True)
+    shutil.rmtree(ORIGIN, ignore_errors=True)
     return 0
 
 
