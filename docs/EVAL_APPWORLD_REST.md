@@ -1591,3 +1591,11 @@ P4: gepa_full chain started (search, freeze, isolation scan), pid file AW_STATE/
 ```json
 {"cp": 35, "prev_cp": 34, "prev_commit": "adf6cc306e1759cea320e161fca96cb219c71923", "utc": "2026-10-20T22:16:27Z", "kind": "phase_start", "phase": "P4", "done_through": "P2/done", "next": "P4/searches", "candidate": "gepa_full", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "ecdb3df89aae295a4122c5e2deee9f20913851d5", "open_decisions": []}
 ```
+
+## CP-0036 · 2026-10-20T22:16Z · P4 posted gepa_full · posted
+
+Posted 'GEPA-Full: search started' on #900 (gepa_full): https://github.com/skillberry-ai/cap-evolve/issues/900#issuecomment-6303004566
+
+```json
+{"cp": 36, "prev_cp": 35, "prev_commit": "58c7917600c783f5a3341d3784aa82fe6f6e206d", "utc": "2026-10-20T22:16:29Z", "kind": "posted", "phase": "P4", "done_through": "P2/done", "next": "P4/searches", "candidate": "gepa_full", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "ecdb3df89aae295a4122c5e2deee9f20913851d5", "open_decisions": [], "post": "gepa_full/m_search_start", "url": "https://github.com/skillberry-ai/cap-evolve/issues/900#issuecomment-6303004566"}
+```

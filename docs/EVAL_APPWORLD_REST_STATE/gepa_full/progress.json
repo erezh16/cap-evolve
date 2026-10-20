@@ -1,0 +1,27 @@
+{
+ "candidate": "gepa_full",
+ "stage": "search running",
+ "counted_rollouts": 0,
+ "cap": 900,
+ "cache_hits": 0,
+ "metric_calls": 0,
+ "max_metric_calls": 894,
+ "iterations": 0,
+ "accepted": 0,
+ "best_search_score": null,
+ "best_search_label": "dev TGC of the best Pareto candidate (57 dev tasks, the selection set: selection-biased)",
+ "eta": "estimating",
+ "components": {},
+ "proposer": {},
+ "lint_rejects": 0,
+ "optimizer": {
+  "calls": 0,
+  "errors": 0,
+  "prompt_tokens": 0,
+  "completion_tokens": 0,
+  "cache_read": 0,
+  "cache_write": 0,
+  "seconds": 0,
+  "proxy_usd": 0.0
+ }
+}
