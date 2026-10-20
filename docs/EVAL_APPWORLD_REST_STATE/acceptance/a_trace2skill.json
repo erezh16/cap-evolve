@@ -1,0 +1,67 @@
+{
+ "episodes": {
+  "records": 5,
+  "passed": 5,
+  "infra": 0
+ },
+ "A1_converter_roundtrip": true,
+ "A2_synthetic_failed_log": true,
+ "A2_analysts": {
+  "error_records": 1,
+  "success_records": 4,
+  "error_items": 6,
+  "success_items": 12,
+  "pass": true
+ },
+ "A3_dry_run": {
+  "map_patches": 3,
+  "edits": 1,
+  "valid": true,
+  "llm_calls": 7,
+  "records": {
+   "error": 1,
+   "success": 2
+  },
+  "body_tokens": 898,
+  "pass": true
+ },
+ "A4_packaging": {
+  "tokens": 898,
+  "m_cap": 14000,
+  "lint": "<list 0>",
+  "condensations": 0,
+  "injection": {
+   "ok": true,
+   "messages": 23,
+   "same_prefix_messages": true,
+   "heading_before_my_name_is": true,
+   "block_chars": 4031
+  },
+  "episode": {
+   "lint_reject": false,
+   "error": false,
+   "n_steps": 7,
+   "termination": "completed"
+  },
+  "pass": true
+ },
+ "A5_no_temperature": {
+  "requests": 12,
+  "with_temperature": 0,
+  "with_top_p_top_k_seed": 0,
+  "header_sent": true,
+  "body_keys": "<list 4>",
+  "pass": true
+ },
+ "optimizer": {
+  "calls": 24,
+  "errors": 0,
+  "prompt_tokens": 116180,
+  "completion_tokens": 23429,
+  "cache_read": 0,
+  "cache_write": 0,
+  "seconds": 158.8,
+  "proxy_usd": 0.47
+ },
+ "PASS": true
+}
