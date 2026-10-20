@@ -1583,3 +1583,11 @@ Repair: the cape_improve search refused to start (launch.sh exit 3, before any c
 ```json
 {"cp": 34, "prev_cp": 33, "prev_commit": "ecdb3df89aae295a4122c5e2deee9f20913851d5", "utc": "2026-10-20T22:15:45Z", "kind": "repair", "phase": "P4", "done_through": "P2/done", "next": "P4/searches", "candidate": "cape_improve", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "ecdb3df89aae295a4122c5e2deee9f20913851d5", "open_decisions": []}
 ```
+
+## CP-0035 · 2026-10-20T22:16Z · P4 gepa_full search · phase_start
+
+P4: gepa_full chain started (search, freeze, isolation scan), pid file AW_STATE/p4/gepa_full.pid. Running chains: gepa_full. Global slots 24; memory 1.85%.
+
+```json
+{"cp": 35, "prev_cp": 34, "prev_commit": "adf6cc306e1759cea320e161fca96cb219c71923", "utc": "2026-10-20T22:16:27Z", "kind": "phase_start", "phase": "P4", "done_through": "P2/done", "next": "P4/searches", "candidate": "gepa_full", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "ecdb3df89aae295a4122c5e2deee9f20913851d5", "open_decisions": []}
+```
