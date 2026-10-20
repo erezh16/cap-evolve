@@ -1503,3 +1503,11 @@ Posted 'shared seed baseline done' on #898 (miprov2): https://github.com/skillbe
 ```json
 {"cp": 24, "prev_cp": 23, "prev_commit": "5da7ccadb6d61d9b025c0c9e91d374ae38643bd9", "utc": "2026-10-20T22:08:59Z", "kind": "posted", "phase": "P3", "done_through": "P3/seed", "next": "P4/searches", "candidate": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "a0c85b4f974cfc89726eac6de8b78c8fd931fffc", "open_decisions": [], "post": "miprov2/p3_done", "url": "https://github.com/skillberry-ai/cap-evolve/issues/898#issuecomment-6302883230"}
 ```
+
+## CP-0025 · 2026-10-20T22:09Z · P3 posted trace2skill · posted
+
+Posted 'shared seed baseline done' on #899 (trace2skill): https://github.com/skillberry-ai/cap-evolve/issues/899#issuecomment-6302883972
+
+```json
+{"cp": 25, "prev_cp": 24, "prev_commit": "33a46d6572f78800bcb247f5c099efc357ed58ec", "utc": "2026-10-20T22:09:01Z", "kind": "posted", "phase": "P3", "done_through": "P3/seed", "next": "P4/searches", "candidate": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "a0c85b4f974cfc89726eac6de8b78c8fd931fffc", "open_decisions": [], "post": "trace2skill/p3_done", "url": "https://github.com/skillberry-ai/cap-evolve/issues/899#issuecomment-6302883972"}
+```
