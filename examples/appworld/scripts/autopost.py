@@ -101,8 +101,10 @@ def milestones(c: str) -> list[tuple[str, str, str]]:
     pr = P.read_json(P.PUSHED / c / "progress.json", {}) or {}
     counted = len(P.read_jsonl(P.AW_STATE / c / "rollouts.jsonl"))
     stage = str(pr.get("stage") or "")
+    chain = P.read_json(P.AW_STATE / "p4" / f"{c}.json", {}) or {}     # the P4 runner's record of the chain
+    done = set(chain.get("done") or [])
     out = []
-    if counted > 0 or stage.startswith("search"):
+    if counted > 0:
         out.append(("m4_search_start", "search started",
                     f"**{P.METHOD_NAMES[c]}: counted search started.** Settings as plan §9 for this candidate; "
                     f"B = {P.BUDGET_ROLLOUTS} counted rollouts and 10M optimizer tokens; gold-free F1 feedback; "
@@ -117,17 +119,17 @@ def milestones(c: str) -> list[tuple[str, str, str]]:
         out.append((f"m4_best_{best}", "new best search-time score",
                     f"**{P.METHOD_NAMES[c]}: new best search-time score {best}** "
                     f"({pr.get('best_search_label', 'selection-biased')}; a search-set number, not a test result)."))
-    if "finished" in stage or "stopped" in stage:
-        out.append(("m4_search_end", "search ended", f"**{P.METHOD_NAMES[c]}: search ended** ({stage}).\n\n"
+    if "search" in done:
+        out.append(("m4_search_done", "search ended", f"**{P.METHOD_NAMES[c]}: search ended** ({stage}).\n\n"
                     + status_body(c).split("\n", 2)[2]))
     fz = P.read_json(P.PUSHED / c / "artifact" / "FREEZE.json", {}) or {}
-    if fz:
+    if fz and "freeze" in done:
         keep = {k: v for k, v in fz.items() if isinstance(v, (int, float, bool, str)) and len(str(v)) <= 80}
         out.append(("m4_frozen", "champion frozen", f"**{P.METHOD_NAMES[c]}: champion frozen** (lint-clean, "
                     f"published in `docs/EVAL_APPWORLD_REST_STATE/{c}/artifact/`).\n\n"
                     + "\n".join(f"- {k}: {v}" for k, v in keep.items())))
     scan = (P.read_json(P.PUSHED / "isolation_scan.json", {}) or {}).get(c)
-    if scan:
+    if scan and "scan" in done:
         out.append(("m4_scanned", "isolation scan", f"**{P.METHOD_NAMES[c]}: isolation scan done.** Test-id hits in "
                     f"every optimizer-side record and workspace: {scan.get('test_id_hits')}"
                     + (" — ISOLATION BREACH" if scan.get("isolation_breach") else "") + ". Literal-string counts are "

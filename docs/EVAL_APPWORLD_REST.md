@@ -1599,3 +1599,11 @@ Posted 'GEPA-Full: search started' on #900 (gepa_full): https://github.com/skill
 ```json
 {"cp": 36, "prev_cp": 35, "prev_commit": "58c7917600c783f5a3341d3784aa82fe6f6e206d", "utc": "2026-10-20T22:16:29Z", "kind": "posted", "phase": "P4", "done_through": "P2/done", "next": "P4/searches", "candidate": "gepa_full", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "ecdb3df89aae295a4122c5e2deee9f20913851d5", "open_decisions": [], "post": "gepa_full/m_search_start", "url": "https://github.com/skillberry-ai/cap-evolve/issues/900#issuecomment-6303004566"}
 ```
+
+## CP-0037 · 2026-10-20T22:17Z · P4 posted gepa_full · posted
+
+Posted 'GEPA-Full search started' on #900 (gepa_full): https://github.com/skillberry-ai/cap-evolve/issues/900#issuecomment-6303013946
+
+```json
+{"cp": 37, "prev_cp": 36, "prev_commit": "c2a70e5ea46f49c63d6c99180a03b6797b22b518", "utc": "2026-10-20T22:17:04Z", "kind": "posted", "phase": "P4", "done_through": "P2/done", "next": "P4/searches", "candidate": "gepa_full", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "ecdb3df89aae295a4122c5e2deee9f20913851d5", "open_decisions": [], "post": "gepa_full/m4_search_start", "url": "https://github.com/skillberry-ai/cap-evolve/issues/900#issuecomment-6303013946"}
+```

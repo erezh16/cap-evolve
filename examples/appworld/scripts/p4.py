@@ -61,7 +61,24 @@ def pid_of(c: str) -> int | None:
 
 
 def alive(c: str) -> bool:
-    return S.pid_alive(pid_of(c))
+    """Live and not a zombie (an exited, unreaped chain still answers kill(pid, 0))."""
+    pid = pid_of(c)
+    if not S.pid_alive(pid):
+        return False
+    try:
+        return Path(f"/proc/{pid}/stat").read_text().rsplit(")", 1)[1].split()[0] != "Z"
+    except (FileNotFoundError, IndexError):
+        return False
+
+
+def reap() -> None:
+    while True:
+        try:
+            pid, _ = os.waitpid(-1, os.WNOHANG)
+        except ChildProcessError:
+            return
+        if pid == 0:
+            return
 
 
 def state(c: str) -> dict:
@@ -118,6 +135,7 @@ def loop(maxn: int) -> int:
     (D / "RUNNER.pid").write_text(str(os.getpid()))
     paused_since, cut_at, low_since = None, None, None
     while True:
+        reap()
         running = [c for c in ORDER if alive(c)]
         todo = [c for c in ORDER if not finished(c) and not failed(c) and c not in running]
         if not running and not todo:
