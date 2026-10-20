@@ -1,0 +1,590 @@
+{
+ "n_tasks": 168,
+ "n_scenarios": 56,
+ "trials": 2,
+ "cells": 2016,
+ "bootstrap_resamples": 10000,
+ "arms": {
+  "seed": {
+   "tgc": 0.34226190476190477,
+   "sgc": 0.11607142857142858,
+   "tgc_drop_missing": 0.34226190476190477,
+   "sgc_drop_missing": 0.11607142857142858,
+   "by_difficulty": {
+    "Easy": {
+     "n": 57,
+     "tgc": 0.5701754385964912,
+     "n_scenarios": 19,
+     "sgc": 0.3157894736842105
+    },
+    "Medium": {
+     "n": 48,
+     "tgc": 0.23958333333333334,
+     "n_scenarios": 16,
+     "sgc": 0.03125
+    },
+    "Hard": {
+     "n": 63,
+     "tgc": 0.21428571428571427,
+     "n_scenarios": 21,
+     "sgc": 0.0
+    }
+   },
+   "episodes": 336,
+   "missing": 0,
+   "prompt_tokens_per_task": 89779.45238095238,
+   "completion_tokens_per_task": 5802.684523809524,
+   "steps_per_task": 12.452380952380953,
+   "episode_seconds": 243.80148809523808,
+   "step_cap_hits": 4,
+   "token_cap_hits": 0,
+   "context_exceeded": 0,
+   "collateral_damage": 12,
+   "complete_task_not_called": 4,
+   "fs_probe": 0,
+   "max_prompt_tokens": 19394,
+   "trials_agree_share": 0.6964285714285714,
+   "infra_retries": 1
+  },
+  "gepa": {
+   "tgc": 0.6011904761904762,
+   "sgc": 0.39285714285714285,
+   "tgc_drop_missing": 0.6011904761904762,
+   "sgc_drop_missing": 0.39285714285714285,
+   "by_difficulty": {
+    "Easy": {
+     "n": 57,
+     "tgc": 0.7807017543859649,
+     "n_scenarios": 19,
+     "sgc": 0.631578947368421
+    },
+    "Medium": {
+     "n": 48,
+     "tgc": 0.6041666666666666,
+     "n_scenarios": 16,
+     "sgc": 0.4375
+    },
+    "Hard": {
+     "n": 63,
+     "tgc": 0.4365079365079365,
+     "n_scenarios": 21,
+     "sgc": 0.14285714285714285
+    }
+   },
+   "episodes": 336,
+   "missing": 0,
+   "prompt_tokens_per_task": 116267.75,
+   "completion_tokens_per_task": 6060.732142857143,
+   "steps_per_task": 11.839285714285714,
+   "episode_seconds": 258.34017857142857,
+   "step_cap_hits": 4,
+   "token_cap_hits": 0,
+   "context_exceeded": 0,
+   "collateral_damage": 9,
+   "complete_task_not_called": 4,
+   "fs_probe": 0,
+   "max_prompt_tokens": 22292,
+   "trials_agree_share": 0.7619047619047619,
+   "infra_retries": 0
+  },
+  "skillopt": {
+   "tgc": 0.5922619047619048,
+   "sgc": 0.4107142857142857,
+   "tgc_drop_missing": 0.5922619047619048,
+   "sgc_drop_missing": 0.4107142857142857,
+   "by_difficulty": {
+    "Easy": {
+     "n": 57,
+     "tgc": 0.8070175438596491,
+     "n_scenarios": 19,
+     "sgc": 0.7368421052631579
+    },
+    "Medium": {
+     "n": 48,
+     "tgc": 0.6458333333333334,
+     "n_scenarios": 16,
+     "sgc": 0.375
+    },
+    "Hard": {
+     "n": 63,
+     "tgc": 0.35714285714285715,
+     "n_scenarios": 21,
+     "sgc": 0.14285714285714285
+    }
+   },
+   "episodes": 336,
+   "missing": 0,
+   "prompt_tokens_per_task": 148512.73511904763,
+   "completion_tokens_per_task": 6585.458333333333,
+   "steps_per_task": 11.800595238095237,
+   "episode_seconds": 280.1020833333333,
+   "step_cap_hits": 1,
+   "token_cap_hits": 0,
+   "context_exceeded": 0,
+   "collateral_damage": 14,
+   "complete_task_not_called": 1,
+   "fs_probe": 0,
+   "max_prompt_tokens": 25305,
+   "trials_agree_share": 0.7678571428571429,
+   "infra_retries": 0
+  },
+  "wikiskill": {
+   "tgc": 0.5505952380952381,
+   "sgc": 0.32142857142857145,
+   "tgc_drop_missing": 0.5505952380952381,
+   "sgc_drop_missing": 0.32142857142857145,
+   "by_difficulty": {
+    "Easy": {
+     "n": 57,
+     "tgc": 0.7368421052631579,
+     "n_scenarios": 19,
+     "sgc": 0.5
+    },
+    "Medium": {
+     "n": 48,
+     "tgc": 0.59375,
+     "n_scenarios": 16,
+     "sgc": 0.3125
+    },
+    "Hard": {
+     "n": 63,
+     "tgc": 0.3492063492063492,
+     "n_scenarios": 21,
+     "sgc": 0.16666666666666666
+    }
+   },
+   "episodes": 336,
+   "missing": 0,
+   "prompt_tokens_per_task": 100662.63392857143,
+   "completion_tokens_per_task": 6079.169642857143,
+   "steps_per_task": 11.005952380952381,
+   "episode_seconds": 257.0782738095238,
+   "step_cap_hits": 4,
+   "token_cap_hits": 0,
+   "context_exceeded": 0,
+   "collateral_damage": 8,
+   "complete_task_not_called": 4,
+   "fs_probe": 0,
+   "max_prompt_tokens": 20949,
+   "trials_agree_share": 0.7559523809523809,
+   "infra_retries": 2
+  },
+  "evoskill": {
+   "tgc": 0.5476190476190477,
+   "sgc": 0.35714285714285715,
+   "tgc_drop_missing": 0.5476190476190477,
+   "sgc_drop_missing": 0.35714285714285715,
+   "by_difficulty": {
+    "Easy": {
+     "n": 57,
+     "tgc": 0.7807017543859649,
+     "n_scenarios": 19,
+     "sgc": 0.631578947368421
+    },
+    "Medium": {
+     "n": 48,
+     "tgc": 0.5833333333333334,
+     "n_scenarios": 16,
+     "sgc": 0.3125
+    },
+    "Hard": {
+     "n": 63,
+     "tgc": 0.30952380952380953,
+     "n_scenarios": 21,
+     "sgc": 0.14285714285714285
+    }
+   },
+   "episodes": 336,
+   "missing": 0,
+   "prompt_tokens_per_task": 142111.1755952381,
+   "completion_tokens_per_task": 7256.136904761905,
+   "steps_per_task": 12.226190476190476,
+   "episode_seconds": 304.38660714285714,
+   "step_cap_hits": 3,
+   "token_cap_hits": 0,
+   "context_exceeded": 0,
+   "collateral_damage": 16,
+   "complete_task_not_called": 3,
+   "fs_probe": 0,
+   "max_prompt_tokens": 23426,
+   "trials_agree_share": 0.7380952380952381,
+   "infra_retries": 2
+  },
+  "metaharness": {
+   "tgc": 0.5208333333333334,
+   "sgc": 0.3392857142857143,
+   "tgc_drop_missing": 0.5208333333333334,
+   "sgc_drop_missing": 0.3392857142857143,
+   "by_difficulty": {
+    "Easy": {
+     "n": 57,
+     "tgc": 0.6842105263157895,
+     "n_scenarios": 19,
+     "sgc": 0.5263157894736842
+    },
+    "Medium": {
+     "n": 48,
+     "tgc": 0.4791666666666667,
+     "n_scenarios": 16,
+     "sgc": 0.3125
+    },
+    "Hard": {
+     "n": 63,
+     "tgc": 0.40476190476190477,
+     "n_scenarios": 21,
+     "sgc": 0.19047619047619047
+    }
+   },
+   "episodes": 336,
+   "missing": 0,
+   "prompt_tokens_per_task": 107990.19940476191,
+   "completion_tokens_per_task": 6971.776785714285,
+   "steps_per_task": 14.330357142857142,
+   "episode_seconds": 291.846130952381,
+   "step_cap_hits": 4,
+   "token_cap_hits": 0,
+   "context_exceeded": 0,
+   "collateral_damage": 11,
+   "complete_task_not_called": 4,
+   "fs_probe": 0,
+   "max_prompt_tokens": 20472,
+   "trials_agree_share": 0.7797619047619048,
+   "infra_retries": 0
+  }
+ },
+ "vs_seed": {
+  "gepa": {
+   "d_tgc": 0.2589285714285714,
+   "ci_tgc": [
+    0.18452380952380953,
+    0.3333333333333333
+   ],
+   "d_sgc": 0.2767857142857143,
+   "ci_sgc": [
+    0.16964285714285715,
+    0.3839285714285714
+   ]
+  },
+  "skillopt": {
+   "d_tgc": 0.25,
+   "ci_tgc": [
+    0.18452380952380948,
+    0.318452380952381
+   ],
+   "d_sgc": 0.2946428571428571,
+   "ci_sgc": [
+    0.19642857142857142,
+    0.40178571428571425
+   ]
+  },
+  "wikiskill": {
+   "d_tgc": 0.20833333333333337,
+   "ci_tgc": [
+    0.13988095238095233,
+    0.2797619047619047
+   ],
+   "d_sgc": 0.20535714285714288,
+   "ci_sgc": [
+    0.10714285714285714,
+    0.3125
+   ]
+  },
+  "evoskill": {
+   "d_tgc": 0.2053571428571429,
+   "ci_tgc": [
+    0.13690476190476192,
+    0.27380952380952384
+   ],
+   "d_sgc": 0.24107142857142858,
+   "ci_sgc": [
+    0.1517857142857143,
+    0.33928571428571425
+   ]
+  },
+  "metaharness": {
+   "d_tgc": 0.1785714285714286,
+   "ci_tgc": [
+    0.10119047619047622,
+    0.2529761904761904
+   ],
+   "d_sgc": 0.22321428571428573,
+   "ci_sgc": [
+    0.11607142857142858,
+    0.33035714285714285
+   ]
+  }
+ },
+ "optimizer": {
+  "gepa": {
+   "calls": 33,
+   "errors": 0,
+   "input_tokens": 761846,
+   "output_tokens": 184757,
+   "cache_read_tokens": 0,
+   "proxy_usd": 5.06,
+   "reported_usd": null,
+   "optimizer_seconds": 1163,
+   "counted_search_rollouts": 900,
+   "search_infra_errors": 0,
+   "search_episode_seconds_mean": 219.7,
+   "search_wall": [
+    "2026-10-18T01:31:50Z",
+    "2026-10-18T10:47:13Z"
+   ],
+   "freeze": {
+    "candidate": "gepa",
+    "label": "",
+    "best_idx": 12,
+    "best_dev": 0.7192982456140351,
+    "seed_dev": 0.42105263157894735,
+    "num_candidates": 13,
+    "metric_calls": 897,
+    "tree_sha256": "9df978d9782b440e8e10319090f5e5b05329272094ed36a69f2702f3bb023aa9"
+   }
+  },
+  "skillopt": {
+   "calls": 74,
+   "errors": 0,
+   "input_tokens": 2331763,
+   "output_tokens": 180038,
+   "cache_read_tokens": 0,
+   "proxy_usd": 9.7,
+   "reported_usd": null,
+   "optimizer_seconds": 1448,
+   "counted_search_rollouts": 900,
+   "search_infra_errors": 0,
+   "search_episode_seconds_mean": 186.0,
+   "search_wall": [
+    "2026-10-18T10:57:13Z",
+    "2026-10-18T14:32:12Z"
+   ],
+   "freeze": {
+    "candidate": "skillopt",
+    "label": "",
+    "best_score": 0.7543859649122807,
+    "steps": 9,
+    "memory_chars": 24118,
+    "memory_tokens": 5707,
+    "tree_sha256": "2b90b8084d39dc8bedf8e8f47fbf02dcc529b506e1e5a96bb1421b87e3f6f578",
+    "accepted_steps": [
+     1,
+     2,
+     8
+    ],
+    "best_step": 8
+   }
+  },
+  "wikiskill": {
+   "calls": 51,
+   "errors": 0,
+   "input_tokens": 1775943,
+   "output_tokens": 94851,
+   "cache_read_tokens": 0,
+   "proxy_usd": 6.75,
+   "reported_usd": null,
+   "optimizer_seconds": 767,
+   "counted_search_rollouts": 792,
+   "search_infra_errors": 1,
+   "search_episode_seconds_mean": 255.3,
+   "search_wall": [
+    "2026-10-18T14:57:08Z",
+    "2026-10-18T18:25:05Z"
+   ],
+   "freeze": {
+    "candidate": "wikiskill",
+    "label": "",
+    "r_best": 0.6140350877192983,
+    "skills": [
+     "appworld_data_extraction_and_answer_hygiene"
+    ],
+    "memory_chars": 7859,
+    "memory_tokens": 1907,
+    "iterations": 5,
+    "tree_sha256": "eee01ab4d8475e3bdf1507b3172b60bb6dd0110850dc4b7ea24676caf276732e"
+   }
+  },
+  "evoskill": {
+   "calls": 36,
+   "errors": 0,
+   "input_tokens": 1057898,
+   "output_tokens": 84274,
+   "cache_read_tokens": 1402727,
+   "proxy_usd": 4.44,
+   "reported_usd": 4.91,
+   "optimizer_seconds": 901,
+   "counted_search_rollouts": 663,
+   "search_infra_errors": 0,
+   "search_episode_seconds_mean": 236.4,
+   "search_wall": [
+    "2026-10-18T18:39:42Z",
+    "2026-10-19T01:15:46Z"
+   ],
+   "freeze": {
+    "candidate": "evoskill",
+    "label": "",
+    "program": "iter-skill-25",
+    "full_dev": 0.7543859649122807,
+    "frontier": [
+     {
+      "program": "iter-skill-26",
+      "val_score": 0.75,
+      "full_dev": 0.7368421052631579,
+      "chars": 19521
+     },
+     {
+      "program": "iter-skill-25",
+      "val_score": 0.75,
+      "full_dev": 0.7543859649122807,
+      "chars": 18319
+     },
+     {
+      "program": "iter-skill-17",
+      "val_score": 0.65,
+      "full_dev": 0.7017543859649122,
+      "chars": 16534
+     }
+    ],
+    "memory_chars": 18319,
+    "memory_tokens": 4546,
+    "tree_sha256": "752986f79f5f3818aa440edf686477560b3b6da534089a95a6fc9747c7c80a3e"
+   }
+  },
+  "metaharness": {
+   "calls": 7,
+   "errors": 0,
+   "input_tokens": 2217164,
+   "output_tokens": 7046,
+   "cache_read_tokens": 38925416,
+   "proxy_usd": 6.76,
+   "reported_usd": 28.18,
+   "optimizer_seconds": 4536,
+   "counted_search_rollouts": 887,
+   "search_infra_errors": 0,
+   "search_episode_seconds_mean": 186.1,
+   "search_wall": [
+    "2026-10-19T01:35:04Z",
+    "2026-10-19T09:45:56Z"
+   ],
+   "freeze": {
+    "candidate": "metaharness",
+    "label": "",
+    "best": "fetch_all_pages_helper",
+    "search_tgc": 0.5850340136054422,
+    "seed_search_tgc": 0.4013605442176871,
+    "iterations": 7,
+    "tree_sha256": "7e8d593ef479ebcd9c305b3035e6067f2dcb61702bcfef12a429f8c65beb0662"
+   }
+  }
+ },
+ "dev_diagnostic_tgc": {
+  "metaharness": 0.5088,
+  "evoskill": 0.7018,
+  "wikiskill": 0.5439,
+  "skillopt": 0.7368,
+  "seed": 0.3684,
+  "gepa": 0.6491
+ },
+ "manifest": {
+  "appworld": {
+   "commit": "42b5bcf3cd334fee33f0c37c02070a9f5807add5",
+   "git_diff_sha256": "755de8b83b1e24b490e54993417a9a0a78b2ce3805bb895057ae2a3dd6914cf6",
+   "patch_sha256": "755de8b83b1e24b490e54993417a9a0a78b2ce3805bb895057ae2a3dd6914cf6"
+  },
+  "candidates": {
+   "gepa": {
+    "url": "https://github.com/gepa-ai/gepa",
+    "commit": "8b0ce6cd99a234f6b74daf37558a2ac0ce18f975",
+    "venv": "venv-aw"
+   },
+   "skillopt": {
+    "url": "https://github.com/microsoft/skillopt",
+    "commit": "ae2f766ea02cb41855b6f8f10e38e10264ce0a1b",
+    "venv": {
+     "python": "3.11",
+     "freeze_sha256": "c9a8d4985c14f5bfb9a0ecaa5620ef558825d60779689d4f4743b4fd99945757"
+    }
+   },
+   "wikiskill": {
+    "url": "https://github.com/kenhuangus/wikiskill",
+    "commit": "03633345829c452680d18a17004afd33eee729da",
+    "venv": "venv-aw"
+   },
+   "evoskill": {
+    "url": "https://github.com/sentient-agi/EvoSkill",
+    "commit": "1d7dc3e6d204473c541f63eea2c99fb7f7eba3fd",
+    "venv": {
+     "python": "3.12",
+     "freeze_sha256": "57cc2a747652a1a93fa939978548ad9bc81c742fe1522b9e25e4ca3c3bbe6ec1"
+    }
+   },
+   "metaharness": {
+    "url": "https://github.com/stanford-iris-lab/meta-harness",
+    "commit": "8123ccabe2b19fa1123090b2e5f1bacc20963ce8",
+    "venv": "venv-aw"
+   }
+  },
+  "m_cap": {
+   "tokens": 13500,
+   "chars": 30000,
+   "P_max": 3230,
+   "H_max": 16930,
+   "min_chars_per_token": 3.544,
+   "template_overhead_max": 157,
+   "encoding": "o200k_harmony",
+   "rule": "min(30000 chars, 34000 - P_max - H_max tokens), tokens floored to 500"
+  },
+  "final_order": {
+   "seed": 2026101708,
+   "sha256": "202efd8153925ef4d74fdfbf6897d0663c2d6519b0867a314b1084b0f60d3e29",
+   "cells": 2016,
+   "trials": 2,
+   "trial_seeds": "5000 + trial",
+   "infra_retries": 3
+  },
+  "freeze": {
+   "tree_sha256": {
+    "seed": "15f064896f554d5affba8808923c05b3b5edc245ba9a34ba3dc903a530871c86",
+    "gepa": "26403e2c5e50ed9243c750457cb9f317f28970271c00b799f1d9018a1cdeffc6",
+    "skillopt": "8314b3340e1c0d8569f3785608186d9eb2cf65782f9be2bc17de0ca94319ca04",
+    "wikiskill": "3895752eb7b9759b4455aabf9ddde54b27442ad405245ec3272906cfa145b167",
+    "evoskill": "23f5f8f76cf504aee5eba4edbe4c209c160395f428bb39f11b36799ede22a804",
+    "metaharness": "ea0f2f68e37742b8b45fc2a257ad309fac85ebaf3ed00cf0cf60ee2a7cd0fe16"
+   },
+   "labels": {
+    "seed": "seed",
+    "gepa": "",
+    "skillopt": "",
+    "wikiskill": "",
+    "evoskill": "",
+    "metaharness": ""
+   },
+   "utc": "2026-10-19T09:55:33Z"
+  },
+  "models": {
+   "optimizer": "aws/claude-sonnet-5-5",
+   "agent": "openai/gpt-oss-120b-a100"
+  }
+ },
+ "isolation": {
+  "gepa": {
+   "test_id_hits": 0,
+   "breach": false
+  },
+  "skillopt": {
+   "test_id_hits": 0,
+   "breach": false
+  },
+  "wikiskill": {
+   "test_id_hits": 0,
+   "breach": false
+  },
+  "evoskill": {
+   "test_id_hits": 0,
+   "breach": false
+  },
+  "metaharness": {
+   "test_id_hits": 0,
+   "breach": false
+  }
+ }
+}

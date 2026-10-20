@@ -4118,3 +4118,11 @@ Next: P9/analysis.
 ```json
 {"cp": 363, "prev_cp": 362, "prev_commit": "0c558b98f478ec2f8623b96726e01e38b27e2c08", "utc": "2026-10-20T01:28:45Z", "kind": "phase_done", "phase": "P8", "done_through": "p8final/2016", "next": "P9/analysis", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {"STATE/p8final/progress.json": "454cc654d858424307a5a060bdd082ab1c8f1cb88c608bf6d794886191a93a6a"}, "code": "e313482906b2361bebf1affee386553a26d3006f", "open_decisions": [], "window": {"window": "p8final", "cells_total": 2016, "cells_done": 2016, "order_sha256": "202efd8153925ef4d74fdfbf6897d0663c2d6519b0867a314b1084b0f60d3e29"}}
 ```
+
+## CP-0364 · 2026-10-20T01:29Z · P8 step done · phase_done
+
+Step `P9/analysis` done. Next: P10/post.
+
+```json
+{"cp": 364, "prev_cp": 363, "prev_commit": "20f84ef0cd91f559f9e35f109da7855137abf911", "utc": "2026-10-20T01:29:22Z", "kind": "phase_done", "phase": "P8", "done_through": "P9/analysis", "next": "P10/post", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {}, "code": "e313482906b2361bebf1affee386553a26d3006f", "open_decisions": []}
+```
