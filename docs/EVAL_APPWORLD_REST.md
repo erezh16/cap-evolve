@@ -1719,3 +1719,11 @@ GEPA-Full iteration 2: iterations 2, accepted 1, best dev 0.6667 (selection-bias
 ```json
 {"cp": 51, "prev_cp": 50, "prev_commit": "abd4092d2e166f1389a94ff7885f4fff98171b6b", "utc": "2026-10-20T23:14:03Z", "kind": "result", "phase": "P4", "done_through": "gepa_full/search/iteration 2", "next": "gepa_full/search", "candidate": "gepa_full", "counts": {"gepa_full": {"counted_rollouts": 63}}, "spend": {"gepa_full": {"in": 22690, "out": 7155, "proxy_usd": 0.12}}, "artifacts": {"STATE/gepa_full/progress.json": "5e8fc08b51b844c6682ca40faa964a471d4aeaaef3e31e5988d196685ebd6ed9"}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": []}
 ```
+
+## CP-0052 · 2026-10-20T23:26Z · P4 gepa_full search · result
+
+GEPA-Full iteration 3: iterations 3, accepted 1, best dev 0.6667 (selection-biased), metric calls 129/894. Counted rollouts 66/900, cache hits 63; optimizer 2 calls, proxy $0.2.
+
+```json
+{"cp": 52, "prev_cp": 51, "prev_commit": "ed589b5bb7b03d6c15babc81ca5c6e2deeb364a5", "utc": "2026-10-20T23:26:07Z", "kind": "result", "phase": "P4", "done_through": "gepa_full/search/iteration 3", "next": "gepa_full/search", "candidate": "gepa_full", "counts": {"gepa_full": {"counted_rollouts": 66}}, "spend": {"gepa_full": {"in": 39578, "out": 12119, "proxy_usd": 0.2}}, "artifacts": {"STATE/gepa_full/progress.json": "082ce599ed165cf201d0f52a1b091abe354d34b1207e57f10030553329e932ff"}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": []}
+```
