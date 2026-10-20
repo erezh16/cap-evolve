@@ -1535,3 +1535,11 @@ P2 done. A-miprov2 PASS (driver examples/appworld/miprov2/run_miprov2.py, venv-m
 ```json
 {"cp": 28, "prev_cp": 27, "prev_commit": "a1c98813ab5bc32a69a2982762e6ce584346245f", "utc": "2026-10-20T22:13:17Z", "kind": "phase_done", "phase": "P2", "done_through": "P2/done", "next": "P4/wave1", "candidate": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {"STATE/acceptance/a_miprov2.json": "d2add4ea0b565acdad19f30017a9d89dfb4f0c9b8004974ef50c7f65717cf670"}, "code": "a1c98813ab5bc32a69a2982762e6ce584346245f", "open_decisions": []}
 ```
+
+## CP-0029 · 2026-10-20T22:14Z · P4 candidate searches · phase_start
+
+P4 starts. Runner examples/appworld/scripts/p4.py (nohup, pid file AW_STATE/p4/RUNNER.pid) runs at most 3 chains at once, each search -> freeze -> per-candidate isolation scan as detached processes with pid files. Order (section 12.1): cape_improve, gepa_full, miprov2 first; then harnesslens, trace2skill. 24 global episode slots shared by all. R2 escalation is in the runner (PAUSED > 10 min: slots -25%; > 20 min: stop the most recent chain gracefully). A failed step stops its chain with an error entry; no automatic retry.
+
+```json
+{"cp": 29, "prev_cp": 28, "prev_commit": "1a169611692049cccc4805374df8aded204958a6", "utc": "2026-10-20T22:14:24Z", "kind": "phase_start", "phase": "P4", "done_through": "P2/done", "next": "P4/searches", "candidate": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "1a169611692049cccc4805374df8aded204958a6", "open_decisions": []}
+```
