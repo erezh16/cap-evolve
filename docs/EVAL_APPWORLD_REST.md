@@ -1463,3 +1463,11 @@ A10 PASS (throwaway clone, ledger and local bare remote; nothing pushed to GitHu
 ```json
 {"cp": 19, "prev_cp": 18, "prev_commit": "f4edc755f78dc8c50ae8b84afbaefccd756c893c", "utc": "2026-10-20T21:41:52Z", "kind": "result", "phase": "P2", "done_through": "P2/a10-t2s-cape", "next": "P2/a-harnesslens-miprov2", "candidate": null, "counts": {}, "spend": {}, "artifacts": {"STATE/acceptance/a10.json": "06417e488be0431a448e8e7282e7c9a05f23304a4b361c132b5c4a1f722676f2", "STATE/acceptance/a_trace2skill.json": "d3435a8b5139e5b3e0b7cf7c753612f9014d438b6c5ecc7e0c06700a9800b227", "STATE/acceptance/a_cape_improve.json": "a02182ce90bb840a83aab6e23fbd716cd3a88a18457b85b6d1c462d971873e48"}, "code": "90b80d34b10b928cd7078db818109b6935dbca00", "open_decisions": []}
 ```
+
+## CP-0020 · 2026-10-20T21:43Z · P3 shared seed baseline · phase_start
+
+P3 starts: the shared seed baseline, run once (rule Q4): seed_capability on 90 train + 57 dev, 1 trial, trial seed 100, 24 global slots, through the shared evaluator (phase P3, charged to no candidate). Every common acceptance check A1 to A13 has passed and is in the ledger (CP-0011 to CP-0019); A-gepa_full, A-trace2skill and A-cape_improve(-IMP) passed; A-harnesslens and A-miprov2 are still being built and gate only their own searches. memcheck before launch: OK. Next: P3 done, then P4.
+
+```json
+{"cp": 20, "prev_cp": 19, "prev_commit": "b41ab9ec19007d6991d6d0eef98f5f87f7b7620f", "utc": "2026-10-20T21:43:38Z", "kind": "phase_start", "phase": "P3", "done_through": "P2/common-done", "next": "P3/seed", "candidate": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "90b80d34b10b928cd7078db818109b6935dbca00", "open_decisions": []}
+```
