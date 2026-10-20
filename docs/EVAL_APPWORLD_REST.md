@@ -1495,3 +1495,11 @@ Posted 'shared seed baseline done' on #897 (harnesslens): https://github.com/ski
 ```json
 {"cp": 23, "prev_cp": 22, "prev_commit": "8764ae7715adfaed852733cf0fc39d785aea86b5", "utc": "2026-10-20T22:08:56Z", "kind": "posted", "phase": "P3", "done_through": "P3/seed", "next": "P4/searches", "candidate": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "a0c85b4f974cfc89726eac6de8b78c8fd931fffc", "open_decisions": [], "post": "harnesslens/p3_done", "url": "https://github.com/skillberry-ai/cap-evolve/issues/897#issuecomment-6302882512"}
 ```
+
+## CP-0024 · 2026-10-20T22:08Z · P3 posted miprov2 · posted
+
+Posted 'shared seed baseline done' on #898 (miprov2): https://github.com/skillberry-ai/cap-evolve/issues/898#issuecomment-6302883230
+
+```json
+{"cp": 24, "prev_cp": 23, "prev_commit": "5da7ccadb6d61d9b025c0c9e91d374ae38643bd9", "utc": "2026-10-20T22:08:59Z", "kind": "posted", "phase": "P3", "done_through": "P3/seed", "next": "P4/searches", "candidate": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "a0c85b4f974cfc89726eac6de8b78c8fd931fffc", "open_decisions": [], "post": "miprov2/p3_done", "url": "https://github.com/skillberry-ai/cap-evolve/issues/898#issuecomment-6302883230"}
+```
