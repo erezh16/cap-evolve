@@ -36,6 +36,13 @@ is a guess no trace supports.
    benchmark runtime happens to be importable in this working directory you may run a small check;
    if it is not, do not spend turns trying to install it.
 
+## Strategies for selecting improvements
+1. **Optimize code before prompts.** When a selected capability has code (tools, helpers, MCP),
+   improve the code and the tools first; edit prompt text second, for what code cannot fix.
+2. **On tools, use the whole tools skill.** Study `./guidance/tools/SKILL.md` (the
+   `skills/capabilities/tools` skill) carefully and use the full range of what it offers:
+   update tool descriptions, update tool code, add new tools and remove tools that hurt.
+
 ## On code surfaces (tools, MCP): prefer code over prose
 Applies only if a selected capability edits code. A BEHAVIORAL miss (the agent knows the rule but
 skips it: doesn't look a record up first, acts on a guess, miscomputes a total) is not fixed by one
