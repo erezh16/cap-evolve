@@ -1655,3 +1655,11 @@ Posted 'MIPROv2 new best search-time score' on #898 (miprov2): https://github.co
 ```json
 {"cp": 43, "prev_cp": 42, "prev_commit": "e00ddfbacb798f2710ecf689ae1cb6e8efd68f95", "utc": "2026-10-20T22:29:30Z", "kind": "posted", "phase": "P4", "done_through": "P2/done", "next": "P4/searches", "candidate": "miprov2", "counts": {"miprov2": {"counted_rollouts": 0}}, "spend": {}, "artifacts": {}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": [], "post": "miprov2/m4_best_0.3333", "url": "https://github.com/skillberry-ai/cap-evolve/issues/898#issuecomment-6303209387"}
 ```
+
+## CP-0044 · 2026-10-20T22:30Z · P4 posted miprov2 · posted
+
+Posted 'MIPROv2 search started' on #898 (miprov2): https://github.com/skillberry-ai/cap-evolve/issues/898#issuecomment-6303226021
+
+```json
+{"cp": 44, "prev_cp": 43, "prev_commit": "e589effecf5e852d8ad3fd3ee9eae2ec9f6480a4", "utc": "2026-10-20T22:30:33Z", "kind": "posted", "phase": "P4", "done_through": "P2/done", "next": "P4/searches", "candidate": "miprov2", "counts": {"miprov2": {"counted_rollouts": 0}}, "spend": {}, "artifacts": {}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": [], "post": "miprov2/m4_search_start", "url": "https://github.com/skillberry-ai/cap-evolve/issues/898#issuecomment-6303226021"}
+```
