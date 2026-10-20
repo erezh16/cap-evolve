@@ -4150,3 +4150,11 @@ Posted 'GEPA results' on #881 (gepa): https://github.com/skillberry-ai/cap-evolv
 ```json
 {"cp": 367, "prev_cp": 366, "prev_commit": "0b33760c3e12190eb1854ec0ca4604ac1392fc17", "utc": "2026-10-20T01:35:05Z", "kind": "posted", "phase": "P10", "done_through": "P9/analysis", "next": "P10/post", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {}, "code": "0b33760c3e12190eb1854ec0ca4604ac1392fc17", "open_decisions": [], "post": "gepa/results", "url": "https://github.com/skillberry-ai/cap-evolve/issues/881#issuecomment-6281256561"}
 ```
+
+## CP-0368 · 2026-10-20T01:35Z · P10 posted skillopt · posted
+
+Posted 'SkillOpt results' on #882 (skillopt): https://github.com/skillberry-ai/cap-evolve/issues/882#issuecomment-6281257023
+
+```json
+{"cp": 368, "prev_cp": 367, "prev_commit": "f33f6441a8141a7cbd993c7e91b368ad1204455b", "utc": "2026-10-20T01:35:07Z", "kind": "posted", "phase": "P10", "done_through": "P9/analysis", "next": "P10/post", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {}, "code": "0b33760c3e12190eb1854ec0ca4604ac1392fc17", "open_decisions": [], "post": "skillopt/results", "url": "https://github.com/skillberry-ai/cap-evolve/issues/882#issuecomment-6281257023"}
+```
