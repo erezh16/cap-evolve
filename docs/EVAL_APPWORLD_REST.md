@@ -1359,3 +1359,11 @@ Posted 'Cap-Evolve-improve hourly status' on #901 (cape_improve): https://github
 ```json
 {"cp": 6, "prev_cp": 5, "prev_commit": "681c76f03774c50211de8b51139c886d1946ba63", "utc": "2026-10-20T20:38:52Z", "kind": "posted", "phase": "P1", "done_through": "P1/b4", "next": "P1/b5", "candidate": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "b922eb7ebac986f29904ae152b1d32fa49362943", "open_decisions": [], "post": "cape_improve/status_20261020T2038", "url": "https://github.com/skillberry-ai/cap-evolve/issues/901#issuecomment-6300965337"}
 ```
+
+## CP-0007 · 2026-10-20T20:40Z · P1 build B5 · result
+
+B5 done. Clones (read-only, chmod a-w) under AW_BUILD/clones at the plan pins: HarnessLens 369a5c8, Trace2Skill 3d0b52a, GEPA 8b0ce6c (v0.1.4), DSPy tag 3.4.1 (099982b). Venvs: venv-hl (pyyaml, httpx), venv-mipro (dspy[optuna]==3.4.1, optuna 5.0.0), venv-t2s (openai, tqdm, openpyxl, requests, diskcache), venv-cape (venv-aw's packages with cap-evolve core installed editable from the cape-improve worktree at 470f3fa; import resolves there, worktree git status clean). GEPA runs in venv-aw. Freeze hashes in manifest.json. Hourly autoposter started; first status posted on #897 to #901. Next: B6 common code.
+
+```json
+{"cp": 7, "prev_cp": 6, "prev_commit": "90153e2554dd700aa54442ca19903a4b007cde61", "utc": "2026-10-20T20:40:26Z", "kind": "result", "phase": "P1", "done_through": "P1/b5", "next": "P1/b6", "candidate": null, "counts": {}, "spend": {}, "artifacts": {"STATE/manifest.json": "fbeb7d2135f7fd133de188a49c3e35ea1d9894f424a105385a1f7c8ef0bea0ce"}, "code": "b922eb7ebac986f29904ae152b1d32fa49362943", "open_decisions": []}
+```

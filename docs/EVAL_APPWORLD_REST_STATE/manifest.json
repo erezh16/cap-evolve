@@ -110,5 +110,45 @@
  },
  "reference": {
   "tree_sha256": "815f7db517e5e5238ba1fae826a09fa3b8286cdc6b02013c92c6c4459b6b8cae"
+ },
+ "candidates": {
+  "harnesslens": {
+   "url": "https://github.com/jhxu5214/HarnessLens",
+   "commit": "369a5c8c7856902bed25024c293db61779b2c9f0"
+  },
+  "miprov2": {
+   "url": "https://github.com/stanfordnlp/dspy",
+   "commit": "099982b3c3eec9fc4ec4796d49915af42367a253"
+  },
+  "trace2skill": {
+   "url": "https://github.com/Qwen-Applications/Trace2Skill",
+   "commit": "3d0b52a140f002a512930252b613c49048f7d5ac"
+  },
+  "gepa_full": {
+   "url": "https://github.com/gepa-ai/gepa",
+   "commit": "8b0ce6cd99a234f6b74daf37558a2ac0ce18f975"
+  },
+  "cape_improve": {
+   "worktree": "/workspace/worktrees/cape-improve",
+   "commit": "470f3fabdad780a2a791037067a73ae9b0295473"
+  }
+ },
+ "candidate_venvs": {
+  "venv-hl": {
+   "freeze_sha256": "8f2572fe3947632936c7ce385b8ffe1f57b96ef47c7e9004a1984dd6c60669a7",
+   "packages": 13
+  },
+  "venv-mipro": {
+   "freeze_sha256": "4df3dbf8b143067a04db0cd79532bd699323236f3b6cf02e5c61dcc9f9c27572",
+   "packages": 72
+  },
+  "venv-t2s": {
+   "freeze_sha256": "fd550b66394655146a2011f72895e73df52cb98ad745856566b0010ccea7f8f8",
+   "packages": 25
+  },
+  "venv-cape": {
+   "freeze_sha256": "941f9293e74eba47a37ce8ad3720010705c012968f1898716a7758aa2ac084a9",
+   "packages": 123
+  }
  }
 }
