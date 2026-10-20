@@ -1,89 +1,133 @@
-"""The single evaluator every eval-5 candidate calls (docs/EVAL_APPWORLD_5.md §1.3, §4.1, §7).
+"""The single evaluator every eval-REST candidate calls (docs/EVAL_APPWORLD_REST.md §7.2, rules Q1, Q4).
 
-  materialize(cand, files) -> Path        candidate dir: a content-hashed copy of seed_capability with
-                                          ``files`` ({"policy/instructions.txt": text, ...}) overriding it
-  evaluate(cand, cdir, task_ids, *, phase, split, reuse) -> list[dict]
-                                          one gold-free record per task: reward, F1 feedback, steps
-                                          (thought/code/output), tokens, termination, instruction
-  lint(cdir) -> list[str]                 the shared lint (+ the M_cap token rule)
-  counted(cand) -> int                    fresh search rollouts used so far
+  materialize(cand, files, base=None) -> Path   a content-addressed candidate dir: seed_capability with
+                                                ``files`` ({"policy/instructions.txt": text, ...}) overriding it
+  tree_hash(cdir) -> str                        the cache key part of a candidate: sha256 over its surfaces
+  evaluate(cand, cdir, task_ids, *, phase, tag="") -> list[dict]
+                                                one gold-free record per task (reward, F1 feedback, steps,
+                                                tokens, termination, instruction), in task_ids order
+  lint(cdir) -> list[str]                       the shared lint (+ the memory 8-gram rule and M_cap)
+  counted(cand) -> int                          fresh search rollouts charged to the candidate so far
 
-Runs the shared adapter's ``run_trials`` (one subprocess per episode, AW_WORKERS at a time) and
-``score`` (reward 0/1 + feedback tier F1). 1 trial per task, trial seed 100 (§0). Every fresh episode is
-appended to ``AW_STATE/<cand>/rollouts.jsonl`` and counts against the candidate's hard cap (B=900 unless
-the driver passes another, §7); a batch that would cross it raises ``BudgetExceeded`` before it starts.
-``reuse=True`` replays an identical (candidate tree, ``tag``, task, seed) episode from the local record
-instead of re-running it; a replay is not counted. Drivers pass a ``tag`` naming the call site and step
-(GEPA iteration, SkillOpt step dir, WikiSkill iteration), so a replay happens only when a resumed run
-repeats the same in-flight step, never where the method itself means to re-run a task. Must run in venv-aw (the adapter imports AppWorld types); ``evaluate`` falls back to a venv-aw
-subprocess when called from a candidate venv.
+What evaluate() does, in order (§7.2):
+ 1. lints the candidate (in venv-aw) and returns lint-reject records, with every field of a normal record,
+    without running anything;
+ 2. returns the cached record for each (tree hash, task, trial seed) already on disk: not counted, logged
+    to AW_STATE/<cand>/cache_hits.jsonl. The cache is global (AW_STATE/cache/), so a candidate dir
+    identical to the seed is served from the shared seed baseline of P3 (Q4);
+ 3. refuses a fresh episode of SEED_HASH once P3 is done (SeedRerunRefused) and any id outside
+    train ∪ dev unless AW_ALLOW_SEALED=final-eval-only;
+ 4. raises BudgetExceeded before starting a batch that would take the candidate's fresh count past its cap
+    (B = 900 for phase "search");
+ 5. runs each fresh episode in one global slot (AW_STATE/slots, §7.3; waits while AW_STATE/PAUSE exists,
+    R2) through the shared adapter's worker (aw_agent.py subprocess, APPWORLD_ROOT=root_opt, 30-min wall
+    cap, one infra retry with the same seed);
+ 6. appends every fresh record of phase "search" to AW_STATE/<cand>/rollouts.jsonl (counted) and caches
+    it; an infrastructure failure is recorded but not cached.
+
+Phases: "search" (counted against B), "P3" (the shared seed baseline, charged to "seed"), "P5" (the dev
+diagnostic, not counted), "accept" (acceptance probes: not counted, cached in a separate namespace so a
+probe never becomes part of the shared seed baseline). Must run in an AppWorld venv (venv-aw or
+venv-cape); from any other venv ``evaluate`` and ``lint`` shell out to venv-aw.
 """
 
 from __future__ import annotations
 
+import fcntl
 import json
 import os
 import shutil
 import subprocess
 import sys
 import threading
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parent / "scripts"))
-import aw5 as P  # noqa: E402
+import awrest as P  # noqa: E402
 
 P.setup_env()
 SURFACES = ("policy/instructions.txt", "tools/helpers.py", "tools/api_notes.json", "memory/playbook.md")
+PHASES = ("search", "P3", "P5", "accept")
+CACHE = P.AW_STATE / "cache"
+SEED_DONE = P.AW_STATE / "SEED_BASELINE_DONE"
+RECORD_FIELDS = ("success", "num_tests", "pass_count", "failed_requirements", "collateral_damage",
+                 "complete_task_called", "termination", "n_steps", "prompt_tokens", "completion_tokens",
+                 "max_prompt_tokens", "api_errors", "fs_probe", "episode_seconds", "trimmed_steps")
 _lock = threading.Lock()
+_inflight: dict[str, int] = {}
 
 
 class BudgetExceeded(RuntimeError):
     pass
 
 
-def _in_venv_aw() -> bool:
+class SeedRerunRefused(RuntimeError):
+    pass
+
+
+def _in_appworld_venv() -> bool:
     try:
+        import appworld  # noqa: F401
         import cap_evolve  # noqa: F401
         return True
     except ImportError:
         return False
 
 
-def materialize(cand: str, files: dict[str, str] | None = None, base: Path | None = None) -> Path:
-    """Content-addressed candidate dir under AW_STATE/<cand>/cands/<sha12>/ (idempotent)."""
-    base = Path(base or P.SEED_CAP)
+# ---------------------------------------------------------------- candidates
+
+def _content(base: Path, files: dict[str, str] | None = None) -> dict[str, str]:
     content: dict[str, str] = {}
     for rel in SURFACES:
-        p = base / rel
+        p = Path(base) / rel
         if p.is_file():
             content[rel] = p.read_text(encoding="utf-8")
     for rel, text in (files or {}).items():
         if rel not in SURFACES:
             raise ValueError(f"{rel} is not an injectable surface")
         content[rel] = text
-    content = {k: v for k, v in content.items() if not (k == "memory/playbook.md" and not v.strip())}
-    h = P.sha256_bytes(json.dumps(sorted(content.items())).encode())[:12]
+    # an empty playbook is no memory: the same tree as none (the seed has no memory block)
+    return {k: v for k, v in content.items() if not (k == "memory/playbook.md" and not v.strip())}
+
+
+def _hash(content: dict[str, str]) -> str:
+    return P.sha256_bytes(json.dumps(sorted(content.items())).encode())
+
+
+def tree_hash(cdir: Path) -> str:
+    """sha256 over the candidate's surface files (sorted (path, text) pairs). The cache key of Q1."""
+    return _hash(_content(Path(cdir)))
+
+
+def seed_hash() -> str:
+    return tree_hash(P.SEED_CAP)
+
+
+def materialize(cand: str, files: dict[str, str] | None = None, base: Path | None = None) -> Path:
+    """Content-addressed candidate dir under AW_STATE/<cand>/cands/<sha12>/ (idempotent)."""
+    content = _content(Path(base or P.SEED_CAP), files)
+    h = _hash(content)[:12]
     d = P.AW_STATE / cand / "cands" / h
     if not (d / ".done").exists():
-        tmp = d.with_name(d.name + ".tmp")
+        tmp = d.with_name(d.name + f".tmp{os.getpid()}_{threading.get_ident()}")
         shutil.rmtree(tmp, ignore_errors=True)
         for rel, text in content.items():
             (tmp / rel).parent.mkdir(parents=True, exist_ok=True)
             (tmp / rel).write_text(text, encoding="utf-8")
         (tmp / "memory").mkdir(parents=True, exist_ok=True)
         (tmp / ".done").write_text(h)
-        shutil.rmtree(d, ignore_errors=True)
-        os.replace(tmp, d)
+        if not (d / ".done").exists():
+            shutil.rmtree(d, ignore_errors=True)
+            os.replace(tmp, d)
+        else:
+            shutil.rmtree(tmp, ignore_errors=True)
     return d
 
 
 def read_surfaces(cdir: Path) -> dict[str, str]:
-    return {rel: (Path(cdir) / rel).read_text(encoding="utf-8") for rel in SURFACES if (Path(cdir) / rel).is_file()}
-
-
-def cand_hash(cdir: Path) -> str:
-    return Path(cdir).name if (Path(cdir) / ".done").exists() else P.sha256_tree(cdir)[:12]
+    return _content(Path(cdir))
 
 
 def memory_tokens(text: str) -> int:
@@ -99,13 +143,15 @@ def m_cap_tokens() -> int | None:
 
 
 def lint(cdir: Path) -> list[str]:
-    """The shared lint, plus two eval-5 rules for the memory slot (§1.3, §6): the 8-gram / supervisor-contact
-    check the shared lint applies to the prompt, helpers and notes (lints.py checks only the memory's length),
-    and the token cap M_cap. Runs in venv-aw (jinja2, tiktoken); from a candidate venv it shells out there."""
-    if not _in_venv_aw():
+    """The shared lint, plus the memory slot's 8-gram / supervisor-contact rule and the token cap M_cap.
+    Always runs in venv-aw (eval 5 lesson: jinja2 and tiktoken live there)."""
+    if not _in_appworld_venv():
         r = subprocess.run([str(P.VENV_PY), "-I", str(Path(__file__)), "lint", str(cdir)], capture_output=True,
                            text=True, env=P.setup_env(dict(os.environ)))
-        return json.loads(r.stdout)["violations"]
+        try:
+            return json.loads(r.stdout)["violations"]
+        except (json.JSONDecodeError, KeyError):
+            raise RuntimeError(f"lint subprocess failed: {r.stderr[-800:]}") from None
     sys.path.insert(0, str(HERE.parent / "adapters"))
     import lints
     v = lints.lint_candidate(Path(cdir))
@@ -120,14 +166,27 @@ def lint(cdir: Path) -> list[str]:
     return v
 
 
+# ---------------------------------------------------------------- accounting
+
 def counted(cand: str) -> int:
     return len(P.read_jsonl(P.AW_STATE / cand / "rollouts.jsonl"))
 
 
-def _rec_path(cand: str, h: str, tid: str, seed: int, tag: str = "") -> Path:
-    import re
-    t = re.sub(r"[^A-Za-z0-9._-]+", "_", tag).strip("_")
-    return P.AW_STATE / cand / "episodes" / h / (t or "_") / f"{tid}__s{seed}.json"
+def cache_hits(cand: str) -> int:
+    return len(P.read_jsonl(P.AW_STATE / cand / "cache_hits.jsonl"))
+
+
+def _cache_path(h: str, tid: str, seed: int, phase: str) -> Path:
+    ns = "accept" if phase == "accept" else "main"
+    return CACHE / ns / h[:16] / f"{tid}__s{seed}.json"
+
+
+def _ledger_file(cand: str, phase: str) -> Path:
+    if phase == "search":
+        return P.AW_STATE / cand / "rollouts.jsonl"           # counted against B
+    if phase == "P3":
+        return P.AW_STATE / "seed" / "rollouts.jsonl"         # the shared seed baseline (147)
+    return P.AW_STATE / cand / f"{phase.lower()}_rollouts.jsonl"  # P5 / accept: not counted
 
 
 def _record(task, rollout, score) -> dict:
@@ -136,77 +195,168 @@ def _record(task, rollout, score) -> dict:
             "reward": float(score.reward), "feedback": score.feedback, "error": rollout.error,
             "lint_reject": bool(m.get("lint_reject")),
             "steps": rollout.trace or [],
-            **{k: m.get(k) for k in ("success", "num_tests", "pass_count", "failed_requirements",
-                                     "collateral_damage", "complete_task_called", "termination", "n_steps",
-                                     "prompt_tokens", "completion_tokens", "max_prompt_tokens", "api_errors",
-                                     "fs_probe", "episode_seconds", "trimmed_steps")}}
+            **{k: m.get(k) for k in RECORD_FIELDS}}
 
 
-def _evaluate_local(cand: str, cdir: Path, task_ids: list[str], phase: str, split: str, reuse: bool,
-                    hard_cap: int, seed: int, tag: str = "") -> list[dict]:
+def _lint_reject_record(task, violations: list[str]) -> dict:
+    """The same fields as a normal record (eval 5 lesson: a driver crashed on a missing field)."""
+    rec = {"task_id": task.id, "instruction": task.input["instruction"], "supervisor": task.input["supervisor"],
+           "reward": 0.0, "feedback": "LINT_REJECT (candidate not run): " + "; ".join(violations), "error": None,
+           "lint_reject": True, "steps": []}
+    rec.update({k: None for k in RECORD_FIELDS})
+    rec.update({"success": False, "num_tests": 0, "pass_count": 0, "failed_requirements": [], "n_steps": 0,
+                "prompt_tokens": 0, "completion_tokens": 0, "max_prompt_tokens": 0, "api_errors": 0,
+                "termination": "lint_reject", "fs_probe": False, "episode_seconds": 0.0, "trimmed_steps": 0})
+    return rec
+
+
+class _FileLock:
+    """flock on a file, so a budget check and its reservation are atomic across processes."""
+
+    def __init__(self, path: Path):
+        self.p = path
+
+    def __enter__(self):
+        self.p.parent.mkdir(parents=True, exist_ok=True)
+        self.f = open(self.p, "a")
+        fcntl.flock(self.f, fcntl.LOCK_EX)
+        return self
+
+    def __exit__(self, *exc):
+        fcntl.flock(self.f, fcntl.LOCK_UN)
+        self.f.close()
+        return False
+
+
+def _reserved(cand: str) -> int:
+    """Fresh episodes in flight across processes, from AW_STATE/<cand>/inflight/<pid>_<tid>."""
+    d = P.AW_STATE / cand / "inflight"
+    n = 0
+    for f in d.glob("*") if d.exists() else []:
+        try:
+            pid = int(f.name.split("_")[0])
+            os.kill(pid, 0)
+            n += int(f.read_text() or 0)
+        except (ValueError, ProcessLookupError, FileNotFoundError):
+            f.unlink(missing_ok=True)       # a dead process's reservation
+        except PermissionError:
+            n += int(f.read_text() or 0)
+    return n
+
+
+# ---------------------------------------------------------------- evaluate
+
+def _evaluate_local(cand: str, cdir: Path, task_ids: list[str], phase: str, tag: str, hard_cap: int,
+                    seed: int) -> list[dict]:
+    if phase not in PHASES:
+        raise ValueError(f"phase must be one of {PHASES}")
     sys.path.insert(0, str(HERE.parent / "adapters"))
     import adapter as A
     ad = A.Adapter()
     cdir = Path(cdir).resolve()
-    h = cand_hash(cdir)
+    h = tree_hash(cdir)
+    ad._check_seal(task_ids)                                      # rule 3: test ids are sealed
+    root = str(A._appworld_root())
+    tasks = {t: A._task_cached(t, root) for t in dict.fromkeys(task_ids)}
     out: dict[str, dict] = {}
     todo = []
-    for tid in task_ids:
-        rp = _rec_path(cand, h, tid, seed, tag)
-        if reuse and rp.exists():
-            out[tid] = dict(json.loads(rp.read_text()), replayed=True)
+    for tid in tasks:
+        cp = _cache_path(h, tid, seed, phase)
+        if cp.exists():                                           # rule 2: cache hit, not counted
+            out[tid] = dict(json.loads(cp.read_text()), cache_hit=True)
+            P.append_jsonl(P.AW_STATE / cand / "cache_hits.jsonl",
+                           {"t": P.utcnow(), "phase": phase, "tag": tag, "cand": h[:12], "seed": seed,
+                            "reward": out[tid]["reward"]})
         else:
             todo.append(tid)
     if todo:
         v = lint(cdir)
-        if v:  # rejected before any rollout (§6): every task 0, the violations as feedback, nothing counted
+        if v:  # rule 1: rejected before any rollout; every task 0 with the violations, nothing counted
             for tid in todo:
-                spec = json.loads((P.ROOT_OPT / "data" / "tasks" / tid / "specs.json").read_text())
-                out[tid] = {"task_id": tid, "instruction": spec["instruction"], "reward": 0.0, "lint_reject": True,
-                            "steps": [], "num_tests": 0, "pass_count": 0,
-                            "feedback": "LINT_REJECT (candidate not run): " + "; ".join(v), "error": None}
-            P.progress_log(cand, phase, f"lint_reject {h}: {len(v)} violation(s), {len(todo)} tasks scored 0")
-        else:
-            with _lock:
-                used = counted(cand)
-                if used + len(todo) > hard_cap:
-                    raise BudgetExceeded(f"{cand}: {used} counted + {len(todo)} > cap {hard_cap}")
-            os.environ.setdefault("AW_PROGRESS_LOG", str(P.PROGRESS / f"{cand}.log"))
-            os.environ["AW_TRIAL"], os.environ["AW_PHASE"] = cand, f"{phase}/{split}"
-            os.environ.setdefault("AW_EXPERIMENT", f"eval5_{cand}")
-            tasks = [A._task_cached(t, str(A.ROOT_OPT)) for t in todo]
-            res = ad.run_trials(tasks, cdir, n_trials=1, base_seed=seed)
-            for t in tasks:
-                r = res[t.id][0]
-                rec = _record(t, r, ad.score(t, r))
-                P.atomic_write(_rec_path(cand, h, t.id, seed, tag), json.dumps(rec))
-                P.append_jsonl(P.AW_STATE / cand / "rollouts.jsonl", {
-                    "t": P.utcnow(), "phase": phase, "split": split, "cand": h, "tag": tag, "reward": rec["reward"],
-                    "infra": bool(rec["error"]), "steps": rec.get("n_steps"), "prompt_tokens": rec.get("prompt_tokens"),
-                    "completion_tokens": rec.get("completion_tokens"), "seconds": rec.get("episode_seconds"),
-                    "termination": rec.get("termination"), "fs_probe": rec.get("fs_probe")})
-                out[t.id] = rec
-    return [out[t] for t in task_ids]
+                out[tid] = _lint_reject_record(tasks[tid], v)
+            P.append_jsonl(P.AW_STATE / cand / "lint_rejects.jsonl",
+                           {"t": P.utcnow(), "phase": phase, "tag": tag, "cand": h[:12], "tasks": len(todo),
+                            "violations": len(v)})
+            P.progress_log(cand, phase, f"lint_reject {h[:12]}: {len(v)} violation(s), {len(todo)} tasks scored 0")
+            return [dict(out[t]) for t in task_ids]
+        if phase != "accept" and h == seed_hash() and SEED_DONE.exists():
+            raise SeedRerunRefused(f"{cand}: {len(todo)} fresh episode(s) of the seed after P3 (rule Q4); "
+                                   "only cache hits of the shared seed baseline are allowed")
+        charge = "seed" if phase == "P3" else cand
+        res_file = P.AW_STATE / charge / "inflight" / f"{os.getpid()}_{threading.get_ident()}"
+        with _FileLock(P.AW_STATE / charge / ".budget.lock"):    # rule 4: check and reserve, atomically
+            used = len(P.read_jsonl(_ledger_file(cand, phase))) + _reserved(charge)
+            if phase == "search" and used + len(todo) > hard_cap:
+                raise BudgetExceeded(f"{cand}: {used} counted + {len(todo)} > cap {hard_cap}")
+            res_file.parent.mkdir(parents=True, exist_ok=True)
+            res_file.write_text(str(len(todo)))
+        try:
+            out.update(_run_fresh(ad, cand, cdir, h, [tasks[t] for t in todo], phase, tag, seed))
+        finally:
+            res_file.unlink(missing_ok=True)
+    return [dict(out[t]) for t in task_ids]
 
 
-def evaluate(cand: str, cdir: Path, task_ids: list[str], *, phase: str, split: str, reuse: bool = False,
-             hard_cap: int = P.BUDGET_ROLLOUTS, seed: int = P.SEARCH_SEED_BASE, tag: str = "") -> list[dict]:
-    if _in_venv_aw():
-        return _evaluate_local(cand, cdir, task_ids, phase, split, reuse, hard_cap, seed, tag)
-    req = {"cand": cand, "cdir": str(cdir), "task_ids": task_ids, "phase": phase, "split": split, "reuse": reuse,
-           "hard_cap": hard_cap, "seed": seed, "tag": tag}
+def _run_fresh(ad, cand: str, cdir: Path, h: str, tasks: list, phase: str, tag: str, seed: int) -> dict:
+    import tempfile
+    sys.path.insert(0, str(HERE.parent / "adapters"))
+    import adapter as A
+    root = A._appworld_root()
+    os.environ.setdefault("AW_EXPERIMENT", f"awrest_{cand}")
+    scratch = Path(os.environ.get("AW_SCRATCH", str(P.SCRATCH / "scratch")))
+    scratch.mkdir(parents=True, exist_ok=True)
+    workdir = Path(tempfile.mkdtemp(prefix="aw_eps_", dir=scratch))
+    lf = _ledger_file(cand, phase)
+
+    def one(task):
+        with P.Slot(f"{cand}/{phase}"):                          # rule 5: one global slot per episode (R2 aware)
+            r = ad._episode(task, cdir, seed, root, workdir, random_seed=seed)
+        rec = _record(task, r, ad.score(task, r))
+        if not rec["error"]:                                      # infra failures are never cached (Q1)
+            P.atomic_write(_cache_path(h, task.id, seed, phase), json.dumps(rec))
+        P.append_jsonl(lf, {"t": P.utcnow(), "phase": phase, "tag": tag, "cand": h[:12], "seed": seed,
+                            "reward": rec["reward"], "infra": bool(rec["error"]), "steps": rec.get("n_steps"),
+                            "prompt_tokens": rec.get("prompt_tokens"),
+                            "completion_tokens": rec.get("completion_tokens"),
+                            "max_prompt_tokens": rec.get("max_prompt_tokens"),
+                            "seconds": rec.get("episode_seconds"), "termination": rec.get("termination"),
+                            "fs_probe": rec.get("fs_probe")})
+        return task.id, rec
+
+    n = max(1, min(len(tasks), P.global_slots()))
+    with ThreadPoolExecutor(max_workers=n) as pool:
+        res = dict(pool.map(one, tasks))
+    try:
+        workdir.rmdir()
+    except OSError:
+        pass
+    ok = sum(1 for r in res.values() if r["reward"] == 1.0)
+    P.progress_log(cand, phase, f"{tag or '-'}: {len(res)} fresh episodes of {h[:12]}, passed {ok}, "
+                                f"infra {sum(1 for r in res.values() if r['error'])}")
+    return res
+
+
+def evaluate(cand: str, cdir: Path, task_ids: list[str], *, phase: str, tag: str = "",
+             hard_cap: int = P.BUDGET_ROLLOUTS, seed: int = P.SEARCH_SEED_BASE) -> list[dict]:
+    if _in_appworld_venv():
+        return _evaluate_local(cand, cdir, list(task_ids), phase, tag, hard_cap, seed)
+    req = {"cand": cand, "cdir": str(cdir), "task_ids": list(task_ids), "phase": phase, "tag": tag,
+           "hard_cap": hard_cap, "seed": seed}
     work = P.AW_STATE / cand / "evalreq"
     work.mkdir(parents=True, exist_ok=True)
     rq = work / f"{os.getpid()}_{threading.get_ident()}.json"
     rq.write_text(json.dumps(req))
     r = subprocess.run([str(P.VENV_PY), "-I", str(Path(__file__)), "serve", str(rq)], capture_output=True,
                        text=True, env=P.setup_env(dict(os.environ)))
-    resp = json.loads(rq.with_suffix(".out").read_text()) if rq.with_suffix(".out").exists() else None
+    out = rq.with_suffix(".out")
+    resp = json.loads(out.read_text()) if out.exists() else None
     rq.unlink(missing_ok=True)
-    rq.with_suffix(".out").unlink(missing_ok=True)
-    if r.returncode or resp is None:
+    out.unlink(missing_ok=True)
+    if r.returncode or resp is None or "records" not in resp:
         if resp and resp.get("budget"):
             raise BudgetExceeded(resp["error"])
+        if resp and resp.get("seed_rerun"):
+            raise SeedRerunRefused(resp["error"])
         raise RuntimeError(f"evaluator subprocess failed: {(resp or {}).get('error') or r.stderr[-1500:]}")
     return resp["records"]
 
@@ -221,13 +371,19 @@ def _serve(path: str) -> int:
     rq = json.loads(Path(path).read_text())
     out = Path(path).with_suffix(".out")
     try:
-        recs = _evaluate_local(rq["cand"], Path(rq["cdir"]), rq["task_ids"], rq["phase"], rq["split"], rq["reuse"],
-                               rq["hard_cap"], rq["seed"], rq.get("tag", ""))
+        recs = _evaluate_local(rq["cand"], Path(rq["cdir"]), rq["task_ids"], rq["phase"], rq.get("tag", ""),
+                               rq["hard_cap"], rq["seed"])
         out.write_text(json.dumps({"records": recs}))
         return 0
     except BudgetExceeded as e:
         out.write_text(json.dumps({"budget": True, "error": str(e)}))
         return 3
+    except SeedRerunRefused as e:
+        out.write_text(json.dumps({"seed_rerun": True, "error": str(e)}))
+        return 4
+    except Exception as e:  # noqa: BLE001 — reported to the caller
+        out.write_text(json.dumps({"error": f"{type(e).__name__}: {e}"[:1500]}))
+        return 1
 
 
 if __name__ == "__main__":
@@ -237,3 +393,5 @@ if __name__ == "__main__":
         v = lint(Path(sys.argv[2]))
         print(json.dumps({"ok": not v, "violations": v}, indent=1))
         raise SystemExit(1 if v else 0)
+    if sys.argv[1] == "seed-hash":
+        print(seed_hash())

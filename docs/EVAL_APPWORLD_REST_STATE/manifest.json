@@ -53,8 +53,12 @@
  },
  "venv_aw": {
   "python": "3.11",
-  "freeze_sha256": "e3fcde928947d91841fed169a51fa0415977350f344bbd160420a53b4cca50e4",
-  "uv": "uv 0.13.1 (x86_64-unknown-linux-musl)"
+  "freeze_sha256": "3cea2c9a7299d74f2ad7026725dc6fdf25def18498c882455acb35e1dd0cfcb9",
+  "uv": "uv 0.13.1 (x86_64-unknown-linux-musl)",
+  "pins": {
+   "fastapi": "0.143.0",
+   "pydantic": "2.12.5"
+  }
  },
  "data": {
   "root_full_tree_sha256": "cf0e28f5c6cec3e02ef4ac1ba9654ebb037eb0160dbd12b9b74d2df79e17fc20",

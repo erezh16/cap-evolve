@@ -39,7 +39,9 @@ SCRATCH = Path(os.environ.get("AW_SCRATCH_ROOT", "/tmp/aw_rest"))
 PROGRESS = AW_STATE / "progress"
 LINT_CACHE = AW_STATE / "lint_cache.json"          # the adapter lint's cache (8-grams, contacts, app/API names)
 PUBLISH_CACHE = AW_STATE / "publish_cache.json"    # the publishing filter's cache (all 732 ids, 8-grams, contacts)
-ENV_FILE = Path(os.environ.get("AW_ENV_FILE", REPO / ".env"))
+# The RITS key lives in the base worktree's .env (§1.2); it is read there, never copied (R1).
+ENV_FILE = Path(os.environ.get("AW_ENV_FILE", REPO / ".env" if (REPO / ".env").exists()
+                               else "/workspace/worktrees/base/.env"))
 SEED_CAP = EXAMPLE / "seed_capability"
 
 APPWORLD_COMMIT = "42b5bcf3cd334fee33f0c37c02070a9f5807add5"

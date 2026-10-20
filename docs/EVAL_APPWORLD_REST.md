@@ -1367,3 +1367,11 @@ B5 done. Clones (read-only, chmod a-w) under AW_BUILD/clones at the plan pins: H
 ```json
 {"cp": 7, "prev_cp": 6, "prev_commit": "90153e2554dd700aa54442ca19903a4b007cde61", "utc": "2026-10-20T20:40:26Z", "kind": "result", "phase": "P1", "done_through": "P1/b5", "next": "P1/b6", "candidate": null, "counts": {}, "spend": {}, "artifacts": {"STATE/manifest.json": "fbeb7d2135f7fd133de188a49c3e35ea1d9894f424a105385a1f7c8ef0bea0ce"}, "code": "b922eb7ebac986f29904ae152b1d32fa49362943", "open_decisions": []}
 ```
+
+## CP-0008 · 2026-10-20T20:50Z · P1 fastapi pin · repair
+
+Repair: the fresh B2 resolve installed fastapi 0.156.2. AppWorld 42b5bcf calls fastapi Path(embed=...), which 0.156 rejects, so every world failed to start (caught by the first evaluator smoke test; nothing counted). Pinned fastapi==0.143.0 (the version of the base run, base A.1) in venv-aw and venv-cape and in build.py b2. After the pin, one dev episode ran end to end through the new common/evaluator.py: reward 1, 2 steps, 70 s, max prompt 4,179 tokens. A second identical request was served from the cache. Also: .env is read from the base worktree (the RITS key is never copied); common/evaluator.py, opt_llm.py (cache_write field, PAUSE wait, Sonnet 5.5 proxy prices) and sandbox.py (section 10 settings + claude_call usage logging) written. Next: rest of B6.
+
+```json
+{"cp": 8, "prev_cp": 7, "prev_commit": "ae20bffd7300fea7e5f782124cd6736fee97b016", "utc": "2026-10-20T20:50:46Z", "kind": "repair", "phase": "P1", "done_through": "P1/b6-evaluator", "next": "P1/b6", "candidate": null, "counts": {}, "spend": {}, "artifacts": {"STATE/manifest.json": "e1026a88766bba532defe449843a44b33f3c7394dbc9c39b3b82d6610fa516c6"}, "code": "b922eb7ebac986f29904ae152b1d32fa49362943", "open_decisions": []}
+```

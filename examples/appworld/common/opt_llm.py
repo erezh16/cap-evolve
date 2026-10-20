@@ -1,4 +1,4 @@
-"""The optimizer-model shim shared by every eval-5 candidate (docs/EVAL_APPWORLD_5.md §4.1, §1.2 G1–G3).
+"""The optimizer-model shim shared by every eval-REST candidate (docs/EVAL_APPWORLD_REST.md §5.2, §7.4; G1–G3).
 
   chat(messages, *, cand, role, system=None, max_tokens=8192) -> str
 
@@ -10,10 +10,11 @@ other 4xx are not (G1). OpenAI-style messages are accepted: ``system`` messages 
 top-level ``system`` field and consecutive same-role messages are merged.
 
 Every call appends one usage line ``{t, seconds, model, role, prompt_tokens, completion_tokens,
-cache_read, error, finish_reason}`` to ``AW_STATE/<cand>/optimizer_usage.jsonl`` (the single cost and
-latency source for the optimizer side, §12) and the full prompt/response to ``AW_STATE/<cand>/llm_calls.jsonl``
+cache_read, cache_write, error, finish_reason}`` to ``AW_STATE/<cand>/optimizer_usage.jsonl`` (the single cost and
+latency source for the optimizer side, §5.2) and the full prompt/response to ``AW_STATE/<cand>/llm_calls.jsonl``
 (local only, never pushed). Before each call the candidate's cumulative non-cache-read tokens are checked
-against the 10M cap (§0); over the cap the call raises ``BudgetExceeded``. Credentials are never logged.
+against the 10M cap (§7.4); over the cap the call raises ``BudgetExceeded``. No call starts while
+AW_STATE/PAUSE exists (rule R2). Credentials are never logged.
 """
 
 from __future__ import annotations
@@ -28,7 +29,7 @@ import urllib.request
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
-import aw5 as P  # noqa: E402
+import awrest as P  # noqa: E402
 
 OPT_MODEL = os.environ.get("OPT_MODEL", P.OPT_MODEL)
 RETRIES = 30
@@ -68,11 +69,16 @@ def totals(cand: str) -> dict:
             "prompt_tokens": sum(int(r.get("prompt_tokens") or 0) for r in rows),
             "completion_tokens": sum(int(r.get("completion_tokens") or 0) for r in rows),
             "cache_read": sum(int(r.get("cache_read") or 0) for r in rows),
+            "cache_write": sum(int(r.get("cache_write") or 0) for r in rows),
             "seconds": round(sum(float(r.get("seconds") or 0) for r in rows), 1)}
 
 
 def proxy_usd(t: dict) -> float:
-    return round(t["prompt_tokens"] / 1e6 * P.PRICE_IN + t["completion_tokens"] / 1e6 * P.PRICE_OUT, 2)
+    """Proxy USD at the Sonnet 5.5 list price (§5.2). prompt_tokens includes cache writes (they are
+    non-cache-read input); they are priced at the cache-write rate, the rest at the input rate."""
+    cw = t.get("cache_write", 0)
+    return round(((t["prompt_tokens"] - cw) * P.PRICE_IN + cw * P.PRICE_CACHE_WRITE
+                  + t["completion_tokens"] * P.PRICE_OUT + t.get("cache_read", 0) * P.PRICE_CACHE_READ) / 1e6, 2)
 
 
 def _spent(cand: str) -> int:
@@ -112,6 +118,7 @@ def chat(messages: list[dict] | str, *, cand: str, role: str, system: str | None
          max_tokens: int = 8192, budget: int = P.BUDGET_OPT_TOKENS) -> str:
     if isinstance(messages, str):
         messages = [{"role": "user", "content": messages}]
+    P.wait_unpaused(cand)                         # rule R2: no new optimizer call while PAUSED
     if _spent(cand) >= budget:
         raise BudgetExceeded(f"{cand}: optimizer tokens {_spent(cand):,} >= cap {budget:,}")
     base, key, headers = _gateway()
@@ -147,7 +154,7 @@ def chat(messages: list[dict] | str, *, cand: str, role: str, system: str | None
     _add(cand, pt + ct)
     row = {"t": P.utcnow(), "seconds": round(time.time() - t0, 2), "model": OPT_MODEL, "role": role,
            "prompt_tokens": pt, "completion_tokens": ct, "cache_read": int(usage.get("cache_read_input_tokens") or 0),
-           "error": err, "finish_reason": stop}
+           "cache_write": int(usage.get("cache_creation_input_tokens") or 0), "error": err, "finish_reason": stop}
     P.append_jsonl(usage_path(cand), row)
     P.append_jsonl(P.AW_STATE / cand / "llm_calls.jsonl",
                    {**row, "system": sys_text, "messages": msgs, "response": text})
