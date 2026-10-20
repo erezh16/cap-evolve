@@ -45,5 +45,70 @@
   "limit_MB": 32768,
   "cpu_limit": 8,
   "oom_group": 1
+ },
+ "appworld": {
+  "commit": "42b5bcf3cd334fee33f0c37c02070a9f5807add5",
+  "git_diff_sha256": "755de8b83b1e24b490e54993417a9a0a78b2ce3805bb895057ae2a3dd6914cf6",
+  "patch_sha256": "755de8b83b1e24b490e54993417a9a0a78b2ce3805bb895057ae2a3dd6914cf6"
+ },
+ "venv_aw": {
+  "python": "3.11",
+  "freeze_sha256": "e3fcde928947d91841fed169a51fa0415977350f344bbd160420a53b4cca50e4",
+  "uv": "uv 0.13.1 (x86_64-unknown-linux-musl)"
+ },
+ "data": {
+  "root_full_tree_sha256": "cf0e28f5c6cec3e02ef4ac1ba9654ebb037eb0160dbd12b9b74d2df79e17fc20",
+  "split_file_sha256": {
+   "train": "93d9fe71e7a2e3b7529803d4a20b604f4ebf5ae806f321081140238068189d37",
+   "dev": "9fa976589300ea8905708257144d801d1604b06d85fb0181e381df8a3ba85001",
+   "test_normal": "c3af41497b6f2f0860a2ff8c09b335dca527e2cf48e59b4aabdb301b6b68db8f",
+   "test_challenge": "3c32b481042ac97f7d3477d53f5d196245c885c438d652944edc8a9a28e0f028"
+  },
+  "counts": {
+   "train": 90,
+   "dev": 57,
+   "test_normal": 168,
+   "test_challenge": 417
+  },
+  "scenarios": {
+   "train": 30,
+   "dev": 19,
+   "test_normal": 56,
+   "test_challenge": 139
+  },
+  "difficulty_1_2_3": {
+   "train": [
+    36,
+    36,
+    18
+   ],
+   "dev": [
+    30,
+    24,
+    3
+   ],
+   "test_normal": [
+    57,
+    48,
+    63
+   ],
+   "test_challenge": [
+    72,
+    150,
+    195
+   ]
+  }
+ },
+ "root_opt": {
+  "tree_sha256": "2edcafd49d4e03b5b4e5be10f2d982e925859276ff8000c15eb4290bbf86c2e5",
+  "task_dirs": 148,
+  "datasets": [
+   "dev.txt",
+   "train.txt"
+  ],
+  "test_id_hits": 0
+ },
+ "reference": {
+  "tree_sha256": "815f7db517e5e5238ba1fae826a09fa3b8286cdc6b02013c92c6c4459b6b8cae"
  }
 }

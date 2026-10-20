@@ -1311,3 +1311,11 @@ Execution of the eval REST plan starts. Decisions D1 to D9 (section 2) are taken
 ```json
 {"cp": 0, "prev_cp": null, "prev_commit": "ffe35e9149aba2b68df193a8e67560b7b8144782", "utc": "2026-10-20T20:36:50Z", "kind": "decision", "phase": "P0", "done_through": "P0/decisions", "next": "P1/b1", "candidate": null, "counts": {}, "spend": {}, "artifacts": {"STATE/manifest.json": "58456826314cff9c47963871419539afdb51819a027c5f3f3de467998ae7313f"}, "code": "0b33760c3e12190eb1854ec0ca4604ac1392fc17", "open_decisions": [], "issues": {"harnesslens": 897, "miprov2": 898, "trace2skill": 899, "gepa_full": 900, "cape_improve": 901}}
 ```
+
+## CP-0001 · 2026-10-20T20:38Z · P1 build B1-B4 · result
+
+B1 to B4 done as eval 5 section 4, under /workspace/aw_rest. B1: AppWorld at 42b5bcf with git lfs and the extra-headers patch (git diff sha256 755de8b8...). B2: venv-aw, 123 packages, pydantic 2.12.5, gepa 0.1.4 (core is the eval-rest core: only the shared Rollout type; cap_improve gets its own venv-cape in B5). B3: data downloaded; split counts 90/57/168/417, scenario counts 30/19/56/139 and difficulty counts all match; publishing cache built (732 ids, 1,528 8-grams, 249 contacts). B4: root_opt with 148 task dirs (train + dev + _base_), 0 test-id hits; lint cache and reference dir built; root_full chmod 000. Code added: awrest.py (constants), memguard.py, build.py, post.py, autopost.py; status_doc.py switched to this ledger. Next: B5 per-candidate clones and venvs.
+
+```json
+{"cp": 1, "prev_cp": 0, "prev_commit": "b6442f3497e35f54953973f97fe9af0cd399462b", "utc": "2026-10-20T20:38:18Z", "kind": "result", "phase": "P1", "done_through": "P1/b4", "next": "P1/b5", "candidate": null, "counts": {}, "spend": {}, "artifacts": {"STATE/manifest.json": "9f4a017e248bf85af70443328e9c5872f6e3fda4859f1d3a055460439919acde"}, "code": "b6442f3497e35f54953973f97fe9af0cd399462b", "open_decisions": []}
+```
