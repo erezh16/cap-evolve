@@ -1647,3 +1647,11 @@ MIPROv2 search: 0 minibatch trials, 1 full evals after the default; best full-ev
 ```json
 {"cp": 42, "prev_cp": 41, "prev_commit": "c10e61eea292ba9ed720a8450dc2fe6510389b5a", "utc": "2026-10-20T22:28:37Z", "kind": "result", "phase": "P4", "done_through": "P2/done", "next": "P4/searches", "candidate": "miprov2", "counts": {"miprov2": {"counted_rollouts": 0}}, "spend": {}, "artifacts": {}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": []}
 ```
+
+## CP-0043 · 2026-10-20T22:29Z · P4 posted miprov2 · posted
+
+Posted 'MIPROv2 new best search-time score' on #898 (miprov2): https://github.com/skillberry-ai/cap-evolve/issues/898#issuecomment-6303209387
+
+```json
+{"cp": 43, "prev_cp": 42, "prev_commit": "e00ddfbacb798f2710ecf689ae1cb6e8efd68f95", "utc": "2026-10-20T22:29:30Z", "kind": "posted", "phase": "P4", "done_through": "P2/done", "next": "P4/searches", "candidate": "miprov2", "counts": {"miprov2": {"counted_rollouts": 0}}, "spend": {}, "artifacts": {}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": [], "post": "miprov2/m4_best_0.3333", "url": "https://github.com/skillberry-ai/cap-evolve/issues/898#issuecomment-6303209387"}
+```
