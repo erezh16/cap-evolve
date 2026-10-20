@@ -1,0 +1,21 @@
+{
+ "2": {
+  "rewards": "<list 2>",
+  "records_ok": true,
+  "fresh_then_cached": true,
+  "steps": "<list 2>",
+  "seconds": "<list 2>",
+  "pass": true
+ },
+ "optimizer_usage": {
+  "calls": 23,
+  "errors": 0,
+  "prompt_tokens": 71269,
+  "completion_tokens": 16071,
+  "cache_read": 0,
+  "cache_write": 0,
+  "seconds": 129.6,
+  "proxy_usd": 0.3
+ },
+ "accept_episodes_fresh": 2
+}
