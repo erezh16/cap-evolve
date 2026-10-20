@@ -1551,3 +1551,11 @@ P4: cape_improve chain started (search, freeze, isolation scan), pid file AW_STA
 ```json
 {"cp": 30, "prev_cp": 29, "prev_commit": "8720bb523c81501fc2a505cb63ca32cef8e24962", "utc": "2026-10-20T22:14:26Z", "kind": "phase_start", "phase": "P4", "done_through": "P2/done", "next": "P4/searches", "candidate": "cape_improve", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "1a169611692049cccc4805374df8aded204958a6", "open_decisions": []}
 ```
+
+## CP-0031 · 2026-10-20T22:14Z · P4 cape_improve search failed · error
+
+P4: cape_improve step `search` exited 3; the chain stopped. See AW_STATE/progress/p4_cape_improve.out. No automatic retry: the cause is investigated first (R5).
+
+```json
+{"cp": 31, "prev_cp": 30, "prev_commit": "02ea90a546d3a8660f020838c43d67de45e2f976", "utc": "2026-10-20T22:14:28Z", "kind": "error", "phase": "P4", "done_through": "P2/done", "next": "P4/searches", "candidate": "cape_improve", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "1a169611692049cccc4805374df8aded204958a6", "open_decisions": []}
+```

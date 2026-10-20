@@ -1,0 +1,22 @@
+{
+ "stage": "search stopped (exit 3)",
+ "counted_rollouts": 0,
+ "cache_hits": 12,
+ "lint_rejects": 0,
+ "iterations_done": 0,
+ "accepted": 0,
+ "iteration_vals": [],
+ "baseline_val": null,
+ "best_search_score": null,
+ "best_search_label": "val = train ∪ dev (147), a fit metric, selection-biased",
+ "metric_calls": null,
+ "capevolve_optimizer_usd": null,
+ "optimizer": {
+  "calls": 2,
+  "prompt_tokens": 80105,
+  "completion_tokens": 10463,
+  "cache_read": 200987,
+  "proxy_usd": 0.34
+ },
+ "eta": "6 of 6 iterations left (about 40-60 min each)"
+}
