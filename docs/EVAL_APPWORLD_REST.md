@@ -1447,3 +1447,11 @@ Posted 'GEPA-Full hourly status' on #900 (gepa_full): https://github.com/skillbe
 ```json
 {"cp": 17, "prev_cp": 16, "prev_commit": "b1e4cc448c8d4abdc66c9fb25b4be39b25e800d8", "utc": "2026-10-20T21:38:03Z", "kind": "posted", "phase": "P2", "done_through": "P2/a9", "next": "P2/a10", "candidate": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "90b80d34b10b928cd7078db818109b6935dbca00", "open_decisions": [], "post": "gepa_full/status_20261020T2138", "url": "https://github.com/skillberry-ai/cap-evolve/issues/900#issuecomment-6302096867"}
 ```
+
+## CP-0018 · 2026-10-20T21:38Z · P2 posted cape_improve · posted
+
+Posted 'Cap-Evolve-improve hourly status' on #901 (cape_improve): https://github.com/skillberry-ai/cap-evolve/issues/901#issuecomment-6302097972
+
+```json
+{"cp": 18, "prev_cp": 17, "prev_commit": "dcec517f923f76bc2fa74275b1ff8f242803c7fa", "utc": "2026-10-20T21:38:06Z", "kind": "posted", "phase": "P2", "done_through": "P2/a9", "next": "P2/a10", "candidate": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "90b80d34b10b928cd7078db818109b6935dbca00", "open_decisions": [], "post": "cape_improve/status_20261020T2138", "url": "https://github.com/skillberry-ai/cap-evolve/issues/901#issuecomment-6302097972"}
+```
