@@ -3935,3 +3935,11 @@ Posted 'evoskill hourly status' on #884 (evoskill): https://github.com/skillberr
 ```json
 {"cp": 342, "prev_cp": 341, "prev_commit": "44a6a4dd0f803a8844b66b8a40ec69bc02024968", "utc": "2026-10-20T00:21:17Z", "kind": "posted", "phase": "P8", "done_through": "p8final/1642", "next": "p8final/cells", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {}, "code": "ff9d29e4c6b75fbe2bf7871aa804fc4e452c2874", "open_decisions": [], "post": "evoskill/status_497904", "url": "https://github.com/skillberry-ai/cap-evolve/issues/884#issuecomment-6280318491"}
 ```
+
+## CP-0343 · 2026-10-20T00:21Z · P8 posted metaharness · posted
+
+Posted 'metaharness hourly status' on #885 (metaharness): https://github.com/skillberry-ai/cap-evolve/issues/885#issuecomment-6280319036
+
+```json
+{"cp": 343, "prev_cp": 342, "prev_commit": "58a0b41296146ee7b0e27eed708c300cb1e67443", "utc": "2026-10-20T00:21:19Z", "kind": "posted", "phase": "P8", "done_through": "p8final/1642", "next": "p8final/cells", "candidate": null, "counts": {"metaharness": {"counted_rollouts": 887}}, "spend": {"metaharness": {"in": 2217164, "out": 7046, "usd": 28.18}}, "artifacts": {}, "code": "ff9d29e4c6b75fbe2bf7871aa804fc4e452c2874", "open_decisions": [], "post": "metaharness/status_497904", "url": "https://github.com/skillberry-ai/cap-evolve/issues/885#issuecomment-6280319036"}
+```
