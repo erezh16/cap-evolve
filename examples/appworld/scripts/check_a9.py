@@ -125,8 +125,10 @@ def run_cli(cand: str, tools: str, shim: str | None = None) -> dict:
             os.chmod(p, mode)
         os.chmod(P.ROOT_FULL, 0o000)
         shutil.rmtree(SB.OPT_ROOT / next(c for c in P.CANDIDATES if c != cand) / "a9_probe", ignore_errors=True)
-        if cand != "cape_improve":
-            shutil.rmtree(SB.CAPE_RUN, ignore_errors=True) if not (SB.CAPE_RUN / ".capevolve" / "project" / "capevolve.yaml").exists() else None
+        # leave no planting dir behind where a later scaffold would find it (cape_improve's setup keys on capevolve.yaml)
+        if not (SB.CAPE_RUN / ".capevolve" / "project" / "capevolve.yaml").exists():
+            shutil.rmtree(SB.CAPE_RUN / ".capevolve", ignore_errors=True)
+        shutil.rmtree(SB.CAPE_RUN / "work" / "a9_ws", ignore_errors=True)
     return evaluate(text, toks, r.returncode, ws, cand, bash)
 
 

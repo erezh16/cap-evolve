@@ -120,7 +120,7 @@ def setup(root: Path, split_ids: str = "full", force: bool = False) -> Path:
     """Scaffold <root>/.capevolve/project with the PINNED intake script, then add the arm's files.
     split_ids: "full" = train = val = train ∪ dev (147), test = [] (§9.5); "dev4" = the first 4 dev ids (A dry run)."""
     proj = root / ".capevolve" / "project"
-    if proj.exists() and not force:
+    if (proj / "capevolve.yaml").exists() and not force:   # a scaffolded project, not just a dir (A9 plants in adapters/)
         return proj
     root.mkdir(parents=True, exist_ok=True)
     env = cape_env()
