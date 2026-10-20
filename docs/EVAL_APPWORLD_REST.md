@@ -1375,3 +1375,11 @@ Repair: the fresh B2 resolve installed fastapi 0.156.2. AppWorld 42b5bcf calls f
 ```json
 {"cp": 8, "prev_cp": 7, "prev_commit": "ae20bffd7300fea7e5f782124cd6736fee97b016", "utc": "2026-10-20T20:50:46Z", "kind": "repair", "phase": "P1", "done_through": "P1/b6-evaluator", "next": "P1/b6", "candidate": null, "counts": {}, "spend": {}, "artifacts": {"STATE/manifest.json": "e1026a88766bba532defe449843a44b33f3c7394dbc9c39b3b82d6610fa516c6"}, "code": "b922eb7ebac986f29904ae152b1d32fa49362943", "open_decisions": []}
 ```
+
+## CP-0009 · 2026-10-20T20:53Z · P1 build B6 common · result
+
+B6 common code written: scripts/awrest.py (constants, global slot pool with flock, PAUSE wait, memstate), scripts/memguard.py (5 s, 90/85, MEMSTATE.json), common/evaluator.py (tree-hash cache keyed by (tree, task, seed), seed guard SeedRerunRefused after P3, sealed ids refused, hard cap B checked and reserved under flock before a batch, one global slot per episode, lint-reject records with every field), common/opt_llm.py, common/sandbox.py (section 10 settings, claude_call with usage logging), common/API.md (the contract for drivers), scripts/post.py, scripts/autopost.py. Eval 5's evaluator kept as common/evaluator5.py for reference only. Next: B7, five candidate drivers in parallel sub-agents (rule R4); in parallel the A9 check, windows, scan, analysis and resume code.
+
+```json
+{"cp": 9, "prev_cp": 8, "prev_commit": "71778190de84f60b6a61943a0aaf83df875aa7d9", "utc": "2026-10-20T20:53:04Z", "kind": "result", "phase": "P1", "done_through": "P1/b6-common", "next": "P1/b7", "candidate": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "71778190de84f60b6a61943a0aaf83df875aa7d9", "open_decisions": []}
+```
