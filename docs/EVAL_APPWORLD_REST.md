@@ -1543,3 +1543,11 @@ P4 starts. Runner examples/appworld/scripts/p4.py (nohup, pid file AW_STATE/p4/R
 ```json
 {"cp": 29, "prev_cp": 28, "prev_commit": "1a169611692049cccc4805374df8aded204958a6", "utc": "2026-10-20T22:14:24Z", "kind": "phase_start", "phase": "P4", "done_through": "P2/done", "next": "P4/searches", "candidate": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "1a169611692049cccc4805374df8aded204958a6", "open_decisions": []}
 ```
+
+## CP-0030 · 2026-10-20T22:14Z · P4 cape_improve search · phase_start
+
+P4: cape_improve chain started (search, freeze, isolation scan), pid file AW_STATE/p4/cape_improve.pid. Running chains: cape_improve. Global slots 24; memory 1.85%.
+
+```json
+{"cp": 30, "prev_cp": 29, "prev_commit": "8720bb523c81501fc2a505cb63ca32cef8e24962", "utc": "2026-10-20T22:14:26Z", "kind": "phase_start", "phase": "P4", "done_through": "P2/done", "next": "P4/searches", "candidate": "cape_improve", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "1a169611692049cccc4805374df8aded204958a6", "open_decisions": []}
+```
