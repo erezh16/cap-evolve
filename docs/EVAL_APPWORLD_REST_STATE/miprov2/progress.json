@@ -1,5 +1,5 @@
 {
- "counted_rollouts": 105,
+ "counted_rollouts": 140,
  "cache_hits": 351,
  "optimizer": {
   "calls": 74,
@@ -11,10 +11,10 @@
   "seconds": 450.2,
   "proxy_usd": 1.05
  },
- "updated": "2026-10-20T23:26:54Z",
+ "updated": "2026-10-20T23:37:32Z",
  "stage": "search running",
  "demo_pool": 34,
- "minibatch_trials": 3,
+ "minibatch_trials": 4,
  "full_evals": 1,
  "best_search_score": 0.3333,
  "best_search_label": "dev TGC of the best full-eval program (selection-biased)"

@@ -1759,3 +1759,11 @@ Posted 'Trace2Skill hourly status' on #899 (trace2skill): https://github.com/ski
 ```json
 {"cp": 56, "prev_cp": 55, "prev_commit": "7eafd21bb98796a5716717500dda291579ef29f9", "utc": "2026-10-20T23:35:53Z", "kind": "posted", "phase": "P4", "done_through": "gepa_full/search/iteration 3", "next": "gepa_full/search", "candidate": "gepa_full", "counts": {"gepa_full": {"counted_rollouts": 66}}, "spend": {"gepa_full": {"in": 39578, "out": 12119, "proxy_usd": 0.2}}, "artifacts": {}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": [], "post": "trace2skill/status_20261020T2335", "url": "https://github.com/skillberry-ai/cap-evolve/issues/899#issuecomment-6304220594"}
 ```
+
+## CP-0057 · 2026-10-20T23:43Z · P4 posted cape_improve · posted
+
+Posted 'Cap-Evolve-improve 25% of B' on #901 (cape_improve): https://github.com/skillberry-ai/cap-evolve/issues/901#issuecomment-6304327739
+
+```json
+{"cp": 57, "prev_cp": 56, "prev_commit": "27bbeb6221f994cc08a34908e3df88ea58a27a35", "utc": "2026-10-20T23:43:55Z", "kind": "posted", "phase": "P4", "done_through": "gepa_full/search/iteration 3", "next": "gepa_full/search", "candidate": "gepa_full", "counts": {"gepa_full": {"counted_rollouts": 66}}, "spend": {"gepa_full": {"in": 39578, "out": 12119, "proxy_usd": 0.2}}, "artifacts": {}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": [], "post": "cape_improve/m4_budget_25", "url": "https://github.com/skillberry-ai/cap-evolve/issues/901#issuecomment-6304327739"}
+```
