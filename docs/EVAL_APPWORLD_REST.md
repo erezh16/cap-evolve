@@ -1487,3 +1487,11 @@ P3 done: the seed (SEED_HASH 85a0da9cec2206a7) on 90 train + 57 dev tasks, 1 tri
 ```json
 {"cp": 22, "prev_cp": 21, "prev_commit": "a0c85b4f974cfc89726eac6de8b78c8fd931fffc", "utc": "2026-10-20T22:07:49Z", "kind": "phase_done", "phase": "P3", "done_through": "P3/seed", "next": "P4/searches", "candidate": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {"STATE/seed/baseline.json": "c4549916483d21da80d409bcc9a8a4b45831b8d20df6f5d99fe3165ae9617212", "STATE/manifest.json": "e4b1415334614e77209ab658ae6c0c5d70e4d222052024cdea3f59524a3fe980"}, "code": "a0c85b4f974cfc89726eac6de8b78c8fd931fffc", "open_decisions": []}
 ```
+
+## CP-0023 · 2026-10-20T22:08Z · P3 posted harnesslens · posted
+
+Posted 'shared seed baseline done' on #897 (harnesslens): https://github.com/skillberry-ai/cap-evolve/issues/897#issuecomment-6302882512
+
+```json
+{"cp": 23, "prev_cp": 22, "prev_commit": "8764ae7715adfaed852733cf0fc39d785aea86b5", "utc": "2026-10-20T22:08:56Z", "kind": "posted", "phase": "P3", "done_through": "P3/seed", "next": "P4/searches", "candidate": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "a0c85b4f974cfc89726eac6de8b78c8fd931fffc", "open_decisions": [], "post": "harnesslens/p3_done", "url": "https://github.com/skillberry-ai/cap-evolve/issues/897#issuecomment-6302882512"}
+```
