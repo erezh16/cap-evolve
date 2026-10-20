@@ -1575,3 +1575,11 @@ Posted 'Cap-Evolve-improve search ended' on #901 (cape_improve): https://github.
 ```json
 {"cp": 33, "prev_cp": 32, "prev_commit": "9a8e1e1b16766b2f2a3b4d2ae2e12e4fcb5d92eb", "utc": "2026-10-20T22:15:01Z", "kind": "posted", "phase": "P4", "done_through": "P2/done", "next": "P4/searches", "candidate": "cape_improve", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "1a169611692049cccc4805374df8aded204958a6", "open_decisions": [], "post": "cape_improve/m4_search_end", "url": "https://github.com/skillberry-ai/cap-evolve/issues/901#issuecomment-6302980731"}
 ```
+
+## CP-0034 · 2026-10-20T22:15Z · P4 cape_improve launch · repair
+
+Repair: the cape_improve search refused to start (launch.sh exit 3, before any cap-evolve process, 0 rollouts, 0 optimizer calls). Cause: A9 had planted a secret in cape_run/.capevolve/project/adapters/, leaving that empty dir behind; the driver's setup() took the existing project dir for a scaffolded project and skipped intake, so the IMP launch check found no capevolve.yaml and refused (as designed). Fix: setup() now keys on capevolve.yaml; A9 removes its planting dirs under cape_run. The leftover dirs were deleted. The chain is cleared for one restart by the P4 runner (IMP launch checks run again before cap-evolve starts).
+
+```json
+{"cp": 34, "prev_cp": 33, "prev_commit": "ecdb3df89aae295a4122c5e2deee9f20913851d5", "utc": "2026-10-20T22:15:45Z", "kind": "repair", "phase": "P4", "done_through": "P2/done", "next": "P4/searches", "candidate": "cape_improve", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "ecdb3df89aae295a4122c5e2deee9f20913851d5", "open_decisions": []}
+```
