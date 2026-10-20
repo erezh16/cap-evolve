@@ -1431,3 +1431,11 @@ Posted 'MIPROv2 hourly status' on #898 (miprov2): https://github.com/skillberry-
 ```json
 {"cp": 15, "prev_cp": 14, "prev_commit": "90b80d34b10b928cd7078db818109b6935dbca00", "utc": "2026-10-20T21:37:58Z", "kind": "posted", "phase": "P2", "done_through": "P2/a9", "next": "P2/a10", "candidate": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "90b80d34b10b928cd7078db818109b6935dbca00", "open_decisions": [], "post": "miprov2/status_20261020T2137", "url": "https://github.com/skillberry-ai/cap-evolve/issues/898#issuecomment-6302094817"}
 ```
+
+## CP-0016 · 2026-10-20T21:38Z · P2 posted trace2skill · posted
+
+Posted 'Trace2Skill hourly status' on #899 (trace2skill): https://github.com/skillberry-ai/cap-evolve/issues/899#issuecomment-6302095888
+
+```json
+{"cp": 16, "prev_cp": 15, "prev_commit": "780950a7effb82a582e970d93cf5fd22db2af77b", "utc": "2026-10-20T21:38:01Z", "kind": "posted", "phase": "P2", "done_through": "P2/a9", "next": "P2/a10", "candidate": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "90b80d34b10b928cd7078db818109b6935dbca00", "open_decisions": [], "post": "trace2skill/status_20261020T2138", "url": "https://github.com/skillberry-ai/cap-evolve/issues/899#issuecomment-6302095888"}
+```
