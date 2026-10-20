@@ -115,6 +115,12 @@ def dev_diag() -> dict:
     return {a: v.get("tgc") for a, v in (prog.get("per_arm") or {}).items()}
 
 
+def usd(o: dict) -> str:
+    """The cost the tool itself reported (Agent SDK / claude CLI: includes cache writes and reads) when there is
+    one; otherwise the list-price proxy over input + output tokens (chat-API arms have no cache)."""
+    return f"${o['reported_usd']} (reported)" if o.get("reported_usd") else f"${o['proxy_usd']} (proxy)"
+
+
 def pct(x):
     return f"{100 * x:.1f}"
 
@@ -186,12 +192,12 @@ def main() -> int:
         C.append(f"| {a} | {r['prompt_tokens_per_task']:,.0f} | {r['completion_tokens_per_task']:,.0f} | {r['steps_per_task']:.1f} | "
                  f"{r['episode_seconds']:.0f} | {r['step_cap_hits']} | {r['context_exceeded']} | {r['collateral_damage']} | "
                  f"{r['max_prompt_tokens']:,} | {100 * r['trials_agree_share']:.0f}% |")
-    O = ["| candidate | counted search rollouts | optimizer calls | input tok | output tok | cache-read tok | proxy USD | optimizer wall s |",
+    O = ["| candidate | counted search rollouts | optimizer calls | input tok | output tok | cache-read tok | USD | optimizer wall s |",
          "|---|---|---|---|---|---|---|---|"]
     for c in P.CANDIDATES:
         o = res["optimizer"][c]
         O.append(f"| {c} | {o['counted_search_rollouts']} | {o['calls']} | {o['input_tokens']:,} | {o['output_tokens']:,} | "
-                 f"{o['cache_read_tokens']:,} | ${o['proxy_usd']} | {o['optimizer_seconds']:,} |")
+                 f"{o['cache_read_tokens']:,} | {usd(o)} | {o['optimizer_seconds']:,} |")
     md = ("## Final window: test_normal, 168 tasks / 56 scenarios × 2 trials × 6 arms\n\n" + "\n".join(L)
           + "\n\n## TGC by difficulty\n\n" + "\n".join(D) + "\n\n## Agent cost, tokens and latency per episode (final window)\n\n"
           + "\n".join(C) + "\n\n## Optimizer side (search)\n\n" + "\n".join(O) + "\n")
