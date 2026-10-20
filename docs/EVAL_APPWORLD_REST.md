@@ -1631,3 +1631,11 @@ P4: miprov2 chain started (search, freeze, isolation scan), pid file AW_STATE/p4
 ```json
 {"cp": 40, "prev_cp": 39, "prev_commit": "6cab518c89654ab204c5da892a33c90e3b9c0682", "utc": "2026-10-20T22:19:30Z", "kind": "phase_start", "phase": "P4", "done_through": "P2/done", "next": "P4/searches", "candidate": "miprov2", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": []}
 ```
+
+## CP-0041 · 2026-10-20T22:22Z · P4 wave 1 running · result
+
+P4 wave 1 running: cape_improve (relaunched 22:17; IMP launch checks passed; baseline val 0.3741 on 147 = train+dev served entirely from the shared seed cache, 0 counted; hill-climb with k 0.5 now in iteration 1), gepa_full (seed dev score 0.333 from the cache; iterations under way), miprov2 (demo pool and proposals from the seed's cached records; 0 counted so far). Memory 22.6% of 32 GB at 3 searches, 24 slots. Accounting fix: the two A9 probe calls (made before P4 through the cape_improve shim) were in cape_improve's optimizer_usage.jsonl; they were moved to AW_STATE/cape_improve/accept/usage/ so the search's spend and 10M cap start at 0 (no search call was affected).
+
+```json
+{"cp": 41, "prev_cp": 40, "prev_commit": "093a7a32ec9c8004d75bdfb30b799c33eb79ba7f", "utc": "2026-10-20T22:22:43Z", "kind": "result", "phase": "P4", "done_through": "P2/done", "next": "P4/searches", "candidate": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": []}
+```
