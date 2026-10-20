@@ -520,7 +520,15 @@ def accept() -> int:
                               for r in recs if r["reward"] != 1.0)
     out["A1_converter_roundtrip"] = rt and stripped_ok and failed_keeps_report
     # (2) one error and one success analysis call; (3) the 4-record MAP -> REDUCE -> APPLY -> VERIFY dry run
-    back = write_logs(recs[:5], work / "logs")
+    probe = list(recs[:5])
+    if not any(r["reward"] != 1.0 for r in probe):
+        # Every probe episode passed, so no FAILED log exists. To exercise the error analyst without another
+        # episode, one passing record is relabelled FAILED with a synthetic, generic requirement text (marked
+        # as such in the result). Only parseability is tested here; nothing of this probe is used in search.
+        probe[0] = dict(probe[0], reward=0.0, failed_requirements=["(acceptance probe) a synthetic requirement "
+                        "check failed"], pass_count=0, num_tests=1)
+        out["A2_synthetic_failed_log"] = True
+    back = write_logs(probe, work / "logs")
     err, suc = analyze(work / "logs", work / "analysis", acand)
     out["A2_analysts"] = {"error_records": len(err), "success_records": len(suc),
                           "error_items": sum(len(r["items"]) for r in err),
@@ -540,7 +548,12 @@ def accept() -> int:
     except (json.JSONDecodeError, IndexError):
         inj_res = {"ok": False, "stderr": inj.stderr[-500:]}
     wait_memory()
-    ep = E.evaluate(acand, Path(pk["cdir"]), dev[5:6], phase="accept", tag="t2s_accept_playbook")[0]
+    # One real episode with a packaged playbook. A rerun of accept reuses the first packaged candidate (if any),
+    # so the A-trace2skill probe stays within its episode budget (cache hit instead of a new episode).
+    ep_marker = P.AW_STATE / acand / "playbook_episode_cdir.txt"
+    ep_cdir = Path(ep_marker.read_text().strip()) if ep_marker.exists() else Path(pk["cdir"])
+    ep_marker.write_text(str(ep_cdir))
+    ep = E.evaluate(acand, ep_cdir, dev[5:6], phase="accept", tag="t2s_accept_playbook")[0]
     out["A4_packaging"] = {"tokens": pk["tokens"], "m_cap": m_cap(), "lint": pk["lint"],
                            "condensations": len(pk["condensations"]), "injection": inj_res,
                            "episode": {"lint_reject": ep["lint_reject"], "error": bool(ep["error"]),

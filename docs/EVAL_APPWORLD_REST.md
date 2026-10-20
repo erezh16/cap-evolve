@@ -1415,3 +1415,11 @@ A9 for the cape_improve claude-code optimizer, through its PATH shim (examples/a
 ```json
 {"cp": 13, "prev_cp": 12, "prev_commit": "4fa28b066f7659e6d620db5a5049668943430259", "utc": "2026-10-20T21:35:02Z", "kind": "repair", "phase": "P2", "done_through": "P2/a9", "next": "P2/a10", "candidate": null, "counts": {}, "spend": {}, "artifacts": {"STATE/acceptance/a9_cape_improve.json": "68612bf7f502b83810f84c331fb7baeb4f0b6a9cc5ba9e14481d1b519eafb3f1"}, "code": "4fa28b066f7659e6d620db5a5049668943430259", "open_decisions": []}
 ```
+
+## CP-0014 · 2026-10-20T21:37Z · P2 posted harnesslens · posted
+
+Posted 'HarnessLens hourly status' on #897 (harnesslens): https://github.com/skillberry-ai/cap-evolve/issues/897#issuecomment-6302093649
+
+```json
+{"cp": 14, "prev_cp": 13, "prev_commit": "ce10385b2e1917dc5bd97e63d335e162e8388000", "utc": "2026-10-20T21:37:56Z", "kind": "posted", "phase": "P2", "done_through": "P2/a9", "next": "P2/a10", "candidate": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "ce10385b2e1917dc5bd97e63d335e162e8388000", "open_decisions": [], "post": "harnesslens/status_20261020T2137", "url": "https://github.com/skillberry-ai/cap-evolve/issues/897#issuecomment-6302093649"}
+```
