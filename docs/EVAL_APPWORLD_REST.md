@@ -1519,3 +1519,11 @@ Posted 'shared seed baseline done' on #900 (gepa_full): https://github.com/skill
 ```json
 {"cp": 26, "prev_cp": 25, "prev_commit": "dd0aabf66fe432592b6641fe081dd627fd07b946", "utc": "2026-10-20T22:09:04Z", "kind": "posted", "phase": "P3", "done_through": "P3/seed", "next": "P4/searches", "candidate": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "a0c85b4f974cfc89726eac6de8b78c8fd931fffc", "open_decisions": [], "post": "gepa_full/p3_done", "url": "https://github.com/skillberry-ai/cap-evolve/issues/900#issuecomment-6302884726"}
 ```
+
+## CP-0027 · 2026-10-20T22:09Z · P3 posted cape_improve · posted
+
+Posted 'shared seed baseline done' on #901 (cape_improve): https://github.com/skillberry-ai/cap-evolve/issues/901#issuecomment-6302885346
+
+```json
+{"cp": 27, "prev_cp": 26, "prev_commit": "062511346304b793149e17a4b28235904eca89c5", "utc": "2026-10-20T22:09:06Z", "kind": "posted", "phase": "P3", "done_through": "P3/seed", "next": "P4/searches", "candidate": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "a0c85b4f974cfc89726eac6de8b78c8fd931fffc", "open_decisions": [], "post": "cape_improve/p3_done", "url": "https://github.com/skillberry-ai/cap-evolve/issues/901#issuecomment-6302885346"}
+```
