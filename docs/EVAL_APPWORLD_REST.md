@@ -2843,3 +2843,11 @@ Trace2Skill evolution seed 43 done: 90 MAP patches, 1 file edits, 125 optimizer 
 ```json
 {"cp": 191, "prev_cp": 190, "prev_commit": "7154275b47efe1c1ec50036584fae8fa7978e4e9", "utc": "2026-10-21T08:51:20Z", "kind": "result", "phase": "P4", "done_through": "trace2skill/evolution/43", "next": "trace2skill/search", "candidate": "trace2skill", "counts": {"trace2skill": {"counted_rollouts": 90, "cache_hits": 360}}, "spend": {"trace2skill": {"in": 3436541, "out": 940656, "usd": 16.28}}, "artifacts": {"STATE/trace2skill/progress.json": "2241cdb8628a023b2c04a225e985e3a43b8e23a313517534489c5e66bb0f12cf"}, "code": "c6d95c12227f31f3da9c096cfad8332e9ace61a8", "open_decisions": []}
 ```
+
+## CP-0192 · 2026-10-21T08:52Z · P4 posted trace2skill · posted
+
+Posted 'Trace2Skill new best search-time score' on #899 (trace2skill): https://github.com/skillberry-ai/cap-evolve/issues/899#issuecomment-6311987953
+
+```json
+{"cp": 192, "prev_cp": 191, "prev_commit": "5d6c4b66e6fddb75f381c2deb8977a46935f7a74", "utc": "2026-10-21T08:52:00Z", "kind": "posted", "phase": "P4", "done_through": "trace2skill/evolution/43", "next": "trace2skill/search", "candidate": "trace2skill", "counts": {"trace2skill": {"counted_rollouts": 90, "cache_hits": 360}}, "spend": {"trace2skill": {"in": 3436541, "out": 940656, "usd": 16.28}}, "artifacts": {}, "code": "c6d95c12227f31f3da9c096cfad8332e9ace61a8", "open_decisions": [], "post": "trace2skill/m4_best_0.7778", "url": "https://github.com/skillberry-ai/cap-evolve/issues/899#issuecomment-6311987953"}
+```
