@@ -1,16 +1,16 @@
 {
  "candidate": "gepa_full",
  "stage": "search running",
- "counted_rollouts": 749,
+ "counted_rollouts": 809,
  "cap": 900,
- "cache_hits": 82,
- "metric_calls": 831,
+ "cache_hits": 85,
+ "metric_calls": 894,
  "max_metric_calls": 894,
- "iterations": 40,
- "accepted": 10,
+ "iterations": 41,
+ "accepted": 11,
  "best_search_score": 0.7193,
  "best_search_label": "dev TGC of the best Pareto candidate (57 dev tasks, the selection set: selection-biased)",
- "eta": "about 0.7 h of search left at the current rate",
+ "eta": "about 0.0 h of search left at the current rate",
  "components": {
   "policy/instructions.txt": {
    "visits": 1,
@@ -69,11 +69,11 @@
    "invalid": 7
   },
   "api_notes:splitwise": {
-   "visits": 3,
-   "accepts": 2,
-   "fallbacks": 3,
-   "proposals": 3,
-   "invalid": 5
+   "visits": 4,
+   "accepts": 3,
+   "fallbacks": 4,
+   "proposals": 4,
+   "invalid": 6
   },
   "api_notes:spotify": {
    "visits": 1,
@@ -106,21 +106,21 @@
  },
  "proposer": {
   "lint_reject": 0,
-  "invalid_block": 40,
+  "invalid_block": 41,
   "parse_fail": 0,
   "refusals": 0,
   "gave_up": 4,
-  "calls": 68
+  "calls": 70
  },
  "lint_rejects": 0,
  "optimizer": {
-  "calls": 68,
+  "calls": 70,
   "errors": 0,
-  "prompt_tokens": 861473,
-  "completion_tokens": 60721,
+  "prompt_tokens": 902011,
+  "completion_tokens": 61985,
   "cache_read": 0,
   "cache_write": 0,
-  "seconds": 623.2,
-  "proxy_usd": 2.33
+  "seconds": 639.6,
+  "proxy_usd": 2.42
  }
 }

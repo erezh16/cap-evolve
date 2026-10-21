@@ -2639,3 +2639,11 @@ Posted 'Cap-Evolve-improve hourly status' on #901 (cape_improve): https://github
 ```json
 {"cp": 166, "prev_cp": 165, "prev_commit": "9ce339d5b59ea3f5d1eed2a0b7d9cf1d229a39da", "utc": "2026-10-21T07:00:26Z", "kind": "posted", "phase": "P4", "done_through": "gepa_full/search/iteration 40", "next": "gepa_full/search", "candidate": "gepa_full", "counts": {"gepa_full": {"counted_rollouts": 749}}, "spend": {"gepa_full": {"in": 861473, "out": 60721, "proxy_usd": 2.33}}, "artifacts": {}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": ["trace2skill: keep degenerate 3-seed selection or re-run seeds 42/43 with a nonce"], "post": "cape_improve/status_20261021T0700", "url": "https://github.com/skillberry-ai/cap-evolve/issues/901#issuecomment-6310090641"}
 ```
+
+## CP-0167 · 2026-10-21T07:03Z · P4 gepa_full search · result
+
+GEPA-Full iteration 41: iterations 41, accepted 11, best dev 0.7193 (selection-biased), metric calls 894/894. Counted rollouts 809/900, cache hits 85; optimizer 70 calls, proxy $2.42.
+
+```json
+{"cp": 167, "prev_cp": 166, "prev_commit": "cbd1cc222884a764924b803ed9039fa2fcea52e7", "utc": "2026-10-21T07:03:37Z", "kind": "result", "phase": "P4", "done_through": "gepa_full/search/iteration 41", "next": "gepa_full/search", "candidate": "gepa_full", "counts": {"gepa_full": {"counted_rollouts": 809}}, "spend": {"gepa_full": {"in": 902011, "out": 61985, "proxy_usd": 2.42}}, "artifacts": {"STATE/gepa_full/progress.json": "9697f30e46af6e470543826ea57f1825328e4ff80bed87cc5b6d3d4ff12f195b"}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": ["trace2skill: keep degenerate 3-seed selection or re-run seeds 42/43 with a nonce"]}
+```
