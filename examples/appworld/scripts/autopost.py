@@ -93,7 +93,9 @@ def window_lines(c: str) -> list[str]:
     mine = sum(1 for p in recs if p.stem.isdigit() and arm_of.get(int(p.stem)) == c)
     recent = [p.stat().st_mtime for p in recs if p.stat().st_mtime > time.time() - 3600]
     left = len(order) - len(recs)
-    eta = f"; about {left / max(1, len(recent)):.1f} h left at the last hour's rate" if recent and left else ""
+    started = min((p.stat().st_mtime for p in recs), default=time.time())
+    eta = (f"; about {left / max(1, len(recent)):.1f} h left at the last hour's rate"
+           if recent and left and time.time() - started >= 3600 else "")
     return [f"- final window (168 test_normal × 6 arms × 2 trials): {len(recs)}/{len(order)} cells done{eta}; "
             f"this arm {mine}/336. No test score is shown before the window completes."]
 
