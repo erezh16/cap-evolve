@@ -167,14 +167,24 @@ def claude_call(cand: str, role: str, prompt: str, workspace: Path, *, allowed_t
     return d
 
 
+def cli_tokens(d: dict) -> dict:
+    """Token counts of one CLI result. `modelUsage` sums every model call of the session (sub-agents included);
+    the top-level `usage` covers only part of it (CP-0327), so modelUsage is used whenever present."""
+    mu = d.get("modelUsage") or {}
+    if mu:
+        g = lambda k: sum(int(v.get(k) or 0) for v in mu.values())  # noqa: E731
+        inp, out, cr, cw = g("inputTokens"), g("outputTokens"), g("cacheReadInputTokens"), g("cacheCreationInputTokens")
+    else:
+        u = d.get("usage") or {}
+        inp, out = int(u.get("input_tokens") or 0), int(u.get("output_tokens") or 0)
+        cr, cw = int(u.get("cache_read_input_tokens") or 0), int(u.get("cache_creation_input_tokens") or 0)
+    return {"model": ",".join(mu) or P.OPT_MODEL, "prompt_tokens": inp + cw, "completion_tokens": out,
+            "cache_read": cr, "cache_write": cw}
+
+
 def log_cli_usage(cand: str, role: str, d: dict, seconds: float) -> None:
     """One usage line per CLI result JSON, same fields as opt_llm.py, plus total_cost_usd (CLI-reported)."""
-    u = d.get("usage") or {}
-    models = list((d.get("modelUsage") or {}).keys())
-    cw = int(u.get("cache_creation_input_tokens") or 0)
     P.append_jsonl(P.AW_STATE / cand / "optimizer_usage.jsonl", {
-        "t": P.utcnow(), "seconds": seconds, "model": ",".join(models) or P.OPT_MODEL, "role": role,
-        "prompt_tokens": int(u.get("input_tokens") or 0) + cw, "completion_tokens": int(u.get("output_tokens") or 0),
-        "cache_read": int(u.get("cache_read_input_tokens") or 0), "cache_write": cw,
+        "t": P.utcnow(), "seconds": seconds, "role": role, **cli_tokens(d),
         "error": (d.get("subtype") if d.get("is_error") else None), "finish_reason": d.get("subtype"),
         "total_cost_usd": d.get("total_cost_usd"), "num_turns": d.get("num_turns"), "source": "claude-cli"})

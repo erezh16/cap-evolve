@@ -1,0 +1,1273 @@
+{
+ "n_tasks": 168,
+ "n_scenarios": 56,
+ "trials": 2,
+ "cells": 2016,
+ "bootstrap_resamples": 10000,
+ "arms": {
+  "seed": {
+   "tgc": 0.3333333333333333,
+   "sgc": 0.08035714285714286,
+   "tgc_drop_missing": 0.3333333333333333,
+   "sgc_drop_missing": 0.08035714285714286,
+   "by_difficulty": {
+    "Easy": {
+     "n": 57,
+     "tgc": 0.5526315789473685,
+     "n_scenarios": 19,
+     "sgc": 0.21052631578947367
+    },
+    "Medium": {
+     "n": 48,
+     "tgc": 0.2708333333333333,
+     "n_scenarios": 16,
+     "sgc": 0.03125
+    },
+    "Hard": {
+     "n": 63,
+     "tgc": 0.18253968253968253,
+     "n_scenarios": 21,
+     "sgc": 0.0
+    }
+   },
+   "episodes": 336,
+   "missing": 0,
+   "prompt_tokens_per_task": 94193.47619047618,
+   "completion_tokens_per_task": 6029.544642857143,
+   "steps_per_task": 12.738095238095237,
+   "episode_seconds": 259.03035714285716,
+   "step_cap_hits": 2,
+   "token_cap_hits": 0,
+   "context_exceeded": 0,
+   "collateral_damage": 16,
+   "complete_task_not_called": 2,
+   "fs_probe": 0,
+   "max_prompt_tokens": 21258,
+   "trials_agree_share": 0.6666666666666666,
+   "prompt_tokens_p50": 63997.0,
+   "prompt_tokens_p90": 201364.0,
+   "completion_tokens_p50": 3919.0,
+   "completion_tokens_p90": 13096.0,
+   "episode_seconds_p50": 163.6,
+   "episode_seconds_p90": 542.3,
+   "pass_fraction": 0.680129990714949,
+   "infra_retries": 0
+  },
+  "harnesslens": {
+   "tgc": 0.34523809523809523,
+   "sgc": 0.13392857142857142,
+   "tgc_drop_missing": 0.34523809523809523,
+   "sgc_drop_missing": 0.13392857142857142,
+   "by_difficulty": {
+    "Easy": {
+     "n": 57,
+     "tgc": 0.543859649122807,
+     "n_scenarios": 19,
+     "sgc": 0.2894736842105263
+    },
+    "Medium": {
+     "n": 48,
+     "tgc": 0.28125,
+     "n_scenarios": 16,
+     "sgc": 0.0625
+    },
+    "Hard": {
+     "n": 63,
+     "tgc": 0.21428571428571427,
+     "n_scenarios": 21,
+     "sgc": 0.047619047619047616
+    }
+   },
+   "episodes": 336,
+   "missing": 0,
+   "prompt_tokens_per_task": 93049.65476190476,
+   "completion_tokens_per_task": 5868.696428571428,
+   "steps_per_task": 12.839285714285714,
+   "episode_seconds": 247.84375,
+   "step_cap_hits": 6,
+   "token_cap_hits": 0,
+   "context_exceeded": 0,
+   "collateral_damage": 15,
+   "complete_task_not_called": 6,
+   "fs_probe": 0,
+   "max_prompt_tokens": 20778,
+   "trials_agree_share": 0.7142857142857143,
+   "prompt_tokens_p50": 63759.0,
+   "prompt_tokens_p90": 192686.0,
+   "completion_tokens_p50": 4084.0,
+   "completion_tokens_p90": 12405.0,
+   "episode_seconds_p50": 166.3,
+   "episode_seconds_p90": 509.6,
+   "pass_fraction": 0.7014856081708449,
+   "infra_retries": 0
+  },
+  "miprov2": {
+   "tgc": 0.5773809523809523,
+   "sgc": 0.375,
+   "tgc_drop_missing": 0.5773809523809523,
+   "sgc_drop_missing": 0.375,
+   "by_difficulty": {
+    "Easy": {
+     "n": 57,
+     "tgc": 0.7982456140350878,
+     "n_scenarios": 19,
+     "sgc": 0.6578947368421053
+    },
+    "Medium": {
+     "n": 48,
+     "tgc": 0.625,
+     "n_scenarios": 16,
+     "sgc": 0.3125
+    },
+    "Hard": {
+     "n": 63,
+     "tgc": 0.3412698412698413,
+     "n_scenarios": 21,
+     "sgc": 0.16666666666666666
+    }
+   },
+   "episodes": 336,
+   "missing": 0,
+   "prompt_tokens_per_task": 101774.33333333333,
+   "completion_tokens_per_task": 4612.455357142857,
+   "steps_per_task": 11.827380952380953,
+   "episode_seconds": 208.00892857142858,
+   "step_cap_hits": 3,
+   "token_cap_hits": 0,
+   "context_exceeded": 0,
+   "collateral_damage": 11,
+   "complete_task_not_called": 3,
+   "fs_probe": 0,
+   "max_prompt_tokens": 21797,
+   "trials_agree_share": 0.7857142857142857,
+   "prompt_tokens_p50": 77030.0,
+   "prompt_tokens_p90": 198506.0,
+   "completion_tokens_p50": 3381.0,
+   "completion_tokens_p90": 8693.0,
+   "episode_seconds_p50": 146.9,
+   "episode_seconds_p90": 366.6,
+   "pass_fraction": 0.7910863509749304,
+   "infra_retries": 0
+  },
+  "trace2skill": {
+   "tgc": 0.6875,
+   "sgc": 0.4732142857142857,
+   "tgc_drop_missing": 0.6875,
+   "sgc_drop_missing": 0.4732142857142857,
+   "by_difficulty": {
+    "Easy": {
+     "n": 57,
+     "tgc": 0.8596491228070176,
+     "n_scenarios": 19,
+     "sgc": 0.7368421052631579
+    },
+    "Medium": {
+     "n": 48,
+     "tgc": 0.7916666666666666,
+     "n_scenarios": 16,
+     "sgc": 0.5
+    },
+    "Hard": {
+     "n": 63,
+     "tgc": 0.4523809523809524,
+     "n_scenarios": 21,
+     "sgc": 0.21428571428571427
+    }
+   },
+   "episodes": 336,
+   "missing": 0,
+   "prompt_tokens_per_task": 158495.89285714287,
+   "completion_tokens_per_task": 6705.389880952381,
+   "steps_per_task": 13.416666666666666,
+   "episode_seconds": 288.48660714285717,
+   "step_cap_hits": 1,
+   "token_cap_hits": 0,
+   "context_exceeded": 0,
+   "collateral_damage": 10,
+   "complete_task_not_called": 1,
+   "fs_probe": 0,
+   "max_prompt_tokens": 24082,
+   "trials_agree_share": 0.7678571428571429,
+   "prompt_tokens_p50": 124318.0,
+   "prompt_tokens_p90": 297165.0,
+   "completion_tokens_p50": 5096.0,
+   "completion_tokens_p90": 13691.0,
+   "episode_seconds_p50": 223.2,
+   "episode_seconds_p90": 584.5,
+   "pass_fraction": 0.840297121634169,
+   "infra_retries": 1
+  },
+  "gepa_full": {
+   "tgc": 0.6458333333333334,
+   "sgc": 0.4732142857142857,
+   "tgc_drop_missing": 0.6458333333333334,
+   "sgc_drop_missing": 0.4732142857142857,
+   "by_difficulty": {
+    "Easy": {
+     "n": 57,
+     "tgc": 0.8157894736842105,
+     "n_scenarios": 19,
+     "sgc": 0.6842105263157895
+    },
+    "Medium": {
+     "n": 48,
+     "tgc": 0.6979166666666666,
+     "n_scenarios": 16,
+     "sgc": 0.53125
+    },
+    "Hard": {
+     "n": 63,
+     "tgc": 0.4523809523809524,
+     "n_scenarios": 21,
+     "sgc": 0.23809523809523808
+    }
+   },
+   "episodes": 336,
+   "missing": 0,
+   "prompt_tokens_per_task": 103777.04464285714,
+   "completion_tokens_per_task": 5763.767857142857,
+   "steps_per_task": 12.193452380952381,
+   "episode_seconds": 241.1392857142857,
+   "step_cap_hits": 3,
+   "token_cap_hits": 0,
+   "context_exceeded": 0,
+   "collateral_damage": 13,
+   "complete_task_not_called": 3,
+   "fs_probe": 0,
+   "max_prompt_tokens": 20105,
+   "trials_agree_share": 0.7797619047619048,
+   "prompt_tokens_p50": 74466.0,
+   "prompt_tokens_p90": 199765.0,
+   "completion_tokens_p50": 4347.0,
+   "completion_tokens_p90": 11948.0,
+   "episode_seconds_p50": 181.0,
+   "episode_seconds_p90": 475.8,
+   "pass_fraction": 0.8180129990714949,
+   "infra_retries": 1
+  },
+  "cape_improve": {
+   "tgc": 0.49404761904761907,
+   "sgc": 0.35714285714285715,
+   "tgc_drop_missing": 0.49404761904761907,
+   "sgc_drop_missing": 0.35714285714285715,
+   "by_difficulty": {
+    "Easy": {
+     "n": 57,
+     "tgc": 0.7631578947368421,
+     "n_scenarios": 19,
+     "sgc": 0.6578947368421053
+    },
+    "Medium": {
+     "n": 48,
+     "tgc": 0.5104166666666666,
+     "n_scenarios": 16,
+     "sgc": 0.34375
+    },
+    "Hard": {
+     "n": 63,
+     "tgc": 0.23809523809523808,
+     "n_scenarios": 21,
+     "sgc": 0.09523809523809523
+    }
+   },
+   "episodes": 336,
+   "missing": 0,
+   "prompt_tokens_per_task": 122549.70238095238,
+   "completion_tokens_per_task": 7009.241071428572,
+   "steps_per_task": 9.404761904761905,
+   "episode_seconds": 292.6110119047619,
+   "step_cap_hits": 7,
+   "token_cap_hits": 0,
+   "context_exceeded": 0,
+   "collateral_damage": 16,
+   "complete_task_not_called": 7,
+   "fs_probe": 0,
+   "max_prompt_tokens": 26407,
+   "trials_agree_share": 0.8095238095238095,
+   "prompt_tokens_p50": 71448.0,
+   "prompt_tokens_p90": 276878.0,
+   "completion_tokens_p50": 4559.0,
+   "completion_tokens_p90": 15061.0,
+   "episode_seconds_p50": 185.6,
+   "episode_seconds_p90": 634.5,
+   "pass_fraction": 0.7590529247910863,
+   "infra_retries": 11
+  }
+ },
+ "vs_seed": {
+  "harnesslens": {
+   "d_tgc": 0.011904761904761918,
+   "ci_tgc": [
+    -0.05357142857142855,
+    0.07440476190476192
+   ],
+   "d_sgc": 0.05357142857142856,
+   "ci_sgc": [
+    0.0,
+    0.10714285714285715
+   ]
+  },
+  "miprov2": {
+   "d_tgc": 0.244047619047619,
+   "ci_tgc": [
+    0.17261904761904762,
+    0.3154761904761905
+   ],
+   "d_sgc": 0.29464285714285715,
+   "ci_sgc": [
+    0.1875,
+    0.4017857142857143
+   ]
+  },
+  "trace2skill": {
+   "d_tgc": 0.3541666666666667,
+   "ci_tgc": [
+    0.29166666666666663,
+    0.4196428571428571
+   ],
+   "d_sgc": 0.39285714285714285,
+   "ci_sgc": [
+    0.29464285714285715,
+    0.49999999999999994
+   ]
+  },
+  "gepa_full": {
+   "d_tgc": 0.31250000000000006,
+   "ci_tgc": [
+    0.24404761904761912,
+    0.38095238095238093
+   ],
+   "d_sgc": 0.39285714285714285,
+   "ci_sgc": [
+    0.2857142857142857,
+    0.5
+   ]
+  },
+  "cape_improve": {
+   "d_tgc": 0.16071428571428575,
+   "ci_tgc": [
+    0.0892857142857143,
+    0.23511904761904762
+   ],
+   "d_sgc": 0.2767857142857143,
+   "ci_sgc": [
+    0.17857142857142855,
+    0.3839285714285714
+   ]
+  }
+ },
+ "search": {
+  "harnesslens": {
+   "optimizer": {
+    "calls": 270,
+    "errors": 0,
+    "models": [
+     "aws/claude-sonnet-5-5"
+    ],
+    "input_tokens": 9410029,
+    "output_tokens": 1042108,
+    "cache_read_tokens": 2279443,
+    "cache_write_tokens": 801654,
+    "proxy_usd": 30.1,
+    "cli_reported_usd": 7.78,
+    "per_role": {
+     "discovery-task-explorer": {
+      "calls": 1,
+      "in": 7160,
+      "out": 1875,
+      "cache_read": 0,
+      "cache_write": 0
+     },
+     "experience.baseline": {
+      "calls": 27,
+      "in": 704896,
+      "out": 77311,
+      "cache_read": 0,
+      "cache_write": 0
+     },
+     "analyzer.reusable": {
+      "calls": 5,
+      "in": 150466,
+      "out": 23361,
+      "cache_read": 0,
+      "cache_write": 0
+     },
+     "analyzer.adjustment": {
+      "calls": 5,
+      "in": 170616,
+      "out": 52512,
+      "cache_read": 0,
+      "cache_write": 0
+     },
+     "main.select": {
+      "calls": 13,
+      "in": 1040522,
+      "out": 23740,
+      "cache_read": 0,
+      "cache_write": 0
+     },
+     "editor": {
+      "calls": 13,
+      "in": 1015051,
+      "out": 22521,
+      "cache_read": 2279443,
+      "cache_write": 801654
+     },
+     "experience.compare": {
+      "calls": 72,
+      "in": 2253485,
+      "out": 292903,
+      "cache_read": 0,
+      "cache_write": 0
+     },
+     "experience.review": {
+      "calls": 69,
+      "in": 2276211,
+      "out": 374481,
+      "cache_read": 0,
+      "cache_write": 0
+     },
+     "analyzer.post-reusable": {
+      "calls": 30,
+      "in": 961499,
+      "out": 80855,
+      "cache_read": 0,
+      "cache_write": 0
+     },
+     "analyzer.post-adjustment": {
+      "calls": 17,
+      "in": 633956,
+      "out": 74318,
+      "cache_read": 0,
+      "cache_write": 0
+     },
+     "main.review": {
+      "calls": 18,
+      "in": 196167,
+      "out": 18231,
+      "cache_read": 0,
+      "cache_write": 0
+     }
+    },
+    "call_seconds_mean": 29.8,
+    "call_seconds_p90": 50.76,
+    "optimizer_seconds_total": 8039
+   },
+   "rollouts": {
+    "counted": 162,
+    "cache_hits": 195,
+    "lint_reject_batches": 0,
+    "infra": 0,
+    "mean_reward_counted": 0.5679,
+    "prompt_tokens": {
+     "mean": 67928.9,
+     "p50": 56710.0,
+     "p90": 137073.0
+    },
+    "completion_tokens": {
+     "mean": 4308.7,
+     "p50": 3712.0,
+     "p90": 8076.0
+    },
+    "max_prompt_tokens": 16879,
+    "steps": {
+     "mean": 9.9,
+     "p50": 9.0,
+     "p90": 18.0
+    },
+    "episode_seconds": {
+     "mean": 166.4,
+     "p50": 144.1,
+     "p90": 300.0
+    },
+    "step_cap_hits": 0,
+    "token_cap_hits": 0,
+    "context_exceeded": 0,
+    "search_wall": [
+     "2026-10-21T03:07:29Z",
+     "2026-10-21T05:56:12Z"
+    ]
+   },
+   "champion_search_score": null,
+   "champion_search_label": null,
+   "time_to_champion": null,
+   "freeze": {
+    "selected_version": "v0",
+    "inert": true,
+    "stop_reason": "optimizer token cap",
+    "tree_sha256": "85a0da9cec2206a7bc683c11d60b5cb0acac7328d43c6e9197324d1e45971f3c",
+    "files_changed_vs_seed": [],
+    "iterations": 13,
+    "accepted": 0,
+    "t": "2026-10-21T05:58:51Z",
+    "label": "inert"
+   }
+  },
+  "miprov2": {
+   "optimizer": {
+    "calls": 74,
+    "errors": 0,
+    "models": [
+     "aws/claude-sonnet-5-5"
+    ],
+    "input_tokens": 266064,
+    "output_tokens": 51579,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "proxy_usd": 1.05,
+    "cli_reported_usd": null,
+    "per_role": {
+     "demo_condense": {
+      "calls": 46,
+      "in": 147575,
+      "out": 25789,
+      "cache_read": 0,
+      "cache_write": 0
+     },
+     "dataset_summary": {
+      "calls": 10,
+      "in": 53447,
+      "out": 9583,
+      "cache_read": 0,
+      "cache_write": 0
+     },
+     "describe_program": {
+      "calls": 6,
+      "in": 15783,
+      "out": 4876,
+      "cache_read": 0,
+      "cache_write": 0
+     },
+     "describe_module": {
+      "calls": 6,
+      "in": 21176,
+      "out": 2810,
+      "cache_read": 0,
+      "cache_write": 0
+     },
+     "propose_instruction": {
+      "calls": 6,
+      "in": 28083,
+      "out": 8521,
+      "cache_read": 0,
+      "cache_write": 0
+     }
+    },
+    "call_seconds_mean": 6.1,
+    "call_seconds_p90": 9.58,
+    "optimizer_seconds_total": 450
+   },
+   "rollouts": {
+    "counted": 558,
+    "cache_hits": 638,
+    "lint_reject_batches": 0,
+    "infra": 0,
+    "mean_reward_counted": 0.5896,
+    "prompt_tokens": {
+     "mean": 73417.0,
+     "p50": 59593.0,
+     "p90": 143109.0
+    },
+    "completion_tokens": {
+     "mean": 3326.0,
+     "p50": 2756.0,
+     "p90": 5894.0
+    },
+    "max_prompt_tokens": 19165,
+    "steps": {
+     "mean": 9.5,
+     "p50": 8.0,
+     "p90": 17.0
+    },
+    "episode_seconds": {
+     "mean": 164.5,
+     "p50": 137.3,
+     "p90": 285.9
+    },
+    "step_cap_hits": 3,
+    "token_cap_hits": 0,
+    "context_exceeded": 0,
+    "search_wall": [
+     "2026-10-20T22:29:37Z",
+     "2026-10-21T02:59:02Z"
+    ]
+   },
+   "champion_search_score": null,
+   "champion_search_label": null,
+   "time_to_champion": null,
+   "freeze": {
+    "tree_sha256": "a4ff3a502879f5206e5b32161f244c939635eb7d5bd70be59a8f9af01db6314a",
+    "inert": false,
+    "best_full_eval_dev_score": 73.68,
+    "full_evals": 5,
+    "counted_rollouts": 558,
+    "demos": 2,
+    "instruction_changed": true,
+    "stopped_early": null,
+    "proposal_stats": {
+     "proposed": 5,
+     "lint_rejected": 0,
+     "reproposed": 0,
+     "replaced_by_0": 0,
+     "errors": 0
+    }
+   }
+  },
+  "trace2skill": {
+   "optimizer": {
+    "calls": 717,
+    "errors": 0,
+    "models": [
+     "aws/claude-sonnet-5-5"
+    ],
+    "input_tokens": 3436541,
+    "output_tokens": 940656,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "proxy_usd": 16.28,
+    "cli_reported_usd": null,
+    "per_role": {
+     "error_analyst": {
+      "calls": 54,
+      "in": 499790,
+      "out": 63149,
+      "cache_read": 0,
+      "cache_write": 0
+     },
+     "success_analyst": {
+      "calls": 36,
+      "in": 276982,
+      "out": 41626,
+      "cache_read": 0,
+      "cache_write": 0
+     },
+     "map": {
+      "calls": 454,
+      "in": 1757986,
+      "out": 428179,
+      "cache_read": 0,
+      "cache_write": 0
+     },
+     "merge": {
+      "calls": 115,
+      "in": 835800,
+      "out": 364669,
+      "cache_read": 0,
+      "cache_write": 0
+     },
+     "translation": {
+      "calls": 58,
+      "in": 65983,
+      "out": 43033,
+      "cache_read": 0,
+      "cache_write": 0
+     }
+    },
+    "call_seconds_mean": 7.5,
+    "call_seconds_p90": 14.41,
+    "optimizer_seconds_total": 5398
+   },
+   "rollouts": {
+    "counted": 270,
+    "cache_hits": 450,
+    "lint_reject_batches": 0,
+    "infra": 0,
+    "mean_reward_counted": 0.7852,
+    "prompt_tokens": {
+     "mean": 129083.6,
+     "p50": 112796.0,
+     "p90": 211415.0
+    },
+    "completion_tokens": {
+     "mean": 5109.3,
+     "p50": 4082.0,
+     "p90": 9634.0
+    },
+    "max_prompt_tokens": 23692,
+    "steps": {
+     "mean": 11.5,
+     "p50": 11.0,
+     "p90": 18.0
+    },
+    "episode_seconds": {
+     "mean": 209.7,
+     "p50": 168.5,
+     "p90": 401.1
+    },
+    "step_cap_hits": 0,
+    "token_cap_hits": 0,
+    "context_exceeded": 0,
+    "search_wall": [
+     "2026-10-21T03:11:39Z",
+     "2026-10-21T09:23:50Z"
+    ]
+   },
+   "champion_search_score": null,
+   "champion_search_label": null,
+   "time_to_champion": null,
+   "freeze": {
+    "candidate": "trace2skill",
+    "label": "",
+    "selected_evolution_seed": "42",
+    "seed_train_tgc": 0.4,
+    "per_seed_train_tgc": {
+     "41": 0.7777777777777778,
+     "42": 0.8,
+     "43": 0.7777777777777778
+    },
+    "playbook_tokens": 4414,
+    "playbook_chars": 20159,
+    "counted_rollouts": 270,
+    "tree_sha256": "a6b03deb2a044ed4c74920d02d6589b2113530ffd9053a947854152a8e4e5b6f"
+   }
+  },
+  "gepa_full": {
+   "optimizer": {
+    "calls": 70,
+    "errors": 0,
+    "models": [
+     "aws/claude-sonnet-5-5"
+    ],
+    "input_tokens": 902011,
+    "output_tokens": 61985,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "proxy_usd": 2.42,
+    "cli_reported_usd": null,
+    "per_role": {
+     "reflect:policy/instructions.txt": {
+      "calls": 1,
+      "in": 22690,
+      "out": 7155,
+      "cache_read": 0,
+      "cache_write": 0
+     },
+     "reflect:tools/helpers.py": {
+      "calls": 2,
+      "in": 33476,
+      "out": 11945,
+      "cache_read": 0,
+      "cache_write": 0
+     },
+     "reflect:api_notes": {
+      "calls": 67,
+      "in": 845845,
+      "out": 42885,
+      "cache_read": 0,
+      "cache_write": 0
+     }
+    },
+    "call_seconds_mean": 9.1,
+    "call_seconds_p90": 12.17,
+    "optimizer_seconds_total": 640
+   },
+   "rollouts": {
+    "counted": 809,
+    "cache_hits": 142,
+    "lint_reject_batches": 0,
+    "infra": 0,
+    "mean_reward_counted": 0.5402,
+    "prompt_tokens": {
+     "mean": 71020.2,
+     "p50": 61574.0,
+     "p90": 119938.0
+    },
+    "completion_tokens": {
+     "mean": 3925.7,
+     "p50": 3321.0,
+     "p90": 7100.0
+    },
+    "max_prompt_tokens": 18356,
+    "steps": {
+     "mean": 10.1,
+     "p50": 9.0,
+     "p90": 16.0
+    },
+    "episode_seconds": {
+     "mean": 169.4,
+     "p50": 141.7,
+     "p90": 307.0
+    },
+    "step_cap_hits": 1,
+    "token_cap_hits": 0,
+    "context_exceeded": 0,
+    "search_wall": [
+     "2026-10-20T22:20:08Z",
+     "2026-10-21T07:03:37Z"
+    ]
+   },
+   "champion_search_score": null,
+   "champion_search_label": null,
+   "time_to_champion": null,
+   "freeze": {
+    "candidate": "gepa_full",
+    "label": "",
+    "best_idx": 6,
+    "best_dev": 0.7192982456140351,
+    "seed_dev": 0.3333333333333333,
+    "num_candidates": 12,
+    "metric_calls": 894,
+    "end": "max_metric_calls reached",
+    "changed_components": [
+     "api_notes:file_system",
+     "policy/instructions.txt"
+    ],
+    "n_notes": 1,
+    "tree_sha256": "eb3d11d38bad1193cd20fc480f3d5de3ac04fc5e0bcf7002493bd7ae3187110e",
+    "seed_tree_sha256": "85a0da9cec2206a7bc683c11d60b5cb0acac7328d43c6e9197324d1e45971f3c"
+   }
+  },
+  "cape_improve": {
+   "optimizer": {
+    "calls": 6,
+    "errors": 0,
+    "models": [
+     "aws/claude-sonnet-5-5"
+    ],
+    "input_tokens": 4033132,
+    "output_tokens": 929670,
+    "cache_read_tokens": 63105027,
+    "cache_write_tokens": 3678643,
+    "proxy_usd": 31.82,
+    "cli_reported_usd": 79.56,
+    "per_role": {
+     "optimizer/cand_0001": {
+      "calls": 1,
+      "in": 803634,
+      "out": 145919,
+      "cache_read": 12800042,
+      "cache_write": 724855
+     },
+     "optimizer/cand_0002": {
+      "calls": 1,
+      "in": 633491,
+      "out": 115925,
+      "cache_read": 8846510,
+      "cache_write": 586826
+     },
+     "optimizer/cand_0003": {
+      "calls": 1,
+      "in": 737134,
+      "out": 165991,
+      "cache_read": 11224109,
+      "cache_write": 671476
+     },
+     "optimizer/cand_0004": {
+      "calls": 1,
+      "in": 717236,
+      "out": 189913,
+      "cache_read": 9636143,
+      "cache_write": 648388
+     },
+     "optimizer/cand_0005": {
+      "calls": 1,
+      "in": 455361,
+      "out": 155446,
+      "cache_read": 9591974,
+      "cache_write": 416826
+     },
+     "optimizer/cand_0006": {
+      "calls": 1,
+      "in": 686276,
+      "out": 156476,
+      "cache_read": 11006249,
+      "cache_write": 630272
+     }
+    },
+    "call_seconds_mean": 944.2,
+    "call_seconds_p90": 1536.16,
+    "optimizer_seconds_total": 5665
+   },
+   "rollouts": {
+    "counted": 882,
+    "cache_hits": 216,
+    "lint_reject_batches": 0,
+    "infra": 0,
+    "mean_reward_counted": 0.7528,
+    "prompt_tokens": {
+     "mean": 56907.4,
+     "p50": 43177.0,
+     "p90": 114610.0
+    },
+    "completion_tokens": {
+     "mean": 3662.5,
+     "p50": 2815.0,
+     "p90": 6821.0
+    },
+    "max_prompt_tokens": 28702,
+    "steps": {
+     "mean": 6.0,
+     "p50": 5.0,
+     "p90": 12.0
+    },
+    "episode_seconds": {
+     "mean": 186.5,
+     "p50": 140.8,
+     "p90": 361.4
+    },
+    "step_cap_hits": 0,
+    "token_cap_hits": 0,
+    "context_exceeded": 0,
+    "search_wall": [
+     "2026-10-20T22:33:22Z",
+     "2026-10-21T03:02:03Z"
+    ]
+   },
+   "champion_search_score": null,
+   "champion_search_label": null,
+   "time_to_champion": null,
+   "freeze": {
+    "best_id": "cand_0004",
+    "inert": false,
+    "tree_sha256": "7d5614a96268f552bad70e6e1a5b04628641fc2454aac7ed960d95ccbd10c72f",
+    "seed_tree_sha256": "85a0da9cec2206a7bc683c11d60b5cb0acac7328d43c6e9197324d1e45971f3c",
+    "best_val": 0.8367346938775511,
+    "imp": {
+     "1_code_pin": {
+      "ok": true,
+      "cap_evolve_file": "/workspace/worktrees/cape-improve/core/cap_evolve/__init__.py",
+      "head": "470f3fabdad780a2a791037067a73ae9b0295473",
+      "clean": true
+     },
+     "2_skills_pin": {
+      "ok": true,
+      "resolved": "/workspace/worktrees/cape-improve/skills",
+      "home_skills_exists": true
+     },
+     "3_spec_k_se": {
+      "ok": true,
+      "value": 0.5
+     },
+     "3_run_config": {
+      "ok": true,
+      "run_config_events": 1,
+      "spec_k_se": 0.5
+     },
+     "4_effective_k_se": {
+      "ok": true,
+      "hill_climb_cmdlines": 2,
+      "k_se_values": [
+       "0.5"
+      ],
+      "gate_events_mentioning_k_se": 0
+     },
+     "5_instructions": {
+      "ok": true,
+      "iterations": 6,
+      "diff_only_insertion": true,
+      "detail": [
+       {
+        "cid": "cand_0001",
+        "has": {
+         "## Strategies for selecting improvements": true,
+         "**Optimize code before prompts.**": true,
+         "**On tools, use the whole tools skill.**": true,
+         "# Optimize the capability — ship the edit with the largest expected reward gain": true,
+         "## AppWorld facts for THIS run": true
+        },
+        "forbidden": []
+       },
+       {
+        "cid": "cand_0002",
+        "has": {
+         "## Strategies for selecting improvements": true,
+         "**Optimize code before prompts.**": true,
+         "**On tools, use the whole tools skill.**": true,
+         "# Optimize the capability — ship the edit with the largest expected reward gain": true,
+         "## AppWorld facts for THIS run": true
+        },
+        "forbidden": []
+       },
+       {
+        "cid": "cand_0003",
+        "has": {
+         "## Strategies for selecting improvements": true,
+         "**Optimize code before prompts.**": true,
+         "**On tools, use the whole tools skill.**": true,
+         "# Optimize the capability — ship the edit with the largest expected reward gain": true,
+         "## AppWorld facts for THIS run": true
+        },
+        "forbidden": []
+       },
+       {
+        "cid": "cand_0004",
+        "has": {
+         "## Strategies for selecting improvements": true,
+         "**Optimize code before prompts.**": true,
+         "**On tools, use the whole tools skill.**": true,
+         "# Optimize the capability — ship the edit with the largest expected reward gain": true,
+         "## AppWorld facts for THIS run": true
+        },
+        "forbidden": []
+       },
+       {
+        "cid": "cand_0005",
+        "has": {
+         "## Strategies for selecting improvements": true,
+         "**Optimize code before prompts.**": true,
+         "**On tools, use the whole tools skill.**": true,
+         "# Optimize the capability — ship the edit with the largest expected reward gain": true,
+         "## AppWorld facts for THIS run": true
+        },
+        "forbidden": []
+       },
+       {
+        "cid": "cand_0006",
+        "has": {
+         "## Strategies for selecting improvements": true,
+         "**Optimize code before prompts.**": true,
+         "**On tools, use the whole tools skill.**": true,
+         "# Optimize the capability — ship the edit with the largest expected reward gain": true,
+         "## AppWorld facts for THIS run": true
+        },
+        "forbidden": []
+       }
+      ]
+     },
+     "6_guidance": {
+      "ok": true,
+      "detail": [
+       {
+        "cid": "cand_0001",
+        "tools": "sha_match",
+        "system-prompt": "sha_match",
+        "diagnose": "head_match"
+       },
+       {
+        "cid": "cand_0002",
+        "tools": "sha_match",
+        "system-prompt": "sha_match",
+        "diagnose": "head_match"
+       },
+       {
+        "cid": "cand_0003",
+        "tools": "sha_match",
+        "system-prompt": "sha_match",
+        "diagnose": "head_match"
+       },
+       {
+        "cid": "cand_0004",
+        "tools": "sha_match",
+        "system-prompt": "sha_match",
+        "diagnose": "head_match"
+       },
+       {
+        "cid": "cand_0005",
+        "tools": "sha_match",
+        "system-prompt": "sha_match",
+        "diagnose": "head_match"
+       },
+       {
+        "cid": "cand_0006",
+        "tools": "sha_match",
+        "system-prompt": "sha_match",
+        "diagnose": "head_match"
+       }
+      ],
+      "pinned_sha256": {
+       "tools": "d6a5ec65e46113a64124cfc2e842a95a493e1c13679f380361ec4447a69d994a",
+       "system-prompt": "4df6976688391b55e783b9cb6631523718c40a4ed4fbee77d71d450d105de51b",
+       "diagnose": "ef0eb2fc3cf971eae63f377b3e318664d617e17c2aa70de79557e825b24ff677"
+      }
+     },
+     "7_hill_climb_script": {
+      "ok": true,
+      "path": "/workspace/worktrees/cape-improve/skills/algorithms/hill-climb/scripts/run.py",
+      "sha256": "c04938fcfa72bfb16dcc61fe7d2ee3dc370e0a1510953f2e35ddb140b2f80641"
+     },
+     "all_ok": true
+    }
+   }
+  }
+ },
+ "seed_baseline": {
+  "rollouts": 147,
+  "prompt_tokens": {
+   "mean": 64566.9,
+   "p50": 52087.0,
+   "p90": 119839.0
+  },
+  "episode_seconds": {
+   "mean": 187.1,
+   "p50": 155.2,
+   "p90": 375.7
+  },
+  "seed_hash": "85a0da9cec2206a7bc683c11d60b5cb0acac7328d43c6e9197324d1e45971f3c",
+  "train": {
+   "n": 90,
+   "tgc": 0.4,
+   "pass_fraction": 0.7785,
+   "prompt_tokens_mean": 66367,
+   "completion_tokens_mean": 4034,
+   "max_prompt_tokens": 16016,
+   "steps_mean": 10.36,
+   "episode_seconds_mean": 193.0,
+   "step_cap_hits": 0,
+   "token_cap_hits": 0,
+   "context_exceeded": 0,
+   "fs_probe": 0
+  },
+  "dev": {
+   "n": 57,
+   "tgc": 0.3333,
+   "pass_fraction": 0.7148,
+   "prompt_tokens_mean": 61725,
+   "completion_tokens_mean": 3867,
+   "max_prompt_tokens": 12996,
+   "steps_mean": 9.89,
+   "episode_seconds_mean": 177.7,
+   "step_cap_hits": 0,
+   "token_cap_hits": 0,
+   "context_exceeded": 0,
+   "fs_probe": 0
+  },
+  "union": {
+   "n": 147,
+   "tgc": 0.3741,
+   "pass_fraction": 0.7548,
+   "prompt_tokens_mean": 64567,
+   "completion_tokens_mean": 3969,
+   "max_prompt_tokens": 16016,
+   "steps_mean": 10.18,
+   "episode_seconds_mean": 187.1,
+   "step_cap_hits": 0,
+   "token_cap_hits": 0,
+   "context_exceeded": 0,
+   "fs_probe": 0
+  },
+  "fresh_episodes_on_record": 147,
+  "infra_rows": 0,
+  "wall": [
+   "2026-10-20T21:44:37Z",
+   "2026-10-20T22:07:49Z"
+  ]
+ },
+ "spend_per_provider": {
+  "RITS (agent, unpriced)": "n/a (unpriced); tokens in the arm tables",
+  "gateway (optimizer)": {
+   "harnesslens": 30.1,
+   "miprov2": 1.05,
+   "trace2skill": 16.28,
+   "gepa_full": 2.42,
+   "cape_improve": 31.82
+  }
+ },
+ "window_wall": [
+  "2026-10-21T09:43:30.382992Z",
+  "2026-10-21T16:07:06.141992Z"
+ ],
+ "dev_diagnostic_tgc": {
+  "seed": 0.3333,
+  "harnesslens": 0.3333,
+  "miprov2": 0.7368,
+  "trace2skill": 0.6491,
+  "gepa_full": 0.7193,
+  "cape_improve": 0.8596
+ },
+ "manifest": {
+  "appworld": {
+   "commit": "42b5bcf3cd334fee33f0c37c02070a9f5807add5",
+   "git_diff_sha256": "755de8b83b1e24b490e54993417a9a0a78b2ce3805bb895057ae2a3dd6914cf6",
+   "patch_sha256": "755de8b83b1e24b490e54993417a9a0a78b2ce3805bb895057ae2a3dd6914cf6"
+  },
+  "candidates": {
+   "harnesslens": {
+    "url": "https://github.com/jhxu5214/HarnessLens",
+    "commit": "369a5c8c7856902bed25024c293db61779b2c9f0"
+   },
+   "miprov2": {
+    "url": "https://github.com/stanfordnlp/dspy",
+    "commit": "099982b3c3eec9fc4ec4796d49915af42367a253"
+   },
+   "trace2skill": {
+    "url": "https://github.com/Qwen-Applications/Trace2Skill",
+    "commit": "3d0b52a140f002a512930252b613c49048f7d5ac"
+   },
+   "gepa_full": {
+    "url": "https://github.com/gepa-ai/gepa",
+    "commit": "8b0ce6cd99a234f6b74daf37558a2ac0ce18f975"
+   },
+   "cape_improve": {
+    "worktree": "/workspace/worktrees/cape-improve",
+    "commit": "470f3fabdad780a2a791037067a73ae9b0295473"
+   }
+  },
+  "m_cap": {
+   "tokens": 14000,
+   "chars": 30000,
+   "P_max": 3230,
+   "H_max": 16625,
+   "min_chars_per_token": 3.609,
+   "template_overhead_max": 157,
+   "encoding": "o200k_harmony",
+   "rule": "min(30000 chars, 34000 - P_max - H_max tokens), tokens floored to 500"
+  },
+  "final_order": {
+   "seed": 2026102007,
+   "sha256": "1903a7f797ac0155773c2b71ce8fdbd590180df8ce86dd60deba45a384997962",
+   "cells": 2016,
+   "trials": 2,
+   "trial_seeds": "5000 + trial",
+   "infra_retries": 3
+  },
+  "freeze": {
+   "tree_sha256": {
+    "seed": "85a0da9cec2206a7bc683c11d60b5cb0acac7328d43c6e9197324d1e45971f3c",
+    "harnesslens": "85a0da9cec2206a7bc683c11d60b5cb0acac7328d43c6e9197324d1e45971f3c",
+    "miprov2": "a4ff3a502879f5206e5b32161f244c939635eb7d5bd70be59a8f9af01db6314a",
+    "trace2skill": "a6b03deb2a044ed4c74920d02d6589b2113530ffd9053a947854152a8e4e5b6f",
+    "gepa_full": "eb3d11d38bad1193cd20fc480f3d5de3ac04fc5e0bcf7002493bd7ae3187110e",
+    "cape_improve": "7d5614a96268f552bad70e6e1a5b04628641fc2454aac7ed960d95ccbd10c72f"
+   },
+   "labels": {
+    "seed": "seed",
+    "harnesslens": "inert",
+    "miprov2": "",
+    "trace2skill": "",
+    "gepa_full": "",
+    "cape_improve": ""
+   },
+   "utc": "2026-10-21T09:26:35Z"
+  },
+  "opt_model": "aws/claude-sonnet-5-5",
+  "agent_model": "openai/gpt-oss-120b-a100",
+  "budget": {
+   "rollouts": 900,
+   "opt_tokens": 10000000
+  },
+  "trials": {
+   "search": 1,
+   "search_seed": 100,
+   "final": 2,
+   "final_seed_base": 5000
+  },
+  "prices_usd_per_mtok": {
+   "in": 2.0,
+   "out": 10.0,
+   "cache_read": 0.2,
+   "cache_write": 2.5
+  }
+ },
+ "isolation": {
+  "harnesslens": {
+   "test_id_hits": 0,
+   "breach": false
+  },
+  "miprov2": {
+   "test_id_hits": 0,
+   "breach": false
+  },
+  "trace2skill": {
+   "test_id_hits": 0,
+   "breach": false
+  },
+  "gepa_full": {
+   "test_id_hits": 0,
+   "breach": false
+  },
+  "cape_improve": {
+   "test_id_hits": 0,
+   "breach": false
+  }
+ }
+}
