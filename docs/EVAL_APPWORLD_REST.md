@@ -2047,3 +2047,11 @@ P4: harnesslens chain started (search, freeze, isolation scan), pid file AW_STAT
 ```json
 {"cp": 92, "prev_cp": 91, "prev_commit": "7148353b3d61463acd21dd48050b893866226c39", "utc": "2026-10-21T02:59:32Z", "kind": "phase_start", "phase": "P4", "done_through": "gepa_full/search/iteration 15", "next": "gepa_full/search", "candidate": "harnesslens", "counts": {"gepa_full": {"counted_rollouts": 228}}, "spend": {"gepa_full": {"in": 288254, "out": 32529, "proxy_usd": 0.9}}, "artifacts": {}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": []}
 ```
+
+## CP-0093 · 2026-10-21T02:59Z · P4 posted miprov2 · posted
+
+Posted 'MIPROv2 search ended' on #898 (miprov2): https://github.com/skillberry-ai/cap-evolve/issues/898#issuecomment-6306928778
+
+```json
+{"cp": 93, "prev_cp": 92, "prev_commit": "17f2ac8f095a12d277b1f0c7a84c63055966db0f", "utc": "2026-10-21T02:59:49Z", "kind": "posted", "phase": "P4", "done_through": "gepa_full/search/iteration 15", "next": "gepa_full/search", "candidate": "harnesslens", "counts": {"gepa_full": {"counted_rollouts": 228}}, "spend": {"gepa_full": {"in": 288254, "out": 32529, "proxy_usd": 0.9}}, "artifacts": {}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": [], "post": "miprov2/m4_search_done", "url": "https://github.com/skillberry-ai/cap-evolve/issues/898#issuecomment-6306928778"}
+```
