@@ -4008,3 +4008,11 @@ P9: the five per-candidate results comments drafted in docs/EVAL_APPWORLD_REST_S
 ```json
 {"cp": 327, "prev_cp": 326, "prev_commit": "7a1c8c222e2bc8b843ea76dcd9c42e126cc6c738", "utc": "2026-10-21T16:13:36Z", "kind": "result", "phase": "P9", "done_through": "P9/drafts", "next": "P9/post", "candidate": null, "counts": {"trace2skill": {"counted_rollouts": 270, "cache_hits": 450}}, "spend": {"trace2skill": {"in": 3436541, "out": 940656, "usd": 16.28}}, "artifacts": {"STATE/harnesslens/RESULTS.md": "b4658ca8f613af7c31ca0829dc43ac8ddbf67d9c054064945b06dbc96d60a083", "STATE/miprov2/RESULTS.md": "b1fc529ff38a66593404ac69aaf48caafef60b80bc3013de0d3a5e9bf00796ba", "STATE/trace2skill/RESULTS.md": "2a69fc2d9beb945d9c0c0e8fcc848c3e91521fa2af779d87e24370027cf9b878", "STATE/gepa_full/RESULTS.md": "63aa5753ff7fca7ebe1ca442c2cb00dddbe21bd4f8ba68cdb6c9b2cc3c8b0019", "STATE/cape_improve/RESULTS.md": "1cee24a22422e517e066d9355d905c48346ab4e09548091d2d1f020e6de30e5d"}, "code": "7a1c8c222e2bc8b843ea76dcd9c42e126cc6c738", "open_decisions": []}
 ```
+
+## CP-0328 · 2026-10-21T16:13Z · P9 posted harnesslens · posted
+
+Posted 'HarnessLens results' on #897 (harnesslens): https://github.com/skillberry-ai/cap-evolve/issues/897#issuecomment-6320706102
+
+```json
+{"cp": 328, "prev_cp": 327, "prev_commit": "1eae896cec117df270347c355595dbaead5f7b00", "utc": "2026-10-21T16:13:39Z", "kind": "posted", "phase": "P9", "done_through": "P9/drafts", "next": "P9/post", "candidate": null, "counts": {"trace2skill": {"counted_rollouts": 270, "cache_hits": 450}}, "spend": {"trace2skill": {"in": 3436541, "out": 940656, "usd": 16.28}}, "artifacts": {}, "code": "1eae896cec117df270347c355595dbaead5f7b00", "open_decisions": [], "post": "harnesslens/results", "url": "https://github.com/skillberry-ai/cap-evolve/issues/897#issuecomment-6320706102"}
+```
