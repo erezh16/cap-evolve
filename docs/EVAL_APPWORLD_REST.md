@@ -3888,3 +3888,12 @@ Next: final remaining cells.
 ```json
 {"cp": 313, "prev_cp": 312, "prev_commit": "95a6a08d66c3af0751a1c964610dac487b963972", "utc": "2026-10-21T15:29:18Z", "kind": "result", "phase": "P7", "done_through": "final/1869", "next": "final/cells", "candidate": null, "counts": {"trace2skill": {"counted_rollouts": 270, "cache_hits": 450}}, "spend": {"trace2skill": {"in": 3436541, "out": 940656, "usd": 16.28}}, "artifacts": {"STATE/final/progress.json": "364413191a0b00c66d11627c3a3c76ad7be5d8c3f73dd44c81d088f0972625e9"}, "code": "30c11343482701d8e1a8a339e44b19035f7a150d", "open_decisions": [], "window": {"window": "final", "cells_total": 2016, "cells_done": 1869, "order_sha256": "1903a7f797ac0155773c2b71ce8fdbd590180df8ce86dd60deba45a384997962"}}
 ```
+
+## CP-0314 · 2026-10-21T15:34Z · P7 final window · result
+
+final window: 26 cells since the last entry; 1895/2016 done (cape_improve 312, gepa_full 315, harnesslens 317, miprov2 315, seed 318, trace2skill 318); infra still missing 0, retries 11.
+Next: final remaining cells.
+
+```json
+{"cp": 314, "prev_cp": 313, "prev_commit": "7903b037643b1011e212712ae129c07c6b3b3fc9", "utc": "2026-10-21T15:34:21Z", "kind": "result", "phase": "P7", "done_through": "final/1895", "next": "final/cells", "candidate": null, "counts": {"trace2skill": {"counted_rollouts": 270, "cache_hits": 450}}, "spend": {"trace2skill": {"in": 3436541, "out": 940656, "usd": 16.28}}, "artifacts": {"STATE/final/progress.json": "e220000dfd1321e561bd64ce4a5427dfc450929d8efee3a36adb06b39978841b"}, "code": "30c11343482701d8e1a8a339e44b19035f7a150d", "open_decisions": [], "window": {"window": "final", "cells_total": 2016, "cells_done": 1895, "order_sha256": "1903a7f797ac0155773c2b71ce8fdbd590180df8ce86dd60deba45a384997962"}}
+```
