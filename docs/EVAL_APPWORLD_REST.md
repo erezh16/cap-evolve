@@ -2891,3 +2891,11 @@ Posted 'Trace2Skill new best search-time score' on #899 (trace2skill): https://g
 ```json
 {"cp": 197, "prev_cp": 196, "prev_commit": "392960b3a7da9b6483eda5f9488a2e1dca8a0f81", "utc": "2026-10-21T09:11:15Z", "kind": "posted", "phase": "P4", "done_through": "trace2skill/evolution/43", "next": "trace2skill/search", "candidate": "trace2skill", "counts": {"trace2skill": {"counted_rollouts": 90, "cache_hits": 360}}, "spend": {"trace2skill": {"in": 3436541, "out": 940656, "usd": 16.28}}, "artifacts": {}, "code": "c6d95c12227f31f3da9c096cfad8332e9ace61a8", "open_decisions": [], "post": "trace2skill/m4_best_0.8", "url": "https://github.com/skillberry-ai/cap-evolve/issues/899#issuecomment-6312340601"}
 ```
+
+## CP-0198 · 2026-10-21T09:19Z · P4 posted trace2skill · posted
+
+Posted 'Trace2Skill 25% of B' on #899 (trace2skill): https://github.com/skillberry-ai/cap-evolve/issues/899#issuecomment-6312487752
+
+```json
+{"cp": 198, "prev_cp": 197, "prev_commit": "8c047fcb5125e0108b22e3a27d359b210114c1ef", "utc": "2026-10-21T09:19:19Z", "kind": "posted", "phase": "P4", "done_through": "trace2skill/evolution/43", "next": "trace2skill/search", "candidate": "trace2skill", "counts": {"trace2skill": {"counted_rollouts": 90, "cache_hits": 360}}, "spend": {"trace2skill": {"in": 3436541, "out": 940656, "usd": 16.28}}, "artifacts": {}, "code": "c6d95c12227f31f3da9c096cfad8332e9ace61a8", "open_decisions": [], "post": "trace2skill/m4_budget_25", "url": "https://github.com/skillberry-ai/cap-evolve/issues/899#issuecomment-6312487752"}
+```
