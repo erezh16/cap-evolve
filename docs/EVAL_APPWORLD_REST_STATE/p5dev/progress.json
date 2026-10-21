@@ -1,0 +1,48 @@
+{
+ "window": "p5dev",
+ "per_arm": {
+  "seed": {
+   "tgc": 0.3333,
+   "n": 57,
+   "cache_hits": 57,
+   "fresh": 0,
+   "infra": 0
+  },
+  "harnesslens": {
+   "tgc": 0.3333,
+   "n": 57,
+   "cache_hits": 57,
+   "fresh": 0,
+   "infra": 0
+  },
+  "miprov2": {
+   "tgc": 0.7368,
+   "n": 57,
+   "cache_hits": 57,
+   "fresh": 0,
+   "infra": 0
+  },
+  "trace2skill": {
+   "tgc": 0.6491,
+   "n": 57,
+   "cache_hits": 0,
+   "fresh": 57,
+   "infra": 0
+  },
+  "gepa_full": {
+   "tgc": 0.7193,
+   "n": 57,
+   "cache_hits": 57,
+   "fresh": 0,
+   "infra": 0
+  },
+  "cape_improve": {
+   "tgc": 0.8596,
+   "n": 57,
+   "cache_hits": 57,
+   "fresh": 0,
+   "infra": 0
+  }
+ },
+ "label": "dev TGC, 1 trial, selection-biased for arms that selected on dev"
+}

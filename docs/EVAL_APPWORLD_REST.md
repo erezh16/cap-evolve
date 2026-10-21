@@ -2963,3 +2963,11 @@ Freeze check before P5 found two problems, both fixed before any P5 episode: (1)
 ```json
 {"cp": 206, "prev_cp": 205, "prev_commit": "e6d0a52e0c6f20c33e8ad211c385521d0266fb8b", "utc": "2026-10-21T09:26:35Z", "kind": "repair", "phase": "P5", "done_through": "P4/searches", "next": "P5/dev", "candidate": "trace2skill", "counts": {"trace2skill": {"counted_rollouts": 270, "cache_hits": 450}}, "spend": {"trace2skill": {"in": 3436541, "out": 940656, "usd": 16.28}}, "artifacts": {"STATE/manifest.json": "b16f6d9a7691a16057a5a236dc8c352d0b8298b45aca0ce64bcae3e6c684fa33"}, "code": "c6d95c12227f31f3da9c096cfad8332e9ace61a8", "open_decisions": []}
 ```
+
+## CP-0207 · 2026-10-21T09:38Z · P5 dev diagnostic · phase_done
+
+P5 dev diagnostic done (57 dev tasks, 1 trial, seed 100; the seed's numbers are its P3 records). seed 0.3333 (0 fresh, 57 cached); harnesslens 0.3333 (0 fresh, 57 cached); miprov2 0.7368 (0 fresh, 57 cached); trace2skill 0.6491 (57 fresh, 0 cached); gepa_full 0.7193 (0 fresh, 57 cached); cape_improve 0.8596 (0 fresh, 57 cached). Next: P6 full isolation scan.
+
+```json
+{"cp": 207, "prev_cp": 206, "prev_commit": "6c51b6124d186ec67fc8f8f11bb14c335b9fa9c6", "utc": "2026-10-21T09:38:45Z", "kind": "phase_done", "phase": "P5", "done_through": "P5/dev", "next": "P6/scan", "candidate": "trace2skill", "counts": {"trace2skill": {"counted_rollouts": 270, "cache_hits": 450}}, "spend": {"trace2skill": {"in": 3436541, "out": 940656, "usd": 16.28}}, "artifacts": {"STATE/p5dev/progress.json": "3a40a5decb1fb5400d6b65241218f4d4d9d4892547a7562d3236b30fc5d4c87e"}, "code": "6c51b6124d186ec67fc8f8f11bb14c335b9fa9c6", "open_decisions": []}
+```
