@@ -3045,3 +3045,11 @@ Next: final remaining cells.
 ```json
 {"cp": 216, "prev_cp": 215, "prev_commit": "98475d6f0460c827fa97616d8662f96559ce3304", "utc": "2026-10-21T09:52:24Z", "kind": "result", "phase": "P7", "done_through": "final/61", "next": "final/cells", "candidate": null, "counts": {"trace2skill": {"counted_rollouts": 270, "cache_hits": 450}}, "spend": {"trace2skill": {"in": 3436541, "out": 940656, "usd": 16.28}}, "artifacts": {"STATE/final/progress.json": "b246994478e3514d5b137649d8409f29d9a34f8bcd2292906e0d57b3b08d5053"}, "code": "30c11343482701d8e1a8a339e44b19035f7a150d", "open_decisions": [], "window": {"window": "final", "cells_total": 2016, "cells_done": 61, "order_sha256": "1903a7f797ac0155773c2b71ce8fdbd590180df8ce86dd60deba45a384997962"}}
 ```
+
+## CP-0217 · 2026-10-21T09:54Z · P7 posted miprov2 · posted
+
+Posted 'MIPROv2 hourly status' on #898 (miprov2): https://github.com/skillberry-ai/cap-evolve/issues/898#issuecomment-6313141865
+
+```json
+{"cp": 217, "prev_cp": 216, "prev_commit": "48f98e4f449ef6b37aa919caba51dec001ac00cd", "utc": "2026-10-21T09:54:17Z", "kind": "posted", "phase": "P7", "done_through": "final/61", "next": "final/cells", "candidate": null, "counts": {"trace2skill": {"counted_rollouts": 270, "cache_hits": 450}}, "spend": {"trace2skill": {"in": 3436541, "out": 940656, "usd": 16.28}}, "artifacts": {}, "code": "30c11343482701d8e1a8a339e44b19035f7a150d", "open_decisions": [], "post": "miprov2/status_20261021T0954", "url": "https://github.com/skillberry-ai/cap-evolve/issues/898#issuecomment-6313141865"}
+```
