@@ -3011,3 +3011,11 @@ Posted 'dev diagnostic and isolation scan done; final window starting' on #899 (
 ```json
 {"cp": 212, "prev_cp": 211, "prev_commit": "b55556787165c9335c5658e8f5694f6ee3e54ac1", "utc": "2026-10-21T09:42:15Z", "kind": "posted", "phase": "P6", "done_through": "P6/scan", "next": "P7/final", "candidate": null, "counts": {"trace2skill": {"counted_rollouts": 270, "cache_hits": 450}}, "spend": {"trace2skill": {"in": 3436541, "out": 940656, "usd": 16.28}}, "artifacts": {}, "code": "6c51b6124d186ec67fc8f8f11bb14c335b9fa9c6", "open_decisions": [], "post": "trace2skill/p6_done", "url": "https://github.com/skillberry-ai/cap-evolve/issues/899#issuecomment-6312906763"}
 ```
+
+## CP-0213 · 2026-10-21T09:42Z · P6 posted gepa_full · posted
+
+Posted 'dev diagnostic and isolation scan done; final window starting' on #900 (gepa_full): https://github.com/skillberry-ai/cap-evolve/issues/900#issuecomment-6312907606
+
+```json
+{"cp": 213, "prev_cp": 212, "prev_commit": "801785c9cb179092f4fbd30ab5881f38e6fbaca8", "utc": "2026-10-21T09:42:18Z", "kind": "posted", "phase": "P6", "done_through": "P6/scan", "next": "P7/final", "candidate": null, "counts": {"trace2skill": {"counted_rollouts": 270, "cache_hits": 450}}, "spend": {"trace2skill": {"in": 3436541, "out": 940656, "usd": 16.28}}, "artifacts": {}, "code": "6c51b6124d186ec67fc8f8f11bb14c335b9fa9c6", "open_decisions": [], "post": "gepa_full/p6_done", "url": "https://github.com/skillberry-ai/cap-evolve/issues/900#issuecomment-6312907606"}
+```
