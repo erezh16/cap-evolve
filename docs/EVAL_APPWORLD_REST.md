@@ -4032,3 +4032,11 @@ Posted 'Trace2Skill results' on #899 (trace2skill): https://github.com/skillberr
 ```json
 {"cp": 330, "prev_cp": 329, "prev_commit": "c704dccf8de8847a69701b8a67a787ea4836bdd3", "utc": "2026-10-21T16:13:45Z", "kind": "posted", "phase": "P9", "done_through": "P9/drafts", "next": "P9/post", "candidate": null, "counts": {"trace2skill": {"counted_rollouts": 270, "cache_hits": 450}}, "spend": {"trace2skill": {"in": 3436541, "out": 940656, "usd": 16.28}}, "artifacts": {}, "code": "1eae896cec117df270347c355595dbaead5f7b00", "open_decisions": [], "post": "trace2skill/results", "url": "https://github.com/skillberry-ai/cap-evolve/issues/899#issuecomment-6320707644"}
 ```
+
+## CP-0331 · 2026-10-21T16:13Z · P9 posted gepa_full · posted
+
+Posted 'GEPA-Full results' on #900 (gepa_full): https://github.com/skillberry-ai/cap-evolve/issues/900#issuecomment-6320708541
+
+```json
+{"cp": 331, "prev_cp": 330, "prev_commit": "352f5889ef42cb1883b5dfd4a1250bf4599ee3b3", "utc": "2026-10-21T16:13:48Z", "kind": "posted", "phase": "P9", "done_through": "P9/drafts", "next": "P9/post", "candidate": null, "counts": {"trace2skill": {"counted_rollouts": 270, "cache_hits": 450}}, "spend": {"trace2skill": {"in": 3436541, "out": 940656, "usd": 16.28}}, "artifacts": {}, "code": "1eae896cec117df270347c355595dbaead5f7b00", "open_decisions": [], "post": "gepa_full/results", "url": "https://github.com/skillberry-ai/cap-evolve/issues/900#issuecomment-6320708541"}
+```
