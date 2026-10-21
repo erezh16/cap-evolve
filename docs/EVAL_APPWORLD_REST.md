@@ -2279,3 +2279,11 @@ GEPA-Full iteration 20: iterations 20, accepted 5, best dev 0.6667 (selection-bi
 ```json
 {"cp": 121, "prev_cp": 120, "prev_commit": "22d0ae75aafd41acd4e3b372613a42c43559eafd", "utc": "2026-10-21T03:45:37Z", "kind": "result", "phase": "P4", "done_through": "gepa_full/search/iteration 20", "next": "gepa_full/search", "candidate": "gepa_full", "counts": {"gepa_full": {"counted_rollouts": 369}}, "spend": {"gepa_full": {"in": 392400, "out": 38769, "proxy_usd": 1.17}}, "artifacts": {"STATE/gepa_full/progress.json": "0e4007f850ae3edcb4a145cb386be1bb7e8eef946e7389bea9ac7ac3511914ef"}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": []}
 ```
+
+## CP-0122 · 2026-10-21T03:58Z · P4 posted miprov2 · posted
+
+Posted 'MIPROv2 hourly status' on #898 (miprov2): https://github.com/skillberry-ai/cap-evolve/issues/898#issuecomment-6307678085
+
+```json
+{"cp": 122, "prev_cp": 121, "prev_commit": "7288292f05d836213c2f114c23104388b318e40d", "utc": "2026-10-21T03:58:26Z", "kind": "posted", "phase": "P4", "done_through": "gepa_full/search/iteration 20", "next": "gepa_full/search", "candidate": "gepa_full", "counts": {"gepa_full": {"counted_rollouts": 369}}, "spend": {"gepa_full": {"in": 392400, "out": 38769, "proxy_usd": 1.17}}, "artifacts": {}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": [], "post": "miprov2/status_20261021T0358", "url": "https://github.com/skillberry-ai/cap-evolve/issues/898#issuecomment-6307678085"}
+```
