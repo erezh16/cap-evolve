@@ -62,5 +62,26 @@
   },
   "test_id_hits": 0,
   "isolation_breach": false
+ },
+ "trace2skill": {
+  "locations": {
+   "optimizer calls": {
+    "files": 1,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "candidate state (driver, method)": {
+    "files": 914,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "frozen artifact": {
+    "files": 5,
+    "files_hit": 0,
+    "counts": {}
+   }
+  },
+  "test_id_hits": 0,
+  "isolation_breach": false
  }
 }
