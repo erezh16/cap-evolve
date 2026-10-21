@@ -1,12 +1,12 @@
 {
  "candidate": "gepa_full",
  "stage": "search running",
- "counted_rollouts": 222,
+ "counted_rollouts": 228,
  "cap": 900,
  "cache_hits": 75,
- "metric_calls": 297,
+ "metric_calls": 303,
  "max_metric_calls": 894,
- "iterations": 14,
+ "iterations": 15,
  "accepted": 3,
  "best_search_score": 0.6667,
  "best_search_label": "dev TGC of the best Pareto candidate (57 dev tasks, the selection set: selection-biased)",
@@ -60,25 +60,32 @@
    "fallbacks": 0,
    "proposals": 1,
    "invalid": 0
+  },
+  "api_notes:simple_note": {
+   "visits": 1,
+   "accepts": 0,
+   "fallbacks": 1,
+   "proposals": 1,
+   "invalid": 2
   }
  },
  "proposer": {
   "lint_reject": 0,
-  "invalid_block": 11,
+  "invalid_block": 13,
   "parse_fail": 0,
   "refusals": 0,
   "gave_up": 2,
-  "calls": 20
+  "calls": 23
  },
  "lint_rejects": 0,
  "optimizer": {
-  "calls": 20,
+  "calls": 23,
   "errors": 0,
-  "prompt_tokens": 238654,
-  "completion_tokens": 31063,
+  "prompt_tokens": 288254,
+  "completion_tokens": 32529,
   "cache_read": 0,
   "cache_write": 0,
-  "seconds": 262.9,
-  "proxy_usd": 0.79
+  "seconds": 279.2,
+  "proxy_usd": 0.9
  }
 }
