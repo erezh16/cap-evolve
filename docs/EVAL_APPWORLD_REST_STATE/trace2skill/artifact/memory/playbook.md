@@ -2,153 +2,161 @@
 
 ## Workflow
 
-1. Read the task literally and list every requirement: apps, action, target set, every qualifier (who, which items, status, type, "so far", "only", month AND year, direction sent vs received), counts, recipients, destinations, the "all others" fallback, and the output format. Classify it as a **question** task (returns a value) or an **action-only** task (follow, like, send, add, delete, update, write a file). Never swap a stated verb for its opposite. Turn each qualifier into an explicit filter in code. When two collections are named (e.g. "in my library AND liked"), fetch both and intersect them.
-2. Discover APIs read-only first: `apis.api_docs.show_app_descriptions()`, `apis.api_docs.show_api_descriptions(app_name=...)` (list ALL of an app's APIs before choosing; print in pieces if truncated), then `apis.api_docs.show_api_doc(app_name=..., api_name=...)` before the first use of EVERY API, including login, detail and delete endpoints. Note exact parameter names, required parameters, auth needs, enum values, pagination parameters, and the response schema.
-3. Match the API to the task verb and concept. "Request money" is the payment-request API, not send-money. "Liked", "starred", "following" and "owned" map to dedicated endpoints, not to side fields such as counts. A wrong direction or record type fails the task even if the code runs.
-4. Authenticate (see Authentication).
-5. Work in small, complete REPL steps, one phase per step: fetch, print, filter, print the filtered set, preview, act, verify. Always `print(...)` what you need to see (bare expressions are not echoed; "Execution successful" with no output proves nothing). Keep variables between steps; if a NameError shows state was lost, re-fetch and recompute. Only standard Python libraries are available. Use app APIs for files rather than `os` or `io`.
-6. Keep code blocks short and syntactically complete. A truncated block can report success while doing nothing.
-7. Do the actual actions for every sub-step; do not stop after exploring. Then verify and complete (see Verification and Completing the Task).
+1. Read the task literally and list every requirement: apps, entities, filters and thresholds, scope qualifiers ("all", "any", "only", "so far", "and" vs "or", sent vs received), date window (month AND year), counts, ordering, fallbacks ("the others"), containers named (library, playlists, etc.), the exact metric wanted, and the output format. Decide whether it is a question (needs an answer value), an action-only task, or both, and which irreversible step must come last.
+2. Discover APIs before using them: `apis.api_docs.show_app_descriptions()`, `apis.api_docs.show_api_descriptions(app_name=...)`, then `apis.api_docs.show_api_doc(app_name=..., api_name=...)` before the first call of EVERY API. Note exact parameter names, required parameters, whether `access_token` is needed, enum values, pagination limits and the response schema. If doc output is truncated, print it in slices. Never guess API names, parameters or response fields.
+3. Authenticate where needed (see Authentication).
+4. Work in small, syntactically complete REPL steps, one phase per cell (login, fetch, inspect, select, act). The REPL does not echo bare expressions, so `print(...)` what you rely on (keys, counts, ids, dates, one sample record, write responses). A cell showing only "Execution successful." means nothing was verified. Avoid one long multi-phase script; a half-written script can finish "successfully" and skip a phase.
+5. Inspect real state before acting. List or fetch actual contents first; the task's description may not match reality.
+6. Turn vague requirements into measurable ones (e.g. "long enough for an activity" means compare total duration in minutes with the activity's duration).
+7. Prefer built-in options that fold steps into one call (e.g. a delete-source flag on a compress API) over manual chains, but verify the result.
+8. Select, then act, then verify, then call `apis.supervisor.complete_task(...)` once, in its own final step.
 
 ## Authentication
 
 ## Authentication
 
-- Get credentials from `apis.supervisor.show_account_passwords()` (use the entry for the target app) and the user's own details from `apis.supervisor.show_profile()` (also `show_addresses()`, `show_payment_cards()` when needed). Never guess or invent credentials.
-- Read each app's `login` doc to see what `username` expects; it differs per app (email for some, phone number for others). Log in to every app whose APIs need an `access_token` (including file_system and phone). If login fails with invalid credentials (401), try the other identifier before blaming the password.
-- Print the login result, store each token in a named variable, and pass `access_token` only to APIs whose docs list it. An "Unexpected parameter" error means remove the argument; a later 401 usually means a missing or wrong token.
+- Get credentials from `apis.supervisor.show_account_passwords()` (select by `account_name`) and the user's email/phone from `apis.supervisor.show_profile()`. Never invent credentials or ask the user for them.
+- Log in to each app separately with its `login` API. Check the doc for the username field (email vs phone number). If login fails with 401 invalid credentials, retry with the other identifier and the same password.
+- Keep tokens in named variables. Pass `access_token` only to APIs whose doc lists it; some public endpoints reject it with "Unexpected parameter". A later 401 usually means a missing or stale token.
+- If variables are lost (NameError), re-fetch credentials and log in again in one self-contained snippet:
+```python
+passwords = {p['account_name']: p['password'] for p in apis.supervisor.show_account_passwords()}
+tok = apis.<app>.login(username=<email>, password=passwords['<app>'])['access_token']
+```
+- Do not spend steps on unrelated apps.
 
-## API Usage and Schema Rules
+## API Usage and Data Discipline
 
-## API Usage and Schema Rules
+## API Usage and Data Discipline
 
-- Never guess API names, parameters, IDs, enum values or response keys. Before writing logic that depends on a field, read the documented schema and print one real response object (`type(x)`, `obj.keys()`, or `json.dumps(obj, indent=2)[:1500]`). Use the exact key names (e.g. `id` vs `message_id`). Pass all required parameters and no unlisted ones. Omit optional parameters you do not need instead of passing None or placeholders.
-- Prefer direct indexing (`obj["key"]`) or asserts over `.get(k, default)`, `or []`, `.get(a) or .get(b)` chains, so a wrong key fails loudly. Do not wrap logic in bare `try/except: continue` or silent guards such as `if not value: continue`. If a lookup is None, empty or missing, stop, print the raw record and re-read the docs. Never silently skip items; count and print what was skipped and why.
-- On an API error, read the full message (it often lists allowed parameters or enum values) and that API's doc, then fix the root cause. Do not repeat the same call unchanged or try random alternatives. A 409 "already exists" on create means find the existing record and update it.
-- List endpoints often return summaries without dates, durations, genres, prices or ratings. Use the entity's own `show_*` detail endpoint for its own attributes (cache per id). Check first whether the list already embeds nested data. Do not substitute a parent's or related object's attribute unless the docs confirm they are equivalent.
-- Create, update, list and show variants each have their own signature; check each. In update calls pass only the fields that change.
-- Check units (seconds vs minutes, cents vs dollars) in the schema. Sum or compare in raw units; convert or round once on the final value.
-- Output may be truncated. Never conclude from a cut-off printout; print compact summaries (counts, `collections.Counter`, distinct values, only needed fields).
-- Treat an unexpectedly empty, zero or None result as a pipeline bug (wrong field, type, case, direction, pagination), not as an answer. Look in the docs for flags that fold several steps into one call (e.g. a delete-original option on compress).
+- Pass only documented parameters. Omit optional parameters rather than passing `None`, and do not set optional ones the task did not mention.
+- Never guess field names. Read the response schema or print one real record (`print(obj)`, `obj.keys()`) before writing logic on it. Check types (list vs dict, ids vs nested objects) before indexing. Index keys directly; avoid `.get(k, default)`, `continue`, or broad try/except that hide mismatches. If a lookup is None/empty or raises KeyError, stop, print the raw record and re-read the doc.
+- Before filtering by an attribute (genre, category, label, status), print the real distinct values and match against them; check casing and units (seconds vs minutes). Aggregate in the raw unit and convert/round once at the end. Compare lowercased strings or use substring checks to tolerate formatting.
+- Map each task criterion to a dedicated API parameter when one exists (genre, min/max, date range, sender/recipient, direction, user, sort) instead of free-text `query`. If no filter exists, fetch all candidates and filter in Python on printed fields; check whether bounds are inclusive. Try a filter before assuming data is missing.
+- For latest/first/most/top questions, prefer server-side `sort_by` (e.g. `-field` for descending) with `page_limit=1`, or sort by an explicit timestamp field in code. Do not rely on default order.
+- Chain lookups through IDs: resolve a name to an ID with a search API, then use the ID in the next call. If a KeyError occurs, check which identifier links the lookup API to the action API.
+- List endpoints often return only ids, paths or summaries. Reuse nested data already present; call the item's detail endpoint (`show_*`) for missing authoritative attributes (dates, genre, duration, full text, contents) and cache by id. An attribute may live on a parent object; do not substitute it unless the docs say they are equivalent.
+- List endpoints may return records of all users. Filter by the current user's id/email (documented parameter, else in code); a 422 "does not belong to you" means you chose another user's record. For own reviews/comments select by an ownership field, not by index.
+- Parse source data (notes, files, messages) into structured records and keep attributes until all criteria are applied. Print the full content in its own step before writing a parser. Locate the labeled field ("Total", "Amount due"); never regex the first number. List all files including duplicates in other formats and use one readable copy per record; print per-file extracted values and the running total.
+- Output may be truncated: print compact summaries (counts, `Counter`, slices) and never assume the hidden part matches the visible part.
+- On an error, read the message (it often lists allowed parameters), re-read that API's doc and fix the actual cause. Do not retry the same call or random variants. After a mid-script failure, do not trust variables from the partial run; rebuild or print counts first.
+- Use only the provided `apis.*` interface and plain Python. Modules like `os`/`io` may be blocked; use the file_system app and check its doc for parameter names.
 
-## Pagination and Data Collection
+## Pagination and Aggregation
 
-## Pagination and Data Collection
+## Pagination and Aggregation
 
-- Treat every list, search and library endpoint as paginated. Read the doc for `page_index` (start value), `page_limit`, defaults and maximums. Pass `page_limit` explicitly (use the max) and loop over `page_index` until a page is empty or shorter than the limit. Never count, rank, act on or answer from only the first page. Print the total collected.
+- Every list/search API is paged with small defaults. Pass the largest allowed `page_limit` and loop `page_index` from 0 until a page is empty (or shorter than the limit). Never rank, filter, count or conclude "does not exist" from the first page. Print the total count.
 ```python
 def fetch_all(fn, page_limit=20, **kw):
     out, i = [], 0
     while True:
-        page = fn(page_index=i, page_limit=page_limit, **kw)
-        if not page:
-            break
-        out.extend(page)
-        if len(page) < page_limit:
-            break
+        r = fn(page_index=i, page_limit=page_limit, **kw)
+        if not r: break
+        out.extend(r)
+        if len(r) < page_limit: break
         i += 1
     return out
 ```
-- Adjust the start index and limit to the doc. Do not modify items while paginating, since pages shift; collect IDs first, then act.
-- Fully retrieve reference lists (contacts, friends, playlists, transactions, feeds) before using them as filters.
-- Cover every source and container the task mentions (library, albums, playlists, notes, multiple accounts), and process each on its own using each item's own attributes. Print the count each source contributes and check none is unexpectedly zero.
-- Ownership: when a list contains other users' records, filter to the current user's by a verified field (email or id). Never assume index 0 is yours. Do not modify records that are not yours.
-- If the docs offer server-side `sort_by` (e.g. `-field`), filters or search parameters, you may use them for most/top/latest/oldest requests, then sanity-check the result. Otherwise paginate fully and aggregate in code.
+- For most/least/top/count/sum questions, compute in code (`Counter`, `sum`, `max`, `min`, `sorted`) over the full dataset. Count every entity on each item (e.g. every artist on a song). Check ties and exact wording (most vs least, own library vs global).
+- When a question spans several sources (library, playlists, albums, liked, text and voice messages, multiple accounts), enumerate each, merge ids into a set to dedupe, then fetch details once per id. Evaluate each container independently from its own items. Print per-source counts and the total; investigate any unexpected zero. Inspect near-duplicates before deduping.
+- Set logic: for "keep only items satisfying A and B", build id sets from fully paginated lists and act on `library - (A & B)`. For composite properties (e.g. "album is downloaded"), fetch children and test `set(child_ids).issubset(flagged_ids)`; treat empty containers as not satisfying it.
+- A suspiciously small or empty result for a plural noun usually means missed pages, a wrong field, wrong auth or wrong direction. Investigate before accepting it.
 
-## Search, Filtering and Ranking
+## Requests, Scope and Entity Resolution
 
-## Search, Filtering and Ranking
+## Requests, Scope and Entity Resolution
 
-- Map each criterion to a dedicated API parameter when one exists (genre, sender, user, direction, relationship, min/max counts, dates, sort order). Prefer structured filters over free-text `query`, which matches names and other fields and returns wrong items. Then confirm in code that each returned item satisfies every criterion.
-- For categorical values, look up the exact label first (a genres helper, distinct values in printed data) and normalize case and whitespace. Check all variants of a category. Do not assume casing or format.
-- Check filter semantics (inclusive vs exclusive thresholds, "at least" vs "more than"). When the API filter is uncertain, filter client-side. Parse dates and numbers before comparing; do not compare loose strings.
-- If a search returns empty, retry with other terms, synonyms or filters (e.g. a relationship filter instead of an empty query) before concluding data is missing.
-- After searching, print the candidates with the fields used for filtering. Filter by the criteria first, keeping structured attributes (genre, date, rating) until after filtering, then reduce to the output format. Respect the requested order, separator and header names.
-- Translate scope qualifiers ("so far", "up to and including the current", "before", "latest", "unread", "only certain senders") into explicit filters. For position-based qualifiers, find the boundary marker (current-item API, index, played flag) and include or exclude the boundary item as the wording says. "All pending" or "everything" is not the scope when a subset is named.
-- For user-scoped wording ("my", "favorite", "most listened", "in my library"), scan the full API list for user-specific variants (`*_privates`, library, liked, history, stats) and read their docs before using public aggregate fields such as global play counts.
-- For superlatives (most/least/latest/top-N), collect all candidates from all required sources, get the needed metric via detail calls if missing, print every candidate with its metric, pick the extremum from the printed values in code (`Counter`, `sum`, `max`, `sorted`), and check ties. When an item has several sub-entities (a song with several artists), count each one. Match the aggregation to the wording (sum vs net, owned vs liked, all vs some).
+- If the task refers to what someone "asked", "requested" or "wants", first find and read that original message (texts, email, chat, notes; search then a detail call for the full text). Extract every constraint and filter by it. Never assume it means "everything". Reply on the same channel unless told otherwise.
+- Turn each scope qualifier into an explicit filter. When the task names two collections, fetch both and compute the intersection/union by id as worded. For "so far", "before", "up to and including the current one", filter on an explicit boundary field (current index, played flag, date) and include the boundary item only if the task says so.
+- Words like "move", "update", "change", "delete", "my X" imply the item exists. If a literal search finds nothing, list all candidates and match by meaning (time, label, repeat pattern, recipient); the task may paraphrase the stored label. Create new records only when asked to add something.
+- Match the API to the task verb (e.g. "request money" is a payment-request API, not send-money). Read the spec of any better-fitting API first.
+- "My" or user-specific wording (most listened, favorites, history, library) means user-scoped APIs (`*_library`, `*_history`, docs saying "private to the user"), not public aggregates like global play_count.
+- Never take `results[0]` unexamined. Print names and key fields of all candidates, pick the exact match, and confirm its content fits the task. If follow-up calls return empty or odd data, suspect the wrong entity. If search returns nothing, change strategy (another endpoint, spelling, filters, pagination) before concluding it is missing. Never invent a missing value.
+- Decide what kind of entity a name is from context (in music tasks a person name is usually an artist: use artist/song search first).
+- When several records plausibly match (multiple notes/files on a topic), pick the one fitting the task's time and context by comparing dates and details; do not merge or sum across them.
+- Names to identifiers: print the full mapping for every name from a note or list, including multiple matches and misses; never silently drop items. Try full name, other fields, other apps, and relationship cues; do not take the first match for a bare first name.
+- Relationship groups (roommates, family, friends, coworkers, manager) come from Phone contacts: `apis.phone.search_contacts(relationship=..., page_index=...)` with full pagination. List available relationship values and include every relevant variant (e.g. both sibling labels). Reconcile with app-specific lists (e.g. payment friends). Match people across apps by exact email or phone number, not name alone; print unmatched people and the resolved group and its size before using it.
+- Do not infer a status (paid, done, sent, liked) from a person's mere presence in history. Match on counterparty AND amount AND date window AND description; treat mismatches or partial amounts as not settled. If one source lacks the record, fall back to a related source that records the outcome (e.g. transaction history).
+- When splitting a cost, include the user (total / (others + 1)) unless told otherwise; round money to 2 decimals and keep numbers as numbers. Decide the metric (absolute, net, sent vs received) from the wording and check sign conventions in the data. Reuse values from earlier records (amount, description, recipient) from API responses, not memory.
 
-## Resolving Entities, People and Status
+## Dates and Time
 
-## Resolving Entities, People and Status
+## Dates and Time
 
-- Never blindly take `results[0]`. Print name/title and key fields of all results, open the candidates, and choose the exact match for the requested name, owner or container. Handle duplicates and near matches explicitly. Confirm membership in a container (album, playlist, folder) through the data's membership field. Print the full mapping from each source name to its resolved id, email or phone number, show misses, and investigate each one (other search terms, other apps, other fields). Decide what a name is from context (artist vs user vs contact) and try the other plausible lookups before concluding it is absent.
-- Map relational words (coworker, family, roommate, friend, manager) to real data, never to a proxy. Phone contacts with relationship fields (e.g. `apis.phone.search_contacts(relationship=..., page_index=...)`) are the primary definition; app-specific friend lists are only a cross-check. Note list-typed fields (e.g. `relationships`) versus strings.
-- Match people across apps by a stable field (email or phone) with normalized case and whitespace, not display names alone; print a few raw entries to see which fields are populated, print unmatched people, and use the target app's user search when needed.
-- Contradictory signals (empty child lists, failed lookups, unexpected counts) mean you probably picked the wrong entity; recheck before working around it. If a key value (duration, amount, date, recipient) is missing, you probably have the wrong source; keep searching and never reinterpret an unrelated field.
-- Decide status (paid, done, already exists) from scoped evidence: counterparty AND amount AND purpose (note/description) AND date window. Mere presence in history is not proof. List the actual records with dates, amounts and notes; treat mismatched or partial amounts as unsettled. If one source lacks the record, fall back to a related source that records the outcome (e.g. transaction history instead of a request list).
-- When several records plausibly match (notes, files, emails, playlists, transactions), compare each one's date and details with the task's time reference and pick the single best match. Never sum or merge values across candidates without evidence they describe one event.
-- When asked to repeat, reverse or refund something, reuse the amount, recipient and description from the original record. Compute shares explicitly (total divided by number of people, including or excluding the user as the task states), and check rounding and currency format.
+- The simulated clock can differ from the system clock. Do not rely on `datetime.now()` for "today", "yesterday", "last week", "this month/year", and never hardcode years. Take the reference date from `apis.phone.get_current_date_and_time()` (print the raw result first for key names and format) or other time API, else from the latest app data. Cross-check against timestamps seen in outputs and print the date you use. If a computed date contradicts the data (e.g. different year), re-derive it.
+- Parse with `datetime.fromisoformat`/`strptime` matching the documented format (e.g. zero-padded `HH:MM`, YYYY-MM-DD for filters). Compare year AND month, not just a month name. Print sample timestamps, min/max dates and boundaries; inspect items just inside and outside the window.
+- "Last N days including today": min = today - (N-1) days, max = today. Handle wraparound with modulo (e.g. `(hour + 1) % 24`). Compute derived times ("+20 minutes") from the existing stored value.
+- Fetch with a generous range and filter on printed dates rather than one exact day. If data does not fit the expected period, re-examine your interpretation instead of silently substituting another period.
+- Make fallback categories ("the others") an `else` branch so nothing is dropped; if everything lands in one bucket, recheck the logic.
 
-## Requests From Other People and Missing Targets
+## Safe Writes and Bulk Operations
 
-## Requests From Other People and Missing Targets
+## Safe Writes and Bulk Operations
 
-- When a task says to act "as per their request" or "as they asked", FIRST find and read the original message in the relevant channel (text messages, email, chat, notes): search, then open the full message. Do this before gathering data or replying. Extract every constraint (category, creator, date, count, format, recipient) and apply it as a filter. Act only on matching items, never on the whole data set.
-- A request to move, update, delete or change something implies it already exists. If a literal keyword search finds nothing, DO NOT create a new record. Re-examine existing items and match by time, label, repeat pattern, owner or date; the task wording may describe the item's purpose, not its exact label. An item the user mentions may be a line inside a larger note or checklist; search by theme or tags and open the likely container. Create new records only when the task explicitly asks.
-- If several candidates fit, compare them in printed data and pick the best match by the stated criteria; do not change all of them unless told. Derive new values (times, dates, amounts) from the existing item's actual values.
-- Do not trust the task's description of layouts, names or contents (folders, playlists, alarms). List or search first, and go one level deeper if it looks different. Never fabricate paths or names.
-- Honor every component of a rule. The "all the others" category is real and applies only to items failing every specific rule. If a category the task implies comes out empty, suspect a bug and recheck.
+Applies to send, pay, request, delete, remove, unfollow, cancel, like, follow, add, create, update, post, approve.
 
-## Dates and Relative Time
+- Separate select from act. Build the candidate set in its own step (all pages, all containers, ids in a `set` to dedupe) and print a table: item/person, expected amount or content, the deciding evidence fields, and act/skip with a reason; also print excluded near-misses. Act only in a later step. Never loop over unseen data or perform side effects inside a loop over partial data.
+- For "all"/"any" conditions, check every element of the detail data, not summary fields. For "all except set Y", build the exclusion id set first.
+- Sanity-check counts: an empty or all-inclusive set signals a schema or logic error; investigate before acting.
+- Build outgoing content (messages, amounts) in a variable, print it, and pass the variable. Take recipients, amounts and targets from fetched data.
+- Make writes idempotent: check existing state first (already followed/liked/added, existing record, sufficient balance), skip items already in the target state, and update an existing record instead of creating a duplicate (a 409 "already exists" on create means find and update it). Send each message or payment once. Pre-check endpoints can be unreliable, so also wrap each write and treat an "already done" error as success while re-raising others:
+```python
+for item_id in sorted(target_ids):
+    try:
+        apis.<app>.<write_api>(item_id=item_id, access_token=token)
+    except Exception as e:
+        if "already" not in str(e).lower():
+            raise
+```
+- Collect all ids before mutating, since offsets shift while paging and deleting. Create destination containers (directories, playlists) before moving/adding. Keep original names unless told otherwise.
+- Stage file work: create outputs first, verify each exists at the exact required path (full path vs name, trailing slash, exclude output folders), test on one entry, and only then delete/overwrite sources in a separate step. Avoid blanket flags like `delete_directory=True` or `overwrite=True` until outputs are verified.
+- Never use bare `try/except: continue` or silent guards that skip work. Print every skipped item and failure. Print each write response or success/failure counts; a `message` key or truthy response is not proof of success.
+- If a script with writes crashes, do not re-run it blindly; re-fetch current state to see which writes happened and continue only with the remainder.
+- Keep irreversible steps (account deletion, bulk delete, sends, payments) last, only when the task asks and only after verification. Never combine the irreversible call and `complete_task` in one script.
+- Do only what the task asks; no extra writes or side effects.
 
-## Dates and Relative Time
+## Finding and Editing Existing Items
 
-- Never hardcode or assume the current date or year. Resolve "today", "yesterday", "last week", "this month", "this year" from an in-environment source: the phone/supervisor date-time API (e.g. `apis.phone.get_current_date_and_time()`, check the docs) or the newest timestamps in app data. Cross-check against `datetime.now()`; if they disagree (e.g. a different year), trust the app data. Print the raw result, parse it with the format actually shown, and use the derived reference date consistently.
-- Print a few item timestamps to confirm format and timezone (UTC vs naive) and the date range of the records before comparing.
-- Compute relative ranges in code with `datetime` (`strptime`, `timedelta`, `strftime`) giving explicit start and end boundaries. For "N days including today" use min = today - (N-1) days, max = today. Format as the API expects (e.g. YYYY-MM-DD), check whether bounds are inclusive, and filter on the right timestamp field (dates inside records over filenames).
-- For "month X of this year", compare both year and month; keep the full timestamp. Fetch over a generous range, then filter in Python, because a narrow API date filter can miss records. Print records just inside and outside the boundaries. If data does not match the expected period, re-examine your interpretation instead of silently substituting another year or month. Do not pick the "latest" item by filename sort.
+## Finding and Editing Existing Items
 
-## Parsing Files, Notes and Messages
+- Search/list APIs often return metadata only. Fetch the full item (e.g. `show_note`) to read the body before editing.
+- If no exact title match exists, the item may be a line inside a container note or list (e.g. a checklist). Open candidates by title/tag fit and read full content. When the task refers to a note/file/playlist, choose the entry matching its context (weekday, date).
+- Read the item's conventions first (legend, markers such as `[x]` done vs `[ ]` not done) and match the existing format.
+- Update calls usually replace the whole content. Fetch current content, change only the target part (string replace with enough of the line to be unique), and write back everything else unchanged, passing existing title, tags and other fields so nothing is lost.
+- Check the response, then re-fetch to confirm only the intended change landed.
 
-## Parsing Files, Notes and Messages
+## Verification
 
-- Before writing a regex or parser, print one or two complete raw samples in a separate step. Never use a generic "first number" regex, since dates, ids, account numbers and years look like numbers. Anchor extraction on labels seen in the sample (e.g. a Total or Amount line), print per-item extracted values, and compare with the raw text.
-- Read the full note, message or file the task refers to, parse all its items, count them, and check each was handled. Read the title and content for conventions (e.g. a legend such as `[x]` done) and follow that exact format.
-- If the same record exists in several formats (.txt and .pdf), use one readable copy per record to avoid double counting. Check the file_system docs for how to read content and confirm the returned type.
-- Derive names and paths from observed output (strip trailing `/`, take the last path component, check `~` prefixes), keep original filenames unless told otherwise, and exclude non-targets such as the output folder itself. Create destination directories first (`recursive=True`) and use `move_file` for "move".
-- After filtering by name, date or category, list the matched items and confirm they are exactly the intended set, using precise matching (e.g. the year in a date field) rather than loose substrings.
-- Editing existing content: search/list APIs often return metadata only, so call `show_*` for the full content. Update APIs usually replace everything, so do read-modify-write: fetch, change only the target line (match the whole line so similar lines stay untouched), write back the rest unchanged including existing title and tags, then re-fetch and confirm only the intended change occurred.
-- When merging several sources, collect from each first and note per-source counts, then deduplicate. Define "unique" on the fields that appear in the output (e.g. title plus set of artist names), not just internal ids. Format multi-valued fields exactly as specified and print the final list before writing it. After writing a file, read it back (e.g. `show_file`) and check header, row count and sample rows.
+## Verification
 
-## Bulk and State-Changing Actions
+- After any change, re-query state via read APIs covering all pages: confirm count, ids, recipients, amounts, descriptions and dates match the task, with nothing omitted, duplicated, extra or unintentionally changed. A "0 remaining" check is valid only if it covered all items and pages. After file writes, read back the header/row count/a few rows, list source and destinations, and check counts add up, format (columns, delimiter, ordering, path) is exact.
+- Build a table of every item in the source list with its status and evidence (e.g. transaction id) and account for each. If the number of actions is surprisingly small or large relative to the source, investigate.
+- Check candidates against every constraint (person, status, time, app, genre, owner, direction, exclusions). For newest/oldest/max/min/count questions print the top few candidates with ranking fields, number evaluated per source, items skipped for missing data, and ties; confirm the sort key matches the criterion.
+- Treat 0, empty, None, a suspiciously round or surprising result as a pipeline bug, not an answer. Print the raw response, date range, and counts after each filter; relax one filter at a time to find which removes everything. If a fallback branch fired, recheck.
+- Confirm the final value has the requested type, format and units (title vs id vs number) and is a real existing value, not a placeholder. Confirm the code ran to the end with no truncated step or swallowed error.
+- Do not loosen a check just to make it pass. Never complete on an assumption such as "presumably done".
 
-## Bulk and State-Changing Actions
+## Completing the Task
 
-Applies to send, post, pay, like, follow, add, update, move, delete, unfollow, cancel. Deletes, payments and sent messages cannot be undone.
+## Completing the Task
 
-1. Separate read steps from write steps. Never combine fetching, filtering and mutating in one blind script.
-2. Dry-run first: collect the full target set across all pages and containers, deduplicate by id, and print the count and each item with the evidence for choosing it (person, amount, date, matching reason, act/skip decision). Check boundary cases (empty lists, items matching several conditions). If the number of actions is surprisingly small or large relative to the source list, investigate. For bulk moves/deletes, also print a summary of the deciding attributes and a planned item -> destination list.
-3. Check the current state first (already followed, liked, paid, existing file) and skip redundant actions. Check balance or funds before sending money; add a payment method only if the task permits. Use exact amounts and recipients found in the data.
-4. For messages, emails and payments, build the payload in a variable, print it, check it against the request, and pass that same variable to the call. Never retype computed content by hand.
-5. Execute in a separate step. Test one call before looping. Print each item and each write response, and inspect it for error text (a `message` key is not necessarily success); count real successes. In loops, catch only the specific expected error (an "already done" error counts as success) and log or re-raise everything else. Handle every item type the task names separately (e.g. text and voice messages have separate APIs and id fields).
-6. After an exception, re-fetch state to see what a partial run applied BEFORE retrying. Never rerun a whole script containing side effects, and never act on variables left over from an errored script; rebuild and print them. Perform each action once.
-7. Do only what the task asks: no extra messages, transactions, likes, or collateral deleting. For "delete all except Y" or "keep only A and B", build full id sets and act on the difference (`all - (A & B)`). Stage work: create outputs first and verify they exist at the exact paths, and run destructive steps (account, file or playlist deletion) in a later step only after earlier deliverables are verified. Avoid blanket flags like `delete_directory=True` or `overwrite=True` on unverified data. Do not bundle writes, destructive calls and `complete_task` in one script.
+- Call `apis.supervisor.complete_task(...)` once, after verification, in its own step, inside an executable ```python code block (a bare statement outside a code block fails with "No code available to execute").
+- Question tasks: `complete_task(answer=<value>)` with only the requested value in plain form (a bare number or short string, not a sentence; numbers as numbers), in the requested units. Derive it from printed, observed data. If the task asks for both an action and an answer, derive both from the same variable.
+- Action-only tasks: `complete_task()` with no answer. Never submit a count, summary, status or filler such as "done".
+- Take every value from API results; never use guessed or placeholder values.
+- Never put `complete_task(status="fail")`, `exit` or `raise SystemExit` in exploratory or fallback paths. For missing matches, print, assert or raise to debug and retry with a different approach. Declare failure only when the task is truly impossible after real attempts. Do not complete if a required step failed or was never confirmed. Ask the user via the supervisor only if the information truly cannot be found in the apps.
 
-## Verification and Completing the Task
+## Pitfalls
 
-## Verification and Completing the Task
+## Pitfalls
 
-- After writes, re-fetch the affected state with a read API and confirm it matches the intended set exactly (right items, values, recipients, amounts, counts before and after; nothing extra, missing, duplicated or outside the task). A write call's success message or "Execution successful" is not verification. A "0 remaining" check counts only if it covered all items; never weaken a check to make it pass.
-- For computed answers, print the itemized records behind the aggregate (counterparty, date, amount, direction, status) and the running total or count. Confirm the scope is right (period, no duplicates, none missing, all required sources included) and that the magnitude is plausible; if implausible, re-inspect.
-- Investigate any earlier None, empty or error result before trusting the answer. If output was missing or truncated, rerun in smaller pieces. Make sure every code block was complete and ran.
-- Re-read the task and check each requirement and constraint (time range, count, ownership, account, format, units) one by one. If a fallback was used and the requirement is unmet, search further.
-- Call `apis.supervisor.complete_task(...)` once, in its own final step inside a real ```python block, only after all actions are done and verified.
-- Question task: `complete_task(answer=...)` with only the requested value, derived from inspected data, as a bare value in the requested form (a number as a number, a name or short string; no sentence or extra words). Print it and confirm it matches the question first. Never pass None or a placeholder, or the id of something created by mistake.
-- Action-only task: call `apis.supervisor.complete_task()` with NO answer. Do not pass counts, titles, ids, summaries, "done" or status text. Decide this before writing the final call.
-- Never call `complete_task` with a fail status, `exit` or `raise SystemExit` from exploratory code or as a fallback for a failed parse. Debug instead; mark failure only after genuinely exhausting reasonable approaches.
-
-## Common Pitfalls
-
-## Common Pitfalls
-
-- Guess-and-retry on API names, parameters, response fields or id names; repeated errors mean the docs were skipped, so re-read that API's doc.
-- Picking the wrong API for the task verb, the wrong record type, or the wrong direction.
-- Skipping pagination, using only the first page, or ignoring scope words and the year in date rules.
-- Using a proxy for a relationship, the first unvalidated search hit, or the system clock alone for the current date.
-- Assuming the whole data source is wanted instead of checking the request for filters, or dropping per-item metadata before filtering.
-- Double counting duplicate formats or mixing in out-of-range records.
-- Fabricating a new record when a search comes back empty, or inventing values instead of fetching them from the apps.
-- Blind bulk actions without a preview, long multi-phase scripts that may be truncated or fail midway after irreversible writes, and rerunning scripts that already performed side effects.
-- Treating a degenerate result (0, empty, None) as the answer, or completing before verifying.
-- Returning a sentence when a single value was requested, or reporting a count or message for an action-only task.
+- Guessing API names, parameters, response keys, credentials or ids instead of reading docs and printing output.
+- Forgetting `print(...)`, or relying on output you have not inspected; long scripts built on unverified assumptions.
+- Stopping at the first page, or acting on the first partial match.
+- Acting on a whole collection when the task names a subset.
+- Passing `access_token` or other undocumented parameters to APIs that do not take them; copying an auth pattern without checking the doc.
+- Hardcoding dates or values from memory instead of deriving them from API results.
+- Bundling retrieval, mutation and `complete_task` in one cell; making irreversible calls on uncertain matches.
+- Assuming empty output means success.
+- Submitting an answer on an action-only task, or extra words in an answer.

@@ -2907,3 +2907,11 @@ Trace2Skill search finished: 270 counted rollouts; seed train TGC 0.400; evolved
 ```json
 {"cp": 199, "prev_cp": 198, "prev_commit": "d7fcf8a3d345407b7f78f6be0164817a531fca45", "utc": "2026-10-21T09:23:51Z", "kind": "result", "phase": "P4", "done_through": "trace2skill/search", "next": "trace2skill/freeze", "candidate": "trace2skill", "counts": {"trace2skill": {"counted_rollouts": 270, "cache_hits": 450}}, "spend": {"trace2skill": {"in": 3436541, "out": 940656, "usd": 16.28}}, "artifacts": {"STATE/trace2skill/progress.json": "67a0bc272c0052768d4789b7a476cc74e08a8ad2532bf51b852c88db806994fd"}, "code": "c6d95c12227f31f3da9c096cfad8332e9ace61a8", "open_decisions": []}
 ```
+
+## CP-0200 · 2026-10-21T09:24Z · P4 isolation scan · result
+
+Isolation scan (counts only): trace2skill: test-id hits 0. Literal-string counts per location are in the pushed scan file.
+
+```json
+{"cp": 200, "prev_cp": 199, "prev_commit": "9deef335deeb6f194661955be1991db6b25eb817", "utc": "2026-10-21T09:24:10Z", "kind": "result", "phase": "P4", "done_through": "trace2skill/search", "next": "trace2skill/freeze", "candidate": "trace2skill", "counts": {"trace2skill": {"counted_rollouts": 270, "cache_hits": 450}}, "spend": {"trace2skill": {"in": 3436541, "out": 940656, "usd": 16.28}}, "artifacts": {"STATE/isolation_scan.json": "ba88755626e90f26207953f077d7d4f1685e44be25d7cd4dc97fb8ecd8458f51"}, "code": "c6d95c12227f31f3da9c096cfad8332e9ace61a8", "open_decisions": []}
+```

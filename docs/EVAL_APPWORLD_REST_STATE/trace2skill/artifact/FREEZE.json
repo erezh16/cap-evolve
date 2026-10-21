@@ -1,15 +1,15 @@
 {
  "candidate": "trace2skill",
  "label": "",
- "selected_evolution_seed": "43",
+ "selected_evolution_seed": "42",
  "seed_train_tgc": 0.4,
  "per_seed_train_tgc": {
   "41": 0.7777777777777778,
-  "42": 0.7777777777777778,
+  "42": 0.8,
   "43": 0.7777777777777778
  },
- "playbook_tokens": 4923,
- "playbook_chars": 22883,
- "counted_rollouts": 90,
- "tree_sha256": "f315383a9efd0763b529d31b3c14f298b3dc3b2414979e5937ae8eb89c9ee271"
+ "playbook_tokens": 4414,
+ "playbook_chars": 20159,
+ "counted_rollouts": 270,
+ "tree_sha256": "a6b03deb2a044ed4c74920d02d6589b2113530ffd9053a947854152a8e4e5b6f"
 }
