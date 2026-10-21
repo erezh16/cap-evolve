@@ -2543,3 +2543,11 @@ Isolation scan (counts only): harnesslens: test-id hits 0. Literal-string counts
 ```json
 {"cp": 154, "prev_cp": 153, "prev_commit": "51ab78f7cbbb10e39788003ddaa784bf994b4475", "utc": "2026-10-21T05:59:17Z", "kind": "result", "phase": "P4", "done_through": "gepa_full/search/iteration 35", "next": "gepa_full/search", "candidate": "harnesslens", "counts": {"gepa_full": {"counted_rollouts": 665}}, "spend": {"gepa_full": {"in": 687966, "out": 52893, "proxy_usd": 1.9}}, "artifacts": {"STATE/isolation_scan.json": "d86dd1ef67e627745ef197c3a9679981f759c3f0cf8b8483e5b24e5abb0a0410"}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": ["trace2skill: keep degenerate 3-seed selection or re-run seeds 42/43 with a nonce"]}
 ```
+
+## CP-0155 · 2026-10-21T06:00Z · P4 posted harnesslens · posted
+
+Posted 'HarnessLens isolation scan' on #897 (harnesslens): https://github.com/skillberry-ai/cap-evolve/issues/897#issuecomment-6309213204
+
+```json
+{"cp": 155, "prev_cp": 154, "prev_commit": "696f058e108cb26756a26be8baca0ce53bcc855a", "utc": "2026-10-21T06:00:06Z", "kind": "posted", "phase": "P4", "done_through": "gepa_full/search/iteration 35", "next": "gepa_full/search", "candidate": "harnesslens", "counts": {"gepa_full": {"counted_rollouts": 665}}, "spend": {"gepa_full": {"in": 687966, "out": 52893, "proxy_usd": 1.9}}, "artifacts": {}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": ["trace2skill: keep degenerate 3-seed selection or re-run seeds 42/43 with a nonce"], "post": "harnesslens/m4_scanned", "url": "https://github.com/skillberry-ai/cap-evolve/issues/897#issuecomment-6309213204"}
+```
