@@ -2167,3 +2167,11 @@ Trace2Skill evolution seed 41 done: 90 MAP patches, 1 file edits, 126 optimizer 
 ```json
 {"cp": 107, "prev_cp": 106, "prev_commit": "0d1e1f8e3ac21ab9c5ebb3548ac83ebabd161225", "utc": "2026-10-21T03:08:48Z", "kind": "result", "phase": "P4", "done_through": "trace2skill/evolution/41", "next": "trace2skill/search", "candidate": "trace2skill", "counts": {"trace2skill": {"counted_rollouts": 0, "cache_hits": 90}}, "spend": {"trace2skill": {"in": 1310282, "out": 274144, "usd": 5.36}}, "artifacts": {"STATE/trace2skill/progress.json": "3f3270d69038887709d0edb6482fa727f82e706e4e3cd68d8599a9eb92f8c728"}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": []}
 ```
+
+## CP-0108 · 2026-10-21T03:09Z · P4 trace2skill evolution seed 42 · result
+
+Trace2Skill evolution seed 42 done: 90 MAP patches, 1 file edits, 126 optimizer calls; playbook 4923 tokens, 0 condensation(s), lint clean.
+
+```json
+{"cp": 108, "prev_cp": 107, "prev_commit": "593f38fbb8771332134865e646e2b43772202e99", "utc": "2026-10-21T03:09:08Z", "kind": "result", "phase": "P4", "done_through": "trace2skill/evolution/42", "next": "trace2skill/search", "candidate": "trace2skill", "counts": {"trace2skill": {"counted_rollouts": 0, "cache_hits": 90}}, "spend": {"trace2skill": {"in": 1843792, "out": 443513, "usd": 8.12}}, "artifacts": {"STATE/trace2skill/progress.json": "af49437774ec8b72a61832547e790e7f165d62dc20ca0685bca59e5402d20dde"}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": []}
+```
