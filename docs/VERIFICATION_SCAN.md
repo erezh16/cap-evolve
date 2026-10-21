@@ -156,10 +156,36 @@ identical in all sessions"). A confirmed match is evidence too.
       one trial). It is successful when it meets the benchmark's success criterion (for AppWorld:
       every test passes, so it counts towards TGC). Optimizer cost is not a task cost.
 
-   For the baseline, train reward and train-phase cost come from the seed's own scoring on the search
-   split (for example a round-0 evaluation), if one exists. It has no optimizer calls, so the
-   optimizer part is `null` with the reason "not applicable: no search". Any figure that was not
-   measured is `null` with a reason. An average over zero tasks is `null` too, never `0`.
+   Any figure that was not measured is `null` with a reason. An average over zero tasks is `null`
+   too, never `0`. When a case below applies, state in the entry which rule was used:
+   - **Train reward of the candidate.** Use the method's own end-of-search score of the champion it
+     froze (the score it selected on), on the split it searched. If the frozen champion was also
+     re-scored inside the test window (for example a dev diagnostic), report that as well, beside it
+     and labelled. Never put the re-score in its place.
+   - **No end-of-search score.** Some methods never score the champion they froze (for example online
+     adaptation that keeps the last state). Then use the earliest scoring of that frozen champion on
+     a non-test split (for example a dev diagnostic), and name the split. Report the method's own
+     running score (for example the mean reward over its adaptation episodes) beside it, labelled as
+     a fit metric. If neither exists, train reward is `null` with the reason.
+   - **Train reward of the baseline.** Use the seed's own scoring on the candidate's search split (for
+     example a round-0 evaluation), if one exists. Otherwise use the seed's scoring on another non-test
+     split in the same window (for example the dev diagnostic), and name the split. If neither exists,
+     it is `null` with the reason. The baseline has no optimizer calls, so its optimizer cost is `null`
+     with the reason "not applicable: no search".
+   - **Infra-errored episodes.** Score them as failed in TGC and SGC, as the published results do.
+     They have no usage, so leave them out of the token and cost totals and averages. Show their count
+     next to each average.
+   - **Unpriced endpoints.** If a model's calls are not priced (for example IBM RITS), its USD is
+     `null` with the reason. You may add a separate `usd_estimated` at a named public rate, but never
+     add it into a measured or reported USD. Totals show the known USD, and separately the known USD
+     plus the estimates.
+   - **What each phase includes.** Train = every search episode the method ran and every optimizer
+     call. Test = the champion's episodes in the test window. Count reused episodes (for example a
+     baseline reused from an earlier attempt) only in the entry that ran them, and say so in the
+     entry that reuses them. Diagnostic episodes that belong to neither phase (for example a dev
+     re-score inside the window) are reported apart, never added to train or test.
+   - **Several attempts in one run** (`docs/BACKUP_BOX.md` §1). Each attempt is an entry of its own. An attempt
+     never scored on test has a `null` test reward with the reason.
 
    The baseline is scored once for all candidates in a window. So compute its entry **once per
    window**, from that window's data, and put the identical entry into the summary of every run that
