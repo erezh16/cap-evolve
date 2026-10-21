@@ -2519,3 +2519,11 @@ Posted 'MIPROv2 hourly status' on #898 (miprov2): https://github.com/skillberry-
 ```json
 {"cp": 151, "prev_cp": 150, "prev_commit": "0651baab1af146f939d68705ffbfbfea67417f63", "utc": "2026-10-21T05:56:58Z", "kind": "posted", "phase": "P4", "done_through": "gepa_full/search/iteration 35", "next": "gepa_full/search", "candidate": "gepa_full", "counts": {"gepa_full": {"counted_rollouts": 665}}, "spend": {"gepa_full": {"in": 687966, "out": 52893, "proxy_usd": 1.9}}, "artifacts": {}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": ["trace2skill: keep degenerate 3-seed selection or re-run seeds 42/43 with a nonce"], "post": "miprov2/status_20261021T0556", "url": "https://github.com/skillberry-ai/cap-evolve/issues/898#issuecomment-6309172281"}
 ```
+
+## CP-0152 · 2026-10-21T05:59Z · P4 posted harnesslens · posted
+
+Posted 'HarnessLens search ended' on #897 (harnesslens): https://github.com/skillberry-ai/cap-evolve/issues/897#issuecomment-6309198690
+
+```json
+{"cp": 152, "prev_cp": 151, "prev_commit": "5f9181bef8b877a00fce0477be40507695670ff6", "utc": "2026-10-21T05:59:01Z", "kind": "posted", "phase": "P4", "done_through": "gepa_full/search/iteration 35", "next": "gepa_full/search", "candidate": "gepa_full", "counts": {"gepa_full": {"counted_rollouts": 665}}, "spend": {"gepa_full": {"in": 687966, "out": 52893, "proxy_usd": 1.9}}, "artifacts": {}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": ["trace2skill: keep degenerate 3-seed selection or re-run seeds 42/43 with a nonce"], "post": "harnesslens/m4_search_done", "url": "https://github.com/skillberry-ai/cap-evolve/issues/897#issuecomment-6309198690"}
+```

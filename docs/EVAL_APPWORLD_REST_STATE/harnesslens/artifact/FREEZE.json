@@ -1,0 +1,10 @@
+{
+ "selected_version": "v0",
+ "inert": true,
+ "stop_reason": "optimizer token cap",
+ "tree_sha256": "85a0da9cec2206a7bc683c11d60b5cb0acac7328d43c6e9197324d1e45971f3c",
+ "files_changed_vs_seed": [],
+ "iterations": 13,
+ "accepted": 0,
+ "t": "2026-10-21T05:58:51Z"
+}
