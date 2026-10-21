@@ -2695,3 +2695,11 @@ P4 done: all five chains (search, freeze, isolation scan) finished. Next: P5 dev
 ```json
 {"cp": 173, "prev_cp": 172, "prev_commit": "df9bddf6fc778d2fd60a8799d01ee82d0cc74d11", "utc": "2026-10-21T07:04:07Z", "kind": "phase_done", "phase": "P4", "done_through": "P4/searches", "next": "P5/dev", "candidate": null, "counts": {"gepa_full": {"counted_rollouts": 809}}, "spend": {"gepa_full": {"in": 902011, "out": 61985, "proxy_usd": 2.42}}, "artifacts": {}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": ["trace2skill: keep degenerate 3-seed selection or re-run seeds 42/43 with a nonce"]}
 ```
+
+## CP-0174 · 2026-10-21T07:04Z · P4 posted gepa_full · posted
+
+Posted 'GEPA-Full search ended' on #900 (gepa_full): https://github.com/skillberry-ai/cap-evolve/issues/900#issuecomment-6310154006
+
+```json
+{"cp": 174, "prev_cp": 173, "prev_commit": "8b7df5dbc6d0bcd369c4f96f459dafee83c17491", "utc": "2026-10-21T07:04:29Z", "kind": "posted", "phase": "P4", "done_through": "P4/searches", "next": "P5/dev", "candidate": null, "counts": {"gepa_full": {"counted_rollouts": 809}}, "spend": {"gepa_full": {"in": 902011, "out": 61985, "proxy_usd": 2.42}}, "artifacts": {}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": ["trace2skill: keep degenerate 3-seed selection or re-run seeds 42/43 with a nonce"], "post": "gepa_full/m4_search_done", "url": "https://github.com/skillberry-ai/cap-evolve/issues/900#issuecomment-6310154006"}
+```
