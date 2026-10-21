@@ -2215,3 +2215,11 @@ Posted 'Trace2Skill: search finished' on #899 (trace2skill): https://github.com/
 ```json
 {"cp": 113, "prev_cp": 112, "prev_commit": "f7e336438656fa2752dedfb4fdbc487360f00faa", "utc": "2026-10-21T03:37:13Z", "kind": "posted", "phase": "P4", "done_through": "trace2skill/search", "next": "trace2skill/freeze", "candidate": "trace2skill", "counts": {"trace2skill": {"counted_rollouts": 90, "cache_hits": 270}}, "spend": {"trace2skill": {"in": 2377302, "out": 612882, "usd": 10.88}}, "artifacts": {}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": [], "post": "trace2skill/m_search_end", "url": "https://github.com/skillberry-ai/cap-evolve/issues/899#issuecomment-6307416689"}
 ```
+
+## CP-0114 · 2026-10-21T03:37Z · P4 posted trace2skill · posted
+
+Posted 'Trace2Skill new best search-time score' on #899 (trace2skill): https://github.com/skillberry-ai/cap-evolve/issues/899#issuecomment-6307417311
+
+```json
+{"cp": 114, "prev_cp": 113, "prev_commit": "6e0fc70bb16f417d9399b8ff57efedcbd5f058be", "utc": "2026-10-21T03:37:16Z", "kind": "posted", "phase": "P4", "done_through": "trace2skill/search", "next": "trace2skill/freeze", "candidate": "trace2skill", "counts": {"trace2skill": {"counted_rollouts": 90, "cache_hits": 270}}, "spend": {"trace2skill": {"in": 2377302, "out": 612882, "usd": 10.88}}, "artifacts": {}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": [], "post": "trace2skill/m4_best_0.7778", "url": "https://github.com/skillberry-ai/cap-evolve/issues/899#issuecomment-6307417311"}
+```
