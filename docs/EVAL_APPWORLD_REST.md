@@ -2095,3 +2095,11 @@ Trace2Skill search started: analysts over the shared seed's 90 train trajectorie
 ```json
 {"cp": 98, "prev_cp": 97, "prev_commit": "d916248da3fa0eeea98a4619320f82f4b975184d", "utc": "2026-10-21T03:02:36Z", "kind": "result", "phase": "P4", "done_through": "trace2skill/search-start", "next": "trace2skill/search", "candidate": "trace2skill", "counts": {"trace2skill": {"counted_rollouts": 0, "cache_hits": 90}}, "spend": {"trace2skill": {"in": 0, "out": 0, "usd": 0.0}}, "artifacts": {"STATE/trace2skill/progress.json": "75e0fa3b8a89d5f30c36a5d7f4f066c2a1036933cdcec6ccbae9df23ad76e3a5"}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": []}
 ```
+
+## CP-0099 · 2026-10-21T03:02Z · P4 posted trace2skill · posted
+
+Posted 'Trace2Skill: search started' on #899 (trace2skill): https://github.com/skillberry-ai/cap-evolve/issues/899#issuecomment-6306967002
+
+```json
+{"cp": 99, "prev_cp": 98, "prev_commit": "8578863404b9fcde76b1ea182f391e2c8a6f7b50", "utc": "2026-10-21T03:02:39Z", "kind": "posted", "phase": "P4", "done_through": "trace2skill/search-start", "next": "trace2skill/search", "candidate": "trace2skill", "counts": {"trace2skill": {"counted_rollouts": 0, "cache_hits": 90}}, "spend": {"trace2skill": {"in": 0, "out": 0, "usd": 0.0}}, "artifacts": {}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": [], "post": "trace2skill/m_search_start", "url": "https://github.com/skillberry-ai/cap-evolve/issues/899#issuecomment-6306967002"}
+```
