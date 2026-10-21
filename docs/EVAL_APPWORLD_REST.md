@@ -2079,3 +2079,11 @@ Isolation scan (counts only): cape_improve: test-id hits 0. Literal-string count
 ```json
 {"cp": 96, "prev_cp": 95, "prev_commit": "e237399189be98691e779ccc5d1dd545550719db", "utc": "2026-10-21T03:02:10Z", "kind": "result", "phase": "P4", "done_through": "gepa_full/search/iteration 15", "next": "gepa_full/search", "candidate": "cape_improve", "counts": {"gepa_full": {"counted_rollouts": 228}}, "spend": {"gepa_full": {"in": 288254, "out": 32529, "proxy_usd": 0.9}}, "artifacts": {"STATE/isolation_scan.json": "b5df90ecdeaecd0390583e837a012078215ecea7a7d392f5e37954f575a3d611"}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": []}
 ```
+
+## CP-0097 · 2026-10-21T03:02Z · P4 trace2skill search · phase_start
+
+P4: trace2skill chain started (search, freeze, isolation scan), pid file AW_STATE/p4/trace2skill.pid. Running chains: gepa_full, harnesslens, trace2skill. Global slots 24; memory 42.56%.
+
+```json
+{"cp": 97, "prev_cp": 96, "prev_commit": "f288a65a4a74a2d1b9d3e61b21fe1144f8379d63", "utc": "2026-10-21T03:02:34Z", "kind": "phase_start", "phase": "P4", "done_through": "gepa_full/search/iteration 15", "next": "gepa_full/search", "candidate": "trace2skill", "counts": {"gepa_full": {"counted_rollouts": 228}}, "spend": {"gepa_full": {"in": 288254, "out": 32529, "proxy_usd": 0.9}}, "artifacts": {}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": []}
+```
