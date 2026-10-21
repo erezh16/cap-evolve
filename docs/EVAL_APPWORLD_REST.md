@@ -2947,3 +2947,11 @@ P4 done: all five chains (search, freeze, isolation scan) finished. Next: P5 dev
 ```json
 {"cp": 204, "prev_cp": 203, "prev_commit": "bc0f67e7e2fab94baf83ea8132613e8c89937095", "utc": "2026-10-21T09:24:40Z", "kind": "phase_done", "phase": "P4", "done_through": "P4/searches", "next": "P5/dev", "candidate": null, "counts": {"trace2skill": {"counted_rollouts": 270, "cache_hits": 450}}, "spend": {"trace2skill": {"in": 3436541, "out": 940656, "usd": 16.28}}, "artifacts": {}, "code": "c6d95c12227f31f3da9c096cfad8332e9ace61a8", "open_decisions": []}
 ```
+
+## CP-0205 · 2026-10-21T09:24Z · P4 trace2skill re-run done · result
+
+Trace2Skill re-run done (decision CP-0186). Seeds 42 and 43 sampled independently: no request of the re-run was identical to an earlier one; three distinct skills (SKILL.md sha256 b68fbbdc / aec3c4c6 / e72dee4a; playbooks 4,923 / 4,414 / 4,337 tokens). Selection on train (90, 1 trial): seed 41 0.778, seed 42 0.800, seed 43 0.778 vs the seed's 0.400; selected evolution seed 42 (train scores selection-biased). Counted rollouts 270 of 900, as planned. Freeze and isolation scan re-done (0 test-id hits). P4 is complete for all five; the P4 runner records phase_done. Next: P5 dev diagnostic.
+
+```json
+{"cp": 205, "prev_cp": 204, "prev_commit": "b993ab1eeddbd64135deb45a7958742bb05b94dd", "utc": "2026-10-21T09:24:50Z", "kind": "result", "phase": "P4", "done_through": "P4/searches", "next": "P5/dev", "candidate": "trace2skill", "counts": {"trace2skill": {"counted_rollouts": 270, "cache_hits": 450}}, "spend": {"trace2skill": {"in": 3436541, "out": 940656, "usd": 16.28}}, "artifacts": {}, "code": "c6d95c12227f31f3da9c096cfad8332e9ace61a8", "open_decisions": []}
+```
