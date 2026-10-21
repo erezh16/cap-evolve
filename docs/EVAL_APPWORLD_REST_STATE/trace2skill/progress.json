@@ -1,7 +1,7 @@
 {
- "stage": "search done; waiting for freeze",
+ "stage": "search: evolution seed 42",
  "counted_rollouts": 90,
- "cache_hits": 270,
+ "cache_hits": 360,
  "optimizer": {
   "calls": 468,
   "errors": 0,
@@ -12,14 +12,5 @@
   "seconds": 2808.0,
   "proxy_usd": 10.88
  },
- "seed_train_tgc": 0.4,
- "best_search_score": 0.7778,
- "best_search_label": "train TGC (90), selection-biased",
- "selected_seed": "43",
- "inert": false,
- "per_seed_train_tgc": {
-  "41": 0.7778,
-  "42": 0.7778,
-  "43": 0.7778
- }
+ "seed_train_tgc": 0.4
 }
