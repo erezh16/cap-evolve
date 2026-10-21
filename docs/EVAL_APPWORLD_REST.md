@@ -2679,3 +2679,11 @@ Posted 'GEPA-Full: champion frozen' on #900 (gepa_full): https://github.com/skil
 ```json
 {"cp": 171, "prev_cp": 170, "prev_commit": "d069aa1ba991cb8497c1d53f1f7ad4458e959704", "utc": "2026-10-21T07:03:48Z", "kind": "posted", "phase": "P4", "done_through": "gepa_full/search/search finished: max_metric_calls reached", "next": "gepa_full/freeze", "candidate": "gepa_full", "counts": {"gepa_full": {"counted_rollouts": 809}}, "spend": {"gepa_full": {"in": 902011, "out": 61985, "proxy_usd": 2.42}}, "artifacts": {}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": ["trace2skill: keep degenerate 3-seed selection or re-run seeds 42/43 with a nonce"], "post": "gepa_full/m_freeze", "url": "https://github.com/skillberry-ai/cap-evolve/issues/900#issuecomment-6310142889"}
 ```
+
+## CP-0172 · 2026-10-21T07:03Z · P4 isolation scan · result
+
+Isolation scan (counts only): gepa_full: test-id hits 0. Literal-string counts per location are in the pushed scan file.
+
+```json
+{"cp": 172, "prev_cp": 171, "prev_commit": "a58be84aee2fe8258f512294e7d0600c1317d1dc", "utc": "2026-10-21T07:03:52Z", "kind": "result", "phase": "P4", "done_through": "gepa_full/search/search finished: max_metric_calls reached", "next": "gepa_full/freeze", "candidate": "gepa_full", "counts": {"gepa_full": {"counted_rollouts": 809}}, "spend": {"gepa_full": {"in": 902011, "out": 61985, "proxy_usd": 2.42}}, "artifacts": {"STATE/isolation_scan.json": "2ee3b0997fd09c4a92d3ed45a3a6d905b20d4defbab8568028ad997c8190dd93"}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": ["trace2skill: keep degenerate 3-seed selection or re-run seeds 42/43 with a nonce"]}
+```
