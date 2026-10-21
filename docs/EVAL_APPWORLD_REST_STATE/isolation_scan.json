@@ -83,5 +83,63 @@
   },
   "test_id_hits": 0,
   "isolation_breach": false
+ },
+ "harnesslens": {
+  "locations": {
+   "optimizer calls": {
+    "files": 1,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "claude -p results": {
+    "files": 13,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "candidate state (driver, method)": {
+    "files": 1038,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "optimizer workspace (/tmp)": {
+    "files": 78,
+    "files_hit": 1,
+    "counts": {
+     "root_full": 2,
+     "ground_truth": 2,
+     "src/appworld/apps": 2
+    }
+   },
+   "frozen artifact": {
+    "files": 4,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "claude transcripts -tmp-aw-rest-opt-harnesslens-editor-iter": {
+    "files": 1,
+    "files_hit": 1,
+    "counts": {
+     "root_full": 2
+    }
+   },
+   "claude transcripts -tmp-aw-rest-opt-harnesslens-editor-acce": {
+    "files": 2,
+    "files_hit": 2,
+    "counts": {
+     "root_full": 4
+    }
+   },
+   "claude transcripts -tmp-aw-rest-opt-harnesslens-a9-ws": {
+    "files": 1,
+    "files_hit": 1,
+    "counts": {
+     "root_full": 5,
+     "ground_truth": 3,
+     "src/appworld/apps": 3
+    }
+   }
+  },
+  "test_id_hits": 0,
+  "isolation_breach": false
  }
 }
