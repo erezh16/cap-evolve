@@ -2915,3 +2915,11 @@ Isolation scan (counts only): trace2skill: test-id hits 0. Literal-string counts
 ```json
 {"cp": 200, "prev_cp": 199, "prev_commit": "9deef335deeb6f194661955be1991db6b25eb817", "utc": "2026-10-21T09:24:10Z", "kind": "result", "phase": "P4", "done_through": "trace2skill/search", "next": "trace2skill/freeze", "candidate": "trace2skill", "counts": {"trace2skill": {"counted_rollouts": 270, "cache_hits": 450}}, "spend": {"trace2skill": {"in": 3436541, "out": 940656, "usd": 16.28}}, "artifacts": {"STATE/isolation_scan.json": "ba88755626e90f26207953f077d7d4f1685e44be25d7cd4dc97fb8ecd8458f51"}, "code": "c6d95c12227f31f3da9c096cfad8332e9ace61a8", "open_decisions": []}
 ```
+
+## CP-0201 · 2026-10-21T09:24Z · P4 posted trace2skill · posted
+
+Posted 'Trace2Skill search ended' on #899 (trace2skill): https://github.com/skillberry-ai/cap-evolve/issues/899#issuecomment-6312582849
+
+```json
+{"cp": 201, "prev_cp": 200, "prev_commit": "4e96bf825127aff40a462c4750e6ce4956fad792", "utc": "2026-10-21T09:24:22Z", "kind": "posted", "phase": "P4", "done_through": "trace2skill/search", "next": "trace2skill/freeze", "candidate": "trace2skill", "counts": {"trace2skill": {"counted_rollouts": 270, "cache_hits": 450}}, "spend": {"trace2skill": {"in": 3436541, "out": 940656, "usd": 16.28}}, "artifacts": {}, "code": "c6d95c12227f31f3da9c096cfad8332e9ace61a8", "open_decisions": [], "post": "trace2skill/m4_search_done", "url": "https://github.com/skillberry-ai/cap-evolve/issues/899#issuecomment-6312582849"}
+```
