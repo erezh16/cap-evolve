@@ -1,0 +1,17 @@
+{
+ "candidate": "gepa_full",
+ "label": "",
+ "best_idx": 6,
+ "best_dev": 0.7192982456140351,
+ "seed_dev": 0.3333333333333333,
+ "num_candidates": 12,
+ "metric_calls": 894,
+ "end": "max_metric_calls reached",
+ "changed_components": [
+  "api_notes:file_system",
+  "policy/instructions.txt"
+ ],
+ "n_notes": 1,
+ "tree_sha256": "eb3d11d38bad1193cd20fc480f3d5de3ac04fc5e0bcf7002493bd7ae3187110e",
+ "seed_tree_sha256": "85a0da9cec2206a7bc683c11d60b5cb0acac7328d43c6e9197324d1e45971f3c"
+}

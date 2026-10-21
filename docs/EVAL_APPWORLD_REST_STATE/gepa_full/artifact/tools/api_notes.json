@@ -1,0 +1,3 @@
+{
+ "file_system": "Read each API's spec with show_api_doc before calling it, since parameter names must be exact and shouldn't be guessed from other apps. Most calls need an access_token from file_system.login (password from supervisor.show_account_passwords, account_name 'file_system'; username is the user's email). Some APIs reject access_token, so check the spec first."
+}
