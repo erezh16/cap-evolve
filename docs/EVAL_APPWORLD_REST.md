@@ -2207,3 +2207,11 @@ Trace2Skill search finished: 90 counted rollouts; seed train TGC 0.400; evolved 
 ```json
 {"cp": 112, "prev_cp": 111, "prev_commit": "0b100f02cd5aab73a281a160db609d9175e613bf", "utc": "2026-10-21T03:37:10Z", "kind": "result", "phase": "P4", "done_through": "trace2skill/search", "next": "trace2skill/freeze", "candidate": "trace2skill", "counts": {"trace2skill": {"counted_rollouts": 90, "cache_hits": 270}}, "spend": {"trace2skill": {"in": 2377302, "out": 612882, "usd": 10.88}}, "artifacts": {"STATE/trace2skill/progress.json": "61d8aaeb296284714f4c69ea7053d877b722fbb7c2b9c8520eadbc18e9897950"}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": []}
 ```
+
+## CP-0113 · 2026-10-21T03:37Z · P4 posted trace2skill · posted
+
+Posted 'Trace2Skill: search finished' on #899 (trace2skill): https://github.com/skillberry-ai/cap-evolve/issues/899#issuecomment-6307416689
+
+```json
+{"cp": 113, "prev_cp": 112, "prev_commit": "f7e336438656fa2752dedfb4fdbc487360f00faa", "utc": "2026-10-21T03:37:13Z", "kind": "posted", "phase": "P4", "done_through": "trace2skill/search", "next": "trace2skill/freeze", "candidate": "trace2skill", "counts": {"trace2skill": {"counted_rollouts": 90, "cache_hits": 270}}, "spend": {"trace2skill": {"in": 2377302, "out": 612882, "usd": 10.88}}, "artifacts": {}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": [], "post": "trace2skill/m_search_end", "url": "https://github.com/skillberry-ai/cap-evolve/issues/899#issuecomment-6307416689"}
+```
