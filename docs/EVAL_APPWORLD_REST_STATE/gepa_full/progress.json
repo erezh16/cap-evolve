@@ -1,16 +1,16 @@
 {
  "candidate": "gepa_full",
  "stage": "search running",
- "counted_rollouts": 369,
+ "counted_rollouts": 432,
  "cap": 900,
  "cache_hits": 75,
- "metric_calls": 444,
+ "metric_calls": 507,
  "max_metric_calls": 894,
- "iterations": 20,
- "accepted": 5,
- "best_search_score": 0.6667,
+ "iterations": 21,
+ "accepted": 6,
+ "best_search_score": 0.7193,
  "best_search_label": "dev TGC of the best Pareto candidate (57 dev tasks, the selection set: selection-biased)",
- "eta": "about 7.6 h of search left at the current rate",
+ "eta": "about 5.7 h of search left at the current rate",
  "components": {
   "policy/instructions.txt": {
    "visits": 1,
@@ -41,11 +41,11 @@
    "invalid": 2
   },
   "api_notes:file_system": {
-   "visits": 2,
-   "accepts": 1,
-   "fallbacks": 1,
-   "proposals": 2,
-   "invalid": 2
+   "visits": 3,
+   "accepts": 2,
+   "fallbacks": 2,
+   "proposals": 3,
+   "invalid": 3
   },
   "api_notes:gmail": {
    "visits": 3,
@@ -85,21 +85,21 @@
  },
  "proposer": {
   "lint_reject": 0,
-  "invalid_block": 19,
+  "invalid_block": 20,
   "parse_fail": 0,
   "refusals": 0,
   "gave_up": 2,
-  "calls": 33
+  "calls": 35
  },
  "lint_rejects": 0,
  "optimizer": {
-  "calls": 33,
+  "calls": 35,
   "errors": 0,
-  "prompt_tokens": 392400,
-  "completion_tokens": 38769,
+  "prompt_tokens": 414260,
+  "completion_tokens": 39494,
   "cache_read": 0,
   "cache_write": 0,
-  "seconds": 379.7,
-  "proxy_usd": 1.17
+  "seconds": 389.5,
+  "proxy_usd": 1.22
  }
 }
