@@ -2803,3 +2803,11 @@ User decision (2026-10-21): re-run Trace2Skill's evolution seeds 42 and 43 so th
 ```json
 {"cp": 186, "prev_cp": 185, "prev_commit": "89a8d76e5d0e743069b2fdf666e0cf42f2abf6cd", "utc": "2026-10-21T08:42:36Z", "kind": "decision", "phase": "P4", "done_through": "P4/decision", "next": "P4/trace2skill-rerun", "candidate": "trace2skill", "counts": {"gepa_full": {"counted_rollouts": 809}}, "spend": {"gepa_full": {"in": 902011, "out": 61985, "proxy_usd": 2.42}}, "artifacts": {}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": []}
 ```
+
+## CP-0187 · 2026-10-21T08:43Z · P4 posted trace2skill · posted
+
+Posted 'disclosure: evolution seeds re-run' on #899 (trace2skill): https://github.com/skillberry-ai/cap-evolve/issues/899#issuecomment-6311829631
+
+```json
+{"cp": 187, "prev_cp": 186, "prev_commit": "c6d95c12227f31f3da9c096cfad8332e9ace61a8", "utc": "2026-10-21T08:43:05Z", "kind": "posted", "phase": "P4", "done_through": "P4/decision", "next": "P4/trace2skill-rerun", "candidate": "trace2skill", "counts": {"gepa_full": {"counted_rollouts": 809}}, "spend": {"gepa_full": {"in": 902011, "out": 61985, "proxy_usd": 2.42}}, "artifacts": {}, "code": "c6d95c12227f31f3da9c096cfad8332e9ace61a8", "open_decisions": [], "post": "trace2skill/disclosure_seeds", "url": "https://github.com/skillberry-ai/cap-evolve/issues/899#issuecomment-6311829631"}
+```
