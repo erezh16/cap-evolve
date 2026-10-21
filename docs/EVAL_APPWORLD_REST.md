@@ -1823,3 +1823,11 @@ Posted 'HarnessLens hourly status' on #897 (harnesslens): https://github.com/ski
 ```json
 {"cp": 64, "prev_cp": 63, "prev_commit": "a610004b0bf1c41de7f533a6011cbf83488d59f1", "utc": "2026-10-21T00:35:05Z", "kind": "posted", "phase": "P4", "done_through": "gepa_full/search/iteration 6", "next": "gepa_full/search", "candidate": "gepa_full", "counts": {"gepa_full": {"counted_rollouts": 129}}, "spend": {"gepa_full": {"in": 82165, "out": 15097, "proxy_usd": 0.32}}, "artifacts": {}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": [], "post": "harnesslens/status_20261021T0035", "url": "https://github.com/skillberry-ai/cap-evolve/issues/897#issuecomment-6305012729"}
 ```
+
+## CP-0065 · 2026-10-21T00:35Z · P4 posted trace2skill · posted
+
+Posted 'Trace2Skill hourly status' on #899 (trace2skill): https://github.com/skillberry-ai/cap-evolve/issues/899#issuecomment-6305013509
+
+```json
+{"cp": 65, "prev_cp": 64, "prev_commit": "481f18afcd5251ff6a437dac65133597b7007562", "utc": "2026-10-21T00:35:09Z", "kind": "posted", "phase": "P4", "done_through": "gepa_full/search/iteration 6", "next": "gepa_full/search", "candidate": "gepa_full", "counts": {"gepa_full": {"counted_rollouts": 129}}, "spend": {"gepa_full": {"in": 82165, "out": 15097, "proxy_usd": 0.32}}, "artifacts": {}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": [], "post": "trace2skill/status_20261021T0035", "url": "https://github.com/skillberry-ai/cap-evolve/issues/899#issuecomment-6305013509"}
+```
