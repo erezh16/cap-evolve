@@ -3948,3 +3948,12 @@ Posted 'Cap-Evolve-improve hourly status' on #901 (cape_improve): https://github
 ```json
 {"cp": 320, "prev_cp": 319, "prev_commit": "6556df6f628239ae435fbff5c757ab31350d3472", "utc": "2026-10-21T15:53:17Z", "kind": "posted", "phase": "P7", "done_through": "final/1980", "next": "final/cells", "candidate": null, "counts": {"trace2skill": {"counted_rollouts": 270, "cache_hits": 450}}, "spend": {"trace2skill": {"in": 3436541, "out": 940656, "usd": 16.28}}, "artifacts": {}, "code": "30c11343482701d8e1a8a339e44b19035f7a150d", "open_decisions": [], "post": "cape_improve/status_20261021T1553", "url": "https://github.com/skillberry-ai/cap-evolve/issues/901#issuecomment-6320267544"}
 ```
+
+## CP-0321 · 2026-10-21T15:54Z · P7 final window · result
+
+final window: 19 cells since the last entry; 1999/2016 done (cape_improve 329, gepa_full 335, harnesslens 331, miprov2 335, seed 334, trace2skill 335); infra still missing 0, retries 12.
+Next: final remaining cells.
+
+```json
+{"cp": 321, "prev_cp": 320, "prev_commit": "544580c4e91ac312737681ed254b636024b4ed77", "utc": "2026-10-21T15:54:30Z", "kind": "result", "phase": "P7", "done_through": "final/1999", "next": "final/cells", "candidate": null, "counts": {"trace2skill": {"counted_rollouts": 270, "cache_hits": 450}}, "spend": {"trace2skill": {"in": 3436541, "out": 940656, "usd": 16.28}}, "artifacts": {"STATE/final/progress.json": "f9a5f26af8a77bfbdfdd6eda447378f809dbed0f01d2e16c82054e4b9b853ea7"}, "code": "30c11343482701d8e1a8a339e44b19035f7a150d", "open_decisions": [], "window": {"window": "final", "cells_total": 2016, "cells_done": 1999, "order_sha256": "1903a7f797ac0155773c2b71ce8fdbd590180df8ce86dd60deba45a384997962"}}
+```
