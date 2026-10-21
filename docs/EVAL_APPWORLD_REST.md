@@ -2899,3 +2899,11 @@ Posted 'Trace2Skill 25% of B' on #899 (trace2skill): https://github.com/skillber
 ```json
 {"cp": 198, "prev_cp": 197, "prev_commit": "8c047fcb5125e0108b22e3a27d359b210114c1ef", "utc": "2026-10-21T09:19:19Z", "kind": "posted", "phase": "P4", "done_through": "trace2skill/evolution/43", "next": "trace2skill/search", "candidate": "trace2skill", "counts": {"trace2skill": {"counted_rollouts": 90, "cache_hits": 360}}, "spend": {"trace2skill": {"in": 3436541, "out": 940656, "usd": 16.28}}, "artifacts": {}, "code": "c6d95c12227f31f3da9c096cfad8332e9ace61a8", "open_decisions": [], "post": "trace2skill/m4_budget_25", "url": "https://github.com/skillberry-ai/cap-evolve/issues/899#issuecomment-6312487752"}
 ```
+
+## CP-0199 · 2026-10-21T09:23Z · P4 trace2skill search finished · result
+
+Trace2Skill search finished: 270 counted rollouts; seed train TGC 0.400; evolved playbooks' train TGC seed 41: 0.778, seed 42: 0.800, seed 43: 0.778; selected evolution seed 42. Train scores are selection-biased.
+
+```json
+{"cp": 199, "prev_cp": 198, "prev_commit": "d7fcf8a3d345407b7f78f6be0164817a531fca45", "utc": "2026-10-21T09:23:51Z", "kind": "result", "phase": "P4", "done_through": "trace2skill/search", "next": "trace2skill/freeze", "candidate": "trace2skill", "counts": {"trace2skill": {"counted_rollouts": 270, "cache_hits": 450}}, "spend": {"trace2skill": {"in": 3436541, "out": 940656, "usd": 16.28}}, "artifacts": {"STATE/trace2skill/progress.json": "67a0bc272c0052768d4789b7a476cc74e08a8ad2532bf51b852c88db806994fd"}, "code": "c6d95c12227f31f3da9c096cfad8332e9ace61a8", "open_decisions": []}
+```

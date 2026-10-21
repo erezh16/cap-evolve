@@ -1,6 +1,6 @@
 {
- "stage": "search: selection (2/3 scored)",
- "counted_rollouts": 180,
+ "stage": "search done; waiting for freeze",
+ "counted_rollouts": 270,
  "cache_hits": 450,
  "optimizer": {
   "calls": 717,
@@ -14,5 +14,12 @@
  },
  "seed_train_tgc": 0.4,
  "best_search_score": 0.8,
- "best_search_label": "train TGC (90), selection-biased"
+ "best_search_label": "train TGC (90), selection-biased",
+ "selected_seed": "42",
+ "inert": false,
+ "per_seed_train_tgc": {
+  "41": 0.7778,
+  "42": 0.8,
+  "43": 0.7778
+ }
 }
