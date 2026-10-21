@@ -2183,3 +2183,11 @@ Trace2Skill evolution seed 43 done: 90 MAP patches, 1 file edits, 126 optimizer 
 ```json
 {"cp": 109, "prev_cp": 108, "prev_commit": "fbb784cd73390ebcdb4b2a3aaad8bfba8ade7a4e", "utc": "2026-10-21T03:10:21Z", "kind": "result", "phase": "P4", "done_through": "trace2skill/evolution/43", "next": "trace2skill/search", "candidate": "trace2skill", "counts": {"trace2skill": {"counted_rollouts": 0, "cache_hits": 90}}, "spend": {"trace2skill": {"in": 2377302, "out": 612882, "usd": 10.88}}, "artifacts": {"STATE/trace2skill/progress.json": "e8c79f6cbd1bac4ee8b4d9b88c322014203079f8f40cdb5b470782060a9db62b"}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": []}
 ```
+
+## CP-0110 · 2026-10-21T03:12Z · P4 posted trace2skill · posted
+
+Posted 'Trace2Skill search started' on #899 (trace2skill): https://github.com/skillberry-ai/cap-evolve/issues/899#issuecomment-6307090473
+
+```json
+{"cp": 110, "prev_cp": 109, "prev_commit": "ca7692421942e023f5b629047d86fdd049257358", "utc": "2026-10-21T03:12:12Z", "kind": "posted", "phase": "P4", "done_through": "trace2skill/evolution/43", "next": "trace2skill/search", "candidate": "trace2skill", "counts": {"trace2skill": {"counted_rollouts": 0, "cache_hits": 90}}, "spend": {"trace2skill": {"in": 2377302, "out": 612882, "usd": 10.88}}, "artifacts": {}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": [], "post": "trace2skill/m4_search_start", "url": "https://github.com/skillberry-ai/cap-evolve/issues/899#issuecomment-6307090473"}
+```
