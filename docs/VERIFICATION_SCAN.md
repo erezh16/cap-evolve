@@ -137,6 +137,37 @@ identical in all sessions"). A confirmed match is evidence too.
    The HTML is one self-contained file: inline CSS, no scripts and no external resources, so that
    Box's preview shows it. Check that the totals and per-arm figures in the rendered files equal
    those computed from `metrics_full.jsonl`.
+
+   Then write a high-level summary into the same folder as `data/metrics_summary.json` (pure JSON)
+   and `data/metrics_summary.md`. Every run folder has one. Both files show the same content. It
+   has one entry for the run's candidate and one for the **baseline** (the seed arm), and the
+   baseline is reported like any other candidate. For each entry:
+   1. **Train reward:** TGC and SGC of the candidate's champion at the end of the search, on the
+      search split. Name the split, the number of tasks and the round it comes from. This is a fit
+      metric (§C2).
+   2. **Test reward:** TGC and SGC of the champion in the held-out window. Name the window and the
+      number of tasks and trials.
+   3. **Phase cost:** tokens (prompt and completion) and USD for the train phase and for the test
+      phase, each with its source. The train phase is the optimizer calls plus the search episodes;
+      show the two parts as well as their sum.
+   4. **Task cost:** total and average agent cost (tokens and USD) per task, for all tasks,
+      successful tasks and failed tasks. Give each one for train, for test and for train and test
+      together, with the number of tasks next to each average. A task here is one episode (one task,
+      one trial). It is successful when it meets the benchmark's success criterion (for AppWorld:
+      every test passes, so it counts towards TGC). Optimizer cost is not a task cost.
+
+   For the baseline, train reward and train-phase cost come from the seed's own scoring on the search
+   split (for example a round-0 evaluation), if one exists. It has no optimizer calls, so the
+   optimizer part is `null` with the reason "not applicable: no search". Any figure that was not
+   measured is `null` with a reason. An average over zero tasks is `null` too, never `0`.
+
+   The baseline is scored once for all candidates in a window. So compute its entry **once per
+   window**, from that window's data, and put the identical entry into the summary of every run that
+   the window scores. Each summary names the window and the source file and sha256 of each entry.
+   Runs scored in different windows each get their own window's baseline (§B4).
+   Check that each figure equals the value computed from `metrics_full.jsonl` (or from the baseline's
+   source, for its entry). Check also that the baseline entry is byte-identical in every summary that
+   shares a window.
 5. Symlinks are listed in `SYMLINKS.txt` with their targets.
 6. The cap-evolve tools load the copy: `cap-evolve tail --from-start` exits 0, and the dashboard
    renders in memory.

@@ -68,7 +68,8 @@ its tools can load the backup.
                    models, providers, algorithm, iterations, trials, gate_k_se, sha, dates, conclusion)
   SCAN_RESULTS_<TS>.md   the verification scan's findings for this run (§6)
   data/            metrics.jsonl, steps.jsonl, report.md (ci/benchmarks/lib/metrics.py suite)
-                   + metrics_full.jsonl (§4) and its README
+                   + metrics_full.jsonl (§4) and its README, rendered as metrics_full.md/.html
+                   + metrics_summary.json/.md: high-level reward and cost, candidate and baseline (§4)
   capevolve/       project/ + run_<name>/ exactly as on disk (incl. .git, work/, rollouts/, candidates/)
   champion/        the scored artifact + capability.diff vs the seed
   rounds/rN_<id>/  per round: verdict (from events), diff.patch, the optimizer's PROCESS/DIAGNOSIS notes
@@ -105,6 +106,13 @@ place, one row per:
 Each value carries its **source**: measured, reported by a tool, or **estimated**, with the price
 used. If a cost is not available, write `null` with the reason (for example an unpriced endpoint).
 Never write `0` for an unpriced cost. Cross-check the episode rewards against the published results.
+
+Every run folder also has `data/metrics_summary.json` and `data/metrics_summary.md`, written from
+`metrics_full.jsonl` during the verification scan (`docs/VERIFICATION_SCAN.md` §D4). They give, for the
+run's candidate and for the baseline: the champion's train (search) and test reward (TGC, SGC), the
+token and USD cost of the train and test phases, and the total and average cost per task (all,
+successful, failed) for train, test and both. The baseline entry is computed once per window and is
+identical in every run that the window scores.
 
 ## 5. Reproducibility
 
