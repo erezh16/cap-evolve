@@ -1,0 +1,16 @@
+{
+ "stage": "search: analysts",
+ "counted_rollouts": 0,
+ "cache_hits": 90,
+ "optimizer": {
+  "calls": 0,
+  "errors": 0,
+  "prompt_tokens": 0,
+  "completion_tokens": 0,
+  "cache_read": 0,
+  "cache_write": 0,
+  "seconds": 0,
+  "proxy_usd": 0.0
+ },
+ "seed_train_tgc": 0.4
+}

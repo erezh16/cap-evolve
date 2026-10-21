@@ -2087,3 +2087,11 @@ P4: trace2skill chain started (search, freeze, isolation scan), pid file AW_STAT
 ```json
 {"cp": 97, "prev_cp": 96, "prev_commit": "f288a65a4a74a2d1b9d3e61b21fe1144f8379d63", "utc": "2026-10-21T03:02:34Z", "kind": "phase_start", "phase": "P4", "done_through": "gepa_full/search/iteration 15", "next": "gepa_full/search", "candidate": "trace2skill", "counts": {"gepa_full": {"counted_rollouts": 228}}, "spend": {"gepa_full": {"in": 288254, "out": 32529, "proxy_usd": 0.9}}, "artifacts": {}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": []}
 ```
+
+## CP-0098 · 2026-10-21T03:02Z · P4 trace2skill search started · result
+
+Trace2Skill search started: analysts over the shared seed's 90 train trajectories, then 3 evolution seeds and selection on train (270 counted rollouts).
+
+```json
+{"cp": 98, "prev_cp": 97, "prev_commit": "d916248da3fa0eeea98a4619320f82f4b975184d", "utc": "2026-10-21T03:02:36Z", "kind": "result", "phase": "P4", "done_through": "trace2skill/search-start", "next": "trace2skill/search", "candidate": "trace2skill", "counts": {"trace2skill": {"counted_rollouts": 0, "cache_hits": 90}}, "spend": {"trace2skill": {"in": 0, "out": 0, "usd": 0.0}}, "artifacts": {"STATE/trace2skill/progress.json": "75e0fa3b8a89d5f30c36a5d7f4f066c2a1036933cdcec6ccbae9df23ad76e3a5"}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": []}
+```
