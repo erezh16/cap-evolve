@@ -2851,3 +2851,11 @@ Posted 'Trace2Skill new best search-time score' on #899 (trace2skill): https://g
 ```json
 {"cp": 192, "prev_cp": 191, "prev_commit": "5d6c4b66e6fddb75f381c2deb8977a46935f7a74", "utc": "2026-10-21T08:52:00Z", "kind": "posted", "phase": "P4", "done_through": "trace2skill/evolution/43", "next": "trace2skill/search", "candidate": "trace2skill", "counts": {"trace2skill": {"counted_rollouts": 90, "cache_hits": 360}}, "spend": {"trace2skill": {"in": 3436541, "out": 940656, "usd": 16.28}}, "artifacts": {}, "code": "c6d95c12227f31f3da9c096cfad8332e9ace61a8", "open_decisions": [], "post": "trace2skill/m4_best_0.7778", "url": "https://github.com/skillberry-ai/cap-evolve/issues/899#issuecomment-6311987953"}
 ```
+
+## CP-0193 · 2026-10-21T08:55Z · P4 posted miprov2 · posted
+
+Posted 'MIPROv2 hourly status' on #898 (miprov2): https://github.com/skillberry-ai/cap-evolve/issues/898#issuecomment-6312042109
+
+```json
+{"cp": 193, "prev_cp": 192, "prev_commit": "2d8c53bc8878b9388c4aae276b14a0c5b04578f2", "utc": "2026-10-21T08:55:03Z", "kind": "posted", "phase": "P4", "done_through": "trace2skill/evolution/43", "next": "trace2skill/search", "candidate": "trace2skill", "counts": {"trace2skill": {"counted_rollouts": 90, "cache_hits": 360}}, "spend": {"trace2skill": {"in": 3436541, "out": 940656, "usd": 16.28}}, "artifacts": {}, "code": "c6d95c12227f31f3da9c096cfad8332e9ace61a8", "open_decisions": [], "post": "miprov2/status_20261021T0855", "url": "https://github.com/skillberry-ai/cap-evolve/issues/898#issuecomment-6312042109"}
+```
