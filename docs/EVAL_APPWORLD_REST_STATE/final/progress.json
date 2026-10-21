@@ -1,7 +1,7 @@
 {
  "window": "final",
  "cells_total": 2016,
- "cells_done": 1383,
+ "cells_done": 1385,
  "per_arm": {
   "harnesslens": {
    "done": 229,
@@ -16,7 +16,7 @@
    "context_exceeded": 0
   },
   "trace2skill": {
-   "done": 239,
+   "done": 240,
    "infra_missing": 0,
    "infra_retries": 1,
    "context_exceeded": 0
@@ -28,7 +28,7 @@
    "context_exceeded": 0
   },
   "miprov2": {
-   "done": 235,
+   "done": 236,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
