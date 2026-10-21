@@ -2151,3 +2151,11 @@ Posted 'GEPA-Full: accepted candidate' on #900 (gepa_full): https://github.com/s
 ```json
 {"cp": 105, "prev_cp": 104, "prev_commit": "bc1d4d5541edce4cd8f78057a57b1a28f0050ae8", "utc": "2026-10-21T03:07:29Z", "kind": "posted", "phase": "P4", "done_through": "gepa_full/search/iteration 16", "next": "gepa_full/search", "candidate": "gepa_full", "counts": {"gepa_full": {"counted_rollouts": 291}}, "spend": {"gepa_full": {"in": 342988, "out": 33315, "proxy_usd": 1.02}}, "artifacts": {}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": [], "post": "gepa_full/accept_it16", "url": "https://github.com/skillberry-ai/cap-evolve/issues/900#issuecomment-6307027839"}
 ```
+
+## CP-0106 · 2026-10-21T03:08Z · P4 posted harnesslens · posted
+
+Posted 'HarnessLens search started' on #897 (harnesslens): https://github.com/skillberry-ai/cap-evolve/issues/897#issuecomment-6307036261
+
+```json
+{"cp": 106, "prev_cp": 105, "prev_commit": "5d844a62dc6ee5b2ff1c35a108354257c4e6e60c", "utc": "2026-10-21T03:08:10Z", "kind": "posted", "phase": "P4", "done_through": "gepa_full/search/iteration 16", "next": "gepa_full/search", "candidate": "gepa_full", "counts": {"gepa_full": {"counted_rollouts": 291}}, "spend": {"gepa_full": {"in": 342988, "out": 33315, "proxy_usd": 1.02}}, "artifacts": {}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": [], "post": "harnesslens/m4_search_start", "url": "https://github.com/skillberry-ai/cap-evolve/issues/897#issuecomment-6307036261"}
+```
