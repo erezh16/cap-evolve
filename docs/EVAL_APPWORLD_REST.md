@@ -2039,3 +2039,11 @@ Isolation scan (counts only): miprov2: test-id hits 0. Literal-string counts per
 ```json
 {"cp": 91, "prev_cp": 90, "prev_commit": "1bd636c5a5da0086f24ea6595d113269b2479393", "utc": "2026-10-21T02:59:06Z", "kind": "result", "phase": "P4", "done_through": "gepa_full/search/iteration 15", "next": "gepa_full/search", "candidate": "miprov2", "counts": {"gepa_full": {"counted_rollouts": 228}}, "spend": {"gepa_full": {"in": 288254, "out": 32529, "proxy_usd": 0.9}}, "artifacts": {"STATE/isolation_scan.json": "56732997af97eb1832b1305fbd2647fbbc16a8e9bf06d2375bc2dc0a513997ae"}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": []}
 ```
+
+## CP-0092 · 2026-10-21T02:59Z · P4 harnesslens search · phase_start
+
+P4: harnesslens chain started (search, freeze, isolation scan), pid file AW_STATE/p4/harnesslens.pid. Running chains: cape_improve, gepa_full, harnesslens. Global slots 24; memory 17.48%.
+
+```json
+{"cp": 92, "prev_cp": 91, "prev_commit": "7148353b3d61463acd21dd48050b893866226c39", "utc": "2026-10-21T02:59:32Z", "kind": "phase_start", "phase": "P4", "done_through": "gepa_full/search/iteration 15", "next": "gepa_full/search", "candidate": "harnesslens", "counts": {"gepa_full": {"counted_rollouts": 228}}, "spend": {"gepa_full": {"in": 288254, "out": 32529, "proxy_usd": 0.9}}, "artifacts": {}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": []}
+```
