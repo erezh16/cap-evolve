@@ -4016,3 +4016,11 @@ Posted 'HarnessLens results' on #897 (harnesslens): https://github.com/skillberr
 ```json
 {"cp": 328, "prev_cp": 327, "prev_commit": "1eae896cec117df270347c355595dbaead5f7b00", "utc": "2026-10-21T16:13:39Z", "kind": "posted", "phase": "P9", "done_through": "P9/drafts", "next": "P9/post", "candidate": null, "counts": {"trace2skill": {"counted_rollouts": 270, "cache_hits": 450}}, "spend": {"trace2skill": {"in": 3436541, "out": 940656, "usd": 16.28}}, "artifacts": {}, "code": "1eae896cec117df270347c355595dbaead5f7b00", "open_decisions": [], "post": "harnesslens/results", "url": "https://github.com/skillberry-ai/cap-evolve/issues/897#issuecomment-6320706102"}
 ```
+
+## CP-0329 · 2026-10-21T16:13Z · P9 posted miprov2 · posted
+
+Posted 'MIPROv2 results' on #898 (miprov2): https://github.com/skillberry-ai/cap-evolve/issues/898#issuecomment-6320706919
+
+```json
+{"cp": 329, "prev_cp": 328, "prev_commit": "2b953164d7eddc2b75f71515d600d62e1529d756", "utc": "2026-10-21T16:13:42Z", "kind": "posted", "phase": "P9", "done_through": "P9/drafts", "next": "P9/post", "candidate": null, "counts": {"trace2skill": {"counted_rollouts": 270, "cache_hits": 450}}, "spend": {"trace2skill": {"in": 3436541, "out": 940656, "usd": 16.28}}, "artifacts": {}, "code": "1eae896cec117df270347c355595dbaead5f7b00", "open_decisions": [], "post": "miprov2/results", "url": "https://github.com/skillberry-ai/cap-evolve/issues/898#issuecomment-6320706919"}
+```
