@@ -2191,3 +2191,11 @@ Posted 'Trace2Skill search started' on #899 (trace2skill): https://github.com/sk
 ```json
 {"cp": 110, "prev_cp": 109, "prev_commit": "ca7692421942e023f5b629047d86fdd049257358", "utc": "2026-10-21T03:12:12Z", "kind": "posted", "phase": "P4", "done_through": "trace2skill/evolution/43", "next": "trace2skill/search", "candidate": "trace2skill", "counts": {"trace2skill": {"counted_rollouts": 0, "cache_hits": 90}}, "spend": {"trace2skill": {"in": 2377302, "out": 612882, "usd": 10.88}}, "artifacts": {}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": [], "post": "trace2skill/m4_search_start", "url": "https://github.com/skillberry-ai/cap-evolve/issues/899#issuecomment-6307090473"}
 ```
+
+## CP-0111 · 2026-10-21T03:20Z · P4 gepa_full search · result
+
+GEPA-Full iteration 18: iterations 18, accepted 4, best dev 0.6667 (selection-biased), metric calls 375/894. Counted rollouts 300/900, cache hits 75; optimizer 28 calls, proxy $1.05.
+
+```json
+{"cp": 111, "prev_cp": 110, "prev_commit": "44c27500c3e454f83350081fa1119835ee401d84", "utc": "2026-10-21T03:20:28Z", "kind": "result", "phase": "P4", "done_through": "gepa_full/search/iteration 18", "next": "gepa_full/search", "candidate": "gepa_full", "counts": {"gepa_full": {"counted_rollouts": 300}}, "spend": {"gepa_full": {"in": 353503, "out": 34157, "proxy_usd": 1.05}}, "artifacts": {"STATE/gepa_full/progress.json": "317ab184c178f4c578d844d720a739e95af2f459e029ac55e760b21a309e2c56"}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": []}
+```

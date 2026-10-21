@@ -1,16 +1,16 @@
 {
  "candidate": "gepa_full",
  "stage": "search running",
- "counted_rollouts": 297,
+ "counted_rollouts": 300,
  "cap": 900,
  "cache_hits": 75,
- "metric_calls": 372,
+ "metric_calls": 375,
  "max_metric_calls": 894,
- "iterations": 17,
+ "iterations": 18,
  "accepted": 4,
  "best_search_score": 0.6667,
  "best_search_label": "dev TGC of the best Pareto candidate (57 dev tasks, the selection set: selection-biased)",
- "eta": "about 10.2 h of search left at the current rate",
+ "eta": "about 10.3 h of search left at the current rate",
  "components": {
   "policy/instructions.txt": {
    "visits": 1,
