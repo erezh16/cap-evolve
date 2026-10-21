@@ -3027,3 +3027,12 @@ Posted 'dev diagnostic and isolation scan done; final window starting' on #901 (
 ```json
 {"cp": 214, "prev_cp": 213, "prev_commit": "523e09de47ee12179f8c599886da027e7b32721c", "utc": "2026-10-21T09:42:21Z", "kind": "posted", "phase": "P6", "done_through": "P6/scan", "next": "P7/final", "candidate": null, "counts": {"trace2skill": {"counted_rollouts": 270, "cache_hits": 450}}, "spend": {"trace2skill": {"in": 3436541, "out": 940656, "usd": 16.28}}, "artifacts": {}, "code": "6c51b6124d186ec67fc8f8f11bb14c335b9fa9c6", "open_decisions": [], "post": "cape_improve/p6_done", "url": "https://github.com/skillberry-ai/cap-evolve/issues/901#issuecomment-6312908470"}
 ```
+
+## CP-0215 · 2026-10-21T09:47Z · P7 final window · result
+
+final window: 29 cells since the last entry; 29/2016 done (cape_improve 5, gepa_full 5, harnesslens 2, miprov2 3, seed 9, trace2skill 5); infra still missing 0, retries 0.
+Next: final remaining cells.
+
+```json
+{"cp": 215, "prev_cp": 214, "prev_commit": "30c11343482701d8e1a8a339e44b19035f7a150d", "utc": "2026-10-21T09:47:22Z", "kind": "result", "phase": "P7", "done_through": "final/29", "next": "final/cells", "candidate": null, "counts": {"trace2skill": {"counted_rollouts": 270, "cache_hits": 450}}, "spend": {"trace2skill": {"in": 3436541, "out": 940656, "usd": 16.28}}, "artifacts": {"STATE/final/progress.json": "182c101ed215a333ab28199f3a6059333fd30b057d9c90294c749c69bb74302a"}, "code": "30c11343482701d8e1a8a339e44b19035f7a150d", "open_decisions": [], "window": {"window": "final", "cells_total": 2016, "cells_done": 29, "order_sha256": "1903a7f797ac0155773c2b71ce8fdbd590180df8ce86dd60deba45a384997962"}}
+```
