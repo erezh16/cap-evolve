@@ -1,22 +1,29 @@
 {
- "stage": "search stopped (exit 3)",
- "counted_rollouts": 0,
- "cache_hits": 12,
+ "stage": "frozen",
+ "counted_rollouts": 882,
+ "cache_hits": 159,
  "lint_rejects": 0,
- "iterations_done": 0,
- "accepted": 0,
- "iteration_vals": [],
- "baseline_val": null,
- "best_search_score": null,
+ "iterations_done": 6,
+ "accepted": 4,
+ "iteration_vals": [
+  0.5918367346938775,
+  0.6802721088435374,
+  0.7619047619047619,
+  0.8367346938775511,
+  0.8231292517006803,
+  0.8231292517006803
+ ],
+ "baseline_val": 0.3741496598639456,
+ "best_search_score": 0.8367346938775511,
  "best_search_label": "val = train ∪ dev (147), a fit metric, selection-biased",
- "metric_calls": null,
- "capevolve_optimizer_usd": null,
+ "metric_calls": 1029,
+ "capevolve_optimizer_usd": 79.55822724999999,
  "optimizer": {
-  "calls": 2,
-  "prompt_tokens": 80105,
-  "completion_tokens": 10463,
-  "cache_read": 200987,
-  "proxy_usd": 0.34
+  "calls": 6,
+  "prompt_tokens": 1823804,
+  "completion_tokens": 332074,
+  "cache_read": 24630466,
+  "proxy_usd": 12.75
  },
- "eta": "6 of 6 iterations left (about 40-60 min each)"
+ "eta": "0 of 6 iterations left (about 40-60 min each)"
 }

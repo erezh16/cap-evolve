@@ -2071,3 +2071,11 @@ Posted 'MIPROv2 isolation scan' on #898 (miprov2): https://github.com/skillberry
 ```json
 {"cp": 95, "prev_cp": 94, "prev_commit": "ee5dfd6c19fb3c9adfb564d66479ca5e0b4c5930", "utc": "2026-10-21T02:59:54Z", "kind": "posted", "phase": "P4", "done_through": "gepa_full/search/iteration 15", "next": "gepa_full/search", "candidate": "harnesslens", "counts": {"gepa_full": {"counted_rollouts": 228}}, "spend": {"gepa_full": {"in": 288254, "out": 32529, "proxy_usd": 0.9}}, "artifacts": {}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": [], "post": "miprov2/m4_scanned", "url": "https://github.com/skillberry-ai/cap-evolve/issues/898#issuecomment-6306930003"}
 ```
+
+## CP-0096 · 2026-10-21T03:02Z · P4 isolation scan · result
+
+Isolation scan (counts only): cape_improve: test-id hits 0. Literal-string counts per location are in the pushed scan file.
+
+```json
+{"cp": 96, "prev_cp": 95, "prev_commit": "e237399189be98691e779ccc5d1dd545550719db", "utc": "2026-10-21T03:02:10Z", "kind": "result", "phase": "P4", "done_through": "gepa_full/search/iteration 15", "next": "gepa_full/search", "candidate": "cape_improve", "counts": {"gepa_full": {"counted_rollouts": 228}}, "spend": {"gepa_full": {"in": 288254, "out": 32529, "proxy_usd": 0.9}}, "artifacts": {"STATE/isolation_scan.json": "b5df90ecdeaecd0390583e837a012078215ecea7a7d392f5e37954f575a3d611"}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": []}
+```

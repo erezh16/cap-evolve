@@ -24,5 +24,43 @@
   },
   "test_id_hits": 0,
   "isolation_breach": false
+ },
+ "cape_improve": {
+  "locations": {
+   "claude -p results": {
+    "files": 8,
+    "files_hit": 2,
+    "counts": {
+     "root_full": 8,
+     "ground_truth": 5,
+     "src/appworld/apps": 3
+    }
+   },
+   "candidate state (driver, method)": {
+    "files": 379,
+    "files_hit": 2,
+    "counts": {
+     "root_full": 8,
+     "ground_truth": 5,
+     "src/appworld/apps": 3
+    }
+   },
+   "optimizer workspace (/tmp)": {
+    "files": 3,
+    "files_hit": 1,
+    "counts": {
+     "root_full": 44,
+     "ground_truth": 25,
+     "src/appworld/apps": 13
+    }
+   },
+   "frozen artifact": {
+    "files": 4,
+    "files_hit": 0,
+    "counts": {}
+   }
+  },
+  "test_id_hits": 0,
+  "isolation_breach": false
  }
 }
