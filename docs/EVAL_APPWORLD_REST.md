@@ -2391,3 +2391,11 @@ Finding (trace2skill, after its chain finished): the three evolution seeds 41/42
 ```json
 {"cp": 135, "prev_cp": 134, "prev_commit": "e92ef4e1c0b2aa672f308d4e9501d98685cc20bc", "utc": "2026-10-21T04:32:29Z", "kind": "decision", "phase": "P4", "done_through": "gepa_full/search/iteration 27", "next": "gepa_full/search", "candidate": "trace2skill", "counts": {"gepa_full": {"counted_rollouts": 456}}, "spend": {"gepa_full": {"in": 539698, "out": 43737, "proxy_usd": 1.52}}, "artifacts": {}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": ["trace2skill: keep degenerate 3-seed selection or re-run seeds 42/43 with a nonce"]}
 ```
+
+## CP-0136 · 2026-10-21T04:34Z · P4 gepa_full search · result
+
+GEPA-Full iteration 28: iterations 28, accepted 6, best dev 0.7193 (selection-biased), metric calls 537/894. Counted rollouts 462/900, cache hits 75; optimizer 45 calls, proxy $1.59.
+
+```json
+{"cp": 136, "prev_cp": 135, "prev_commit": "d3c32738f26de831c190366983d42f75b10e0091", "utc": "2026-10-21T04:34:29Z", "kind": "result", "phase": "P4", "done_through": "gepa_full/search/iteration 28", "next": "gepa_full/search", "candidate": "gepa_full", "counts": {"gepa_full": {"counted_rollouts": 462}}, "spend": {"gepa_full": {"in": 567900, "out": 45853, "proxy_usd": 1.59}}, "artifacts": {"STATE/gepa_full/progress.json": "a5ce77adba37bff9c290c52fe16ae8f94a27c4b860903d59e45720528e82200d"}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": ["trace2skill: keep degenerate 3-seed selection or re-run seeds 42/43 with a nonce"]}
+```
