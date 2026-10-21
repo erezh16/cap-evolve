@@ -4048,3 +4048,11 @@ Posted 'Cap-Evolve-improve results' on #901 (cape_improve): https://github.com/s
 ```json
 {"cp": 332, "prev_cp": 331, "prev_commit": "4ceb274cd438af626ac9d59607f0cddabb530ac9", "utc": "2026-10-21T16:13:51Z", "kind": "posted", "phase": "P9", "done_through": "P9/drafts", "next": "P9/post", "candidate": null, "counts": {"trace2skill": {"counted_rollouts": 270, "cache_hits": 450}}, "spend": {"trace2skill": {"in": 3436541, "out": 940656, "usd": 16.28}}, "artifacts": {}, "code": "1eae896cec117df270347c355595dbaead5f7b00", "open_decisions": [], "post": "cape_improve/results", "url": "https://github.com/skillberry-ai/cap-evolve/issues/901#issuecomment-6320709392"}
 ```
+
+## CP-0333 · 2026-10-21T16:14Z · P9 evaluation complete · phase_done
+
+P9 done: results comments posted on #897 (HarnessLens), #898 (MIPROv2), #899 (Trace2Skill), #900 (GEPA-Full), #901 (Cap-Evolve-improve); URLs in the posted entries above. The evaluation of all five candidates is complete. root_full is locked (chmod 000). Background loops stopped: autopost (every issue has its results comment), heartbeat and memguard (nothing runs). Local state (AW_STATE: records, trajectories, optimizer logs, final cells) stays on /workspace/aw_rest and is never pushed.
+
+```json
+{"cp": 333, "prev_cp": 332, "prev_commit": "bb66238386c1c60f803ccd06ecb1ac448fc3f351", "utc": "2026-10-21T16:14:08Z", "kind": "phase_done", "phase": "P9", "done_through": "P9/post", "next": "done", "candidate": null, "counts": {"trace2skill": {"counted_rollouts": 270, "cache_hits": 450}}, "spend": {"trace2skill": {"in": 3436541, "out": 940656, "usd": 16.28}}, "artifacts": {}, "code": "1eae896cec117df270347c355595dbaead5f7b00", "open_decisions": []}
+```
