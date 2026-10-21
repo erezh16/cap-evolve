@@ -2883,3 +2883,11 @@ Posted 'GEPA-Full hourly status' on #900 (gepa_full): https://github.com/skillbe
 ```json
 {"cp": 196, "prev_cp": 195, "prev_commit": "fb7430c8821d326f3d1785097e918e23147df4ad", "utc": "2026-10-21T09:03:12Z", "kind": "posted", "phase": "P4", "done_through": "trace2skill/evolution/43", "next": "trace2skill/search", "candidate": "trace2skill", "counts": {"trace2skill": {"counted_rollouts": 90, "cache_hits": 360}}, "spend": {"trace2skill": {"in": 3436541, "out": 940656, "usd": 16.28}}, "artifacts": {}, "code": "c6d95c12227f31f3da9c096cfad8332e9ace61a8", "open_decisions": [], "post": "gepa_full/status_20261021T0903", "url": "https://github.com/skillberry-ai/cap-evolve/issues/900#issuecomment-6312189568"}
 ```
+
+## CP-0197 · 2026-10-21T09:11Z · P4 posted trace2skill · posted
+
+Posted 'Trace2Skill new best search-time score' on #899 (trace2skill): https://github.com/skillberry-ai/cap-evolve/issues/899#issuecomment-6312340601
+
+```json
+{"cp": 197, "prev_cp": 196, "prev_commit": "392960b3a7da9b6483eda5f9488a2e1dca8a0f81", "utc": "2026-10-21T09:11:15Z", "kind": "posted", "phase": "P4", "done_through": "trace2skill/evolution/43", "next": "trace2skill/search", "candidate": "trace2skill", "counts": {"trace2skill": {"counted_rollouts": 90, "cache_hits": 360}}, "spend": {"trace2skill": {"in": 3436541, "out": 940656, "usd": 16.28}}, "artifacts": {}, "code": "c6d95c12227f31f3da9c096cfad8332e9ace61a8", "open_decisions": [], "post": "trace2skill/m4_best_0.8", "url": "https://github.com/skillberry-ai/cap-evolve/issues/899#issuecomment-6312340601"}
+```

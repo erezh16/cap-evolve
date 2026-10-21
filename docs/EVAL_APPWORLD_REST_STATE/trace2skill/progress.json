@@ -1,6 +1,6 @@
 {
- "stage": "search: selection (1/3 scored)",
- "counted_rollouts": 90,
+ "stage": "search: selection (2/3 scored)",
+ "counted_rollouts": 180,
  "cache_hits": 450,
  "optimizer": {
   "calls": 717,
@@ -13,6 +13,6 @@
   "proxy_usd": 16.28
  },
  "seed_train_tgc": 0.4,
- "best_search_score": 0.7778,
+ "best_search_score": 0.8,
  "best_search_label": "train TGC (90), selection-biased"
 }
