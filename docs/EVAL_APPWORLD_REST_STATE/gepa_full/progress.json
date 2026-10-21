@@ -1,16 +1,16 @@
 {
  "candidate": "gepa_full",
  "stage": "search running",
- "counted_rollouts": 129,
+ "counted_rollouts": 192,
  "cap": 900,
  "cache_hits": 69,
- "metric_calls": 198,
+ "metric_calls": 261,
  "max_metric_calls": 894,
- "iterations": 6,
- "accepted": 2,
+ "iterations": 7,
+ "accepted": 3,
  "best_search_score": 0.6667,
  "best_search_label": "dev TGC of the best Pareto candidate (57 dev tasks, the selection set: selection-biased)",
- "eta": "about 19.0 h of search left at the current rate",
+ "eta": "about 12.1 h of search left at the current rate",
  "components": {
   "policy/instructions.txt": {
    "visits": 1,
@@ -39,6 +39,13 @@
    "fallbacks": 0,
    "proposals": 1,
    "invalid": 1
+  },
+  "api_notes:file_system": {
+   "visits": 1,
+   "accepts": 1,
+   "fallbacks": 0,
+   "proposals": 1,
+   "invalid": 0
   }
  },
  "proposer": {
@@ -47,17 +54,17 @@
   "parse_fail": 0,
   "refusals": 0,
   "gave_up": 1,
-  "calls": 7
+  "calls": 8
  },
  "lint_rejects": 0,
  "optimizer": {
-  "calls": 7,
+  "calls": 8,
   "errors": 0,
-  "prompt_tokens": 82165,
-  "completion_tokens": 15097,
+  "prompt_tokens": 86758,
+  "completion_tokens": 16004,
   "cache_read": 0,
   "cache_write": 0,
-  "seconds": 114.8,
-  "proxy_usd": 0.32
+  "seconds": 123.8,
+  "proxy_usd": 0.33
  }
 }
