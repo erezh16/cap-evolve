@@ -1,7 +1,7 @@
 {
  "window": "final",
  "cells_total": 2016,
- "cells_done": 2014,
+ "cells_done": 2016,
  "per_arm": {
   "harnesslens": {
    "done": 336,
@@ -16,9 +16,9 @@
    "context_exceeded": 0
   },
   "cape_improve": {
-   "done": 334,
+   "done": 336,
    "infra_missing": 0,
-   "infra_retries": 10,
+   "infra_retries": 11,
    "context_exceeded": 0
   },
   "gepa_full": {
