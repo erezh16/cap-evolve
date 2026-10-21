@@ -2431,3 +2431,11 @@ Posted 'MIPROv2 hourly status' on #898 (miprov2): https://github.com/skillberry-
 ```json
 {"cp": 140, "prev_cp": 139, "prev_commit": "47df480a8e646c8371c1c0e7e7bbd00078ead49e", "utc": "2026-10-21T04:57:44Z", "kind": "posted", "phase": "P4", "done_through": "gepa_full/search/iteration 29", "next": "gepa_full/search", "candidate": "gepa_full", "counts": {"gepa_full": {"counted_rollouts": 522}}, "spend": {"gepa_full": {"in": 578989, "out": 48190, "proxy_usd": 1.64}}, "artifacts": {}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": ["trace2skill: keep degenerate 3-seed selection or re-run seeds 42/43 with a nonce"], "post": "miprov2/status_20261021T0457", "url": "https://github.com/skillberry-ai/cap-evolve/issues/898#issuecomment-6308412677"}
 ```
+
+## CP-0141 · 2026-10-21T05:01Z · P4 posted cape_improve · posted
+
+Posted 'Cap-Evolve-improve hourly status' on #901 (cape_improve): https://github.com/skillberry-ai/cap-evolve/issues/901#issuecomment-6308461858
+
+```json
+{"cp": 141, "prev_cp": 140, "prev_commit": "ec929ab242b694d1a72afac9db53175692679101", "utc": "2026-10-21T05:01:47Z", "kind": "posted", "phase": "P4", "done_through": "gepa_full/search/iteration 29", "next": "gepa_full/search", "candidate": "gepa_full", "counts": {"gepa_full": {"counted_rollouts": 522}}, "spend": {"gepa_full": {"in": 578989, "out": 48190, "proxy_usd": 1.64}}, "artifacts": {}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": ["trace2skill: keep degenerate 3-seed selection or re-run seeds 42/43 with a nonce"], "post": "cape_improve/status_20261021T0501", "url": "https://github.com/skillberry-ai/cap-evolve/issues/901#issuecomment-6308461858"}
+```
