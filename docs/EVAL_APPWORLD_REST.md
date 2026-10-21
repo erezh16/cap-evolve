@@ -2819,3 +2819,11 @@ Posted 'search result: inert at the token cap' on #897 (harnesslens): https://gi
 ```json
 {"cp": 188, "prev_cp": 187, "prev_commit": "187113b7b011929917aea4002ff88349cdb6b7ac", "utc": "2026-10-21T08:43:08Z", "kind": "posted", "phase": "P4", "done_through": "P4/decision", "next": "P4/trace2skill-rerun", "candidate": "trace2skill", "counts": {"gepa_full": {"counted_rollouts": 809}}, "spend": {"gepa_full": {"in": 902011, "out": 61985, "proxy_usd": 2.42}}, "artifacts": {}, "code": "c6d95c12227f31f3da9c096cfad8332e9ace61a8", "open_decisions": [], "post": "harnesslens/disclosure_inert", "url": "https://github.com/skillberry-ai/cap-evolve/issues/897#issuecomment-6311830403"}
 ```
+
+## CP-0189 · 2026-10-21T08:43Z · P4 trace2skill search · phase_start
+
+P4: trace2skill chain started (search, freeze, isolation scan), pid file AW_STATE/p4/trace2skill.pid. Running chains: trace2skill. Global slots 24; memory 4.24%.
+
+```json
+{"cp": 189, "prev_cp": 188, "prev_commit": "d11ca4e2c2106b24ee801ad2cc614f02f35a83a6", "utc": "2026-10-21T08:43:09Z", "kind": "phase_start", "phase": "P4", "done_through": "P4/decision", "next": "P4/trace2skill-rerun", "candidate": "trace2skill", "counts": {"gepa_full": {"counted_rollouts": 809}}, "spend": {"gepa_full": {"in": 902011, "out": 61985, "proxy_usd": 2.42}}, "artifacts": {}, "code": "c6d95c12227f31f3da9c096cfad8332e9ace61a8", "open_decisions": []}
+```
