@@ -2777,3 +2777,13 @@ Posted 'GEPA-Full hourly status' on #900 (gepa_full): https://github.com/skillbe
 ```json
 {"cp": 183, "prev_cp": 182, "prev_commit": "c09a64372f4ba63ccdee7ed2359380688b80c0a8", "utc": "2026-10-21T08:03:52Z", "kind": "posted", "phase": "P4", "done_through": "P4/searches", "next": "P4/decision", "candidate": null, "counts": {"gepa_full": {"counted_rollouts": 809}}, "spend": {"gepa_full": {"in": 902011, "out": 61985, "proxy_usd": 2.42}}, "artifacts": {}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": ["trace2skill: keep degenerate 3-seed selection or re-run seeds 42/43 with a nonce"], "post": "gepa_full/status_20261021T0803", "url": "https://github.com/skillberry-ai/cap-evolve/issues/900#issuecomment-6311131341"}
 ```
+
+## CP-0184 · 2026-10-21T08:28Z · P4 heartbeat · heartbeat
+
+No checkpoint for 25 min. Phase P4, last result: P4/searches.
+Runner: no runner. Last log line: `2026-10-21T08:28:45Z | memguard | - | sample 4.11% (1347 MB) state OK peak 47.8%`.
+Next: P4/decision.
+
+```json
+{"cp": 184, "prev_cp": 183, "prev_commit": "b671a0757d64eed9770883cebe9708d85c39cf75", "utc": "2026-10-21T08:28:59Z", "kind": "heartbeat", "phase": "P4", "done_through": "P4/searches", "next": "P4/decision", "candidate": null, "counts": {"gepa_full": {"counted_rollouts": 809}}, "spend": {"gepa_full": {"in": 902011, "out": 61985, "proxy_usd": 2.42}}, "artifacts": {}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": ["trace2skill: keep degenerate 3-seed selection or re-run seeds 42/43 with a nonce"], "runner": "none"}
+```
