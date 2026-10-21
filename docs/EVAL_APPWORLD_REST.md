@@ -1839,3 +1839,11 @@ Posted 'Cap-Evolve-improve hourly status' on #901 (cape_improve): https://github
 ```json
 {"cp": 66, "prev_cp": 65, "prev_commit": "846a493e2c9f223ad661e262e009c02efd803215", "utc": "2026-10-21T00:43:12Z", "kind": "posted", "phase": "P4", "done_through": "gepa_full/search/iteration 6", "next": "gepa_full/search", "candidate": "gepa_full", "counts": {"gepa_full": {"counted_rollouts": 129}}, "spend": {"gepa_full": {"in": 82165, "out": 15097, "proxy_usd": 0.32}}, "artifacts": {}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": [], "post": "cape_improve/status_20261021T0043", "url": "https://github.com/skillberry-ai/cap-evolve/issues/901#issuecomment-6305119915"}
 ```
+
+## CP-0067 · 2026-10-21T00:46Z · P4 miprov2 search · result
+
+MIPROv2 search: 7 minibatch trials, 2 full evals after the default; best full-eval dev score 71.93; counted rollouts 247 of 900.
+
+```json
+{"cp": 67, "prev_cp": 66, "prev_commit": "08a4968087322481ad0632eb1ea3e906a0ee72ee", "utc": "2026-10-21T00:46:54Z", "kind": "result", "phase": "P4", "done_through": "gepa_full/search/iteration 6", "next": "gepa_full/search", "candidate": "miprov2", "counts": {"miprov2": {"counted_rollouts": 247}}, "spend": {"gepa_full": {"in": 82165, "out": 15097, "proxy_usd": 0.32}}, "artifacts": {}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": []}
+```
