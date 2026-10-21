@@ -1,10 +1,10 @@
 {
  "window": "final",
  "cells_total": 2016,
- "cells_done": 2012,
+ "cells_done": 2014,
  "per_arm": {
   "harnesslens": {
-   "done": 335,
+   "done": 336,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
@@ -22,7 +22,7 @@
    "context_exceeded": 0
   },
   "gepa_full": {
-   "done": 335,
+   "done": 336,
    "infra_missing": 0,
    "infra_retries": 1,
    "context_exceeded": 0
