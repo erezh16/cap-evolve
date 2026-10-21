@@ -3201,3 +3201,11 @@ Posted 'MIPROv2 hourly status' on #898 (miprov2): https://github.com/skillberry-
 ```json
 {"cp": 234, "prev_cp": 233, "prev_commit": "1b9a064bcdc0b10b26f46cbb3913b48309cb1ba5", "utc": "2026-10-21T10:53:38Z", "kind": "posted", "phase": "P7", "done_through": "final/385", "next": "final/cells", "candidate": null, "counts": {"trace2skill": {"counted_rollouts": 270, "cache_hits": 450}}, "spend": {"trace2skill": {"in": 3436541, "out": 940656, "usd": 16.28}}, "artifacts": {}, "code": "30c11343482701d8e1a8a339e44b19035f7a150d", "open_decisions": [], "post": "miprov2/status_20261021T1053", "url": "https://github.com/skillberry-ai/cap-evolve/issues/898#issuecomment-6314191284"}
 ```
+
+## CP-0235 · 2026-10-21T10:56Z · P7 posted harnesslens · posted
+
+Posted 'HarnessLens hourly status' on #897 (harnesslens): https://github.com/skillberry-ai/cap-evolve/issues/897#issuecomment-6314242631
+
+```json
+{"cp": 235, "prev_cp": 234, "prev_commit": "44a5bea101566f0fce9e0cc143b27dfb24a5cc5c", "utc": "2026-10-21T10:56:41Z", "kind": "posted", "phase": "P7", "done_through": "final/385", "next": "final/cells", "candidate": null, "counts": {"trace2skill": {"counted_rollouts": 270, "cache_hits": 450}}, "spend": {"trace2skill": {"in": 3436541, "out": 940656, "usd": 16.28}}, "artifacts": {}, "code": "30c11343482701d8e1a8a339e44b19035f7a150d", "open_decisions": [], "post": "harnesslens/status_20261021T1056", "url": "https://github.com/skillberry-ai/cap-evolve/issues/897#issuecomment-6314242631"}
+```
