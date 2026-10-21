@@ -1,6 +1,6 @@
 {
- "counted_rollouts": 479,
- "cache_hits": 511,
+ "counted_rollouts": 558,
+ "cache_hits": 581,
  "optimizer": {
   "calls": 74,
   "errors": 0,
@@ -11,11 +11,18 @@
   "seconds": 450.2,
   "proxy_usd": 1.05
  },
- "updated": "2026-10-21T02:32:25Z",
- "stage": "search running",
+ "updated": "2026-10-21T02:59:05Z",
+ "stage": "frozen",
  "demo_pool": 34,
- "minibatch_trials": 15,
- "full_evals": 3,
+ "minibatch_trials": 16,
+ "full_evals": 5,
  "best_search_score": 0.7368,
- "best_search_label": "dev TGC of the best full-eval program (selection-biased)"
+ "best_search_label": "dev TGC of the best full-eval program (selection-biased)",
+ "proposal_stats": {
+  "proposed": 5,
+  "lint_rejected": 0,
+  "reproposed": 0,
+  "replaced_by_0": 0,
+  "errors": 0
+ }
 }

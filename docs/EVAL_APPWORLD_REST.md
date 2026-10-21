@@ -2031,3 +2031,11 @@ Posted 'GEPA-Full: 25% of B' on #900 (gepa_full): https://github.com/skillberry-
 ```json
 {"cp": 90, "prev_cp": 89, "prev_commit": "9d15acedf1a9a38c10f95657df5ec025bd544593", "utc": "2026-10-21T02:37:02Z", "kind": "posted", "phase": "P4", "done_through": "gepa_full/search/iteration 15", "next": "gepa_full/search", "candidate": "gepa_full", "counts": {"gepa_full": {"counted_rollouts": 228}}, "spend": {"gepa_full": {"in": 288254, "out": 32529, "proxy_usd": 0.9}}, "artifacts": {}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": [], "post": "gepa_full/budget_q1", "url": "https://github.com/skillberry-ai/cap-evolve/issues/900#issuecomment-6306605594"}
 ```
+
+## CP-0091 · 2026-10-21T02:59Z · P4 isolation scan · result
+
+Isolation scan (counts only): miprov2: test-id hits 0. Literal-string counts per location are in the pushed scan file.
+
+```json
+{"cp": 91, "prev_cp": 90, "prev_commit": "1bd636c5a5da0086f24ea6595d113269b2479393", "utc": "2026-10-21T02:59:06Z", "kind": "result", "phase": "P4", "done_through": "gepa_full/search/iteration 15", "next": "gepa_full/search", "candidate": "miprov2", "counts": {"gepa_full": {"counted_rollouts": 228}}, "spend": {"gepa_full": {"in": 288254, "out": 32529, "proxy_usd": 0.9}}, "artifacts": {"STATE/isolation_scan.json": "56732997af97eb1832b1305fbd2647fbbc16a8e9bf06d2375bc2dc0a513997ae"}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": []}
+```

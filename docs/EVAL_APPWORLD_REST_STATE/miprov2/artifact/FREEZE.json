@@ -1,0 +1,17 @@
+{
+ "tree_sha256": "a4ff3a502879f5206e5b32161f244c939635eb7d5bd70be59a8f9af01db6314a",
+ "inert": false,
+ "best_full_eval_dev_score": 73.68,
+ "full_evals": 5,
+ "counted_rollouts": 558,
+ "demos": 2,
+ "instruction_changed": true,
+ "stopped_early": null,
+ "proposal_stats": {
+  "proposed": 5,
+  "lint_rejected": 0,
+  "reproposed": 0,
+  "replaced_by_0": 0,
+  "errors": 0
+ }
+}

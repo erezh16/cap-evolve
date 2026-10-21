@@ -1,0 +1,28 @@
+{
+ "miprov2": {
+  "locations": {
+   "optimizer calls": {
+    "files": 1,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "candidate state (driver, method)": {
+    "files": 28,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "optimizer workspace (/tmp)": {
+    "files": 0,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "frozen artifact": {
+    "files": 2,
+    "files_hit": 0,
+    "counts": {}
+   }
+  },
+  "test_id_hits": 0,
+  "isolation_breach": false
+ }
+}
