@@ -2987,3 +2987,11 @@ P5 dev diagnostic done (57 dev, 1 trial, seed 100; selection-biased for arms tha
 ```json
 {"cp": 209, "prev_cp": 208, "prev_commit": "37799a1590285a2519daa1916e73f4027defd0e0", "utc": "2026-10-21T09:41:51Z", "kind": "phase_done", "phase": "P6", "done_through": "P6/scan", "next": "P7/final", "candidate": null, "counts": {"trace2skill": {"counted_rollouts": 270, "cache_hits": 450}}, "spend": {"trace2skill": {"in": 3436541, "out": 940656, "usd": 16.28}}, "artifacts": {"STATE/p5dev/progress.json": "3a40a5decb1fb5400d6b65241218f4d4d9d4892547a7562d3236b30fc5d4c87e", "STATE/isolation_scan.json": "219b11af4f980e72cee6d76aefc063da198962d997daae6692d7726c02cef4ec"}, "code": "6c51b6124d186ec67fc8f8f11bb14c335b9fa9c6", "open_decisions": []}
 ```
+
+## CP-0210 · 2026-10-21T09:42Z · P6 posted harnesslens · posted
+
+Posted 'dev diagnostic and isolation scan done; final window starting' on #897 (harnesslens): https://github.com/skillberry-ai/cap-evolve/issues/897#issuecomment-6312905073
+
+```json
+{"cp": 210, "prev_cp": 209, "prev_commit": "dec953fc19f60e8667592c26b09dfa63f67ad448", "utc": "2026-10-21T09:42:09Z", "kind": "posted", "phase": "P6", "done_through": "P6/scan", "next": "P7/final", "candidate": null, "counts": {"trace2skill": {"counted_rollouts": 270, "cache_hits": 450}}, "spend": {"trace2skill": {"in": 3436541, "out": 940656, "usd": 16.28}}, "artifacts": {}, "code": "6c51b6124d186ec67fc8f8f11bb14c335b9fa9c6", "open_decisions": [], "post": "harnesslens/p6_done", "url": "https://github.com/skillberry-ai/cap-evolve/issues/897#issuecomment-6312905073"}
+```
