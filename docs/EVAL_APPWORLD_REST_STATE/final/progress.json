@@ -1,40 +1,40 @@
 {
  "window": "final",
  "cells_total": 2016,
- "cells_done": 1586,
+ "cells_done": 1606,
  "per_arm": {
   "harnesslens": {
-   "done": 254,
+   "done": 259,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
   },
   "miprov2": {
-   "done": 267,
+   "done": 270,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
   },
   "cape_improve": {
-   "done": 257,
+   "done": 260,
    "infra_missing": 0,
    "infra_retries": 6,
    "context_exceeded": 0
   },
   "trace2skill": {
-   "done": 271,
+   "done": 277,
    "infra_missing": 0,
    "infra_retries": 1,
    "context_exceeded": 0
   },
   "seed": {
-   "done": 265,
+   "done": 266,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
   },
   "gepa_full": {
-   "done": 272,
+   "done": 274,
    "infra_missing": 0,
    "infra_retries": 1,
    "context_exceeded": 0
