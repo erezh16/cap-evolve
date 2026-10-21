@@ -2199,3 +2199,11 @@ GEPA-Full iteration 18: iterations 18, accepted 4, best dev 0.6667 (selection-bi
 ```json
 {"cp": 111, "prev_cp": 110, "prev_commit": "44c27500c3e454f83350081fa1119835ee401d84", "utc": "2026-10-21T03:20:28Z", "kind": "result", "phase": "P4", "done_through": "gepa_full/search/iteration 18", "next": "gepa_full/search", "candidate": "gepa_full", "counts": {"gepa_full": {"counted_rollouts": 300}}, "spend": {"gepa_full": {"in": 353503, "out": 34157, "proxy_usd": 1.05}}, "artifacts": {"STATE/gepa_full/progress.json": "317ab184c178f4c578d844d720a739e95af2f459e029ac55e760b21a309e2c56"}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": []}
 ```
+
+## CP-0112 · 2026-10-21T03:37Z · P4 trace2skill search finished · result
+
+Trace2Skill search finished: 90 counted rollouts; seed train TGC 0.400; evolved playbooks' train TGC seed 41: 0.778, seed 42: 0.778, seed 43: 0.778; selected evolution seed 43. Train scores are selection-biased.
+
+```json
+{"cp": 112, "prev_cp": 111, "prev_commit": "0b100f02cd5aab73a281a160db609d9175e613bf", "utc": "2026-10-21T03:37:10Z", "kind": "result", "phase": "P4", "done_through": "trace2skill/search", "next": "trace2skill/freeze", "candidate": "trace2skill", "counts": {"trace2skill": {"counted_rollouts": 90, "cache_hits": 270}}, "spend": {"trace2skill": {"in": 2377302, "out": 612882, "usd": 10.88}}, "artifacts": {"STATE/trace2skill/progress.json": "61d8aaeb296284714f4c69ea7053d877b722fbb7c2b9c8520eadbc18e9897950"}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": []}
+```

@@ -1,16 +1,25 @@
 {
- "stage": "search: evolution seed 43",
- "counted_rollouts": 0,
- "cache_hits": 90,
+ "stage": "search done; waiting for freeze",
+ "counted_rollouts": 90,
+ "cache_hits": 270,
  "optimizer": {
-  "calls": 342,
+  "calls": 468,
   "errors": 0,
-  "prompt_tokens": 1843792,
-  "completion_tokens": 443513,
+  "prompt_tokens": 2377302,
+  "completion_tokens": 612882,
   "cache_read": 0,
   "cache_write": 0,
-  "seconds": 2283.9,
-  "proxy_usd": 8.12
+  "seconds": 2808.0,
+  "proxy_usd": 10.88
  },
- "seed_train_tgc": 0.4
+ "seed_train_tgc": 0.4,
+ "best_search_score": 0.7778,
+ "best_search_label": "train TGC (90), selection-biased",
+ "selected_seed": "43",
+ "inert": false,
+ "per_seed_train_tgc": {
+  "41": 0.7778,
+  "42": 0.7778,
+  "43": 0.7778
+ }
 }
