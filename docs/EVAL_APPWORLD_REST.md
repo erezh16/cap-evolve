@@ -3078,3 +3078,11 @@ Posted 'Cap-Evolve-improve hourly status' on #901 (cape_improve): https://github
 ```json
 {"cp": 220, "prev_cp": 219, "prev_commit": "3ceab7a0867f06031a5fb574ec19b99f333028d3", "utc": "2026-10-21T09:58:23Z", "kind": "posted", "phase": "P7", "done_through": "final/93", "next": "final/cells", "candidate": null, "counts": {"trace2skill": {"counted_rollouts": 270, "cache_hits": 450}}, "spend": {"trace2skill": {"in": 3436541, "out": 940656, "usd": 16.28}}, "artifacts": {}, "code": "30c11343482701d8e1a8a339e44b19035f7a150d", "open_decisions": [], "post": "cape_improve/status_20261021T0958", "url": "https://github.com/skillberry-ai/cap-evolve/issues/901#issuecomment-6313215613"}
 ```
+
+## CP-0221 · 2026-10-21T10:02Z · P7 posted gepa_full · posted
+
+Posted 'GEPA-Full hourly status' on #900 (gepa_full): https://github.com/skillberry-ai/cap-evolve/issues/900#issuecomment-6313289244
+
+```json
+{"cp": 221, "prev_cp": 220, "prev_commit": "40ef251b89b26b93d0ca4da8fe2b244355ec3aba", "utc": "2026-10-21T10:02:26Z", "kind": "posted", "phase": "P7", "done_through": "final/93", "next": "final/cells", "candidate": null, "counts": {"trace2skill": {"counted_rollouts": 270, "cache_hits": 450}}, "spend": {"trace2skill": {"in": 3436541, "out": 940656, "usd": 16.28}}, "artifacts": {}, "code": "30c11343482701d8e1a8a339e44b19035f7a150d", "open_decisions": [], "post": "gepa_full/status_20261021T1002", "url": "https://github.com/skillberry-ai/cap-evolve/issues/900#issuecomment-6313289244"}
+```
