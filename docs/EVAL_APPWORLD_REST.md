@@ -2159,3 +2159,11 @@ Posted 'HarnessLens search started' on #897 (harnesslens): https://github.com/sk
 ```json
 {"cp": 106, "prev_cp": 105, "prev_commit": "5d844a62dc6ee5b2ff1c35a108354257c4e6e60c", "utc": "2026-10-21T03:08:10Z", "kind": "posted", "phase": "P4", "done_through": "gepa_full/search/iteration 16", "next": "gepa_full/search", "candidate": "gepa_full", "counts": {"gepa_full": {"counted_rollouts": 291}}, "spend": {"gepa_full": {"in": 342988, "out": 33315, "proxy_usd": 1.02}}, "artifacts": {}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": [], "post": "harnesslens/m4_search_start", "url": "https://github.com/skillberry-ai/cap-evolve/issues/897#issuecomment-6307036261"}
 ```
+
+## CP-0107 · 2026-10-21T03:08Z · P4 trace2skill evolution seed 41 · result
+
+Trace2Skill evolution seed 41 done: 90 MAP patches, 1 file edits, 126 optimizer calls; playbook 4923 tokens, 0 condensation(s), lint clean.
+
+```json
+{"cp": 107, "prev_cp": 106, "prev_commit": "0d1e1f8e3ac21ab9c5ebb3548ac83ebabd161225", "utc": "2026-10-21T03:08:48Z", "kind": "result", "phase": "P4", "done_through": "trace2skill/evolution/41", "next": "trace2skill/search", "candidate": "trace2skill", "counts": {"trace2skill": {"counted_rollouts": 0, "cache_hits": 90}}, "spend": {"trace2skill": {"in": 1310282, "out": 274144, "usd": 5.36}}, "artifacts": {"STATE/trace2skill/progress.json": "3f3270d69038887709d0edb6482fa727f82e706e4e3cd68d8599a9eb92f8c728"}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": []}
+```
