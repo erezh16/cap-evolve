@@ -622,9 +622,9 @@ def freeze() -> int:
     if v:
         raise SystemExit(f"best program fails the lint: {v}")
     art = PUSHED / "artifact"
-    (art / "policy").mkdir(parents=True, exist_ok=True)
-    text = (cdir / "policy" / "instructions.txt").read_text(encoding="utf-8")
-    P.atomic_write(art / "policy" / "instructions.txt", text)
+    for rel, text in E.read_surfaces(cdir).items():   # every surface, so the frozen tree equals the champion's
+        P.atomic_write(art / rel, text)
+    (art / "memory").mkdir(parents=True, exist_ok=True)
     inert = E.tree_hash(cdir) == E.seed_hash()
     P.write_json(art / "FREEZE.json", {
         "tree_sha256": E.tree_hash(cdir), "inert": inert, "best_full_eval_dev_score": res.get("best_score"),

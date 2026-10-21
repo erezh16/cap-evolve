@@ -2955,3 +2955,11 @@ Trace2Skill re-run done (decision CP-0186). Seeds 42 and 43 sampled independentl
 ```json
 {"cp": 205, "prev_cp": 204, "prev_commit": "b993ab1eeddbd64135deb45a7958742bb05b94dd", "utc": "2026-10-21T09:24:50Z", "kind": "result", "phase": "P4", "done_through": "P4/searches", "next": "P5/dev", "candidate": "trace2skill", "counts": {"trace2skill": {"counted_rollouts": 270, "cache_hits": 450}}, "spend": {"trace2skill": {"in": 3436541, "out": 940656, "usd": 16.28}}, "artifacts": {}, "code": "c6d95c12227f31f3da9c096cfad8332e9ace61a8", "open_decisions": []}
 ```
+
+## CP-0206 · 2026-10-21T09:26Z · P5 freeze fixes · repair
+
+Freeze check before P5 found two problems, both fixed before any P5 episode: (1) the miprov2 freeze published only policy/instructions.txt; the champion's other surfaces equal the seed's, but the missing files gave the frozen tree a different hash (e3c7...) from the champion's (a4ff...), so the window would have scored a candidate whose hash matches no search record. The freeze now copies every surface; re-frozen, the hash is a4ff... and equals FREEZE.json. (2) harnesslens's FREEZE.json had inert=true but no label; labelled 'inert'. All five frozen tree hashes now equal their FREEZE.json; harnesslens = SEED_HASH (inert, a seed copy in the window). Next: P5 dev diagnostic.
+
+```json
+{"cp": 206, "prev_cp": 205, "prev_commit": "e6d0a52e0c6f20c33e8ad211c385521d0266fb8b", "utc": "2026-10-21T09:26:35Z", "kind": "repair", "phase": "P5", "done_through": "P4/searches", "next": "P5/dev", "candidate": "trace2skill", "counts": {"trace2skill": {"counted_rollouts": 270, "cache_hits": 450}}, "spend": {"trace2skill": {"in": 3436541, "out": 940656, "usd": 16.28}}, "artifacts": {"STATE/manifest.json": "b16f6d9a7691a16057a5a236dc8c352d0b8298b45aca0ce64bcae3e6c684fa33"}, "code": "c6d95c12227f31f3da9c096cfad8332e9ace61a8", "open_decisions": []}
+```

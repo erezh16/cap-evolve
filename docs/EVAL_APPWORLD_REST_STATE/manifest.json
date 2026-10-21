@@ -176,5 +176,24 @@
  "seed": {
   "SEED_HASH": "85a0da9cec2206a7bc683c11d60b5cb0acac7328d43c6e9197324d1e45971f3c",
   "baseline": "STATE/seed/baseline.json"
+ },
+ "freeze": {
+  "tree_sha256": {
+   "seed": "85a0da9cec2206a7bc683c11d60b5cb0acac7328d43c6e9197324d1e45971f3c",
+   "harnesslens": "85a0da9cec2206a7bc683c11d60b5cb0acac7328d43c6e9197324d1e45971f3c",
+   "miprov2": "a4ff3a502879f5206e5b32161f244c939635eb7d5bd70be59a8f9af01db6314a",
+   "trace2skill": "a6b03deb2a044ed4c74920d02d6589b2113530ffd9053a947854152a8e4e5b6f",
+   "gepa_full": "eb3d11d38bad1193cd20fc480f3d5de3ac04fc5e0bcf7002493bd7ae3187110e",
+   "cape_improve": "7d5614a96268f552bad70e6e1a5b04628641fc2454aac7ed960d95ccbd10c72f"
+  },
+  "labels": {
+   "seed": "seed",
+   "harnesslens": "inert",
+   "miprov2": "",
+   "trace2skill": "",
+   "gepa_full": "",
+   "cape_improve": ""
+  },
+  "utc": "2026-10-21T09:26:35Z"
  }
 }
