@@ -1,16 +1,16 @@
 {
- "stage": "search: evolution seed 42",
+ "stage": "search: evolution seed 43",
  "counted_rollouts": 90,
  "cache_hits": 360,
  "optimizer": {
-  "calls": 468,
+  "calls": 592,
   "errors": 0,
-  "prompt_tokens": 2377302,
-  "completion_tokens": 612882,
+  "prompt_tokens": 2908656,
+  "completion_tokens": 780545,
   "cache_read": 0,
   "cache_write": 0,
-  "seconds": 2808.0,
-  "proxy_usd": 10.88
+  "seconds": 4122.2,
+  "proxy_usd": 13.62
  },
  "seed_train_tgc": 0.4
 }
