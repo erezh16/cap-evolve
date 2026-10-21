@@ -4000,3 +4000,11 @@ P7 done (2,016/2,016 cells, 0 missing; root_full relocked). P8 analysis done (fi
 ```json
 {"cp": 326, "prev_cp": 325, "prev_commit": "e81f91117b6e6edbe34dd31da439e7bebd96c900", "utc": "2026-10-21T16:11:22Z", "kind": "phase_done", "phase": "P8", "done_through": "P8/analysis", "next": "P9/post", "candidate": null, "counts": {"trace2skill": {"counted_rollouts": 270, "cache_hits": 450}}, "spend": {"trace2skill": {"in": 3436541, "out": 940656, "usd": 16.28}}, "artifacts": {"STATE/final/analysis.json": "6219516eb09347e225dcb250c5abdc207e2065e1a1b5755b2ded290d1c46be9c", "STATE/final/RESULTS.md": "93e44980f67007e54fc665a56c606144050e7f780300853da39efb311398150d"}, "code": "30c11343482701d8e1a8a339e44b19035f7a150d", "open_decisions": []}
 ```
+
+## CP-0327 · 2026-10-21T16:13Z · P9 results drafts · result
+
+P9: the five per-candidate results comments drafted in docs/EVAL_APPWORLD_REST_STATE/<cand>/RESULTS.md by scripts/report.py, built only from final/analysis.json, the pushed state and the pushed artifacts; each passed the content filter. Each has: setup, main table vs seed with CI, difficulty table, agent cost/token/latency table, search-phase cost/token/latency/budget table, artifact summary, isolation counts, a 'what this is and is not' section, and what the numbers cannot support (no ranking). cape_improve's adds the I1-I6 improvement evidence. Next: post.
+
+```json
+{"cp": 327, "prev_cp": 326, "prev_commit": "7a1c8c222e2bc8b843ea76dcd9c42e126cc6c738", "utc": "2026-10-21T16:13:36Z", "kind": "result", "phase": "P9", "done_through": "P9/drafts", "next": "P9/post", "candidate": null, "counts": {"trace2skill": {"counted_rollouts": 270, "cache_hits": 450}}, "spend": {"trace2skill": {"in": 3436541, "out": 940656, "usd": 16.28}}, "artifacts": {"STATE/harnesslens/RESULTS.md": "b4658ca8f613af7c31ca0829dc43ac8ddbf67d9c054064945b06dbc96d60a083", "STATE/miprov2/RESULTS.md": "b1fc529ff38a66593404ac69aaf48caafef60b80bc3013de0d3a5e9bf00796ba", "STATE/trace2skill/RESULTS.md": "2a69fc2d9beb945d9c0c0e8fcc848c3e91521fa2af779d87e24370027cf9b878", "STATE/gepa_full/RESULTS.md": "63aa5753ff7fca7ebe1ca442c2cb00dddbe21bd4f8ba68cdb6c9b2cc3c8b0019", "STATE/cape_improve/RESULTS.md": "1cee24a22422e517e066d9355d905c48346ab4e09548091d2d1f020e6de30e5d"}, "code": "7a1c8c222e2bc8b843ea76dcd9c42e126cc6c738", "open_decisions": []}
+```
