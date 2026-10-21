@@ -1911,3 +1911,11 @@ MIPROv2 search: 10 minibatch trials, 3 full evals after the default; best full-e
 ```json
 {"cp": 75, "prev_cp": 74, "prev_commit": "a8ba08e37ee2971d3edad42dc8536bc2a25341c1", "utc": "2026-10-21T01:37:54Z", "kind": "result", "phase": "P4", "done_through": "gepa_full/search/iteration 8", "next": "gepa_full/search", "candidate": "miprov2", "counts": {"miprov2": {"counted_rollouts": 304}}, "spend": {"gepa_full": {"in": 103346, "out": 22985, "proxy_usd": 0.44}}, "artifacts": {}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": []}
 ```
+
+## CP-0076 · 2026-10-21T01:38Z · P4 posted miprov2 · posted
+
+Posted 'MIPROv2 new best search-time score' on #898 (miprov2): https://github.com/skillberry-ai/cap-evolve/issues/898#issuecomment-6305866957
+
+```json
+{"cp": 76, "prev_cp": 75, "prev_commit": "fa578cbba3dd9e948b97ec25925ed54c75aa35e5", "utc": "2026-10-21T01:38:26Z", "kind": "posted", "phase": "P4", "done_through": "gepa_full/search/iteration 8", "next": "gepa_full/search", "candidate": "miprov2", "counts": {"miprov2": {"counted_rollouts": 304}}, "spend": {"gepa_full": {"in": 103346, "out": 22985, "proxy_usd": 0.44}}, "artifacts": {}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": [], "post": "miprov2/m4_best_0.7368", "url": "https://github.com/skillberry-ai/cap-evolve/issues/898#issuecomment-6305866957"}
+```
