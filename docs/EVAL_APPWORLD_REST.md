@@ -2399,3 +2399,11 @@ GEPA-Full iteration 28: iterations 28, accepted 6, best dev 0.7193 (selection-bi
 ```json
 {"cp": 136, "prev_cp": 135, "prev_commit": "d3c32738f26de831c190366983d42f75b10e0091", "utc": "2026-10-21T04:34:29Z", "kind": "result", "phase": "P4", "done_through": "gepa_full/search/iteration 28", "next": "gepa_full/search", "candidate": "gepa_full", "counts": {"gepa_full": {"counted_rollouts": 462}}, "spend": {"gepa_full": {"in": 567900, "out": 45853, "proxy_usd": 1.59}}, "artifacts": {"STATE/gepa_full/progress.json": "a5ce77adba37bff9c290c52fe16ae8f94a27c4b860903d59e45720528e82200d"}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": ["trace2skill: keep degenerate 3-seed selection or re-run seeds 42/43 with a nonce"]}
 ```
+
+## CP-0137 · 2026-10-21T04:37Z · P4 posted trace2skill · posted
+
+Posted 'Trace2Skill hourly status' on #899 (trace2skill): https://github.com/skillberry-ai/cap-evolve/issues/899#issuecomment-6308167464
+
+```json
+{"cp": 137, "prev_cp": 136, "prev_commit": "cec9931cb176d6f77577271fc8b754fcffbd0b43", "utc": "2026-10-21T04:37:41Z", "kind": "posted", "phase": "P4", "done_through": "gepa_full/search/iteration 28", "next": "gepa_full/search", "candidate": "gepa_full", "counts": {"gepa_full": {"counted_rollouts": 462}}, "spend": {"gepa_full": {"in": 567900, "out": 45853, "proxy_usd": 1.59}}, "artifacts": {}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": ["trace2skill: keep degenerate 3-seed selection or re-run seeds 42/43 with a nonce"], "post": "trace2skill/status_20261021T0437", "url": "https://github.com/skillberry-ai/cap-evolve/issues/899#issuecomment-6308167464"}
+```
