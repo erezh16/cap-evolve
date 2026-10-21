@@ -1,0 +1,20 @@
+{
+ "stage": "search running",
+ "iteration": 0,
+ "accepted": 0,
+ "rejected": 0,
+ "materialization_or_preflight_failures": 0,
+ "current_version": "v0",
+ "counted_rollouts": 0,
+ "budget_rollouts": 900,
+ "cache_hits": 90,
+ "optimizer_calls": 38,
+ "optimizer_tokens_in": 1033138,
+ "optimizer_tokens_out": 155059,
+ "optimizer_cache_read": 0,
+ "proxy_usd": 3.62,
+ "best_search_score": null,
+ "best_search_label": "pass@1 of the last accepted confirmation (10 TRAIN tasks; selection-biased)",
+ "eta": null,
+ "t": "2026-10-21T03:05:58Z"
+}
