@@ -2761,3 +2761,11 @@ Posted 'Cap-Evolve-improve hourly status' on #901 (cape_improve): https://github
 ```json
 {"cp": 181, "prev_cp": 180, "prev_commit": "be0ad72af84d9865e76c10d86ae8c8a2b36bf10a", "utc": "2026-10-21T07:59:49Z", "kind": "posted", "phase": "P4", "done_through": "P4/searches", "next": "P5/dev", "candidate": null, "counts": {"gepa_full": {"counted_rollouts": 809}}, "spend": {"gepa_full": {"in": 902011, "out": 61985, "proxy_usd": 2.42}}, "artifacts": {}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": ["trace2skill: keep degenerate 3-seed selection or re-run seeds 42/43 with a nonce"], "post": "cape_improve/status_20261021T0759", "url": "https://github.com/skillberry-ai/cap-evolve/issues/901#issuecomment-6311059947"}
 ```
+
+## CP-0182 · 2026-10-21T08:00Z · P4 P5 on hold · decision
+
+P4 finished at 07:04 (all five chains search, freeze, scan; the P4 runner exited normally). Outcomes (search-set, selection-biased): cape_improve champion cand_0004, val 0.837 on train+dev (seed 0.374), 882 counted; gepa_full best dev 0.719 (seed 0.333), 12 candidates, 809 counted, stop at max_metric_calls; miprov2 best full-eval dev 0.737, 558 counted; harnesslens INERT: 13 iterations, 0 accepted, stopped at the 10M optimizer-token cap after 162 counted rollouts (frozen as the seed); trace2skill train 0.778 (seed 0.400), 90 counted, degenerate 3-seed selection (CP-0135). Isolation scans: 0 test-id hits for all five. P5 (dev diagnostic) is NOT started: the open trace2skill decision (CP-0135) may change its artifact, and the user has raised restarting the evaluation; nothing that depends on the frozen artifacts runs until the user decides.
+
+```json
+{"cp": 182, "prev_cp": 181, "prev_commit": "29c8b14406d0a885ec0452f3fcc7125259c7ede9", "utc": "2026-10-21T08:00:49Z", "kind": "decision", "phase": "P4", "done_through": "P4/searches", "next": "P4/decision", "candidate": null, "counts": {"gepa_full": {"counted_rollouts": 809}}, "spend": {"gepa_full": {"in": 902011, "out": 61985, "proxy_usd": 2.42}}, "artifacts": {}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": ["trace2skill: keep degenerate 3-seed selection or re-run seeds 42/43 with a nonce"]}
+```
