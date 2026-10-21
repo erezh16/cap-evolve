@@ -130,9 +130,14 @@ class AnthropicGatewayClient:
     return_reasoning=False) -> str`. ModelSettings.to_dict() always holds a temperature; it is dropped here, as is
     max_tokens (fixed at 16,000). No generation config, no seed, no disk cache."""
 
-    def __init__(self, cand: str, roles: dict[str, str] | None = None):
+    def __init__(self, cand: str, roles: dict[str, str] | None = None, nonce: str | None = None):
         self.cand, self.roles = cand, dict(roles or {})
         self.model = P.OPT_MODEL
+        # Decision CP-0186: the gateway answers a byte-identical request from a response cache, and Trace2Skill's
+        # evolution seed travels only in a generation config the gateway rejects, so seeds 42/43 replayed seed 41.
+        # A per-seed run line at the end of the system prompt makes each seed's requests distinct, so each samples
+        # independently. Seed 41 (already run, before the decision) has none; seeds 42 and 43 do.
+        self.nonce = nonce
 
     def role_of(self, system: str) -> str:
         for prefix, role in self.roles.items():
@@ -143,7 +148,10 @@ class AnthropicGatewayClient:
     def chat(self, messages, settings=None, return_reasoning: bool = False):
         msgs = [{"role": m.role, "content": m.content} for m in messages]
         system = "\n\n".join(m["content"] for m in msgs if m["role"] == "system")
-        reply = opt_llm.chat([m for m in msgs if m["role"] != "system"], cand=self.cand, role=self.role_of(system),
+        role = self.role_of(system)
+        if self.nonce:
+            system = (system + "\n\n" if system else "") + f"(Independent evolution run: {self.nonce}.)"
+        reply = opt_llm.chat([m for m in msgs if m["role"] != "system"], cand=self.cand, role=role,
                              system=system or None, max_tokens=MAX_TOKENS)
         return (reply, "") if return_reasoning else reply
 
@@ -253,7 +261,10 @@ def analyze(logs_dir: Path, out_dir: Path, cand: str) -> tuple[list[dict], list[
 
 # ---------------------------------------------------------------- 3. evolution (one seed)
 
-def evolve(records: list[dict], skill_dir: Path, inter: Path, cand: str) -> dict:
+NONCE_SEEDS = (42, 43)                  # decision CP-0186
+
+
+def evolve(records: list[dict], skill_dir: Path, inter: Path, cand: str, seed: int | None = None) -> dict:
     SEA, PSA, PEA = load_trace2skill()
     validator_env()
     shutil.rmtree(skill_dir, ignore_errors=True)
@@ -261,7 +272,7 @@ def evolve(records: list[dict], skill_dir: Path, inter: Path, cand: str) -> dict
     (skill_dir / "SKILL.md").write_text(START_SKILL, encoding="utf-8")
     shutil.rmtree(inter, ignore_errors=True)
     inter.mkdir(parents=True)
-    client = AnthropicGatewayClient(cand)
+    client = AnthropicGatewayClient(cand, nonce=f"seed {seed}" if seed in NONCE_SEEDS else None)
     ev = PSA.CombinedParallelSkillEvolver(
         client=client, skill_dir=skill_dir, batch_size=SETTINGS["batch_size"],
         merge_batch_size=SETTINGS["merge_batch_size"], max_workers=MAX_WORKERS,
@@ -411,7 +422,8 @@ def search() -> int:
             continue
         wait_memory()
         write_progress(f"search: evolution seed {k}", seed_train_tgc=round(seed_score, 4))
-        info = evolve((err, suc), d / "skill", d / "intermediates", CAND)
+        info = evolve((err, suc), d / "skill", d / "intermediates", CAND, seed=k)
+        info["nonce"] = f"seed {k}" if k in NONCE_SEEDS else None
         info["package"] = package(d / "skill", d, CAND)
         P.write_json(d / "DONE.json", info)
         milestone(f"evolution seed {k}", f"Trace2Skill evolution seed {k} done: {info['map_patches']} MAP patches, "
