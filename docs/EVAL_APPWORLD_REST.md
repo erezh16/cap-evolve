@@ -3003,3 +3003,11 @@ Posted 'dev diagnostic and isolation scan done; final window starting' on #898 (
 ```json
 {"cp": 211, "prev_cp": 210, "prev_commit": "b7feceeaf873a12ac278e52bdd4531329cf3e87a", "utc": "2026-10-21T09:42:13Z", "kind": "posted", "phase": "P6", "done_through": "P6/scan", "next": "P7/final", "candidate": null, "counts": {"trace2skill": {"counted_rollouts": 270, "cache_hits": 450}}, "spend": {"trace2skill": {"in": 3436541, "out": 940656, "usd": 16.28}}, "artifacts": {}, "code": "6c51b6124d186ec67fc8f8f11bb14c335b9fa9c6", "open_decisions": [], "post": "miprov2/p6_done", "url": "https://github.com/skillberry-ai/cap-evolve/issues/898#issuecomment-6312905933"}
 ```
+
+## CP-0212 · 2026-10-21T09:42Z · P6 posted trace2skill · posted
+
+Posted 'dev diagnostic and isolation scan done; final window starting' on #899 (trace2skill): https://github.com/skillberry-ai/cap-evolve/issues/899#issuecomment-6312906763
+
+```json
+{"cp": 212, "prev_cp": 211, "prev_commit": "b55556787165c9335c5658e8f5694f6ee3e54ac1", "utc": "2026-10-21T09:42:15Z", "kind": "posted", "phase": "P6", "done_through": "P6/scan", "next": "P7/final", "candidate": null, "counts": {"trace2skill": {"counted_rollouts": 270, "cache_hits": 450}}, "spend": {"trace2skill": {"in": 3436541, "out": 940656, "usd": 16.28}}, "artifacts": {}, "code": "6c51b6124d186ec67fc8f8f11bb14c335b9fa9c6", "open_decisions": [], "post": "trace2skill/p6_done", "url": "https://github.com/skillberry-ai/cap-evolve/issues/899#issuecomment-6312906763"}
+```
