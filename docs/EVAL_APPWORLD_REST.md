@@ -2811,3 +2811,11 @@ Posted 'disclosure: evolution seeds re-run' on #899 (trace2skill): https://githu
 ```json
 {"cp": 187, "prev_cp": 186, "prev_commit": "c6d95c12227f31f3da9c096cfad8332e9ace61a8", "utc": "2026-10-21T08:43:05Z", "kind": "posted", "phase": "P4", "done_through": "P4/decision", "next": "P4/trace2skill-rerun", "candidate": "trace2skill", "counts": {"gepa_full": {"counted_rollouts": 809}}, "spend": {"gepa_full": {"in": 902011, "out": 61985, "proxy_usd": 2.42}}, "artifacts": {}, "code": "c6d95c12227f31f3da9c096cfad8332e9ace61a8", "open_decisions": [], "post": "trace2skill/disclosure_seeds", "url": "https://github.com/skillberry-ai/cap-evolve/issues/899#issuecomment-6311829631"}
 ```
+
+## CP-0188 · 2026-10-21T08:43Z · P4 posted harnesslens · posted
+
+Posted 'search result: inert at the token cap' on #897 (harnesslens): https://github.com/skillberry-ai/cap-evolve/issues/897#issuecomment-6311830403
+
+```json
+{"cp": 188, "prev_cp": 187, "prev_commit": "187113b7b011929917aea4002ff88349cdb6b7ac", "utc": "2026-10-21T08:43:08Z", "kind": "posted", "phase": "P4", "done_through": "P4/decision", "next": "P4/trace2skill-rerun", "candidate": "trace2skill", "counts": {"gepa_full": {"counted_rollouts": 809}}, "spend": {"gepa_full": {"in": 902011, "out": 61985, "proxy_usd": 2.42}}, "artifacts": {}, "code": "c6d95c12227f31f3da9c096cfad8332e9ace61a8", "open_decisions": [], "post": "harnesslens/disclosure_inert", "url": "https://github.com/skillberry-ai/cap-evolve/issues/897#issuecomment-6311830403"}
+```
