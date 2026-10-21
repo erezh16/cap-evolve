@@ -2753,3 +2753,11 @@ Posted 'HarnessLens hourly status' on #897 (harnesslens): https://github.com/ski
 ```json
 {"cp": 180, "prev_cp": 179, "prev_commit": "4a6cac7204a667af88bbf32faed8845c055df5ed", "utc": "2026-10-21T07:58:46Z", "kind": "posted", "phase": "P4", "done_through": "P4/searches", "next": "P5/dev", "candidate": null, "counts": {"gepa_full": {"counted_rollouts": 809}}, "spend": {"gepa_full": {"in": 902011, "out": 61985, "proxy_usd": 2.42}}, "artifacts": {}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": ["trace2skill: keep degenerate 3-seed selection or re-run seeds 42/43 with a nonce"], "post": "harnesslens/status_20261021T0758", "url": "https://github.com/skillberry-ai/cap-evolve/issues/897#issuecomment-6311042242"}
 ```
+
+## CP-0181 · 2026-10-21T07:59Z · P4 posted cape_improve · posted
+
+Posted 'Cap-Evolve-improve hourly status' on #901 (cape_improve): https://github.com/skillberry-ai/cap-evolve/issues/901#issuecomment-6311059947
+
+```json
+{"cp": 181, "prev_cp": 180, "prev_commit": "be0ad72af84d9865e76c10d86ae8c8a2b36bf10a", "utc": "2026-10-21T07:59:49Z", "kind": "posted", "phase": "P4", "done_through": "P4/searches", "next": "P5/dev", "candidate": null, "counts": {"gepa_full": {"counted_rollouts": 809}}, "spend": {"gepa_full": {"in": 902011, "out": 61985, "proxy_usd": 2.42}}, "artifacts": {}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": ["trace2skill: keep degenerate 3-seed selection or re-run seeds 42/43 with a nonce"], "post": "cape_improve/status_20261021T0759", "url": "https://github.com/skillberry-ai/cap-evolve/issues/901#issuecomment-6311059947"}
+```
