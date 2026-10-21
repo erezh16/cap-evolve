@@ -2971,3 +2971,11 @@ P5 dev diagnostic done (57 dev tasks, 1 trial, seed 100; the seed's numbers are 
 ```json
 {"cp": 207, "prev_cp": 206, "prev_commit": "6c51b6124d186ec67fc8f8f11bb14c335b9fa9c6", "utc": "2026-10-21T09:38:45Z", "kind": "phase_done", "phase": "P5", "done_through": "P5/dev", "next": "P6/scan", "candidate": "trace2skill", "counts": {"trace2skill": {"counted_rollouts": 270, "cache_hits": 450}}, "spend": {"trace2skill": {"in": 3436541, "out": 940656, "usd": 16.28}}, "artifacts": {"STATE/p5dev/progress.json": "3a40a5decb1fb5400d6b65241218f4d4d9d4892547a7562d3236b30fc5d4c87e"}, "code": "6c51b6124d186ec67fc8f8f11bb14c335b9fa9c6", "open_decisions": []}
 ```
+
+## CP-0208 · 2026-10-21T09:40Z · P6 isolation scan · result
+
+Isolation scan (counts only): harnesslens: test-id hits 0; miprov2: test-id hits 0; trace2skill: test-id hits 0; gepa_full: test-id hits 0; cape_improve: test-id hits 0; orchestrating sessions: test-id hits 0 over 42 files. Literal-string counts per location are in the pushed scan file.
+
+```json
+{"cp": 208, "prev_cp": 207, "prev_commit": "6400f54fbf9b94bf883fb99818fac698c669870c", "utc": "2026-10-21T09:40:39Z", "kind": "result", "phase": "P6", "done_through": "P6/scan", "next": "P7/final", "candidate": null, "counts": {"trace2skill": {"counted_rollouts": 270, "cache_hits": 450}}, "spend": {"trace2skill": {"in": 3436541, "out": 940656, "usd": 16.28}}, "artifacts": {"STATE/isolation_scan.json": "219b11af4f980e72cee6d76aefc063da198962d997daae6692d7726c02cef4ec"}, "code": "6c51b6124d186ec67fc8f8f11bb14c335b9fa9c6", "open_decisions": []}
+```

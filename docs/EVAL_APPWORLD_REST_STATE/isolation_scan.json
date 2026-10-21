@@ -17,7 +17,7 @@
     "counts": {}
    },
    "frozen artifact": {
-    "files": 2,
+    "files": 4,
     "files_hit": 0,
     "counts": {}
    }
@@ -71,7 +71,7 @@
     "counts": {}
    },
    "candidate state (driver, method)": {
-    "files": 1404,
+    "files": 1405,
     "files_hit": 0,
     "counts": {}
    },
@@ -162,5 +162,20 @@
   },
   "test_id_hits": 0,
   "isolation_breach": false
+ },
+ "_orchestrating_sessions": {
+  "files": 42,
+  "counts": {
+   "test_normal": 260,
+   "test_challenge": 138,
+   "root_full": 414,
+   "ground_truth": 128,
+   "answer.json": 93,
+   "compiled_solution": 63,
+   "generate/tasks": 18,
+   "src/appworld/apps": 71,
+   "solution.py": 103
+  },
+  "test_id_hits": 0
  }
 }
