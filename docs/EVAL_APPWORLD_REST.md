@@ -2063,3 +2063,11 @@ Posted 'MIPROv2 champion frozen' on #898 (miprov2): https://github.com/skillberr
 ```json
 {"cp": 94, "prev_cp": 93, "prev_commit": "08a7f24547cce03ce023eeda74613cb95ba24408", "utc": "2026-10-21T02:59:51Z", "kind": "posted", "phase": "P4", "done_through": "gepa_full/search/iteration 15", "next": "gepa_full/search", "candidate": "harnesslens", "counts": {"gepa_full": {"counted_rollouts": 228}}, "spend": {"gepa_full": {"in": 288254, "out": 32529, "proxy_usd": 0.9}}, "artifacts": {}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": [], "post": "miprov2/m4_frozen", "url": "https://github.com/skillberry-ai/cap-evolve/issues/898#issuecomment-6306929393"}
 ```
+
+## CP-0095 · 2026-10-21T02:59Z · P4 posted miprov2 · posted
+
+Posted 'MIPROv2 isolation scan' on #898 (miprov2): https://github.com/skillberry-ai/cap-evolve/issues/898#issuecomment-6306930003
+
+```json
+{"cp": 95, "prev_cp": 94, "prev_commit": "ee5dfd6c19fb3c9adfb564d66479ca5e0b4c5930", "utc": "2026-10-21T02:59:54Z", "kind": "posted", "phase": "P4", "done_through": "gepa_full/search/iteration 15", "next": "gepa_full/search", "candidate": "harnesslens", "counts": {"gepa_full": {"counted_rollouts": 228}}, "spend": {"gepa_full": {"in": 288254, "out": 32529, "proxy_usd": 0.9}}, "artifacts": {}, "code": "4444d522ef9e88fd696a171b44f1a3298da74283", "open_decisions": [], "post": "miprov2/m4_scanned", "url": "https://github.com/skillberry-ai/cap-evolve/issues/898#issuecomment-6306930003"}
+```
