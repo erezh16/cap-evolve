@@ -3070,3 +3070,11 @@ Next: final remaining cells.
 ```json
 {"cp": 219, "prev_cp": 218, "prev_commit": "30af8e42f70ee597460ecee797498ec9ff943a39", "utc": "2026-10-21T09:57:25Z", "kind": "result", "phase": "P7", "done_through": "final/93", "next": "final/cells", "candidate": null, "counts": {"trace2skill": {"counted_rollouts": 270, "cache_hits": 450}}, "spend": {"trace2skill": {"in": 3436541, "out": 940656, "usd": 16.28}}, "artifacts": {"STATE/final/progress.json": "43a16cce265522e9ec43634a7fda65c219a775e1ff82152efa0b23ceae7cf3d9"}, "code": "30c11343482701d8e1a8a339e44b19035f7a150d", "open_decisions": [], "window": {"window": "final", "cells_total": 2016, "cells_done": 93, "order_sha256": "1903a7f797ac0155773c2b71ce8fdbd590180df8ce86dd60deba45a384997962"}}
 ```
+
+## CP-0220 · 2026-10-21T09:58Z · P7 posted cape_improve · posted
+
+Posted 'Cap-Evolve-improve hourly status' on #901 (cape_improve): https://github.com/skillberry-ai/cap-evolve/issues/901#issuecomment-6313215613
+
+```json
+{"cp": 220, "prev_cp": 219, "prev_commit": "3ceab7a0867f06031a5fb574ec19b99f333028d3", "utc": "2026-10-21T09:58:23Z", "kind": "posted", "phase": "P7", "done_through": "final/93", "next": "final/cells", "candidate": null, "counts": {"trace2skill": {"counted_rollouts": 270, "cache_hits": 450}}, "spend": {"trace2skill": {"in": 3436541, "out": 940656, "usd": 16.28}}, "artifacts": {}, "code": "30c11343482701d8e1a8a339e44b19035f7a150d", "open_decisions": [], "post": "cape_improve/status_20261021T0958", "url": "https://github.com/skillberry-ai/cap-evolve/issues/901#issuecomment-6313215613"}
+```
