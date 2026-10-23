@@ -1,22 +1,22 @@
 {
  "window": "final",
  "cells_total": 1008,
- "cells_done": 403,
+ "cells_done": 439,
  "per_arm": {
   "ce2_k1": {
-   "done": 139,
+   "done": 147,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
   },
   "seed": {
-   "done": 122,
+   "done": 138,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
   },
   "ce2_k2": {
-   "done": 142,
+   "done": 154,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
