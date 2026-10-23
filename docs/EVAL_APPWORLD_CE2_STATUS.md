@@ -286,3 +286,11 @@ Independence check after iteration 1 (plan 9.7): the two arms' cand_0001 candida
 ```json
 {"cp": 33, "prev_cp": 32, "prev_commit": "d24b16171dc8c4e9ac5d427c18bd0c453d6403bb", "utc": "2026-10-23T12:41:17Z", "kind": "result", "phase": "P4", "done_through": "P2/acceptance", "next": "P4/searches", "arm": "ce2_k2", "counts": {}, "spend": {}, "artifacts": {}, "code": "c45af6c49dc8321201da1e50afefb69afb1c8d68", "open_decisions": [], "memory": {"used_pct": 7.62, "peak_pct": 53.72, "state": "OK", "stale": false}, "independence": {"done": true, "identical": false, "sha_prefix": {"ce2_k1": "tree:4be1fd94503", "ce2_k2": "tree:ea4c49df73f"}, "t": "2026-10-23T12:41:17Z"}}
 ```
+
+## CE2-0034 · 2026-10-23T12:55Z · P4 posted ce2_k1 · posted
+
+Posted 'Cap-Evolve-impr2 K=1 25% of B' on #909 (ce2_k1): https://github.com/skillberry-ai/cap-evolve/issues/909#issuecomment-6365370504
+
+```json
+{"cp": 34, "prev_cp": 33, "prev_commit": "8b715342229e165f009b608d2ab5d0bebfbef5d1", "utc": "2026-10-23T12:55:27Z", "kind": "posted", "phase": "P4", "done_through": "P2/acceptance", "next": "P4/searches", "arm": "ce2_k2", "counts": {}, "spend": {}, "artifacts": {}, "code": "c45af6c49dc8321201da1e50afefb69afb1c8d68", "open_decisions": [], "memory": {"used_pct": 45.69, "peak_pct": 53.72, "state": "OK", "stale": false}, "post": "ce2_k1/m4_budget_25", "url": "https://github.com/skillberry-ai/cap-evolve/issues/909#issuecomment-6365370504"}
+```
