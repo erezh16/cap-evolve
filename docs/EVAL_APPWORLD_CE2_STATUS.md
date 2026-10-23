@@ -350,3 +350,11 @@ Posted 'Cap-Evolve-impr2 K=1 hourly status' on #909 (ce2_k1): https://github.com
 ```json
 {"cp": 41, "prev_cp": 40, "prev_commit": "74c8362a052b81b951cbd227882dd14f568587b2", "utc": "2026-10-23T13:54:36Z", "kind": "posted", "phase": "P4", "done_through": "P2/acceptance", "next": "P4/searches", "arm": "ce2_k2", "counts": {}, "spend": {}, "artifacts": {}, "code": "c45af6c49dc8321201da1e50afefb69afb1c8d68", "open_decisions": [], "memory": {"used_pct": 44.69, "peak_pct": 55.01, "state": "OK", "stale": false}, "post": "ce2_k1/status_20261023T1354", "url": "https://github.com/skillberry-ai/cap-evolve/issues/909#issuecomment-6366531091"}
 ```
+
+## CE2-0042 · 2026-10-23T14:10Z · P4 ce2_k1 iteration 3 · result
+
+P4 ce2_k1: iteration 3: val 0.6803 (parent 0.6871); paired Δ̄ -0.0068, SE 0.0497, K·SE 0.0497 (K = 1) → reject. Counted rollouts 441 of 900; optimizer proxy USD 17.73; best search score (fit metric) 0.6870748299319728.
+
+```json
+{"cp": 42, "prev_cp": 41, "prev_commit": "7709fddd81d7ebed59f84d7676ad682ea04eb090", "utc": "2026-10-23T14:10:38Z", "kind": "result", "phase": "P4", "done_through": "P2/acceptance", "next": "P4/searches", "arm": "ce2_k1", "counts": {}, "spend": {}, "artifacts": {"STATE/ce2_k1/progress.json": "c651b9e30ad3d2dd6fb96db346cc523def323ea52cf47e37f8fc354b413ad26f"}, "code": "c45af6c49dc8321201da1e50afefb69afb1c8d68", "open_decisions": [], "memory": {"used_pct": 45.24, "peak_pct": 55.01, "state": "OK", "stale": false}, "iteration": 3, "verdict": {"candidate": "cand_0003", "accept": false, "val": 0.6802721088435374, "parent_val": 0.6870748299319728, "indecisive": false, "delta": -0.0068, "se": 0.0497, "k_se": 1.0, "bar": 0.0497, "would_pass_k1": false}}
+```
