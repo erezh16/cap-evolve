@@ -218,3 +218,13 @@ Posted 'search restarted (budget caps raised)' on #910 (ce2_k2): https://github.
 ```json
 {"cp": 25, "prev_cp": 24, "prev_commit": "ba66c7c4ea6e24e266eaf2e1868f3d5e1ee6e6f9", "utc": "2026-10-23T11:22:55Z", "kind": "posted", "phase": "P4", "done_through": "P2/acceptance", "next": "P4/searches", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "c45af6c49dc8321201da1e50afefb69afb1c8d68", "open_decisions": [], "memory": {"used_pct": 6.52, "peak_pct": 53.72, "state": "OK", "stale": false}, "post": "ce2_k2/m4_restart", "url": "https://github.com/skillberry-ai/cap-evolve/issues/910#issuecomment-6363744763"}
 ```
+
+## CE2-0026 · 2026-10-23T11:48Z · P4 heartbeat · heartbeat
+
+No checkpoint for 25 min. Phase P4, last result: P2/acceptance.
+Runner: no runner. Last log line: `2026-10-23T11:48:49Z | memguard | - | sample 47.48% (15559 MB) state OK peak 53.7%`.
+Next: P4/searches.
+
+```json
+{"cp": 26, "prev_cp": 25, "prev_commit": "5e010fcbba10642eba41ea34377c54d6f98a7291", "utc": "2026-10-23T11:48:54Z", "kind": "heartbeat", "phase": "P4", "done_through": "P2/acceptance", "next": "P4/searches", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "c45af6c49dc8321201da1e50afefb69afb1c8d68", "open_decisions": [], "memory": {"used_pct": 47.28, "peak_pct": 53.72, "state": "OK", "stale": false}, "runner": "none"}
+```
