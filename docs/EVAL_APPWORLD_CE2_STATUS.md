@@ -788,3 +788,12 @@ Next: final remaining cells.
 ```json
 {"cp": 94, "prev_cp": 93, "prev_commit": "2895f1a7e8c562c5cd14f9e7e00e61452d26cc8d", "utc": "2026-10-23T19:19:49Z", "kind": "result", "phase": "P7", "done_through": "final/54", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/final/progress.json": "3341f78ed30109aa70a017ede03422d0f1b30ed911aa27f0b67b8e150b7827db"}, "code": "4ab33f8d4aa4051f6e1e09089190bed5760b95fb", "open_decisions": [], "memory": {"used_pct": 45.5, "peak_pct": 55.01, "state": "OK", "stale": false}, "window": {"window": "final", "cells_total": 1008, "cells_done": 54, "order_sha256": "c020e74166d6206eeff37e123efe36ce39b8cb596e62426cc4542967b3784eed"}}
 ```
+
+## CE2-0095 · 2026-10-23T19:24Z · P7 final window · result
+
+final window: 26 cells since the last entry; 80/1008 done (ce2_k1 31, ce2_k2 33, seed 16); infra still missing 0, retries 0.
+Next: final remaining cells.
+
+```json
+{"cp": 95, "prev_cp": 94, "prev_commit": "c4af123e274beaf09235b3e12d399196e0baa69c", "utc": "2026-10-23T19:24:50Z", "kind": "result", "phase": "P7", "done_through": "final/80", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/final/progress.json": "c1ac4cc28c366db68c99fa4dc1e689ae41e8bc76e989bb2de059c025be1d42f6"}, "code": "4ab33f8d4aa4051f6e1e09089190bed5760b95fb", "open_decisions": [], "memory": {"used_pct": 46.61, "peak_pct": 55.01, "state": "OK", "stale": false}, "window": {"window": "final", "cells_total": 1008, "cells_done": 80, "order_sha256": "c020e74166d6206eeff37e123efe36ce39b8cb596e62426cc4542967b3784eed"}}
+```
