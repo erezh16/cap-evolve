@@ -676,3 +676,13 @@ Posted 'Cap-Evolve-impr2 K=1 hourly status' on #909 (ce2_k1): https://github.com
 ```json
 {"cp": 81, "prev_cp": 80, "prev_commit": "13703a0bebb91648a0a0f4512d8296738b6e0940", "utc": "2026-10-23T17:32:32Z", "kind": "posted", "phase": "P6", "done_through": "P6/scan", "next": "P7/final", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "c45af6c49dc8321201da1e50afefb69afb1c8d68", "open_decisions": [], "memory": {"used_pct": 5.35, "peak_pct": 55.01, "state": "OK", "stale": false}, "post": "ce2_k1/status_20261023T1732", "url": "https://github.com/skillberry-ai/cap-evolve/issues/909#issuecomment-6370873233"}
 ```
+
+## CE2-0082 · 2026-10-23T17:58Z · P6 heartbeat · heartbeat
+
+No checkpoint for 25 min. Phase P6, last result: P6/scan.
+Runner: no runner. Last log line: `2026-10-23T17:57:11Z | memguard | - | sample 5.36% (1756 MB) state OK peak 55.0%`.
+Next: P7/final.
+
+```json
+{"cp": 82, "prev_cp": 81, "prev_commit": "af4fe3a04a25459fdd3ee4c455f8885932316dce", "utc": "2026-10-23T17:58:03Z", "kind": "heartbeat", "phase": "P6", "done_through": "P6/scan", "next": "P7/final", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "c45af6c49dc8321201da1e50afefb69afb1c8d68", "open_decisions": [], "memory": {"used_pct": 5.36, "peak_pct": 55.01, "state": "OK", "stale": false}, "runner": "none"}
+```
