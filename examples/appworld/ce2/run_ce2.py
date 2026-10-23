@@ -224,7 +224,7 @@ def _imp_run(proj: Path, run_dir: Path) -> dict:
         m = re.search(r"^gate_k_se:\s*([0-9.]+)", spec_path.read_text(), re.M)
         kse = m and float(m.group(1))
     out["3_run_config"] = {"ok": bool(rc) and kse == K, "run_config_events": len(rc), "spec_k_se": kse}
-    cmdlog = STATE / "proc_cmdlines.jsonl"
+    cmdlog = STATE / f"proc_cmdlines_{run_dir.name}.jsonl"     # one log per run dir (dry run vs search)
     hc = [x for x in P.read_jsonl(cmdlog) if str(HC_RUN) in x.get("cmd", "")]
     ks = sorted({m.group(1) for x in hc for m in [re.search(r"--k-se (\S+)", x["cmd"])] if m})
     gates = [e for e in ev if (e.get("kind") or e.get("event")) in ("gate", "step") and "k_se" in json.dumps(e)]
@@ -280,6 +280,8 @@ def run_capevolve(proj: Path, *, ts: str, phase: str, extra: list[str] | None = 
     log = log or (P.PROGRESS / f"{CAND}.out")
     env = cape_env(phase)
     env["AW_CAPE_TS"] = ts
+    global _RUN_NAME
+    _RUN_NAME = f"run_{ts}"
     # the cap-evolve project's adapter wiring is evaluator code: hidden from the optimizer too (§10 DENY)
     env["AW_CAPE_EXTRA_DENY"] = str(proj / "adapters")
     p = subprocess.Popen(["bash", str(HERE / "launch_ce2.sh"), CAND, str(proj), ts, *(extra or [])], env=env,
@@ -292,6 +294,9 @@ def run_capevolve(proj: Path, *, ts: str, phase: str, extra: list[str] | None = 
     return p.returncode
 
 
+_RUN_NAME = "run_unknown"
+
+
 def _sample_cmdlines(seen: set[str]) -> None:
     """Record command lines of the run's hill-climb and run-optimizer processes (by /proc, never pgrep -f)."""
     for d in Path("/proc").iterdir():
@@ -301,9 +306,10 @@ def _sample_cmdlines(seen: set[str]) -> None:
             cmd = (d / "cmdline").read_bytes().replace(b"\0", b" ").decode(errors="ignore").strip()
         except OSError:
             continue
-        if (str(HC_RUN) in cmd or "run-optimizer/scripts/run.py" in cmd) and cmd not in seen:
+        if (str(HC_RUN) in cmd or "run-optimizer/scripts/run.py" in cmd) and _RUN_NAME in cmd and cmd not in seen:
             seen.add(cmd)
-            P.append_jsonl(STATE / "proc_cmdlines.jsonl", {"t": P.utcnow(), "pid": int(d.name), "cmd": cmd[:4000]})
+            P.append_jsonl(STATE / f"proc_cmdlines_{_RUN_NAME}.jsonl",
+                           {"t": P.utcnow(), "pid": int(d.name), "cmd": cmd[:4000]})
 
 
 def latest_run_dir(root: Path, ts: str) -> Path:
@@ -368,7 +374,6 @@ def accept() -> int:
     P.write_json(proj.parent.parent / "mock_script.json", {"edits": [{"file": "tools/api_notes.json", "op": "set",
                  "text": json.dumps({"api_docs": "Call show_api_doc before calling an API for the first time."})}]})
     env_ts = f"dry_{root.name}"
-    (STATE / "proc_cmdlines.jsonl").unlink(missing_ok=True)
     os.environ["CAPEVOLVE_MOCK_SCRIPT"] = str(proj.parent.parent / "mock_script.json")
     rc = run_capevolve(proj, ts=env_ts, phase="accept", log=STATE / "accept_dry_run.log")
     rd = latest_run_dir(root, env_ts)

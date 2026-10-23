@@ -29,10 +29,23 @@ import sandbox as SB  # noqa: E402
 
 LITERALS = ("test_normal", "test_challenge", "root_full", "ground_truth", "answer.json", "compiled_solution",
             "generate/tasks", "src/appworld/apps", "solution.py")
+if P.LEDGER_PREFIX == "CE2":   # CE2 §4.1 rule 5: REST's run data and the other arm's run dir as well
+    LITERALS = LITERALS + ("aw_rest/cape_run", "aw_rest/state", "aw_ce2/run_k1", "aw_ce2/run_k2")
 
 
 def locations(c: str) -> dict[str, Path]:
     st = P.AW_STATE / c
+    if P.LEDGER_PREFIX == "CE2":
+        rd = P.RUN_ROOTS[c] / ".capevolve" / f"run_{P.RUN_TS[c]}"
+        out = {"claude -p results": st / "claude_calls", "arm state (driver)": st,
+               "optimizer workdirs (run dir work/)": rd / "work", "run dir events": rd / "events.jsonl",
+               "frozen artifact": P.PUSHED / c / "artifact"}
+        # the CLI's own transcripts (main loop and sub-agents) of sessions run with cwd under the arm's run dir
+        tag = str(P.RUN_ROOTS[c]).replace("/", "-").replace("_", "-")
+        for root in (Path.home() / ".claude" / "projects", Path(f"/tmp/claude-{__import__('os').getuid()}")):
+            for d in root.glob(f"{tag}*"):
+                out[f"claude transcripts {d.parent.name[:12]}/{d.name[-48:]}"] = d
+        return out
     out = {"optimizer calls": st / "llm_calls.jsonl", "claude -p results": st / "claude_calls",
            "candidate state (driver, method)": st, "optimizer workspace (/tmp)": SB.OPT_ROOT / c,
            "frozen artifact": P.PUSHED / c / "artifact"}
@@ -57,13 +70,15 @@ def scan(c: str, id_re: re.Pattern) -> dict:
                                                 and p.name not in ("rollouts.jsonl", "cache_hits.jsonl")]
         counts: Counter = Counter()
         n_hit = 0
+        own = f"aw_ce2/run_k{c[-1]}" if P.LEDGER_PREFIX == "CE2" else None
         for p in files:
             if p.stat().st_size > 200_000_000:
                 continue
             text = p.read_bytes().decode("utf-8", "ignore")
             hit = Counter({"test_id": len(id_re.findall(text))})
             for lit in LITERALS:
-                hit[lit] = text.count(lit)
+                if lit != own:                # the arm's own run dir path is everywhere in its own records
+                    hit[lit] = text.count(lit)
             hit = +hit
             if hit:
                 counts.update(hit)
@@ -73,6 +88,33 @@ def scan(c: str, id_re: re.Pattern) -> dict:
            "test_id_hits": sum(v["counts"].get("test_id", 0) for v in out.values())}
     res["isolation_breach"] = res["test_id_hits"] > 0
     return res
+
+
+def ce2_extras(c: str) -> dict:
+    """CE2 Q3 and §9.6.9: every modelUsage key in the arm's claude result JSONs (any model other than the optimizer
+    model is an error), and every iteration's work/<cid>/INSTRUCTIONS.md has J1 (required strings, none forbidden)
+    and every gate record the arm's K."""
+    import subprocess
+    models: Counter = Counter()
+    for f in (P.AW_STATE / c / "claude_calls").glob("*.json"):
+        try:
+            for k in (json.loads(f.read_text()).get("modelUsage") or {}):
+                models[k] += 1
+        except json.JSONDecodeError:
+            models["<unparsable result>"] += 1
+    r = subprocess.run([str(P.VENVS / "venv-ce2" / "bin" / "python"), "-I", str(HERE.parent / "ce2" / "run_ce2.py"),
+                        "imp-check", "--arm", c, "--level", "full", "--run-dir",
+                        str(P.RUN_ROOTS[c] / ".capevolve" / f"run_{P.RUN_TS[c]}")], capture_output=True, text=True)
+    try:
+        imp = json.loads(r.stdout)
+    except json.JSONDecodeError:
+        imp = {"all_ok": False, "error": r.stderr[-400:]}
+    ins = imp.get("5_instructions", {})
+    return {"model_usage_keys": dict(models), "other_models": sorted(k for k in models if k != P.OPT_MODEL),
+            "j1_iterations": ins.get("iterations"), "j1_all_ok": ins.get("ok"),
+            "k_se_cmdline": imp.get("4_effective_k_se", {}).get("k_se_values"),
+            "k_ok": imp.get("4_effective_k_se", {}).get("ok") and imp.get("3_run_config", {}).get("ok"),
+            "imp_all_ok": imp.get("all_ok")}
 
 
 def scan_sessions(id_re: re.Pattern) -> dict:
@@ -99,6 +141,9 @@ def main() -> int:
     c = json.loads(P.PUBLISH_CACHE.read_text())
     id_re = re.compile("|".join(re.escape(t) for t in c["test_ids"]))
     res = {cand: scan(cand, id_re) for cand in cands}
+    if P.LEDGER_PREFIX == "CE2":
+        for cand in cands:
+            res[cand]["ce2"] = ce2_extras(cand)
     merged = {**(P.read_json(P.PUSHED / "isolation_scan.json", {}) or {}), **res}
     if full:
         merged["_orchestrating_sessions"] = scan_sessions(id_re)
@@ -109,6 +154,10 @@ def main() -> int:
     status_doc.append("result", "P6" if full else "P4", "isolation scan",
                       "Isolation scan (counts only): " + "; ".join(
                           f"{k}: test-id hits {v['test_id_hits']}" + (" — ISOLATION BREACH" if v["isolation_breach"] else "")
+                          + (f"; models {sorted(v['ce2']['model_usage_keys'])}, other models {v['ce2']['other_models']}"
+                             f"; J1 in {v['ce2']['j1_iterations']} iteration(s) ok={v['ce2']['j1_all_ok']}"
+                             f"; K on the command line {v['ce2']['k_se_cmdline']} ok={v['ce2']['k_ok']}"
+                             if "ce2" in v else "")
                           for k, v in res.items())
                       + (f"; orchestrating sessions: test-id hits {sess['test_id_hits']} over {sess['files']} files"
                          if sess else "")

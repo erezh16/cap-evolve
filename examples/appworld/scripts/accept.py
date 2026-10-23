@@ -405,6 +405,9 @@ def a13_ce2() -> dict:
     ids = E.split_ids("train") + E.split_ids("dev")
     same = E.materialize("acc_a13", {})
     before = E.counted("acc_a13")
+    missing = [t for t in ids if not E._cache_path(E.tree_hash(same), t, P.SEARCH_SEED_BASE, "search").exists()]
+    if missing or not E.SEED_DONE.exists():
+        raise SystemExit(f"a13_ce2: {len(missing)} seed records missing or no SEED_BASELINE_DONE: refusing to run episodes")
     recs = E.evaluate("acc_a13", same, ids, phase="search", tag="same-as-seed")
     out = {"seed_reuse_ok": sr.get("ok") is True, "same_tree_is_seed": E.tree_hash(same) == E.seed_hash(),
            "identical_served_from_cache": all(r.get("cache_hit") for r in recs) and len(recs) == 147,
@@ -426,6 +429,8 @@ def a13() -> int:
     import threading
     import evaluator as E
     dev = E.split_ids("dev")[:4]
+    if P.LEDGER_PREFIX == "CE2":            # on the REAL reused cache, before the throwaway paths below are set
+        pre = a13_ce2()
     saved_cache, saved_done = E.CACHE, E.SEED_DONE
     E.CACHE = P.AW_STATE / "a13" / "cache"
     E.SEED_DONE = P.AW_STATE / "a13" / "SEED_BASELINE_DONE"
@@ -433,8 +438,7 @@ def a13() -> int:
     shutil.rmtree(P.AW_STATE / "acc_a13", ignore_errors=True)
     res = {}
     if P.LEDGER_PREFIX == "CE2":
-        res = a13_ce2()
-        E.CACHE, E.SEED_DONE = saved_cache, saved_done
+        res = pre
     try:
         if P.LEDGER_PREFIX == "CE2":
             raise _SkipMiniP3
