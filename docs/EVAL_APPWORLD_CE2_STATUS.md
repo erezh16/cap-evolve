@@ -210,3 +210,11 @@ Posted 'search restarted (budget caps raised)' on #909 (ce2_k1): https://github.
 ```json
 {"cp": 24, "prev_cp": 23, "prev_commit": "6582ebe5b1a586f21dd449289db400974492f2f9", "utc": "2026-10-23T11:22:52Z", "kind": "posted", "phase": "P4", "done_through": "P2/acceptance", "next": "P4/searches", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "c45af6c49dc8321201da1e50afefb69afb1c8d68", "open_decisions": [], "memory": {"used_pct": 6.48, "peak_pct": 53.72, "state": "OK", "stale": false}, "post": "ce2_k1/m4_restart", "url": "https://github.com/skillberry-ai/cap-evolve/issues/909#issuecomment-6363744024"}
 ```
+
+## CE2-0025 · 2026-10-23T11:22Z · P4 posted ce2_k2 · posted
+
+Posted 'search restarted (budget caps raised)' on #910 (ce2_k2): https://github.com/skillberry-ai/cap-evolve/issues/910#issuecomment-6363744763
+
+```json
+{"cp": 25, "prev_cp": 24, "prev_commit": "ba66c7c4ea6e24e266eaf2e1868f3d5e1ee6e6f9", "utc": "2026-10-23T11:22:55Z", "kind": "posted", "phase": "P4", "done_through": "P2/acceptance", "next": "P4/searches", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "c45af6c49dc8321201da1e50afefb69afb1c8d68", "open_decisions": [], "memory": {"used_pct": 6.52, "peak_pct": 53.72, "state": "OK", "stale": false}, "post": "ce2_k2/m4_restart", "url": "https://github.com/skillberry-ai/cap-evolve/issues/910#issuecomment-6363744763"}
+```
