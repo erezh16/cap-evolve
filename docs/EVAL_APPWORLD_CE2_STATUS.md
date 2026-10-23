@@ -194,3 +194,11 @@ User decision (2026-10-23), answering CE2-0021, identical for both arms: optimiz
 ```json
 {"cp": 22, "prev_cp": 21, "prev_commit": "c45af6c49dc8321201da1e50afefb69afb1c8d68", "utc": "2026-10-23T11:21:47Z", "kind": "decision", "phase": "P4", "done_through": "P2/acceptance", "next": "P4/searches", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/ce2/same.json": "1805e1a1d8a071433d566c3fde23e92c17b1e3f0f1e6880595978455d5e2a0ae"}, "code": "c45af6c49dc8321201da1e50afefb69afb1c8d68", "open_decisions": [], "memory": {"used_pct": 5.06, "peak_pct": 53.72, "state": "OK", "stale": false}}
 ```
+
+## CE2-0023 · 2026-10-23T11:21Z · P4 searches launched · phase_start
+
+P4: chain(s) ce2_k1, ce2_k2 started (search, freeze, isolation scan); pid files AW_STATE/p4/<arm>.pid. Running now: ce2_k1, ce2_k2. Global slots 24; memory 5.07%.
+
+```json
+{"cp": 23, "prev_cp": 22, "prev_commit": "89221a7ea70e77483d0be90f391a0045f3bde964", "utc": "2026-10-23T11:21:59Z", "kind": "phase_start", "phase": "P4", "done_through": "P2/acceptance", "next": "P4/searches", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "c45af6c49dc8321201da1e50afefb69afb1c8d68", "open_decisions": [], "memory": {"used_pct": 5.07, "peak_pct": 53.72, "state": "OK", "stale": false}}
+```
