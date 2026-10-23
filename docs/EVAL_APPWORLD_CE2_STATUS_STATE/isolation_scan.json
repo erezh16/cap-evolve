@@ -310,5 +310,25 @@
    "k_ok": true,
    "imp_all_ok": true
   }
+ },
+ "_orchestrating_sessions": {
+  "files": 82,
+  "counts": {
+   "test_id": 540,
+   "test_normal": 796,
+   "test_challenge": 305,
+   "root_full": 1082,
+   "ground_truth": 330,
+   "answer.json": 199,
+   "compiled_solution": 123,
+   "generate/tasks": 51,
+   "src/appworld/apps": 216,
+   "solution.py": 160,
+   "aw_rest/cape_run": 264,
+   "aw_rest/state": 1021,
+   "aw_ce2/run_k1": 133,
+   "aw_ce2/run_k2": 124
+  },
+  "test_id_hits": 540
  }
 }

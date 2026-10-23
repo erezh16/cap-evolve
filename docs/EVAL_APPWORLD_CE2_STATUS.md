@@ -624,3 +624,11 @@ P5 dev diagnostic done (57 dev tasks, 1 trial, seed 100; the seed's numbers are 
 ```json
 {"cp": 75, "prev_cp": 74, "prev_commit": "3747d7c760fb4add09c5bb41bcc79df17a65e850", "utc": "2026-10-23T16:33:52Z", "kind": "phase_done", "phase": "P5", "done_through": "P5/dev", "next": "P6/scan", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/p5dev/progress.json": "5c9c0fc8ce1c7795db457df1b98f4ba5fcf265cf940911f3f427bbcf65445bdb"}, "code": "c45af6c49dc8321201da1e50afefb69afb1c8d68", "open_decisions": [], "memory": {"used_pct": 5.66, "peak_pct": 55.01, "state": "OK", "stale": false}}
 ```
+
+## CE2-0076 · 2026-10-23T16:35Z · P6 isolation scan · result
+
+Isolation scan (counts only): ce2_k1: test-id hits 0; models ['aws/claude-sonnet-5-5'], other models []; J1 in 6 iteration(s) ok=True; K on the command line ['1'] ok=True; ce2_k2: test-id hits 0; models ['aws/claude-sonnet-5-5'], other models []; J1 in 6 iteration(s) ok=True; K on the command line ['2'] ok=True; orchestrating sessions: test-id hits 540 over 82 files. Literal-string counts per location are in the pushed scan file.
+
+```json
+{"cp": 76, "prev_cp": 75, "prev_commit": "2c6b5579ca57d9e509d06022fb99437810b4a120", "utc": "2026-10-23T16:35:02Z", "kind": "result", "phase": "P6", "done_through": "P6/scan", "next": "P7/final", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/isolation_scan.json": "f8396062eafbc6e865cf40467943ec08a140ec70ab1b69075d2cc23940d62b58"}, "code": "c45af6c49dc8321201da1e50afefb69afb1c8d68", "open_decisions": [], "memory": {"used_pct": 5.53, "peak_pct": 55.01, "state": "OK", "stale": false}}
+```
