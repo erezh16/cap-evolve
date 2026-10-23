@@ -1251,3 +1251,11 @@ P9 done: results comments posted on #909 (ce2_k1) and #910 (ce2_k2); URLs in the
 ```json
 {"cp": 147, "prev_cp": 146, "prev_commit": "c713c9f6462abd2a5cb199a18de88a1e58c1761c", "utc": "2026-10-23T22:42:20Z", "kind": "phase_done", "phase": "P9", "done_through": "P9/post", "next": "done", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "4ab33f8d4aa4051f6e1e09089190bed5760b95fb", "open_decisions": [], "memory": {"used_pct": 5.59, "peak_pct": 77.36, "state": "OK", "stale": false}}
 ```
+
+## CE2-0148 · 2026-10-23T22:43Z · P9 background loops stopped · phase_done
+
+Evaluation CE2 complete. Results comments posted on #909 (ce2_k1) and #910 (ce2_k2), each passing the content filter. Background loops stopped: autopost (both issues have their results comment), heartbeat and memguard (nothing runs). root_full is locked (mode 000). Local state (AW_STATE: records, trajectories, optimizer logs, final cells) stays on /workspace/aw_ce2 and is never pushed. Spend per provider: RITS (agent): unpriced, tokens in the results; gateway (optimizer): ce2_k1 and ce2_k2 proxy and CLI-reported USD in the results; plus the archived first-launch ce2_k1 session (CLI-reported USD 15.95), reported outside both arms' totals.
+
+```json
+{"cp": 148, "prev_cp": 147, "prev_commit": "7335eaab9b5ee16f0c7cc6e38593f63b4839e8ff", "utc": "2026-10-23T22:43:36Z", "kind": "phase_done", "phase": "P9", "done_through": "P9/done", "next": "done", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "4ab33f8d4aa4051f6e1e09089190bed5760b95fb", "open_decisions": [], "memory": {"used_pct": 5.55, "peak_pct": 77.36, "state": "OK", "stale": false}}
+```
