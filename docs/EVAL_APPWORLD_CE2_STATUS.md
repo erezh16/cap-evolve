@@ -1235,3 +1235,11 @@ Posted 'Cap-Evolve-impr2 K=1 results' on #909 (ce2_k1): https://github.com/skill
 ```json
 {"cp": 145, "prev_cp": 144, "prev_commit": "7e04af445246bc00d0c1db7f88cbc0e7778636f9", "utc": "2026-10-23T22:42:16Z", "kind": "posted", "phase": "P9", "done_through": "P8/analysis", "next": "P9/post", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "4ab33f8d4aa4051f6e1e09089190bed5760b95fb", "open_decisions": [], "memory": {"used_pct": 5.5, "peak_pct": 77.36, "state": "OK", "stale": false}, "post": "ce2_k1/results", "url": "https://github.com/skillberry-ai/cap-evolve/issues/909#issuecomment-6376185705"}
 ```
+
+## CE2-0146 · 2026-10-23T22:42Z · P9 posted ce2_k2 · posted
+
+Posted 'Cap-Evolve-impr2 K=2 results' on #910 (ce2_k2): https://github.com/skillberry-ai/cap-evolve/issues/910#issuecomment-6376186285
+
+```json
+{"cp": 146, "prev_cp": 145, "prev_commit": "689bd0ebf9b0025c02096a4f5132015649d5138a", "utc": "2026-10-23T22:42:19Z", "kind": "posted", "phase": "P9", "done_through": "P8/analysis", "next": "P9/post", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "4ab33f8d4aa4051f6e1e09089190bed5760b95fb", "open_decisions": [], "memory": {"used_pct": 5.59, "peak_pct": 77.36, "state": "OK", "stale": false}, "post": "ce2_k2/results", "url": "https://github.com/skillberry-ai/cap-evolve/issues/910#issuecomment-6376186285"}
+```
