@@ -18,6 +18,7 @@ import json
 import os
 import random
 import statistics
+import subprocess
 import sys
 from collections import defaultdict
 from pathlib import Path
@@ -124,6 +125,24 @@ def search_side(c: str) -> dict:
         x["cache_write"] += int(r.get("cache_write") or 0)
     secs = [float(r.get("seconds") or 0) for r in u]
     fz = P.read_json(P.PUSHED / c / "artifact" / "FREEZE.json", {}) or {}
+    extra = {}
+    if P.LEDGER_PREFIX == "CE2":
+        pr = P.read_json(P.PUSHED / c / "progress.json", {}) or {}
+        mu: dict = defaultdict(lambda: {"in": 0, "out": 0, "cache_read": 0, "cache_write": 0, "results": 0})
+        for f in sorted((P.AW_STATE / c / "claude_calls").glob("*.json")):
+            d = json.loads(f.read_text())
+            for m, v in (d.get("modelUsage") or {}).items():
+                x = mu[m]
+                x["results"] += 1
+                x["in"] += int(v.get("inputTokens") or 0)
+                x["out"] += int(v.get("outputTokens") or 0)
+                x["cache_read"] += int(v.get("cacheReadInputTokens") or 0)
+                x["cache_write"] += int(v.get("cacheCreationInputTokens") or 0)
+        extra = {"iterations": pr.get("iterations"), "iterations_done": pr.get("iterations_done"),
+                 "iterations_consumed": pr.get("iterations_consumed"), "accepted": pr.get("accepted"),
+                 "best_search_score": pr.get("best_search_score"), "metric_calls": pr.get("metric_calls"),
+                 "capevolve_optimizer_usd": pr.get("capevolve_optimizer_usd"), "model_usage_by_model": dict(mu),
+                 "k_se": P.K_SE[c]}
     return {"optimizer": {"calls": len(u), "errors": sum(1 for r in u if r.get("error")), "models": models,
                           "input_tokens": t["prompt_tokens"], "output_tokens": t["completion_tokens"],
                           "cache_read_tokens": t["cache_read"], "cache_write_tokens": t["cache_write"],
@@ -143,10 +162,16 @@ def search_side(c: str) -> dict:
                          "context_exceeded": sum(1 for r in ro if r.get("termination") == "context_exceeded"),
                          "search_wall": [ro[0]["t"], ro[-1]["t"]] if ro else None},
             "champion_search_score": fz.get("search_score"), "champion_search_label": fz.get("search_label"),
-            "time_to_champion": fz.get("time_to_champion"), "freeze": fz}
+            "time_to_champion": fz.get("time_to_champion"), "freeze": fz, **extra}
 
 
 def seed_baseline() -> dict:
+    if P.LEDGER_PREFIX == "CE2":   # reused from REST P3 (plan 7.4): its pushed aggregates, labelled
+        r = subprocess.run(["git", "-C", str(P.REPO), "show",
+                            "origin/eval-rest:docs/EVAL_APPWORLD_REST_STATE/seed/baseline.json"],
+                           capture_output=True, text=True)
+        return {"label": "reused from REST P3 (2026-10-20), not re-run, not counted",
+                **(json.loads(r.stdout) if r.returncode == 0 else {}), "reuse_check": P.read_json(P.AW_STATE / "seed_reuse.json", {})}
     ro = P.read_jsonl(P.AW_STATE / "seed" / "rollouts.jsonl")
     tr, dv = set(P.read_split("train")), set(P.read_split("dev"))
     return {"rollouts": len(ro), "prompt_tokens": _dist(ro, "prompt_tokens"), "episode_seconds": _dist(ro, "seconds"),
@@ -214,6 +239,12 @@ def main() -> int:
         ct, cs = bootstrap(cells, c, "seed", scen, rng)
         res["vs_seed"][c] = {"d_tgc": res["arms"][c]["tgc"] - res["arms"]["seed"]["tgc"], "ci_tgc": ct,
                              "d_sgc": res["arms"][c]["sgc"] - res["arms"]["seed"]["sgc"], "ci_sgc": cs}
+    if P.LEDGER_PREFIX == "CE2":   # CE2 §16: ce2_k2 − ce2_k1, same bootstrap (confounds K with search randomness)
+        a2, a1 = P.CANDIDATES[1], P.CANDIDATES[0]
+        ct, cs = bootstrap(cells, a2, a1, scen, rng)
+        res["k2_vs_k1"] = {"d_tgc": res["arms"][a2]["tgc"] - res["arms"][a1]["tgc"], "ci_tgc": ct,
+                           "d_sgc": res["arms"][a2]["sgc"] - res["arms"][a1]["sgc"], "ci_sgc": cs,
+                           "label": "ce2_k2 − ce2_k1; one search seed each: K is confounded with search randomness"}
     res["search"] = {c: search_side(c) for c in P.CANDIDATES}
     res["seed_baseline"] = seed_baseline()
     res["spend_per_provider"] = {"RITS (agent, unpriced)": "n/a (unpriced); tokens in the arm tables",
@@ -255,9 +286,14 @@ def main() -> int:
         o, rr = res["search"][c]["optimizer"], res["search"][c]["rollouts"]
         O.append(f"| {c} | {rr['counted']} | {rr['cache_hits']} | {rr['lint_reject_batches']} | {o['calls']} | {o['input_tokens']:,} | "
                  f"{o['output_tokens']:,} | {o['cache_read_tokens']:,} | {o['cache_write_tokens']:,} | {usd(o)} | {o['optimizer_seconds_total']:,} |")
-    md = ("## Final window: test_normal, 168 tasks / 56 scenarios × 2 trials × 6 arms\n\n" + "\n".join(L)
+    if "k2_vs_k1" in res:
+        v = res["k2_vs_k1"]
+        L.append("")
+        L.append(f"ce2_k2 − ce2_k1: Δ TGC {pct(v['d_tgc'])} [{pct(v['ci_tgc'][0])}, {pct(v['ci_tgc'][1])}], "
+                 f"Δ SGC {pct(v['d_sgc'])} [{pct(v['ci_sgc'][0])}, {pct(v['ci_sgc'][1])}] ({v['label']}).")
+    md = (f"## Final window: test_normal, 168 tasks / 56 scenarios × 2 trials × {len(ARMS)} arms\n\n" + "\n".join(L)
           + "\n\n## TGC by difficulty\n\n" + "\n".join(D) + "\n\n## Agent cost, tokens and latency per episode (final window)\n\n"
-          + "\n".join(C) + "\n\n## Optimizer side (search; shared seed baseline of 147 rollouts counted once, not charged)\n\n" + "\n".join(O) + "\n")
+          + "\n".join(C) + ("\n\n## Optimizer side (search; seed baseline reused from REST P3, not counted)\n\n" if P.LEDGER_PREFIX == "CE2" else "\n\n## Optimizer side (search; shared seed baseline of 147 rollouts counted once, not charged)\n\n") + "\n".join(O) + "\n")
     P.atomic_write(P.PUSHED / "final" / "RESULTS.md", md)
     print(md)
     return 0
