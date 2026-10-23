@@ -42,3 +42,11 @@ B1: CE2 constants in examples/appworld/scripts/awce2.py (CANDIDATES ce2_k1, ce2_
 ```json
 {"cp": 3, "prev_cp": 2, "prev_commit": "fe907f7409b31eb488f186d46cc97bd28d7977fc", "utc": "2026-10-23T09:28:41Z", "kind": "result", "phase": "P1", "done_through": "P1/B3", "next": "P1/B4", "arm": null, "counts": {}, "spend": {}, "artifacts": {"local/build_check.json": "c25cbef281343d54c28e9286be185755251151e1a6dfafcd72c1fda8f091c4dc"}, "code": "a390b3abc432cfbfb5642d00bbd706a42c3f337e", "open_decisions": [], "memory": {"used_pct": 4.91, "peak_pct": 5.88, "state": "OK", "stale": false}}
 ```
+
+## CE2-0004 · 2026-10-23T09:28Z · P3 seed baseline reused · decision
+
+Seed baseline reused from REST P3, 2026-10-20, 147 records, not re-run (user decision 2026-10-22, D5). seed_reuse.py (trusted, plan section 7.4) PASS: seed_capability tree hash = SEED_HASH 85a0da9cec2206a7...; aw_agent.py (model config), seed_capability/, evaluator.py and the AppWorld patch byte-identical to REST commit a0c85b4; 147 cache files copied, sorted (file, sha256) listing sha256 b1b269f1... before and after; ids = train.txt ∪ dev.txt exactly, trial seed 100, 0 infra errors, no trace key; train TGC 0.400, dev 0.3333, union 0.3741, equal to REST's seed/baseline.json; no other REST cache record copied. AW_STATE/SEED_BASELINE_DONE created; from now on a fresh seed episode raises SeedRerunRefused. The baseline is labelled 'reused' in every result and its cost is not counted in this run.
+
+```json
+{"cp": 4, "prev_cp": 3, "prev_commit": "4c684f4290541306b17b00a2d2e1a7593bb5ea88", "utc": "2026-10-23T09:28:42Z", "kind": "decision", "phase": "P3", "done_through": "P1/B4", "next": "P1/B5", "arm": null, "counts": {}, "spend": {}, "artifacts": {"local/seed_reuse.json": "74dd254402ed0898c94fea8e9416dfa3d41358bb5f9415b9ddfc4fc7073b76f5", "STATE/manifest.json": "840e832dd6ec0ce76575547ea529d268275404d24bf2932518df38a77e339ad9"}, "code": "a390b3abc432cfbfb5642d00bbd706a42c3f337e", "open_decisions": [], "memory": {"used_pct": 4.95, "peak_pct": 5.88, "state": "OK", "stale": false}}
+```
