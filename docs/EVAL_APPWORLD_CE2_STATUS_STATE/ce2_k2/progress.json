@@ -1,5 +1,5 @@
 {
- "stage": "frozen",
+ "stage": "search running",
  "arm": "ce2_k2",
  "k_se": 2.0,
  "counted_rollouts": 882,

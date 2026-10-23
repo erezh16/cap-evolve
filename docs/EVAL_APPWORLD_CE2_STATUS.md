@@ -536,3 +536,11 @@ Isolation scan (counts only): ce2_k2: test-id hits 0; models ['aws/claude-sonnet
 ```json
 {"cp": 64, "prev_cp": 63, "prev_commit": "ca10f42d594c9ab6f074157cf2700a9dcc0ae390", "utc": "2026-10-23T16:28:18Z", "kind": "result", "phase": "P4", "done_through": "P2/acceptance", "next": "P4/searches", "arm": "ce2_k2", "counts": {}, "spend": {}, "artifacts": {"STATE/isolation_scan.json": "10464714c88c995b1e25d1c30895b2204b74c0f37792ad3f37e1c5ca796bf1b7"}, "code": "c45af6c49dc8321201da1e50afefb69afb1c8d68", "open_decisions": [], "memory": {"used_pct": 21.83, "peak_pct": 55.01, "state": "OK", "stale": false}}
 ```
+
+## CE2-0065 · 2026-10-23T16:28Z · P4 ce2_k2 iteration 6 · result
+
+P4 ce2_k2: iteration 6: val 0.6667 (parent 0.7551); paired Δ̄ -0.0884, SE 0.0431, K·SE 0.0862 (K = 2) → reject; would pass at K = 1: no (reporting only). Counted rollouts 882 of 900; optimizer proxy USD 25.08; best search score (fit metric) 0.7551020408163265.
+
+```json
+{"cp": 65, "prev_cp": 64, "prev_commit": "dbea6c190ba36204e5114fbb8880443228361236", "utc": "2026-10-23T16:28:33Z", "kind": "result", "phase": "P4", "done_through": "P2/acceptance", "next": "P4/searches", "arm": "ce2_k2", "counts": {}, "spend": {}, "artifacts": {"STATE/ce2_k2/progress.json": "3d87f1b0bd93b9e9201bdbf339c06a0b91ece569f4ce13964ea578f05abb4011"}, "code": "c45af6c49dc8321201da1e50afefb69afb1c8d68", "open_decisions": [], "memory": {"used_pct": 19.99, "peak_pct": 55.01, "state": "OK", "stale": false}, "iteration": 6, "verdict": {"candidate": "cand_0006", "accept": false, "val": 0.6666666666666666, "parent_val": 0.7551020408163265, "indecisive": false, "delta": -0.0884, "se": 0.0431, "k_se": 2.0, "bar": 0.0862, "would_pass_k1": false}}
+```
