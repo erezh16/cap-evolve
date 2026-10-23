@@ -1,0 +1,10 @@
+{
+ "lines": [
+  "A4.1 seed first request byte-identical to stock: True (23 messages)",
+  "A4.2 memory block in final USER message, before 'My name is:': True",
+  "A4.3 helpers defined + note appended, original doc text unchanged: True; notice in prompt: True",
+  "A4 PASS"
+ ],
+ "lint_reject_without_rollout": true,
+ "ok": true
+}

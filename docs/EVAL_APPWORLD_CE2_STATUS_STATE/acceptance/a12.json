@@ -1,0 +1,10 @@
+{
+ "episode_fields": true,
+ "chat_fields": true,
+ "cli_fields": true,
+ "cli_ok": true,
+ "cli_model": "aws/claude-sonnet-5-5",
+ "cli_total_cost_usd_present": true,
+ "proxy_usd_1M_each": 12.2,
+ "ok": true
+}

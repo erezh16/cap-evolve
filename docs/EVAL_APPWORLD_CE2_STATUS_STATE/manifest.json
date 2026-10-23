@@ -22,8 +22,10 @@
   "ce2_k2": 2
  },
  "cape_pin": {
-  "commit": "819457804eff4658a1582318e2b067562522d1a1",
-  "tree": "/workspace/worktrees/cape-impr2"
+  "commit": "3db96a08ef77d7701f21771d389c6471a5d88344",
+  "tree": "/workspace/worktrees/cape-impr2",
+  "plan_pin": "819457804eff4658a1582318e2b067562522d1a1",
+  "core_skills_identical_to_plan_pin": true
  },
  "appworld_commit": "42b5bcf3cd334fee33f0c37c02070a9f5807add5",
  "opt_model": "aws/claude-sonnet-5-5",

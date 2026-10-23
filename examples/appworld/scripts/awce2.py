@@ -17,7 +17,7 @@ METHOD_NAMES = {"ce2_k1": "Cap-Evolve-impr2 K=1", "ce2_k2": "Cap-Evolve-impr2 K=
 K_SE = {"ce2_k1": 1, "ce2_k2": 2}
 RUN_ROOTS = {"ce2_k1": Path("/workspace/aw_ce2/run_k1"), "ce2_k2": Path("/workspace/aw_ce2/run_k2")}
 RUN_TS = {"ce2_k1": "ce2_k1_s0", "ce2_k2": "ce2_k2_s0"}
-CAPE_COMMIT = "819457804eff4658a1582318e2b067562522d1a1"
+CAPE_COMMIT = "3db96a08ef77d7701f21771d389c6471a5d88344"   # 8194578 + two Self-check wording fixes (user decisions 2026-10-23)
 CAPE_TREE = Path("/workspace/worktrees/cape-impr2")
 PINS = {c: ("https://github.com/erezh16/cap-evolve/tree/cap-evolve-impr2", CAPE_COMMIT) for c in CANDIDATES}
 # REST's names for the pinned cap-evolve checkout, re-pointed so shared code (sandbox deny list, A9) uses the CE2 pin

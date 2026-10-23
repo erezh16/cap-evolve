@@ -1,0 +1,19 @@
+{
+ "max_model_len": 40144,
+ "concurrency": {
+  "n": 48,
+  "status_200": 48,
+  "status_429": 0,
+  "wall_s": 9.3
+ },
+ "episode": {
+  "termination": "completed",
+  "reward": 0.0,
+  "n_steps": 20,
+  "max_prompt_tokens": 8861,
+  "error": null,
+  "lm_calls_logged": 20
+ },
+ "key_hits": 0,
+ "ok": true
+}
