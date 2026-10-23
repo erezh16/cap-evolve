@@ -145,7 +145,7 @@ def milestones(c: str) -> list[tuple[str, str, str]]:
                         f"**{P.METHOD_NAMES[c]}: {25 * q}% of the search budget used** ({counted} of "
                         f"{P.BUDGET_ROLLOUTS} counted rollouts).\n\n" + status_body(c).split("\n", 2)[2]))
     best = pr.get("best_search_score")
-    if best is not None:
+    if best is not None and P.LEDGER_PREFIX != "CE2":     # CE2: every iteration verdict is posted by p4_ce2.py
         out.append((f"m4_best_{best}", "new best search-time score",
                     f"**{P.METHOD_NAMES[c]}: new best search-time score {best}** "
                     f"({pr.get('best_search_label', 'selection-biased')}; a search-set number, not a test result)."))
