@@ -123,16 +123,28 @@ def scan_sessions(id_re: re.Pattern) -> dict:
     roots += [p for p in Path(f"/tmp/claude-{__import__('os').getuid()}").glob("-workspace-worktrees-*") if p.is_dir()]
     counts: Counter = Counter()
     files = 0
+    excluded: dict = {}
+    # CE2 user decision (CE2-0078): the orchestrating sessions are THIS run's sessions, identified by AW_SESSION_IDS;
+    # any other session's files are counted separately (out of scope) and disclosed, never silently dropped
+    keep = [x for x in __import__("os").environ.get("AW_SESSION_IDS", "").split(",") if x]
     for r in roots:
         for p in r.rglob("*"):
             if not p.is_file() or p.stat().st_size > 500_000_000:
+                continue
+            if keep and not any(k in str(p) for k in keep):
+                n = len(id_re.findall(p.read_bytes().decode("utf-8", "ignore")))
+                if n:
+                    sid = next((part[:8] for part in p.parts if len(part) >= 36 and part[8:9] == "-"), p.name[:8])
+                    excluded[sid] = excluded.get(sid, 0) + n
                 continue
             files += 1
             text = p.read_bytes().decode("utf-8", "ignore")
             counts["test_id"] += len(id_re.findall(text))
             for lit in LITERALS:
                 counts[lit] += text.count(lit)
-    return {"files": files, "counts": dict(+counts), "test_id_hits": counts["test_id"]}
+    return {"files": files, "counts": dict(+counts), "test_id_hits": counts["test_id"],
+            "scope": f"sessions {keep}" if keep else "all -workspace-worktrees-* sessions",
+            "out_of_scope_test_id_hits_by_session": excluded}
 
 
 def main() -> int:
