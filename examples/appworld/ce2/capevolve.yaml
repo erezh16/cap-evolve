@@ -6,8 +6,8 @@ actions: [edit]
 optimizer_skill: claude-code
 optimizer_model: aws/claude-sonnet-5-5
 optimizer_max_turns: 200
-optimizer_usd_per_iter: 15.0
-max_optimizer_usd: 120.0
+optimizer_usd_per_iter: 40.0              # user decision 2026-10-23 (CE2-0022): $15 bound before edits were written
+max_optimizer_usd: 300.0                  # user decision 2026-10-23 (CE2-0022)
 target_model: openai/gpt-oss-120b-a100
 algorithm_skill: hill-climb
 algorithm_focus: all

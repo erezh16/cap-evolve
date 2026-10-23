@@ -177,7 +177,7 @@ def setup(root: Path, split_ids: str = "full", force: bool = False) -> Path:
         f"- data: adapter tasks(); split_ids.json train = val = {len(ids)} ids, test = []\n"
         "- rollouts: through the shared evaluator (cache, seed baseline reused from REST P3, global slots, PAUSE, B = 900)\n"
         f"- gate: paired, K = {int(K)} (gate_k_se, explicit); 1 trial; 6 iterations; max_metric_calls 1029; "
-        "max_optimizer_usd 120\n"
+        "max_optimizer_usd 300, optimizer_usd_per_iter 40\n"
         "- objective score = reward (single objective; no objectives: block)\n")
     return proj
 
