@@ -186,3 +186,11 @@ Both searches stopped at 11:08 UTC by the executing session, before any counted 
 ```json
 {"cp": 21, "prev_cp": 20, "prev_commit": "ed1770b5c81d4be8e4abcc067540b8dbb2820590", "utc": "2026-10-23T11:09:05Z", "kind": "abort", "phase": "P4", "done_through": "P2/acceptance", "next": "P4/searches", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "2ffd6998ee34edc067fed124d9653eef941f68ca", "open_decisions": ["optimizer_usd_per_iter cap binds: raise / keep; restart fresh or resume"], "memory": {"used_pct": 5.08, "peak_pct": 53.72, "state": "OK", "stale": false}}
 ```
+
+## CE2-0022 · 2026-10-23T11:21Z · P4 optimizer USD caps raised; restart fresh · decision
+
+User decision (2026-10-23), answering CE2-0021, identical for both arms: optimizer_usd_per_iter 15 -> 40 (the CLI's --max-budget-usd per iteration) and max_optimizer_usd 120 -> 300 per arm (cap-evolve's run total, counted on the CLI-reported cost); the 10M optimizer non-cache-read token cap (shim) and B = 900 are unchanged. Both runs restart FRESH: the stopped run dirs (0 counted rollouts on both arms; ce2_k1 had one rejected iteration that scored an unchanged seed copy from the cache) and their usage logs are archived under AW_STATE/archive_p4_try1_*; the archived ce2_k1 session (CLI-reported USD 15.95, proxy about USD 6.4) is reported as lost spend, outside both arms' search totals. Both projects re-rendered; IMP launch checks 1-3 PASS; A-CE2-SAME PASS (the specs differ only in gate_k_se). Deviation from plan 9.3 (15 / 120), reported in both results. Next: both searches launched together again.
+
+```json
+{"cp": 22, "prev_cp": 21, "prev_commit": "c45af6c49dc8321201da1e50afefb69afb1c8d68", "utc": "2026-10-23T11:21:47Z", "kind": "decision", "phase": "P4", "done_through": "P2/acceptance", "next": "P4/searches", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/ce2/same.json": "1805e1a1d8a071433d566c3fde23e92c17b1e3f0f1e6880595978455d5e2a0ae"}, "code": "c45af6c49dc8321201da1e50afefb69afb1c8d68", "open_decisions": [], "memory": {"used_pct": 5.06, "peak_pct": 53.72, "state": "OK", "stale": false}}
+```
