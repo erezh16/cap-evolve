@@ -738,3 +738,11 @@ Isolation scan (counts only): ce2_k1: test-id hits 0; models ['aws/claude-sonnet
 ```json
 {"cp": 88, "prev_cp": 87, "prev_commit": "f6af45c7400e16a6afe862667b627b9b7daa6f36", "utc": "2026-10-23T19:07:50Z", "kind": "result", "phase": "P6", "done_through": "P6/scan", "next": "P7/final", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/isolation_scan.json": "7483bcfa401915c1f079cb03d6beed66321818f89ac518577d2a74515bfc8632"}, "code": "d7e4aa458f460f7f6e700c907a7e5050a1788b3b", "open_decisions": [], "memory": {"used_pct": 5.57, "peak_pct": 55.01, "state": "OK", "stale": false}}
 ```
+
+## CE2-0089 · 2026-10-23T19:08Z · P6 posted ce2_k1 · posted
+
+Posted 'isolation scans, contained probe, final window next' on #909 (ce2_k1): https://github.com/skillberry-ai/cap-evolve/issues/909#issuecomment-6372673171
+
+```json
+{"cp": 89, "prev_cp": 88, "prev_commit": "6ae3bd9dca904566d7211c9ebfcf4f128a5b7435", "utc": "2026-10-23T19:08:16Z", "kind": "posted", "phase": "P6", "done_through": "P6/scan", "next": "P7/final", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "d7e4aa458f460f7f6e700c907a7e5050a1788b3b", "open_decisions": [], "memory": {"used_pct": 5.59, "peak_pct": 55.01, "state": "OK", "stale": false}, "post": "ce2_k1/m6_scan", "url": "https://github.com/skillberry-ai/cap-evolve/issues/909#issuecomment-6372673171"}
+```
