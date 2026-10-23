@@ -1,0 +1,186 @@
+{
+ "arm": "ce2_k2",
+ "k_se": 2.0,
+ "best_id": "cand_0001",
+ "inert": false,
+ "label": "",
+ "tree_sha256": "ea4c49df73fa35c3b342f26367ef875b968c8a771cf2ece2aa57a0688dcdf4b5",
+ "run_candidate_tree_sha256": "ea4c49df73fa35c3b342f26367ef875b968c8a771cf2ece2aa57a0688dcdf4b5",
+ "seed_tree_sha256": "85a0da9cec2206a7bc683c11d60b5cb0acac7328d43c6e9197324d1e45971f3c",
+ "best_val": 0.7551020408163265,
+ "imp": {
+  "1_code_pin": {
+   "ok": true,
+   "cap_evolve_file": "/workspace/worktrees/cape-impr2/core/cap_evolve/__init__.py",
+   "head": "3db96a08ef77d7701f21771d389c6471a5d88344",
+   "clean": true
+  },
+  "2_skills_pin": {
+   "ok": true,
+   "resolved": "/workspace/worktrees/cape-impr2/skills",
+   "home_skills_exists": true
+  },
+  "3_spec_k_se": {
+   "ok": true,
+   "value": 2.0,
+   "expected": 2.0
+  },
+  "3_run_config": {
+   "ok": true,
+   "run_config_events": 1,
+   "spec_k_se": 2.0
+  },
+  "4_effective_k_se": {
+   "ok": true,
+   "hill_climb_cmdlines": 1,
+   "k_se_values": [
+    "2"
+   ],
+   "expected": 2.0,
+   "gate_events_mentioning_k_se": 0
+  },
+  "5_instructions": {
+   "ok": true,
+   "iterations": 6,
+   "diff_only_insertion": true,
+   "detail": [
+    {
+     "cid": "cand_0001",
+     "has": {
+      "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+      "## PREPARATION:": true,
+      "### 1. Understand the objective score": true,
+      "## Strategies for constructing edits:": true,
+      "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+      "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+      "## AppWorld facts for THIS run": true,
+      "**Objective score for this run.**": true
+     },
+     "forbidden": []
+    },
+    {
+     "cid": "cand_0002",
+     "has": {
+      "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+      "## PREPARATION:": true,
+      "### 1. Understand the objective score": true,
+      "## Strategies for constructing edits:": true,
+      "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+      "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+      "## AppWorld facts for THIS run": true,
+      "**Objective score for this run.**": true
+     },
+     "forbidden": []
+    },
+    {
+     "cid": "cand_0003",
+     "has": {
+      "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+      "## PREPARATION:": true,
+      "### 1. Understand the objective score": true,
+      "## Strategies for constructing edits:": true,
+      "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+      "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+      "## AppWorld facts for THIS run": true,
+      "**Objective score for this run.**": true
+     },
+     "forbidden": []
+    },
+    {
+     "cid": "cand_0004",
+     "has": {
+      "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+      "## PREPARATION:": true,
+      "### 1. Understand the objective score": true,
+      "## Strategies for constructing edits:": true,
+      "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+      "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+      "## AppWorld facts for THIS run": true,
+      "**Objective score for this run.**": true
+     },
+     "forbidden": []
+    },
+    {
+     "cid": "cand_0005",
+     "has": {
+      "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+      "## PREPARATION:": true,
+      "### 1. Understand the objective score": true,
+      "## Strategies for constructing edits:": true,
+      "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+      "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+      "## AppWorld facts for THIS run": true,
+      "**Objective score for this run.**": true
+     },
+     "forbidden": []
+    },
+    {
+     "cid": "cand_0006",
+     "has": {
+      "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+      "## PREPARATION:": true,
+      "### 1. Understand the objective score": true,
+      "## Strategies for constructing edits:": true,
+      "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+      "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+      "## AppWorld facts for THIS run": true,
+      "**Objective score for this run.**": true
+     },
+     "forbidden": []
+    }
+   ]
+  },
+  "6_guidance": {
+   "ok": true,
+   "detail": [
+    {
+     "cid": "cand_0001",
+     "tools": "sha_match",
+     "system-prompt": "sha_match",
+     "diagnose": "head_match"
+    },
+    {
+     "cid": "cand_0002",
+     "tools": "sha_match",
+     "system-prompt": "sha_match",
+     "diagnose": "head_match"
+    },
+    {
+     "cid": "cand_0003",
+     "tools": "sha_match",
+     "system-prompt": "sha_match",
+     "diagnose": "head_match"
+    },
+    {
+     "cid": "cand_0004",
+     "tools": "sha_match",
+     "system-prompt": "sha_match",
+     "diagnose": "head_match"
+    },
+    {
+     "cid": "cand_0005",
+     "tools": "sha_match",
+     "system-prompt": "sha_match",
+     "diagnose": "head_match"
+    },
+    {
+     "cid": "cand_0006",
+     "tools": "sha_match",
+     "system-prompt": "sha_match",
+     "diagnose": "head_match"
+    }
+   ],
+   "pinned_sha256": {
+    "tools": "d6a5ec65e46113a64124cfc2e842a95a493e1c13679f380361ec4447a69d994a",
+    "system-prompt": "4df6976688391b55e783b9cb6631523718c40a4ed4fbee77d71d450d105de51b",
+    "diagnose": "ef0eb2fc3cf971eae63f377b3e318664d617e17c2aa70de79557e825b24ff677"
+   }
+  },
+  "7_hill_climb_script": {
+   "ok": true,
+   "path": "/workspace/worktrees/cape-impr2/skills/algorithms/hill-climb/scripts/run.py",
+   "sha256": "c04938fcfa72bfb16dcc61fe7d2ee3dc370e0a1510953f2e35ddb140b2f80641"
+  },
+  "all_ok": true
+ }
+}
