@@ -1211,3 +1211,11 @@ Next: P8/analysis.
 ```json
 {"cp": 142, "prev_cp": 141, "prev_commit": "71e804f9c39aff742fe39a8bcc7fd0c6241572a1", "utc": "2026-10-23T22:41:50Z", "kind": "phase_done", "phase": "P7", "done_through": "final/1008", "next": "P8/analysis", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/final/progress.json": "e1bea617017e1aa50f908f3e15e6c111f4147f36993fbbf74137b146bbe1cd56"}, "code": "4ab33f8d4aa4051f6e1e09089190bed5760b95fb", "open_decisions": [], "memory": {"used_pct": 7.3, "peak_pct": 77.36, "state": "OK", "stale": false}, "window": {"window": "final", "cells_total": 1008, "cells_done": 1008, "order_sha256": "c020e74166d6206eeff37e123efe36ce39b8cb596e62426cc4542967b3784eed"}}
 ```
+
+## CE2-0143 · 2026-10-23T22:42Z · P8 analysis · phase_done
+
+P7 done (1,008/1,008 cells; root_full relocked). P8 analysis done (final/analysis.json, final/RESULTS.md, aggregates only). test_normal: seed TGC 37.8 / SGC 15.2; ce2_k1 TGC 51.2 / SGC 28.6, Δ TGC vs seed +13.4 [+7.1, +20.2]; ce2_k2 TGC 47.3 / SGC 27.7, Δ TGC vs seed +9.5 [+2.1, +17.3]; ce2_k2 − ce2_k1 Δ TGC -3.9 [-11.6, +3.9] (one search seed each: K confounded with search randomness). Next: P9 results posts.
+
+```json
+{"cp": 143, "prev_cp": 142, "prev_commit": "e35c733ecd439898d66d8f4134d74d73a08dac89", "utc": "2026-10-23T22:42:11Z", "kind": "phase_done", "phase": "P8", "done_through": "P8/analysis", "next": "P9/post", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/final/analysis.json": "f9aba0a2a04c004764b52ea705bca103e365d1665853b1cacd504e7ef4424a31", "STATE/final/RESULTS.md": "ca6fbe0a5f4d30da07c451f9eb40bd2c996220da20e06b72f9349a24a8ee3972"}, "code": "4ab33f8d4aa4051f6e1e09089190bed5760b95fb", "open_decisions": [], "memory": {"used_pct": 5.53, "peak_pct": 77.36, "state": "OK", "stale": false}}
+```
