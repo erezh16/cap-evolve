@@ -139,7 +139,7 @@ CLASS, then write the general fix.
 #### Self-check before STOP
 - Every kept edit is REAL (a failing trace shows it) and GENERAL (a class-level rule, no task id or answer),
   with its check line, class and coverage in PROCESS.md.
-- You aimed at the largest expected reward gain over the whole distribution: you covered the root
+- You aimed at the largest expected objective score gain over the whole distribution: you covered the root
   causes that cost the most reward across failure types, not only the first cluster or the task you
   read last.
 - You read each selected capability's `./guidance/<cap>/SKILL.md` and used the improvement types it
