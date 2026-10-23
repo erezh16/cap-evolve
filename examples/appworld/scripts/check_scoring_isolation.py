@@ -66,21 +66,27 @@ def main(argv: list[str]) -> int:
     ad = Adapter()
     tid = train[0]
     task = [t for t in ad.tasks("train") if t.id == tid][0]
-    fields_ok, out = run_world(tid, "probes/a5_solution", compiled_solution_code(tid))
+    # CE2 plan §15 A5 / §17: the released-solution probe is not repeated (the executing agent does not handle solution
+    # files); REST passed it with this code. AW_A5_NO_SOLUTION=1 skips A5.1 and checks no-op, determinism and no-trace.
+    no_sol = os.environ.get("AW_A5_NO_SOLUTION") == "1"
+    fields_ok, out = (None, "") if no_sol else run_world(tid, "probes/a5_solution", compiled_solution_code(tid))
     fields_noop, _ = run_world(tid, "probes/a5_noop", None)
+    if no_sol:
+        fields_ok = dict(fields_noop)
     r_ok = Rollout(task_id=tid, trace=[], metadata=dict(fields_ok, n_steps=1, termination="completed"))
     r_no = Rollout(task_id=tid, trace=[], metadata=dict(fields_noop, n_steps=0, termination="max_steps"))
     s1, s2, s0 = ad.score(task, r_ok), ad.score(task, r_ok), ad.score(task, r_no)
-    print(f"A5.1 released solution -> reward {s1.reward} (solution output: {out.strip()[:80]!r})")
+    print("A5.1 released solution: not repeated (CE2 §17)" if no_sol else
+          f"A5.1 released solution -> reward {s1.reward} (solution output: {out.strip()[:80]!r})")
     print(f"A5.2 no-op -> reward {s0.reward}")
     det = s1.to_dict() == s2.to_dict() and s0.to_dict() == ad.score(task, r_no).to_dict()
     print(f"A5.3 score twice identical: {det}")
     persisted = json.dumps({"rollout": r_no.to_dict(), "score": s0.to_dict()})
-    answer = json.loads(gt.read_text()) if gt.is_file() else None
+    answer = json.loads(gt.read_text()) if gt.is_file() else None   # read by this trusted script only, never printed
     no_trace = '"trace": "' not in persisted and "Traceback" not in persisted
     no_gold = answer in (None, "") or json.dumps(answer) not in persisted
     print(f"A5.4 persisted metadata has no failure trace: {no_trace}; gold answer absent: {no_gold}")
-    ok &= s1.reward == 1.0 and s0.reward == 0.0 and det and no_trace and no_gold
+    ok &= (no_sol or s1.reward == 1.0) and s0.reward == 0.0 and det and no_trace and no_gold
     print("A3+A5", "PASS" if ok else "FAIL")
     return 0 if ok else 1
 

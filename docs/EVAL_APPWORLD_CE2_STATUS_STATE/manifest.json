@@ -58,5 +58,13 @@
   "cpu_limit": 8,
   "oom_group": 1,
   "swap_max": 0
+ },
+ "final_order": {
+  "seed": 2026102207,
+  "sha256": "c020e74166d6206eeff37e123efe36ce39b8cb596e62426cc4542967b3784eed",
+  "cells": 1008,
+  "trials": 2,
+  "trial_seeds": "5000 + trial",
+  "infra_retries": 3
  }
 }

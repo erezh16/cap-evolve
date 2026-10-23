@@ -37,6 +37,8 @@ import awrest as P  # noqa: E402
 P.setup_env()
 DEV_ORDER_SEED = 2026102005
 FINAL_ORDER_SEED = 2026102007
+if P.LEDGER_PREFIX == "CE2":            # CE2 §16: 20261022 + a fixed suffix, recorded in manifest.json in advance
+    FINAL_ORDER_SEED = 2026102207
 FINAL_TRIALS = 2
 FINAL_DIR = "final"
 ART = P.AW_STATE / FINAL_DIR / "artifacts"

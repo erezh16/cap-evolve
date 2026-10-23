@@ -111,6 +111,8 @@ def _run_base_check(script: str, *args: str) -> tuple[int, str]:
     env = P.setup_env(dict(os.environ))
     env["APPWORLD_ROOT"] = str(P.ROOT_OPT)
     env.setdefault("AW_EVAL", str(P.AW_BUILD))
+    if P.LEDGER_PREFIX == "CE2":
+        env["AW_A5_NO_SOLUTION"] = "1"
     r = subprocess.run([str(P.VENV_PY), "-I", str(EX / "scripts" / script), *args], capture_output=True, text=True,
                        env=env, cwd=str(P.SCRATCH))
     shutil.rmtree(P.ROOT_OPT / "experiments" / "outputs" / "probes", ignore_errors=True)
@@ -195,7 +197,8 @@ def a7() -> int:
     dev_same = E.split_ids("dev") == P.read_split("dev") and len(E.split_ids("dev")) == 57
     return done("a7", {"final_order_reproducible": same, "cells": len(o1), "dev_order_file_order": dev_same,
                        "root_full_relocked": not os.access(P.ROOT_FULL, os.R_OK),
-                       "ok": same and len(o1) == 168 * 6 * 2 and dev_same and not os.access(P.ROOT_FULL, os.R_OK)})
+                       "ok": same and len(o1) == 168 * len(P.ARMS) * 2 and dev_same
+                             and not os.access(P.ROOT_FULL, os.R_OK)})
 
 
 def a8() -> int:
@@ -352,7 +355,8 @@ def a11() -> int:
         if hog and hog.poll() is None:
             hog.kill()
         guard.terminate()
-    r = subprocess.run([str(Path.home() / "bin" / "memok")], capture_output=True, text=True)
+    r = subprocess.run([str(Path.home() / "bin" / ("memok-ce2" if P.LEDGER_PREFIX == "CE2" else "memok"))],
+                       capture_output=True, text=True)
     res["spawn_check_reads_memstate"] = "memstate" in r.stdout and r.returncode == 0
     res["ok"] = (res["guard_period_s"] is not None and res["guard_period_s"] <= 10 and res["guard_fresh"]
                  and res["paused"] and res["pause_latency_s_upper_bound"] is not None
@@ -392,6 +396,28 @@ def a12() -> int:
     return done("a12", res)
 
 
+def a13_ce2() -> dict:
+    """CE2 §15 A13 on the REAL reused cache (no mini P3, no fresh seed episode): 7.4 passed; a candidate dir identical
+    to the seed is served entirely from the cache on all 147 ids (0 counted, nothing fresh); a fresh seed episode is
+    refused (SeedRerunRefused) for a seed whose record is missing (a probe with a seed value outside the cache)."""
+    import evaluator as E
+    sr = P.read_json(P.AW_STATE / "seed_reuse.json", {}) or {}
+    ids = E.split_ids("train") + E.split_ids("dev")
+    same = E.materialize("acc_a13", {})
+    before = E.counted("acc_a13")
+    recs = E.evaluate("acc_a13", same, ids, phase="search", tag="same-as-seed")
+    out = {"seed_reuse_ok": sr.get("ok") is True, "same_tree_is_seed": E.tree_hash(same) == E.seed_hash(),
+           "identical_served_from_cache": all(r.get("cache_hit") for r in recs) and len(recs) == 147,
+           "counted_after": E.counted("acc_a13") - before,
+           "tgc_from_cache": round(sum(r["reward"] for r in recs) / len(recs), 4)}
+    try:
+        E.evaluate("acc_a13", same, ids[:1], phase="search", tag="fresh-seed", seed=101)
+        out["seed_rerun_refused"] = False
+    except E.SeedRerunRefused:
+        out["seed_rerun_refused"] = True
+    return out
+
+
 def a13() -> int:
     """Seed reuse (Q4) + the global slot pool. Runs on its own throwaway AW_STATE copy of the cache dir, so the real
     P3 baseline is untouched: a mini P3 on 4 dev ids, then a candidate identical to the seed is served from the cache
@@ -406,7 +432,12 @@ def a13() -> int:
     shutil.rmtree(P.AW_STATE / "a13", ignore_errors=True)
     shutil.rmtree(P.AW_STATE / "acc_a13", ignore_errors=True)
     res = {}
+    if P.LEDGER_PREFIX == "CE2":
+        res = a13_ce2()
+        E.CACHE, E.SEED_DONE = saved_cache, saved_done
     try:
+        if P.LEDGER_PREFIX == "CE2":
+            raise _SkipMiniP3
         # mini P3: the seed on 4 dev ids, phase P3 (charged to the throwaway "a13seed" ledger file via a patched path)
         saved_lf = E._ledger_file
         E._ledger_file = lambda cand, phase: P.AW_STATE / "a13" / f"{phase}.jsonl"
@@ -425,6 +456,8 @@ def a13() -> int:
         except E.SeedRerunRefused:
             res["seed_rerun_refused"] = True
         E._ledger_file = saved_lf
+    except _SkipMiniP3:
+        pass
     finally:
         E.CACHE, E.SEED_DONE = saved_cache, saved_done
     # slot pool: shrink the pool to 2 for this test, 3 threads x 4 acquisitions, peak concurrency must be <= 2
@@ -457,9 +490,17 @@ def a13() -> int:
     if prev is None:
         size_file.unlink(missing_ok=True)
     res["slot_peak_with_size_2"] = peak[0]
-    res["ok"] = (res["mini_p3_fresh"] == 4 and res["identical_served_from_cache"] and res["counted_after"] == 0
-                 and res["seed_rerun_refused"] and peak[0] == 2)
+    if P.LEDGER_PREFIX == "CE2":
+        res["ok"] = (res["seed_reuse_ok"] and res["same_tree_is_seed"] and res["identical_served_from_cache"]
+                     and res["counted_after"] == 0 and res["seed_rerun_refused"] and peak[0] == 2)
+    else:
+        res["ok"] = (res["mini_p3_fresh"] == 4 and res["identical_served_from_cache"] and res["counted_after"] == 0
+                     and res["seed_rerun_refused"] and peak[0] == 2)
     return done("a13", res)
+
+class _SkipMiniP3(Exception):
+    pass
+
 
 _APPS = None
 
