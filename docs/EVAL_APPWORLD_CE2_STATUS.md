@@ -754,3 +754,11 @@ Posted 'isolation scans, contained probe, final window next' on #910 (ce2_k2): h
 ```json
 {"cp": 90, "prev_cp": 89, "prev_commit": "1a0a46680dd0cc05182d05bc88896a5543bb9abc", "utc": "2026-10-23T19:08:18Z", "kind": "posted", "phase": "P6", "done_through": "P6/scan", "next": "P7/final", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "d7e4aa458f460f7f6e700c907a7e5050a1788b3b", "open_decisions": [], "memory": {"used_pct": 5.59, "peak_pct": 55.01, "state": "OK", "stale": false}, "post": "ce2_k2/m6_scan", "url": "https://github.com/skillberry-ai/cap-evolve/issues/910#issuecomment-6372673973"}
 ```
+
+## CE2-0091 · 2026-10-23T19:09Z · P6 isolation scan · result
+
+Isolation scan (counts only): ce2_k1: test-id hits 0; models ['aws/claude-sonnet-5-5'], other models []; J1 in 6 iteration(s) ok=True; K on the command line ['1'] ok=True; ce2_k2: test-id hits 0; models ['aws/claude-sonnet-5-5'], other models []; J1 in 6 iteration(s) ok=True; K on the command line ['2'] ok=True; orchestrating sessions: test-id hits 0 over 22 files. Literal-string counts per location are in the pushed scan file.
+
+```json
+{"cp": 91, "prev_cp": 90, "prev_commit": "4ab33f8d4aa4051f6e1e09089190bed5760b95fb", "utc": "2026-10-23T19:09:44Z", "kind": "result", "phase": "P6", "done_through": "P6/scan", "next": "P7/final", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/isolation_scan.json": "e61b991b1858d0358d6ca5ba20584f8960647386950b23ef2356453d8c82492b"}, "code": "4ab33f8d4aa4051f6e1e09089190bed5760b95fb", "open_decisions": [], "memory": {"used_pct": 5.71, "peak_pct": 55.01, "state": "OK", "stale": false}}
+```
