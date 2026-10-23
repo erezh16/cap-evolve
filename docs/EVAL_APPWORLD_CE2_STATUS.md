@@ -18,3 +18,11 @@ Execution of the eval CE2 plan starts. Decisions D1 to D10 (plan section 2) are 
 ```json
 {"cp": 0, "prev_cp": null, "prev_commit": "a390b3abc432cfbfb5642d00bbd706a42c3f337e", "utc": "2026-10-23T09:27:41Z", "kind": "decision", "phase": "P0", "done_through": "P0/decisions", "next": "P1/B1", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/manifest.json": "840e832dd6ec0ce76575547ea529d268275404d24bf2932518df38a77e339ad9"}, "code": "a390b3abc432cfbfb5642d00bbd706a42c3f337e", "open_decisions": [], "memory": {"used_pct": 4.9, "peak_pct": 5.88, "state": "OK", "stale": false}, "issues": {"ce2_k1": 909, "ce2_k2": 910}}
 ```
+
+## CE2-0001 · 2026-10-23T09:28Z · P1 B0 push to wrong branch · error
+
+Error and repair in B0. The worktree was created with 'git worktree add -b eval-ce2 ... origin/eval-rest', which set the new branch's upstream to origin/eval-rest; with push.default=upstream the first push of B0 (commit f283fd2: this plan copy and the ledger header, two new files) went to origin/eval-rest instead of a new branch. Repair, approved by the user: origin/eval-ce2 created at f283fd2; origin/eval-rest restored to d049ba6 (REST's last commit) with a force-with-lease that required it to still be at f283fd2; the upstream of eval-ce2 set to origin/eval-ce2. status_doc.py always pushes HEAD:eval-ce2 explicitly. No REST file was changed at any point.
+
+```json
+{"cp": 1, "prev_cp": 0, "prev_commit": "e5dbc4edb239247f5a49859983a3e48d8e3e2ccd", "utc": "2026-10-23T09:28:38Z", "kind": "error", "phase": "P1", "done_through": "P1/B0", "next": "P1/B1", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "a390b3abc432cfbfb5642d00bbd706a42c3f337e", "open_decisions": [], "memory": {"used_pct": 4.91, "peak_pct": 5.88, "state": "OK", "stale": false}}
+```
