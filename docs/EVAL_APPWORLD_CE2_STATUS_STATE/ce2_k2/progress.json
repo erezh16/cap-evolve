@@ -1,0 +1,28 @@
+{
+ "stage": "search running",
+ "arm": "ce2_k2",
+ "k_se": 2.0,
+ "counted_rollouts": 0,
+ "cache_hits": 0,
+ "lint_rejects": 0,
+ "iterations_done": 0,
+ "iterations_consumed": 0,
+ "accepted": 0,
+ "iterations": [],
+ "baseline_val": null,
+ "baseline_label": "seed, reused from REST P3",
+ "best_search_score": null,
+ "best_search_label": "val = train ∪ dev (147), a fit metric, selection-biased",
+ "metric_calls": null,
+ "capevolve_optimizer_usd": null,
+ "optimizer": {
+  "calls": 0,
+  "prompt_tokens": 0,
+  "completion_tokens": 0,
+  "cache_read": 0,
+  "cache_write": 0,
+  "proxy_usd": 0.0,
+  "seconds": 0
+ },
+ "eta": "6 of 6 iterations left (about 45 min each in REST)"
+}
