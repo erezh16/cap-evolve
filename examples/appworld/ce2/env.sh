@@ -9,3 +9,4 @@ export AW_BRANCH=eval-ce2
 export AW_REPO=/workspace/worktrees/eval-ce2
 # the RITS key stays in the base worktree's .env; it is read by the episode worker only, never copied (R1)
 export AW_ENV_FILE=/workspace/worktrees/base/.env
+export AW_SESSION_IDS=959232f1-5a88-467f-b986-718636481ff3   # this run's orchestrating session (CE2-0087)
