@@ -552,3 +552,11 @@ Posted 'Cap-Evolve-impr2 K=2 iteration 6' on #910 (ce2_k2): https://github.com/s
 ```json
 {"cp": 66, "prev_cp": 65, "prev_commit": "06a48211f1fe801e6664ffc1280abb3448f3db97", "utc": "2026-10-23T16:28:40Z", "kind": "posted", "phase": "P4", "done_through": "P2/acceptance", "next": "P4/searches", "arm": "ce2_k2", "counts": {}, "spend": {}, "artifacts": {}, "code": "c45af6c49dc8321201da1e50afefb69afb1c8d68", "open_decisions": [], "memory": {"used_pct": 20.05, "peak_pct": 55.01, "state": "OK", "stale": false}, "post": "ce2_k2/iter_6", "url": "https://github.com/skillberry-ai/cap-evolve/issues/910#issuecomment-6369667105"}
 ```
+
+## CE2-0067 · 2026-10-23T16:29Z · P4 posted ce2_k2 · posted
+
+Posted 'Cap-Evolve-impr2 K=2 isolation scan' on #910 (ce2_k2): https://github.com/skillberry-ai/cap-evolve/issues/910#issuecomment-6369678143
+
+```json
+{"cp": 67, "prev_cp": 66, "prev_commit": "4c60b0890eb357791bb9cf0270bc4562ad33045a", "utc": "2026-10-23T16:29:14Z", "kind": "posted", "phase": "P4", "done_through": "P2/acceptance", "next": "P4/searches", "arm": "ce2_k2", "counts": {}, "spend": {}, "artifacts": {}, "code": "c45af6c49dc8321201da1e50afefb69afb1c8d68", "open_decisions": [], "memory": {"used_pct": 11.49, "peak_pct": 55.01, "state": "OK", "stale": false}, "post": "ce2_k2/m4_scanned", "url": "https://github.com/skillberry-ai/cap-evolve/issues/910#issuecomment-6369678143"}
+```
