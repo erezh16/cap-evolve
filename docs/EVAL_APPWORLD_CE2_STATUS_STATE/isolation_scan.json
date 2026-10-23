@@ -152,5 +152,163 @@
    "k_ok": true,
    "imp_all_ok": true
   }
+ },
+ "ce2_k1": {
+  "locations": {
+   "claude -p results": {
+    "files": 6,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "arm state (driver)": {
+    "files": 369,
+    "files_hit": 2,
+    "counts": {
+     "root_full": 6,
+     "ground_truth": 3,
+     "src/appworld/apps": 1,
+     "aw_rest/cape_run": 1,
+     "aw_rest/state": 1,
+     "aw_ce2/run_k2": 1
+    }
+   },
+   "optimizer workdirs (run dir work/)": {
+    "files": 1241,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "run dir events": {
+    "files": 1,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "frozen artifact": {
+    "files": 4,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "claude transcripts projects/2-run-k1--capevolve-run-ce2-k1-s0-work-cand-0002": {
+    "files": 14,
+    "files_hit": 5,
+    "counts": {
+     "root_full": 16
+    }
+   },
+   "claude transcripts projects/2-run-k1--capevolve-run-ce2-k1-s0-work-cand-0004": {
+    "files": 14,
+    "files_hit": 7,
+    "counts": {
+     "root_full": 20
+    }
+   },
+   "claude transcripts projects/w-ce2-run-k1--capevolve-run-ce2-k1-s0-work-a9-ws": {
+    "files": 6,
+    "files_hit": 4,
+    "counts": {
+     "root_full": 90,
+     "ground_truth": 47,
+     "src/appworld/apps": 22,
+     "aw_rest/cape_run": 22,
+     "aw_rest/state": 22,
+     "aw_ce2/run_k2": 22
+    }
+   },
+   "claude transcripts projects/2-run-k1--capevolve-run-ce2-k1-s0-work-cand-0003": {
+    "files": 1,
+    "files_hit": 1,
+    "counts": {
+     "root_full": 6
+    }
+   },
+   "claude transcripts projects/2-run-k1--capevolve-run-ce2-k1-s0-work-cand-0006": {
+    "files": 13,
+    "files_hit": 5,
+    "counts": {
+     "root_full": 41
+    }
+   },
+   "claude transcripts projects/workspace-aw-ce2-run-k1--capevolve-run-ce2-k1-s0": {
+    "files": 0,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "claude transcripts projects/2-run-k1--capevolve-run-ce2-k1-s0-work-cand-0001": {
+    "files": 21,
+    "files_hit": 9,
+    "counts": {
+     "root_full": 24
+    }
+   },
+   "claude transcripts projects/2-run-k1--capevolve-run-ce2-k1-s0-work-cand-0005": {
+    "files": 11,
+    "files_hit": 4,
+    "counts": {
+     "root_full": 12
+    }
+   },
+   "claude transcripts claude-10034/2-run-k1--capevolve-run-ce2-k1-s0-work-cand-0002": {
+    "files": 12,
+    "files_hit": 3,
+    "counts": {
+     "root_full": 10
+    }
+   },
+   "claude transcripts claude-10034/2-run-k1--capevolve-run-ce2-k1-s0-work-cand-0004": {
+    "files": 9,
+    "files_hit": 6,
+    "counts": {
+     "root_full": 16
+    }
+   },
+   "claude transcripts claude-10034/w-ce2-run-k1--capevolve-run-ce2-k1-s0-work-a9-ws": {
+    "files": 2,
+    "files_hit": 2,
+    "counts": {
+     "root_full": 21,
+     "ground_truth": 8
+    }
+   },
+   "claude transcripts claude-10034/2-run-k1--capevolve-run-ce2-k1-s0-work-cand-0001": {
+    "files": 40,
+    "files_hit": 7,
+    "counts": {
+     "root_full": 18
+    }
+   },
+   "claude transcripts claude-10034/2-run-k1--capevolve-run-ce2-k1-s0-work-cand-0006": {
+    "files": 26,
+    "files_hit": 4,
+    "counts": {
+     "root_full": 33
+    }
+   },
+   "claude transcripts claude-10034/2-run-k1--capevolve-run-ce2-k1-s0-work-cand-0003": {
+    "files": 0,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "claude transcripts claude-10034/2-run-k1--capevolve-run-ce2-k1-s0-work-cand-0005": {
+    "files": 19,
+    "files_hit": 3,
+    "counts": {
+     "root_full": 8
+    }
+   }
+  },
+  "test_id_hits": 0,
+  "isolation_breach": false,
+  "ce2": {
+   "model_usage_keys": {
+    "aws/claude-sonnet-5-5": 6
+   },
+   "other_models": [],
+   "j1_iterations": 6,
+   "j1_all_ok": true,
+   "k_se_cmdline": [
+    "1"
+   ],
+   "k_ok": true,
+   "imp_all_ok": true
+  }
  }
 }
