@@ -122,3 +122,11 @@ P2 done: every acceptance check of plan section 15 has passed and is in the ledg
 ```json
 {"cp": 13, "prev_cp": 12, "prev_commit": "4072450aac84034ca81fe1c4b79494003542e54c", "utc": "2026-10-23T10:54:07Z", "kind": "phase_done", "phase": "P2", "done_through": "P2/acceptance", "next": "P4/searches", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/acceptance/a_ce2_ce2_k1.json": "76d93a6271946cecf098f26cbe1a76a3423ae8d8bfb7dec5852c0f7c2bdd5515", "STATE/acceptance/a_ce2_ce2_k2.json": "6b3d2d60d8ef384ff0f093bd650ad9df74204b9c85656c1871654db56a4db72a"}, "code": "09fa3bc30630624f59d2d7d42fab7d14d4ac7565", "open_decisions": [], "memory": {"used_pct": 5.07, "peak_pct": 53.72, "state": "OK", "stale": false}}
 ```
+
+## CE2-0014 · 2026-10-23T10:56Z · P4 searches launched · phase_start
+
+P4: chain(s) ce2_k1, ce2_k2 started (search, freeze, isolation scan); pid files AW_STATE/p4/<arm>.pid. Running now: ce2_k1, ce2_k2. Global slots 24; memory 5.05%.
+
+```json
+{"cp": 14, "prev_cp": 13, "prev_commit": "75a4e1ed28c9279e3db732027a7d069b12f09a45", "utc": "2026-10-23T10:56:30Z", "kind": "phase_start", "phase": "P4", "done_through": "P2/acceptance", "next": "P4/searches", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "75a4e1ed28c9279e3db732027a7d069b12f09a45", "open_decisions": [], "memory": {"used_pct": 5.05, "peak_pct": 53.72, "state": "OK", "stale": false}}
+```
