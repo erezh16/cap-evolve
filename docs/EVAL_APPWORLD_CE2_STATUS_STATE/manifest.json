@@ -1,0 +1,62 @@
+{
+ "seed": {
+  "SEED_HASH": "85a0da9cec2206a7bc683c11d60b5cb0acac7328d43c6e9197324d1e45971f3c",
+  "reused_from": "REST P3, commit a0c85b4",
+  "records": 147,
+  "listing_sha256": "b1b269f19dc7bbd749f108638472443544125c07d6b089b4f881e41f560577ec",
+  "tgc": {
+   "train": 0.4,
+   "dev": 0.3333,
+   "union": 0.3741
+  }
+ },
+ "plan": "docs/EVAL_APPWORLD_CE2.md",
+ "branch": "eval-ce2",
+ "issues": {
+  "ce2_k1": 909,
+  "ce2_k2": 910
+ },
+ "issue_repo": "skillberry-ai/cap-evolve",
+ "k_se": {
+  "ce2_k1": 1,
+  "ce2_k2": 2
+ },
+ "cape_pin": {
+  "commit": "819457804eff4658a1582318e2b067562522d1a1",
+  "tree": "/workspace/worktrees/cape-impr2"
+ },
+ "appworld_commit": "42b5bcf3cd334fee33f0c37c02070a9f5807add5",
+ "opt_model": "aws/claude-sonnet-5-5",
+ "agent_model": "openai/gpt-oss-120b-a100",
+ "budget": {
+  "rollouts": 900,
+  "opt_tokens": 10000000,
+  "max_metric_calls": 1029,
+  "max_optimizer_usd": 120.0,
+  "iterations": 6
+ },
+ "trials": {
+  "search": 1,
+  "search_seed": 100,
+  "final": 2,
+  "final_seed_base": 5000
+ },
+ "prices_usd_per_mtok": {
+  "in": 2.0,
+  "out": 10.0,
+  "cache_read": 0.2,
+  "cache_write": 2.5
+ },
+ "global_slots_start": 24,
+ "memguard": {
+  "high": 90,
+  "low": 85,
+  "every_s": 5
+ },
+ "host": {
+  "limit_MB": 32768,
+  "cpu_limit": 8,
+  "oom_group": 1,
+  "swap_max": 0
+ }
+}
