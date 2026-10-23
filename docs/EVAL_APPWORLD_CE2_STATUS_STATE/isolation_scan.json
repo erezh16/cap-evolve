@@ -312,23 +312,26 @@
   }
  },
  "_orchestrating_sessions": {
-  "files": 82,
+  "files": 23,
   "counts": {
-   "test_id": 540,
-   "test_normal": 796,
-   "test_challenge": 305,
-   "root_full": 1082,
-   "ground_truth": 330,
-   "answer.json": 199,
-   "compiled_solution": 123,
-   "generate/tasks": 51,
-   "src/appworld/apps": 216,
-   "solution.py": 160,
-   "aw_rest/cape_run": 264,
-   "aw_rest/state": 1021,
-   "aw_ce2/run_k1": 133,
-   "aw_ce2/run_k2": 124
+   "test_normal": 191,
+   "test_challenge": 90,
+   "root_full": 367,
+   "ground_truth": 110,
+   "answer.json": 55,
+   "compiled_solution": 43,
+   "generate/tasks": 21,
+   "src/appworld/apps": 53,
+   "solution.py": 38,
+   "aw_rest/cape_run": 48,
+   "aw_rest/state": 69,
+   "aw_ce2/run_k1": 124,
+   "aw_ce2/run_k2": 120
   },
-  "test_id_hits": 540
+  "test_id_hits": 0,
+  "scope": "sessions ['959232f1-5a88-467f-b986-718636481ff3']",
+  "out_of_scope_test_id_hits_by_session": {
+   "9a54b053": 540
+  }
  }
 }

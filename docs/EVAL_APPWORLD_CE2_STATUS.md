@@ -730,3 +730,11 @@ User decisions (2026-10-23), answering the P6 gate abort (CE2-0077). (1) The 540
 ```json
 {"cp": 87, "prev_cp": 86, "prev_commit": "d7e4aa458f460f7f6e700c907a7e5050a1788b3b", "utc": "2026-10-23T19:06:23Z", "kind": "decision", "phase": "P6", "done_through": "P6/scan", "next": "P7/final", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "d7e4aa458f460f7f6e700c907a7e5050a1788b3b", "open_decisions": [], "memory": {"used_pct": 5.45, "peak_pct": 55.01, "state": "OK", "stale": false}}
 ```
+
+## CE2-0088 · 2026-10-23T19:07Z · P6 isolation scan · result
+
+Isolation scan (counts only): ce2_k1: test-id hits 0; models ['aws/claude-sonnet-5-5'], other models []; J1 in 6 iteration(s) ok=True; K on the command line ['1'] ok=True; ce2_k2: test-id hits 0; models ['aws/claude-sonnet-5-5'], other models []; J1 in 6 iteration(s) ok=True; K on the command line ['2'] ok=True; orchestrating sessions: test-id hits 0 over 23 files. Literal-string counts per location are in the pushed scan file.
+
+```json
+{"cp": 88, "prev_cp": 87, "prev_commit": "f6af45c7400e16a6afe862667b627b9b7daa6f36", "utc": "2026-10-23T19:07:50Z", "kind": "result", "phase": "P6", "done_through": "P6/scan", "next": "P7/final", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/isolation_scan.json": "7483bcfa401915c1f079cb03d6beed66321818f89ac518577d2a74515bfc8632"}, "code": "d7e4aa458f460f7f6e700c907a7e5050a1788b3b", "open_decisions": [], "memory": {"used_pct": 5.57, "peak_pct": 55.01, "state": "OK", "stale": false}}
+```
