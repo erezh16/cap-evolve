@@ -254,3 +254,11 @@ Next: P4/searches.
 ```json
 {"cp": 29, "prev_cp": 28, "prev_commit": "a84fe6ee1fb255fed9c65542404497e414c229ef", "utc": "2026-10-23T12:22:56Z", "kind": "heartbeat", "phase": "P4", "done_through": "P2/acceptance", "next": "P4/searches", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "c45af6c49dc8321201da1e50afefb69afb1c8d68", "open_decisions": [], "memory": {"used_pct": 46.3, "peak_pct": 53.72, "state": "OK", "stale": false}, "runner": "none"}
 ```
+
+## CE2-0030 · 2026-10-23T12:28Z · P4 ce2_k1 iteration 1 · result
+
+P4 ce2_k1: iteration 1: val 0.6871 (parent 0.3741); paired Δ̄ +0.3129, SE 0.0481, K·SE 0.0481 (K = 1) → ACCEPT. Counted rollouts 147 of 900; optimizer proxy USD 8.39; best search score (fit metric) 0.6870748299319728.
+
+```json
+{"cp": 30, "prev_cp": 29, "prev_commit": "4c29face34f395e76e1dbfdf43460129d9d45313", "utc": "2026-10-23T12:28:10Z", "kind": "result", "phase": "P4", "done_through": "P2/acceptance", "next": "P4/searches", "arm": "ce2_k1", "counts": {}, "spend": {}, "artifacts": {"STATE/ce2_k1/progress.json": "c1bad6e0d0ed81632a164b14b217a102ac17288d34ebd8b8a7813a14d364a777"}, "code": "c45af6c49dc8321201da1e50afefb69afb1c8d68", "open_decisions": [], "memory": {"used_pct": 12.12, "peak_pct": 53.72, "state": "OK", "stale": false}, "iteration": 1, "verdict": {"candidate": "cand_0001", "accept": true, "val": 0.6870748299319728, "parent_val": 0.3741496598639456, "indecisive": false, "delta": 0.3129, "se": 0.0481, "k_se": 1.0, "bar": 0.0481, "would_pass_k1": true}}
+```
