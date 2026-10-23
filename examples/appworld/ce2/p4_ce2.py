@@ -258,6 +258,10 @@ def loop() -> int:
                 S.append("phase_done", "P4", "searches done",
                          "P4 done: both chains (search, freeze, isolation scan) finished. Next: P5 dev diagnostic.",
                          done_through="P4/searches", next_unit="P5/dev", extra={"arm": None}, subject="P4 done")
+                # P5..P9 continue as one detached chain (after_p4.py); the window waits on the P6 scan gate
+                subprocess.Popen(["nohup", sys.executable, "-I", str(HERE / "after_p4.py")],
+                                 stdout=open(P.PROGRESS / "after_p4.out", "a"), stderr=subprocess.STDOUT,
+                                 start_new_session=True, cwd=str(P.REPO), env=dict(os.environ))
             return 0
         ms = P.memstate()
         now = time.time()
