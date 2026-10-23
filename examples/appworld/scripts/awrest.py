@@ -292,3 +292,12 @@ def slots_in_use() -> int:
             except BlockingIOError:
                 n += 1
     return n
+
+
+# ---------------------------------------------------------------- eval CE2 profile (docs/EVAL_APPWORLD_CE2.md §6.2 B1)
+# CE2 changes only the constants that are not environment-driven, in scripts/awce2.py. Every CE2 command sources
+# examples/appworld/ce2/env.sh, which sets AW_PROFILE=ce2 (inherited by every subprocess); without it nothing changes.
+LEDGER_PREFIX = "CP"                       # ledger entry ids: CP-NNNN (REST), CE2-NNNN (CE2)
+EVAL_NAME = "eval REST"
+if os.environ.get("AW_PROFILE") == "ce2":
+    from awce2 import *  # noqa: E402,F401,F403
