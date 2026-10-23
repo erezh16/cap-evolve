@@ -632,3 +632,11 @@ Isolation scan (counts only): ce2_k1: test-id hits 0; models ['aws/claude-sonnet
 ```json
 {"cp": 76, "prev_cp": 75, "prev_commit": "2c6b5579ca57d9e509d06022fb99437810b4a120", "utc": "2026-10-23T16:35:02Z", "kind": "result", "phase": "P6", "done_through": "P6/scan", "next": "P7/final", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/isolation_scan.json": "f8396062eafbc6e865cf40467943ec08a140ec70ab1b69075d2cc23940d62b58"}, "code": "c45af6c49dc8321201da1e50afefb69afb1c8d68", "open_decisions": [], "memory": {"used_pct": 5.53, "peak_pct": 55.01, "state": "OK", "stale": false}}
 ```
+
+## CE2-0077 · 2026-10-23T16:35Z · P6 scan gate · abort
+
+P6 gate failed: orchestrating sessions: test-id hits. The final window is NOT started; the user is asked (R5).
+
+```json
+{"cp": 77, "prev_cp": 76, "prev_commit": "eff79700c4a6537b14884372ab5af56b35ddf2a7", "utc": "2026-10-23T16:35:03Z", "kind": "abort", "phase": "P6", "done_through": "P6/scan", "next": "P7/final", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "c45af6c49dc8321201da1e50afefb69afb1c8d68", "open_decisions": [], "memory": {"used_pct": 5.53, "peak_pct": 55.01, "state": "OK", "stale": false}}
+```
