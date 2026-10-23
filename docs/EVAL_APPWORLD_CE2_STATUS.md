@@ -616,3 +616,11 @@ P4 done: both chains (search, freeze, isolation scan) finished. Next: P5 dev dia
 ```json
 {"cp": 74, "prev_cp": 73, "prev_commit": "1e1500b19b9d7e921050b67e14a2db5d2e70b1e3", "utc": "2026-10-23T16:33:47Z", "kind": "phase_done", "phase": "P4", "done_through": "P4/searches", "next": "P5/dev", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "c45af6c49dc8321201da1e50afefb69afb1c8d68", "open_decisions": [], "memory": {"used_pct": 5.55, "peak_pct": 55.01, "state": "OK", "stale": false}}
 ```
+
+## CE2-0075 · 2026-10-23T16:33Z · P5 dev diagnostic · phase_done
+
+P5 dev diagnostic done (57 dev tasks, 1 trial, seed 100; the seed's numbers are its P3 records). seed 0.3333 (0 fresh, 57 cached); ce2_k1 0.7368 (0 fresh, 57 cached); ce2_k2 0.7719 (0 fresh, 57 cached). Next: P6 full isolation scan.
+
+```json
+{"cp": 75, "prev_cp": 74, "prev_commit": "3747d7c760fb4add09c5bb41bcc79df17a65e850", "utc": "2026-10-23T16:33:52Z", "kind": "phase_done", "phase": "P5", "done_through": "P5/dev", "next": "P6/scan", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/p5dev/progress.json": "5c9c0fc8ce1c7795db457df1b98f4ba5fcf265cf940911f3f427bbcf65445bdb"}, "code": "c45af6c49dc8321201da1e50afefb69afb1c8d68", "open_decisions": [], "memory": {"used_pct": 5.66, "peak_pct": 55.01, "state": "OK", "stale": false}}
+```

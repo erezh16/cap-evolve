@@ -1,0 +1,27 @@
+{
+ "window": "p5dev",
+ "per_arm": {
+  "seed": {
+   "tgc": 0.3333,
+   "n": 57,
+   "cache_hits": 57,
+   "fresh": 0,
+   "infra": 0
+  },
+  "ce2_k1": {
+   "tgc": 0.7368,
+   "n": 57,
+   "cache_hits": 57,
+   "fresh": 0,
+   "infra": 0
+  },
+  "ce2_k2": {
+   "tgc": 0.7719,
+   "n": 57,
+   "cache_hits": 57,
+   "fresh": 0,
+   "infra": 0
+  }
+ },
+ "label": "dev TGC, 1 trial, selection-biased for arms that selected on dev"
+}

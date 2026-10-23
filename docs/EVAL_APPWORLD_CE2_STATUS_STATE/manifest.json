@@ -78,5 +78,18 @@
   "template_overhead_max": 157,
   "encoding": "o200k_harmony",
   "rule": "min(30000 chars, 34000 - P_max - H_max tokens), tokens floored to 500"
+ },
+ "freeze": {
+  "tree_sha256": {
+   "seed": "85a0da9cec2206a7bc683c11d60b5cb0acac7328d43c6e9197324d1e45971f3c",
+   "ce2_k1": "4be1fd94503a9ff4d08965ab5164baa7425ea2f71eef3d4a82fb5434c3044a36",
+   "ce2_k2": "ea4c49df73fa35c3b342f26367ef875b968c8a771cf2ece2aa57a0688dcdf4b5"
+  },
+  "labels": {
+   "seed": "seed",
+   "ce2_k1": "",
+   "ce2_k2": ""
+  },
+  "utc": "2026-10-23T16:33:50Z"
  }
 }
