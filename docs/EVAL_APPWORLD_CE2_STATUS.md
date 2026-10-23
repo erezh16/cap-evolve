@@ -90,3 +90,11 @@ Repair (acceptance, nothing counted toward any arm). The first CE2 A13 run check
 ```json
 {"cp": 9, "prev_cp": 8, "prev_commit": "9740aae5c8330e57885dc4f68ccb5ab33c3f45ab", "utc": "2026-10-23T10:11:48Z", "kind": "repair", "phase": "P2", "done_through": "P2/A9", "next": "P2/acceptance", "arm": null, "counts": {}, "spend": {}, "artifacts": {"local/acceptance/a13.json": "bd93609ae00524bf3fa22c5eb5db876b5ab38c2ae6e2c6d29c16877b06834cc9"}, "code": "9740aae5c8330e57885dc4f68ccb5ab33c3f45ab", "open_decisions": [], "memory": {"used_pct": 23.29, "peak_pct": 53.72, "state": "OK", "stale": false}}
 ```
+
+## CE2-0010 · 2026-10-23T10:31Z · P2 posted ce2_k1 · posted
+
+Posted 'Cap-Evolve-impr2 K=1 hourly status' on #909 (ce2_k1): https://github.com/skillberry-ai/cap-evolve/issues/909#issuecomment-6362895038
+
+```json
+{"cp": 10, "prev_cp": 9, "prev_commit": "8e737e069924785b9a49c1fb3df206e2dd8ebb96", "utc": "2026-10-23T10:31:54Z", "kind": "posted", "phase": "P2", "done_through": "P2/A9", "next": "P2/acceptance", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "9740aae5c8330e57885dc4f68ccb5ab33c3f45ab", "open_decisions": [], "memory": {"used_pct": 4.88, "peak_pct": 53.72, "state": "OK", "stale": false}, "post": "ce2_k1/status_20261023T1031", "url": "https://github.com/skillberry-ai/cap-evolve/issues/909#issuecomment-6362895038"}
+```
