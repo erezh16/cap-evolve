@@ -140,7 +140,7 @@ CLASS, then write the general fix.
 - Every kept edit is REAL (a failing trace shows it) and GENERAL (a class-level rule, no task id or answer),
   with its check line, class and coverage in PROCESS.md.
 - You aimed at the largest expected objective score gain over the whole distribution: you covered the root
-  causes that cost the most reward across failure types, not only the first cluster or the task you
+  causes that cost the most objective score degradation across failure types, not only the first cluster or the task you
   read last.
 - You read each selected capability's `./guidance/<cap>/SKILL.md` and used the improvement types it
   offers, not one lever repeated.
