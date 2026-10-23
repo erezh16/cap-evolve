@@ -27,9 +27,13 @@ def post(cand: str, key: str, title: str, body: str) -> str | None:
     done = P.read_json(POSTS, {}) or {}
     if f"{cand}/{key}" in done:
         return None
-    full = (f"## AppWorld eval REST — {title}\n\n{body.strip()}\n\n"
-            f"Ledger and plan: `docs/EVAL_APPWORLD_REST.md` (section 18) on branch `{P.BRANCH}` of the "
-            f"`erezh16/cap-evolve` fork.\n")
+    if P.LEDGER_PREFIX == "CE2":
+        ref = (f"Plan: `docs/EVAL_APPWORLD_CE2.md`; ledger: `docs/{P.LEDGER.name}` on branch `{P.BRANCH}` of the "
+               f"`erezh16/cap-evolve` fork.")
+    else:
+        ref = (f"Ledger and plan: `docs/EVAL_APPWORLD_REST.md` (section 18) on branch `{P.BRANCH}` of the "
+               f"`erezh16/cap-evolve` fork.")
+    full = f"## AppWorld {P.EVAL_NAME} — {title}\n\n{body.strip()}\n\n{ref}\n"
     v = S.violations(full)
     if v:
         raise S.Refused(f"post refused by the content filter: {v}")

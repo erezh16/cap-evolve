@@ -50,3 +50,11 @@ Seed baseline reused from REST P3, 2026-10-20, 147 records, not re-run (user dec
 ```json
 {"cp": 4, "prev_cp": 3, "prev_commit": "4c684f4290541306b17b00a2d2e1a7593bb5ea88", "utc": "2026-10-23T09:28:42Z", "kind": "decision", "phase": "P3", "done_through": "P1/B4", "next": "P1/B5", "arm": null, "counts": {}, "spend": {}, "artifacts": {"local/seed_reuse.json": "74dd254402ed0898c94fea8e9416dfa3d41358bb5f9415b9ddfc4fc7073b76f5", "STATE/manifest.json": "840e832dd6ec0ce76575547ea529d268275404d24bf2932518df38a77e339ad9"}, "code": "a390b3abc432cfbfb5642d00bbd706a42c3f337e", "open_decisions": [], "memory": {"used_pct": 4.95, "peak_pct": 5.88, "state": "OK", "stale": false}}
 ```
+
+## CE2-0005 · 2026-10-23T09:32Z · P3 posted ce2_k1 · posted
+
+Posted 'execution started' on #909 (ce2_k1): https://github.com/skillberry-ai/cap-evolve/issues/909#issuecomment-6361875715
+
+```json
+{"cp": 5, "prev_cp": 4, "prev_commit": "fa73a15686fa97a83e93919d540a502f4c92f2fe", "utc": "2026-10-23T09:32:16Z", "kind": "posted", "phase": "P3", "done_through": "P1/B4", "next": "P1/B5", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "a390b3abc432cfbfb5642d00bbd706a42c3f337e", "open_decisions": [], "memory": {"used_pct": 5.01, "peak_pct": 5.88, "state": "OK", "stale": false}, "post": "ce2_k1/start", "url": "https://github.com/skillberry-ai/cap-evolve/issues/909#issuecomment-6361875715"}
+```

@@ -27,8 +27,9 @@ import post  # noqa: E402
 import status_doc as S  # noqa: E402
 
 STATE = P.AW_STATE / "autopost.json"
-PHASE_NAMES = {"P0": "decisions", "P1": "build", "P2": "acceptance checks", "P3": "shared seed baseline",
-               "P4": "candidate searches", "P5": "dev diagnostic", "P6": "isolation scan",
+PHASE_NAMES = {"P0": "decisions", "P1": "build", "P2": "acceptance checks",
+               "P3": "seed baseline (reused from REST P3)" if P.LEDGER_PREFIX == "CE2" else "shared seed baseline",
+               "P4": "searches", "P5": "dev diagnostic", "P6": "isolation scan",
                "P7": "final window", "P8": "analysis", "P9": "results posts"}
 
 
@@ -50,6 +51,13 @@ def stage(c: str, last: dict) -> str:
     if pr.get("stage"):
         return pr["stage"]
     ph = last.get("phase", "P0")
+    if P.LEDGER_PREFIX == "CE2":
+        nx = str(last.get("next") or "")
+        ph = nx.split("/")[0] if nx[:2] in {f"P{i}" for i in range(10)} else ph
+        return {"P1": f"build ({nx})", "P2": f"acceptance checks ({nx})",
+                "P4": "searches (both arms launched together)", "P5": "dev diagnostic",
+                "P6": "isolation scan", "P7": "final window", "P8": "analysis", "P9": "results posts"}.get(
+                    ph, f"phase {ph}")
     if ph in ("P0", "P1", "P2"):
         return f"queued; common phase {ph} ({PHASE_NAMES.get(ph, '')}) in progress"
     if ph == "P3":
@@ -66,17 +74,20 @@ def status_body(c: str) -> str:
     best = pr.get("best_search_score")
     lines = [f"**Hourly status — {P.METHOD_NAMES[c]}** ({P.utcnow()}).", "",
              f"- stage: {stage(c, last)}",
+             *([f"- iterations scored: {pr.get('iterations_done', 0)} of 6, accepted {pr.get('accepted', 0)}"
+                + (f" (gate K = {P.K_SE[c]})" if hasattr(P, "K_SE") else "")] if P.LEDGER_PREFIX == "CE2" else []),
              f"- counted search rollouts: {counted} of B = {P.BUDGET_ROLLOUTS}"
              + (f" (cache hits {pr['cache_hits']})" if pr.get("cache_hits") is not None else ""),
              f"- optimizer ({P.OPT_MODEL}): {u['calls']} calls, {u['in'] / 1e6:.2f}M in / {u['out'] / 1e6:.2f}M out / "
              f"{u['cache_read'] / 1e6:.2f}M cache-read tokens; proxy ${u['usd']} at Sonnet 5.5 list price",
              "- best search-time score so far: " + (f"{best} ({pr.get('best_search_label', 'selection-biased')})"
                                                     if best is not None else "n/a"),
-             f"- memory: {mem.get('used_pct')}% of {mem.get('limit_MB')} MB, guard {mem.get('state')}"
+             f"- memory: {mem.get('used_pct')}% of {mem.get('limit_MB')} MB (peak {mem.get('peak_pct')}%), "
+             f"guard {mem.get('state')}"
              + (" (guard sample stale)" if mem.get("stale") else ""),
-             f"- last ledger checkpoint: CP-{int(last.get('cp', 0)):04d} ({last.get('utc')}), "
+             f"- last ledger checkpoint: {P.LEDGER_PREFIX}-{int(last.get('cp', 0)):04d} ({last.get('utc')}), "
              f"phase {last.get('phase')}, next `{last.get('next')}`",
-             f"- ETA: {pr.get('eta') or 'see the plan projection (§16); updated once the search runs'}",
+             f"- ETA: {pr.get('eta') or ('plan §18 projection: about 12–16 h in total; per-iteration ETA once the search runs' if P.LEDGER_PREFIX == 'CE2' else 'see the plan projection (§16); updated once the search runs')}",
              *window_lines(c), "",
              "Counts and aggregates only. No test-set score of any arm is posted before the final window completes."]
     return "\n".join(lines)
@@ -96,7 +107,7 @@ def window_lines(c: str) -> list[str]:
     started = min((p.stat().st_mtime for p in recs), default=time.time())
     eta = (f"; about {left / max(1, len(recent)):.1f} h left at the last hour's rate"
            if recent and left and time.time() - started >= 3600 else "")
-    return [f"- final window (168 test_normal × 6 arms × 2 trials): {len(recs)}/{len(order)} cells done{eta}; "
+    return [f"- final window (168 test_normal × {len(P.ARMS)} arms × 2 trials): {len(recs)}/{len(order)} cells done{eta}; "
             f"this arm {mine}/336. No test score is shown before the window completes."]
 
 
@@ -127,7 +138,7 @@ def milestones(c: str) -> list[tuple[str, str, str]]:
         out.append(("m4_search_start", "search started",
                     f"**{P.METHOD_NAMES[c]}: counted search started.** Settings as plan §9 for this candidate; "
                     f"B = {P.BUDGET_ROLLOUTS} counted rollouts and 10M optimizer tokens; gold-free F1 feedback; "
-                    f"baseline = the shared seed run (P3). Hourly status posts follow."))
+                    f"baseline = the seed run (P3{', reused from REST' if P.LEDGER_PREFIX == 'CE2' else ''}). Hourly status posts follow."))
     for q in (1, 2, 3, 4):
         if counted >= q * P.BUDGET_ROLLOUTS // 4:
             out.append((f"m4_budget_{25 * q}", f"{25 * q}% of B",
@@ -145,14 +156,14 @@ def milestones(c: str) -> list[tuple[str, str, str]]:
     if fz and "freeze" in done:
         keep = {k: v for k, v in fz.items() if isinstance(v, (int, float, bool, str)) and len(str(v)) <= 80}
         out.append(("m4_frozen", "champion frozen", f"**{P.METHOD_NAMES[c]}: champion frozen** (lint-clean, "
-                    f"published in `docs/EVAL_APPWORLD_REST_STATE/{c}/artifact/`).\n\n"
+                    f"published in `docs/{P.PUSHED.name}/{c}/artifact/`).\n\n"
                     + "\n".join(f"- {k}: {v}" for k, v in keep.items())))
     scan = (P.read_json(P.PUSHED / "isolation_scan.json", {}) or {}).get(c)
     if scan and "scan" in done:
         out.append(("m4_scanned", "isolation scan", f"**{P.METHOD_NAMES[c]}: isolation scan done.** Test-id hits in "
                     f"every optimizer-side record and workspace: {scan.get('test_id_hits')}"
                     + (" — ISOLATION BREACH" if scan.get("isolation_breach") else "") + ". Literal-string counts are "
-                    "in `docs/EVAL_APPWORLD_REST_STATE/isolation_scan.json`."))
+                    f"in `docs/{P.PUSHED.name}/isolation_scan.json`."))
     return out
 
 
