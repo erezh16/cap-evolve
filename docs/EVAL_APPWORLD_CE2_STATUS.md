@@ -762,3 +762,11 @@ Isolation scan (counts only): ce2_k1: test-id hits 0; models ['aws/claude-sonnet
 ```json
 {"cp": 91, "prev_cp": 90, "prev_commit": "4ab33f8d4aa4051f6e1e09089190bed5760b95fb", "utc": "2026-10-23T19:09:44Z", "kind": "result", "phase": "P6", "done_through": "P6/scan", "next": "P7/final", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/isolation_scan.json": "e61b991b1858d0358d6ca5ba20584f8960647386950b23ef2356453d8c82492b"}, "code": "4ab33f8d4aa4051f6e1e09089190bed5760b95fb", "open_decisions": [], "memory": {"used_pct": 5.71, "peak_pct": 55.01, "state": "OK", "stale": false}}
 ```
+
+## CE2-0092 · 2026-10-23T19:09Z · P7 final window · phase_start
+
+P7 starts: 168 test_normal x 3 arms (seed, ce2_k1, ce2_k2) x 2 trials = 1,008 cells in one shuffled order (seed 2026102207), 24 global slots; root_full is unlocked by window.py for the window and relocked at its end; only rewards, counters and infra flags are read.
+
+```json
+{"cp": 92, "prev_cp": 91, "prev_commit": "ce2f5e807550ea847fd6aca84659f2224a02fda3", "utc": "2026-10-23T19:09:46Z", "kind": "phase_start", "phase": "P7", "done_through": "P6/scan", "next": "P7/final", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "4ab33f8d4aa4051f6e1e09089190bed5760b95fb", "open_decisions": [], "memory": {"used_pct": 5.62, "peak_pct": 55.01, "state": "OK", "stale": false}}
+```
