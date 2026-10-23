@@ -1,0 +1,165 @@
+{
+ "capevolve_check": {
+  "ok": true,
+  "report": {
+   "ok": true,
+   "stubs": [],
+   "problems": [],
+   "notes": [
+    "tasks('val') -> 147 task(s)",
+    "scorer deterministic (probe reward=0.0000)",
+    "materialize() callable (dry-run into temp copy; host untouched)"
+   ]
+  }
+ },
+ "gate_unit": {
+  "gate_file": "/workspace/worktrees/cape-impr2/core/cap_evolve/gate.py",
+  "cases": {
+   "0.7": {
+    "mean_over_se": 0.7,
+    "accept_k1": false,
+    "reason_k1": "paired \u0394\u0304=+0.0058 <= 1.0\u00b7SE=0.0082 (SE=0.0082, n=147, resolvable effect size 2\u00b7SE=0.0165)",
+    "accept_k2": false,
+    "reason_k2": "paired \u0394\u0304=+0.0058 <= 2.0\u00b7SE=0.0165 (SE=0.0082, n=147, resolvable effect size 2\u00b7SE=0.0165)"
+   },
+   "1.5": {
+    "mean_over_se": 1.5,
+    "accept_k1": true,
+    "reason_k1": "paired \u0394\u0304=+0.0124 > 1.0\u00b7SE=0.0082 (SE=0.0082, n=147, resolvable effect size 2\u00b7SE=0.0165)",
+    "accept_k2": false,
+    "reason_k2": "paired \u0394\u0304=+0.0124 <= 2.0\u00b7SE=0.0165 (SE=0.0082, n=147, resolvable effect size 2\u00b7SE=0.0165)"
+   },
+   "2.5": {
+    "mean_over_se": 2.5,
+    "accept_k1": true,
+    "reason_k1": "paired \u0394\u0304=+0.0206 > 1.0\u00b7SE=0.0082 (SE=0.0082, n=147, resolvable effect size 2\u00b7SE=0.0165)",
+    "accept_k2": true,
+    "reason_k2": "paired \u0394\u0304=+0.0206 > 2.0\u00b7SE=0.0165 (SE=0.0082, n=147, resolvable effect size 2\u00b7SE=0.0165)"
+   }
+  },
+  "ok": true
+ },
+ "mock_dry_run": {
+  "ok": true,
+  "returncode": 0,
+  "spent": {
+   "iterations": 1,
+   "metric_calls": 8,
+   "usd": 0.0,
+   "stall": 1,
+   "runner_tokens": 511176,
+   "runner_seconds": 3.223231554031372,
+   "optimizer_seconds": 0.11900830268859863,
+   "optimizer_usd": 0.0,
+   "optimizer_tokens": 0,
+   "intake_usd": 0.0,
+   "intake_tokens": 0,
+   "intake_seconds": 0.0,
+   "best_val": 0.5,
+   "usersim_usd": 0.0
+  },
+  "best_id": "seed",
+  "event_kinds": {
+   "spec_resolved": 1,
+   "splits": 1,
+   "eval_start": 3,
+   "evaluate": 3,
+   "baseline": 1,
+   "screening_economics": 1,
+   "headroom": 1,
+   "run_config": 1,
+   "model_selection": 1,
+   "target_profile": 1,
+   "step": 1,
+   "budget_warning": 1,
+   "finalize": 1
+  },
+  "steps": [
+   {
+    "candidate": "cand_0001",
+    "accept": false,
+    "val": 0.0,
+    "parent_val": 0.5,
+    "reason": "paired \u0394\u0304=-0.5000 <= 2.0\u00b7SE=0.5774 (SE=0.2887, n=4, resolvable effect size 2\u00b7SE=0.5774)"
+   }
+  ],
+  "counted_search": 0,
+  "accept_rollouts": 0,
+  "cache_hits": 8
+ },
+ "imp": {
+  "1_code_pin": {
+   "ok": true,
+   "cap_evolve_file": "/workspace/worktrees/cape-impr2/core/cap_evolve/__init__.py",
+   "head": "3db96a08ef77d7701f21771d389c6471a5d88344",
+   "clean": true
+  },
+  "2_skills_pin": {
+   "ok": true,
+   "resolved": "/workspace/worktrees/cape-impr2/skills",
+   "home_skills_exists": true
+  },
+  "3_spec_k_se": {
+   "ok": true,
+   "value": 2.0,
+   "expected": 2.0
+  },
+  "3_run_config": {
+   "ok": true,
+   "run_config_events": 1,
+   "spec_k_se": 2.0
+  },
+  "4_effective_k_se": {
+   "ok": true,
+   "hill_climb_cmdlines": 1,
+   "k_se_values": [
+    "2"
+   ],
+   "expected": 2.0,
+   "gate_events_mentioning_k_se": 0
+  },
+  "5_instructions": {
+   "ok": true,
+   "iterations": 1,
+   "diff_only_insertion": true,
+   "detail": [
+    {
+     "cid": "cand_0001",
+     "has": {
+      "# Optimize the capability \u2014 ship the edit with the largest expected objective score gain": true,
+      "## PREPARATION:": true,
+      "### 1. Understand the objective score": true,
+      "## Strategies for constructing edits:": true,
+      "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+      "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+      "## AppWorld facts for THIS run": true,
+      "**Objective score for this run.**": true
+     },
+     "forbidden": []
+    }
+   ]
+  },
+  "6_guidance": {
+   "ok": true,
+   "detail": [
+    {
+     "cid": "cand_0001",
+     "tools": "sha_match",
+     "system-prompt": "sha_match",
+     "diagnose": "head_match"
+    }
+   ],
+   "pinned_sha256": {
+    "tools": "d6a5ec65e46113a64124cfc2e842a95a493e1c13679f380361ec4447a69d994a",
+    "system-prompt": "4df6976688391b55e783b9cb6631523718c40a4ed4fbee77d71d450d105de51b",
+    "diagnose": "ef0eb2fc3cf971eae63f377b3e318664d617e17c2aa70de79557e825b24ff677"
+   }
+  },
+  "7_hill_climb_script": {
+   "ok": true,
+   "path": "/workspace/worktrees/cape-impr2/skills/algorithms/hill-climb/scripts/run.py",
+   "sha256": "c04938fcfa72bfb16dcc61fe7d2ee3dc370e0a1510953f2e35ddb140b2f80641"
+  },
+  "all_ok": true
+ }
+}
