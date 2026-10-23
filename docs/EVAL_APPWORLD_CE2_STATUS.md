@@ -640,3 +640,13 @@ P6 gate failed: orchestrating sessions: test-id hits. The final window is NOT st
 ```json
 {"cp": 77, "prev_cp": 76, "prev_commit": "eff79700c4a6537b14884372ab5af56b35ddf2a7", "utc": "2026-10-23T16:35:03Z", "kind": "abort", "phase": "P6", "done_through": "P6/scan", "next": "P7/final", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "c45af6c49dc8321201da1e50afefb69afb1c8d68", "open_decisions": [], "memory": {"used_pct": 5.53, "peak_pct": 55.01, "state": "OK", "stale": false}}
 ```
+
+## CE2-0078 · 2026-10-23T17:01Z · P6 heartbeat · heartbeat
+
+No checkpoint for 25 min. Phase P6, last result: P6/scan.
+Runner: no runner. Last log line: `2026-10-23T17:00:08Z | memguard | - | sample 5.35% (1753 MB) state OK peak 55.0%`.
+Next: P7/final.
+
+```json
+{"cp": 78, "prev_cp": 77, "prev_commit": "6817c05eaa43fd5b53ba801aab13c431fa2bae69", "utc": "2026-10-23T17:01:00Z", "kind": "heartbeat", "phase": "P6", "done_through": "P6/scan", "next": "P7/final", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "c45af6c49dc8321201da1e50afefb69afb1c8d68", "open_decisions": [], "memory": {"used_pct": 5.34, "peak_pct": 55.01, "state": "OK", "stale": false}, "runner": "none"}
+```
