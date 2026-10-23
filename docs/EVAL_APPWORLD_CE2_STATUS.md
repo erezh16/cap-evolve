@@ -1159,3 +1159,12 @@ Memory event in the final window, handled without intervention (rule R2). At abo
 ```json
 {"cp": 136, "prev_cp": 135, "prev_commit": "7354a3b280302d6350ebd28b4735ee1f44245a75", "utc": "2026-10-23T22:15:54Z", "kind": "repair", "phase": "P7", "done_through": "final/986", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "4ab33f8d4aa4051f6e1e09089190bed5760b95fb", "open_decisions": [], "memory": {"used_pct": 39.95, "peak_pct": 77.36, "state": "OK", "stale": false}}
 ```
+
+## CE2-0137 · 2026-10-23T22:20Z · P7 final window · result
+
+final window: 15 cells since the last entry; 1001/1008 done (ce2_k1 333, ce2_k2 334, seed 334); infra still missing 0, retries 1.
+Next: final remaining cells.
+
+```json
+{"cp": 137, "prev_cp": 136, "prev_commit": "284a60c66d8d5f20c99c802a4621d9a5eafef3f7", "utc": "2026-10-23T22:20:42Z", "kind": "result", "phase": "P7", "done_through": "final/1001", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/final/progress.json": "f9c74cb493c0a5f34e936421abac1df3dbbeefedc1280502625b7eeae3338c6a"}, "code": "4ab33f8d4aa4051f6e1e09089190bed5760b95fb", "open_decisions": [], "memory": {"used_pct": 17.67, "peak_pct": 77.36, "state": "OK", "stale": false}, "window": {"window": "final", "cells_total": 1008, "cells_done": 1001, "order_sha256": "c020e74166d6206eeff37e123efe36ce39b8cb596e62426cc4542967b3784eed"}}
+```
