@@ -1,22 +1,22 @@
 {
  "window": "final",
  "cells_total": 1008,
- "cells_done": 20,
+ "cells_done": 54,
  "per_arm": {
   "seed": {
-   "done": 6,
-   "infra_missing": 0,
-   "infra_retries": 0,
-   "context_exceeded": 0
-  },
-  "ce2_k2": {
-   "done": 10,
+   "done": 11,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
   },
   "ce2_k1": {
-   "done": 4,
+   "done": 23,
+   "infra_missing": 0,
+   "infra_retries": 0,
+   "context_exceeded": 0
+  },
+  "ce2_k2": {
+   "done": 20,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
