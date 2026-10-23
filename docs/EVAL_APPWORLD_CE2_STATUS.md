@@ -1243,3 +1243,11 @@ Posted 'Cap-Evolve-impr2 K=2 results' on #910 (ce2_k2): https://github.com/skill
 ```json
 {"cp": 146, "prev_cp": 145, "prev_commit": "689bd0ebf9b0025c02096a4f5132015649d5138a", "utc": "2026-10-23T22:42:19Z", "kind": "posted", "phase": "P9", "done_through": "P8/analysis", "next": "P9/post", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "4ab33f8d4aa4051f6e1e09089190bed5760b95fb", "open_decisions": [], "memory": {"used_pct": 5.59, "peak_pct": 77.36, "state": "OK", "stale": false}, "post": "ce2_k2/results", "url": "https://github.com/skillberry-ai/cap-evolve/issues/910#issuecomment-6376186285"}
 ```
+
+## CE2-0147 · 2026-10-23T22:42Z · P9 evaluation complete · phase_done
+
+P9 done: results comments posted on #909 (ce2_k1) and #910 (ce2_k2); URLs in the posted entries above. root_full is locked (chmod 000). The background loops (autopost, heartbeat, memguard) are stopped next by the executing session.
+
+```json
+{"cp": 147, "prev_cp": 146, "prev_commit": "c713c9f6462abd2a5cb199a18de88a1e58c1761c", "utc": "2026-10-23T22:42:20Z", "kind": "phase_done", "phase": "P9", "done_through": "P9/post", "next": "done", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "4ab33f8d4aa4051f6e1e09089190bed5760b95fb", "open_decisions": [], "memory": {"used_pct": 5.59, "peak_pct": 77.36, "state": "OK", "stale": false}}
+```
