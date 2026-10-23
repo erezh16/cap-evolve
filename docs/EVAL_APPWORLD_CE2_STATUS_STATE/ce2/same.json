@@ -1,0 +1,14 @@
+{
+ "capevolve.yaml": {
+  "diff_lines": [
+   "-gate_k_se: 1                    # ARM-SPECIFIC: 1 for ce2_k1, 2 for ce2_k2. MUST be explicit (core default 1.0)",
+   "+gate_k_se: 2                    # ARM-SPECIFIC: 1 for ce2_k1, 2 for ce2_k2. MUST be explicit (core default 1.0)"
+  ],
+  "only_gate_k_se": true
+ },
+ "optimizer/INSTRUCTIONS.md": {
+  "diff_lines": [],
+  "only_gate_k_se": true
+ },
+ "ok": true
+}

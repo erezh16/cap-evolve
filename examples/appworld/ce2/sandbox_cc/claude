@@ -1,0 +1,106 @@
+#!/usr/bin/env python3
+"""PATH shim for the CE2 claude-code optimizer of arm $AW_CAPE_ARM (docs/EVAL_APPWORLD_CE2.md §9.2, §12; adapted
+from REST's cape_improve shim, REST §9.5 Isolation, §10).
+
+launch_ce2.sh puts this directory first on the cap-evolve process's PATH only. run-optimizer then runs
+`claude -p <prompt> --permission-mode acceptEdits --allowedTools Bash --disallowedTools Monitor --model <m>
+--output-format json --max-turns N --max-budget-usd U` (the pinned registry row, unchanged) in the
+iteration's workdir; this shim execs the REAL CLI with the same arguments plus
+`--settings <sandbox settings for this workdir>` (common/sandbox.py: sandbox enabled, failIfUnavailable,
+allowUnsandboxedCommands false, denyRead + Read/Edit deny on the sealed set, all of AppWorld, AW_STATE,
+venvs, clones, every checkout, other candidates' workspaces, the cap-evolve project's adapters; network =
+gateway host only; no WebFetch/WebSearch). Sub-agents inherit the sandbox (container guide §1.1).
+
+Also: waits while AW_STATE/PAUSE exists (R2); refuses to start once the arm's optimizer non-cache-read
+tokens reach 10M (§7.4); sets every model variable to aws/claude-sonnet-5-5 (Q3) and
+CLAUDE_CODE_PRINT_BG_WAIT_CEILING_MS (eval 5 D11); appends the result JSON's usage to
+AW_STATE/<arm>/optimizer_usage.jsonl with the §5.2 fields (sandbox.log_cli_usage); keeps the full
+result JSON in AW_STATE/<arm>/claude_calls/. stdout is passed through unchanged, so run-optimizer's
+cost parsing works as without the shim. AW_SHIM_PRINT_ONLY=1 prints the final argv instead of running it.
+"""
+
+import json
+import os
+import shutil
+import subprocess
+import sys
+import time
+from pathlib import Path
+
+EX = Path(__file__).resolve().parents[2]
+sys.path[:0] = [str(EX / "scripts"), str(EX / "common")]
+import awrest as P  # noqa: E402
+import sandbox as SB  # noqa: E402
+
+CAND = os.environ.get("AW_CAPE_ARM", "")
+if CAND not in P.CANDIDATES:
+    sys.exit(f"sandbox_cc/claude: AW_CAPE_ARM must be one of {P.CANDIDATES}, not {CAND!r}")
+HERE = str(Path(__file__).resolve().parent)
+MODEL_VARS = ("ANTHROPIC_MODEL", "ANTHROPIC_SMALL_FAST_MODEL", "ANTHROPIC_DEFAULT_OPUS_MODEL",
+              "ANTHROPIC_DEFAULT_SONNET_MODEL", "ANTHROPIC_DEFAULT_HAIKU_MODEL", "CLAUDE_CODE_SUBAGENT_MODEL")
+
+
+def real_claude() -> str:
+    path = os.pathsep.join(p for p in os.environ.get("PATH", "").split(os.pathsep)
+                           if p and os.path.realpath(p) != os.path.realpath(HERE))
+    exe = shutil.which("claude", path=path)
+    if not exe:
+        sys.exit("sandbox_cc/claude: the real claude CLI is not on PATH")
+    return exe
+
+
+def main() -> int:
+    args = sys.argv[1:]
+    if any(a in ("--dangerously-skip-permissions", "--settings", "--setting-sources") for a in args):
+        sys.exit("sandbox_cc/claude: refusing a caller-supplied --settings/--setting-sources or permission bypass")
+    workdir = Path.cwd().resolve()
+    extra = [Path(p) for p in os.environ.get("AW_CAPE_EXTRA_DENY", "").split(os.pathsep) if p]
+    sf = SB.settings_file(CAND, workdir, extra)       # also refuses a workspace under a denied path
+    # Q3: ~/.claude/settings.json sets ANTHROPIC_MODEL / DEFAULT_OPUS to an Opus id; flag settings outrank
+    # user settings, so the model variables are pinned here as well as in the process environment.
+    s = json.loads(sf.read_text())
+    s["env"].update({k: P.OPT_MODEL for k in MODEL_VARS})
+    s["env"]["CLAUDE_CODE_PRINT_BG_WAIT_CEILING_MS"] = SB.PRINT_BG_WAIT_MS
+    P.atomic_write(sf, json.dumps(s, indent=1))
+    # --setting-sources "": user/project settings must not load. ~/.claude/settings.json allows WebFetch(domain:*),
+    # which Claude Code merges into the sandbox proxy's domain allowlist (A9 found the network open without this).
+    # Managed settings (sandbox.bwrapPath) still load. The registry flags in `args` are passed unchanged.
+    argv = [real_claude(), *args, "--settings", str(sf), "--setting-sources", ""]
+    if os.environ.get("AW_SHIM_PRINT_ONLY") == "1":
+        print(json.dumps({"argv": argv, "cwd": str(workdir), "settings": str(sf)}))
+        return 0
+    P.wait_unpaused(CAND)
+    # rule R2 (CE2 §4.2): no new optimizer session while the guard is PAUSED or its sample is stale
+    while subprocess.run([str(Path.home() / "bin" / "memok-ce2")], capture_output=True).returncode != 0:
+        time.sleep(30)
+    import opt_llm
+    t = opt_llm.totals(CAND)
+    if t["prompt_tokens"] + t["completion_tokens"] >= P.BUDGET_OPT_TOKENS:
+        sys.exit(f"sandbox_cc/claude: optimizer tokens {t['prompt_tokens'] + t['completion_tokens']:,} "
+                 f">= cap {P.BUDGET_OPT_TOKENS:,} (plan §7.4); no new proposer session")
+    env = SB.claude_env({"CLAUDE_CODE_PRINT_BG_WAIT_CEILING_MS": SB.PRINT_BG_WAIT_MS})
+    t0 = time.time()
+    r = subprocess.run(argv, cwd=str(workdir), env=env, stdout=subprocess.PIPE, text=True)
+    secs = round(time.time() - t0, 2)
+    sys.stdout.write(r.stdout)
+    sys.stdout.flush()
+    d = None
+    for line in reversed(r.stdout.strip().splitlines()):
+        try:
+            o = json.loads(line)
+        except json.JSONDecodeError:
+            continue
+        if isinstance(o, dict) and o.get("type") == "result":
+            d = o
+            break
+    if d is None:
+        d = {"is_error": True, "subtype": "no_result_json", "returncode": r.returncode}
+    SB.log_cli_usage(CAND, f"optimizer/{workdir.name}", d, secs)
+    out = P.AW_STATE / CAND / "claude_calls"
+    out.mkdir(parents=True, exist_ok=True)
+    P.atomic_write(out / f"{P.utcnow().replace(':', '')}_{workdir.name}.json", json.dumps(d))
+    return r.returncode
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

@@ -36,6 +36,17 @@ NAME = ".aw_probe_secret"
 def places(cand: str) -> list[Path]:
     """One planted secret in each sealed or denied location of §4.1 / §10."""
     other = next(c for c in P.CANDIDATES if c != cand)
+    if P.LEDGER_PREFIX == "CE2":
+        # CE2 §12 A9: root_opt gold (symlink and target), root_full, the AppWorld generator dir and app source, REST's
+        # cape_run and state, the other arm's project root, an .env stand-in, plus REST's list
+        return [P.ROOT_OPT / "data", P.ROOT_OPT.resolve() / "data" / "tasks" / P.read_split("train")[0] / "ground_truth",
+                P.ROOT_FULL / "data", P.APPWORLD_SRC / "generate", P.APPWORLD_SRC / "src" / "appworld" / "apps",
+                P.APPWORLD_SRC, P.REST_HOME / "cape_run" / "a9_probe", P.REST_HOME / "state" / "a9_probe",
+                P.RUN_ROOTS[other] / "a9_probe", P.RUN_ROOTS[cand] / ".capevolve" / "project" / "adapters",
+                P.AW_STATE, P.SCRATCH / "scratch", P.REPO, P.REPO / "core", P.CAPE_TREE, P.VENVS,
+                Path("/workspace/worktrees/base") / "a9_env_standin",
+                Path.home() / ".claude" / "projects" / "-aw-probe", Path.home() / ".config" / "gh",
+                SB.OPT_ROOT / "_probe", SB.OPT_ROOT / other / "a9_probe"]
     return [P.ROOT_OPT / "data", P.ROOT_OPT / "data" / "tasks" / P.read_split("train")[0] / "ground_truth",
             P.ROOT_FULL / "data", P.APPWORLD_SRC / "generate", P.APPWORLD_SRC / "src" / "appworld" / "apps",
             P.APPWORLD_SRC, P.AW_STATE, P.SCRATCH / "scratch", P.REPO, P.REPO / "core",
@@ -46,7 +57,10 @@ def places(cand: str) -> list[Path]:
 
 def make_workspace(cand: str) -> Path:
     # cape_improve's optimizer works in <cape run>/work/<cid> (cap-evolve's layout, decision CP-0014): test it there
-    ws = (SB.CAPE_RUN / "work" / "a9_ws") if cand == "cape_improve" else (SB.OPT_ROOT / cand / "a9_ws")
+    if P.LEDGER_PREFIX == "CE2":   # the arm's exact optimizer workdir layout: <run dir>/work/<cid>
+        ws = P.RUN_ROOTS[cand] / ".capevolve" / f"run_{P.RUN_TS[cand]}" / "work" / "a9_ws"
+    else:
+        ws = (SB.CAPE_RUN / "work" / "a9_ws") if cand == "cape_improve" else (SB.OPT_ROOT / cand / "a9_ws")
     shutil.rmtree(ws, ignore_errors=True)
     (ws / "tools").mkdir(parents=True)
     # the lint, runnable inside the workspace on its own copy of the lint data (train/dev instruction
@@ -103,11 +117,16 @@ def run_cli(cand: str, tools: str, shim: str | None = None) -> dict:
         os.chmod(P.ROOT_FULL, 0o000)
         ws = make_workspace(cand)
         out = SB.OPT_ROOT / cand / "a9_transcript.jsonl"
+        out.parent.mkdir(parents=True, exist_ok=True)
         common = ["--output-format", "stream-json", "--verbose", "--model", P.OPT_MODEL,
                   "--permission-mode", "acceptEdits"]
         if shim:   # cape_improve: the PATH shim adds --settings itself; the registry flags are passed unchanged
             cmd = [shim, "-p", prompt(ws, plist, SB.gateway_host(), bash), "--allowedTools", tools, *common]
             env = SB.claude_env({"CLAUDE_CODE_PRINT_BG_WAIT_CEILING_MS": SB.PRINT_BG_WAIT_MS})
+            if P.LEDGER_PREFIX == "CE2":   # exactly what launch_ce2.sh exports for the arm
+                env.update(AW_CAPE_ARM=cand, AW_CAPE_EXTRA_DENY=str(P.RUN_ROOTS[cand] / ".capevolve" / "project" / "adapters"))
+                for k in ("RITS_API_KET", "RITS_API_KEY", "CLAUDECODE"):
+                    env.pop(k, None)
         else:      # harnesslens Editor: exactly the flags SB.claude_call uses
             sf = SB.settings_file(cand, ws)
             cmd = ["claude", "-p", prompt(ws, plist, SB.gateway_host(), bash), "--settings", str(sf),
@@ -125,10 +144,27 @@ def run_cli(cand: str, tools: str, shim: str | None = None) -> dict:
             os.chmod(p, mode)
         os.chmod(P.ROOT_FULL, 0o000)
         shutil.rmtree(SB.OPT_ROOT / next(c for c in P.CANDIDATES if c != cand) / "a9_probe", ignore_errors=True)
+        if P.LEDGER_PREFIX == "CE2":   # REST CP-0034: remove every planting dir A9 created
+            for p in plist:
+                if p.name in ("a9_probe", "a9_env_standin", "_probe", "-aw-probe"):
+                    shutil.rmtree(p, ignore_errors=True)
+            run = P.RUN_ROOTS[cand] / ".capevolve" / f"run_{P.RUN_TS[cand]}"
+            # before the search the run dir holds only A9's workdir: remove it whole; never once the run exists
+            shutil.rmtree(run if not (run / "state.json").exists() else run / "work" / "a9_ws", ignore_errors=True)
         # leave no planting dir behind where a later scaffold would find it (cape_improve's setup keys on capevolve.yaml)
-        if not (SB.CAPE_RUN / ".capevolve" / "project" / "capevolve.yaml").exists():
+        if P.LEDGER_PREFIX != "CE2" and not (SB.CAPE_RUN / ".capevolve" / "project" / "capevolve.yaml").exists():
             shutil.rmtree(SB.CAPE_RUN / ".capevolve", ignore_errors=True)
-        shutil.rmtree(SB.CAPE_RUN / "work" / "a9_ws", ignore_errors=True)
+        if P.LEDGER_PREFIX != "CE2":
+            shutil.rmtree(SB.CAPE_RUN / "work" / "a9_ws", ignore_errors=True)
+    if P.LEDGER_PREFIX == "CE2":   # REST CP-0041: A9's usage lines leave the arm's search usage log
+        u = P.AW_STATE / cand / "optimizer_usage.jsonl"
+        if u.exists():
+            acc = P.AW_STATE / cand / "accept" / "usage"
+            acc.mkdir(parents=True, exist_ok=True)
+            os.replace(u, acc / f"a9_{P.utcnow().replace(':', '')}.jsonl")
+        cc = P.AW_STATE / cand / "claude_calls"
+        if cc.exists():
+            os.replace(cc, P.AW_STATE / cand / "accept" / f"a9_claude_calls_{P.utcnow().replace(':', '')}")
     return evaluate(text, toks, r.returncode, ws, cand, bash)
 
 

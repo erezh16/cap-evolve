@@ -24,7 +24,8 @@ from urllib.parse import urlparse
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 import awrest as P  # noqa: E402
 
-OPT_ROOT = P.SCRATCH / "opt"
+# CE2 §12: /tmp/aw_ce2 is denied as a whole, so the optimizers' lint venv and tools live under AW_HOME/opt instead
+OPT_ROOT = (P.AW_HOME / "opt") if P.LEDGER_PREFIX == "CE2" else P.SCRATCH / "opt"
 HOME = Path.home()
 
 
@@ -48,8 +49,32 @@ def deny_paths() -> list[Path]:
 CAPE_RUN = P.AW_HOME / "cape_run"
 
 
+def _ce2_deny(cand: str) -> list[Path]:
+    """CE2 §12 DENY, added to deny_paths(): every symlink of AW_BUILD AND its target (the symlinks point into REST's
+    build), REST's whole home, /tmp/aw_rest, every repo checkout, the other arm's project root, the arm's own
+    adapters dir, and the build venvs (the lint venv lives under OPT_ROOT, not under AW_BUILD/venvs)."""
+    out = [P.REST_HOME, Path("/tmp/aw_rest"), P.SCRATCH, Path("/workspace/worktrees"), P.AW_BUILD / "venvs",
+           P.AW_BUILD / "root_opt", P.AW_BUILD / "root_full", P.AW_BUILD / "appworld", P.AW_BUILD / "clones",
+           P.AW_BUILD / "reference"]
+    out += [p.resolve() for p in list(out) if p.is_symlink()]
+    for b in ("root_opt", "root_full", "appworld", "clones", "reference", "venvs/venv-aw"):
+        q = P.AW_BUILD / b
+        out += [q, Path(os.path.realpath(q))]
+    if cand in P.CANDIDATES:
+        out += [P.RUN_ROOTS[c] for c in P.CANDIDATES if c != cand]
+        out += [P.RUN_ROOTS[cand] / ".capevolve" / "project" / "adapters"]
+    return out
+
+
 def deny_paths_for(cand: str) -> list[Path]:
     """deny_paths() plus every other candidate's optimizer workspaces (§10: AW_SCRATCH except the call's own)."""
+    if P.LEDGER_PREFIX == "CE2":
+        seen, out = set(), []
+        for p in deny_paths() + _ce2_deny(cand) + [OPT_ROOT / c for c in P.CANDIDATES if c != cand]:
+            if str(p) not in seen:
+                seen.add(str(p))
+                out.append(p)
+        return out
     return deny_paths() + [OPT_ROOT / c for c in P.CANDIDATES if c != cand] + ([CAPE_RUN] if cand != "cape_improve" else [])
 
 
@@ -57,7 +82,8 @@ def _other_session_tmp() -> list[Path]:
     """Other sessions' dirs under Claude's temp root (sub-agent transcripts). The root itself stays readable:
     the CLI keeps its per-command cwd file there."""
     root = Path(f"/tmp/claude-{os.getuid()}")
-    return [p for p in root.iterdir() if p.is_dir() and not p.name.startswith("-tmp-aw-rest-opt")] if root.exists() else []
+    own = ("-workspace-aw-ce2-opt", "-workspace-aw-ce2-run-k") if P.LEDGER_PREFIX == "CE2" else ("-tmp-aw-rest-opt",)
+    return [p for p in root.iterdir() if p.is_dir() and not p.name.startswith(own)] if root.exists() else []
 
 
 LINT_VENV = OPT_ROOT / "venv-lint"           # jinja2 + tiktoken only: the optimizers' own lint runs here
