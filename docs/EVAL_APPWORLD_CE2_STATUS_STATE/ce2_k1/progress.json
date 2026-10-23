@@ -2,7 +2,7 @@
  "stage": "search running",
  "arm": "ce2_k1",
  "k_se": 1.0,
- "counted_rollouts": 735,
+ "counted_rollouts": 762,
  "cache_hits": 147,
  "lint_rejects": 0,
  "iterations_done": 5,
@@ -75,15 +75,15 @@
  "best_search_score": 0.6870748299319728,
  "best_search_label": "val = train ∪ dev (147), a fit metric, selection-biased",
  "metric_calls": 882,
- "capevolve_optimizer_usd": 76.86906150000003,
+ "capevolve_optimizer_usd": 102.39875200000003,
  "optimizer": {
-  "calls": 5,
-  "prompt_tokens": 3771585,
-  "completion_tokens": 830667,
-  "cache_read": 66643958,
-  "cache_write": 3137986,
-  "proxy_usd": 30.75,
-  "seconds": 5497.8
+  "calls": 6,
+  "prompt_tokens": 4917940,
+  "completion_tokens": 1126883,
+  "cache_read": 89087964,
+  "cache_write": 4074396,
+  "proxy_usd": 40.96,
+  "seconds": 6370.3
  },
  "eta": "1 of 6 iterations left (about 45 min each in REST)"
 }

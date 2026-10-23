@@ -494,3 +494,13 @@ Posted 'Cap-Evolve-impr2 K=2 iteration 5' on #910 (ce2_k2): https://github.com/s
 ```json
 {"cp": 59, "prev_cp": 58, "prev_commit": "5ab58e03e82f89a6c65e0bf583dfc950ed29953d", "utc": "2026-10-23T15:46:26Z", "kind": "posted", "phase": "P4", "done_through": "P2/acceptance", "next": "P4/searches", "arm": "ce2_k2", "counts": {}, "spend": {}, "artifacts": {}, "code": "c45af6c49dc8321201da1e50afefb69afb1c8d68", "open_decisions": [], "memory": {"used_pct": 8.21, "peak_pct": 55.01, "state": "OK", "stale": false}, "post": "ce2_k2/iter_5", "url": "https://github.com/skillberry-ai/cap-evolve/issues/910#issuecomment-6368815759"}
 ```
+
+## CE2-0060 · 2026-10-23T16:11Z · P4 heartbeat · heartbeat
+
+No checkpoint for 25 min. Phase P4, last result: P2/acceptance.
+Runner: no runner. Last log line: `2026-10-23T16:11:05Z | memguard | - | sample 48.11% (15763 MB) state OK peak 55.0%`.
+Next: P4/searches.
+
+```json
+{"cp": 60, "prev_cp": 59, "prev_commit": "d391133ea7f679be15199fa8bd88e70058180426", "utc": "2026-10-23T16:11:58Z", "kind": "heartbeat", "phase": "P4", "done_through": "P2/acceptance", "next": "P4/searches", "arm": "ce2_k2", "counts": {}, "spend": {}, "artifacts": {}, "code": "c45af6c49dc8321201da1e50afefb69afb1c8d68", "open_decisions": [], "memory": {"used_pct": 46.6, "peak_pct": 55.01, "state": "OK", "stale": false}, "runner": "none"}
+```
