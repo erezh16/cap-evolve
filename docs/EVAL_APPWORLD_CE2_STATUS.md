@@ -1151,3 +1151,11 @@ Next: final remaining cells.
 ```json
 {"cp": 135, "prev_cp": 134, "prev_commit": "eaa345283d91a117094ad5c74a4177dbe781ffdf", "utc": "2026-10-23T22:15:40Z", "kind": "result", "phase": "P7", "done_through": "final/986", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/final/progress.json": "d1bbc560c3cd8a18e1a4e5217d871acfae94b8fa62939a0ccec9e34d9fac19ff"}, "code": "4ab33f8d4aa4051f6e1e09089190bed5760b95fb", "open_decisions": [], "memory": {"used_pct": 42.29, "peak_pct": 77.36, "state": "OK", "stale": false}, "window": {"window": "final", "cells_total": 1008, "cells_done": 986, "order_sha256": "c020e74166d6206eeff37e123efe36ce39b8cb596e62426cc4542967b3784eed"}}
 ```
+
+## CE2-0136 · 2026-10-23T22:15Z · P7 runaway episode memory · repair
+
+Memory event in the final window, handled without intervention (rule R2). At about 960/1008 cells one final-window episode worker grew to about 10 GB RSS (+11 MB/s; the other 23 workers about 0.75 GB each), raising container use from about 46% to 74% (peak 74.6%, below the 90% pause mark; nothing paused). The harness's 30-minute episode wall cap killed it at 22:15:37 UTC; memory fell to 42% at once. The cell is handled by the window's infra-retry rule (up to 3 retries with new seeds; a cell that still fails is scored 0 in the primary analysis and reported missing in the sensitivity analysis). Its trajectory was not opened (test data); only the counters and the infra flag are read. Watching the retry for the same growth.
+
+```json
+{"cp": 136, "prev_cp": 135, "prev_commit": "7354a3b280302d6350ebd28b4735ee1f44245a75", "utc": "2026-10-23T22:15:54Z", "kind": "repair", "phase": "P7", "done_through": "final/986", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "4ab33f8d4aa4051f6e1e09089190bed5760b95fb", "open_decisions": [], "memory": {"used_pct": 39.95, "peak_pct": 77.36, "state": "OK", "stale": false}}
+```
