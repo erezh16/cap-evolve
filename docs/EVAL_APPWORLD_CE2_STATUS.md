@@ -584,3 +584,11 @@ Isolation scan (counts only): ce2_k1: test-id hits 0; models ['aws/claude-sonnet
 ```json
 {"cp": 70, "prev_cp": 69, "prev_commit": "5b5b2d0435ba7f6f53b7be4d71aed4fa2504dca5", "utc": "2026-10-23T16:33:10Z", "kind": "result", "phase": "P4", "done_through": "P2/acceptance", "next": "P4/searches", "arm": "ce2_k1", "counts": {}, "spend": {}, "artifacts": {"STATE/isolation_scan.json": "e009ec704c52949daacccdf621e5597f2327e868f3ad57aae6acd4a982d73bc0"}, "code": "c45af6c49dc8321201da1e50afefb69afb1c8d68", "open_decisions": [], "memory": {"used_pct": 5.67, "peak_pct": 55.01, "state": "OK", "stale": false}}
 ```
+
+## CE2-0071 · 2026-10-23T16:33Z · P4 posted ce2_k1 · posted
+
+Posted 'Cap-Evolve-impr2 K=1 search ended' on #909 (ce2_k1): https://github.com/skillberry-ai/cap-evolve/issues/909#issuecomment-6369756309
+
+```json
+{"cp": 71, "prev_cp": 70, "prev_commit": "8456d18377eabcd62ad4b8fc3904db4e6c10fa1c", "utc": "2026-10-23T16:33:18Z", "kind": "posted", "phase": "P4", "done_through": "P2/acceptance", "next": "P4/searches", "arm": "ce2_k1", "counts": {}, "spend": {}, "artifacts": {}, "code": "c45af6c49dc8321201da1e50afefb69afb1c8d68", "open_decisions": [], "memory": {"used_pct": 5.55, "peak_pct": 55.01, "state": "OK", "stale": false}, "post": "ce2_k1/m4_search_done", "url": "https://github.com/skillberry-ai/cap-evolve/issues/909#issuecomment-6369756309"}
+```
