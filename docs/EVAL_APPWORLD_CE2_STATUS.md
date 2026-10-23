@@ -278,3 +278,11 @@ Posted 'Cap-Evolve-impr2 K=2 iteration 1' on #910 (ce2_k2): https://github.com/s
 ```json
 {"cp": 32, "prev_cp": 31, "prev_commit": "0622e5778acdc1a1b77a5da8eeb7609382f54d76", "utc": "2026-10-23T12:41:16Z", "kind": "posted", "phase": "P4", "done_through": "P2/acceptance", "next": "P4/searches", "arm": "ce2_k2", "counts": {}, "spend": {}, "artifacts": {}, "code": "c45af6c49dc8321201da1e50afefb69afb1c8d68", "open_decisions": [], "memory": {"used_pct": 7.62, "peak_pct": 53.72, "state": "OK", "stale": false}, "post": "ce2_k2/iter_1", "url": "https://github.com/skillberry-ai/cap-evolve/issues/910#issuecomment-6365107610"}
 ```
+
+## CE2-0033 · 2026-10-23T12:41Z · P4 independence check · result
+
+Independence check after iteration 1 (plan 9.7): the two arms' cand_0001 candidates differ (sha256 prefixes {'ce2_k1': 'tree:4be1fd94503', 'ce2_k2': 'tree:ea4c49df73f'}); the searches continue.
+
+```json
+{"cp": 33, "prev_cp": 32, "prev_commit": "d24b16171dc8c4e9ac5d427c18bd0c453d6403bb", "utc": "2026-10-23T12:41:17Z", "kind": "result", "phase": "P4", "done_through": "P2/acceptance", "next": "P4/searches", "arm": "ce2_k2", "counts": {}, "spend": {}, "artifacts": {}, "code": "c45af6c49dc8321201da1e50afefb69afb1c8d68", "open_decisions": [], "memory": {"used_pct": 7.62, "peak_pct": 53.72, "state": "OK", "stale": false}, "independence": {"done": true, "identical": false, "sha_prefix": {"ce2_k1": "tree:4be1fd94503", "ce2_k2": "tree:ea4c49df73f"}, "t": "2026-10-23T12:41:17Z"}}
+```
