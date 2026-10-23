@@ -262,3 +262,11 @@ P4 ce2_k1: iteration 1: val 0.6871 (parent 0.3741); paired Δ̄ +0.3129, SE 0.04
 ```json
 {"cp": 30, "prev_cp": 29, "prev_commit": "4c29face34f395e76e1dbfdf43460129d9d45313", "utc": "2026-10-23T12:28:10Z", "kind": "result", "phase": "P4", "done_through": "P2/acceptance", "next": "P4/searches", "arm": "ce2_k1", "counts": {}, "spend": {}, "artifacts": {"STATE/ce2_k1/progress.json": "c1bad6e0d0ed81632a164b14b217a102ac17288d34ebd8b8a7813a14d364a777"}, "code": "c45af6c49dc8321201da1e50afefb69afb1c8d68", "open_decisions": [], "memory": {"used_pct": 12.12, "peak_pct": 53.72, "state": "OK", "stale": false}, "iteration": 1, "verdict": {"candidate": "cand_0001", "accept": true, "val": 0.6870748299319728, "parent_val": 0.3741496598639456, "indecisive": false, "delta": 0.3129, "se": 0.0481, "k_se": 1.0, "bar": 0.0481, "would_pass_k1": true}}
 ```
+
+## CE2-0031 · 2026-10-23T12:41Z · P4 ce2_k2 iteration 1 · result
+
+P4 ce2_k2: iteration 1: val 0.7551 (parent 0.3741); paired Δ̄ +0.3810, SE 0.0466, K·SE 0.0933 (K = 2) → ACCEPT; would pass at K = 1: yes (reporting only). Counted rollouts 147 of 900; optimizer proxy USD 9.7; best search score (fit metric) 0.7551020408163265.
+
+```json
+{"cp": 31, "prev_cp": 30, "prev_commit": "6793c63e3ce83323ccd736c565f1e7fca5474598", "utc": "2026-10-23T12:41:13Z", "kind": "result", "phase": "P4", "done_through": "P2/acceptance", "next": "P4/searches", "arm": "ce2_k2", "counts": {}, "spend": {}, "artifacts": {"STATE/ce2_k2/progress.json": "6987f5660364a316c9cea36e99fbbc25731dda02de6605ee2b6eb5f03a340e5e"}, "code": "c45af6c49dc8321201da1e50afefb69afb1c8d68", "open_decisions": [], "memory": {"used_pct": 7.62, "peak_pct": 53.72, "state": "OK", "stale": false}, "iteration": 1, "verdict": {"candidate": "cand_0001", "accept": true, "val": 0.7551020408163265, "parent_val": 0.3741496598639456, "indecisive": false, "delta": 0.381, "se": 0.0466, "k_se": 2.0, "bar": 0.0933, "would_pass_k1": true}}
+```
