@@ -746,3 +746,11 @@ Posted 'isolation scans, contained probe, final window next' on #909 (ce2_k1): h
 ```json
 {"cp": 89, "prev_cp": 88, "prev_commit": "6ae3bd9dca904566d7211c9ebfcf4f128a5b7435", "utc": "2026-10-23T19:08:16Z", "kind": "posted", "phase": "P6", "done_through": "P6/scan", "next": "P7/final", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "d7e4aa458f460f7f6e700c907a7e5050a1788b3b", "open_decisions": [], "memory": {"used_pct": 5.59, "peak_pct": 55.01, "state": "OK", "stale": false}, "post": "ce2_k1/m6_scan", "url": "https://github.com/skillberry-ai/cap-evolve/issues/909#issuecomment-6372673171"}
 ```
+
+## CE2-0090 · 2026-10-23T19:08Z · P6 posted ce2_k2 · posted
+
+Posted 'isolation scans, contained probe, final window next' on #910 (ce2_k2): https://github.com/skillberry-ai/cap-evolve/issues/910#issuecomment-6372673973
+
+```json
+{"cp": 90, "prev_cp": 89, "prev_commit": "1a0a46680dd0cc05182d05bc88896a5543bb9abc", "utc": "2026-10-23T19:08:18Z", "kind": "posted", "phase": "P6", "done_through": "P6/scan", "next": "P7/final", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "d7e4aa458f460f7f6e700c907a7e5050a1788b3b", "open_decisions": [], "memory": {"used_pct": 5.59, "peak_pct": 55.01, "state": "OK", "stale": false}, "post": "ce2_k2/m6_scan", "url": "https://github.com/skillberry-ai/cap-evolve/issues/910#issuecomment-6372673973"}
+```
