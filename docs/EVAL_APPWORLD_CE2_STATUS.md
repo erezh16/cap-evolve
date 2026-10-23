@@ -608,3 +608,11 @@ Posted 'Cap-Evolve-impr2 K=1 isolation scan' on #909 (ce2_k1): https://github.co
 ```json
 {"cp": 73, "prev_cp": 72, "prev_commit": "57d350bf94728a02f8ffeadc20caa7aee4944790", "utc": "2026-10-23T16:33:24Z", "kind": "posted", "phase": "P4", "done_through": "P2/acceptance", "next": "P4/searches", "arm": "ce2_k1", "counts": {}, "spend": {}, "artifacts": {}, "code": "c45af6c49dc8321201da1e50afefb69afb1c8d68", "open_decisions": [], "memory": {"used_pct": 5.55, "peak_pct": 55.01, "state": "OK", "stale": false}, "post": "ce2_k1/m4_scanned", "url": "https://github.com/skillberry-ai/cap-evolve/issues/909#issuecomment-6369758306"}
 ```
+
+## CE2-0074 · 2026-10-23T16:33Z · P4 searches done · phase_done
+
+P4 done: both chains (search, freeze, isolation scan) finished. Next: P5 dev diagnostic.
+
+```json
+{"cp": 74, "prev_cp": 73, "prev_commit": "1e1500b19b9d7e921050b67e14a2db5d2e70b1e3", "utc": "2026-10-23T16:33:47Z", "kind": "phase_done", "phase": "P4", "done_through": "P4/searches", "next": "P5/dev", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "c45af6c49dc8321201da1e50afefb69afb1c8d68", "open_decisions": [], "memory": {"used_pct": 5.55, "peak_pct": 55.01, "state": "OK", "stale": false}}
+```
