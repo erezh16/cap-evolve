@@ -407,12 +407,13 @@ def iteration_rows(rd: Path) -> list[dict]:
     whether the same Δ̄ / SE would clear K = 1 (a reporting column for ce2_k2, never used to accept; plan §11)."""
     rows = []
     for e in _run_events(rd):
-        if (e.get("kind") or e.get("event")) != "step":
+        kind = e.get("kind") or e.get("event")
+        if kind not in ("step", "step_indecisive"):   # step_indecisive = an evaluation error, an iteration lost (#876)
             continue
         reason = str(e.get("reason") or "")
         m = _GATE_RE.search(reason)
-        row = {"candidate": e.get("candidate"), "accept": e.get("accept"), "val": e.get("val"),
-               "parent_val": e.get("parent_val"), "indecisive": bool(e.get("indecisive"))}
+        row = {"candidate": e.get("candidate"), "accept": bool(e.get("accept")) and kind == "step", "val": e.get("val"),
+               "parent_val": e.get("parent_val"), "indecisive": kind == "step_indecisive" or bool(e.get("indecisive"))}
         if m:
             d, k, bar, se = (float(x) for x in m.groups())
             row.update(delta=d, se=se, k_se=k, bar=bar, would_pass_k1=d > 1.0 * se)
