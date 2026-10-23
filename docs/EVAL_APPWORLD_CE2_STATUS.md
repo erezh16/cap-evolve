@@ -26,3 +26,11 @@ Error and repair in B0. The worktree was created with 'git worktree add -b eval-
 ```json
 {"cp": 1, "prev_cp": 0, "prev_commit": "e5dbc4edb239247f5a49859983a3e48d8e3e2ccd", "utc": "2026-10-23T09:28:38Z", "kind": "error", "phase": "P1", "done_through": "P1/B0", "next": "P1/B1", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "a390b3abc432cfbfb5642d00bbd706a42c3f337e", "open_decisions": [], "memory": {"used_pct": 4.91, "peak_pct": 5.88, "state": "OK", "stale": false}}
 ```
+
+## CE2-0002 · 2026-10-23T09:28Z · P1 R1 directory listing · error
+
+Rule R1 note (executing session): during B1 a directory listing intended for Claude's transcript dirs also listed the names of three entries under REST's cape_run work dir (one candidate dir, its integrity json and its optimizer stderr file). Only these names were shown; no file content of REST's run, champion, trajectories or results was read. The executing session's transcript is part of the P6 scan. No optimizer is affected: no optimizer has run yet.
+
+```json
+{"cp": 2, "prev_cp": 1, "prev_commit": "83115d25bacbd5b219342c3d698fb75f407a3c72", "utc": "2026-10-23T09:28:39Z", "kind": "error", "phase": "P1", "done_through": "P1/B0", "next": "P1/B1", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "a390b3abc432cfbfb5642d00bbd706a42c3f337e", "open_decisions": [], "memory": {"used_pct": 4.91, "peak_pct": 5.88, "state": "OK", "stale": false}}
+```
