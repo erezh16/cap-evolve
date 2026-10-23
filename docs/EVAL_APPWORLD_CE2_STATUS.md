@@ -130,3 +130,11 @@ P4: chain(s) ce2_k1, ce2_k2 started (search, freeze, isolation scan); pid files 
 ```json
 {"cp": 14, "prev_cp": 13, "prev_commit": "75a4e1ed28c9279e3db732027a7d069b12f09a45", "utc": "2026-10-23T10:56:30Z", "kind": "phase_start", "phase": "P4", "done_through": "P2/acceptance", "next": "P4/searches", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "75a4e1ed28c9279e3db732027a7d069b12f09a45", "open_decisions": [], "memory": {"used_pct": 5.05, "peak_pct": 53.72, "state": "OK", "stale": false}}
 ```
+
+## CE2-0015 · 2026-10-23T10:57Z · P4 posted ce2_k1 · posted
+
+Posted 'search started' on #909 (ce2_k1): https://github.com/skillberry-ai/cap-evolve/issues/909#issuecomment-6363312140
+
+```json
+{"cp": 15, "prev_cp": 14, "prev_commit": "25b237968a0f38e672a600e35f39e68437c94eef", "utc": "2026-10-23T10:57:18Z", "kind": "posted", "phase": "P4", "done_through": "P2/acceptance", "next": "P4/searches", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "75a4e1ed28c9279e3db732027a7d069b12f09a45", "open_decisions": [], "memory": {"used_pct": 6.44, "peak_pct": 53.72, "state": "OK", "stale": false}, "post": "ce2_k1/m4_launch", "url": "https://github.com/skillberry-ai/cap-evolve/issues/909#issuecomment-6363312140"}
+```
