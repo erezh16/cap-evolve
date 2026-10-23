@@ -770,3 +770,12 @@ P7 starts: 168 test_normal x 3 arms (seed, ce2_k1, ce2_k2) x 2 trials = 1,008 ce
 ```json
 {"cp": 92, "prev_cp": 91, "prev_commit": "ce2f5e807550ea847fd6aca84659f2224a02fda3", "utc": "2026-10-23T19:09:46Z", "kind": "phase_start", "phase": "P7", "done_through": "P6/scan", "next": "P7/final", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "4ab33f8d4aa4051f6e1e09089190bed5760b95fb", "open_decisions": [], "memory": {"used_pct": 5.62, "peak_pct": 55.01, "state": "OK", "stale": false}}
 ```
+
+## CE2-0093 · 2026-10-23T19:14Z · P7 final window · result
+
+final window: 20 cells since the last entry; 20/1008 done (ce2_k1 4, ce2_k2 10, seed 6); infra still missing 0, retries 0.
+Next: final remaining cells.
+
+```json
+{"cp": 93, "prev_cp": 92, "prev_commit": "e92fc701bcba2d423ca2573c2fc2c6fad530d12d", "utc": "2026-10-23T19:14:47Z", "kind": "result", "phase": "P7", "done_through": "final/20", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/final/progress.json": "4fdb0f9cafb795a4fca06bc47ec1bd0064112723c2e582dc731505c4dcc238cd"}, "code": "4ab33f8d4aa4051f6e1e09089190bed5760b95fb", "open_decisions": [], "memory": {"used_pct": 46.72, "peak_pct": 55.01, "state": "OK", "stale": false}, "window": {"window": "final", "cells_total": 1008, "cells_done": 20, "order_sha256": "c020e74166d6206eeff37e123efe36ce39b8cb596e62426cc4542967b3784eed"}}
+```
