@@ -228,3 +228,11 @@ Next: P4/searches.
 ```json
 {"cp": 26, "prev_cp": 25, "prev_commit": "5e010fcbba10642eba41ea34377c54d6f98a7291", "utc": "2026-10-23T11:48:54Z", "kind": "heartbeat", "phase": "P4", "done_through": "P2/acceptance", "next": "P4/searches", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "c45af6c49dc8321201da1e50afefb69afb1c8d68", "open_decisions": [], "memory": {"used_pct": 47.28, "peak_pct": 53.72, "state": "OK", "stale": false}, "runner": "none"}
 ```
+
+## CE2-0027 · 2026-10-23T11:57Z · P4 posted ce2_k1 · posted
+
+Posted 'Cap-Evolve-impr2 K=1 hourly status' on #909 (ce2_k1): https://github.com/skillberry-ai/cap-evolve/issues/909#issuecomment-6364322148
+
+```json
+{"cp": 27, "prev_cp": 26, "prev_commit": "524bbacba2c10053fd3dc0dcac0f9701103c9da9", "utc": "2026-10-23T11:57:21Z", "kind": "posted", "phase": "P4", "done_through": "P2/acceptance", "next": "P4/searches", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "c45af6c49dc8321201da1e50afefb69afb1c8d68", "open_decisions": [], "memory": {"used_pct": 47.35, "peak_pct": 53.72, "state": "OK", "stale": false}, "post": "ce2_k1/status_20261023T1157", "url": "https://github.com/skillberry-ai/cap-evolve/issues/909#issuecomment-6364322148"}
+```
