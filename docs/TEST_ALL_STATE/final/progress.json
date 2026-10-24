@@ -1,7 +1,7 @@
 {
  "window": "final",
  "cells_total": 10920,
- "cells_done": 111,
+ "cells_done": 139,
  "per_arm": {
   "cape_k02": {
    "done": 8,
@@ -10,73 +10,73 @@
    "context_exceeded": 0
   },
   "harnesslens": {
-   "done": 7,
-   "infra_missing": 0,
-   "infra_retries": 0,
-   "context_exceeded": 0
-  },
-  "altk": {
-   "done": 14,
-   "infra_missing": 0,
-   "infra_retries": 0,
-   "context_exceeded": 0
-  },
-  "seed": {
-   "done": 12,
-   "infra_missing": 0,
-   "infra_retries": 0,
-   "context_exceeded": 0
-  },
-  "evoskill": {
-   "done": 6,
-   "infra_missing": 0,
-   "infra_retries": 0,
-   "context_exceeded": 0
-  },
-  "gepa": {
    "done": 9,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
   },
-  "metaharness": {
-   "done": 8,
-   "infra_missing": 0,
-   "infra_retries": 0,
-   "context_exceeded": 0
-  },
-  "wikiskill": {
+  "ace": {
    "done": 10,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
   },
-  "skillopt": {
-   "done": 11,
+  "altk": {
+   "done": 16,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
   },
-  "gepa_full": {
-   "done": 5,
+  "seed": {
+   "done": 13,
+   "infra_missing": 0,
+   "infra_retries": 0,
+   "context_exceeded": 0
+  },
+  "evoskill": {
+   "done": 8,
+   "infra_missing": 0,
+   "infra_retries": 0,
+   "context_exceeded": 0
+  },
+  "gepa": {
+   "done": 12,
+   "infra_missing": 0,
+   "infra_retries": 0,
+   "context_exceeded": 0
+  },
+  "metaharness": {
+   "done": 12,
+   "infra_missing": 0,
+   "infra_retries": 0,
+   "context_exceeded": 0
+  },
+  "wikiskill": {
+   "done": 13,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
   },
   "miprov2": {
-   "done": 5,
+   "done": 7,
+   "infra_missing": 0,
+   "infra_retries": 0,
+   "context_exceeded": 0
+  },
+  "skillopt": {
+   "done": 14,
+   "infra_missing": 0,
+   "infra_retries": 0,
+   "context_exceeded": 0
+  },
+  "gepa_full": {
+   "done": 7,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
   },
   "trace2skill": {
-   "done": 8,
-   "infra_missing": 0,
-   "infra_retries": 0,
-   "context_exceeded": 0
-  },
-  "ace": {
-   "done": 8,
+   "done": 10,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
