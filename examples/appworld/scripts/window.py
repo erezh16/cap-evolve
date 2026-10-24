@@ -43,6 +43,8 @@ if P.LEDGER_ID == "CE3":                # CE3 §2: 20261024 + the same suffix; t
     FINAL_ORDER_SEED = 2026102407
 WINDOW_ARMS = tuple(getattr(P, "FINAL_ARMS_RUN", P.ARMS))   # CE3: ("ce3_k02",); otherwise every arm
 FINAL_TRIALS = 2
+if P.TESTALL:                           # TEST_ALL §8: 13 arms × 168 × 5 trials, order seed 2026102501, joins nothing
+    FINAL_ORDER_SEED, FINAL_TRIALS, WINDOW_ARMS = P.FINAL_ORDER_SEED, P.FINAL_TRIALS, tuple(P.ARMS)
 FINAL_DIR = "final"
 ART = P.AW_STATE / FINAL_DIR / "artifacts"
 KEEP = ("success", "num_tests", "pass_count", "n_steps", "prompt_tokens", "completion_tokens", "max_prompt_tokens",
@@ -95,6 +97,13 @@ def freeze() -> int:
 
 
 def _check_frozen() -> dict[str, Path]:
+    if P.TESTALL:                       # §6.3: each arm by its directory and its own hash rule, never tree_hash alone
+        sys.path.insert(0, str(HERE.parent / "test_all"))
+        import fetch_artifacts as FA
+        bad = FA.check_scored(P.manifest().get("artifacts") or {})
+        if bad:
+            raise SystemExit(f"scored artifacts changed since the fetch: {bad}")
+        return {a: ART / a for a in P.ARMS}
     import evaluator as E
     m = P.manifest()
     caps = {a: ART / a for a in P.ARMS}
@@ -250,20 +259,27 @@ def final() -> int:
     m = P.manifest()
     if m.get("final_order", {}).get("sha256") not in (None, order_sha(order)):
         raise SystemExit("regenerated final order differs from the recorded sha256")
+    if P.TESTALL and m.get("final_order", {}).get("seed") not in (None, FINAL_ORDER_SEED):
+        raise SystemExit("manifest final_order seed differs from the plan's")
     P.write_json(P.AW_STATE / FINAL_DIR / "order.json", order)
     P.update_manifest(final_order={"seed": FINAL_ORDER_SEED, "sha256": order_sha(order), "cells": len(order),
-                                   "trials": FINAL_TRIALS, "trial_seeds": "5000 + trial", "infra_retries": 3})
+                                   "trials": FINAL_TRIALS, "trial_seeds": f"{P.FINAL_SEED_BASE} + trial",
+                                   "infra_retries": 3})
     caps = _check_frozen()
     pidf = _own_pid("window final")
+    phase, nxt = ("P3", "P4/analysis") if P.TESTALL else ("P7", "P8/analysis")
     try:
-        rc = Window(FINAL_DIR, "P7", "final window", order, caps, P.ROOT_FULL, P.FINAL_SEED_BASE, True,
-                    P.global_slots(), 3, "P8/analysis").run()
+        rc = Window(FINAL_DIR, phase, "final window", order, caps, P.ROOT_FULL, P.FINAL_SEED_BASE, True,
+                    P.global_slots(), 3, nxt).run()
     finally:
         pidf.unlink(missing_ok=True)
+        if P.TESTALL:                   # §4.1: root_full is 000 except while the window runs, also after a stop
+            os.chmod(P.ROOT_FULL, 0o000)
+            P.progress_log(FINAL_DIR, phase, "runner exiting; root_full relocked")
     done = len(list((P.AW_STATE / FINAL_DIR / "records").glob("*.json")))
     if done >= len(order):
         os.chmod(P.ROOT_FULL, 0o000)
-        P.progress_log(FINAL_DIR, "P7", "final window complete; root_full relocked")
+        P.progress_log(FINAL_DIR, phase, "final window complete; root_full relocked")
     return rc
 
 

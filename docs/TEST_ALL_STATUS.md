@@ -24,3 +24,11 @@ Posted 'HarnessLens hourly status' on #923 (harnesslens): https://github.com/ski
 ```json
 {"cp": 1, "prev_cp": 0, "prev_commit": "b3719fedee6f144e71d15073f9ef96e9ecdd48c8", "utc": "2026-10-24T22:38:42Z", "kind": "posted", "phase": "P0", "done_through": "P1/b3", "next": "P1/b4", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "b3719fedee6f144e71d15073f9ef96e9ecdd48c8", "open_decisions": [], "memory": {"used_pct": 7.85, "peak_pct": 7.93, "state": "OK", "stale": false}, "post": "harnesslens/status_20261024T223648", "url": "https://github.com/skillberry-ai/cap-evolve/issues/923#issuecomment-6390427752"}
 ```
+
+## TA-0002 · 2026-10-24T22:41Z · P0 posted miprov2 · posted
+
+Posted 'MIPROv2 hourly status' on #924 (miprov2): https://github.com/skillberry-ai/cap-evolve/issues/924#issuecomment-6390452869
+
+```json
+{"cp": 2, "prev_cp": 1, "prev_commit": "9b6b38cd3faf07f6210961cd1b3c6b474b5eae64", "utc": "2026-10-24T22:41:25Z", "kind": "posted", "phase": "P0", "done_through": "P1/b3", "next": "P1/b4", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "b3719fedee6f144e71d15073f9ef96e9ecdd48c8", "open_decisions": [], "memory": {"used_pct": 7.77, "peak_pct": 8.07, "state": "OK", "stale": false}, "post": "miprov2/status_20261024T224124", "url": "https://github.com/skillberry-ai/cap-evolve/issues/924#issuecomment-6390452869"}
+```
