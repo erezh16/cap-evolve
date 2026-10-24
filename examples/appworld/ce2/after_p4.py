@@ -88,15 +88,17 @@ def main() -> int:
             return 3
         mark("P6")
     if "P7" not in done:
-        S.append("phase_start", "P7", "final window", f"P7 starts: 168 test_normal x 3 arms (seed, ce2_k1, ce2_k2) x 2 "
-                 f"trials = 1,008 cells in one shuffled order (seed {P.manifest().get('final_order', {}).get('seed')}), "
+        arms = getattr(P, "FINAL_ARMS_RUN", P.ARMS)
+        S.append("phase_start", "P7", "final window", f"P7 starts: 168 test_normal x {len(arms)} arm(s) ({', '.join(arms)}) "
+                 f"x 2 trials = {168 * 2 * len(arms):,} cells in one shuffled order (seed {P.manifest().get('final_order', {}).get('seed')}), "
                  f"{P.global_slots()} global slots; root_full is unlocked by window.py for the window and relocked at "
                  "its end; only rewards, counters and infra flags are read.", done_through="P6/scan",
                  next_unit="P7/final", subject="P7 start")
         rc = run("P7", [AW, "-I", str(EX / "scripts" / "window.py"), "final"])
         n = len(list((P.AW_STATE / "final" / "records").glob("*.json")))
-        if rc or n < 1008:
-            return fail("P7", f"final window ({n}/1008 cells)", rc or 1)
+        want = 168 * 2 * len(getattr(P, "FINAL_ARMS_RUN", P.ARMS))
+        if rc or n < want:
+            return fail("P7", f"final window ({n}/{want} cells)", rc or 1)
         mark("P7")
     if "P8" not in done:
         rc = run("P8", [AW, "-I", str(EX / "scripts" / "analyze.py")])
@@ -105,17 +107,18 @@ def main() -> int:
         if rc:
             return fail("P8", "analysis", rc)
         a = P.read_json(P.PUSHED / "final" / "analysis.json", {}) or {}
-        v = a.get("vs_seed", {})
-        k = a.get("k2_vs_k1") or {}
         f = lambda x: f"{100 * x:+.1f}"  # noqa: E731
-        txt = "; ".join(f"{c} TGC {100 * a['arms'][c]['tgc']:.1f} / SGC {100 * a['arms'][c]['sgc']:.1f}, Δ TGC vs seed "
-                        f"{f(v[c]['d_tgc'])} [{f(v[c]['ci_tgc'][0])}, {f(v[c]['ci_tgc'][1])}]" for c in P.CANDIDATES)
-        S.append("phase_done", "P8", "analysis", f"P7 done (1,008/1,008 cells; root_full relocked). P8 analysis done "
-                 f"(final/analysis.json, final/RESULTS.md, aggregates only). test_normal: seed TGC "
-                 f"{100 * a['arms']['seed']['tgc']:.1f} / SGC {100 * a['arms']['seed']['sgc']:.1f}; {txt}; ce2_k2 − ce2_k1 "
-                 f"Δ TGC {f(k.get('d_tgc', 0))} [{f(k.get('ci_tgc', [0, 0])[0])}, {f(k.get('ci_tgc', [0, 0])[1])}] "
-                 "(one search seed each: K confounded with search randomness). Next: P9 results posts.",
-                 done_through="P8/analysis", next_unit="P9/post",
+        ci = lambda d: f"{f(d['d_tgc'])} [{f(d['ci_tgc'][0])}, {f(d['ci_tgc'][1])}]"  # noqa: E731
+        n_cells = len(list((P.AW_STATE / "final" / "records").glob("*.json")))
+        parts = [f"{arm} TGC {100 * r['tgc']:.1f} / SGC {100 * r['sgc']:.1f}" for arm, r in a["arms"].items()]
+        parts += [f"{c} − seed Δ TGC {ci(d)}{' (cross-window)' if d.get('cross_window') else ''}"
+                  for c, d in (a.get("vs_seed") or {}).items()]
+        parts += [f"{lab}: Δ TGC {ci(d)} ({d.get('label', '')})" for lab, d in (a.get("pairs") or {}).items()]
+        if a.get("k2_vs_k1"):
+            parts.append(f"ce2_k2 − ce2_k1 Δ TGC {ci(a['k2_vs_k1'])} (one search seed each: K confounded with search randomness)")
+        S.append("phase_done", "P8", "analysis", f"P7 done ({n_cells:,} cells; root_full relocked). P8 analysis done "
+                 f"(final/analysis.json, final/RESULTS.md, aggregates only). test_normal: {'; '.join(parts)}. "
+                 "Next: P9 results posts.", done_through="P8/analysis", next_unit="P9/post",
                  artifacts=["STATE/final/analysis.json", "STATE/final/RESULTS.md"], subject="P8 analysis")
         mark("P8")
     if "P9" not in done:
@@ -128,8 +131,8 @@ def main() -> int:
                          f"docs/{P.PUSHED.name}/<arm>/RESULTS.md by ce2/report_ce2.py from final/analysis.json and the "
                          "pushed state; each passes the content filter when posted.", subject="P9 drafts")
         mark("P9")
-        S.append("phase_done", "P9", "evaluation complete", "P9 done: results comments posted on #909 (ce2_k1) and #910 "
-                 "(ce2_k2); URLs in the posted entries above. root_full is locked (chmod 000). The background loops "
+        S.append("phase_done", "P9", "evaluation complete", "P9 done: results comment(s) posted on "
+                 + ", ".join(f"#{P.ISSUES[c]} ({c})" for c in P.CANDIDATES) + "; URLs in the posted entries above. root_full is locked (chmod 000). The background loops "
                  "(autopost, heartbeat, memguard) are stopped next by the executing session.",
                  done_through="P9/post", next_unit="done", subject="P9 done")
     return 0

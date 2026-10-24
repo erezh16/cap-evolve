@@ -29,21 +29,34 @@ import awrest as P  # noqa: E402
 sys.path.insert(0, str(HERE.parent / "common"))
 import opt_llm  # noqa: E402
 
-ARMS = P.ARMS
+ARMS = (tuple(P.REUSED_WINDOW_ARMS) + tuple(P.CANDIDATES)) if getattr(P, "REUSED_WINDOW_ARMS", None) else P.ARMS
 TRIALS = 2
 DIFF = {1: "Easy", 2: "Medium", 3: "Hard"}
 B = int(os.environ.get("AW_BOOTSTRAP", 10000))
 
 
-def load():
-    order = P.read_json(P.AW_STATE / "final" / "order.json")
+def _cells_of(state: Path, arms=None) -> tuple[list, dict]:
+    order = P.read_json(state / "final" / "order.json")
     recs = {}
-    for p in (P.AW_STATE / "final" / "records").glob("*.json"):
+    for p in (state / "final" / "records").glob("*.json"):
         recs[int(p.stem)] = json.loads(p.read_text())
     cells = {}
     for c in order:
+        if arms and c["arm"] not in arms:
+            continue
         r = recs.get(c["idx"])
         cells[(c["arm"], c["task_id"], c["trial"])] = r if r is not None else {"infra_error": "never ran"}
+    return order, cells
+
+
+def load():
+    order, cells = _cells_of(P.AW_STATE)
+    if getattr(P, "REUSED_WINDOW_ARMS", None):
+        # CE3 §2: the seed, ce2_k1 and ce2_k2 test_normal cells of CE2's window, reused (trusted script; counters and
+        # flags only), keyed (arm, task, trial) like this window's cells, so every per-task pairing lines up
+        o2, c2 = _cells_of(P.CE2_HOME / "state", set(P.REUSED_WINDOW_ARMS))
+        cells.update(c2)
+        order = order + [c for c in o2 if c["arm"] in P.REUSED_WINDOW_ARMS]
     return order, cells
 
 
@@ -235,17 +248,34 @@ def main() -> int:
             "episode_seconds_p50": q("episode_seconds", 0.5), "episode_seconds_p90": q("episode_seconds", 0.9),
             "pass_fraction": (sum(int(r.get("pass_count") or 0) for r in rs) / max(1, sum(int(r.get("num_tests") or 0) for r in rs))),
             "infra_retries": sum(int(r.get("attempt") or 0) for r in rs)}
+    cross = bool(getattr(P, "REUSED_WINDOW_ARMS", None))
     for c in P.CANDIDATES:
         ct, cs = bootstrap(cells, c, "seed", scen, rng)
         res["vs_seed"][c] = {"d_tgc": res["arms"][c]["tgc"] - res["arms"]["seed"]["tgc"], "ci_tgc": ct,
-                             "d_sgc": res["arms"][c]["sgc"] - res["arms"]["seed"]["sgc"], "ci_sgc": cs}
-    if P.LEDGER_PREFIX == "CE2":   # CE2 §16: ce2_k2 − ce2_k1, same bootstrap (confounds K with search randomness)
+                             "d_sgc": res["arms"][c]["sgc"] - res["arms"]["seed"]["sgc"], "ci_sgc": cs,
+                             "cross_window": cross}
+    if cross:   # CE3 §2: the new arm against the reused CE2 champions, same bootstrap, labelled cross-window
+        res["pairs"] = {}
+        for c in P.CANDIDATES:
+            for o in P.REUSED_WINDOW_ARMS:
+                if o == "seed":
+                    continue
+                ct, cs = bootstrap(cells, c, o, scen, rng)
+                res["pairs"][f"{c} − {o}"] = {"d_tgc": res["arms"][c]["tgc"] - res["arms"][o]["tgc"], "ci_tgc": ct,
+                                               "d_sgc": res["arms"][c]["sgc"] - res["arms"][o]["sgc"], "ci_sgc": cs,
+                                               "cross_window": True,
+                                               "label": "cross-window: the reused arm ran in CE2's window (2026-10-23)"}
+        res["windows"] = {"this window": list(P.CANDIDATES), "reused from CE2's window (2026-10-23)": list(P.REUSED_WINDOW_ARMS)}
+    if P.LEDGER_PREFIX == "CE2" and not cross:   # CE2 §16: ce2_k2 − ce2_k1, same bootstrap (confounds K with search randomness)
         a2, a1 = P.CANDIDATES[1], P.CANDIDATES[0]
         ct, cs = bootstrap(cells, a2, a1, scen, rng)
         res["k2_vs_k1"] = {"d_tgc": res["arms"][a2]["tgc"] - res["arms"][a1]["tgc"], "ci_tgc": ct,
                            "d_sgc": res["arms"][a2]["sgc"] - res["arms"][a1]["sgc"], "ci_sgc": cs,
                            "label": "ce2_k2 − ce2_k1; one search seed each: K is confounded with search randomness"}
     res["search"] = {c: search_side(c) for c in P.CANDIDATES}
+    if cross:   # the reused arms' search-side rows, from CE2's pushed analysis (aggregates only)
+        ce2a = P.read_json(P.CE2_PUSHED / "final" / "analysis.json", {}) or {}
+        res["search_reused_ce2"] = {k: v for k, v in (ce2a.get("search") or {}).items() if k in P.REUSED_WINDOW_ARMS}
     res["seed_baseline"] = seed_baseline()
     res["spend_per_provider"] = {"RITS (agent, unpriced)": "n/a (unpriced); tokens in the arm tables",
                                  "gateway (optimizer)": {c: res["search"][c]["optimizer"]["proxy_usd"] for c in P.CANDIDATES}}
@@ -268,7 +298,15 @@ def main() -> int:
         v = res["vs_seed"].get(a)
         dt = f"{pct(v['d_tgc'])} [{pct(v['ci_tgc'][0])}, {pct(v['ci_tgc'][1])}]" if v else "—"
         ds = f"{pct(v['d_sgc'])} [{pct(v['ci_sgc'][0])}, {pct(v['ci_sgc'][1])}]" if v else "—"
-        L.append(f"| {a} | {pct(r['tgc'])} | {pct(r['sgc'])} | {dt} | {ds} | {r['missing']} |")
+        tag = " (reused, CE2 window)" if a in getattr(P, "REUSED_WINDOW_ARMS", ()) else ""
+        L.append(f"| {a}{tag} | {pct(r['tgc'])} | {pct(r['sgc'])} | {dt} | {ds} | {r['missing']} |")
+    for lab, v in (res.get("pairs") or {}).items():
+        L += ["", f"{lab}: Δ TGC {pct(v['d_tgc'])} [{pct(v['ci_tgc'][0])}, {pct(v['ci_tgc'][1])}], "
+                  f"Δ SGC {pct(v['d_sgc'])} [{pct(v['ci_sgc'][0])}, {pct(v['ci_sgc'][1])}] ({v['label']})."]
+    if res.get("pairs"):
+        L += ["", "Every Δ in this table compares an arm of this window with an arm of CE2's window (2026-10-23): "
+                  "cross-window, so it includes window-to-window drift (CE2's predecessors measured 4–6 TGC points for "
+                  "identical artifacts)."]
     D = ["| arm | " + " | ".join(f"{n} (n={res['arms']['seed']['by_difficulty'][n]['n']})" for n in DIFF.values()) + " |",
          "|---|---|---|---|"]
     for a in ARMS:
@@ -291,7 +329,10 @@ def main() -> int:
         L.append("")
         L.append(f"ce2_k2 − ce2_k1: Δ TGC {pct(v['d_tgc'])} [{pct(v['ci_tgc'][0])}, {pct(v['ci_tgc'][1])}], "
                  f"Δ SGC {pct(v['d_sgc'])} [{pct(v['ci_sgc'][0])}, {pct(v['ci_sgc'][1])}] ({v['label']}).")
-    md = (f"## Final window: test_normal, 168 tasks / 56 scenarios × 2 trials × {len(ARMS)} arms\n\n" + "\n".join(L)
+    head = (f"## Final window(s): test_normal, 168 tasks / 56 scenarios × 2 trials; {', '.join(P.CANDIDATES)} run in this "
+            f"window, {', '.join(P.REUSED_WINDOW_ARMS)} reused from CE2's window" if res.get("pairs") else
+            f"## Final window: test_normal, 168 tasks / 56 scenarios × 2 trials × {len(ARMS)} arms")
+    md = (head + "\n\n" + "\n".join(L)
           + "\n\n## TGC by difficulty\n\n" + "\n".join(D) + "\n\n## Agent cost, tokens and latency per episode (final window)\n\n"
           + "\n".join(C) + ("\n\n## Optimizer side (search; seed baseline reused from REST P3, not counted)\n\n" if P.LEDGER_PREFIX == "CE2" else "\n\n## Optimizer side (search; shared seed baseline of 147 rollouts counted once, not charged)\n\n") + "\n".join(O) + "\n")
     P.atomic_write(P.PUSHED / "final" / "RESULTS.md", md)

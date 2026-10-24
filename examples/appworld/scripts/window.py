@@ -39,6 +39,9 @@ DEV_ORDER_SEED = 2026102005
 FINAL_ORDER_SEED = 2026102007
 if P.LEDGER_PREFIX == "CE2":            # CE2 §16: 20261022 + a fixed suffix, recorded in manifest.json in advance
     FINAL_ORDER_SEED = 2026102207
+if P.LEDGER_ID == "CE3":                # CE3 §2: 20261024 + the same suffix; the window runs FINAL_ARMS_RUN only
+    FINAL_ORDER_SEED = 2026102407
+WINDOW_ARMS = tuple(getattr(P, "FINAL_ARMS_RUN", P.ARMS))   # CE3: ("ce3_k02",); otherwise every arm
 FINAL_TRIALS = 2
 FINAL_DIR = "final"
 ART = P.AW_STATE / FINAL_DIR / "artifacts"
@@ -107,7 +110,7 @@ def dev() -> int:
     caps = _check_frozen()
     ids = E.split_ids("dev")
     per = {}
-    for arm in P.ARMS:
+    for arm in (P.ARMS if P.LEDGER_ID != "CE3" else ("seed",) + tuple(P.CANDIDATES)):
         recs = E.evaluate("seed" if arm == "seed" else arm, caps[arm], ids, phase="P5", tag="p5dev")
         ok = [r for r in recs if not r.get("error")]
         per[arm] = {"tgc": round(sum(r["reward"] for r in ok) / max(1, len(ok)), 4), "n": len(ok),
@@ -243,7 +246,7 @@ def final() -> int:
     ids = P.read_split("test_normal", P.ROOT_FULL)
     if len(ids) != 168:
         raise SystemExit("expected 168 test_normal ids")
-    order = make_order(ids, list(P.ARMS), FINAL_TRIALS, FINAL_ORDER_SEED)
+    order = make_order(ids, list(WINDOW_ARMS), FINAL_TRIALS, FINAL_ORDER_SEED)
     m = P.manifest()
     if m.get("final_order", {}).get("sha256") not in (None, order_sha(order)):
         raise SystemExit("regenerated final order differs from the recorded sha256")

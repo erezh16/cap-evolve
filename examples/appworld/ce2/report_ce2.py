@@ -34,6 +34,24 @@ def ci(v, k):
 
 def main_table(c: str) -> str:
     a = A["arms"]
+    if A.get("pairs"):    # CE3: one new arm; the seed, K = 1 and K = 2 are reused from CE2's window
+        L = ["| arm | window | TGC | SGC | Δ TGC vs seed [95% CI] | Δ SGC vs seed [95% CI] | missing cells |",
+             "|---|---|---|---|---|---|---|", f"| seed | CE2 (reused) | {pct(a['seed']['tgc'])} | {pct(a['seed']['sgc'])} | "
+             f"— | — | {a['seed']['missing']} |"]
+        for arm in [x for x in P.REUSED_WINDOW_ARMS if x != "seed"]:
+            L.append(f"| {arm} | CE2 (reused) | {pct(a[arm]['tgc'])} | {pct(a[arm]['sgc'])} | (CE2 within-window: see #909, #910) | "
+                     f"| {a[arm]['missing']} |")
+        v = A["vs_seed"][c]
+        L.append(f"| **{P.METHOD_NAMES[c]}** | **this (CE3)** | **{pct(a[c]['tgc'])}** | **{pct(a[c]['sgc'])}** | "
+                 f"**{ci(v, 'tgc')}** (cross-window) | {ci(v, 'sgc')} (cross-window) | {a[c]['missing']} |")
+        L += ["", "| comparison (cross-window) | Δ TGC [95% CI] | Δ SGC [95% CI] |", "|---|---|---|",
+              f"| {c} − seed | {ci(v, 'tgc')} | {ci(v, 'sgc')} |"]
+        L += [f"| {lab} | {ci(d, 'tgc')} | {ci(d, 'sgc')} |" for lab, d in A["pairs"].items()]
+        L += ["", "**Cross-window.** The new arm ran in this window (2026-10-24); the seed and both CE2 champions are "
+                  "CE2's window records (2026-10-23), reused by user decision. Identical artifacts drifted 4–6 TGC points "
+                  "between windows in earlier runs, so these Δ include window drift and are weaker than within-window "
+                  "comparisons."]
+        return "\n".join(L)
     L = ["| arm | TGC | SGC | Δ TGC vs seed [95% CI] | Δ SGC vs seed [95% CI] | missing cells |",
          "|---|---|---|---|---|---|", f"| seed | {pct(a['seed']['tgc'])} | {pct(a['seed']['sgc'])} | — | — | "
          f"{a['seed']['missing']} |"]
@@ -52,7 +70,7 @@ def main_table(c: str) -> str:
 def diff_table() -> str:
     a = A["arms"]
     D = ["| arm | Easy (57) | Medium (48) | Hard (63) |", "|---|---|---|---|"]
-    for arm in P.ARMS:
+    for arm in a:
         b = a[arm]["by_difficulty"]
         D.append(f"| {arm} | {pct(b['Easy']['tgc'])} | {pct(b['Medium']['tgc'])} | {pct(b['Hard']['tgc'])} |")
     return "\n".join(D)
@@ -61,7 +79,7 @@ def diff_table() -> str:
 def test_cost_table() -> str:
     T = ["| arm | prompt tok / ep (mean, p50, p90) | completion tok / ep (mean, p90) | steps | s / ep (mean, p50, p90) | "
          "step-cap | token-cap | ctx-exceeded | pass fraction | trials agree |", "|---|---|---|---|---|---|---|---|---|---|"]
-    for arm in P.ARMS:
+    for arm in A["arms"]:
         r = A["arms"][arm]
         T.append(f"| {arm} | {r['prompt_tokens_per_task']:,.0f}, {r['prompt_tokens_p50']:,.0f}, {r['prompt_tokens_p90']:,.0f} | "
                  f"{r['completion_tokens_per_task']:,.0f}, {r['completion_tokens_p90']:,.0f} | {r['steps_per_task']:.1f} | "
@@ -180,14 +198,27 @@ def body(c: str) -> str:
     sess = (P.read_json(P.PUSHED / "isolation_scan.json", {}) or {}).get("_orchestrating_sessions") or {}
     k = P.K_SE[c]
     fo = M.get("final_order") or {}
+    ce3 = P.LEDGER_ID == "CE3"
+    other = ("CE2's arms (K = 1, K = 2; #909, #910) are identical except K and the money caps" if ce3
+             else "the other CE2 arm is identical except K")
+    caps = ("**no money or token cap** (CE3 plan §2: no `optimizer_usd_per_iter`, `max_optimizer_usd` 0 = off, no "
+            "token cap; spend recorded exactly)" if ce3 else
+            "`optimizer_usd_per_iter` 40 and `max_optimizer_usd` 300 (raised from 15 / 120 by user decision, CE2-0022)")
+    window = (f"final window: **this arm only**, 168 test_normal × 2 trials (seeds 5000 + k) = {fo.get('cells', 336):,} cells "
+              f"(order seed {fo.get('seed')}), 24 global slots. The seed, K = 1 and K = 2 test records are **reused from CE2's "
+              "window** (2026-10-23, 1,008 cells, 0 missing), by user decision: every comparison below is cross-window"
+              if ce3 else
+              f"final window: 168 test_normal × 3 arms (seed, K = 1, K = 2) × 2 trials (seeds 5000 + k) = "
+              f"{fo.get('cells', 1008):,} cells, one shuffled order (seed {fo.get('seed')}), 24 global slots; all three arms "
+              "run fresh in this window")
     return f"""**Final results — {P.METHOD_NAMES[c]} (gate K = {k}) vs the seed agent, AppWorld test_normal.**
 
 ### Setup
-- method: cap-evolve "Improvement 2", commit `{P.CAPE_COMMIT[:7]}` (= `8194578` + two Self-check wording fixes in the optimizer template, user decision, ledger CE2-0012; core and skills byte-identical to `8194578`), stock hill-climb `--focus all`, deterministic orchestration, `capabilities: [system-prompt, tools]`, paired gate with **`gate_k_se: {k}`**; the other CE2 arm is identical except K
+- method: cap-evolve "Improvement 2", commit `{P.CAPE_COMMIT[:7]}` (= `8194578` + two Self-check wording fixes in the optimizer template, user decision, ledger CE2-0012; core and skills byte-identical to `8194578`), stock hill-climb `--focus all`, deterministic orchestration, `capabilities: [system-prompt, tools]`, paired gate with **`gate_k_se: {k}`**; {other}
 - agent under test (all arms): `openai/gpt-oss-120b-a100` on RITS, `hosted_vllm/` route, reasoning medium, temperature 0, 50 steps, 6,000 max completion tokens per call, 100K completion tokens per task, the official simplified ReAct agent at AppWorld `42b5bcf`
 - optimizer (main loop and every sub-agent): `aws/claude-sonnet-5-5` via the gateway, Claude Code CLI 2.1.270 in Claude Code's sandbox (landrun + proot), `--setting-sources ''`, no temperature/seed sent; gold-free feedback (reward, failed requirement texts, collateral damage, steps, termination)
-- search: train = val = official train ∪ dev (147), 1 trial per task (seed 100), 6 scored iterations, B = 900 counted rollouts, `max_metric_calls` 1029, `optimizer_usd_per_iter` 40 and `max_optimizer_usd` 300 (raised from 15 / 120 by user decision, CE2-0022); seed baseline **reused** from REST's P3 run (147 records, verified by hash and code identity, not re-run)
-- final window: 168 test_normal × 3 arms (seed, K = 1, K = 2) × 2 trials (seeds 5000 + k) = {fo.get('cells', 1008):,} cells, one shuffled order (seed {fo.get('seed')}), 24 global slots; all three arms run fresh in this window
+- search: train = val = official train ∪ dev (147), 1 trial per task (seed 100), 6 scored iterations, B = 900 counted rollouts, `max_metric_calls` 1029, {caps}; seed baseline **reused** from REST's P3 run (147 records, verified by hash and code identity, not re-run)
+- {window}
 
 ### Main result (test_normal, 168 tasks / 56 scenarios, 2 trials)
 {main_table(c)}
@@ -219,11 +250,11 @@ Post-search and full scans: **{iso.get('test_id_hits')} test-id hits** in every 
 ### Deviations
 - candidate pin `{P.CAPE_COMMIT[:7]}` instead of the plan's `8194578` (two wording fixes in the template's Self-check, user decision; CE2-0012);
 - the seed baseline is REST's P3 run, reused (plan D5); the released-solution scoring probe was not repeated (plan §17);
-- other incidents and repairs are in the ledger (`docs/{P.LEDGER.name}`), none affecting a counted rollout unless stated there.
+{"- no money or token cap, and the window ran this arm only with the seed, K = 1 and K = 2 records reused from CE2 (CE3 plan §2, user decisions 2026-10-24);" + chr(10) if ce3 else ""}- other incidents and repairs are in the ledger (`docs/{P.LEDGER.name}`), none affecting a counted rollout unless stated there.
 
 ### What the numbers cannot support
 - Artifact-level statements only: one search run of this configuration, not the method in general.
-- `ce2_k2 − ce2_k1` confounds the gate K with search randomness (one search seed per arm).
+{"- Every comparison with the seed, K = 1 or K = 2 is cross-window (their records are CE2's window), so it includes window drift; and each K had one search seed, so K is confounded with search randomness." if ce3 else "- `ce2_k2 − ce2_k1` confounds the gate K with search randomness (one search seed per arm)."}
 - Search scores are fit metrics (train = val, selection-biased); only the test_normal numbers above are held out.
 - REST's Improvement 1 numbers come from another window (identical artifacts drifted 4–6 TGC points between windows) and are not compared here.
 - No multiplicity correction.
