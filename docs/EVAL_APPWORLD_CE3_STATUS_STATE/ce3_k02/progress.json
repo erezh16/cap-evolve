@@ -63,15 +63,15 @@
  "best_search_score": 0.8299319727891157,
  "best_search_label": "val = train ∪ dev (147), a fit metric, selection-biased",
  "metric_calls": 735,
- "capevolve_optimizer_usd": 79.56172224999997,
+ "capevolve_optimizer_usd": 92.48906099999998,
  "optimizer": {
-  "calls": 4,
-  "prompt_tokens": 4746048,
-  "completion_tokens": 807810,
-  "cache_read": 60307577,
-  "cache_write": 4385955,
-  "proxy_usd": 31.82,
-  "seconds": 4597.3
+  "calls": 5,
+  "prompt_tokens": 5448059,
+  "completion_tokens": 964285,
+  "cache_read": 69720022,
+  "cache_write": 5025304,
+  "proxy_usd": 37.0,
+  "seconds": 6046.8
  },
  "eta": "2 of 6 iterations left (about 45 min each in REST)"
 }
