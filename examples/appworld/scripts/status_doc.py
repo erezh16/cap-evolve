@@ -388,6 +388,22 @@ def watch_once_ta(autopost) -> None:
         except Exception as e:  # noqa: BLE001
             P.progress_log("ledger", "heartbeat", f"late post on {a} failed: {e}"[:300])
     st["late"] = late
+    # §8 stall rule: the runner is alive but no new cell record for 15 minutes (file times only; nothing is opened)
+    rec = P.AW_STATE / "final" / "records"
+    if pid_alive(runner_pid()) and rec.exists():
+        newest = max((p.stat().st_mtime for p in rec.glob("*.json")), default=None)
+        started = (P.AW_STATE / "RUNNING.pid").stat().st_mtime
+        quiet = time.time() - max(newest or 0, started)
+        if quiet > 900 and not st.get("stalled"):
+            prev = last_entry()
+            ms = P.memstate()
+            append("error", prev.get("phase", "?"), "window stalled",
+                   f"No new window cell for {int(quiet // 60)} minutes while the runner (pid {runner_pid()}) is alive "
+                   f"(plan section 8 stall rule). Memory {ms.get('used_pct')}%, guard {ms.get('state')}. Investigating: "
+                   "memory, RITS reachability, worker processes.", subject="window stalled")
+            st["stalled"] = True
+        elif quiet <= 900:
+            st["stalled"] = False
     P.write_json(P.AW_STATE / "watch.json", st)
 
 
