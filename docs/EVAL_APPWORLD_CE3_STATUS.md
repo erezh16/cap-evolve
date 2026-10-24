@@ -17,3 +17,11 @@ Execution of eval CE3 starts (plan docs/EVAL_APPWORLD_CE3.md; base plan docs/EVA
 ```json
 {"cp": 0, "prev_cp": null, "prev_commit": "3a46c9c0b8c5538b295f7d8a1efccb3c128e77a3", "utc": "2026-10-24T10:29:18Z", "kind": "decision", "phase": "P0", "done_through": "P1/B4", "next": "P2/acceptance", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/manifest.json": "0d74fdcf5e58e699fdc98dc1d4a5ff2558ce7599c87cac74134c6958c2e3cfc9"}, "code": "3a46c9c0b8c5538b295f7d8a1efccb3c128e77a3", "open_decisions": [], "memory": {"used_pct": 5.42, "peak_pct": 5.48, "state": "OK", "stale": false}, "issues": {"ce3_k02": 913}}
 ```
+
+## CE3-0001 · 2026-10-24T10:32Z · P0 posted ce3_k02 · posted
+
+Posted 'execution started' on #913 (ce3_k02): https://github.com/skillberry-ai/cap-evolve/issues/913#issuecomment-6383142923
+
+```json
+{"cp": 1, "prev_cp": 0, "prev_commit": "c2cea7521517866de20d7df2971342df5a296ee2", "utc": "2026-10-24T10:32:07Z", "kind": "posted", "phase": "P0", "done_through": "P1/B4", "next": "P2/acceptance", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "c2cea7521517866de20d7df2971342df5a296ee2", "open_decisions": [], "memory": {"used_pct": 7.65, "peak_pct": 7.65, "state": "OK", "stale": false}, "post": "ce3_k02/start", "url": "https://github.com/skillberry-ai/cap-evolve/issues/913#issuecomment-6383142923"}
+```
