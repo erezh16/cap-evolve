@@ -2,18 +2,31 @@
  "stage": "search running",
  "arm": "ce3_k02",
  "k_se": 0.2,
- "counted_rollouts": 42,
+ "counted_rollouts": 147,
  "cache_hits": 147,
  "lint_rejects": 0,
- "iterations_done": 0,
- "iterations_consumed": 0,
- "accepted": 0,
- "iterations": [],
+ "iterations_done": 1,
+ "iterations_consumed": 1,
+ "accepted": 1,
+ "iterations": [
+  {
+   "candidate": "cand_0001",
+   "accept": true,
+   "val": 0.7482993197278912,
+   "parent_val": 0.3741496598639456,
+   "indecisive": false,
+   "delta": 0.3741,
+   "se": 0.0465,
+   "k_se": 0.2,
+   "bar": 0.0093,
+   "would_pass_k1": true
+  }
+ ],
  "baseline_val": 0.3741496598639456,
  "baseline_label": "seed, reused from REST P3",
- "best_search_score": 0.3741496598639456,
+ "best_search_score": 0.7482993197278912,
  "best_search_label": "val = train ∪ dev (147), a fit metric, selection-biased",
- "metric_calls": 147,
+ "metric_calls": 294,
  "capevolve_optimizer_usd": 30.562140999999986,
  "optimizer": {
   "calls": 1,
@@ -24,5 +37,5 @@
   "proxy_usd": 12.22,
   "seconds": 1135.6
  },
- "eta": "6 of 6 iterations left (about 45 min each in REST)"
+ "eta": "5 of 6 iterations left (about 45 min each in REST)"
 }
