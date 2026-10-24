@@ -2,7 +2,7 @@
  "stage": "search running",
  "arm": "ce3_k02",
  "k_se": 0.2,
- "counted_rollouts": 765,
+ "counted_rollouts": 867,
  "cache_hits": 147,
  "lint_rejects": 0,
  "iterations_done": 5,
