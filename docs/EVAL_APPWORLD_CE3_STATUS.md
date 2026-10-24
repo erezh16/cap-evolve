@@ -505,3 +505,11 @@ P9: the two per-arm results comments drafted in docs/EVAL_APPWORLD_CE3_STATUS_ST
 ```json
 {"cp": 58, "prev_cp": 57, "prev_commit": "7276719b13edac90757d5fada3ad962b704281c2", "utc": "2026-10-24T16:36:16Z", "kind": "result", "phase": "P9", "done_through": "P8/analysis", "next": "P9/post", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "821a87b516cf6f29cff33f2ab2ec5d45c6d4a6d2", "open_decisions": [], "memory": {"used_pct": 7.15, "peak_pct": 49.23, "state": "OK", "stale": false}}
 ```
+
+## CE3-0059 · 2026-10-24T16:36Z · P9 posted ce3_k02 · posted
+
+Posted 'Cap-Evolve-impr2 K=0.2 results' on #913 (ce3_k02): https://github.com/skillberry-ai/cap-evolve/issues/913#issuecomment-6386755771
+
+```json
+{"cp": 59, "prev_cp": 58, "prev_commit": "096e93915004d346a93ef26905c60d51f44ebc03", "utc": "2026-10-24T16:36:19Z", "kind": "posted", "phase": "P9", "done_through": "P8/analysis", "next": "P9/post", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "821a87b516cf6f29cff33f2ab2ec5d45c6d4a6d2", "open_decisions": [], "memory": {"used_pct": 7.2, "peak_pct": 49.23, "state": "OK", "stale": false}, "post": "ce3_k02/results", "url": "https://github.com/skillberry-ai/cap-evolve/issues/913#issuecomment-6386755771"}
+```
