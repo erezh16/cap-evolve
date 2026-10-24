@@ -91,3 +91,11 @@ Independence check after iteration 1 (plan 9.7, REST CP-0135): the two arms' can
 ```json
 {"cp": 9, "prev_cp": 8, "prev_commit": "37557be99f142ee14ed8203792daa8fb9d108892", "utc": "2026-10-24T11:31:15Z", "kind": "decision", "phase": "P4", "done_through": "P2/acceptance", "next": "P4/searches", "arm": "ce3_k02", "counts": {}, "spend": {}, "artifacts": {}, "code": "832a41f544c8c8efa0eb58470a1ec5928cc2937d", "open_decisions": [], "memory": {"used_pct": 6.66, "peak_pct": 47.58, "state": "OK", "stale": false}, "independence": {"done": true, "identical": true, "sha_prefix": {"ce3_k02": "tree:76a11ff5b05"}, "t": "2026-10-24T11:31:15Z"}}
 ```
+
+## CE3-0010 · 2026-10-24T11:33Z · P4 false independence stop · repair
+
+Repair. Iteration 1 of ce3_k02 was scored and ACCEPTED (CE3-0007: val 0.7483 from 0.3741, paired Δ̄ +0.3741, SE 0.0465, K·SE 0.0093 at K = 0.2; 147 counted). The P4 runner then ran CE2's two-arm independence check (CE2 §9.7), which with CE3's single arm compared the arm's cand_0001 with itself, found it 'identical' and stopped the search (CE3-0009: a false 'arms not independent' decision). CE3 §2 says this check is not applicable. The P4 runner's SIGTERM ended the chain; the cap-evolve process survived as an orphan and had started the iteration-2 optimizer session (about 1.5 min old): it was stopped by the executing session before it wrote any usage line, candidate or step. Nothing counted was lost: cap-evolve's state is best = cand_0001, 1 iteration, 294 metric calls; the iteration-2 workdir is rebuilt from the parent on resume (harness: rmtree + copytree). Fix: the independence check is skipped when there is one arm (p4_ce2.py); the bogus independence record is set aside. No decision is open: the stop was a code fault, not a finding. Next: the search resumes (launch_ce2.sh ... --resume), continuing at iteration 2; still 6 scored iterations in total.
+
+```json
+{"cp": 10, "prev_cp": 9, "prev_commit": "821a87b516cf6f29cff33f2ab2ec5d45c6d4a6d2", "utc": "2026-10-24T11:33:21Z", "kind": "repair", "phase": "P4", "done_through": "P2/acceptance", "next": "P4/searches", "arm": "ce3_k02", "counts": {}, "spend": {}, "artifacts": {}, "code": "821a87b516cf6f29cff33f2ab2ec5d45c6d4a6d2", "open_decisions": [], "memory": {"used_pct": 5.49, "peak_pct": 47.58, "state": "OK", "stale": false}}
+```
