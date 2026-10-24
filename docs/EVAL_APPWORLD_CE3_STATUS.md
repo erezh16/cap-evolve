@@ -41,3 +41,11 @@ P2 done; every acceptance check required before a counted rollout has passed. Re
 ```json
 {"cp": 3, "prev_cp": 2, "prev_commit": "832a41f544c8c8efa0eb58470a1ec5928cc2937d", "utc": "2026-10-24T10:47:05Z", "kind": "phase_done", "phase": "P2", "done_through": "P2/acceptance", "next": "P4/searches", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/acceptance/a9_ce3_k02.json": "35dfd927d643f3447c31306e1f7d1ca73fb9975987784ec185d93382f2b8bdd0", "STATE/acceptance/a_ce3_ce3_k02.json": "de79c046df526adcf130722fdda64edba35604158ba9c8a4d131b69f4e8d5352", "STATE/ce2/same.json": "a55b0760493bbc45ac42a8da1f63c825e8a97fa153d1fcc0389f6e71cf1358ae"}, "code": "832a41f544c8c8efa0eb58470a1ec5928cc2937d", "open_decisions": [], "memory": {"used_pct": 5.49, "peak_pct": 19.71, "state": "OK", "stale": false}}
 ```
+
+## CE3-0004 · 2026-10-24T10:47Z · P4 searches launched · phase_start
+
+P4: chain(s) ce3_k02 started (search, freeze, isolation scan); pid files AW_STATE/p4/<arm>.pid. Running now: ce3_k02. Global slots 24; memory 5.49%.
+
+```json
+{"cp": 4, "prev_cp": 3, "prev_commit": "50165368dd0597e465e2363ef0d54d42f381d9f7", "utc": "2026-10-24T10:47:07Z", "kind": "phase_start", "phase": "P4", "done_through": "P2/acceptance", "next": "P4/searches", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "832a41f544c8c8efa0eb58470a1ec5928cc2937d", "open_decisions": [], "memory": {"used_pct": 5.49, "peak_pct": 19.71, "state": "OK", "stale": false}}
+```
