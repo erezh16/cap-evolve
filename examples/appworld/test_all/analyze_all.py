@@ -320,7 +320,8 @@ def main() -> int:
     res["spend_per_provider"] = {"RITS (agent, unpriced)": "n/a (unpriced); agent tokens per arm in `arms`",
                                  "optimizer": "none (no optimizer in this plan)"}
     P.write_json(OUT / "analysis.json", res)
-    import report
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    import report_all as report
     md = report.combined(res)
     P.atomic_write(OUT / "RESULTS.md", md)
     print(json.dumps({"written": [str(OUT / "analysis.json"), str(OUT / "RESULTS.md")], "records": d["n_records"],
