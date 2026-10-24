@@ -1,82 +1,82 @@
 {
  "window": "final",
  "cells_total": 10920,
- "cells_done": 84,
+ "cells_done": 111,
  "per_arm": {
   "cape_k02": {
-   "done": 3,
+   "done": 8,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
   },
   "harnesslens": {
-   "done": 6,
-   "infra_missing": 0,
-   "infra_retries": 0,
-   "context_exceeded": 0
-  },
-  "altk": {
-   "done": 13,
-   "infra_missing": 0,
-   "infra_retries": 0,
-   "context_exceeded": 0
-  },
-  "evoskill": {
-   "done": 5,
-   "infra_missing": 0,
-   "infra_retries": 0,
-   "context_exceeded": 0
-  },
-  "gepa": {
-   "done": 8,
-   "infra_missing": 0,
-   "infra_retries": 0,
-   "context_exceeded": 0
-  },
-  "metaharness": {
    "done": 7,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
   },
-  "wikiskill": {
-   "done": 6,
+  "altk": {
+   "done": 14,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
   },
   "seed": {
-   "done": 8,
+   "done": 12,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
   },
-  "skillopt": {
+  "evoskill": {
+   "done": 6,
+   "infra_missing": 0,
+   "infra_retries": 0,
+   "context_exceeded": 0
+  },
+  "gepa": {
    "done": 9,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
   },
-  "miprov2": {
-   "done": 3,
+  "metaharness": {
+   "done": 8,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
   },
-  "trace2skill": {
-   "done": 6,
+  "wikiskill": {
+   "done": 10,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
   },
-  "ace": {
-   "done": 6,
+  "skillopt": {
+   "done": 11,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
   },
   "gepa_full": {
-   "done": 4,
+   "done": 5,
+   "infra_missing": 0,
+   "infra_retries": 0,
+   "context_exceeded": 0
+  },
+  "miprov2": {
+   "done": 5,
+   "infra_missing": 0,
+   "infra_retries": 0,
+   "context_exceeded": 0
+  },
+  "trace2skill": {
+   "done": 8,
+   "infra_missing": 0,
+   "infra_retries": 0,
+   "context_exceeded": 0
+  },
+  "ace": {
+   "done": 8,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
