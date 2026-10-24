@@ -128,3 +128,11 @@ Posted 'GEPA: build and acceptance done' on #918 (gepa): https://github.com/skil
 ```json
 {"cp": 14, "prev_cp": 13, "prev_commit": "885d0de46dbda8b85e79a52add542633237520a8", "utc": "2026-10-24T23:10:37Z", "kind": "posted", "phase": "P2", "done_through": "P2/acceptance", "next": "P3/window", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "1365a97f7a1680769356749d6b69542580ce4219", "open_decisions": [], "memory": {"used_pct": 7.84, "peak_pct": 25.44, "state": "OK", "stale": false}, "post": "gepa/accept_done", "url": "https://github.com/skillberry-ai/cap-evolve/issues/918#issuecomment-6390720026"}
 ```
+
+## TA-0015 · 2026-10-24T23:10Z · P2 posted skillopt · posted
+
+Posted 'SkillOpt: build and acceptance done' on #919 (skillopt): https://github.com/skillberry-ai/cap-evolve/issues/919#issuecomment-6390720778
+
+```json
+{"cp": 15, "prev_cp": 14, "prev_commit": "d97ee5f3c806b98141fd439cc112c82b648de5e3", "utc": "2026-10-24T23:10:42Z", "kind": "posted", "phase": "P2", "done_through": "P2/acceptance", "next": "P3/window", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "1365a97f7a1680769356749d6b69542580ce4219", "open_decisions": [], "memory": {"used_pct": 7.84, "peak_pct": 25.44, "state": "OK", "stale": false}, "post": "skillopt/accept_done", "url": "https://github.com/skillberry-ai/cap-evolve/issues/919#issuecomment-6390720778"}
+```
