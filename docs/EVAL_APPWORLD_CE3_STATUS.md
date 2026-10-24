@@ -497,3 +497,11 @@ P7 done (336 cells; root_full relocked). P8 analysis done (final/analysis.json, 
 ```json
 {"cp": 57, "prev_cp": 56, "prev_commit": "06bc5a236f75bb20ca826385d70f6049e9c2af60", "utc": "2026-10-24T16:36:15Z", "kind": "phase_done", "phase": "P8", "done_through": "P8/analysis", "next": "P9/post", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/final/analysis.json": "77a2f53aa064f1f12dcc7945d2451a28867d7be571c9bc0625e870e32cbd5c7e", "STATE/final/RESULTS.md": "6336df316b6638b386f2359754895de64b9763b5f44ce653257d3a305e02c6f0"}, "code": "821a87b516cf6f29cff33f2ab2ec5d45c6d4a6d2", "open_decisions": [], "memory": {"used_pct": 7.15, "peak_pct": 49.23, "state": "OK", "stale": false}}
 ```
+
+## CE3-0058 · 2026-10-24T16:36Z · P9 results drafts · result
+
+P9: the two per-arm results comments drafted in docs/EVAL_APPWORLD_CE3_STATUS_STATE/<arm>/RESULTS.md by ce2/report_ce2.py from final/analysis.json and the pushed state; each passes the content filter when posted.
+
+```json
+{"cp": 58, "prev_cp": 57, "prev_commit": "7276719b13edac90757d5fada3ad962b704281c2", "utc": "2026-10-24T16:36:16Z", "kind": "result", "phase": "P9", "done_through": "P8/analysis", "next": "P9/post", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "821a87b516cf6f29cff33f2ab2ec5d45c6d4a6d2", "open_decisions": [], "memory": {"used_pct": 7.15, "peak_pct": 49.23, "state": "OK", "stale": false}}
+```
