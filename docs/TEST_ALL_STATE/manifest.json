@@ -1,0 +1,622 @@
+{
+ "artifacts": {
+  "seed": {
+   "rule": "S",
+   "expected": "85a0da9cec2206a7bc683c11d60b5cb0acac7328d43c6e9197324d1e45971f3c",
+   "computed": "85a0da9cec2206a7bc683c11d60b5cb0acac7328d43c6e9197324d1e45971f3c",
+   "source": "local",
+   "source_path": "/workspace/worktrees/eval-ce3/examples/appworld/seed_capability",
+   "surfaces_present": {
+    "P": true,
+    "T_helpers": true,
+    "T_notes": true,
+    "M_playbook": false,
+    "M_retrieval": false
+   },
+   "scored_rule_s": "85a0da9cec2206a7bc683c11d60b5cb0acac7328d43c6e9197324d1e45971f3c",
+   "scored_files": {
+    "policy/instructions.txt": "c41f7852217d46586047a38f68e88b827cb9dcbe624e9651f9db8301547a534b",
+    "tools/api_notes.json": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+    "tools/helpers.py": "2bfd81ebbb2ac8a9e0813030ef4dd6fd8b058a6c2e36480f86f75f8afc1c52fb"
+   }
+  },
+  "altk": {
+   "rule": "B",
+   "expected": "b2b3703744f292128d428e791d3f6d70b5eca3a2572d194b96b6075603f1e131",
+   "computed": "b2b3703744f292128d428e791d3f6d70b5eca3a2572d194b96b6075603f1e131",
+   "source": "box",
+   "source_path": "eval-data:appworld/2026-10-15-appworld-capevolve-hillclimb-gptoss120b-sonnet55-fix-clean/final_window/artifacts/altk/",
+   "surfaces_present": {
+    "P": true,
+    "T_helpers": true,
+    "T_notes": true,
+    "M_playbook": false,
+    "M_retrieval": true
+   },
+   "scored_rule_s": "85a0da9cec2206a7bc683c11d60b5cb0acac7328d43c6e9197324d1e45971f3c",
+   "scored_files": {
+    "memory/retrieval.json": "da3f84f09fb0cecf823c56e21665ad6964152f19e36ecd3d0d6090b7a61da779",
+    "policy/instructions.txt": "c41f7852217d46586047a38f68e88b827cb9dcbe624e9651f9db8301547a534b",
+    "tools/api_notes.json": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+    "tools/helpers.py": "2bfd81ebbb2ac8a9e0813030ef4dd6fd8b058a6c2e36480f86f75f8afc1c52fb"
+   }
+  },
+  "ace": {
+   "rule": "F",
+   "expected": "e92fbff4b652aaaa8cce0e46bd9556b4706141834f1486245d7b9edc919b117f",
+   "computed": "e92fbff4b652aaaa8cce0e46bd9556b4706141834f1486245d7b9edc919b117f",
+   "source": "box",
+   "source_path": "eval-data:appworld/2026-10-14-appworld-ace-offline-nogt-gptoss120b-sonnet55-qualified/final_window/artifacts/ace/",
+   "surfaces_present": {
+    "P": true,
+    "T_helpers": true,
+    "T_notes": true,
+    "M_playbook": true,
+    "M_retrieval": false
+   },
+   "scored_rule_s": "15887ea46ce830a057d2cc132fed7fa984ec252348ede1e3f0ca538d64585415",
+   "scored_files": {
+    "memory/playbook.md": "1ca6b6fa9a81add0636db099c015db6dd685d099d7a6682b49ab3699a2f77919",
+    "policy/instructions.txt": "c41f7852217d46586047a38f68e88b827cb9dcbe624e9651f9db8301547a534b",
+    "tools/api_notes.json": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+    "tools/helpers.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+   }
+  },
+  "gepa": {
+   "rule": "F",
+   "expected": "26403e2c5e50ed9243c750457cb9f317f28970271c00b799f1d9018a1cdeffc6",
+   "computed": "26403e2c5e50ed9243c750457cb9f317f28970271c00b799f1d9018a1cdeffc6",
+   "source": "box",
+   "source_path": "eval-data:appworld/2026-10-18-appworld-gepa-v014-pt-gptoss120b-sonnet55-qualified/champion/artifact/",
+   "surfaces_present": {
+    "P": true,
+    "T_helpers": true,
+    "T_notes": true,
+    "M_playbook": false,
+    "M_retrieval": false
+   },
+   "scored_rule_s": "3c51699e54d35916a2880956a6f9593e84c7880222f566fccb545afcc64f5968",
+   "scored_files": {
+    "policy/instructions.txt": "8e9374c86a222a4483b390c29e14166b3694b7ffbcf4d05776b65dd3474f04cd",
+    "tools/api_notes.json": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+    "tools/helpers.py": "2bfd81ebbb2ac8a9e0813030ef4dd6fd8b058a6c2e36480f86f75f8afc1c52fb"
+   }
+  },
+  "skillopt": {
+   "rule": "F",
+   "expected": "8314b3340e1c0d8569f3785608186d9eb2cf65782f9be2bc17de0ca94319ca04",
+   "computed": "8314b3340e1c0d8569f3785608186d9eb2cf65782f9be2bc17de0ca94319ca04",
+   "source": "box",
+   "source_path": "eval-data:appworld/2026-10-18-appworld-skillopt-ae2f766-m-gptoss120b-sonnet55-qualified/champion/artifact/",
+   "surfaces_present": {
+    "P": true,
+    "T_helpers": true,
+    "T_notes": true,
+    "M_playbook": true,
+    "M_retrieval": false
+   },
+   "scored_rule_s": "f58b308424e4fb2bcaa9346eaa77064ffbb816b0ed22b36f83c35feea2ebad00",
+   "scored_files": {
+    "memory/playbook.md": "0ebc92a3fe9577a66cf16a98ba6ba1d7b7a7b5bd4e502b88dea239f6bf6b1d3d",
+    "policy/instructions.txt": "c41f7852217d46586047a38f68e88b827cb9dcbe624e9651f9db8301547a534b",
+    "tools/api_notes.json": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+    "tools/helpers.py": "2bfd81ebbb2ac8a9e0813030ef4dd6fd8b058a6c2e36480f86f75f8afc1c52fb"
+   }
+  },
+  "wikiskill": {
+   "rule": "F",
+   "expected": "3895752eb7b9759b4455aabf9ddde54b27442ad405245ec3272906cfa145b167",
+   "computed": "3895752eb7b9759b4455aabf9ddde54b27442ad405245ec3272906cfa145b167",
+   "source": "box",
+   "source_path": "eval-data:appworld/2026-10-18-appworld-wikiskill-reimpl-m-gptoss120b-sonnet55-qualified/champion/artifact/",
+   "surfaces_present": {
+    "P": true,
+    "T_helpers": true,
+    "T_notes": true,
+    "M_playbook": true,
+    "M_retrieval": false
+   },
+   "scored_rule_s": "6055a54c822c6875d9c9ed7efbed57fee7044e9604aec24a1fe66dd910b82c37",
+   "scored_files": {
+    "memory/playbook.md": "b8050351e9e8474ebd33f5c3041508d9047b42cb436e70cc382302738a6bc08a",
+    "policy/instructions.txt": "c41f7852217d46586047a38f68e88b827cb9dcbe624e9651f9db8301547a534b",
+    "tools/api_notes.json": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+    "tools/helpers.py": "2bfd81ebbb2ac8a9e0813030ef4dd6fd8b058a6c2e36480f86f75f8afc1c52fb"
+   }
+  },
+  "evoskill": {
+   "rule": "F",
+   "expected": "23f5f8f76cf504aee5eba4edbe4c209c160395f428bb39f11b36799ede22a804",
+   "computed": "23f5f8f76cf504aee5eba4edbe4c209c160395f428bb39f11b36799ede22a804",
+   "source": "box",
+   "source_path": "eval-data:appworld/2026-10-18-appworld-evoskill-v130-m-gptoss120b-sonnet55-scored/champion/artifact/",
+   "surfaces_present": {
+    "P": true,
+    "T_helpers": true,
+    "T_notes": true,
+    "M_playbook": true,
+    "M_retrieval": false
+   },
+   "scored_rule_s": "a831ef743215406a37964f18706d7ddd54c7f286a4ab7706c0e3c20266813002",
+   "scored_files": {
+    "memory/playbook.md": "d5ddd8b940804682e424f1ccd8bd9b8a39b47b81592d8ee4ebd464d2bf577fca",
+    "policy/instructions.txt": "c41f7852217d46586047a38f68e88b827cb9dcbe624e9651f9db8301547a534b",
+    "tools/api_notes.json": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+    "tools/helpers.py": "2bfd81ebbb2ac8a9e0813030ef4dd6fd8b058a6c2e36480f86f75f8afc1c52fb"
+   }
+  },
+  "metaharness": {
+   "rule": "F",
+   "expected": "ea0f2f68e37742b8b45fc2a257ad309fac85ebaf3ed00cf0cf60ee2a7cd0fe16",
+   "computed": "ea0f2f68e37742b8b45fc2a257ad309fac85ebaf3ed00cf0cf60ee2a7cd0fe16",
+   "source": "box",
+   "source_path": "eval-data:appworld/2026-10-19-appworld-metaharness-8123cca-pt-gptoss120b-sonnet55-qualified/champion/artifact/",
+   "surfaces_present": {
+    "P": true,
+    "T_helpers": true,
+    "T_notes": true,
+    "M_playbook": false,
+    "M_retrieval": false
+   },
+   "scored_rule_s": "c0a87df03fff6cd82c69ae0cc8eb3bfef7e07a3e95ad5f5312336e5b610e3674",
+   "scored_files": {
+    "policy/instructions.txt": "6f3a71a05884498dec94abf2aae0622ea5c3a6443c9a12e79cf8baab953f26ed",
+    "tools/api_notes.json": "523add3478164d06d003e51c4fca3057532eb9d81462b578cb789386f5db2c95",
+    "tools/helpers.py": "47f3ff3496757ab8f23e58615ce5a5fdf85c6c5c68f461e1472f698b51f213f3"
+   }
+  },
+  "harnesslens": {
+   "rule": "S",
+   "expected": "85a0da9cec2206a7bc683c11d60b5cb0acac7328d43c6e9197324d1e45971f3c",
+   "computed": "85a0da9cec2206a7bc683c11d60b5cb0acac7328d43c6e9197324d1e45971f3c",
+   "source": "local",
+   "source_path": "/workspace/worktrees/eval-rest/docs/EVAL_APPWORLD_REST_STATE/harnesslens/artifact",
+   "surfaces_present": {
+    "P": true,
+    "T_helpers": true,
+    "T_notes": true,
+    "M_playbook": false,
+    "M_retrieval": false
+   },
+   "scored_rule_s": "85a0da9cec2206a7bc683c11d60b5cb0acac7328d43c6e9197324d1e45971f3c",
+   "scored_files": {
+    "policy/instructions.txt": "c41f7852217d46586047a38f68e88b827cb9dcbe624e9651f9db8301547a534b",
+    "tools/api_notes.json": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+    "tools/helpers.py": "2bfd81ebbb2ac8a9e0813030ef4dd6fd8b058a6c2e36480f86f75f8afc1c52fb"
+   }
+  },
+  "miprov2": {
+   "rule": "S",
+   "expected": "a4ff3a502879f5206e5b32161f244c939635eb7d5bd70be59a8f9af01db6314a",
+   "computed": "a4ff3a502879f5206e5b32161f244c939635eb7d5bd70be59a8f9af01db6314a",
+   "source": "local",
+   "source_path": "/workspace/worktrees/eval-rest/docs/EVAL_APPWORLD_REST_STATE/miprov2/artifact",
+   "surfaces_present": {
+    "P": true,
+    "T_helpers": true,
+    "T_notes": true,
+    "M_playbook": false,
+    "M_retrieval": false
+   },
+   "scored_rule_s": "a4ff3a502879f5206e5b32161f244c939635eb7d5bd70be59a8f9af01db6314a",
+   "scored_files": {
+    "policy/instructions.txt": "de0a8cae217b8862b90731648ecc0277199f2a714ab794148952157d47cd2ca9",
+    "tools/api_notes.json": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+    "tools/helpers.py": "2bfd81ebbb2ac8a9e0813030ef4dd6fd8b058a6c2e36480f86f75f8afc1c52fb"
+   }
+  },
+  "trace2skill": {
+   "rule": "S",
+   "expected": "a6b03deb2a044ed4c74920d02d6589b2113530ffd9053a947854152a8e4e5b6f",
+   "computed": "a6b03deb2a044ed4c74920d02d6589b2113530ffd9053a947854152a8e4e5b6f",
+   "source": "local",
+   "source_path": "/workspace/worktrees/eval-rest/docs/EVAL_APPWORLD_REST_STATE/trace2skill/artifact",
+   "surfaces_present": {
+    "P": true,
+    "T_helpers": true,
+    "T_notes": true,
+    "M_playbook": true,
+    "M_retrieval": false
+   },
+   "scored_rule_s": "a6b03deb2a044ed4c74920d02d6589b2113530ffd9053a947854152a8e4e5b6f",
+   "scored_files": {
+    "memory/playbook.md": "613dda282a0ab3e64b40ada7036d7bb5fb67adcc6d53c7577a06f2c6957454ed",
+    "policy/instructions.txt": "c41f7852217d46586047a38f68e88b827cb9dcbe624e9651f9db8301547a534b",
+    "tools/api_notes.json": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+    "tools/helpers.py": "2bfd81ebbb2ac8a9e0813030ef4dd6fd8b058a6c2e36480f86f75f8afc1c52fb"
+   }
+  },
+  "gepa_full": {
+   "rule": "S",
+   "expected": "eb3d11d38bad1193cd20fc480f3d5de3ac04fc5e0bcf7002493bd7ae3187110e",
+   "computed": "eb3d11d38bad1193cd20fc480f3d5de3ac04fc5e0bcf7002493bd7ae3187110e",
+   "source": "local",
+   "source_path": "/workspace/worktrees/eval-rest/docs/EVAL_APPWORLD_REST_STATE/gepa_full/artifact",
+   "surfaces_present": {
+    "P": true,
+    "T_helpers": true,
+    "T_notes": true,
+    "M_playbook": false,
+    "M_retrieval": false
+   },
+   "scored_rule_s": "eb3d11d38bad1193cd20fc480f3d5de3ac04fc5e0bcf7002493bd7ae3187110e",
+   "scored_files": {
+    "policy/instructions.txt": "f5a079182e8bfde3ea0495f5c623f5dd23662cd7d0126dff8bd50fdc8bdf6c86",
+    "tools/api_notes.json": "88517f14a7422b6bbfe4089056f4395e1a2cb284756e5158fc42243f334fd91d",
+    "tools/helpers.py": "2bfd81ebbb2ac8a9e0813030ef4dd6fd8b058a6c2e36480f86f75f8afc1c52fb"
+   }
+  },
+  "cape_k02": {
+   "rule": "S",
+   "expected": "e0ec3d94752bd3a2f067dfa2522695767d4077888a5f62fa360991c3e04019fb",
+   "computed": "e0ec3d94752bd3a2f067dfa2522695767d4077888a5f62fa360991c3e04019fb",
+   "source": "local",
+   "source_path": "/workspace/aw_ce3/state/ce3_k02/champion",
+   "surfaces_present": {
+    "P": true,
+    "T_helpers": true,
+    "T_notes": true,
+    "M_playbook": false,
+    "M_retrieval": false
+   },
+   "scored_rule_s": "e0ec3d94752bd3a2f067dfa2522695767d4077888a5f62fa360991c3e04019fb",
+   "scored_files": {
+    "policy/instructions.txt": "b3e5fa0023d17d786abf4bf65fc9c6113edebed5724e6b7ced849276f2ba5269",
+    "tools/api_notes.json": "7f9fd2e4b07d4533275f6594f998d2df5b4a94e1f5eaad8d7dd22e017d7dae6e",
+    "tools/helpers.py": "016422e7f42a44e0c66a65af2f67dcf794518beffc57a9a8caf3133066842442"
+   }
+  }
+ },
+ "seed_equals_harnesslens_bytewise": true,
+ "lint": {
+  "seed": {
+   "pass": true,
+   "violations": [],
+   "disclosed_exception": [],
+   "sizes": {
+    "policy/instructions.txt": {
+     "chars": 11350,
+     "lines": 371,
+     "tokens_o200k": 2745
+    },
+    "tools/helpers.py": {
+     "chars": 174,
+     "lines": 4,
+     "tokens_o200k": 40
+    },
+    "tools/api_notes.json": {
+     "chars": 3,
+     "lines": 1,
+     "tokens_o200k": 1
+    }
+   }
+  },
+  "altk": {
+   "pass": true,
+   "violations": [],
+   "disclosed_exception": [],
+   "sizes": {
+    "policy/instructions.txt": {
+     "chars": 11350,
+     "lines": 371,
+     "tokens_o200k": 2745
+    },
+    "tools/helpers.py": {
+     "chars": 174,
+     "lines": 4,
+     "tokens_o200k": 40
+    },
+    "tools/api_notes.json": {
+     "chars": 3,
+     "lines": 1,
+     "tokens_o200k": 1
+    },
+    "memory/retrieval.json": {
+     "keys": 168,
+     "max_block_chars": 10781
+    }
+   }
+  },
+  "ace": {
+   "pass": true,
+   "violations": [
+    "memory/playbook.md: 55513 chars > 30000"
+   ],
+   "disclosed_exception": [
+    "memory/playbook.md: 55513 chars > 30000"
+   ],
+   "sizes": {
+    "policy/instructions.txt": {
+     "chars": 11350,
+     "lines": 371,
+     "tokens_o200k": 2745
+    },
+    "tools/helpers.py": {
+     "chars": 0,
+     "lines": 0,
+     "tokens_o200k": 0
+    },
+    "tools/api_notes.json": {
+     "chars": 3,
+     "lines": 1,
+     "tokens_o200k": 1
+    },
+    "memory/playbook.md": {
+     "chars": 55513,
+     "lines": 213,
+     "tokens_o200k": 13430
+    }
+   }
+  },
+  "gepa": {
+   "pass": true,
+   "violations": [],
+   "disclosed_exception": [],
+   "sizes": {
+    "policy/instructions.txt": {
+     "chars": 21944,
+     "lines": 408,
+     "tokens_o200k": 5151
+    },
+    "tools/helpers.py": {
+     "chars": 174,
+     "lines": 4,
+     "tokens_o200k": 40
+    },
+    "tools/api_notes.json": {
+     "chars": 3,
+     "lines": 1,
+     "tokens_o200k": 1
+    }
+   }
+  },
+  "skillopt": {
+   "pass": true,
+   "violations": [],
+   "disclosed_exception": [],
+   "sizes": {
+    "policy/instructions.txt": {
+     "chars": 11350,
+     "lines": 371,
+     "tokens_o200k": 2745
+    },
+    "tools/helpers.py": {
+     "chars": 174,
+     "lines": 4,
+     "tokens_o200k": 40
+    },
+    "tools/api_notes.json": {
+     "chars": 3,
+     "lines": 1,
+     "tokens_o200k": 1
+    },
+    "memory/playbook.md": {
+     "chars": 24118,
+     "lines": 116,
+     "tokens_o200k": 5707
+    }
+   }
+  },
+  "wikiskill": {
+   "pass": true,
+   "violations": [],
+   "disclosed_exception": [],
+   "sizes": {
+    "policy/instructions.txt": {
+     "chars": 11350,
+     "lines": 371,
+     "tokens_o200k": 2745
+    },
+    "tools/helpers.py": {
+     "chars": 174,
+     "lines": 4,
+     "tokens_o200k": 40
+    },
+    "tools/api_notes.json": {
+     "chars": 3,
+     "lines": 1,
+     "tokens_o200k": 1
+    },
+    "memory/playbook.md": {
+     "chars": 7859,
+     "lines": 55,
+     "tokens_o200k": 1907
+    }
+   }
+  },
+  "evoskill": {
+   "pass": true,
+   "violations": [],
+   "disclosed_exception": [],
+   "sizes": {
+    "policy/instructions.txt": {
+     "chars": 11350,
+     "lines": 371,
+     "tokens_o200k": 2745
+    },
+    "tools/helpers.py": {
+     "chars": 174,
+     "lines": 4,
+     "tokens_o200k": 40
+    },
+    "tools/api_notes.json": {
+     "chars": 3,
+     "lines": 1,
+     "tokens_o200k": 1
+    },
+    "memory/playbook.md": {
+     "chars": 18319,
+     "lines": 196,
+     "tokens_o200k": 4546
+    }
+   }
+  },
+  "metaharness": {
+   "pass": true,
+   "violations": [],
+   "disclosed_exception": [],
+   "sizes": {
+    "policy/instructions.txt": {
+     "chars": 12050,
+     "lines": 368,
+     "tokens_o200k": 2919
+    },
+    "tools/helpers.py": {
+     "chars": 895,
+     "lines": 21,
+     "tokens_o200k": 220
+    },
+    "tools/api_notes.json": {
+     "chars": 2696,
+     "lines": 11,
+     "tokens_o200k": 655
+    }
+   }
+  },
+  "harnesslens": {
+   "pass": true,
+   "violations": [],
+   "disclosed_exception": [],
+   "sizes": {
+    "policy/instructions.txt": {
+     "chars": 11350,
+     "lines": 371,
+     "tokens_o200k": 2745
+    },
+    "tools/helpers.py": {
+     "chars": 174,
+     "lines": 4,
+     "tokens_o200k": 40
+    },
+    "tools/api_notes.json": {
+     "chars": 3,
+     "lines": 1,
+     "tokens_o200k": 1
+    }
+   }
+  },
+  "miprov2": {
+   "pass": true,
+   "violations": [],
+   "disclosed_exception": [],
+   "sizes": {
+    "policy/instructions.txt": {
+     "chars": 16139,
+     "lines": 448,
+     "tokens_o200k": 3876
+    },
+    "tools/helpers.py": {
+     "chars": 174,
+     "lines": 4,
+     "tokens_o200k": 40
+    },
+    "tools/api_notes.json": {
+     "chars": 3,
+     "lines": 1,
+     "tokens_o200k": 1
+    }
+   }
+  },
+  "trace2skill": {
+   "pass": true,
+   "violations": [],
+   "disclosed_exception": [],
+   "sizes": {
+    "policy/instructions.txt": {
+     "chars": 11350,
+     "lines": 371,
+     "tokens_o200k": 2745
+    },
+    "tools/helpers.py": {
+     "chars": 174,
+     "lines": 4,
+     "tokens_o200k": 40
+    },
+    "tools/api_notes.json": {
+     "chars": 3,
+     "lines": 1,
+     "tokens_o200k": 1
+    },
+    "memory/playbook.md": {
+     "chars": 20159,
+     "lines": 162,
+     "tokens_o200k": 4414
+    }
+   }
+  },
+  "gepa_full": {
+   "pass": true,
+   "violations": [],
+   "disclosed_exception": [],
+   "sizes": {
+    "policy/instructions.txt": {
+     "chars": 15974,
+     "lines": 378,
+     "tokens_o200k": 3854
+    },
+    "tools/helpers.py": {
+     "chars": 174,
+     "lines": 4,
+     "tokens_o200k": 40
+    },
+    "tools/api_notes.json": {
+     "chars": 378,
+     "lines": 3,
+     "tokens_o200k": 77
+    }
+   }
+  },
+  "cape_k02": {
+   "pass": true,
+   "violations": [],
+   "disclosed_exception": [],
+   "sizes": {
+    "policy/instructions.txt": {
+     "chars": 24677,
+     "lines": 432,
+     "tokens_o200k": 6056
+    },
+    "tools/helpers.py": {
+     "chars": 17029,
+     "lines": 365,
+     "tokens_o200k": 4684
+    },
+    "tools/api_notes.json": {
+     "chars": 7397,
+     "lines": 41,
+     "tokens_o200k": 1710
+    }
+   }
+  }
+ },
+ "hourly_offset_s": {
+  "seed": 0,
+  "altk": 276,
+  "ace": 552,
+  "gepa": 828,
+  "skillopt": 1104,
+  "wikiskill": 1380,
+  "evoskill": 1656,
+  "metaharness": 1932,
+  "harnesslens": 2208,
+  "miprov2": 2484,
+  "trace2skill": 2760,
+  "gepa_full": 3036,
+  "cape_k02": 3312
+ },
+ "issues": {
+  "seed": 915,
+  "altk": 916,
+  "ace": 917,
+  "gepa": 918,
+  "skillopt": 919,
+  "wikiskill": 920,
+  "evoskill": 921,
+  "metaharness": 922,
+  "harnesslens": 923,
+  "miprov2": 924,
+  "trace2skill": 925,
+  "gepa_full": 926,
+  "cape_k02": 927
+ }
+}
