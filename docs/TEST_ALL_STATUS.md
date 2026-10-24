@@ -112,3 +112,11 @@ Posted 'ALTK-Evolve: build and acceptance done' on #916 (altk): https://github.c
 ```json
 {"cp": 12, "prev_cp": 11, "prev_commit": "947b1880bbf25831dbb1ac97b3da2441b8c8adc7", "utc": "2026-10-24T23:10:26Z", "kind": "posted", "phase": "P2", "done_through": "P2/acceptance", "next": "P3/window", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "1365a97f7a1680769356749d6b69542580ce4219", "open_decisions": [], "memory": {"used_pct": 7.88, "peak_pct": 25.44, "state": "OK", "stale": false}, "post": "altk/accept_done", "url": "https://github.com/skillberry-ai/cap-evolve/issues/916#issuecomment-6390718455"}
 ```
+
+## TA-0013 · 2026-10-24T23:10Z · P2 posted ace · posted
+
+Posted 'ACE: build and acceptance done' on #917 (ace): https://github.com/skillberry-ai/cap-evolve/issues/917#issuecomment-6390719223
+
+```json
+{"cp": 13, "prev_cp": 12, "prev_commit": "c4cbd93d0b204b2541d45e1ae426901ff6c49ee7", "utc": "2026-10-24T23:10:31Z", "kind": "posted", "phase": "P2", "done_through": "P2/acceptance", "next": "P3/window", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "1365a97f7a1680769356749d6b69542580ce4219", "open_decisions": [], "memory": {"used_pct": 7.89, "peak_pct": 25.44, "state": "OK", "stale": false}, "post": "ace/accept_done", "url": "https://github.com/skillberry-ai/cap-evolve/issues/917#issuecomment-6390719223"}
+```
