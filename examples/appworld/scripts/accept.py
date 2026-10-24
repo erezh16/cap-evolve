@@ -111,7 +111,7 @@ def _run_base_check(script: str, *args: str) -> tuple[int, str]:
     env = P.setup_env(dict(os.environ))
     env["APPWORLD_ROOT"] = str(P.ROOT_OPT)
     env.setdefault("AW_EVAL", str(P.AW_BUILD))
-    if P.LEDGER_PREFIX == "CE2":
+    if P.LEDGER_PREFIX in ("CE2", "TA"):     # TEST_ALL §9 T2: the released-solution probe is not run
         env["AW_A5_NO_SOLUTION"] = "1"
     r = subprocess.run([str(P.VENV_PY), "-I", str(EX / "scripts" / script), *args], capture_output=True, text=True,
                        env=env, cwd=str(P.SCRATCH))
@@ -355,7 +355,7 @@ def a11() -> int:
         if hog and hog.poll() is None:
             hog.kill()
         guard.terminate()
-    r = subprocess.run([str(Path.home() / "bin" / ("memok-ce3" if P.LEDGER_ID == "CE3" else "memok-ce2" if P.LEDGER_PREFIX == "CE2" else "memok"))],
+    r = subprocess.run([str(Path.home() / "bin" / ("memok-testall" if P.TESTALL else "memok-ce3" if P.LEDGER_ID == "CE3" else "memok-ce2" if P.LEDGER_PREFIX == "CE2" else "memok"))],
                        capture_output=True, text=True)
     res["spawn_check_reads_memstate"] = "memstate" in r.stdout and r.returncode == 0
     res["ok"] = (res["guard_period_s"] is not None and res["guard_period_s"] <= 10 and res["guard_fresh"]

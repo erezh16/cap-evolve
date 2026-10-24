@@ -618,5 +618,13 @@
   "trace2skill": 925,
   "gepa_full": 926,
   "cape_k02": 927
+ },
+ "final_order": {
+  "seed": 2026102501,
+  "sha256": "725f659aefadafd4a8d1ee86b74ca9f00e2800e9a4974abc85dbac6b63c722f5",
+  "cells": 10920,
+  "trials": 5,
+  "trial_seeds": "7000 + trial",
+  "infra_retries": 3
  }
 }

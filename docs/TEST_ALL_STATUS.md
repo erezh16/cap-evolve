@@ -64,3 +64,11 @@ Posted 'Cap-Evolve-impr2 K=0.2 hourly status' on #927 (cape_k02): https://github
 ```json
 {"cp": 6, "prev_cp": 5, "prev_commit": "c2204b9bb9bbeb6506e916bbe5f12402d69b070a", "utc": "2026-10-24T22:55:13Z", "kind": "posted", "phase": "P1", "done_through": "P1/b4", "next": "P2/acceptance", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "45064a267990ae533d09176ab96e9f13aa326dc3", "open_decisions": [], "memory": {"used_pct": 14.66, "peak_pct": 14.66, "state": "OK", "stale": false}, "post": "cape_k02/status_20261024T225512", "url": "https://github.com/skillberry-ai/cap-evolve/issues/927#issuecomment-6390579258"}
 ```
+
+## TA-0007 · 2026-10-24T23:00Z · P1 posted seed · posted
+
+Posted 'seed agent hourly status' on #915 (seed): https://github.com/skillberry-ai/cap-evolve/issues/915#issuecomment-6390624816
+
+```json
+{"cp": 7, "prev_cp": 6, "prev_commit": "9cf7be2e8b0a5c078fc8f9b6942c8113d60dfe0a", "utc": "2026-10-24T23:00:16Z", "kind": "posted", "phase": "P1", "done_through": "P1/b4", "next": "P2/acceptance", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "9cf7be2e8b0a5c078fc8f9b6942c8113d60dfe0a", "open_decisions": [], "memory": {"used_pct": 7.81, "peak_pct": 25.44, "state": "OK", "stale": false}, "post": "seed/status_20261024T230000", "url": "https://github.com/skillberry-ai/cap-evolve/issues/915#issuecomment-6390624816"}
+```

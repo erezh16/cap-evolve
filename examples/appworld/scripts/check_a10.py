@@ -27,7 +27,8 @@ EX = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(EX / "scripts"))
 import awrest as P  # noqa: E402
 
-BR = "acceptance/eval-ce2-status-test" if P.LEDGER_PREFIX == "CE2" else "acceptance/eval-rest-status-test"
+BR = ("acceptance/test-all-status-test" if P.LEDGER_PREFIX == "TA" else "acceptance/eval-ce2-status-test"
+      if P.LEDGER_PREFIX == "CE2" else "acceptance/eval-rest-status-test")
 BASE = P.AW_HOME / "acceptance_a10"
 ORIGIN = str(P.AW_HOME / "acceptance_a10_remote.git")       # a local bare remote: the test never touches GitHub
 LEDGER = "EVAL_A10_TEST.md"
@@ -52,7 +53,8 @@ MINI = r'''
 import json, os, sys, random
 sys.path.insert(0, %(scripts)r)
 import awrest as P, window as W
-ids = P.read_split("dev")[:6]
+N_TASKS = int(os.environ.get("AW_A10_TASKS", 6))
+ids = P.read_split("dev")[:N_TASKS]
 order = W.make_order(ids, ["seed", "seed2"], 1, 7)
 m = P.manifest()
 if m.get("a10_order") not in (None, W.order_sha(order)):
@@ -82,6 +84,9 @@ def run() -> int:
     (clone / "docs" / LEDGER).write_text(f"# A10 throwaway ledger (deleted after the test)\n\n{P.LEDGER_MARKER}\n")
     (clone / "docs" / (Path(LEDGER).stem + "_STATE")).mkdir(exist_ok=True)
     shutil.copy2(P.PUSHED / "manifest.json", clone / "docs" / (Path(LEDGER).stem + "_STATE") / "manifest.json")
+    if P.TESTALL:    # awrest's testall branch pins PUSHED to docs/TEST_ALL_STATE: give the clone's copy there too
+        (clone / "docs" / "TEST_ALL_STATE").mkdir(exist_ok=True)
+        shutil.copy2(P.PUSHED / "manifest.json", clone / "docs" / "TEST_ALL_STATE" / "manifest.json")
     state.mkdir()
     shutil.copy2(P.PUBLISH_CACHE, state / "publish_cache.json")
     shutil.copy2(P.LINT_CACHE, state / "lint_cache.json")
@@ -98,7 +103,8 @@ def run() -> int:
                          stdout=open(BASE / "mini1.out", "w"), stderr=subprocess.STDOUT)
     recs = state / "a10win" / "records"
     t0 = time.time()
-    while time.time() - t0 < 1500 and len(list(recs.glob("*.json")) if recs.exists() else []) < 4:
+    kill_after = 2 if P.TESTALL else 4                       # TEST_ALL T8: SIGKILLed after 2 of 6 cells
+    while time.time() - t0 < 1500 and len(list(recs.glob("*.json")) if recs.exists() else []) < kill_after:
         time.sleep(5)
     n_before_kill = len(list(recs.glob("*.json")))
     p.send_signal(signal.SIGKILL)
@@ -115,7 +121,8 @@ def run() -> int:
                         text=True, timeout=3600)
     done = sorted(int(f.stem) for f in recs.glob("*.json"))
     rerun = [n for n, m in killed_at.items() if (recs / n).stat().st_mtime != m]
-    res.update(killed_after_cells=n_before_kill, all_done=done == list(range(12)), cells_rerun=len(rerun),
+    n_cells = 2 * int(os.environ.get("AW_A10_TASKS", 6))
+    res.update(killed_after_cells=n_before_kill, all_done=done == list(range(n_cells)), cells_rerun=len(rerun),
                resume_exit=p2.returncode)
     # 2. coalescing and append-only history
     sh("git", "fetch", "-q", "origin", BR, cwd=clone, check=False)
@@ -169,7 +176,7 @@ def run() -> int:
     res["concurrent_all_committed"] = sh("git", "status", "--porcelain", "--", f"docs/{LEDGER}", cwd=clone).stdout == ""
     res["ok"] = all([res["first_append"], res["heartbeat_stalled"], res["all_done"], res["cells_rerun"] == 0,
                      res["append_only"], res["push_failure_kept_local"], res["next_checkpoint_pushed"],
-                     res["filter_refused_task_id"], res["filter_refused_env_value"], 0 < n_before_kill < 12,
+                     res["filter_refused_task_id"], res["filter_refused_env_value"], 0 < n_before_kill < n_cells,
                      res["concurrent_appends_landed"], res["concurrent_numbers_unique_increasing"],
                      res["concurrent_all_committed"]])
     P.write_json(P.AW_STATE / "acceptance" / "a10.json", res)
