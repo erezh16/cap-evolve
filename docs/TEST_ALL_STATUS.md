@@ -56,3 +56,11 @@ B4 done: window.py runs the testall profile (13 arms x 168 x 5 trials, order see
 ```json
 {"cp": 5, "prev_cp": 4, "prev_commit": "45064a267990ae533d09176ab96e9f13aa326dc3", "utc": "2026-10-24T22:53:14Z", "kind": "phase_done", "phase": "P1", "done_through": "P1/b4", "next": "P2/acceptance", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "45064a267990ae533d09176ab96e9f13aa326dc3", "open_decisions": [], "memory": {"used_pct": 7.87, "peak_pct": 8.07, "state": "OK", "stale": false}}
 ```
+
+## TA-0006 · 2026-10-24T22:55Z · P1 posted cape_k02 · posted
+
+Posted 'Cap-Evolve-impr2 K=0.2 hourly status' on #927 (cape_k02): https://github.com/skillberry-ai/cap-evolve/issues/927#issuecomment-6390579258
+
+```json
+{"cp": 6, "prev_cp": 5, "prev_commit": "c2204b9bb9bbeb6506e916bbe5f12402d69b070a", "utc": "2026-10-24T22:55:13Z", "kind": "posted", "phase": "P1", "done_through": "P1/b4", "next": "P2/acceptance", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "45064a267990ae533d09176ab96e9f13aa326dc3", "open_decisions": [], "memory": {"used_pct": 14.66, "peak_pct": 14.66, "state": "OK", "stale": false}, "post": "cape_k02/status_20261024T225512", "url": "https://github.com/skillberry-ai/cap-evolve/issues/927#issuecomment-6390579258"}
+```
