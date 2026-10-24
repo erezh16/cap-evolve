@@ -194,7 +194,165 @@ def check_ages(every: int) -> list[str]:
     return [c for c in P.CANDIDATES if f"{c}/results" not in posts and _last_post_age(c) > every + 300]
 
 
+# ---------------------------------------------------------------- TEST_ALL (docs/TEST_ALL.md §12.2): 13 staggered timers
+
+TA_STAGES = {"P0": "build", "P1": "build", "P2": "acceptance", "P3": "window", "P4": "analysis", "P5": "results"}
+
+
+def ta_offsets() -> dict[str, int]:
+    """Arm i's offset i × 276 s into each UTC hour, from manifest.json (recorded in B0, so a restart keeps them)."""
+    m = P.manifest().get("hourly_offset_s") or {}
+    return {a: int(m.get(a, P.HOURLY_OFFSET_S[a])) for a in P.ARMS}
+
+
+def ta_slot(arm: str, now: float) -> float:
+    return (now // 3600) * 3600 + ta_offsets()[arm]
+
+
+def ta_window() -> dict:
+    """Window counts only: per-arm counts from final/progress.json (written by the runner); the ETA from how many
+    record files appeared in the last hour (file times only; no record is opened)."""
+    pr = P.read_json(P.PUSHED / "final" / "progress.json", {}) or {}
+    rec_dir = P.AW_STATE / "final" / "records"
+    times = [p.stat().st_mtime for p in rec_dir.glob("*.json")] if rec_dir.exists() else []
+    done = len(times)
+    recent = sum(1 for t in times if t > time.time() - 3600)
+    left = P.FINAL_CELLS - done
+    eta = None
+    if recent and left and times and time.time() - min(times) >= 3600:
+        eta = round(left / recent, 1)
+    return {"per_arm": pr.get("per_arm") or {}, "done": done, "left": left, "eta_h": eta, "rate_per_h": recent}
+
+
+def ta_status_lines(arm: str) -> list[str]:
+    last = S.last_entry()
+    mem = P.memstate()
+    w = ta_window()
+    a = w["per_arm"].get(arm) or {}
+    per = P.FINAL_CELLS // len(P.ARMS)
+    eta = (f"about {w['eta_h']} h left at the last hour's rate ({w['rate_per_h']} cells/h)" if w["eta_h"] is not None
+           else "n/a until the window has run for an hour" if w["done"] else "n/a (window not started; projection §13: about 36 to 42 h)")
+    return [f"- stage: {TA_STAGES.get(last.get('phase'), last.get('phase'))} (next: `{last.get('next')}`)",
+            f"- this arm: {a.get('done', 0)}/{per} cells done; infra retries {a.get('infra_retries', 0)}, "
+            f"missing cells {a.get('infra_missing', 0)}",
+            f"- whole window: {w['done']}/{P.FINAL_CELLS} cells done; ETA {eta}",
+            f"- memory: {mem.get('used_pct')}% of {mem.get('limit_MB')} MB used (peak {mem.get('peak_pct')}%), guard "
+            f"{mem.get('state')}" + (" (guard sample stale)" if mem.get("stale") else ""),
+            f"- last ledger entry: {P.LEDGER_ID}-{int(last.get('cp', 0)):04d} ({last.get('utc')}), phase {last.get('phase')}",
+            "", "Counts only. No test score of any arm is posted before the window completes and the analysis has run."]
+
+
+def ta_status_body(arm: str) -> str:
+    return "\n".join([f"**Hourly status — {P.METHOD_NAMES[arm]} (`{arm}`)** ({P.utcnow()}).", ""]
+                     + ta_status_lines(arm))
+
+
+def ta_last_post(arm: str) -> float:
+    return float(((P.read_json(STATE, {}) or {}).get("last_post") or {}).get(arm) or 0)
+
+
+def ta_due(now: float) -> list[str]:
+    """Arms whose slot of this hour has passed and that have not posted since it, earliest slot first; arms whose
+    results comment is posted are done."""
+    posts = P.read_json(post.POSTS, {}) or {}
+    due = [a for a in P.ARMS if f"{a}/results" not in posts and now >= ta_slot(a, now) and ta_last_post(a) < ta_slot(a, now)]
+    return sorted(due, key=lambda a: ta_slot(a, now))
+
+
+def ta_milestones() -> list[tuple[str, str, object]]:
+    """Window milestones (§12.2), derived from counts: started, every 10%, done. Each is keyed, posted once per arm."""
+    w = ta_window()
+    out = []
+    if w["done"] > 0:
+        out.append(("window_started", "{NAME}: window started", lambda a: (
+            f"**{P.METHOD_NAMES[a]} (`{a}`): the TEST_ALL window has started** (13 arms × 168 test_normal tasks × 5 "
+            "trials = 10,920 cells, one shuffled order).\n\n" + "\n".join(ta_status_lines(a)))))
+    for q in range(1, 10):
+        if w["done"] >= q * P.FINAL_CELLS // 10:
+            out.append((f"window_{10 * q}pct", f"{{NAME}}: window {10 * q}% done", lambda a, q=q: (
+                f"**{P.METHOD_NAMES[a]} (`{a}`): window {10 * q}% done.**\n\n" + "\n".join(ta_status_lines(a)))))
+    if w["done"] >= P.FINAL_CELLS:
+        out.append(("window_done", "{NAME}: window done", lambda a: (
+            f"**{P.METHOD_NAMES[a]} (`{a}`): the window is complete.** The analysis (P4) runs next; results follow "
+            "in one comment per issue.\n\n" + "\n".join(ta_status_lines(a)))))
+    return out
+
+
+def ta_once(now: float | None = None, dry: bool = False) -> list[str]:
+    """One wake-up: pending milestones (sequentially, 3 s apart; each counts as that arm's status), then at most one
+    hourly status post."""
+    now = now or time.time()
+    out = []
+    posts = P.read_json(post.POSTS, {}) or {}
+    for key, title, body in ta_milestones():
+        arms = [a for a in P.ARMS if f"{a}/{key}" not in posts]
+        if arms and not dry:
+            res = post.post_all(key, title, body, arms=arms)
+            for a, u in res.items():
+                if u:
+                    mark_posted(a)
+            out += [f"{a} {key} {u}" for a, u in res.items()]
+    due = ta_due(now)
+    if due:
+        a = due[0]
+        if dry:
+            return out + [f"due now: {a}"]
+        k = dt.datetime.fromtimestamp(ta_slot(a, now), dt.timezone.utc).strftime("status_%Y%m%dT%H%M%S")
+        try:
+            url = post.post(a, k, f"{P.METHOD_NAMES[a]} hourly status", ta_status_body(a))
+        except post.PostFailed as e:
+            prev = S.last_entry()
+            S.append("error", prev.get("phase", "?"), f"hourly post failed {a}", f"Hourly status on {a}: {e}.",
+                     extra={"arm": a}, subject=f"hourly post failed {a}")
+            url = None
+        if url:
+            mark_posted(a)
+        out.append(f"{a} {url}")
+    return out
+
+
+def ta_schedule(now: float | None = None) -> dict[str, str]:
+    """For T10's dry run: each arm's next due time (UTC)."""
+    now = now or time.time()
+    res = {}
+    for a in P.ARMS:
+        s = ta_slot(a, now)
+        nxt = s if ta_last_post(a) < s else s + 3600
+        if nxt < now:
+            nxt = now
+        res[a] = dt.datetime.fromtimestamp(nxt, dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    return res
+
+
+def ta_late(grace_s: int = 300) -> list[str]:
+    """For the heartbeat: arms whose last post is older than 60 minutes plus the grace, results not yet posted."""
+    posts = P.read_json(post.POSTS, {}) or {}
+    now = time.time()
+    return [a for a in P.ARMS if f"{a}/results" not in posts and ta_last_post(a) and now - ta_last_post(a) > 3600 + grace_s]
+
+
+def ta_main() -> int:
+    if sys.argv[1] == "schedule":
+        print(json.dumps({"offsets_s": ta_offsets(), "next_due_utc": ta_schedule(), "due_now": ta_due(time.time())},
+                         indent=1))
+        return 0
+    if sys.argv[1] == "once":
+        print("\n".join(ta_once(dry="--dry-run" in sys.argv)))
+        return 0
+    (P.AW_STATE / "AUTOPOST.pid").write_text(str(os.getpid()))
+    P.progress_log("autopost", "-", f"start pid {os.getpid()}: 13 timers, offsets {ta_offsets()}")
+    while True:
+        try:
+            for line in ta_once():
+                P.progress_log("autopost", "-", line[:200])
+        except Exception as e:  # noqa: BLE001 — keep the loop alive; the failure is in the local log
+            P.progress_log("autopost", "-", f"error {type(e).__name__}: {e}"[:300])
+        time.sleep(20)
+
+
 def main() -> int:
+    if P.TESTALL:
+        return ta_main()
     every = int(sys.argv[sys.argv.index("--every") + 1]) if "--every" in sys.argv else 3600
     if sys.argv[1] == "once":
         print("\n".join(once(every, "--force" in sys.argv)))

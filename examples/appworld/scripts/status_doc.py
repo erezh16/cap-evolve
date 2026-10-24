@@ -321,6 +321,8 @@ def heartbeat_once(silence: int) -> bool:
 def watch_once() -> None:
     """§8 / R2 watch duties of the heartbeat: every issue posted to within the hour; the memory guard alive."""
     import autopost
+    if P.TESTALL:
+        return watch_once_ta(autopost)
     late = autopost.check_ages(3600)
     st = P.read_json(P.AW_STATE / "watch.json", {}) or {}
     if late and st.get("late") != late:
@@ -344,6 +346,49 @@ def watch_once() -> None:
                           "--every", "3600"], stdout=open(P.PROGRESS / "autopost.out", "a"),
                          stderr=subprocess.STDOUT, start_new_session=True, cwd=str(P.REPO))
         P.progress_log("ledger", "heartbeat", "autopost not running: restarted")
+
+
+def _autopost_alive() -> bool:
+    try:
+        return pid_alive(int((P.AW_STATE / "AUTOPOST.pid").read_text().strip()))
+    except (FileNotFoundError, ValueError):
+        return False
+
+
+def start_autopost() -> None:
+    subprocess.Popen(["nohup", sys.executable, "-I", str(Path(__file__).parent / "autopost.py"), "loop"],
+                     stdout=open(P.PROGRESS / "autopost.out", "a"), stderr=subprocess.STDOUT,
+                     start_new_session=True, cwd=str(P.REPO))
+
+
+def watch_once_ta(autopost) -> None:
+    """TEST_ALL §12.2: each issue against its own slot. An arm whose last post is older than 60 min + 5 min grace gets
+    an `error` entry naming it and a status post at once; autopost.py is restarted if its pid is dead; the memory guard
+    is restarted if its sample is stale."""
+    if P.memstate().get("stale"):
+        subprocess.Popen(["nohup", sys.executable, "-I", str(Path(__file__).parent / "memguard.py"), "loop",
+                          "--high", "90", "--low", "85", "--every", "5"], stdout=open(P.PROGRESS / "memguard.out", "a"),
+                         stderr=subprocess.STDOUT, start_new_session=True)
+        P.progress_log("ledger", "heartbeat", "memguard sample stale: guard restarted")
+    if not _autopost_alive():
+        start_autopost()
+        P.progress_log("ledger", "heartbeat", "autopost not running: restarted")
+    st = P.read_json(P.AW_STATE / "watch.json", {}) or {}
+    late = autopost.ta_late()
+    for a in late:
+        prev = last_entry()
+        append("error", prev.get("phase", "?"), f"hourly post late {a}",
+               f"The last post on the issue of {a} (#{P.ISSUES.get(a)}) is older than 65 minutes (plan section 12.2). "
+               "Posting its status now.", extra={"arm": a}, subject=f"hourly post late {a}")
+        import post
+        k = "late_" + utcnow().strftime("%Y%m%dT%H%M%S")
+        try:
+            if post.post(a, k, f"{P.METHOD_NAMES[a]} hourly status", autopost.ta_status_body(a)):
+                autopost.mark_posted(a)
+        except Exception as e:  # noqa: BLE001
+            P.progress_log("ledger", "heartbeat", f"late post on {a} failed: {e}"[:300])
+    st["late"] = late
+    P.write_json(P.AW_STATE / "watch.json", st)
 
 
 def heartbeat_loop(every: int, silence: int) -> None:
