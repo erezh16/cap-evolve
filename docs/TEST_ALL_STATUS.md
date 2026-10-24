@@ -200,3 +200,11 @@ Posted 'Cap-Evolve-impr2 K=0.2: build and acceptance done' on #927 (cape_k02): h
 ```json
 {"cp": 23, "prev_cp": 22, "prev_commit": "b9fa80d222b27f7e5f990df924b8db352fedd421", "utc": "2026-10-24T23:11:24Z", "kind": "posted", "phase": "P2", "done_through": "P2/acceptance", "next": "P3/window", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "1365a97f7a1680769356749d6b69542580ce4219", "open_decisions": [], "memory": {"used_pct": 7.91, "peak_pct": 25.44, "state": "OK", "stale": false}, "post": "cape_k02/accept_done", "url": "https://github.com/skillberry-ai/cap-evolve/issues/927#issuecomment-6390727306"}
 ```
+
+## TA-0024 · 2026-10-24T23:11Z · P3 window start · phase_start
+
+P3 starts: the one TEST_ALL window, 10,920 cells (13 arms x 168 test_normal x 5 trials, trial seeds 7000+k, order sha256 725f659aefadafd4...), 24 global slots, 30-min episode wall cap, up to 3 infra retries per cell, PAUSE honoured. The runner unlocks root_full at start and relocks it at exit; it re-checks every arm's hash by its own rule before the first cell. Counts only until P4.
+
+```json
+{"cp": 24, "prev_cp": 23, "prev_commit": "0880af0147fb5d319027b01247c16e49b7632f79", "utc": "2026-10-24T23:11:45Z", "kind": "phase_start", "phase": "P3", "done_through": "P2/acceptance", "next": "P3/window", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "1365a97f7a1680769356749d6b69542580ce4219", "open_decisions": [], "memory": {"used_pct": 7.81, "peak_pct": 25.44, "state": "OK", "stale": false}}
+```
