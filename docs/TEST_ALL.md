@@ -164,10 +164,81 @@ prompt.** The differences for this plan:
   window runner, the analysis, and the artifact-verification script (§6.1). They print counts, flags and aggregates,
   never a task id, task text or per-task outcome.
 - **You and your sub-agents** never open a sealed file with any tool (`Read`, `Grep`, `Glob`, `cat`, `head`,
-  `python -c "open(…)"`, `ls` of a test dir). In B0 (§7), write
-  `/workspace/worktrees/test-all/.claude/settings.local.json` with `permissions.deny` rules
-  `Read(//<p>/**)` and `Edit(//<p>/**)` for each sealed path above (both the `/workspace/aw_rest/build/...` paths and
-  `/workspace/aw_testall/...` paths, and `/tmp/aw_testall/**`). The file is git-excluded.
+  `python -c "open(…)"`, `ls` of a test dir). Claude Code `permissions.deny` rules back this up (§4.1.1).
+
+#### 4.1.1 Claude Code deny rules: what is in place, and what to write
+
+**How they work.** A `permissions.deny` rule such as `Read(//workspace/x/**)` stops **Claude Code's own tools**
+(`Read`, `Edit`, `Write`, `Grep`, `Glob`) and, under auto mode, Bash commands that name the path, **in the session
+that loaded the settings file**. It does **not** apply to processes that session starts with `nohup`, or to their
+children: the window runner, the episode workers, `fetch_artifacts.py`, the analysis and `autopost.py` read and write
+sealed paths freely. That split is the design of R1: scripts may touch the sealed set, the LLM may not. Settings load
+from `~/.claude/settings.json` (user), `<project>/.claude/settings.json` and `<project>/.claude/settings.local.json`
+(the project is the directory the session was started in), `--settings` files, and
+`/etc/claude-code/managed-settings.json`.
+
+**What is in place on this host (2026-10-24).**
+
+| settings file | deny rules | covers |
+|---|---|---|
+| `~/.claude/settings.json` (user) | none | — |
+| `/etc/claude-code/managed-settings.json` | none (sets only `sandbox.bwrapPath`) | — |
+| `/workspace/worktrees/eval-ce3/.claude/settings.local.json` | 58 | REST's sealed build paths (`root_full`, `root_opt/data/tasks`, `appworld/{generate,src/appworld/apps,data}`), REST's `cape_run`, `state`, `backup`; the same under `/workspace/aw_ce2/build/` and `/workspace/aw_ce3/build/`; CE2's `state/{final,cache}`; `/tmp/aw_ce2`, `/tmp/aw_rest`; the `.env` files |
+| `/workspace/worktrees/eval-ce2/.claude/settings.local.json` | 40 | the CE2 subset of the above |
+| `/workspace/worktrees/base/.claude/settings.local.json` | 40 | the same as eval-ce2's |
+| `/workspace/worktrees/eval-rest/.claude/settings.local.json` | 2 | the `.env` files |
+
+None of these loads for your session unless you start it in one of those worktrees. `test-all` is created from
+`origin/eval-ce3` by `git worktree add`, which does **not** copy `.claude/settings.local.json` (it is git-excluded),
+so a session started in `/workspace/worktrees/test-all` begins with **no** deny rules until you write them.
+
+**Would they interfere?** Not with any script of this plan (scripts are not subject to them). They would block
+**you** in four places this plan needs, so the file you write must leave these paths readable:
+
+1. **REST's state**: `/workspace/aw_rest/state/**` is denied in eval-ce2's and eval-ce3's files. You do not need
+   it: B2's `copy_caches.py` reads it as a script.
+2. **REST's pushed artifacts**: the local champion paths of §3 rows 8 to 11
+   (`/workspace/worktrees/eval-rest/docs/EVAL_APPWORLD_REST_STATE/<arm>/artifact/`) are **not** denied anywhere.
+   They hold no test data (they are the frozen artifacts); `fetch_artifacts.py` reads them as a script. Keep them
+   readable.
+3. **CE3's champion**: `/workspace/aw_ce3/state/ce3_k02/champion/` (§3 row 12) is not denied anywhere today. Keep
+   it that way: deny only CE3's `state/final/**` and `state/cache/**` (its test records and episode cache), **not**
+   `/workspace/aw_ce3/state/**`, so that you can still list and hash the champion you are about to score.
+4. **Root-owned test data under the new state dir**: deny `/workspace/aw_testall/state/final/**` (cell records,
+   the order with task ids) but **not** `/workspace/aw_testall/state/progress/**` (logs you read to monitor the run,
+   counts only) or `/workspace/aw_testall/state/final/artifacts/**` (the scored copies; you print their hashes and
+   sizes). Claude Code evaluates deny rules before allow rules, so carve the artifacts out by **not** denying a
+   parent of them: deny `/workspace/aw_testall/state/final/records/**` and `/workspace/aw_testall/state/final/order.json`
+   individually instead of `final/**`.
+
+**What to write in B0.** `/workspace/worktrees/test-all/.claude/settings.local.json`, and start your session in that
+worktree (or pass the same file with `--settings`). It must contain exactly these `Read(...)` **and** `Edit(...)` pairs
+(every path absolute, written with a leading `//`):
+
+- `/workspace/aw_rest/build/root_full/**`, `/workspace/aw_rest/build/root_opt/data/tasks/**`,
+  `/workspace/aw_rest/build/appworld/generate/**`, `/workspace/aw_rest/build/appworld/src/appworld/apps/**`,
+  `/workspace/aw_rest/build/appworld/data/**` (the targets of the build symlinks);
+- the same five under `/workspace/aw_testall/build/` (the symlinks; a rule on a symlink path does not cover its
+  target and vice versa, so both are needed);
+- `/workspace/aw_rest/state/**`, `/workspace/aw_rest/cape_run/**`, `/workspace/aw_rest/backup/**`,
+  `/workspace/aw_ce2/state/final/**`, `/workspace/aw_ce2/state/cache/**`, `/workspace/aw_ce3/state/final/**`,
+  `/workspace/aw_ce3/state/cache/**`, `/tmp/aw_rest/**`, `/tmp/aw_ce2/**`, `/tmp/aw_ce3/**` (earlier evaluations'
+  test records and caches);
+- `/workspace/aw_testall/state/final/records/**`, `/workspace/aw_testall/state/final/order.json`,
+  `/tmp/aw_testall/**` (this window's records, order and AppWorld's native outputs);
+- every `.env`: `/workspace/worktrees/base/.env`, `/workspace/worktrees/eval-rest/.env`,
+  `/workspace/worktrees/eval-ce2/.env`, `/workspace/worktrees/eval-ce3/.env`, `/workspace/worktrees/test-all/.env`;
+- `~/.config/gh/**` written as `//home/dev/.config/gh/**`.
+
+Check it in P2 (T9, §9): with your own session, a `Read` of one denied path and one carved-out path
+(`/workspace/aw_testall/state/progress/memguard.log`) returns denied and allowed respectively. Do **not** copy the
+eval-ce3 file wholesale: it denies `/workspace/aw_rest/state/**` (harmless) but lacks every `aw_testall` path and
+`/tmp/aw_ce3`, and it does not protect this window's records.
+
+**The auto-mode classifier** is a separate check from deny rules: in auto mode it has refused, in earlier runs, a
+force-push, the creation of a `root_full` symlink, writing a script that copies from REST's state, and a listing of
+`root_full`. If it refuses a step this plan needs (most likely B2's symlinks or B3's Box copy), do not work around
+it: stop, say which step and why it is needed, and ask the user to run it or to switch permission mode.
 - **`root_full` stays `chmod 000`** except while the window runs (P3); the window runner unlocks it at start and
   relocks it at the end, and logs both. Check it is `000` again after P3 and after any crash.
 - **No artifact is opened for its content by an LLM** other than what §6.2's lint does as a script. You may print an
@@ -297,7 +368,8 @@ Every step is idempotent and has one ledger entry.
   - Copy this plan to `docs/TEST_ALL.md` in the worktree (it is on `cap-evolve-impr2`; copy the file, do not merge
     branches). Create `docs/TEST_ALL_STATUS.md` with a header and the marker `<!-- CHECKPOINTS BELOW THIS LINE -->`.
   - State dirs: `mkdir -p /workspace/aw_testall/{state/progress,launch} /tmp/aw_testall`.
-  - The deny rules of §4.1 into `/workspace/worktrees/test-all/.claude/settings.local.json`.
+  - The deny rules of §4.1.1 into `/workspace/worktrees/test-all/.claude/settings.local.json` (exactly that list;
+    not a copy of eval-ce3's file).
   - `~/bin/memok-testall`: a copy of `~/bin/memok-ce3.py` reading `/workspace/aw_testall/state/MEMSTATE.json`
     (and its two-line shell wrapper, as `~/bin/memok-ce3`).
   - Start the memory guard **first**:
@@ -370,6 +442,8 @@ None of these episodes count. Use **dev** task ids only (`root_opt`), never a te
 | T6 | memory guard: `MEMSTATE.json` fresh, period 5 s; a synthetic allocation in a child process crossing a test watermark sets `PAUSE` within 10 s and a slot cannot be taken while paused (REST A11, `scripts/accept.py a11` with the testall profile) |
 | T7 | ledger: 3 concurrent `status_doc.py append` calls all land with unique numbers; the content filter refuses an entry with a task id and one with an `.env` value (REST A10, against a throwaway clone and a local bare remote; nothing pushed to GitHub) |
 | T8 | resume: a 6-cell mini window on dev ids (2 arms × 3 tasks), SIGKILLed after 2 cells, resumes with 0 cells re-run |
+| T9 | deny rules (§4.1.1): from your own session, a `Read` of `/workspace/aw_testall/build/root_full/data` and of `/workspace/aw_testall/state/final/records/` is refused, and a `Read` of `/workspace/aw_testall/state/progress/memguard.log` and of `/workspace/aw_testall/state/final/artifacts/seed/policy/instructions.txt` succeeds; a `nohup` script reading `root_full` (T1's episode) is **not** blocked |
+| T10 | posting schedule (§12.2): the 13 hourly slots are distinct, 276 s apart, and survive a restart of `autopost.py` (it reads them from `manifest.json`); a dry run prints, for each arm, its next due time |
 
 All must pass and be in the ledger before P3.
 
@@ -473,8 +547,29 @@ twice, content-filtered).
   acceptance done (with this arm's fetch source, hash check and lint result, and its T4 injection line); window
   started; every 10% of the window; window done; results.
 - **Hourly status**, on **each of the 13 issues**, at least once an hour, from build start until that issue's results
-  comment is posted, whatever the stage: `autopost.py` loops over all 13 arms (`P.CANDIDATES` plus `seed`; note
-  that REST's `autopost.py` loops over `P.CANDIDATES` only, so add the seed). Each post gives:
+  comment is posted, whatever the stage. **The 13 hourly posts are spread evenly across the hour, one "timer" per
+  arm**, so at most one hourly post goes out at a time (GitHub's secondary rate limit punishes bursts of writes, and
+  REST's `autopost.py` posted every candidate in the same loop pass):
+  - Arm *i* (0 to 12, in §3 table order) owns the **offset** `i × 276 s` into each hour (276 = ⌊3600 / 13⌋):
+    `seed` at :00:00, `altk` at :04:36, `ace` at :09:12, `gepa` at :13:48, `skillopt` at :18:24, `wikiskill` at
+    :23:00, `evoskill` at :27:36, `metaharness` at :32:12, `harnesslens` at :36:48, `miprov2` at :41:24, `trace2skill`
+    at :46:00, `gepa_full` at :50:36, `cape_k02` at :55:12 (UTC).
+  - Record the 13 offsets in `manifest.json` (`hourly_offset_s: {arm: seconds}`) in B0, before the first post, so a
+    restart keeps them.
+  - **One process**, `autopost.py loop` (rewrite REST's loop accordingly), holds the 13 timers: it wakes every 20 s
+    and, for each arm whose slot `floor(now / 3600) × 3600 + offset` has passed and which has not posted in that
+    hour, builds **that arm's** status and posts it. It posts at most one hourly status per wake-up, so a backlog
+    after a pause drains one post at a time, 20 s apart. It writes each arm's last post time to
+    `AW_STATE/autopost.json` atomically after each post.
+  - The **heartbeat** (every 60 s) checks each issue against its own slot: an arm whose last post is older than
+    60 minutes **plus 5 minutes of grace** gets an `error` entry naming the arm, and `autopost.py` is restarted if its
+    pid is dead. Do not use REST's `check_ages(every)` unchanged: it assumes all issues post together.
+  - **Milestone posts** are not on the timer: they go out when the milestone happens, but `post.py` sends them
+    **sequentially with 3 s between issues** (13 posts ≈ 40 s), and a milestone post on an issue counts as that hour's
+    status for it only if it carries the status fields below.
+  - `post.py` retries on HTTP 403 or 429: wait for `Retry-After` (or 60 s if absent), then retry, up to 5 times; a
+    post that still fails is an `error` entry, never dropped silently.
+  - Each hourly post gives:
   - the stage (build, acceptance, window, analysis, results);
   - **this arm's** cells done of **840** (168 × 5), and its infra retries and missing cells so far;
   - the whole window's cells done of 10,920, and the ETA at the last hour's rate;
@@ -568,5 +663,6 @@ If a question comes up that these do not answer, ask the user and record the ans
 | ACE overflows the context window on some test tasks | scored 0 as `context_exceeded`, counted and reported per arm (D6) |
 | results read as a method ranking | the report states the artifact-level limits (§12) |
 | hourly posts on 13 issues stop for some arms | the heartbeat checks each issue's last-post age every 60 s and posts at once (§12.2); `autopost.py` loops over all 13 arms, the seed included |
-| 13 posts per milestone and 13 per hour trip GitHub's rate limits | `post.py` posts sequentially; on HTTP 403/429 wait as `Retry-After` says and retry; a post later than 60 minutes is an `error` entry, never skipped silently |
+| 13 posts per milestone and 13 per hour trip GitHub's rate limits | hourly posts on 13 staggered timers, 276 s apart (§12.2); milestones sent sequentially, 3 s apart; `post.py` honours `Retry-After` on 403/429; a post later than 65 minutes is an `error` entry, never skipped silently |
+| deny rules block a needed step, or fail to block a sealed path | §4.1.1 gives the exact list and the carve-outs; T9 checks both directions before the window |
 | `/workspace` fills (records are small; about 11K files × ~2 KB) | check `df -h /workspace` at each phase start; stop below 2 GB |
