@@ -159,5 +159,33 @@
    "k_ok": true,
    "imp_all_ok": true
   }
+ },
+ "_orchestrating_sessions": {
+  "files": 43,
+  "counts": {
+   "test_normal": 265,
+   "test_challenge": 92,
+   "root_full": 436,
+   "ground_truth": 118,
+   "answer.json": 57,
+   "compiled_solution": 45,
+   "generate/tasks": 23,
+   "src/appworld/apps": 57,
+   "solution.py": 40,
+   "aw_rest/cape_run": 56,
+   "aw_rest/state": 85,
+   "aw_ce2/run_k1": 147,
+   "aw_ce2/run_k2": 138,
+   "aw_ce2/state": 276,
+   "aw_ce2/opt": 34
+  },
+  "test_id_hits": 0,
+  "scope": "sessions ['959232f1-5a88-467f-b986-718636481ff3']",
+  "out_of_scope_test_id_hits_by_session": {
+   "9a54b053": 540,
+   "7f3acfb4": 2,
+   "51a60bf0": 4,
+   "d4f665b3": 80
+  }
  }
 }

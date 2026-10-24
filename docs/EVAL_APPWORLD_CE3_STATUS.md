@@ -321,3 +321,11 @@ P5 dev diagnostic done (57 dev tasks, 1 trial, seed 100; the seed's numbers are 
 ```json
 {"cp": 37, "prev_cp": 36, "prev_commit": "74ab37c25d094fc992605f55ab25f828eb9a3277", "utc": "2026-10-24T15:19:02Z", "kind": "phase_done", "phase": "P5", "done_through": "P5/dev", "next": "P6/scan", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/p5dev/progress.json": "eccdabc38ba25cadee8c6fb924bac901933df6f45ebe95bae787f6e40b636c2a"}, "code": "821a87b516cf6f29cff33f2ab2ec5d45c6d4a6d2", "open_decisions": [], "memory": {"used_pct": 7.29, "peak_pct": 49.23, "state": "OK", "stale": false}}
 ```
+
+## CE3-0038 · 2026-10-24T15:19Z · P6 isolation scan · result
+
+Isolation scan (counts only): ce3_k02: test-id hits 0; models ['aws/claude-sonnet-5-5'], other models []; J1 in 6 iteration(s) ok=True; K on the command line ['0.2'] ok=True; orchestrating sessions: test-id hits 0 over 43 files. Literal-string counts per location are in the pushed scan file.
+
+```json
+{"cp": 38, "prev_cp": 37, "prev_commit": "a946c748eace36b8b1e5d45d3ecd603895ce6331", "utc": "2026-10-24T15:19:48Z", "kind": "result", "phase": "P6", "done_through": "P6/scan", "next": "P7/final", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/isolation_scan.json": "8220ef528b5908a0d8acf6762d93298544e9799fedbb57bf4a52a25a02916eae"}, "code": "821a87b516cf6f29cff33f2ab2ec5d45c6d4a6d2", "open_decisions": [], "memory": {"used_pct": 7.25, "peak_pct": 49.23, "state": "OK", "stale": false}}
+```
