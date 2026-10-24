@@ -136,3 +136,11 @@ Posted 'SkillOpt: build and acceptance done' on #919 (skillopt): https://github.
 ```json
 {"cp": 15, "prev_cp": 14, "prev_commit": "d97ee5f3c806b98141fd439cc112c82b648de5e3", "utc": "2026-10-24T23:10:42Z", "kind": "posted", "phase": "P2", "done_through": "P2/acceptance", "next": "P3/window", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "1365a97f7a1680769356749d6b69542580ce4219", "open_decisions": [], "memory": {"used_pct": 7.84, "peak_pct": 25.44, "state": "OK", "stale": false}, "post": "skillopt/accept_done", "url": "https://github.com/skillberry-ai/cap-evolve/issues/919#issuecomment-6390720778"}
 ```
+
+## TA-0016 · 2026-10-24T23:10Z · P2 posted wikiskill · posted
+
+Posted 'WikiSkill: build and acceptance done' on #920 (wikiskill): https://github.com/skillberry-ai/cap-evolve/issues/920#issuecomment-6390721596
+
+```json
+{"cp": 16, "prev_cp": 15, "prev_commit": "22e7bd4c6785c68545d56491f123cbcf7b1c8b41", "utc": "2026-10-24T23:10:47Z", "kind": "posted", "phase": "P2", "done_through": "P2/acceptance", "next": "P3/window", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "1365a97f7a1680769356749d6b69542580ce4219", "open_decisions": [], "memory": {"used_pct": 7.84, "peak_pct": 25.44, "state": "OK", "stale": false}, "post": "wikiskill/accept_done", "url": "https://github.com/skillberry-ai/cap-evolve/issues/920#issuecomment-6390721596"}
+```
