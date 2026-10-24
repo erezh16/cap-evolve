@@ -41,7 +41,7 @@ record it in the ledger, and ask the user (rule R5).
 | isolation | nobody (you, a sub-agent, a person) reads test task data, a test trajectory or any per-task test outcome; only the trusted scripts of §4.1 touch them (rule R1) |
 | memory | the 5-second memory guard of REST rule R2, at 90% pause / 85% resume |
 | resumability | the ledger `docs/TEST_ALL_STATUS.md`, appended under `flock`; one command resumes (rule R3) |
-| deliverables | `docs/TEST_ALL_STATE/final/RESULTS.md` + `analysis.json` (pushed), one new tracking issue with hourly status and a results comment (§12) |
+| deliverables | `docs/TEST_ALL_STATE/final/RESULTS.md` + `analysis.json` (pushed); **13 new tracking issues, one per arm** (the seed included), each with its projected plan as the first post, hourly status, milestones and a results comment (§12) |
 | estimated wall time | **about 38 to 45 h** at 24 global slots (§13) |
 
 ---
@@ -303,11 +303,13 @@ Every step is idempotent and has one ledger entry.
   - Start the memory guard **first**:
     `cd examples/appworld/scripts && AW_PROFILE=testall AW_HOME=/workspace/aw_testall AW_STATE=/workspace/aw_testall/state nohup python3 -I memguard.py loop --high 90 --low 85 --every 5 &`;
     check `MEMSTATE.json` is fresh within 10 s.
-  - Open the tracking issue (§12) and record its number.
-  - Ledger TA-0000: decisions D1 to D8 (§14), the issue number, host facts (`memcheck`).
+  - Open the **13 tracking issues** (§12.1), one per arm, each with its projected plan as the body, and record the
+    13 numbers. Then start `autopost.py` and the heartbeat (§12.2), so hourly status runs from the build on.
+  - Ledger TA-0000: decisions D1 to D9 (§14), the 13 issue numbers, host facts (`memcheck`).
 - **B1. Profile.** Add `scripts/awtestall.py` and an `AW_PROFILE=testall` branch in `scripts/awrest.py`, following
   the existing `ce2`/`ce3` pattern (read `scripts/awce2.py` and `scripts/awce3.py`): `ARMS` = the 13 arm ids of §3 in
-  table order, `CANDIDATES` = the 12 non-seed arms, `ISSUES` = {every arm: the one issue number}, `METHOD_NAMES`,
+  table order, `CANDIDATES` = the 12 non-seed arms, `ISSUES` = {arm: its own issue number} for all **13** arms
+  (the seed included; §12.1), `METHOD_NAMES` (for all 13, the seed as "seed agent"),
   `LEDGER_ID = "TA"`, `EVAL_NAME = "TEST_ALL"`, `FINAL_TRIALS = 5`, `FINAL_SEED_BASE = 7000`, the order seed of §8.
   Write `examples/appworld/test_all/env.sh` (`AW_PROFILE=testall`, `AW_HOME=/workspace/aw_testall`,
   `AW_STATE=/workspace/aw_testall/state`, `AW_SCRATCH_ROOT=/tmp/aw_testall`, `AW_LEDGER_NAME=TEST_ALL_STATUS.md`,
@@ -347,7 +349,7 @@ push with `git push origin HEAD:test-all`.
 - **Runner:** `scripts/window.py final` with the testall profile (13 arms, 5 trials, per-arm hash check of §6.3),
   started under `nohup` with its pid in `AW_STATE/RUNNING.pid` (check pids, **never `pgrep -f`**: a self-matching
   pattern once stalled a window for 10 h). Progress: a coalesced ledger entry every 5 minutes (counts per arm only),
-  `final/progress.json` pushed, an issue post at every 10% (§12).
+  `final/progress.json` pushed, a milestone post on **all 13 issues** at every 10% (§12.2).
 - **Stall rule:** no new cell for 15 minutes → an `error` entry; investigate (memory, RITS reachability with one
   `curl` to `$RITS_URL/gpt-oss-120b-a100/v1/models`, worker processes) before anything else.
 - **Never read** a cell record's content yourself during the window. Counts come from `final/progress.json`.
@@ -380,7 +382,8 @@ All must pass and be in the ledger before P3.
 3. If `container_age_s` (from `memcheck`) is shorter than the time since the last ledger entry, the pod restarted:
    record it and set the slot pool 25% smaller (`AW_STATE/slots/SIZE`).
 4. Re-verify the build symlinks, `root_full` mode (000 unless the window is next), and every artifact's hash (§6.3).
-5. Restart `memguard.py` first, then the heartbeat (`status_doc.py heartbeat`) and `autopost.py`.
+5. Restart `memguard.py` first, then the heartbeat (`status_doc.py heartbeat`) and `autopost.py` (all 13 issues;
+   it posts at once on any issue whose last post is older than 60 minutes).
 6. Append a `resume` entry and relaunch the window runner under `nohup`; it skips cells that have records.
 
 ---
@@ -431,22 +434,78 @@ Across arms: is flakiness related to the arm's TGC, to difficulty, and to the su
 
 ---
 
-## 12. Tracking issue and posts
+## 12. Tracking issues and posts: one new issue per arm (13)
 
-- **Before P1:** open one issue on `skillberry-ai/cap-evolve`, labels `paper-experiment`, `algorithm`, title
-  "AppWorld TEST_ALL: 12 champions + seed, one window, 5 trials (gpt-oss-120b)". Body: a projection of this plan
-  (sections 0, 3, 8, 11, 13, 15, with the full plan's path). Record its number in the manifest and TA-0000.
-- **Milestones:** acceptance done; window started; every 10% of the window (counts only); window done; results.
-- **Hourly status:** `autopost.py` posts at least once an hour (stage, cells done of 10,920 by arm, infra counts,
-  memory, last ledger entry, ETA). The heartbeat checks every 60 s that the last post is under 60 minutes old.
-- **No test score of any arm is posted or written to the ledger before the window is complete** and the analysis
-  runs. Progress posts carry counts only.
-- **Results comment:** from `RESULTS.md`: setup (commits, models, the 13 arms with their sources and hashes,
-  surfaces, what each artifact is and is not), the main table, the difficulty table, the pairwise matrix, the
-  stochasticity section (§11.3), agent tokens/steps/latency, deviations, and what the numbers cannot support (one
-  search seed per method; methods differ in surfaces and search budget; a single window). Content filter applies.
-  Then a short comment on each source evaluation's issue pointing to it (smoke test #804; eval 5 #881–#885; REST
-  #897–#901; CE2 #909, #910; CE3 #913), counts and the link only.
+### 12.1 Open the 13 issues (B0, before any other build step)
+
+Open **13 new issues** on `skillberry-ai/cap-evolve`, one per arm of §3, the seed included. Do not reuse any earlier
+evaluation's issue.
+
+- **Title:** `AppWorld TEST_ALL: <Method name> (<arm id>), test_normal × 5 trials (gpt-oss-120b)`, for example
+  `AppWorld TEST_ALL: ACE (ace), test_normal × 5 trials (gpt-oss-120b)` and
+  `AppWorld TEST_ALL: seed agent (seed), test_normal × 5 trials (gpt-oss-120b)`.
+- **Labels:** `paper-experiment`, `algorithm`.
+- **Body: the plan projected for that arm** (the "projected plan for starters"). Build it with a script
+  (`examples/appworld/test_all/issue_bodies.py`) from this file, never by hand, so all 13 stay consistent:
+  1. a header naming the arm, the evaluation (`docs/TEST_ALL.md` on `cap-evolve-impr2`, ledger
+     `docs/TEST_ALL_STATUS.md` on `test-all`), and a note that progress is posted at least hourly and that no test
+     score is posted before the window completes;
+  2. **this arm's own section**: its row of §3 (method, source evaluation, surfaces, local and Box source, expected
+     hash and rule), what the artifact is and is not, and anything this plan says about it in particular (`seed`:
+     the baseline every Δ is measured against; `harnesslens`: inert, seed-identical, the window's noise check;
+     `altk`: the per-task retrieval memory and §6.3; `ace`: the memory-lint exception D6; `cape_k02`: the only
+     cap-evolve arm, D3);
+  3. **every common section**, verbatim: §0, §1, §3 (the full table, so each issue shows the other 12 arms), §4,
+     §5, §6, §8, §9, §11, §12, §13, §14, §15, §16.
+  If a body exceeds GitHub's 65,536-character limit, shorten only the common sections, to a pointer at the plan
+  file, keeping §0, §3 and this arm's section in full; record that in the ledger.
+- Every body passes the content filter (`status_doc.violations()`) before it is posted.
+- Record the 13 issue numbers in `manifest.json` (`issues: {arm: number}`) and in TA-0000. The profile's `ISSUES`
+  (B1) is this map.
+- If an issue cannot be opened, stop: the run does not start with fewer than 13 issues.
+
+### 12.2 Posts on every issue
+
+Every post goes through `scripts/post.py` (keyed, recorded as a `posted` ledger entry with its URL, never posted
+twice, content-filtered).
+
+- **Milestones**, on all 13 issues (one post per issue per milestone, with that issue's arm named): build and
+  acceptance done (with this arm's fetch source, hash check and lint result, and its T4 injection line); window
+  started; every 10% of the window; window done; results.
+- **Hourly status**, on **each of the 13 issues**, at least once an hour, from build start until that issue's results
+  comment is posted, whatever the stage: `autopost.py` loops over all 13 arms (`P.CANDIDATES` plus `seed`; note
+  that REST's `autopost.py` loops over `P.CANDIDATES` only, so add the seed). Each post gives:
+  - the stage (build, acceptance, window, analysis, results);
+  - **this arm's** cells done of **840** (168 × 5), and its infra retries and missing cells so far;
+  - the whole window's cells done of 10,920, and the ETA at the last hour's rate;
+  - memory (used %, peak, guard state);
+  - the last ledger entry (id, time, phase).
+  Counts only: **no test score of any arm is posted or written to the ledger before the window is complete** and the
+  analysis has run.
+- **The heartbeat** checks every 60 s that the last post on **each** of the 13 issues is under 60 minutes old; for any
+  that is not, it records an `error` entry naming the arm and posts at once (REST §8).
+
+### 12.3 Results comments
+
+After P4, one results comment per issue (13), drafted to `docs/TEST_ALL_STATE/<arm>/RESULTS.md` by
+`examples/appworld/test_all/report.py` from `final/analysis.json` and the pushed state only:
+
+- **every arm:** the setup (commits, models, the 13 arms with sources, hashes and surfaces); **this arm's** TGC and
+  SGC with 95% CIs, by difficulty, its rank among the 13 with uncertainty, and its Δ vs the seed and vs every other arm
+  (the row of the pairwise matrix, unadjusted and Holm); **this arm's** stochasticity numbers (§11.3: pass-count
+  distribution, stable and flaky shares, pass@k and pass^k, trial-count sensitivity); its agent tokens, steps,
+  latency and infra counts; its earlier window's TGC as context, labelled "other window";
+- **the seed's issue:** the seed's own numbers and its stochasticity, the full ranking table of all 13, and the
+  `harnesslens` − `seed` noise check;
+- **`harnesslens`'s issue:** the same noise check, stated as the result for this arm;
+- the full tables (all arms, the 78-pair matrix) are in the combined `docs/TEST_ALL_STATE/final/RESULTS.md`, linked
+  from every comment;
+- every comment closes with the deviations and what the numbers cannot support (one search seed per method; methods
+  differ in surfaces and search budget; a single window). Content filter applies.
+
+Then, as a courtesy, a one-line pointer comment on each arm's **earlier** evaluation issue (smoke test #804 for
+`altk`; the ACE evaluation's issue as named in its Box folder's `README.md` and `posts/`; eval 5 #881–#885; REST
+#897–#901; CE3 #913), linking this run's issue for that arm. Counts and links only.
 
 ---
 
@@ -477,6 +536,7 @@ never $0. Plan for the window to span two days; the hourly posts and the resume 
 | D6 | ACE's 55,513-character playbook is scored as frozen, over the 30,000-character lint limit, disclosed (its own evaluation capped it by tokens) | this plan, §6.2 |
 | D7 | the window bypasses the evaluator cache and identifies arms by directory and per-arm hash (§6.3) | this plan |
 | D8 | branch `test-all` from `origin/eval-ce3`, worktree `/workspace/worktrees/test-all`, state `/workspace/aw_testall`, scratch `/tmp/aw_testall` | this plan |
+| D9 | 13 new tracking issues, one per arm including the seed; each opens with its projected plan, then hourly status, milestones and a results comment (§12) | user, 2026-10-24 |
 
 If a question comes up that these do not answer, ask the user and record the answer as a `decision` entry.
 
@@ -492,7 +552,7 @@ If a question comes up that these do not answer, ask the user and record the ans
 | 2 trials per task, seeds 5000 + k, 2,016 cells | **5 trials**, seeds 7000 + k, **10,920 cells** | D4; new seeds so no cell repeats an earlier window's seed |
 | order seed 2026102007 | 2026102501 | a new window |
 | artifacts frozen from the run, identified by surface hash | fetched, verified by each source's own hash rule; arms identified by directory | §6.3: the surface hash cannot tell `altk` from the seed |
-| one tracking issue per candidate | one issue for the whole window, plus a pointer comment on each source issue | one window, 13 arms |
+| one tracking issue per candidate (5; the seed had none) | one **new** issue per arm, **13** (the seed included), each with its projected plan, hourly status, milestones and a results comment; plus a pointer comment on each arm's earlier issue | D9 |
 | optimizer sandbox, A9, opt_llm, budget caps | not applicable | no optimizer |
 | `arm − seed` only; "no ranking between candidates" | `arm − seed`, all 78 pairs (unadjusted and Holm), and a ranking with its uncertainty, still labelled artifact-level | the point of one shared window |
 | stability = share of tasks whose 2 trials agree | the §11.3 stochasticity section | 5 trials |
@@ -507,4 +567,6 @@ If a question comes up that these do not answer, ask the user and record the ans
 | `altk` silently scored as a seed copy | §6.3, check T4 |
 | ACE overflows the context window on some test tasks | scored 0 as `context_exceeded`, counted and reported per arm (D6) |
 | results read as a method ranking | the report states the artifact-level limits (§12) |
+| hourly posts on 13 issues stop for some arms | the heartbeat checks each issue's last-post age every 60 s and posts at once (§12.2); `autopost.py` loops over all 13 arms, the seed included |
+| 13 posts per milestone and 13 per hour trip GitHub's rate limits | `post.py` posts sequentially; on HTTP 403/429 wait as `Retry-After` says and retry; a post later than 60 minutes is an `error` entry, never skipped silently |
 | `/workspace` fills (records are small; about 11K files × ~2 KB) | check `df -h /workspace` at each phase start; stop below 2 GB |
