@@ -256,3 +256,11 @@ Posted 'WikiSkill: window started' on #920 (wikiskill): https://github.com/skill
 ```json
 {"cp": 30, "prev_cp": 29, "prev_commit": "a704d265dfe9c138d871829cd7527feba593c2fe", "utc": "2026-10-24T23:13:31Z", "kind": "posted", "phase": "P3", "done_through": "P2/acceptance", "next": "P3/window", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "1365a97f7a1680769356749d6b69542580ce4219", "open_decisions": [], "memory": {"used_pct": 48.98, "peak_pct": 49.01, "state": "OK", "stale": false}, "post": "wikiskill/window_started", "url": "https://github.com/skillberry-ai/cap-evolve/issues/920#issuecomment-6390746086"}
 ```
+
+## TA-0031 · 2026-10-24T23:13Z · P3 posted evoskill · posted
+
+Posted 'EvoSkill: window started' on #921 (evoskill): https://github.com/skillberry-ai/cap-evolve/issues/921#issuecomment-6390746778
+
+```json
+{"cp": 31, "prev_cp": 30, "prev_commit": "00d86eea6b21a70af05d31a91e92d0fd09f138de", "utc": "2026-10-24T23:13:36Z", "kind": "posted", "phase": "P3", "done_through": "P2/acceptance", "next": "P3/window", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "1365a97f7a1680769356749d6b69542580ce4219", "open_decisions": [], "memory": {"used_pct": 49.01, "peak_pct": 49.01, "state": "OK", "stale": false}, "post": "evoskill/window_started", "url": "https://github.com/skillberry-ai/cap-evolve/issues/921#issuecomment-6390746778"}
+```
