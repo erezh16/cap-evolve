@@ -1,10 +1,10 @@
 {
  "window": "final",
  "cells_total": 336,
- "cells_done": 231,
+ "cells_done": 255,
  "per_arm": {
   "ce3_k02": {
-   "done": 231,
+   "done": 255,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
