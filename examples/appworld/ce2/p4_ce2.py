@@ -205,6 +205,8 @@ def _diff_sha(arm: str) -> str | None:
 
 
 def independence_check() -> None:
+    if len(P.CANDIDATES) < 2:              # CE3 §2: one arm, so there is no pair to compare (not applicable)
+        return
     st = P.read_json(D / "independence.json", {}) or {}
     if st.get("done"):
         return
