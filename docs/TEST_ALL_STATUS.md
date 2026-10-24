@@ -152,3 +152,11 @@ Posted 'EvoSkill: build and acceptance done' on #921 (evoskill): https://github.
 ```json
 {"cp": 17, "prev_cp": 16, "prev_commit": "9c9697fa1bb2dd1887b3469a3c40d0a09b35615a", "utc": "2026-10-24T23:10:53Z", "kind": "posted", "phase": "P2", "done_through": "P2/acceptance", "next": "P3/window", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "1365a97f7a1680769356749d6b69542580ce4219", "open_decisions": [], "memory": {"used_pct": 7.85, "peak_pct": 25.44, "state": "OK", "stale": false}, "post": "evoskill/accept_done", "url": "https://github.com/skillberry-ai/cap-evolve/issues/921#issuecomment-6390722328"}
 ```
+
+## TA-0018 · 2026-10-24T23:10Z · P2 posted metaharness · posted
+
+Posted 'Meta-Harness: build and acceptance done' on #922 (metaharness): https://github.com/skillberry-ai/cap-evolve/issues/922#issuecomment-6390723151
+
+```json
+{"cp": 18, "prev_cp": 17, "prev_commit": "3d9dc19981582b2cb12393e8a011599126f3aa83", "utc": "2026-10-24T23:10:58Z", "kind": "posted", "phase": "P2", "done_through": "P2/acceptance", "next": "P3/window", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "1365a97f7a1680769356749d6b69542580ce4219", "open_decisions": [], "memory": {"used_pct": 7.84, "peak_pct": 25.44, "state": "OK", "stale": false}, "post": "metaharness/accept_done", "url": "https://github.com/skillberry-ai/cap-evolve/issues/922#issuecomment-6390723151"}
+```
