@@ -1,0 +1,10 @@
+{
+ "seed_reuse_ok": true,
+ "same_tree_is_seed": true,
+ "identical_served_from_cache": true,
+ "counted_after": 0,
+ "tgc_from_cache": 0.3741,
+ "seed_rerun_refused": true,
+ "slot_peak_with_size_2": 2,
+ "ok": true
+}

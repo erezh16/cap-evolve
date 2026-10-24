@@ -1,0 +1,27 @@
+{
+ "guard_period_s": 5.0,
+ "guard_fresh": true,
+ "paused": true,
+ "pause_latency_s_upper_bound": 4.5,
+ "blocked_while_paused": true,
+ "chat_calls_wait": true,
+ "slot_waits": true,
+ "resumed_after_release": true,
+ "started_after_resume": true,
+ "memstate_fields": [
+  "every_s",
+  "high",
+  "limit_MB",
+  "low",
+  "peak_pct",
+  "pid",
+  "state",
+  "t",
+  "used_MB",
+  "used_pct"
+ ],
+ "transitions_logged": true,
+ "resume_below_low": true,
+ "spawn_check_reads_memstate": true,
+ "ok": true
+}
