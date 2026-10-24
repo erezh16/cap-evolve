@@ -36,8 +36,8 @@ def rest_manifest() -> dict:
 
 
 def main() -> int:
-    if os.environ.get("AW_PROFILE") not in ("ce2", "ce3"):
-        sys.exit("verify_build: source ce2/env.sh first")
+    if os.environ.get("AW_PROFILE") not in ("ce2", "ce3", "testall"):
+        sys.exit("verify_build: source ce2/env.sh or test_all/env.sh first")
     m = rest_manifest()
     res: dict = {}
     links = {}

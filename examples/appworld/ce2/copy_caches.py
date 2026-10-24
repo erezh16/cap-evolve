@@ -27,8 +27,8 @@ def sha(p: Path) -> str:
 
 def main() -> int:
     dst_root = Path(os.environ.get("AW_STATE", ""))
-    if os.environ.get("AW_PROFILE") not in ("ce2", "ce3") or dst_root.resolve() == REST_STATE.resolve():
-        sys.exit("copy_caches: source ce2/env.sh first (AW_STATE must be the CE2 state dir)")
+    if os.environ.get("AW_PROFILE") not in ("ce2", "ce3", "testall") or dst_root.resolve() == REST_STATE.resolve():
+        sys.exit("copy_caches: source ce2/env.sh or test_all/env.sh first (AW_STATE must not be REST's)")
     dst_root.mkdir(parents=True, exist_ok=True)
     out = {}
     for name in FILES:

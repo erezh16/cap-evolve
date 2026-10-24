@@ -40,7 +40,7 @@ ENTRY_RE = re.compile(rf"^## {P.LEDGER_ID}-(\d{{4}}) · ", re.M)
 JSON_RE = re.compile(r"```json\n(.*?)\n```", re.S)
 
 
-ARM_KEY = "arm" if P.LEDGER_PREFIX == "CE2" else "candidate"   # CE2 §14.2 names the field `arm`
+ARM_KEY = "arm" if P.LEDGER_PREFIX in ("CE2", "TA") else "candidate"   # CE2 §14.2 and TEST_ALL name the field `arm`
 
 
 class Refused(RuntimeError):
@@ -199,7 +199,7 @@ def _append_locked(kind, phase, label, prose, done_through, next_unit, extra, ar
                      extra.pop("candidate", None) if "candidate" in extra else prev.get(ARM_KEY)),
            "counts": prev.get("counts", {}), "spend": prev.get("spend", {}),
            "artifacts": {}, "code": None, "open_decisions": prev.get("open_decisions", [])}
-    if P.LEDGER_PREFIX == "CE2":            # CE2 §14.2: every entry carries the guard's memory sample
+    if P.LEDGER_PREFIX in ("CE2", "TA"):     # CE2 §14.2 / TEST_ALL: every entry carries the guard's memory sample
         ms = P.memstate()
         obj["memory"] = {"used_pct": ms.get("used_pct"), "peak_pct": ms.get("peak_pct"), "state": ms.get("state"),
                          "stale": ms.get("stale")}

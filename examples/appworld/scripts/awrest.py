@@ -304,4 +304,9 @@ if os.environ.get("AW_PROFILE") == "ce2":
     from awce2 import *  # noqa: E402,F401,F403
 elif os.environ.get("AW_PROFILE") == "ce3":     # CE3 is one more CE2 arm: CE2's code paths with CE3's constants
     from awce3 import *  # noqa: E402,F401,F403
+elif os.environ.get("AW_PROFILE") == "testall":  # TEST_ALL (docs/TEST_ALL.md): 13 arms, test window only, no training
+    from awtestall import *  # noqa: E402,F401,F403
+    PUSHED = REPO / "docs" / "TEST_ALL_STATE"     # plan §11, §12.3: docs/TEST_ALL_STATE/ (not <ledger stem>_STATE)
+    ISSUES = {a: int(n) for a, n in (manifest().get("issues") or {}).items()}   # written once by open_issues.py
 LEDGER_ID = LEDGER_ID or LEDGER_PREFIX
+TESTALL = os.environ.get("AW_PROFILE") == "testall"
