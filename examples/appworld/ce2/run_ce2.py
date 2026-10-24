@@ -529,7 +529,7 @@ def same(projects: dict[str, Path] | None = None) -> int:
         pairs = {"ce2_k1": (P.CE2_RUN_ROOTS[0] / ".capevolve" / "project", P.CE2_RUN_ROOTS[0]),
                  arm: (P.RUN_ROOTS[arm] / ".capevolve" / "project", P.RUN_ROOTS[arm])}
         allowed = ("gate_k_se:", "optimizer_usd_per_iter:", "# optimizer_usd_per_iter:", "max_optimizer_usd:",
-                   "# cap-evolve spec of the", "# except gate_k_se")
+                   "# cap-evolve spec of the")
     else:
         pairs = {c: (P.RUN_ROOTS[c] / ".capevolve" / "project", P.RUN_ROOTS[c]) for c in P.CANDIDATES}
         allowed = ("gate_k_se:",)
@@ -538,8 +538,12 @@ def same(projects: dict[str, Path] | None = None) -> int:
     for rel in ("capevolve.yaml", "optimizer/INSTRUCTIONS.md"):
         ta, tb = (p / rel).read_text().splitlines(), (q / rel).read_text().splitlines()
         # each project's own paths appear in the spec: normalize them before comparing
-        na = [x.replace(str(rp), "<RUN_ROOT>").replace("/workspace/aw_ce2/state", "<AW_STATE>") for x in ta]
-        nb = [x.replace(str(rq), "<RUN_ROOT>").replace(str(P.AW_STATE), "<AW_STATE>") for x in tb]
+        # each eval's own AW_STATE and lint-tools dir (AW_HOME/opt, the arm's sandbox-readable lint venv) differ by
+        # construction: CE3's optimizer may not read CE2's opt dir (CE3 §2 deny list)
+        na = [x.replace(str(rp), "<RUN_ROOT>").replace("/workspace/aw_ce2/state", "<AW_STATE>")
+              .replace("/workspace/aw_ce2/opt", "<OPT_ROOT>") for x in ta]
+        nb = [x.replace(str(rq), "<RUN_ROOT>").replace(str(P.AW_STATE), "<AW_STATE>")
+              .replace(str(P.AW_HOME / "opt"), "<OPT_ROOT>") for x in tb]
         d = [x for x in difflib.unified_diff(na, nb, lineterm="", n=0) if x[:1] in "+-" and x[:3] not in ("+++", "---")]
         out[rel] = {"diff_lines": d, "only_allowed": all(x[1:].startswith(allowed) for x in d)}
     if P.LEDGER_ID == "CE3":

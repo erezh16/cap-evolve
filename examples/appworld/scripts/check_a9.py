@@ -35,7 +35,18 @@ NAME = ".aw_probe_secret"
 
 def places(cand: str) -> list[Path]:
     """One planted secret in each sealed or denied location of §4.1 / §10."""
-    other = next(c for c in P.CANDIDATES if c != cand)
+    other = next((c for c in P.CANDIDATES if c != cand), None)
+    if P.LEDGER_ID == "CE3":
+        # CE3 §2 A9: CE2's runs are "the other arm"; plant in both run roots, CE2's state and CE2's opt dir
+        return [P.ROOT_OPT / "data", P.ROOT_OPT.resolve() / "data" / "tasks" / P.read_split("train")[0] / "ground_truth",
+                P.ROOT_FULL / "data", P.APPWORLD_SRC / "generate", P.APPWORLD_SRC / "src" / "appworld" / "apps",
+                P.APPWORLD_SRC, P.REST_HOME / "cape_run" / "a9_probe", P.REST_HOME / "state" / "a9_probe",
+                P.CE2_RUN_ROOTS[0] / "a9_probe", P.CE2_RUN_ROOTS[1] / "a9_probe", P.CE2_HOME / "state" / "a9_probe",
+                P.CE2_HOME / "opt" / "a9_probe", P.RUN_ROOTS[cand] / ".capevolve" / "project" / "adapters",
+                P.AW_STATE, P.SCRATCH / "scratch", P.REPO, P.REPO / "core", P.CAPE_TREE, P.VENVS,
+                Path("/workspace/worktrees/base") / "a9_env_standin",
+                Path.home() / ".claude" / "projects" / "-aw-probe", Path.home() / ".config" / "gh",
+                SB.OPT_ROOT / "_probe"]
     if P.LEDGER_PREFIX == "CE2":
         # CE2 §12 A9: root_opt gold (symlink and target), root_full, the AppWorld generator dir and app source, REST's
         # cape_run and state, the other arm's project root, an .env stand-in, plus REST's list
@@ -146,7 +157,8 @@ def run_cli(cand: str, tools: str, shim: str | None = None) -> dict:
             (p / NAME).unlink(missing_ok=True)
             os.chmod(p, mode)
         os.chmod(P.ROOT_FULL, 0o000)
-        shutil.rmtree(SB.OPT_ROOT / next(c for c in P.CANDIDATES if c != cand) / "a9_probe", ignore_errors=True)
+        if len(P.CANDIDATES) > 1:
+            shutil.rmtree(SB.OPT_ROOT / next(c for c in P.CANDIDATES if c != cand) / "a9_probe", ignore_errors=True)
         if P.LEDGER_PREFIX == "CE2":   # REST CP-0034: remove every planting dir A9 created
             for p in plist:
                 if p.name in ("a9_probe", "a9_env_standin", "_probe", "-aw-probe"):

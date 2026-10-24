@@ -1,0 +1,24 @@
+{
+ "compared": [
+  "ce2_k1",
+  "ce3_k02"
+ ],
+ "capevolve.yaml": {
+  "diff_lines": [
+   "-# cap-evolve spec of the CE2 arms (docs/EVAL_APPWORLD_CE2.md §9.3), cap-evolve impr2 @ 8194578; identical for both arms",
+   "+# cap-evolve spec of the CE3 arm (docs/EVAL_APPWORLD_CE3.md §2), = the CE2 spec except gate_k_se and the money caps",
+   "-optimizer_usd_per_iter: 40.0              # user decision 2026-10-23 (CE2-0022): $15 bound before edits were written",
+   "-max_optimizer_usd: 300.0                  # user decision 2026-10-23 (CE2-0022)",
+   "+# optimizer_usd_per_iter: absent -> no --max-budget-usd per iteration (CE3 plan §2: no money cap)",
+   "+max_optimizer_usd: 0                       # 0 = off (rundir.py: `if b.max_optimizer_usd and ...`); CE3 plan §2",
+   "-gate_k_se: 1                    # ARM-SPECIFIC: 1 for ce2_k1, 2 for ce2_k2. MUST be explicit (core default 1.0)",
+   "+gate_k_se: 0.2                    # ARM-SPECIFIC: 1 for ce2_k1, 2 for ce2_k2. MUST be explicit (core default 1.0)"
+  ],
+  "only_allowed": true
+ },
+ "optimizer/INSTRUCTIONS.md": {
+  "diff_lines": [],
+  "only_allowed": true
+ },
+ "ok": true
+}
