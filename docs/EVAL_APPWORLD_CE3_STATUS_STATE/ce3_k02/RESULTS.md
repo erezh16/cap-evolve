@@ -44,7 +44,7 @@
 Agent cost: n/a (RITS is unpriced). Final window wall: 2026-10-24T15:21:12.656893Z → 2026-10-24T16:35:53.902090Z.
 
 ### Train (search) phase: per-iteration verdicts
-| iter | val (fit metric) | parent val | paired Δ̄ | SE | K·SE (K = 0) | verdict |
+| iter | val (fit metric) | parent val | paired Δ̄ | SE | K·SE (K = 0.2) | verdict |
 |---|---|---|---|---|---|---|
 | 1 | 0.7483 | 0.3741 | +0.3741 | 0.0465 | 0.0093 | **accept** |
 | 2 | 0.7891 | 0.7483 | +0.0408 | 0.0385 | 0.0077 | **accept** |

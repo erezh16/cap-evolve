@@ -133,7 +133,7 @@ def iteration_table(c: str) -> str:
     pr = P.read_json(P.PUSHED / c / "progress.json", {}) or {}
     rows = rows or pr.get("iterations") or []
     k = P.K_SE[c]
-    H = ["| iter | val (fit metric) | parent val | paired Δ̄ | SE | K·SE (K = %d) | verdict |%s" % (
+    H = ["| iter | val (fit metric) | parent val | paired Δ̄ | SE | K·SE (K = %g) | verdict |%s" % (
         k, " would pass at K = 1 |" if c == "ce2_k2" else ""), "|---|---|---|---|---|---|---|" + ("---|" if c == "ce2_k2" else "")]
     for i, r in enumerate(rows, 1):
         if r.get("indecisive"):
