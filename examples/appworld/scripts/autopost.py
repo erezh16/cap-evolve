@@ -85,7 +85,7 @@ def status_body(c: str) -> str:
              f"- memory: {mem.get('used_pct')}% of {mem.get('limit_MB')} MB (peak {mem.get('peak_pct')}%), "
              f"guard {mem.get('state')}"
              + (" (guard sample stale)" if mem.get("stale") else ""),
-             f"- last ledger checkpoint: {P.LEDGER_PREFIX}-{int(last.get('cp', 0)):04d} ({last.get('utc')}), "
+             f"- last ledger checkpoint: {P.LEDGER_ID}-{int(last.get('cp', 0)):04d} ({last.get('utc')}), "
              f"phase {last.get('phase')}, next `{last.get('next')}`",
              f"- ETA: {pr.get('eta') or ('plan §18 projection: about 12–16 h in total; per-iteration ETA once the search runs' if P.LEDGER_PREFIX == 'CE2' else 'see the plan projection (§16); updated once the search runs')}",
              *window_lines(c), "",

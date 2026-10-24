@@ -299,5 +299,9 @@ def slots_in_use() -> int:
 # examples/appworld/ce2/env.sh, which sets AW_PROFILE=ce2 (inherited by every subprocess); without it nothing changes.
 LEDGER_PREFIX = "CP"                       # ledger entry ids: CP-NNNN (REST), CE2-NNNN (CE2)
 EVAL_NAME = "eval REST"
+LEDGER_ID = None                           # the visible ledger id when it differs from LEDGER_PREFIX (CE3)
 if os.environ.get("AW_PROFILE") == "ce2":
     from awce2 import *  # noqa: E402,F401,F403
+elif os.environ.get("AW_PROFILE") == "ce3":     # CE3 is one more CE2 arm: CE2's code paths with CE3's constants
+    from awce3 import *  # noqa: E402,F401,F403
+LEDGER_ID = LEDGER_ID or LEDGER_PREFIX

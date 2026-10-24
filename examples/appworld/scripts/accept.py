@@ -355,7 +355,7 @@ def a11() -> int:
         if hog and hog.poll() is None:
             hog.kill()
         guard.terminate()
-    r = subprocess.run([str(Path.home() / "bin" / ("memok-ce2" if P.LEDGER_PREFIX == "CE2" else "memok"))],
+    r = subprocess.run([str(Path.home() / "bin" / ("memok-ce3" if P.LEDGER_ID == "CE3" else "memok-ce2" if P.LEDGER_PREFIX == "CE2" else "memok"))],
                        capture_output=True, text=True)
     res["spawn_check_reads_memstate"] = "memstate" in r.stdout and r.returncode == 0
     res["ok"] = (res["guard_period_s"] is not None and res["guard_period_s"] <= 10 and res["guard_fresh"]

@@ -36,7 +36,7 @@ def rest_manifest() -> dict:
 
 
 def main() -> int:
-    if os.environ.get("AW_PROFILE") != "ce2":
+    if os.environ.get("AW_PROFILE") not in ("ce2", "ce3"):
         sys.exit("verify_build: source ce2/env.sh first")
     m = rest_manifest()
     res: dict = {}

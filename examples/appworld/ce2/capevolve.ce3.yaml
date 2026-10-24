@@ -1,0 +1,29 @@
+# cap-evolve spec of the CE3 arm (docs/EVAL_APPWORLD_CE3.md §2), = the CE2 spec except gate_k_se and the money caps
+# except gate_k_se. run_ce2.py setup fills the instructions path, the reference path and K, then writes it into the project.
+capabilities: [system-prompt, tools]
+capability_path: seed_capability
+actions: [edit]
+optimizer_skill: claude-code
+optimizer_model: aws/claude-sonnet-5-5
+optimizer_max_turns: 200
+# optimizer_usd_per_iter: absent -> no --max-budget-usd per iteration (CE3 plan §2: no money cap)
+max_optimizer_usd: 0                       # 0 = off (rundir.py: `if b.max_optimizer_usd and ...`); CE3 plan §2
+target_model: openai/gpt-oss-120b-a100
+algorithm_skill: hill-climb
+algorithm_focus: all
+orchestration_mode: deterministic
+memory_skill: md-files
+optimizer_instructions_file: @INSTRUCTIONS@
+runner_repo_path: @REFERENCE@
+capability_sources: [reference/api_index.md, reference/react_agent_notes.md]
+dataset_source: adapter
+split_ids_file: split_ids.json      # train = val = official train ∪ dev (147), test = [] (base rule S2)
+num_trials: 1
+gate_mode: paired
+gate_k_se: @K_SE@                    # ARM-SPECIFIC: 1 for ce2_k1, 2 for ce2_k2. MUST be explicit (core default 1.0)
+max_iterations: 6
+stall: 0
+max_metric_calls: 1029              # 147 baseline (cached, reused from REST P3) + 6 × 147
+protected_paths: [default]
+store: git
+# no objectives: block -> single objective = reward (plan §9.4)

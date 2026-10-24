@@ -71,7 +71,8 @@ def main() -> int:
         return 0
     P.wait_unpaused(CAND)
     # rule R2 (CE2 §4.2): no new optimizer session while the guard is PAUSED or its sample is stale
-    while subprocess.run([str(Path.home() / "bin" / "memok-ce2")], capture_output=True).returncode != 0:
+    memok = "memok-ce3" if P.LEDGER_ID == "CE3" else "memok-ce2"
+    while subprocess.run([str(Path.home() / "bin" / memok)], capture_output=True).returncode != 0:
         time.sleep(30)
     import opt_llm
     t = opt_llm.totals(CAND)

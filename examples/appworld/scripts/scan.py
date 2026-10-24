@@ -31,6 +31,8 @@ LITERALS = ("test_normal", "test_challenge", "root_full", "ground_truth", "answe
             "generate/tasks", "src/appworld/apps", "solution.py")
 if P.LEDGER_PREFIX == "CE2":   # CE2 §4.1 rule 5: REST's run data and the other arm's run dir as well
     LITERALS = LITERALS + ("aw_rest/cape_run", "aw_rest/state", "aw_ce2/run_k1", "aw_ce2/run_k2")
+    if P.LEDGER_ID == "CE3":   # CE3: CE2's state and opt dirs are another arm's run too
+        LITERALS = LITERALS + ("aw_ce2/state", "aw_ce2/opt")
 
 
 def locations(c: str) -> dict[str, Path]:
@@ -70,7 +72,7 @@ def scan(c: str, id_re: re.Pattern) -> dict:
                                                 and p.name not in ("rollouts.jsonl", "cache_hits.jsonl")]
         counts: Counter = Counter()
         n_hit = 0
-        own = f"aw_ce2/run_k{c[-1]}" if P.LEDGER_PREFIX == "CE2" else None
+        own = (None if P.LEDGER_ID == "CE3" else f"aw_ce2/run_k{c[-1]}") if P.LEDGER_PREFIX == "CE2" else None
         for p in files:
             if p.stat().st_size > 200_000_000:
                 continue

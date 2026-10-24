@@ -36,7 +36,7 @@ PUSH_STATE = P.AW_STATE / "ledger_push.json"
 LOCK = P.AW_STATE / "ledger.lock"                      # rule R3
 HB_PID = P.AW_STATE / "HEARTBEAT.pid"
 TRAILER = "Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>"
-ENTRY_RE = re.compile(rf"^## {P.LEDGER_PREFIX}-(\d{{4}}) · ", re.M)
+ENTRY_RE = re.compile(rf"^## {P.LEDGER_ID}-(\d{{4}}) · ", re.M)
 JSON_RE = re.compile(r"```json\n(.*?)\n```", re.S)
 
 
@@ -212,11 +212,11 @@ def _append_locked(kind, phase, label, prose, done_through, next_unit, extra, ar
     if notes:
         body += "\n" + "\n".join(notes)
     js = json.dumps(obj, ensure_ascii=False)
-    entry = f"\n## {P.LEDGER_PREFIX}-{cp:04d} · {head_min} · {phase} {label} · {kind}\n\n{body}\n\n```json\n{js}\n```\n"
+    entry = f"\n## {P.LEDGER_ID}-{cp:04d} · {head_min} · {phase} {label} · {kind}\n\n{body}\n\n```json\n{js}\n```\n"
     # content filter on the entry itself before anything touches disk
     v = violations(entry)
     if v:
-        P.progress_log("ledger", phase, f"REFUSED {P.LEDGER_PREFIX}-{cp:04d}: entry violates {v}")
+        P.progress_log("ledger", phase, f"REFUSED {P.LEDGER_ID}-{cp:04d}: entry violates {v}")
         raise Refused(f"ledger entry refused: {v}")
     with open(P.LEDGER, "a") as f:
         f.write(entry)
@@ -227,21 +227,21 @@ def _append_locked(kind, phase, label, prose, done_through, next_unit, extra, ar
     bad = check_publish(files_to_publish())
     if bad:
         git("checkout", "--", str(P.LEDGER.relative_to(P.REPO)))  # drop the uncommitted entry
-        P.progress_log("ledger", phase, f"REFUSED {P.LEDGER_PREFIX}-{cp:04d}: staged files violate {bad}")
+        P.progress_log("ledger", phase, f"REFUSED {P.LEDGER_ID}-{cp:04d}: staged files violate {bad}")
         raise Refused(f"checkpoint refused, files violate content rules: {bad}")
     spec = [x for x in PATHSPEC if (P.REPO / x).exists()]
-    msg = f"status: {P.LEDGER_PREFIX}-{cp:04d} {phase} {subject or done_through or label}\n\n{TRAILER}\n"
+    msg = f"status: {P.LEDGER_ID}-{cp:04d} {phase} {subject or done_through or label}\n\n{TRAILER}\n"
     try:
         git("add", "--", *spec)
         git("commit", "-q", "-m", msg, "--", *spec)
     except subprocess.CalledProcessError as e:
         git("checkout", "--", str(P.LEDGER.relative_to(P.REPO)), check=False)
-        P.progress_log("ledger", phase, f"ERROR {P.LEDGER_PREFIX}-{cp:04d}: git {e.cmd[3:5]} failed: {e.stderr[-200:]}")
+        P.progress_log("ledger", phase, f"ERROR {P.LEDGER_ID}-{cp:04d}: git {e.cmd[3:5]} failed: {e.stderr[-200:]}")
         raise
     commit = git("rev-parse", "HEAD").stdout.strip()
     if push:
         _push(ps)
-    P.progress_log("ledger", phase, f"{P.LEDGER_PREFIX}-{cp:04d} {kind} committed {commit[:10]}"
+    P.progress_log("ledger", phase, f"{P.LEDGER_ID}-{cp:04d} {kind} committed {commit[:10]}"
                    f" pushed={not (P.read_json(PUSH_STATE, {}) or {}).get('unpushed')}")
     obj["_commit"] = commit
     return obj
@@ -409,7 +409,7 @@ def main() -> None:
         o = append(args.kind, args.phase, args.label, args.prose, done_through=args.done_through,
                    next_unit=args.next, extra=extra, artifacts=args.artifact, subject=args.subject,
                    push=not args.no_push)
-        print(f"{P.LEDGER_PREFIX}-{o['cp']:04d} {o['_commit'][:10]}")
+        print(f"{P.LEDGER_ID}-{o['cp']:04d} {o['_commit'][:10]}")
     elif args.cmd == "heartbeat":
         if args.once:
             print(heartbeat_once(args.silence))

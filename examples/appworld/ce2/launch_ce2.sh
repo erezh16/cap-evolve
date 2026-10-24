@@ -8,25 +8,28 @@
 set -euo pipefail
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 EX="$(cd "$HERE/.." && pwd)"
-. "$HERE/env.sh"
-ARM="${1:?arm ce2_k1|ce2_k2}"; PROJ="${2:?project dir}"; TS="${3:?run ts}"; shift 3
-case "$ARM" in ce2_k1|ce2_k2) ;; *) echo "launch_ce2.sh: unknown arm $ARM" >&2; exit 2;; esac
+ARM="${1:?arm ce2_k1|ce2_k2|ce3_k02}"; PROJ="${2:?project dir}"; TS="${3:?run ts}"; shift 3
+case "$ARM" in
+  ce2_k1|ce2_k2) . "$HERE/env.sh"; MEMOK=/home/dev/bin/memok-ce2;;
+  ce3_k02) . "$HERE/../ce3/env.sh"; MEMOK=/home/dev/bin/memok-ce3;;     # CE3: one more CE2 arm (EVAL_APPWORLD_CE3.md)
+  *) echo "launch_ce2.sh: unknown arm $ARM" >&2; exit 2;;
+esac
 PIN=/workspace/worktrees/cape-impr2
 VC=/workspace/aw_ce2/build/venvs/venv-ce2
 export CAPEVOLVE_SKILLS_DIR="$PIN/skills"
 export PATH="$HERE/sandbox_cc:$VC/bin:$PATH"
-export AW_CAPE_ARM="$ARM" AW_EXAMPLE="$EX" AW_CAPE_PHASE="${AW_CAPE_PHASE:-search}" AW_EXPERIMENT="awce2_${ARM}_$TS"
+export AW_CAPE_ARM="$ARM" AW_EXAMPLE="$EX" AW_CAPE_PHASE="${AW_CAPE_PHASE:-search}" AW_EXPERIMENT="aw_${ARM}_$TS"
 export AW_CAPE_EXTRA_DENY="${AW_CAPE_EXTRA_DENY:-$PROJ/adapters}"
-export APPWORLD_ROOT=/workspace/aw_ce2/build/root_opt AW_KEY_ENV=RITS_API_KET
+export APPWORLD_ROOT="$AW_HOME/build/root_opt" AW_KEY_ENV=RITS_API_KET
 unset RITS_API_KET RITS_API_KEY CLAUDECODE || true
-mkdir -p "/workspace/aw_ce2/state/$ARM" /workspace/aw_ce2/state/progress
+mkdir -p "$AW_STATE/$ARM" "$AW_STATE/progress"
 # rule R2: nothing new starts while the memory guard is PAUSED or stale
-until /home/dev/bin/memok-ce2 >/dev/null 2>&1; do sleep 30; done
+until "$MEMOK" >/dev/null 2>&1; do sleep 30; done
 # IMP checks 1, 2, 3 (code pin, skills pin, spec K): refuse to start on any failure
 "$VC/bin/python" -I "$HERE/run_ce2.py" imp-check --arm "$ARM" --level launch --project "$PROJ" \
-  > "/workspace/aw_ce2/state/$ARM/imp_launch_$TS.json" \
+  > "$AW_STATE/$ARM/imp_launch_$TS.json" \
   || { echo "launch_ce2.sh: IMP launch checks failed; see imp_launch_$TS.json" >&2; exit 3; }
 [ "$(command -v claude)" = "$HERE/sandbox_cc/claude" ] || { echo "launch_ce2.sh: shim not first on PATH" >&2; exit 3; }
 cd "$PROJ/../.."
 exec "$VC/bin/cap-evolve" run --spec "$PROJ/capevolve.yaml" --project "$PROJ" --run-ts "$TS" \
-  --dashboard off --follow "$@" 2> >(tee -a "/workspace/aw_ce2/state/progress/$ARM.log" >&2)
+  --dashboard off --follow "$@" 2> >(tee -a "$AW_STATE/progress/$ARM.log" >&2)

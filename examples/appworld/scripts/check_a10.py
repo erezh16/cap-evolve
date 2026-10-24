@@ -155,15 +155,15 @@ def run() -> int:
     res["filter_refused_env_value"] = r2.returncode != 0 and secret not in led2
     # 6. three concurrent writers, 4 appends each: all 12 land, numbers unique and increasing
     import re as _re
-    n0 = len(_re.findall(rf"(?m)^## {P.LEDGER_PREFIX}-\d{{4}} ", led2))
+    n0 = len(_re.findall(rf"(?m)^## {P.LEDGER_ID}-\d{{4}} ", led2))
     ws = [subprocess.Popen(["/bin/sh", "-c", " ; ".join(" ".join(map(_q, sd + ["append", "--kind", "result", "--phase",
                             "A10", "--label", f"w{w}-{i}", "--prose", f"writer {w} append {i}", "--no-push"]))
                             for i in range(4))], env=env, cwd=clone) for w in range(3)]
     for w in ws:
         w.wait()
     led3 = (clone / "docs" / LEDGER).read_text()
-    nums = [int(x) for x in _re.findall(rf"(?m)^## {P.LEDGER_PREFIX}-(\d{{4}}) ", led3)]
-    labels = _re.findall(rf"(?m)^## {P.LEDGER_PREFIX}-\d{{4}} · \S+ · A10 (w\d-\d) ·", led3)
+    nums = [int(x) for x in _re.findall(rf"(?m)^## {P.LEDGER_ID}-(\d{{4}}) ", led3)]
+    labels = _re.findall(rf"(?m)^## {P.LEDGER_ID}-\d{{4}} · \S+ · A10 (w\d-\d) ·", led3)
     res["concurrent_appends_landed"] = len(nums) - n0 == 12 and len(set(labels)) == 12
     res["concurrent_numbers_unique_increasing"] = nums == sorted(set(nums))
     res["concurrent_all_committed"] = sh("git", "status", "--porcelain", "--", f"docs/{LEDGER}", cwd=clone).stdout == ""

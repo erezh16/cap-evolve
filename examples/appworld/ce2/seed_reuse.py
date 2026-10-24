@@ -50,7 +50,7 @@ def has_key(o, key: str) -> bool:
 
 
 def main() -> int:
-    if os.environ.get("AW_PROFILE") != "ce2" or str(P.AW_STATE) != "/workspace/aw_ce2/state":
+    if os.environ.get("AW_PROFILE") not in ("ce2", "ce3") or str(P.AW_STATE) not in ("/workspace/aw_ce2/state", "/workspace/aw_ce3/state"):
         sys.exit("seed_reuse: source ce2/env.sh first")
     import evaluator as E
     res: dict = {}

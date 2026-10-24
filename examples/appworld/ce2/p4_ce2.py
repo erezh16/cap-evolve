@@ -285,7 +285,7 @@ def loop() -> int:
             if k2_stopped and "ce2_k2" not in running:
                 k2_stopped = False          # memory is back: ce2_k2 resumes (its search step runs with --resume)
             if todo and not stopped:
-                r = subprocess.run([str(Path.home() / "bin" / "memok-ce2")], capture_output=True, text=True)
+                r = subprocess.run([str(Path.home() / "bin" / ("memok-ce3" if P.LEDGER_ID == "CE3" else "memok-ce2"))], capture_output=True, text=True)
                 if r.returncode == 0:
                     for a in todo:          # R4: both arms in the same pass, within the same minute
                         start(a)

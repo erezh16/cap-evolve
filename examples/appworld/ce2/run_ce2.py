@@ -46,6 +46,11 @@ CAPE_BIN = VENV_CAPE / "bin" / "cap-evolve"
 CAND = K = STATE = SEARCH_ROOT = ACCEPT_ROOT = RUN_TS = PUSHED = None
 
 
+def kfmt(k: float) -> str:
+    """K as written in the spec and the reports: 1 and 2 stay "1" and "2" (CE2), 0.2 stays "0.2" (CE3). Never int()."""
+    return f"{k:g}"
+
+
 def select_arm(arm: str) -> None:
     global CAND, K, STATE, SEARCH_ROOT, ACCEPT_ROOT, RUN_TS, PUSHED
     if arm not in P.CANDIDATES:
@@ -164,20 +169,24 @@ def setup(root: Path, split_ids: str = "full", force: bool = False) -> Path:
     if instr != proj / "optimizer" / "INSTRUCTIONS.md":
         (proj / "optimizer").mkdir(parents=True, exist_ok=True)
         (proj / "optimizer" / "INSTRUCTIONS.md").write_text(instr.read_text(encoding="utf-8"), encoding="utf-8")
-    spec = (HERE / "capevolve.yaml").read_text().replace("@INSTRUCTIONS@", str(instr)).replace(
-        "@REFERENCE@", str(proj / "reference")).replace("@K_SE@", f"{int(K)}")
+    spec = (HERE / ("capevolve.ce3.yaml" if P.LEDGER_ID == "CE3" else "capevolve.yaml")).read_text().replace("@INSTRUCTIONS@", str(instr)).replace(
+        "@REFERENCE@", str(proj / "reference")).replace("@K_SE@", kfmt(K))
     (proj / "capevolve.yaml").write_text(spec)
+    caps = ("no optimizer USD or token cap (CE3 plan section 2)" if P.LEDGER_ID == "CE3"
+            else "max_optimizer_usd 300, optimizer_usd_per_iter 40")
+    plan = "docs/EVAL_APPWORLD_CE3.md (base plan docs/EVAL_APPWORLD_CE2.md §9-11)" if P.LEDGER_ID == "CE3" else \
+        "docs/EVAL_APPWORLD_CE2.md §9-11"
     (proj / "PROJECT.md").write_text(
-        f"# {CAND}: AppWorld (official splits), gpt-oss-120b on RITS, cap-evolve impr2 @ 8194578, hill-climb --focus all\n\n"
-        "Plan: docs/EVAL_APPWORLD_CE2.md §9-11. Resolved inputs:\n"
+        f"# {CAND}: AppWorld (official splits), gpt-oss-120b on RITS, cap-evolve impr2 @ {P.CAPE_COMMIT[:7]}, "
+        "hill-climb --focus all\n\n"
+        f"Plan: {plan}. Resolved inputs:\n"
         "- capability: system-prompt + tools (seed: stock AppWorld ReAct prompt @ 42b5bcf, empty helpers, no notes)\n"
         "- target: openai/gpt-oss-120b-a100 on RITS, reasoning medium, temperature 0\n"
         f"- optimizer: claude-code, {P.OPT_MODEL}, sandboxed by examples/appworld/ce2/sandbox_cc/claude; "
         f"instructions: {instr} (re-derived from the pinned template)\n"
         f"- data: adapter tasks(); split_ids.json train = val = {len(ids)} ids, test = []\n"
         "- rollouts: through the shared evaluator (cache, seed baseline reused from REST P3, global slots, PAUSE, B = 900)\n"
-        f"- gate: paired, K = {int(K)} (gate_k_se, explicit); 1 trial; 6 iterations; max_metric_calls 1029; "
-        "max_optimizer_usd 300, optimizer_usd_per_iter 40\n"
+        f"- gate: paired, K = {kfmt(K)} (gate_k_se, explicit); 1 trial; 6 iterations; max_metric_calls 1029; {caps}\n"
         "- objective score = reward (single objective; no objectives: block)\n")
     return proj
 
@@ -228,7 +237,7 @@ def _imp_run(proj: Path, run_dir: Path) -> dict:
     hc = [x for x in P.read_jsonl(cmdlog) if str(HC_RUN) in x.get("cmd", "")]
     ks = sorted({m.group(1) for x in hc for m in [re.search(r"--k-se (\S+)", x["cmd"])] if m})
     gates = [e for e in ev if (e.get("kind") or e.get("event")) in ("gate", "step") and "k_se" in json.dumps(e)]
-    out["4_effective_k_se"] = {"ok": ks == [str(float(K))] or ks == [str(int(K))], "hill_climb_cmdlines": len(hc),
+    out["4_effective_k_se"] = {"ok": len(ks) == 1 and float(ks[0]) == K, "hill_climb_cmdlines": len(hc),
                                "k_se_values": ks, "expected": K,
                                "gate_events_mentioning_k_se": len(gates)}
     works = sorted((run_dir / "work").glob("*/INSTRUCTIONS.md"))
@@ -319,34 +328,43 @@ def latest_run_dir(root: Path, ts: str) -> Path:
 # ---------------------------------------------------------------- acceptance
 
 def gate_unit_check() -> dict:
-    """A-CE2 item 4 with the PINNED gate.py (decide, mode paired): a delta vector with mean = 1.5·SE is accepted at
-    k_se 1 and rejected at 2; 2.5·SE is accepted by both; 0.7·SE is rejected by both."""
+    """A-CE2 item 4 / A-CE3 item 4 with the PINNED gate.py (decide, mode paired). CE2: a delta vector with mean =
+    1.5·SE is accepted at k_se 1 and rejected at 2; 2.5·SE is accepted by both; 0.7·SE is rejected by both.
+    CE3: 0.3·SE is accepted at k_se 0.2 and rejected at 1; 0.1·SE is rejected at 0.2."""
+    ce3 = P.LEDGER_ID == "CE3"
+    facs, ks = ((0.1, 0.3), (0.2, 1.0)) if ce3 else ((0.7, 1.5, 2.5), (1.0, 2.0))
     code = r"""
-import json, math
+import json, math, sys
 from cap_evolve import gate
+facs, ks = json.loads(sys.argv[1]), json.loads(sys.argv[2])
 n = 147
 e = [0.1 if i % 2 else -0.1 for i in range(n - 1)] + [0.0]   # zero-mean spread; a shift leaves the SE unchanged
 mu = sum(e) / n; e = [x - mu for x in e]
 se0 = math.sqrt(sum(x * x for x in e) / (n - 1) / n)
 out = {"gate_file": gate.__file__, "cases": {}}
-for f in (0.7, 1.5, 2.5):
+for f in facs:
     d = [x + f * se0 for x in e]
     m = sum(d) / n; se = math.sqrt(sum((x - m) ** 2 for x in d) / (n - 1) / n)
     r = {"mean_over_se": round(m / se, 6)}
-    for k in (1.0, 2.0):
+    for k in ks:
         g = gate.decide(0.0, m, mode="paired", k_se=k, paired_deltas=d)
-        r[f"accept_k{int(k)}"] = g.accept
-        r[f"reason_k{int(k)}"] = g.reason
-    out["cases"][str(f)] = r
+        r[f"accept_k{k:g}"] = g.accept
+        r[f"reason_k{k:g}"] = g.reason
+    out["cases"][f"{f:g}"] = r
 print(json.dumps(out))
 """
-    r = subprocess.run([str(CAPE_PY), "-c", code], capture_output=True, text=True, env=cape_env("accept"))
+    r = subprocess.run([str(CAPE_PY), "-c", code, json.dumps(facs), json.dumps(ks)], capture_output=True, text=True,
+                       env=cape_env("accept"))
     d = json.loads(r.stdout.strip().splitlines()[-1])
     c = d["cases"]
-    d["ok"] = (c["1.5"]["accept_k1"] is True and c["1.5"]["accept_k2"] is False
-               and c["2.5"]["accept_k1"] is True and c["2.5"]["accept_k2"] is True
-               and c["0.7"]["accept_k1"] is False and c["0.7"]["accept_k2"] is False
-               and d["gate_file"].startswith(str(PIN / "core")))
+    if ce3:
+        d["ok"] = (c["0.3"]["accept_k0.2"] is True and c["0.3"]["accept_k1"] is False
+                   and c["0.1"]["accept_k0.2"] is False and d["gate_file"].startswith(str(PIN / "core")))
+    else:
+        d["ok"] = (c["1.5"]["accept_k1"] is True and c["1.5"]["accept_k2"] is False
+                   and c["2.5"]["accept_k1"] is True and c["2.5"]["accept_k2"] is True
+                   and c["0.7"]["accept_k1"] is False and c["0.7"]["accept_k2"] is False
+                   and d["gate_file"].startswith(str(PIN / "core")))
     return d
 
 
@@ -503,21 +521,32 @@ def freeze() -> int:
 
 
 def same(projects: dict[str, Path] | None = None) -> int:
-    """A-CE2-SAME (plan §5.4, §9.6.8): the two arms' rendered capevolve.yaml and INSTRUCTIONS.md differ only in
-    gate_k_se, the run dir and ts and the issue number (the latter two are not in these files at all)."""
-    projects = projects or {c: P.RUN_ROOTS[c] / ".capevolve" / "project" for c in P.CANDIDATES}
-    p, q = (projects[c] for c in P.CANDIDATES)
-    out = {}
+    """A-CE2-SAME (CE2 §5.4, §9.6.8): the two arms' rendered capevolve.yaml and INSTRUCTIONS.md differ only in
+    gate_k_se. A-CE3-SAME (CE3 §2): ce3_k02's differ from CE2's ce2_k1 only in gate_k_se and the two money caps."""
     import difflib
+    if P.LEDGER_ID == "CE3":
+        arm = P.CANDIDATES[0]
+        pairs = {"ce2_k1": (P.CE2_RUN_ROOTS[0] / ".capevolve" / "project", P.CE2_RUN_ROOTS[0]),
+                 arm: (P.RUN_ROOTS[arm] / ".capevolve" / "project", P.RUN_ROOTS[arm])}
+        allowed = ("gate_k_se:", "optimizer_usd_per_iter:", "# optimizer_usd_per_iter:", "max_optimizer_usd:",
+                   "# cap-evolve spec of the", "# except gate_k_se")
+    else:
+        pairs = {c: (P.RUN_ROOTS[c] / ".capevolve" / "project", P.RUN_ROOTS[c]) for c in P.CANDIDATES}
+        allowed = ("gate_k_se:",)
+    (p, rp), (q, rq) = pairs.values()
+    out = {"compared": list(pairs)}
     for rel in ("capevolve.yaml", "optimizer/INSTRUCTIONS.md"):
         ta, tb = (p / rel).read_text().splitlines(), (q / rel).read_text().splitlines()
-        # the arm's own project path appears in paths of the spec: normalize it before comparing
-        na = [x.replace(str(P.RUN_ROOTS[P.CANDIDATES[0]]), "<RUN_ROOT>") for x in ta]
-        nb = [x.replace(str(P.RUN_ROOTS[P.CANDIDATES[1]]), "<RUN_ROOT>") for x in tb]
+        # each project's own paths appear in the spec: normalize them before comparing
+        na = [x.replace(str(rp), "<RUN_ROOT>").replace("/workspace/aw_ce2/state", "<AW_STATE>") for x in ta]
+        nb = [x.replace(str(rq), "<RUN_ROOT>").replace(str(P.AW_STATE), "<AW_STATE>") for x in tb]
         d = [x for x in difflib.unified_diff(na, nb, lineterm="", n=0) if x[:1] in "+-" and x[:3] not in ("+++", "---")]
-        out[rel] = {"diff_lines": d, "only_gate_k_se": all(x[1:].startswith("gate_k_se:") for x in d)}
-    out["ok"] = (out["capevolve.yaml"]["only_gate_k_se"] and len(out["capevolve.yaml"]["diff_lines"]) == 2
-                 and not out["optimizer/INSTRUCTIONS.md"]["diff_lines"])
+        out[rel] = {"diff_lines": d, "only_allowed": all(x[1:].startswith(allowed) for x in d)}
+    if P.LEDGER_ID == "CE3":
+        out["ok"] = out["capevolve.yaml"]["only_allowed"] and not out["optimizer/INSTRUCTIONS.md"]["diff_lines"]
+    else:
+        out["ok"] = (out["capevolve.yaml"]["only_allowed"] and len(out["capevolve.yaml"]["diff_lines"]) == 2
+                     and not out["optimizer/INSTRUCTIONS.md"]["diff_lines"])
     dst = P.PUSHED / "ce2" / "same.json"
     P.write_json(dst, out)
     print(json.dumps(out, indent=1))
