@@ -75,3 +75,11 @@ P4 ce3_k02: iteration 1: val 0.7483 (parent 0.3741); paired Δ̄ +0.3741, SE 0.0
 ```json
 {"cp": 7, "prev_cp": 6, "prev_commit": "bd953ed0a1dc1301d8f36f5a0707143c5bf54394", "utc": "2026-10-24T11:31:11Z", "kind": "result", "phase": "P4", "done_through": "P2/acceptance", "next": "P4/searches", "arm": "ce3_k02", "counts": {}, "spend": {}, "artifacts": {"STATE/ce3_k02/progress.json": "c56e3894d49e74d8fbcce6e5acf08e3c73001456da39adb3005ec2093801a390"}, "code": "832a41f544c8c8efa0eb58470a1ec5928cc2937d", "open_decisions": [], "memory": {"used_pct": 6.66, "peak_pct": 47.58, "state": "OK", "stale": false}, "iteration": 1, "verdict": {"candidate": "cand_0001", "accept": true, "val": 0.7482993197278912, "parent_val": 0.3741496598639456, "indecisive": false, "delta": 0.3741, "se": 0.0465, "k_se": 0.2, "bar": 0.0093, "would_pass_k1": true}}
 ```
+
+## CE3-0008 · 2026-10-24T11:31Z · P4 posted ce3_k02 · posted
+
+Posted 'Cap-Evolve-impr2 K=0.2 iteration 1' on #913 (ce3_k02): https://github.com/skillberry-ai/cap-evolve/issues/913#issuecomment-6383678802
+
+```json
+{"cp": 8, "prev_cp": 7, "prev_commit": "b7811f7b518f41b3c9e015d02df3c00bc712515b", "utc": "2026-10-24T11:31:13Z", "kind": "posted", "phase": "P4", "done_through": "P2/acceptance", "next": "P4/searches", "arm": "ce3_k02", "counts": {}, "spend": {}, "artifacts": {}, "code": "832a41f544c8c8efa0eb58470a1ec5928cc2937d", "open_decisions": [], "memory": {"used_pct": 6.66, "peak_pct": 47.58, "state": "OK", "stale": false}, "post": "ce3_k02/iter_1", "url": "https://github.com/skillberry-ai/cap-evolve/issues/913#issuecomment-6383678802"}
+```
