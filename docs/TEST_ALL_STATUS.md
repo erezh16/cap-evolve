@@ -192,3 +192,11 @@ Posted 'GEPA-Full: build and acceptance done' on #926 (gepa_full): https://githu
 ```json
 {"cp": 22, "prev_cp": 21, "prev_commit": "c253b6fccb8e20697d0e1c259d804442fea16536", "utc": "2026-10-24T23:11:19Z", "kind": "posted", "phase": "P2", "done_through": "P2/acceptance", "next": "P3/window", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "1365a97f7a1680769356749d6b69542580ce4219", "open_decisions": [], "memory": {"used_pct": 7.91, "peak_pct": 25.44, "state": "OK", "stale": false}, "post": "gepa_full/accept_done", "url": "https://github.com/skillberry-ai/cap-evolve/issues/926#issuecomment-6390726476"}
 ```
+
+## TA-0023 · 2026-10-24T23:11Z · P2 posted cape_k02 · posted
+
+Posted 'Cap-Evolve-impr2 K=0.2: build and acceptance done' on #927 (cape_k02): https://github.com/skillberry-ai/cap-evolve/issues/927#issuecomment-6390727306
+
+```json
+{"cp": 23, "prev_cp": 22, "prev_commit": "b9fa80d222b27f7e5f990df924b8db352fedd421", "utc": "2026-10-24T23:11:24Z", "kind": "posted", "phase": "P2", "done_through": "P2/acceptance", "next": "P3/window", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "1365a97f7a1680769356749d6b69542580ce4219", "open_decisions": [], "memory": {"used_pct": 7.91, "peak_pct": 25.44, "state": "OK", "stale": false}, "post": "cape_k02/accept_done", "url": "https://github.com/skillberry-ai/cap-evolve/issues/927#issuecomment-6390727306"}
+```
