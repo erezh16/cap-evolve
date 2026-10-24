@@ -160,3 +160,11 @@ Posted 'Meta-Harness: build and acceptance done' on #922 (metaharness): https://
 ```json
 {"cp": 18, "prev_cp": 17, "prev_commit": "3d9dc19981582b2cb12393e8a011599126f3aa83", "utc": "2026-10-24T23:10:58Z", "kind": "posted", "phase": "P2", "done_through": "P2/acceptance", "next": "P3/window", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "1365a97f7a1680769356749d6b69542580ce4219", "open_decisions": [], "memory": {"used_pct": 7.84, "peak_pct": 25.44, "state": "OK", "stale": false}, "post": "metaharness/accept_done", "url": "https://github.com/skillberry-ai/cap-evolve/issues/922#issuecomment-6390723151"}
 ```
+
+## TA-0019 · 2026-10-24T23:11Z · P2 posted harnesslens · posted
+
+Posted 'HarnessLens: build and acceptance done' on #923 (harnesslens): https://github.com/skillberry-ai/cap-evolve/issues/923#issuecomment-6390723990
+
+```json
+{"cp": 19, "prev_cp": 18, "prev_commit": "92642cd490803c0eff59530956d740384321503b", "utc": "2026-10-24T23:11:03Z", "kind": "posted", "phase": "P2", "done_through": "P2/acceptance", "next": "P3/window", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "1365a97f7a1680769356749d6b69542580ce4219", "open_decisions": [], "memory": {"used_pct": 7.84, "peak_pct": 25.44, "state": "OK", "stale": false}, "post": "harnesslens/accept_done", "url": "https://github.com/skillberry-ai/cap-evolve/issues/923#issuecomment-6390723990"}
+```
