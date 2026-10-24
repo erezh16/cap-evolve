@@ -96,3 +96,11 @@ P2 acceptance done, all PASS, dev ids only, nothing counted. T1: max_model_len 4
 ```json
 {"cp": 10, "prev_cp": 9, "prev_commit": "73908b9b196d664da93fe2042e7a6de00fabca75", "utc": "2026-10-24T23:10:10Z", "kind": "phase_done", "phase": "P2", "done_through": "P2/acceptance", "next": "P3/window", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/manifest.json": "0bfcef4bf6a8ebd3539a6697cc8b20283d3a3ad0ea1193ddde8af756a4340fa5", "STATE/acceptance/t4.json": "cacd1c023a7b28d26877cccc0021b11d2068f35abe4db3976e0a99dd7e189927"}, "code": "1365a97f7a1680769356749d6b69542580ce4219", "open_decisions": [], "memory": {"used_pct": 7.81, "peak_pct": 25.44, "state": "OK", "stale": false}}
 ```
+
+## TA-0011 · 2026-10-24T23:10Z · P2 posted seed · posted
+
+Posted 'seed agent: build and acceptance done' on #915 (seed): https://github.com/skillberry-ai/cap-evolve/issues/915#issuecomment-6390717675
+
+```json
+{"cp": 11, "prev_cp": 10, "prev_commit": "40705bc0caaaf8dea54ef28bdb0831012f98eec2", "utc": "2026-10-24T23:10:21Z", "kind": "posted", "phase": "P2", "done_through": "P2/acceptance", "next": "P3/window", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "1365a97f7a1680769356749d6b69542580ce4219", "open_decisions": [], "memory": {"used_pct": 7.86, "peak_pct": 25.44, "state": "OK", "stale": false}, "post": "seed/accept_done", "url": "https://github.com/skillberry-ai/cap-evolve/issues/915#issuecomment-6390717675"}
+```
