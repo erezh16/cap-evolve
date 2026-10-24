@@ -16,3 +16,11 @@ Execution of docs/TEST_ALL.md starts (session 64d72acb). Decisions D1 to D9 (pla
 ```json
 {"cp": 0, "prev_cp": null, "prev_commit": "96ffecc234681b230325a9a772ccfba61aed4cd6", "utc": "2026-10-24T22:34:55Z", "kind": "decision", "phase": "P0", "done_through": "P1/b3", "next": "P1/b4", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/manifest.json": "ba054bb00892dd74fd0acd6c2429ac1648c32ea4bc03e5ae59352016ff38284f"}, "code": "96ffecc234681b230325a9a772ccfba61aed4cd6", "open_decisions": [], "memory": {"used_pct": 7.72, "peak_pct": 7.93, "state": "OK", "stale": false}, "issues": {"seed": 915, "altk": 916, "ace": 917, "gepa": 918, "skillopt": 919, "wikiskill": 920, "evoskill": 921, "metaharness": 922, "harnesslens": 923, "miprov2": 924, "trace2skill": 925, "gepa_full": 926, "cape_k02": 927}, "decisions": ["D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8", "D9", "D10", "D11"]}
 ```
+
+## TA-0001 · 2026-10-24T22:38Z · P0 posted harnesslens · posted
+
+Posted 'HarnessLens hourly status' on #923 (harnesslens): https://github.com/skillberry-ai/cap-evolve/issues/923#issuecomment-6390427752
+
+```json
+{"cp": 1, "prev_cp": 0, "prev_commit": "b3719fedee6f144e71d15073f9ef96e9ecdd48c8", "utc": "2026-10-24T22:38:42Z", "kind": "posted", "phase": "P0", "done_through": "P1/b3", "next": "P1/b4", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "b3719fedee6f144e71d15073f9ef96e9ecdd48c8", "open_decisions": [], "memory": {"used_pct": 7.85, "peak_pct": 7.93, "state": "OK", "stale": false}, "post": "harnesslens/status_20261024T223648", "url": "https://github.com/skillberry-ai/cap-evolve/issues/923#issuecomment-6390427752"}
+```
