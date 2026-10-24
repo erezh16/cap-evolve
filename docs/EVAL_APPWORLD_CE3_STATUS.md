@@ -313,3 +313,11 @@ P4 done: both chains (search, freeze, isolation scan) finished. Next: P5 dev dia
 ```json
 {"cp": 36, "prev_cp": 35, "prev_commit": "b9d8f59d8162f608837f047c2e8d8323da252572", "utc": "2026-10-24T15:18:58Z", "kind": "phase_done", "phase": "P4", "done_through": "P4/searches", "next": "P5/dev", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "821a87b516cf6f29cff33f2ab2ec5d45c6d4a6d2", "open_decisions": [], "memory": {"used_pct": 7.18, "peak_pct": 49.23, "state": "OK", "stale": false}}
 ```
+
+## CE3-0037 · 2026-10-24T15:19Z · P5 dev diagnostic · phase_done
+
+P5 dev diagnostic done (57 dev tasks, 1 trial, seed 100; the seed's numbers are its P3 records). seed 0.3333 (0 fresh, 57 cached); ce3_k02 0.8772 (0 fresh, 57 cached). Next: P6 full isolation scan.
+
+```json
+{"cp": 37, "prev_cp": 36, "prev_commit": "74ab37c25d094fc992605f55ab25f828eb9a3277", "utc": "2026-10-24T15:19:02Z", "kind": "phase_done", "phase": "P5", "done_through": "P5/dev", "next": "P6/scan", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/p5dev/progress.json": "eccdabc38ba25cadee8c6fb924bac901933df6f45ebe95bae787f6e40b636c2a"}, "code": "821a87b516cf6f29cff33f2ab2ec5d45c6d4a6d2", "open_decisions": [], "memory": {"used_pct": 7.29, "peak_pct": 49.23, "state": "OK", "stale": false}}
+```

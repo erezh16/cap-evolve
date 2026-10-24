@@ -55,5 +55,16 @@
    "ce2_k2"
   ],
   "order_seed": 2026102207
+ },
+ "freeze": {
+  "tree_sha256": {
+   "seed": "85a0da9cec2206a7bc683c11d60b5cb0acac7328d43c6e9197324d1e45971f3c",
+   "ce3_k02": "e0ec3d94752bd3a2f067dfa2522695767d4077888a5f62fa360991c3e04019fb"
+  },
+  "labels": {
+   "seed": "seed",
+   "ce3_k02": ""
+  },
+  "utc": "2026-10-24T15:19:01Z"
  }
 }
