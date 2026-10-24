@@ -1,0 +1,74 @@
+{
+ "window": "final",
+ "cells_total": 10920,
+ "cells_done": 25,
+ "per_arm": {
+  "cape_k02": {
+   "done": 3,
+   "infra_missing": 0,
+   "infra_retries": 0,
+   "context_exceeded": 0
+  },
+  "wikiskill": {
+   "done": 1,
+   "infra_missing": 0,
+   "infra_retries": 0,
+   "context_exceeded": 0
+  },
+  "altk": {
+   "done": 3,
+   "infra_missing": 0,
+   "infra_retries": 0,
+   "context_exceeded": 0
+  },
+  "harnesslens": {
+   "done": 3,
+   "infra_missing": 0,
+   "infra_retries": 0,
+   "context_exceeded": 0
+  },
+  "seed": {
+   "done": 2,
+   "infra_missing": 0,
+   "infra_retries": 0,
+   "context_exceeded": 0
+  },
+  "skillopt": {
+   "done": 3,
+   "infra_missing": 0,
+   "infra_retries": 0,
+   "context_exceeded": 0
+  },
+  "gepa": {
+   "done": 2,
+   "infra_missing": 0,
+   "infra_retries": 0,
+   "context_exceeded": 0
+  },
+  "ace": {
+   "done": 4,
+   "infra_missing": 0,
+   "infra_retries": 0,
+   "context_exceeded": 0
+  },
+  "metaharness": {
+   "done": 2,
+   "infra_missing": 0,
+   "infra_retries": 0,
+   "context_exceeded": 0
+  },
+  "evoskill": {
+   "done": 1,
+   "infra_missing": 0,
+   "infra_retries": 0,
+   "context_exceeded": 0
+  },
+  "trace2skill": {
+   "done": 1,
+   "infra_missing": 0,
+   "infra_retries": 0,
+   "context_exceeded": 0
+  }
+ },
+ "order_sha256": "725f659aefadafd4a8d1ee86b74ca9f00e2800e9a4974abc85dbac6b63c722f5"
+}
