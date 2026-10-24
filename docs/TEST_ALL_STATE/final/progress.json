@@ -1,52 +1,52 @@
 {
  "window": "final",
  "cells_total": 10920,
- "cells_done": 194,
+ "cells_done": 216,
  "per_arm": {
   "ace": {
-   "done": 18,
-   "infra_missing": 0,
-   "infra_retries": 0,
-   "context_exceeded": 0
-  },
-  "trace2skill": {
-   "done": 13,
-   "infra_missing": 0,
-   "infra_retries": 0,
-   "context_exceeded": 0
-  },
-  "cape_k02": {
-   "done": 9,
-   "infra_missing": 0,
-   "infra_retries": 0,
-   "context_exceeded": 0
-  },
-  "harnesslens": {
-   "done": 13,
-   "infra_missing": 0,
-   "infra_retries": 0,
-   "context_exceeded": 0
-  },
-  "altk": {
    "done": 20,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
   },
-  "seed": {
-   "done": 17,
+  "trace2skill": {
+   "done": 14,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
   },
-  "evoskill": {
+  "cape_k02": {
    "done": 11,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
   },
+  "harnesslens": {
+   "done": 14,
+   "infra_missing": 0,
+   "infra_retries": 0,
+   "context_exceeded": 0
+  },
+  "altk": {
+   "done": 22,
+   "infra_missing": 0,
+   "infra_retries": 0,
+   "context_exceeded": 0
+  },
+  "seed": {
+   "done": 19,
+   "infra_missing": 0,
+   "infra_retries": 0,
+   "context_exceeded": 0
+  },
+  "evoskill": {
+   "done": 14,
+   "infra_missing": 0,
+   "infra_retries": 0,
+   "context_exceeded": 0
+  },
   "gepa": {
-   "done": 15,
+   "done": 18,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
@@ -58,25 +58,25 @@
    "context_exceeded": 0
   },
   "wikiskill": {
+   "done": 21,
+   "infra_missing": 0,
+   "infra_retries": 0,
+   "context_exceeded": 0
+  },
+  "gepa_full": {
    "done": 19,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
   },
   "miprov2": {
-   "done": 7,
+   "done": 8,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
   },
   "skillopt": {
-   "done": 20,
-   "infra_missing": 0,
-   "infra_retries": 0,
-   "context_exceeded": 0
-  },
-  "gepa_full": {
-   "done": 17,
+   "done": 21,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
