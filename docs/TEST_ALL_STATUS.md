@@ -168,3 +168,11 @@ Posted 'HarnessLens: build and acceptance done' on #923 (harnesslens): https://g
 ```json
 {"cp": 19, "prev_cp": 18, "prev_commit": "92642cd490803c0eff59530956d740384321503b", "utc": "2026-10-24T23:11:03Z", "kind": "posted", "phase": "P2", "done_through": "P2/acceptance", "next": "P3/window", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "1365a97f7a1680769356749d6b69542580ce4219", "open_decisions": [], "memory": {"used_pct": 7.84, "peak_pct": 25.44, "state": "OK", "stale": false}, "post": "harnesslens/accept_done", "url": "https://github.com/skillberry-ai/cap-evolve/issues/923#issuecomment-6390723990"}
 ```
+
+## TA-0020 · 2026-10-24T23:11Z · P2 posted miprov2 · posted
+
+Posted 'MIPROv2: build and acceptance done' on #924 (miprov2): https://github.com/skillberry-ai/cap-evolve/issues/924#issuecomment-6390724853
+
+```json
+{"cp": 20, "prev_cp": 19, "prev_commit": "d5825b2d1ea3663ec8c612a5a59927036fbf9555", "utc": "2026-10-24T23:11:08Z", "kind": "posted", "phase": "P2", "done_through": "P2/acceptance", "next": "P3/window", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "1365a97f7a1680769356749d6b69542580ce4219", "open_decisions": [], "memory": {"used_pct": 7.84, "peak_pct": 25.44, "state": "OK", "stale": false}, "post": "miprov2/accept_done", "url": "https://github.com/skillberry-ai/cap-evolve/issues/924#issuecomment-6390724853"}
+```
