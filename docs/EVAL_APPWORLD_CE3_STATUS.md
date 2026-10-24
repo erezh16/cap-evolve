@@ -265,3 +265,11 @@ Posted 'Cap-Evolve-impr2 K=0.2 search ended' on #913 (ce3_k02): https://github.c
 ```json
 {"cp": 30, "prev_cp": 29, "prev_commit": "c87b7f120607dc0db78f9c720480927b6fb08884", "utc": "2026-10-24T15:17:44Z", "kind": "posted", "phase": "P4", "done_through": "P2/acceptance", "next": "P4/searches", "arm": "ce3_k02", "counts": {}, "spend": {}, "artifacts": {}, "code": "821a87b516cf6f29cff33f2ab2ec5d45c6d4a6d2", "open_decisions": [], "memory": {"used_pct": 7.6, "peak_pct": 49.23, "state": "OK", "stale": false}, "post": "ce3_k02/m4_search_done", "url": "https://github.com/skillberry-ai/cap-evolve/issues/913#issuecomment-6385909623"}
 ```
+
+## CE3-0031 · 2026-10-24T15:17Z · P4 posted ce3_k02 · posted
+
+Posted 'Cap-Evolve-impr2 K=0.2 champion frozen' on #913 (ce3_k02): https://github.com/skillberry-ai/cap-evolve/issues/913#issuecomment-6385910020
+
+```json
+{"cp": 31, "prev_cp": 30, "prev_commit": "7adc6f8117240ec088c221b735b4563bdaf9f84c", "utc": "2026-10-24T15:17:46Z", "kind": "posted", "phase": "P4", "done_through": "P2/acceptance", "next": "P4/searches", "arm": "ce3_k02", "counts": {}, "spend": {}, "artifacts": {}, "code": "821a87b516cf6f29cff33f2ab2ec5d45c6d4a6d2", "open_decisions": [], "memory": {"used_pct": 7.6, "peak_pct": 49.23, "state": "OK", "stale": false}, "post": "ce3_k02/m4_frozen", "url": "https://github.com/skillberry-ai/cap-evolve/issues/913#issuecomment-6385910020"}
+```
