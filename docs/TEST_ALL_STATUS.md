@@ -104,3 +104,11 @@ Posted 'seed agent: build and acceptance done' on #915 (seed): https://github.co
 ```json
 {"cp": 11, "prev_cp": 10, "prev_commit": "40705bc0caaaf8dea54ef28bdb0831012f98eec2", "utc": "2026-10-24T23:10:21Z", "kind": "posted", "phase": "P2", "done_through": "P2/acceptance", "next": "P3/window", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "1365a97f7a1680769356749d6b69542580ce4219", "open_decisions": [], "memory": {"used_pct": 7.86, "peak_pct": 25.44, "state": "OK", "stale": false}, "post": "seed/accept_done", "url": "https://github.com/skillberry-ai/cap-evolve/issues/915#issuecomment-6390717675"}
 ```
+
+## TA-0012 · 2026-10-24T23:10Z · P2 posted altk · posted
+
+Posted 'ALTK-Evolve: build and acceptance done' on #916 (altk): https://github.com/skillberry-ai/cap-evolve/issues/916#issuecomment-6390718455
+
+```json
+{"cp": 12, "prev_cp": 11, "prev_commit": "947b1880bbf25831dbb1ac97b3da2441b8c8adc7", "utc": "2026-10-24T23:10:26Z", "kind": "posted", "phase": "P2", "done_through": "P2/acceptance", "next": "P3/window", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "1365a97f7a1680769356749d6b69542580ce4219", "open_decisions": [], "memory": {"used_pct": 7.88, "peak_pct": 25.44, "state": "OK", "stale": false}, "post": "altk/accept_done", "url": "https://github.com/skillberry-ai/cap-evolve/issues/916#issuecomment-6390718455"}
+```
