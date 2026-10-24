@@ -1,0 +1,32 @@
+{
+ "episodes": [
+  {
+   "arm": "ace",
+   "infra_error": false,
+   "termination": "completed",
+   "n_steps": 4,
+   "max_prompt_tokens": 17447,
+   "episode_seconds": 62.5,
+   "success": true
+  },
+  {
+   "arm": "skillopt",
+   "infra_error": false,
+   "termination": "completed",
+   "n_steps": 11,
+   "max_prompt_tokens": 13738,
+   "episode_seconds": 160.6,
+   "success": true
+  },
+  {
+   "arm": "evoskill",
+   "infra_error": false,
+   "termination": "completed",
+   "n_steps": 4,
+   "max_prompt_tokens": 12828,
+   "episode_seconds": 85.8,
+   "success": true
+  }
+ ],
+ "ok": true
+}

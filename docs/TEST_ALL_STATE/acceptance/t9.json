@@ -1,0 +1,9 @@
+{
+ "read_root_full_data": "denied",
+ "read_final_records": "denied",
+ "read_progress_memguard_log": "allowed",
+ "read_scored_seed_instructions": "allowed",
+ "nohup_script_reads_root_full": "allowed (verify_build, check_t3 and check_t1t5 read root_full/root_opt as scripts)",
+ "how": "Claude Code Read tool from session 64d72acb (base worktree, merged deny rules D11), 2026-10-24",
+ "ok": true
+}

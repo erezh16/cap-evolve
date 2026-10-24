@@ -1,0 +1,17 @@
+{
+ "seed": 2026102501,
+ "trials": 5,
+ "arms": 13,
+ "tasks": 168,
+ "cells": 10920,
+ "sha256": "725f659aefadafd4a8d1ee86b74ca9f00e2800e9a4974abc85dbac6b63c722f5",
+ "reproducible": true,
+ "each_cell_once": true,
+ "idx_ok": true,
+ "per_arm": [
+  840
+ ],
+ "root_full_relocked": true,
+ "matches_manifest": true,
+ "ok": true
+}

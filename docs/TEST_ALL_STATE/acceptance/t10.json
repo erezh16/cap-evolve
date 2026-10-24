@@ -1,0 +1,22 @@
+{
+ "distinct": true,
+ "spacing_276": true,
+ "from_manifest": true,
+ "survive_restart": true,
+ "next_due_utc": {
+  "seed": "2026-10-25T00:00:00Z",
+  "altk": "2026-10-24T23:04:36Z",
+  "ace": "2026-10-24T23:09:12Z",
+  "gepa": "2026-10-24T23:13:48Z",
+  "skillopt": "2026-10-24T23:18:24Z",
+  "wikiskill": "2026-10-24T23:23:00Z",
+  "evoskill": "2026-10-24T23:27:36Z",
+  "metaharness": "2026-10-24T23:32:12Z",
+  "harnesslens": "2026-10-24T23:36:48Z",
+  "miprov2": "2026-10-24T23:41:24Z",
+  "trace2skill": "2026-10-24T23:46:00Z",
+  "gepa_full": "2026-10-24T23:50:36Z",
+  "cape_k02": "2026-10-24T23:55:12Z"
+ },
+ "ok": true
+}

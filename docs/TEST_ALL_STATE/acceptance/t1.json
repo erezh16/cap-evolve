@@ -1,0 +1,14 @@
+{
+ "max_model_len": 40144,
+ "seed_episode": {
+  "arm": "seed",
+  "infra_error": false,
+  "termination": "completed",
+  "n_steps": 12,
+  "max_prompt_tokens": 10548,
+  "episode_seconds": 273.2,
+  "success": false
+ },
+ "key_hits": 0,
+ "ok": true
+}

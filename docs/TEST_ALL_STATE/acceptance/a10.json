@@ -1,0 +1,18 @@
+{
+ "first_append": true,
+ "heartbeat_stalled": true,
+ "killed_after_cells": 2,
+ "all_done": true,
+ "cells_rerun": 0,
+ "resume_exit": 0,
+ "coalesced_entries": 0,
+ "append_only": true,
+ "push_failure_kept_local": true,
+ "next_checkpoint_pushed": true,
+ "filter_refused_task_id": true,
+ "filter_refused_env_value": true,
+ "concurrent_appends_landed": true,
+ "concurrent_numbers_unique_increasing": true,
+ "concurrent_all_committed": true,
+ "ok": true
+}
