@@ -521,3 +521,11 @@ P9 done: results comment(s) posted on #913 (ce3_k02); URLs in the posted entries
 ```json
 {"cp": 60, "prev_cp": 59, "prev_commit": "2d0caedc932b79911fb7205632b8049d43d6eb04", "utc": "2026-10-24T16:36:20Z", "kind": "phase_done", "phase": "P9", "done_through": "P9/post", "next": "done", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "821a87b516cf6f29cff33f2ab2ec5d45c6d4a6d2", "open_decisions": [], "memory": {"used_pct": 7.2, "peak_pct": 49.23, "state": "OK", "stale": false}}
 ```
+
+## CE3-0061 · 2026-10-24T16:38Z · P9 CE3 closed · phase_done
+
+Evaluation CE3 complete. Results comment posted on #913. One correction after posting: the per-iteration table header read 'K·SE (K = 0)' (report_ce2.py formatted K with %d); the values in the column were right (0.2·SE). Fixed in the code (%g) and the posted comment edited in place to 'K = 0.2'; no number changed. Background loops stopped (autopost, heartbeat, memguard). root_full locked (mode 000). Spend per provider: RITS (agent) unpriced, tokens in the results; gateway (optimizer) USD 44.47 proxy at Sonnet 5.5 list price, USD 111.18 CLI-reported, no cap applied (CE3 plan section 2). Local state stays on /workspace/aw_ce3 and is never pushed.
+
+```json
+{"cp": 61, "prev_cp": 60, "prev_commit": "c88af6671c1e1ec46de7b965d51334d46802a189", "utc": "2026-10-24T16:38:12Z", "kind": "phase_done", "phase": "P9", "done_through": "P9/done", "next": "done", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "c88af6671c1e1ec46de7b965d51334d46802a189", "open_decisions": [], "memory": {"used_pct": 7.17, "peak_pct": 49.23, "state": "OK", "stale": false}}
+```
