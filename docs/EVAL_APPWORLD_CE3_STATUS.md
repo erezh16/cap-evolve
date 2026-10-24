@@ -489,3 +489,11 @@ Next: P8/analysis.
 ```json
 {"cp": 56, "prev_cp": 55, "prev_commit": "1a8155e9e083161f5f4063cc631036412f166d8f", "utc": "2026-10-24T16:35:53Z", "kind": "phase_done", "phase": "P7", "done_through": "final/336", "next": "P8/analysis", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/final/progress.json": "6bceb2fffcd1ba0c49265983dba1fd03d7a1280f788f6487cdb478e02f4eb490"}, "code": "821a87b516cf6f29cff33f2ab2ec5d45c6d4a6d2", "open_decisions": [], "memory": {"used_pct": 8.93, "peak_pct": 49.23, "state": "OK", "stale": false}, "window": {"window": "final", "cells_total": 336, "cells_done": 336, "order_sha256": "a19371a4532597aeb8b0c3dc393623bfca783160af83b46dcdd16e6176cc04f2"}}
 ```
+
+## CE3-0057 · 2026-10-24T16:36Z · P8 analysis · phase_done
+
+P7 done (336 cells; root_full relocked). P8 analysis done (final/analysis.json, final/RESULTS.md, aggregates only). test_normal: seed TGC 37.8 / SGC 15.2; ce2_k1 TGC 51.2 / SGC 28.6; ce2_k2 TGC 47.3 / SGC 27.7; ce3_k02 TGC 61.6 / SGC 44.6; ce3_k02 − seed Δ TGC +23.8 [+16.7, +31.2] (cross-window); ce3_k02 − ce2_k1: Δ TGC +10.4 [+4.5, +16.4] (cross-window: the reused arm ran in CE2's window (2026-10-23)); ce3_k02 − ce2_k2: Δ TGC +14.3 [+8.0, +20.5] (cross-window: the reused arm ran in CE2's window (2026-10-23)). Next: P9 results posts.
+
+```json
+{"cp": 57, "prev_cp": 56, "prev_commit": "06bc5a236f75bb20ca826385d70f6049e9c2af60", "utc": "2026-10-24T16:36:15Z", "kind": "phase_done", "phase": "P8", "done_through": "P8/analysis", "next": "P9/post", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/final/analysis.json": "77a2f53aa064f1f12dcc7945d2451a28867d7be571c9bc0625e870e32cbd5c7e", "STATE/final/RESULTS.md": "6336df316b6638b386f2359754895de64b9763b5f44ce653257d3a305e02c6f0"}, "code": "821a87b516cf6f29cff33f2ab2ec5d45c6d4a6d2", "open_decisions": [], "memory": {"used_pct": 7.15, "peak_pct": 49.23, "state": "OK", "stale": false}}
+```

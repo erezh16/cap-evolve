@@ -1,0 +1,1538 @@
+{
+ "n_tasks": 168,
+ "n_scenarios": 56,
+ "trials": 2,
+ "cells": 1344,
+ "bootstrap_resamples": 10000,
+ "arms": {
+  "seed": {
+   "tgc": 0.37797619047619047,
+   "sgc": 0.15178571428571427,
+   "tgc_drop_missing": 0.37797619047619047,
+   "sgc_drop_missing": 0.15178571428571427,
+   "by_difficulty": {
+    "Easy": {
+     "n": 57,
+     "tgc": 0.6140350877192983,
+     "n_scenarios": 19,
+     "sgc": 0.34210526315789475
+    },
+    "Medium": {
+     "n": 48,
+     "tgc": 0.28125,
+     "n_scenarios": 16,
+     "sgc": 0.09375
+    },
+    "Hard": {
+     "n": 63,
+     "tgc": 0.23809523809523808,
+     "n_scenarios": 21,
+     "sgc": 0.023809523809523808
+    }
+   },
+   "episodes": 336,
+   "missing": 0,
+   "prompt_tokens_per_task": 95152.67559523809,
+   "completion_tokens_per_task": 6315.550595238095,
+   "steps_per_task": 13.00297619047619,
+   "episode_seconds": 256.0032738095238,
+   "step_cap_hits": 5,
+   "token_cap_hits": 0,
+   "context_exceeded": 0,
+   "collateral_damage": 9,
+   "complete_task_not_called": 5,
+   "fs_probe": 0,
+   "max_prompt_tokens": 22376,
+   "trials_agree_share": 0.6607142857142857,
+   "prompt_tokens_p50": 67280.0,
+   "prompt_tokens_p90": 181274.0,
+   "completion_tokens_p50": 4670.0,
+   "completion_tokens_p90": 12803.0,
+   "episode_seconds_p50": 190.9,
+   "episode_seconds_p90": 509.3,
+   "pass_fraction": 0.7042711234911792,
+   "infra_retries": 1
+  },
+  "ce2_k1": {
+   "tgc": 0.5119047619047619,
+   "sgc": 0.2857142857142857,
+   "tgc_drop_missing": 0.5119047619047619,
+   "sgc_drop_missing": 0.2857142857142857,
+   "by_difficulty": {
+    "Easy": {
+     "n": 57,
+     "tgc": 0.7543859649122807,
+     "n_scenarios": 19,
+     "sgc": 0.6052631578947368
+    },
+    "Medium": {
+     "n": 48,
+     "tgc": 0.4895833333333333,
+     "n_scenarios": 16,
+     "sgc": 0.15625
+    },
+    "Hard": {
+     "n": 63,
+     "tgc": 0.30952380952380953,
+     "n_scenarios": 21,
+     "sgc": 0.09523809523809523
+    }
+   },
+   "episodes": 336,
+   "missing": 0,
+   "prompt_tokens_per_task": 88783.98214285714,
+   "completion_tokens_per_task": 6915.005952380952,
+   "steps_per_task": 9.625,
+   "episode_seconds": 278.69940476190476,
+   "step_cap_hits": 2,
+   "token_cap_hits": 0,
+   "context_exceeded": 0,
+   "collateral_damage": 10,
+   "complete_task_not_called": 2,
+   "fs_probe": 0,
+   "max_prompt_tokens": 21498,
+   "trials_agree_share": 0.7023809523809523,
+   "prompt_tokens_p50": 60626.0,
+   "prompt_tokens_p90": 185408.0,
+   "completion_tokens_p50": 4578.0,
+   "completion_tokens_p90": 16071.0,
+   "episode_seconds_p50": 182.6,
+   "episode_seconds_p90": 620.8,
+   "pass_fraction": 0.7511606313834726,
+   "infra_retries": 1
+  },
+  "ce2_k2": {
+   "tgc": 0.4732142857142857,
+   "sgc": 0.2767857142857143,
+   "tgc_drop_missing": 0.4732142857142857,
+   "sgc_drop_missing": 0.2767857142857143,
+   "by_difficulty": {
+    "Easy": {
+     "n": 57,
+     "tgc": 0.6842105263157895,
+     "n_scenarios": 19,
+     "sgc": 0.5263157894736842
+    },
+    "Medium": {
+     "n": 48,
+     "tgc": 0.5,
+     "n_scenarios": 16,
+     "sgc": 0.25
+    },
+    "Hard": {
+     "n": 63,
+     "tgc": 0.2619047619047619,
+     "n_scenarios": 21,
+     "sgc": 0.07142857142857142
+    }
+   },
+   "episodes": 336,
+   "missing": 0,
+   "prompt_tokens_per_task": 95999.03571428571,
+   "completion_tokens_per_task": 6877.702380952381,
+   "steps_per_task": 10.598214285714286,
+   "episode_seconds": 277.67767857142854,
+   "step_cap_hits": 3,
+   "token_cap_hits": 0,
+   "context_exceeded": 0,
+   "collateral_damage": 10,
+   "complete_task_not_called": 3,
+   "fs_probe": 0,
+   "max_prompt_tokens": 21236,
+   "trials_agree_share": 0.7678571428571429,
+   "prompt_tokens_p50": 70167.0,
+   "prompt_tokens_p90": 196623.0,
+   "completion_tokens_p50": 5172.0,
+   "completion_tokens_p90": 15142.0,
+   "episode_seconds_p50": 209.0,
+   "episode_seconds_p90": 577.7,
+   "pass_fraction": 0.7330547818012999,
+   "infra_retries": 0
+  },
+  "ce3_k02": {
+   "tgc": 0.6160714285714286,
+   "sgc": 0.44642857142857145,
+   "tgc_drop_missing": 0.6160714285714286,
+   "sgc_drop_missing": 0.44642857142857145,
+   "by_difficulty": {
+    "Easy": {
+     "n": 57,
+     "tgc": 0.7894736842105263,
+     "n_scenarios": 19,
+     "sgc": 0.6842105263157895
+    },
+    "Medium": {
+     "n": 48,
+     "tgc": 0.6458333333333334,
+     "n_scenarios": 16,
+     "sgc": 0.40625
+    },
+    "Hard": {
+     "n": 63,
+     "tgc": 0.4365079365079365,
+     "n_scenarios": 21,
+     "sgc": 0.2619047619047619
+    }
+   },
+   "episodes": 336,
+   "missing": 0,
+   "prompt_tokens_per_task": 114902.38690476191,
+   "completion_tokens_per_task": 7206.788690476191,
+   "steps_per_task": 11.050595238095237,
+   "episode_seconds": 285.10625,
+   "step_cap_hits": 1,
+   "token_cap_hits": 0,
+   "context_exceeded": 0,
+   "collateral_damage": 13,
+   "complete_task_not_called": 1,
+   "fs_probe": 0,
+   "max_prompt_tokens": 22311,
+   "trials_agree_share": 0.8035714285714286,
+   "prompt_tokens_p50": 91960.0,
+   "prompt_tokens_p90": 220559.0,
+   "completion_tokens_p50": 5333.0,
+   "completion_tokens_p90": 15239.0,
+   "episode_seconds_p50": 221.2,
+   "episode_seconds_p90": 582.0,
+   "pass_fraction": 0.787372330547818,
+   "infra_retries": 0
+  }
+ },
+ "vs_seed": {
+  "ce3_k02": {
+   "d_tgc": 0.23809523809523814,
+   "ci_tgc": [
+    0.16666666666666669,
+    0.31249999999999994
+   ],
+   "d_sgc": 0.2946428571428572,
+   "ci_sgc": [
+    0.18750000000000003,
+    0.4017857142857143
+   ],
+   "cross_window": true
+  }
+ },
+ "pairs": {
+  "ce3_k02 − ce2_k1": {
+   "d_tgc": 0.10416666666666674,
+   "ci_tgc": [
+    0.044642857142857095,
+    0.16369047619047616
+   ],
+   "d_sgc": 0.16071428571428575,
+   "ci_sgc": [
+    0.08035714285714285,
+    0.2410714285714286
+   ],
+   "cross_window": true,
+   "label": "cross-window: the reused arm ran in CE2's window (2026-10-23)"
+  },
+  "ce3_k02 − ce2_k2": {
+   "d_tgc": 0.1428571428571429,
+   "ci_tgc": [
+    0.0803571428571429,
+    0.2053571428571429
+   ],
+   "d_sgc": 0.16964285714285715,
+   "ci_sgc": [
+    0.08035714285714285,
+    0.25892857142857145
+   ],
+   "cross_window": true,
+   "label": "cross-window: the reused arm ran in CE2's window (2026-10-23)"
+  }
+ },
+ "windows": {
+  "this window": [
+   "ce3_k02"
+  ],
+  "reused from CE2's window (2026-10-23)": [
+   "seed",
+   "ce2_k1",
+   "ce2_k2"
+  ]
+ },
+ "search": {
+  "ce3_k02": {
+   "optimizer": {
+    "calls": 6,
+    "errors": 0,
+    "models": [
+     "aws/claude-sonnet-5-5"
+    ],
+    "input_tokens": 6269403,
+    "output_tokens": 1194931,
+    "cache_read_tokens": 85454718,
+    "cache_write_tokens": 5787729,
+    "proxy_usd": 44.47,
+    "cli_reported_usd": 111.18,
+    "per_role": {
+     "optimizer/cand_0001": {
+      "calls": 1,
+      "in": 1956331,
+      "out": 267527,
+      "cache_read": 23599497,
+      "cache_write": 1834050
+     },
+     "optimizer/cand_0002": {
+      "calls": 1,
+      "in": 815787,
+      "out": 149371,
+      "cache_read": 10818048,
+      "cache_write": 752560
+     },
+     "optimizer/cand_0003": {
+      "calls": 1,
+      "in": 1224309,
+      "out": 241363,
+      "cache_read": 13366602,
+      "cache_write": 1117834
+     },
+     "optimizer/cand_0004": {
+      "calls": 1,
+      "in": 749621,
+      "out": 149549,
+      "cache_read": 12523430,
+      "cache_write": 681511
+     },
+     "optimizer/cand_0005": {
+      "calls": 1,
+      "in": 702011,
+      "out": 156475,
+      "cache_read": 9412445,
+      "cache_write": 639349
+     },
+     "optimizer/cand_0006": {
+      "calls": 1,
+      "in": 821344,
+      "out": 230646,
+      "cache_read": 15734696,
+      "cache_write": 762425
+     }
+    },
+    "call_seconds_mean": 1177.1,
+    "call_seconds_p90": 1665.15,
+    "optimizer_seconds_total": 7062
+   },
+   "rollouts": {
+    "counted": 882,
+    "cache_hits": 204,
+    "lint_reject_batches": 0,
+    "infra": 0,
+    "mean_reward_counted": 0.8186,
+    "prompt_tokens": {
+     "mean": 77755.8,
+     "p50": 66167.0,
+     "p90": 133153.0
+    },
+    "completion_tokens": {
+     "mean": 4532.5,
+     "p50": 3645.0,
+     "p90": 8416.0
+    },
+    "max_prompt_tokens": 21128,
+    "steps": {
+     "mean": 8.8,
+     "p50": 8.0,
+     "p90": 15.0
+    },
+    "episode_seconds": {
+     "mean": 208.6,
+     "p50": 165.3,
+     "p90": 372.0
+    },
+    "step_cap_hits": 0,
+    "token_cap_hits": 0,
+    "context_exceeded": 0,
+    "search_wall": [
+     "2026-10-24T11:07:01Z",
+     "2026-10-24T15:17:35Z"
+    ]
+   },
+   "champion_search_score": null,
+   "champion_search_label": null,
+   "time_to_champion": null,
+   "freeze": {
+    "arm": "ce3_k02",
+    "k_se": 0.2,
+    "best_id": "cand_0006",
+    "inert": false,
+    "label": "",
+    "tree_sha256": "e0ec3d94752bd3a2f067dfa2522695767d4077888a5f62fa360991c3e04019fb",
+    "run_candidate_tree_sha256": "e0ec3d94752bd3a2f067dfa2522695767d4077888a5f62fa360991c3e04019fb",
+    "seed_tree_sha256": "85a0da9cec2206a7bc683c11d60b5cb0acac7328d43c6e9197324d1e45971f3c",
+    "best_val": 0.8775510204081632,
+    "imp": {
+     "1_code_pin": {
+      "ok": true,
+      "cap_evolve_file": "/workspace/worktrees/cape-impr2/core/cap_evolve/__init__.py",
+      "head": "3db96a08ef77d7701f21771d389c6471a5d88344",
+      "clean": true
+     },
+     "2_skills_pin": {
+      "ok": true,
+      "resolved": "/workspace/worktrees/cape-impr2/skills",
+      "home_skills_exists": true
+     },
+     "3_spec_k_se": {
+      "ok": true,
+      "value": 0.2,
+      "expected": 0.2
+     },
+     "3_run_config": {
+      "ok": true,
+      "run_config_events": 2,
+      "spec_k_se": 0.2
+     },
+     "4_effective_k_se": {
+      "ok": true,
+      "hill_climb_cmdlines": 2,
+      "k_se_values": [
+       "0.2"
+      ],
+      "expected": 0.2,
+      "gate_events_mentioning_k_se": 0
+     },
+     "5_instructions": {
+      "ok": true,
+      "iterations": 6,
+      "diff_only_insertion": true,
+      "detail": [
+       {
+        "cid": "cand_0001",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       },
+       {
+        "cid": "cand_0002",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       },
+       {
+        "cid": "cand_0003",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       },
+       {
+        "cid": "cand_0004",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       },
+       {
+        "cid": "cand_0005",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       },
+       {
+        "cid": "cand_0006",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       }
+      ]
+     },
+     "6_guidance": {
+      "ok": true,
+      "detail": [
+       {
+        "cid": "cand_0001",
+        "tools": "sha_match",
+        "system-prompt": "sha_match",
+        "diagnose": "head_match"
+       },
+       {
+        "cid": "cand_0002",
+        "tools": "sha_match",
+        "system-prompt": "sha_match",
+        "diagnose": "head_match"
+       },
+       {
+        "cid": "cand_0003",
+        "tools": "sha_match",
+        "system-prompt": "sha_match",
+        "diagnose": "head_match"
+       },
+       {
+        "cid": "cand_0004",
+        "tools": "sha_match",
+        "system-prompt": "sha_match",
+        "diagnose": "head_match"
+       },
+       {
+        "cid": "cand_0005",
+        "tools": "sha_match",
+        "system-prompt": "sha_match",
+        "diagnose": "head_match"
+       },
+       {
+        "cid": "cand_0006",
+        "tools": "sha_match",
+        "system-prompt": "sha_match",
+        "diagnose": "head_match"
+       }
+      ],
+      "pinned_sha256": {
+       "tools": "d6a5ec65e46113a64124cfc2e842a95a493e1c13679f380361ec4447a69d994a",
+       "system-prompt": "4df6976688391b55e783b9cb6631523718c40a4ed4fbee77d71d450d105de51b",
+       "diagnose": "ef0eb2fc3cf971eae63f377b3e318664d617e17c2aa70de79557e825b24ff677"
+      }
+     },
+     "7_hill_climb_script": {
+      "ok": true,
+      "path": "/workspace/worktrees/cape-impr2/skills/algorithms/hill-climb/scripts/run.py",
+      "sha256": "c04938fcfa72bfb16dcc61fe7d2ee3dc370e0a1510953f2e35ddb140b2f80641"
+     },
+     "all_ok": true
+    }
+   },
+   "iterations": [
+    {
+     "candidate": "cand_0001",
+     "accept": true,
+     "val": 0.7482993197278912,
+     "parent_val": 0.3741496598639456,
+     "indecisive": false,
+     "delta": 0.3741,
+     "se": 0.0465,
+     "k_se": 0.2,
+     "bar": 0.0093,
+     "would_pass_k1": true
+    },
+    {
+     "candidate": "cand_0002",
+     "accept": true,
+     "val": 0.7891156462585034,
+     "parent_val": 0.7482993197278912,
+     "indecisive": false,
+     "delta": 0.0408,
+     "se": 0.0385,
+     "k_se": 0.2,
+     "bar": 0.0077,
+     "would_pass_k1": true
+    },
+    {
+     "candidate": "cand_0003",
+     "accept": true,
+     "val": 0.8299319727891157,
+     "parent_val": 0.7891156462585034,
+     "indecisive": false,
+     "delta": 0.0408,
+     "se": 0.0385,
+     "k_se": 0.2,
+     "bar": 0.0077,
+     "would_pass_k1": true
+    },
+    {
+     "candidate": "cand_0004",
+     "accept": false,
+     "val": 0.8367346938775511,
+     "parent_val": 0.8299319727891157,
+     "indecisive": false,
+     "delta": 0.0068,
+     "se": 0.0341,
+     "k_se": 0.2,
+     "bar": 0.0068,
+     "would_pass_k1": false
+    },
+    {
+     "candidate": "cand_0005",
+     "accept": false,
+     "val": 0.8299319727891157,
+     "parent_val": 0.8299319727891157,
+     "indecisive": false,
+     "delta": 0.0,
+     "se": 0.0334,
+     "k_se": 0.2,
+     "bar": 0.0067,
+     "would_pass_k1": false
+    },
+    {
+     "candidate": "cand_0006",
+     "accept": true,
+     "val": 0.8775510204081632,
+     "parent_val": 0.8299319727891157,
+     "indecisive": false,
+     "delta": 0.0476,
+     "se": 0.0352,
+     "k_se": 0.2,
+     "bar": 0.007,
+     "would_pass_k1": true
+    }
+   ],
+   "iterations_done": 6,
+   "iterations_consumed": 6,
+   "accepted": 4,
+   "best_search_score": 0.8775510204081632,
+   "metric_calls": 1029,
+   "capevolve_optimizer_usd": 111.18231024999999,
+   "model_usage_by_model": {
+    "aws/claude-sonnet-5-5": {
+     "in": 481674,
+     "out": 1194931,
+     "cache_read": 85454718,
+     "cache_write": 5787729,
+     "results": 6
+    }
+   },
+   "k_se": 0.2
+  }
+ },
+ "search_reused_ce2": {
+  "ce2_k1": {
+   "optimizer": {
+    "calls": 6,
+    "errors": 0,
+    "models": [
+     "aws/claude-sonnet-5-5"
+    ],
+    "input_tokens": 4917940,
+    "output_tokens": 1126883,
+    "cache_read_tokens": 89087964,
+    "cache_write_tokens": 4074396,
+    "proxy_usd": 40.96,
+    "cli_reported_usd": 102.4,
+    "per_role": {
+     "optimizer/cand_0001": {
+      "calls": 1,
+      "in": 787159,
+      "out": 216057,
+      "cache_read": 21515188,
+      "cache_write": 696930
+     },
+     "optimizer/cand_0002": {
+      "calls": 1,
+      "in": 852114,
+      "out": 163665,
+      "cache_read": 12221404,
+      "cache_write": 752233
+     },
+     "optimizer/cand_0003": {
+      "calls": 1,
+      "in": 354197,
+      "out": 92686,
+      "cache_read": 6970715,
+      "cache_write": 310589
+     },
+     "optimizer/cand_0004": {
+      "calls": 1,
+      "in": 920320,
+      "out": 155621,
+      "cache_read": 9381635,
+      "cache_write": 717009
+     },
+     "optimizer/cand_0005": {
+      "calls": 1,
+      "in": 857795,
+      "out": 202638,
+      "cache_read": 16555016,
+      "cache_write": 661225
+     },
+     "optimizer/cand_0006": {
+      "calls": 1,
+      "in": 1146355,
+      "out": 296216,
+      "cache_read": 22444006,
+      "cache_write": 936410
+     }
+    },
+    "call_seconds_mean": 1061.7,
+    "call_seconds_p90": 1382.35,
+    "optimizer_seconds_total": 6370
+   },
+   "rollouts": {
+    "counted": 882,
+    "cache_hits": 204,
+    "lint_reject_batches": 0,
+    "infra": 0,
+    "mean_reward_counted": 0.6825,
+    "prompt_tokens": {
+     "mean": 52454.3,
+     "p50": 42838.0,
+     "p90": 102914.0
+    },
+    "completion_tokens": {
+     "mean": 3777.0,
+     "p50": 3056.0,
+     "p90": 7096.0
+    },
+    "max_prompt_tokens": 22498,
+    "steps": {
+     "mean": 6.2,
+     "p50": 5.0,
+     "p90": 11.0
+    },
+    "episode_seconds": {
+     "mean": 157.7,
+     "p50": 128.5,
+     "p90": 293.2
+    },
+    "step_cap_hits": 0,
+    "token_cap_hits": 0,
+    "context_exceeded": 0,
+    "search_wall": [
+     "2026-10-23T11:46:30Z",
+     "2026-10-23T16:32:33Z"
+    ]
+   },
+   "champion_search_score": null,
+   "champion_search_label": null,
+   "time_to_champion": null,
+   "freeze": {
+    "arm": "ce2_k1",
+    "k_se": 1.0,
+    "best_id": "cand_0001",
+    "inert": false,
+    "label": "",
+    "tree_sha256": "4be1fd94503a9ff4d08965ab5164baa7425ea2f71eef3d4a82fb5434c3044a36",
+    "run_candidate_tree_sha256": "4be1fd94503a9ff4d08965ab5164baa7425ea2f71eef3d4a82fb5434c3044a36",
+    "seed_tree_sha256": "85a0da9cec2206a7bc683c11d60b5cb0acac7328d43c6e9197324d1e45971f3c",
+    "best_val": 0.6870748299319728,
+    "imp": {
+     "1_code_pin": {
+      "ok": true,
+      "cap_evolve_file": "/workspace/worktrees/cape-impr2/core/cap_evolve/__init__.py",
+      "head": "3db96a08ef77d7701f21771d389c6471a5d88344",
+      "clean": true
+     },
+     "2_skills_pin": {
+      "ok": true,
+      "resolved": "/workspace/worktrees/cape-impr2/skills",
+      "home_skills_exists": true
+     },
+     "3_spec_k_se": {
+      "ok": true,
+      "value": 1.0,
+      "expected": 1.0
+     },
+     "3_run_config": {
+      "ok": true,
+      "run_config_events": 1,
+      "spec_k_se": 1.0
+     },
+     "4_effective_k_se": {
+      "ok": true,
+      "hill_climb_cmdlines": 1,
+      "k_se_values": [
+       "1"
+      ],
+      "expected": 1.0,
+      "gate_events_mentioning_k_se": 0
+     },
+     "5_instructions": {
+      "ok": true,
+      "iterations": 6,
+      "diff_only_insertion": true,
+      "detail": [
+       {
+        "cid": "cand_0001",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       },
+       {
+        "cid": "cand_0002",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       },
+       {
+        "cid": "cand_0003",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       },
+       {
+        "cid": "cand_0004",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       },
+       {
+        "cid": "cand_0005",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       },
+       {
+        "cid": "cand_0006",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       }
+      ]
+     },
+     "6_guidance": {
+      "ok": true,
+      "detail": [
+       {
+        "cid": "cand_0001",
+        "tools": "sha_match",
+        "system-prompt": "sha_match",
+        "diagnose": "head_match"
+       },
+       {
+        "cid": "cand_0002",
+        "tools": "sha_match",
+        "system-prompt": "sha_match",
+        "diagnose": "head_match"
+       },
+       {
+        "cid": "cand_0003",
+        "tools": "sha_match",
+        "system-prompt": "sha_match",
+        "diagnose": "head_match"
+       },
+       {
+        "cid": "cand_0004",
+        "tools": "sha_match",
+        "system-prompt": "sha_match",
+        "diagnose": "head_match"
+       },
+       {
+        "cid": "cand_0005",
+        "tools": "sha_match",
+        "system-prompt": "sha_match",
+        "diagnose": "head_match"
+       },
+       {
+        "cid": "cand_0006",
+        "tools": "sha_match",
+        "system-prompt": "sha_match",
+        "diagnose": "head_match"
+       }
+      ],
+      "pinned_sha256": {
+       "tools": "d6a5ec65e46113a64124cfc2e842a95a493e1c13679f380361ec4447a69d994a",
+       "system-prompt": "4df6976688391b55e783b9cb6631523718c40a4ed4fbee77d71d450d105de51b",
+       "diagnose": "ef0eb2fc3cf971eae63f377b3e318664d617e17c2aa70de79557e825b24ff677"
+      }
+     },
+     "7_hill_climb_script": {
+      "ok": true,
+      "path": "/workspace/worktrees/cape-impr2/skills/algorithms/hill-climb/scripts/run.py",
+      "sha256": "c04938fcfa72bfb16dcc61fe7d2ee3dc370e0a1510953f2e35ddb140b2f80641"
+     },
+     "all_ok": true
+    }
+   },
+   "iterations": [
+    {
+     "candidate": "cand_0001",
+     "accept": true,
+     "val": 0.6870748299319728,
+     "parent_val": 0.3741496598639456,
+     "indecisive": false,
+     "delta": 0.3129,
+     "se": 0.0481,
+     "k_se": 1.0,
+     "bar": 0.0481,
+     "would_pass_k1": true
+    },
+    {
+     "candidate": "cand_0002",
+     "accept": false,
+     "val": 0.7210884353741497,
+     "parent_val": 0.6870748299319728,
+     "indecisive": false,
+     "delta": 0.034,
+     "se": 0.0457,
+     "k_se": 1.0,
+     "bar": 0.0457,
+     "would_pass_k1": false
+    },
+    {
+     "candidate": "cand_0003",
+     "accept": false,
+     "val": 0.6802721088435374,
+     "parent_val": 0.6870748299319728,
+     "indecisive": false,
+     "delta": -0.0068,
+     "se": 0.0497,
+     "k_se": 1.0,
+     "bar": 0.0497,
+     "would_pass_k1": false
+    },
+    {
+     "candidate": "cand_0004",
+     "accept": false,
+     "val": 0.6666666666666666,
+     "parent_val": 0.6870748299319728,
+     "indecisive": false,
+     "delta": -0.0204,
+     "se": 0.0478,
+     "k_se": 1.0,
+     "bar": 0.0478,
+     "would_pass_k1": false
+    },
+    {
+     "candidate": "cand_0005",
+     "accept": false,
+     "val": 0.6802721088435374,
+     "parent_val": 0.6870748299319728,
+     "indecisive": false,
+     "delta": -0.0068,
+     "se": 0.0468,
+     "k_se": 1.0,
+     "bar": 0.0468,
+     "would_pass_k1": false
+    },
+    {
+     "candidate": "cand_0006",
+     "accept": false,
+     "val": 0.6598639455782312,
+     "parent_val": 0.6870748299319728,
+     "indecisive": false,
+     "delta": -0.0272,
+     "se": 0.0501,
+     "k_se": 1.0,
+     "bar": 0.0501,
+     "would_pass_k1": false
+    }
+   ],
+   "iterations_done": 6,
+   "iterations_consumed": 6,
+   "accepted": 1,
+   "best_search_score": 0.6870748299319728,
+   "metric_calls": 1029,
+   "capevolve_optimizer_usd": 102.39875200000003,
+   "model_usage_by_model": {
+    "aws/claude-sonnet-5-5": {
+     "in": 843544,
+     "out": 1126883,
+     "cache_read": 89087964,
+     "cache_write": 4074396,
+     "results": 6
+    }
+   },
+   "k_se": 1
+  },
+  "ce2_k2": {
+   "optimizer": {
+    "calls": 6,
+    "errors": 0,
+    "models": [
+     "aws/claude-sonnet-5-5"
+    ],
+    "input_tokens": 2585982,
+    "output_tokens": 777510,
+    "cache_read_tokens": 55103897,
+    "cache_write_tokens": 2222890,
+    "proxy_usd": 25.08,
+    "cli_reported_usd": 62.7,
+    "per_role": {
+     "optimizer/cand_0001": {
+      "calls": 1,
+      "in": 921483,
+      "out": 308177,
+      "cache_read": 21817933,
+      "cache_write": 821560
+     },
+     "optimizer/cand_0002": {
+      "calls": 1,
+      "in": 837505,
+      "out": 267141,
+      "cache_read": 19273773,
+      "cache_write": 727318
+     },
+     "optimizer/cand_0003": {
+      "calls": 1,
+      "in": 207338,
+      "out": 49773,
+      "cache_read": 3592873,
+      "cache_write": 174469
+     },
+     "optimizer/cand_0004": {
+      "calls": 1,
+      "in": 209708,
+      "out": 60148,
+      "cache_read": 3239301,
+      "cache_write": 165614
+     },
+     "optimizer/cand_0005": {
+      "calls": 1,
+      "in": 188923,
+      "out": 44518,
+      "cache_read": 3371510,
+      "cache_write": 156774
+     },
+     "optimizer/cand_0006": {
+      "calls": 1,
+      "in": 221025,
+      "out": 47753,
+      "cache_read": 3808507,
+      "cache_write": 177155
+     }
+    },
+    "call_seconds_mean": 803.5,
+    "call_seconds_p90": 1431.58,
+    "optimizer_seconds_total": 4821
+   },
+   "rollouts": {
+    "counted": 882,
+    "cache_hits": 204,
+    "lint_reject_batches": 0,
+    "infra": 0,
+    "mean_reward_counted": 0.678,
+    "prompt_tokens": {
+     "mean": 61165.4,
+     "p50": 48000.0,
+     "p90": 120377.0
+    },
+    "completion_tokens": {
+     "mean": 4350.1,
+     "p50": 3538.0,
+     "p90": 7823.0
+    },
+    "max_prompt_tokens": 23091,
+    "steps": {
+     "mean": 7.5,
+     "p50": 6.0,
+     "p90": 13.0
+    },
+    "episode_seconds": {
+     "mean": 177.3,
+     "p50": 143.5,
+     "p90": 314.7
+    },
+    "step_cap_hits": 0,
+    "token_cap_hits": 0,
+    "context_exceeded": 0,
+    "search_wall": [
+     "2026-10-23T11:49:47Z",
+     "2026-10-23T16:27:52Z"
+    ]
+   },
+   "champion_search_score": null,
+   "champion_search_label": null,
+   "time_to_champion": null,
+   "freeze": {
+    "arm": "ce2_k2",
+    "k_se": 2.0,
+    "best_id": "cand_0001",
+    "inert": false,
+    "label": "",
+    "tree_sha256": "ea4c49df73fa35c3b342f26367ef875b968c8a771cf2ece2aa57a0688dcdf4b5",
+    "run_candidate_tree_sha256": "ea4c49df73fa35c3b342f26367ef875b968c8a771cf2ece2aa57a0688dcdf4b5",
+    "seed_tree_sha256": "85a0da9cec2206a7bc683c11d60b5cb0acac7328d43c6e9197324d1e45971f3c",
+    "best_val": 0.7551020408163265,
+    "imp": {
+     "1_code_pin": {
+      "ok": true,
+      "cap_evolve_file": "/workspace/worktrees/cape-impr2/core/cap_evolve/__init__.py",
+      "head": "3db96a08ef77d7701f21771d389c6471a5d88344",
+      "clean": true
+     },
+     "2_skills_pin": {
+      "ok": true,
+      "resolved": "/workspace/worktrees/cape-impr2/skills",
+      "home_skills_exists": true
+     },
+     "3_spec_k_se": {
+      "ok": true,
+      "value": 2.0,
+      "expected": 2.0
+     },
+     "3_run_config": {
+      "ok": true,
+      "run_config_events": 1,
+      "spec_k_se": 2.0
+     },
+     "4_effective_k_se": {
+      "ok": true,
+      "hill_climb_cmdlines": 1,
+      "k_se_values": [
+       "2"
+      ],
+      "expected": 2.0,
+      "gate_events_mentioning_k_se": 0
+     },
+     "5_instructions": {
+      "ok": true,
+      "iterations": 6,
+      "diff_only_insertion": true,
+      "detail": [
+       {
+        "cid": "cand_0001",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       },
+       {
+        "cid": "cand_0002",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       },
+       {
+        "cid": "cand_0003",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       },
+       {
+        "cid": "cand_0004",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       },
+       {
+        "cid": "cand_0005",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       },
+       {
+        "cid": "cand_0006",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       }
+      ]
+     },
+     "6_guidance": {
+      "ok": true,
+      "detail": [
+       {
+        "cid": "cand_0001",
+        "tools": "sha_match",
+        "system-prompt": "sha_match",
+        "diagnose": "head_match"
+       },
+       {
+        "cid": "cand_0002",
+        "tools": "sha_match",
+        "system-prompt": "sha_match",
+        "diagnose": "head_match"
+       },
+       {
+        "cid": "cand_0003",
+        "tools": "sha_match",
+        "system-prompt": "sha_match",
+        "diagnose": "head_match"
+       },
+       {
+        "cid": "cand_0004",
+        "tools": "sha_match",
+        "system-prompt": "sha_match",
+        "diagnose": "head_match"
+       },
+       {
+        "cid": "cand_0005",
+        "tools": "sha_match",
+        "system-prompt": "sha_match",
+        "diagnose": "head_match"
+       },
+       {
+        "cid": "cand_0006",
+        "tools": "sha_match",
+        "system-prompt": "sha_match",
+        "diagnose": "head_match"
+       }
+      ],
+      "pinned_sha256": {
+       "tools": "d6a5ec65e46113a64124cfc2e842a95a493e1c13679f380361ec4447a69d994a",
+       "system-prompt": "4df6976688391b55e783b9cb6631523718c40a4ed4fbee77d71d450d105de51b",
+       "diagnose": "ef0eb2fc3cf971eae63f377b3e318664d617e17c2aa70de79557e825b24ff677"
+      }
+     },
+     "7_hill_climb_script": {
+      "ok": true,
+      "path": "/workspace/worktrees/cape-impr2/skills/algorithms/hill-climb/scripts/run.py",
+      "sha256": "c04938fcfa72bfb16dcc61fe7d2ee3dc370e0a1510953f2e35ddb140b2f80641"
+     },
+     "all_ok": true
+    }
+   },
+   "iterations": [
+    {
+     "candidate": "cand_0001",
+     "accept": true,
+     "val": 0.7551020408163265,
+     "parent_val": 0.3741496598639456,
+     "indecisive": false,
+     "delta": 0.381,
+     "se": 0.0466,
+     "k_se": 2.0,
+     "bar": 0.0933,
+     "would_pass_k1": true
+    },
+    {
+     "candidate": "cand_0002",
+     "accept": false,
+     "val": 0.7074829931972789,
+     "parent_val": 0.7551020408163265,
+     "indecisive": false,
+     "delta": -0.0476,
+     "se": 0.0435,
+     "k_se": 2.0,
+     "bar": 0.0871,
+     "would_pass_k1": false
+    },
+    {
+     "candidate": "cand_0003",
+     "accept": false,
+     "val": 0.6122448979591837,
+     "parent_val": 0.7551020408163265,
+     "indecisive": false,
+     "delta": -0.1429,
+     "se": 0.0453,
+     "k_se": 2.0,
+     "bar": 0.0906,
+     "would_pass_k1": false
+    },
+    {
+     "candidate": "cand_0004",
+     "accept": false,
+     "val": 0.673469387755102,
+     "parent_val": 0.7551020408163265,
+     "indecisive": false,
+     "delta": -0.0816,
+     "se": 0.0404,
+     "k_se": 2.0,
+     "bar": 0.0808,
+     "would_pass_k1": false
+    },
+    {
+     "candidate": "cand_0005",
+     "accept": false,
+     "val": 0.6530612244897959,
+     "parent_val": 0.7551020408163265,
+     "indecisive": false,
+     "delta": -0.102,
+     "se": 0.044,
+     "k_se": 2.0,
+     "bar": 0.0879,
+     "would_pass_k1": false
+    },
+    {
+     "candidate": "cand_0006",
+     "accept": false,
+     "val": 0.6666666666666666,
+     "parent_val": 0.7551020408163265,
+     "indecisive": false,
+     "delta": -0.0884,
+     "se": 0.0431,
+     "k_se": 2.0,
+     "bar": 0.0862,
+     "would_pass_k1": false
+    }
+   ],
+   "iterations_done": 6,
+   "iterations_consumed": 6,
+   "accepted": 1,
+   "best_search_score": 0.7551020408163265,
+   "metric_calls": 1029,
+   "capevolve_optimizer_usd": 62.69822100000002,
+   "model_usage_by_model": {
+    "aws/claude-sonnet-5-5": {
+     "in": 363092,
+     "out": 777510,
+     "cache_read": 55103897,
+     "cache_write": 2222890,
+     "results": 6
+    }
+   },
+   "k_se": 2
+  }
+ },
+ "seed_baseline": {
+  "label": "reused from REST P3 (2026-10-20), not re-run, not counted",
+  "seed_hash": "85a0da9cec2206a7bc683c11d60b5cb0acac7328d43c6e9197324d1e45971f3c",
+  "train": {
+   "n": 90,
+   "tgc": 0.4,
+   "pass_fraction": 0.7785,
+   "prompt_tokens_mean": 66367,
+   "completion_tokens_mean": 4034,
+   "max_prompt_tokens": 16016,
+   "steps_mean": 10.36,
+   "episode_seconds_mean": 193.0,
+   "step_cap_hits": 0,
+   "token_cap_hits": 0,
+   "context_exceeded": 0,
+   "fs_probe": 0
+  },
+  "dev": {
+   "n": 57,
+   "tgc": 0.3333,
+   "pass_fraction": 0.7148,
+   "prompt_tokens_mean": 61725,
+   "completion_tokens_mean": 3867,
+   "max_prompt_tokens": 12996,
+   "steps_mean": 9.89,
+   "episode_seconds_mean": 177.7,
+   "step_cap_hits": 0,
+   "token_cap_hits": 0,
+   "context_exceeded": 0,
+   "fs_probe": 0
+  },
+  "union": {
+   "n": 147,
+   "tgc": 0.3741,
+   "pass_fraction": 0.7548,
+   "prompt_tokens_mean": 64567,
+   "completion_tokens_mean": 3969,
+   "max_prompt_tokens": 16016,
+   "steps_mean": 10.18,
+   "episode_seconds_mean": 187.1,
+   "step_cap_hits": 0,
+   "token_cap_hits": 0,
+   "context_exceeded": 0,
+   "fs_probe": 0
+  },
+  "fresh_episodes_on_record": 147,
+  "infra_rows": 0,
+  "wall": [
+   "2026-10-20T21:44:37Z",
+   "2026-10-20T22:07:49Z"
+  ],
+  "reuse_check": {
+   "1_seed_hash_ok": true,
+   "2_code_identical_to_a0c85b4": {
+    "examples/appworld/adapters/aw_agent.py": true,
+    "examples/appworld/seed_capability": true,
+    "examples/appworld/common/evaluator.py": true,
+    "examples/appworld/patches/appworld-extra-headers.patch": true
+   },
+   "3_copy": {
+    "files_src": 147,
+    "files_dst": 147,
+    "listing_sha256_before": "b1b269f19dc7bbd749f108638472443544125c07d6b089b4f881e41f560577ec",
+    "listing_sha256_after": "b1b269f19dc7bbd749f108638472443544125c07d6b089b4f881e41f560577ec",
+    "equal": true
+   },
+   "4_checks": {
+    "records": 147,
+    "ids_equal_train_union_dev": true,
+    "all_seed_100": true,
+    "infra_errors": 0,
+    "trace_key_present": 0,
+    "tgc": {
+     "train": 0.4,
+     "dev": 0.3333,
+     "union": 0.3741
+    },
+    "rest_baseline_tgc": {
+     "train": 0.4,
+     "dev": 0.3333,
+     "union": 0.3741
+    },
+    "other_cache_dirs_in_ce2": 0,
+    "tgc_match": true
+   },
+   "ok": true,
+   "5_seed_baseline_done": true
+  }
+ },
+ "spend_per_provider": {
+  "RITS (agent, unpriced)": "n/a (unpriced); tokens in the arm tables",
+  "gateway (optimizer)": {
+   "ce3_k02": 44.47
+  }
+ },
+ "window_wall": [
+  "2026-10-24T15:21:12.656893Z",
+  "2026-10-24T16:35:53.902090Z"
+ ],
+ "dev_diagnostic_tgc": {
+  "seed": 0.3333,
+  "ce3_k02": 0.8772
+ },
+ "manifest": {
+  "appworld": null,
+  "candidates": null,
+  "m_cap": null,
+  "final_order": {
+   "seed": 2026102407,
+   "sha256": "a19371a4532597aeb8b0c3dc393623bfca783160af83b46dcdd16e6176cc04f2",
+   "cells": 336,
+   "trials": 2,
+   "trial_seeds": "5000 + trial",
+   "infra_retries": 3
+  },
+  "freeze": {
+   "tree_sha256": {
+    "seed": "85a0da9cec2206a7bc683c11d60b5cb0acac7328d43c6e9197324d1e45971f3c",
+    "ce3_k02": "e0ec3d94752bd3a2f067dfa2522695767d4077888a5f62fa360991c3e04019fb"
+   },
+   "labels": {
+    "seed": "seed",
+    "ce3_k02": ""
+   },
+   "utc": "2026-10-24T15:19:01Z"
+  },
+  "opt_model": "aws/claude-sonnet-5-5",
+  "agent_model": "openai/gpt-oss-120b-a100",
+  "budget": {
+   "rollouts": 900,
+   "opt_tokens": null,
+   "max_metric_calls": 1029,
+   "max_optimizer_usd": null,
+   "optimizer_usd_per_iter": null,
+   "iterations": 6
+  },
+  "trials": {
+   "search": 1,
+   "search_seed": 100,
+   "final": 2,
+   "final_seed_base": 5000
+  },
+  "prices_usd_per_mtok": null
+ },
+ "isolation": {
+  "ce3_k02": {
+   "test_id_hits": 0,
+   "breach": false
+  }
+ }
+}
