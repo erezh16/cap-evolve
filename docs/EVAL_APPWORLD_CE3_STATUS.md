@@ -25,3 +25,11 @@ Posted 'execution started' on #913 (ce3_k02): https://github.com/skillberry-ai/c
 ```json
 {"cp": 1, "prev_cp": 0, "prev_commit": "c2cea7521517866de20d7df2971342df5a296ee2", "utc": "2026-10-24T10:32:07Z", "kind": "posted", "phase": "P0", "done_through": "P1/B4", "next": "P2/acceptance", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "c2cea7521517866de20d7df2971342df5a296ee2", "open_decisions": [], "memory": {"used_pct": 7.65, "peak_pct": 7.65, "state": "OK", "stale": false}, "post": "ce3_k02/start", "url": "https://github.com/skillberry-ai/cap-evolve/issues/913#issuecomment-6383142923"}
 ```
+
+## CE3-0002 · 2026-10-24T10:32Z · P0 hourly posts late · error
+
+The last post on the issue of ce3_k02 is older than 60 minutes (section 8). The auto-poster is restarted by resume.py; checking it now.
+
+```json
+{"cp": 2, "prev_cp": 1, "prev_commit": "dc16daa63f9626ab8d1a83cb0fb212623e856801", "utc": "2026-10-24T10:32:08Z", "kind": "error", "phase": "P0", "done_through": "P1/B4", "next": "P2/acceptance", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "c2cea7521517866de20d7df2971342df5a296ee2", "open_decisions": [], "memory": {"used_pct": 7.72, "peak_pct": 7.72, "state": "OK", "stale": false}}
+```
