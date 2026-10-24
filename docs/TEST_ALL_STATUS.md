@@ -48,3 +48,11 @@ Posted 'GEPA-Full hourly status' on #926 (gepa_full): https://github.com/skillbe
 ```json
 {"cp": 4, "prev_cp": 3, "prev_commit": "da1202d70a3d346bc602180374cfa3d0ac7f1944", "utc": "2026-10-24T22:50:50Z", "kind": "posted", "phase": "P0", "done_through": "P1/b3", "next": "P1/b4", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "da1202d70a3d346bc602180374cfa3d0ac7f1944", "open_decisions": [], "memory": {"used_pct": 7.9, "peak_pct": 8.07, "state": "OK", "stale": false}, "post": "gepa_full/status_20261024T225036", "url": "https://github.com/skillberry-ai/cap-evolve/issues/926#issuecomment-6390539120"}
 ```
+
+## TA-0005 · 2026-10-24T22:53Z · P1 build B4 done · phase_done
+
+B4 done: window.py runs the testall profile (13 arms x 168 x 5 trials, order seed 2026102501, trial seeds 7000+k, per-arm hash check through fetch_artifacts.check_scored instead of tree_hash, section 6.3; root_full relocked whenever the runner exits). analyze_all.py (section 11: TGC/SGC overall and by difficulty, all 78 pairs with a 56-scenario paired bootstrap, 10,000 resamples, Random(0), Holm over the 78 pairs, ranking with CIs, harnesslens-seed noise check, pass-count distribution, stable/flaky shares, pass@k and pass^k, within-task variance, trial-count sensitivity, earlier windows as context) and report_all.py (combined RESULTS.md and 13 per-arm comments), tested on a synthetic 13 x 168 x 5 window in a throwaway state (78 pairs, pass@1 = TGC, monotone pass@k/pass^k; about 15 min at 10,000 resamples). resume.py (section 10) dry run clean. autopost.py runs the 13 staggered timers (TA-0001 to TA-0004 on their slots); the heartbeat checks each issue's age, the guard and the section 8 stall rule. Next: P2 acceptance T1 to T10.
+
+```json
+{"cp": 5, "prev_cp": 4, "prev_commit": "45064a267990ae533d09176ab96e9f13aa326dc3", "utc": "2026-10-24T22:53:14Z", "kind": "phase_done", "phase": "P1", "done_through": "P1/b4", "next": "P2/acceptance", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "45064a267990ae533d09176ab96e9f13aa326dc3", "open_decisions": [], "memory": {"used_pct": 7.87, "peak_pct": 8.07, "state": "OK", "stale": false}}
+```
