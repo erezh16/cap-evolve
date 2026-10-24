@@ -83,3 +83,11 @@ Posted 'Cap-Evolve-impr2 K=0.2 iteration 1' on #913 (ce3_k02): https://github.co
 ```json
 {"cp": 8, "prev_cp": 7, "prev_commit": "b7811f7b518f41b3c9e015d02df3c00bc712515b", "utc": "2026-10-24T11:31:13Z", "kind": "posted", "phase": "P4", "done_through": "P2/acceptance", "next": "P4/searches", "arm": "ce3_k02", "counts": {}, "spend": {}, "artifacts": {}, "code": "832a41f544c8c8efa0eb58470a1ec5928cc2937d", "open_decisions": [], "memory": {"used_pct": 6.66, "peak_pct": 47.58, "state": "OK", "stale": false}, "post": "ce3_k02/iter_1", "url": "https://github.com/skillberry-ai/cap-evolve/issues/913#issuecomment-6383678802"}
 ```
+
+## CE3-0009 · 2026-10-24T11:31Z · P4 arms not independent · decision
+
+Independence check after iteration 1 (plan 9.7, REST CP-0135): the two arms' cand_0001 candidates are byte-identical. Both searches are stopped before iteration 2; the user is asked how to proceed.
+
+```json
+{"cp": 9, "prev_cp": 8, "prev_commit": "37557be99f142ee14ed8203792daa8fb9d108892", "utc": "2026-10-24T11:31:15Z", "kind": "decision", "phase": "P4", "done_through": "P2/acceptance", "next": "P4/searches", "arm": "ce3_k02", "counts": {}, "spend": {}, "artifacts": {}, "code": "832a41f544c8c8efa0eb58470a1ec5928cc2937d", "open_decisions": [], "memory": {"used_pct": 6.66, "peak_pct": 47.58, "state": "OK", "stale": false}, "independence": {"done": true, "identical": true, "sha_prefix": {"ce3_k02": "tree:76a11ff5b05"}, "t": "2026-10-24T11:31:15Z"}}
+```
