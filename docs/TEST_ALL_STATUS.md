@@ -144,3 +144,11 @@ Posted 'WikiSkill: build and acceptance done' on #920 (wikiskill): https://githu
 ```json
 {"cp": 16, "prev_cp": 15, "prev_commit": "22e7bd4c6785c68545d56491f123cbcf7b1c8b41", "utc": "2026-10-24T23:10:47Z", "kind": "posted", "phase": "P2", "done_through": "P2/acceptance", "next": "P3/window", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "1365a97f7a1680769356749d6b69542580ce4219", "open_decisions": [], "memory": {"used_pct": 7.84, "peak_pct": 25.44, "state": "OK", "stale": false}, "post": "wikiskill/accept_done", "url": "https://github.com/skillberry-ai/cap-evolve/issues/920#issuecomment-6390721596"}
 ```
+
+## TA-0017 · 2026-10-24T23:10Z · P2 posted evoskill · posted
+
+Posted 'EvoSkill: build and acceptance done' on #921 (evoskill): https://github.com/skillberry-ai/cap-evolve/issues/921#issuecomment-6390722328
+
+```json
+{"cp": 17, "prev_cp": 16, "prev_commit": "9c9697fa1bb2dd1887b3469a3c40d0a09b35615a", "utc": "2026-10-24T23:10:53Z", "kind": "posted", "phase": "P2", "done_through": "P2/acceptance", "next": "P3/window", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "1365a97f7a1680769356749d6b69542580ce4219", "open_decisions": [], "memory": {"used_pct": 7.85, "peak_pct": 25.44, "state": "OK", "stale": false}, "post": "evoskill/accept_done", "url": "https://github.com/skillberry-ai/cap-evolve/issues/921#issuecomment-6390722328"}
+```
