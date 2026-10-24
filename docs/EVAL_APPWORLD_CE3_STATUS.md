@@ -99,3 +99,11 @@ Repair. Iteration 1 of ce3_k02 was scored and ACCEPTED (CE3-0007: val 0.7483 fro
 ```json
 {"cp": 10, "prev_cp": 9, "prev_commit": "821a87b516cf6f29cff33f2ab2ec5d45c6d4a6d2", "utc": "2026-10-24T11:33:21Z", "kind": "repair", "phase": "P4", "done_through": "P2/acceptance", "next": "P4/searches", "arm": "ce3_k02", "counts": {}, "spend": {}, "artifacts": {}, "code": "821a87b516cf6f29cff33f2ab2ec5d45c6d4a6d2", "open_decisions": [], "memory": {"used_pct": 5.49, "peak_pct": 47.58, "state": "OK", "stale": false}}
 ```
+
+## CE3-0011 · 2026-10-24T11:33Z · P4 searches launched · phase_start
+
+P4: chain(s) ce3_k02 started (search, freeze, isolation scan); pid files AW_STATE/p4/<arm>.pid. Running now: ce3_k02. Global slots 24; memory 5.5%.
+
+```json
+{"cp": 11, "prev_cp": 10, "prev_commit": "370a9af096e0289032a46cc718e2e94fab2e7380", "utc": "2026-10-24T11:33:22Z", "kind": "phase_start", "phase": "P4", "done_through": "P2/acceptance", "next": "P4/searches", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "821a87b516cf6f29cff33f2ab2ec5d45c6d4a6d2", "open_decisions": [], "memory": {"used_pct": 5.5, "peak_pct": 47.58, "state": "OK", "stale": false}}
+```
