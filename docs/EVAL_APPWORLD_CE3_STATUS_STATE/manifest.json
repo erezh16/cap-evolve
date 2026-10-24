@@ -66,5 +66,13 @@
    "ce3_k02": ""
   },
   "utc": "2026-10-24T15:19:01Z"
+ },
+ "final_order": {
+  "seed": 2026102407,
+  "sha256": "a19371a4532597aeb8b0c3dc393623bfca783160af83b46dcdd16e6176cc04f2",
+  "cells": 336,
+  "trials": 2,
+  "trial_seeds": "5000 + trial",
+  "infra_retries": 3
  }
 }

@@ -1,0 +1,14 @@
+{
+ "window": "final",
+ "cells_total": 336,
+ "cells_done": 19,
+ "per_arm": {
+  "ce3_k02": {
+   "done": 19,
+   "infra_missing": 0,
+   "infra_retries": 0,
+   "context_exceeded": 0
+  }
+ },
+ "order_sha256": "a19371a4532597aeb8b0c3dc393623bfca783160af83b46dcdd16e6176cc04f2"
+}
