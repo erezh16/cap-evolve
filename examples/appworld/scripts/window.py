@@ -41,6 +41,8 @@ if P.LEDGER_PREFIX == "CE2":            # CE2 §16: 20261022 + a fixed suffix, r
     FINAL_ORDER_SEED = 2026102207
 if P.LEDGER_ID == "CE3":                # CE3 §2: 20261024 + the same suffix; the window runs FINAL_ARMS_RUN only
     FINAL_ORDER_SEED = 2026102407
+if P.LEDGER_ID == "ABL":                # ABLATIONS §15: 20261025 + the same fixed suffix; seed + 6 champions, one window
+    FINAL_ORDER_SEED = 2026102507
 WINDOW_ARMS = tuple(getattr(P, "FINAL_ARMS_RUN", P.ARMS))   # CE3: ("ce3_k02",); otherwise every arm
 FINAL_TRIALS = 2
 FINAL_DIR = "final"

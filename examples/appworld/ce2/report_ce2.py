@@ -167,7 +167,7 @@ def artifact_summary(c: str) -> str:
         out.append(f"- `{k}`: changed ({len(b):,} → {len(v):,} chars{extra})")
     out.append(f"- champion `{fz.get('best_id')}`{' (INERT: nothing accepted; frozen as the seed)' if fz.get('inert') else ''}; "
                f"tree sha256 `{(fz.get('tree_sha256') or '')[:16]}` = the run's own candidate; lint-clean; published in "
-               f"`docs/{P.PUSHED.name}/{c}/artifact/` on branch `eval-ce2`")
+               f"`docs/{P.PUSHED.name}/{c}/artifact/` on branch `{P.BRANCH}`")
     return "\n".join(out)
 
 

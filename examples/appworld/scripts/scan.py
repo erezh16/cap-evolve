@@ -39,6 +39,14 @@ elif P.LEDGER_PREFIX == "CE2":   # CE2 §4.1 rule 5: REST's run data and the oth
 
 def locations(c: str) -> dict[str, Path]:
     st = P.AW_STATE / c
+    if c == "abl_cc":                       # ABLATIONS R1.5: the session's workdir, its config dir (the transcripts,
+        root = P.RUN_ROOTS[c]               # main loop and sub-agents), the eval-daemon spool and the artifact
+        out = {"claude -p results": st / "claude_calls", "arm state (driver, daemon log)": st,
+               "session workdir (incl. .eval spool)": root / "work", "session config dir (transcripts)": root / "config",
+               "archived config dir": P.AW_STATE / "archive" / c, "frozen artifact": P.PUSHED / c / "artifact"}
+        for d in (Path(f"/tmp/claude-{__import__('os').getuid()}")).glob(str(root).replace("/", "-").replace("_", "-") + "*"):
+            out[f"claude tmp {d.name[-48:]}"] = d
+        return out
     if P.LEDGER_PREFIX == "CE2":
         rd = P.RUN_ROOTS[c] / ".capevolve" / f"run_{P.RUN_TS[c]}"
         out = {"claude -p results": st / "claude_calls", "arm state (driver)": st,
@@ -107,9 +115,20 @@ def ce2_extras(c: str) -> dict:
                 models[k] += 1
         except json.JSONDecodeError:
             models["<unparsable result>"] += 1
-    r = subprocess.run([str(P.VENVS / "venv-ce2" / "bin" / "python"), "-I", str(HERE.parent / "ce2" / "run_ce2.py"),
+    if c == "abl_cc":                       # no cap-evolve loop: no J1/K to check; the model check still applies
+        return {"model_usage_keys": dict(models), "other_models": sorted(k for k in models if k != P.OPT_MODEL),
+                "j1_iterations": None, "j1_all_ok": None, "k_se_cmdline": None, "k_ok": None, "imp_all_ok": None}
+    abl = P.LEDGER_ID == "ABL"
+    drv = HERE.parent / ("abl/run_abl.py" if abl else "ce2/run_ce2.py")
+    env = dict(__import__("os").environ)
+    if abl:                                 # the imp check's switch item reads the arm's switches from the env
+        sw = {"abl_tools": {"AW_ABL_FEEDBACK": "full", "AW_ABL_TOOLS_LINT": "1"},
+              "abl_notrace": {"AW_ABL_FEEDBACK": "eval_only"}, "abl_tracescore": {"AW_ABL_FEEDBACK": "trace_score"}}
+        env.update(sw.get(c, {"AW_ABL_FEEDBACK": "full"}))
+    r = subprocess.run([str(P.VENVS / ("venv-abl" if abl else "venv-ce2") / "bin" / "python"), "-I", str(drv),
                         "imp-check", "--arm", c, "--level", "full", "--run-dir",
-                        str(P.RUN_ROOTS[c] / ".capevolve" / f"run_{P.RUN_TS[c]}")], capture_output=True, text=True)
+                        str(P.RUN_ROOTS[c] / ".capevolve" / f"run_{P.RUN_TS[c]}")], capture_output=True, text=True,
+                       env=env)
     try:
         imp = json.loads(r.stdout)
     except json.JSONDecodeError:

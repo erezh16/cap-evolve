@@ -103,6 +103,35 @@ def bootstrap(cells, a, b, scen, rng):
     return ci(dt), ci(ds)
 
 
+def bootstrap_p(cells, a, b, scen, rng):
+    """ABLATIONS §15: the same scenario-clustered paired bootstrap, with a two-sided percentile p-value for TGC
+    (p = 2·min(P(Δ* ≤ 0), P(Δ* ≥ 0)), capped at 1)."""
+    scens = sorted(scen)
+    dt, ds = [], []
+    for _ in range(B):
+        pick = [rng.choice(scens) for _ in scens]
+        tasks = [t for s in pick for t in scen[s]]
+        st = {f"{s}#{i}": scen[s] for i, s in enumerate(pick)}
+        dt.append(tgc(cells, a, tasks) - tgc(cells, b, tasks))
+        ds.append(sgc(cells, a, st) - sgc(cells, b, st))
+
+    def ci(xs):
+        xs = sorted(xs)
+        return [xs[int(0.025 * B)], xs[int(0.975 * B) - 1]]
+    p = min(1.0, 2 * min(sum(1 for x in dt if x <= 0), sum(1 for x in dt if x >= 0)) / B)
+    return ci(dt), ci(ds), p
+
+
+def holm(ps: dict) -> dict:
+    """Holm step-down adjusted p-values over one family."""
+    order = sorted(ps, key=lambda k: ps[k])
+    m, out, run = len(order), {}, 0.0
+    for i, k in enumerate(order):
+        run = max(run, min(1.0, (m - i) * ps[k]))
+        out[k] = run
+    return out
+
+
 def by_difficulty(cells, arm, ids, scen, diff, d) -> dict:
     """TGC over the tasks of difficulty d; SGC over the scenarios whose tasks are all of difficulty d."""
     ts = [t for t in ids if diff[t] == d]
@@ -155,7 +184,10 @@ def search_side(c: str) -> dict:
                  "iterations_consumed": pr.get("iterations_consumed"), "accepted": pr.get("accepted"),
                  "best_search_score": pr.get("best_search_score"), "metric_calls": pr.get("metric_calls"),
                  "capevolve_optimizer_usd": pr.get("capevolve_optimizer_usd"), "model_usage_by_model": dict(mu),
-                 "k_se": P.K_SE[c]}
+                 "k_se": P.K_SE.get(c)}                    # abl_cc has no gate (None)
+        if c == "abl_cc":                                  # ABLATIONS §10.2 report: evaluations, not iterations
+            extra.update({k: pr.get(k) for k in ("evaluations_done", "evaluation_requests", "refused", "lint_rejects",
+                                                 "evaluations", "max_turns")})
     return {"optimizer": {"calls": len(u), "errors": sum(1 for r in u if r.get("error")), "models": models,
                           "input_tokens": t["prompt_tokens"], "output_tokens": t["completion_tokens"],
                           "cache_read_tokens": t["cache_read"], "cache_write_tokens": t["cache_write"],
@@ -266,6 +298,21 @@ def main() -> int:
                                                "cross_window": True,
                                                "label": "cross-window: the reused arm ran in CE2's window (2026-10-23)"}
         res["windows"] = {"this window": list(P.CANDIDATES), "reused from CE2's window (2026-10-23)": list(P.REUSED_WINDOW_ARMS)}
+    if P.LEDGER_ID == "ABL":    # ABLATIONS §15: primary 5 (each ablation − abl_ref, raw and Holm p), two secondary pairs
+        prim = {}
+        for c in [x for x in P.CANDIDATES if x != "abl_ref"]:
+            ct, cs, pv = bootstrap_p(cells, c, "abl_ref", scen, rng)
+            prim[c] = {"d_tgc": res["arms"][c]["tgc"] - res["arms"]["abl_ref"]["tgc"], "ci_tgc": ct,
+                       "d_sgc": res["arms"][c]["sgc"] - res["arms"]["abl_ref"]["sgc"], "ci_sgc": cs, "p_raw": pv}
+        for c, ph in holm({c: v["p_raw"] for c, v in prim.items()}).items():
+            prim[c]["p_holm"] = ph
+        res["vs_ref"] = prim
+        res["pairs"] = {}
+        for a1, a2 in (("abl_prompt", "abl_tools"), ("abl_notrace", "abl_tracescore")):
+            ct, cs = bootstrap(cells, a1, a2, scen, rng)
+            res["pairs"][f"{a1} − {a2}"] = {"d_tgc": res["arms"][a1]["tgc"] - res["arms"][a2]["tgc"], "ci_tgc": ct,
+                                             "d_sgc": res["arms"][a1]["sgc"] - res["arms"][a2]["sgc"], "ci_sgc": cs,
+                                             "label": "secondary; one search seed each"}
     if P.LEDGER_ID == "CE2" and not cross:   # CE2 §16: ce2_k2 − ce2_k1, same bootstrap (confounds K with search randomness)
         a2, a1 = P.CANDIDATES[1], P.CANDIDATES[0]
         ct, cs = bootstrap(cells, a2, a1, scen, rng)
@@ -300,10 +347,10 @@ def main() -> int:
         ds = f"{pct(v['d_sgc'])} [{pct(v['ci_sgc'][0])}, {pct(v['ci_sgc'][1])}]" if v else "—"
         tag = " (reused, CE2 window)" if a in getattr(P, "REUSED_WINDOW_ARMS", ()) else ""
         L.append(f"| {a}{tag} | {pct(r['tgc'])} | {pct(r['sgc'])} | {dt} | {ds} | {r['missing']} |")
-    for lab, v in (res.get("pairs") or {}).items():
+    for lab, v in (res.get("pairs") or {}).items() if "vs_ref" not in res else ():   # ABL: printed with vs_ref below
         L += ["", f"{lab}: Δ TGC {pct(v['d_tgc'])} [{pct(v['ci_tgc'][0])}, {pct(v['ci_tgc'][1])}], "
                   f"Δ SGC {pct(v['d_sgc'])} [{pct(v['ci_sgc'][0])}, {pct(v['ci_sgc'][1])}] ({v['label']})."]
-    if res.get("pairs"):
+    if getattr(P, "REUSED_WINDOW_ARMS", ()):
         L += ["", "Every Δ in this table compares an arm of this window with an arm of CE2's window (2026-10-23): "
                   "cross-window, so it includes window-to-window drift (CE2's predecessors measured 4–6 TGC points for "
                   "identical artifacts)."]
@@ -324,13 +371,21 @@ def main() -> int:
         o, rr = res["search"][c]["optimizer"], res["search"][c]["rollouts"]
         O.append(f"| {c} | {rr['counted']} | {rr['cache_hits']} | {rr['lint_reject_batches']} | {o['calls']} | {o['input_tokens']:,} | "
                  f"{o['output_tokens']:,} | {o['cache_read_tokens']:,} | {o['cache_write_tokens']:,} | {usd(o)} | {o['optimizer_seconds_total']:,} |")
+    if "vs_ref" in res:   # ABLATIONS §15: the five primary contrasts, raw and Holm p; the secondary pairs
+        L += ["", "| ablation − abl_ref (primary) | Δ TGC [95% CI] | Δ SGC [95% CI] | p raw | p Holm |", "|---|---|---|---|---|"]
+        for c, v in res["vs_ref"].items():
+            L.append(f"| {c} | {pct(v['d_tgc'])} [{pct(v['ci_tgc'][0])}, {pct(v['ci_tgc'][1])}] | {pct(v['d_sgc'])} "
+                     f"[{pct(v['ci_sgc'][0])}, {pct(v['ci_sgc'][1])}] | {v['p_raw']:.4f} | {v['p_holm']:.4f} |")
+        for lab, v in res.get("pairs", {}).items():
+            L.append(f"\n{lab} (secondary): Δ TGC {pct(v['d_tgc'])} [{pct(v['ci_tgc'][0])}, {pct(v['ci_tgc'][1])}], "
+                     f"Δ SGC {pct(v['d_sgc'])} [{pct(v['ci_sgc'][0])}, {pct(v['ci_sgc'][1])}].")
     if "k2_vs_k1" in res:
         v = res["k2_vs_k1"]
         L.append("")
         L.append(f"ce2_k2 − ce2_k1: Δ TGC {pct(v['d_tgc'])} [{pct(v['ci_tgc'][0])}, {pct(v['ci_tgc'][1])}], "
                  f"Δ SGC {pct(v['d_sgc'])} [{pct(v['ci_sgc'][0])}, {pct(v['ci_sgc'][1])}] ({v['label']}).")
     head = (f"## Final window(s): test_normal, 168 tasks / 56 scenarios × 2 trials; {', '.join(P.CANDIDATES)} run in this "
-            f"window, {', '.join(P.REUSED_WINDOW_ARMS)} reused from CE2's window" if res.get("pairs") else
+            f"window, {', '.join(P.REUSED_WINDOW_ARMS)} reused from CE2's window" if getattr(P, "REUSED_WINDOW_ARMS", ()) else
             f"## Final window: test_normal, 168 tasks / 56 scenarios × 2 trials × {len(ARMS)} arms")
     md = (head + "\n\n" + "\n".join(L)
           + "\n\n## TGC by difficulty\n\n" + "\n".join(D) + "\n\n## Agent cost, tokens and latency per episode (final window)\n\n"
