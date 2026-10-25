@@ -70,5 +70,13 @@
   "packages": 122,
   "core": "/workspace/worktrees/abl-main/core",
   "cape_commit": "75b3bcdd0fc7292f9717f2b6dcb720f147452df9"
+ },
+ "final_order": {
+  "seed": 2026102507,
+  "sha256": "b9306472323436ba7d402e17f3daab23177e84bc084ac3daaed4ff7d674ac117",
+  "cells": 2352,
+  "trials": 2,
+  "trial_seeds": "5000 + trial",
+  "infra_retries": 3
  }
 }

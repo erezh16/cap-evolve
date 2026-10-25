@@ -119,7 +119,7 @@ def chat(messages: list[dict] | str, *, cand: str, role: str, system: str | None
     if isinstance(messages, str):
         messages = [{"role": "user", "content": messages}]
     P.wait_unpaused(cand)                         # rule R2: no new optimizer call while PAUSED
-    if _spent(cand) >= budget:
+    if budget is not None and _spent(cand) >= budget:          # None = no cap (ABLATIONS D12)
         raise BudgetExceeded(f"{cand}: optimizer tokens {_spent(cand):,} >= cap {budget:,}")
     base, key, headers = _gateway()
     sys_text, msgs = to_anthropic(messages, system)
