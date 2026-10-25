@@ -31,7 +31,7 @@ BUDGET_ROLLOUTS = 882                      # B = 6 x 147 counted (fresh) search 
 BUDGET_OPT_TOKENS = None                   # off (D12)
 SEED_BASELINE_PHASE = "P3"                 # one fresh shared seed run (D8)
 LEDGER_ID = "ABL"
-EVAL_NAME = "AppWorld ablations"
+EVAL_NAME = "ablations"
 FINAL_ARMS_RUN = ARMS                      # one window: seed + 6 champions
 REUSED_WINDOW_ARMS = ()
 # earlier evaluations' homes: sealed for every optimizer (R1)

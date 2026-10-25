@@ -27,7 +27,10 @@ def post(cand: str, key: str, title: str, body: str) -> str | None:
     done = P.read_json(POSTS, {}) or {}
     if f"{cand}/{key}" in done:
         return None
-    if P.LEDGER_PREFIX == "CE2":
+    if P.LEDGER_ID == "ABL":
+        ref = (f"Plan: `docs/ABLATIONS.md`; ledger: `docs/{P.LEDGER.name}` on branch `{P.BRANCH}` of the "
+               f"`erezh16/cap-evolve` fork.")
+    elif P.LEDGER_PREFIX == "CE2":
         plan = "EVAL_APPWORLD_CE3.md` (base plan `docs/EVAL_APPWORLD_CE2.md`)" if P.LEDGER_ID == "CE3" else "EVAL_APPWORLD_CE2.md`"
         ref = (f"Plan: `docs/{plan}; ledger: `docs/{P.LEDGER.name}` on branch `{P.BRANCH}` of the "
                f"`erezh16/cap-evolve` fork.")

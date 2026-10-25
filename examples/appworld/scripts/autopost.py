@@ -27,8 +27,10 @@ import post  # noqa: E402
 import status_doc as S  # noqa: E402
 
 STATE = P.AW_STATE / "autopost.json"
+ABL = P.LEDGER_ID == "ABL"                 # the ablations (docs/ABLATIONS.md): six arms, fresh P3, no token cap
 PHASE_NAMES = {"P0": "decisions", "P1": "build", "P2": "acceptance checks",
-               "P3": "seed baseline (reused from REST P3)" if P.LEDGER_PREFIX == "CE2" else "shared seed baseline",
+               "P3": "seed baseline (reused from REST P3)" if P.LEDGER_PREFIX == "CE2" and not ABL
+               else "shared seed baseline",
                "P4": "searches", "P5": "dev diagnostic", "P6": "isolation scan",
                "P7": "final window", "P8": "analysis", "P9": "results posts"}
 
@@ -51,6 +53,15 @@ def stage(c: str, last: dict) -> str:
     if pr.get("stage"):
         return pr["stage"]
     ph = last.get("phase", "P0")
+    if ABL:
+        nx = str(last.get("next") or "")
+        ph = nx.split("/")[0] if nx[:2] in {f"P{i}" for i in range(10)} else ph
+        return {"P0": "decisions", "P1": f"queued; common build in progress ({nx})",
+                "P2": f"queued; acceptance checks in progress ({nx})",
+                "P3": "waiting for the shared seed baseline (P3)",
+                "P4": "searches (two waves of up to 3 arms; plan §4.4)", "P5": "dev diagnostic",
+                "P6": "isolation scan", "P7": "final window", "P8": "analysis", "P9": "results posts"}.get(
+                    ph, f"phase {ph}")
     if P.LEDGER_PREFIX == "CE2":
         nx = str(last.get("next") or "")
         ph = nx.split("/")[0] if nx[:2] in {f"P{i}" for i in range(10)} else ph
@@ -74,8 +85,11 @@ def status_body(c: str) -> str:
     best = pr.get("best_search_score")
     lines = [f"**Hourly status — {P.METHOD_NAMES[c]}** ({P.utcnow()}).", "",
              f"- stage: {stage(c, last)}",
-             *([f"- iterations scored: {pr.get('iterations_done', 0)} of 6, accepted {pr.get('accepted', 0)}"
-                + (f" (gate K = {P.K_SE[c]})" if hasattr(P, "K_SE") else "")] if P.LEDGER_PREFIX == "CE2" else []),
+             *([f"- evaluations run: {pr.get('evaluations_done', 0)} of 6 (plain Claude Code: no gate)"]
+               if ABL and c not in P.K_SE else
+               [f"- iterations scored: {pr.get('iterations_done', 0)} of 6, accepted {pr.get('accepted', 0)}"
+                + (f" (gate K = {P.K_SE[c]:g})" if c in getattr(P, "K_SE", {}) else "")]
+               if P.LEDGER_PREFIX == "CE2" else []),
              f"- counted search rollouts: {counted} of B = {P.BUDGET_ROLLOUTS}"
              + (f" (cache hits {pr['cache_hits']})" if pr.get("cache_hits") is not None else ""),
              f"- optimizer ({P.OPT_MODEL}): {u['calls']} calls, {u['in'] / 1e6:.2f}M in / {u['out'] / 1e6:.2f}M out / "
@@ -87,10 +101,18 @@ def status_body(c: str) -> str:
              + (" (guard sample stale)" if mem.get("stale") else ""),
              f"- last ledger checkpoint: {P.LEDGER_ID}-{int(last.get('cp', 0)):04d} ({last.get('utc')}), "
              f"phase {last.get('phase')}, next `{last.get('next')}`",
-             f"- ETA: {pr.get('eta') or ('plan §18 projection: about 12–16 h in total; per-iteration ETA once the search runs' if P.LEDGER_PREFIX == 'CE2' else 'see the plan projection (§16); updated once the search runs')}",
+             f"- ETA: {pr.get('eta') or _eta_default()}",
              *window_lines(c), "",
              "Counts and aggregates only. No test-set score of any arm is posted before the final window completes."]
     return "\n".join(lines)
+
+
+def _eta_default() -> str:
+    if ABL:
+        return "plan §17 projection: about 26–33 h in total; per-arm ETA once its search runs"
+    if P.LEDGER_PREFIX == "CE2":
+        return "plan §18 projection: about 12–16 h in total; per-iteration ETA once the search runs"
+    return "see the plan projection (§16); updated once the search runs"
 
 
 def window_lines(c: str) -> list[str]:
@@ -136,9 +158,12 @@ def milestones(c: str) -> list[tuple[str, str, str]]:
     out = []
     if counted > 0:
         out.append(("m4_search_start", "search started",
-                    f"**{P.METHOD_NAMES[c]}: counted search started.** Settings as plan §9 for this candidate; "
-                    f"B = {P.BUDGET_ROLLOUTS} counted rollouts and 10M optimizer tokens; gold-free F1 feedback; "
-                    f"baseline = the seed run (P3{', reused from REST' if P.LEDGER_PREFIX == 'CE2' else ''}). Hourly status posts follow."))
+                    f"**{P.METHOD_NAMES[c]}: counted search started.** Settings as plan "
+                    f"{'§10 for this arm' if ABL else '§9 for this candidate'}; "
+                    f"B = {P.BUDGET_ROLLOUTS} counted rollouts"
+                    f"{' (no money or token cap, D12)' if ABL else ' and 10M optimizer tokens'}; "
+                    f"{'feedback as this arm defines it' if ABL else 'gold-free F1 feedback'}; "
+                    f"baseline = the seed run (P3{', reused from REST' if P.LEDGER_PREFIX == 'CE2' and not ABL else ''}). Hourly status posts follow."))
     for q in (1, 2, 3, 4):
         if counted >= q * P.BUDGET_ROLLOUTS // 4:
             out.append((f"m4_budget_{25 * q}", f"{25 * q}% of B",
