@@ -1,40 +1,40 @@
 {
  "window": "final",
  "cells_total": 10920,
- "cells_done": 293,
+ "cells_done": 326,
  "per_arm": {
   "ace": {
-   "done": 25,
-   "infra_missing": 0,
-   "infra_retries": 0,
-   "context_exceeded": 0
-  },
-  "trace2skill": {
-   "done": 21,
-   "infra_missing": 0,
-   "infra_retries": 0,
-   "context_exceeded": 0
-  },
-  "cape_k02": {
-   "done": 18,
-   "infra_missing": 0,
-   "infra_retries": 0,
-   "context_exceeded": 0
-  },
-  "harnesslens": {
-   "done": 22,
-   "infra_missing": 0,
-   "infra_retries": 0,
-   "context_exceeded": 0
-  },
-  "altk": {
    "done": 26,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
   },
+  "trace2skill": {
+   "done": 22,
+   "infra_missing": 0,
+   "infra_retries": 0,
+   "context_exceeded": 0
+  },
+  "harnesslens": {
+   "done": 25,
+   "infra_missing": 0,
+   "infra_retries": 0,
+   "context_exceeded": 0
+  },
+  "cape_k02": {
+   "done": 20,
+   "infra_missing": 0,
+   "infra_retries": 0,
+   "context_exceeded": 0
+  },
+  "altk": {
+   "done": 27,
+   "infra_missing": 0,
+   "infra_retries": 0,
+   "context_exceeded": 0
+  },
   "seed": {
-   "done": 23,
+   "done": 25,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
@@ -46,37 +46,37 @@
    "context_exceeded": 0
   },
   "gepa": {
-   "done": 29,
-   "infra_missing": 0,
-   "infra_retries": 0,
-   "context_exceeded": 0
-  },
-  "wikiskill": {
-   "done": 25,
-   "infra_missing": 0,
-   "infra_retries": 0,
-   "context_exceeded": 0
-  },
-  "metaharness": {
-   "done": 17,
+   "done": 36,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
   },
   "gepa_full": {
-   "done": 24,
+   "done": 28,
+   "infra_missing": 0,
+   "infra_retries": 0,
+   "context_exceeded": 0
+  },
+  "wikiskill": {
+   "done": 28,
+   "infra_missing": 0,
+   "infra_retries": 0,
+   "context_exceeded": 0
+  },
+  "metaharness": {
+   "done": 20,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
   },
   "miprov2": {
-   "done": 14,
+   "done": 16,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
   },
   "skillopt": {
-   "done": 30,
+   "done": 34,
    "infra_missing": 0,
    "infra_retries": 1,
    "context_exceeded": 0
