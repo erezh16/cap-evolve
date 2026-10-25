@@ -418,3 +418,13 @@ Next: P2/A-ABL-CC (user decision), A9 per arm, A13.
 ```json
 {"cp": 49, "prev_cp": 48, "prev_commit": "2eed5c21fd2270098c91adf62e7a7fdb804f79d7", "utc": "2026-10-25T14:46:25Z", "kind": "heartbeat", "phase": "P2", "done_through": "P2/A-ABL-CC-daemon", "next": "P2/A-ABL-CC (user decision), A9 per arm, A13", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "54e148b40a77536e052c1dda164e0752cb8dc2f6", "open_decisions": ["abl_cc init: bundled skills, auto-memory, tool list"], "memory": {"used_pct": 1.99, "peak_pct": 23.21, "state": "OK", "stale": false}, "runner": "none"}
 ```
+
+## ABL-0050 · 2026-10-25T15:11Z · P2 heartbeat · heartbeat
+
+No checkpoint for 25 min. Phase P2, last result: P2/A-ABL-CC-daemon.
+Runner: no runner. Last log line: `2026-10-25T15:10:59Z | memguard | - | sample 5.39% (1767 MB) state OK peak 23.2%`.
+Next: P2/A-ABL-CC (user decision), A9 per arm, A13.
+
+```json
+{"cp": 50, "prev_cp": 49, "prev_commit": "bfe98fffc3b9e1fe189f7074c6a2b1562e55556e", "utc": "2026-10-25T15:11:26Z", "kind": "heartbeat", "phase": "P2", "done_through": "P2/A-ABL-CC-daemon", "next": "P2/A-ABL-CC (user decision), A9 per arm, A13", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "54e148b40a77536e052c1dda164e0752cb8dc2f6", "open_decisions": ["abl_cc init: bundled skills, auto-memory, tool list"], "memory": {"used_pct": 4.52, "peak_pct": 23.21, "state": "OK", "stale": false}, "runner": "none"}
+```
