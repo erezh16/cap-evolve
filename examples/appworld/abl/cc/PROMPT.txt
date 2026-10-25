@@ -1,0 +1,3 @@
+Improve this agent's system prompt (policy/instructions.txt) and tools (tools/) so it solves more tasks.
+Evaluate a candidate on the training tasks with: ./eval_candidate <dir>   (budget: 882 rollouts; one evaluation runs all 147 training tasks)
+Each evaluation returns a ticket; ./eval_status <ticket> shows its progress, then per-task rewards and trajectories under .eval/results/<ticket>/.

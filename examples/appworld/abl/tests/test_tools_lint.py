@@ -11,6 +11,9 @@ EX = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(EX / "adapters"))
 import lints  # noqa: E402
 
+# synthetic lint data: the test never reads the real lint cache or any task file
+lints.lint_data = lambda: {"apps": {"spotify"}, "api_names": {"show_playlist"}, "grams": set(), "contacts": []}
+
 LONG = "Step one: check the account. " * 12          # 348 characters of fixed text
 
 

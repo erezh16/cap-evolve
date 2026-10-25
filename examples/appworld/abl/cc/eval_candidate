@@ -1,0 +1,15 @@
+#!/usr/bin/env python3
+"""Usage: ./eval_candidate <dir>   Queue an evaluation of the candidate in <dir> (a subdirectory of this working
+directory holding policy/instructions.txt and tools/) on the 147 training tasks. Prints a ticket at once."""
+import json, os, sys, time, uuid
+if len(sys.argv) != 2:
+    sys.exit("usage: ./eval_candidate <dir>")
+here = os.path.dirname(os.path.abspath(__file__))
+q = os.path.join(here, ".eval", "requests")
+os.makedirs(q, exist_ok=True)
+ticket = time.strftime("%Y%m%dT%H%M%S") + "-" + uuid.uuid4().hex[:6]
+tmp = os.path.join(q, ticket + ".part")
+with open(tmp, "w") as f:
+    json.dump({"dir": sys.argv[1]}, f)
+os.replace(tmp, os.path.join(q, ticket + ".json"))
+print(ticket)

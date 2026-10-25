@@ -1,0 +1,19 @@
+#!/usr/bin/env python3
+"""Usage: ./eval_status <ticket>   Progress of an evaluation; when done, its summary (per-task rewards) and the
+trajectories directory .eval/results/<ticket>/trajectories/."""
+import json, os, sys
+if len(sys.argv) != 2 or "/" in sys.argv[1] or sys.argv[1].startswith("."):
+    sys.exit("usage: ./eval_status <ticket>")
+here = os.path.dirname(os.path.abspath(__file__))
+t = sys.argv[1]
+d = os.path.join(here, ".eval", "results", t)
+if os.path.exists(os.path.join(here, ".eval", "requests", t + ".json")):
+    print(json.dumps({"ticket": t, "state": "queued"}))
+elif os.path.isfile(os.path.join(d, "summary.json")):
+    s = json.load(open(os.path.join(d, "summary.json")))
+    s["trajectories"] = os.path.join(".eval", "results", t, "trajectories") if "refused" not in s else None
+    print(json.dumps(s, indent=1))
+elif os.path.isfile(os.path.join(d, "status.json")):
+    print(open(os.path.join(d, "status.json")).read())
+else:
+    print(json.dumps({"ticket": t, "state": "unknown ticket"}))
