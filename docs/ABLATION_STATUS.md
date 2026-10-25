@@ -408,3 +408,13 @@ Posted 'Cap evolve traces and score only hourly status' on #935 (abl_tracescore)
 ```json
 {"cp": 48, "prev_cp": 47, "prev_commit": "f5f2107af5b3f134c38281034fcd5da9d7017d3e", "utc": "2026-10-25T14:21:17Z", "kind": "posted", "phase": "P2", "done_through": "P2/A-ABL-CC-daemon", "next": "P2/A-ABL-CC (user decision), A9 per arm, A13", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "54e148b40a77536e052c1dda164e0752cb8dc2f6", "open_decisions": ["abl_cc init: bundled skills, auto-memory, tool list"], "memory": {"used_pct": 2.04, "peak_pct": 23.21, "state": "OK", "stale": false}, "post": "abl_tracescore/status_20261025T1421", "url": "https://github.com/skillberry-ai/cap-evolve/issues/935#issuecomment-6398801889"}
 ```
+
+## ABL-0049 · 2026-10-25T14:46Z · P2 heartbeat · heartbeat
+
+No checkpoint for 25 min. Phase P2, last result: P2/A-ABL-CC-daemon.
+Runner: no runner. Last log line: `2026-10-25T14:45:56Z | memguard | - | sample 1.98% (649 MB) state OK peak 23.2%`.
+Next: P2/A-ABL-CC (user decision), A9 per arm, A13.
+
+```json
+{"cp": 49, "prev_cp": 48, "prev_commit": "2eed5c21fd2270098c91adf62e7a7fdb804f79d7", "utc": "2026-10-25T14:46:25Z", "kind": "heartbeat", "phase": "P2", "done_through": "P2/A-ABL-CC-daemon", "next": "P2/A-ABL-CC (user decision), A9 per arm, A13", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "54e148b40a77536e052c1dda164e0752cb8dc2f6", "open_decisions": ["abl_cc init: bundled skills, auto-memory, tool list"], "memory": {"used_pct": 1.99, "peak_pct": 23.21, "state": "OK", "stale": false}, "runner": "none"}
+```
