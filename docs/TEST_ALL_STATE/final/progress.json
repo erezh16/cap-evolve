@@ -1,7 +1,7 @@
 {
  "window": "final",
  "cells_total": 10920,
- "cells_done": 3579,
+ "cells_done": 3582,
  "per_arm": {
   "ace": {
    "done": 285,
@@ -34,9 +34,9 @@
    "context_exceeded": 0
   },
   "cape_k02": {
-   "done": 278,
+   "done": 280,
    "infra_missing": 0,
-   "infra_retries": 3,
+   "infra_retries": 4,
    "context_exceeded": 0
   },
   "harnesslens": {
@@ -52,7 +52,7 @@
    "context_exceeded": 0
   },
   "altk": {
-   "done": 261,
+   "done": 262,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
