@@ -1,0 +1,7 @@
+[
+ {
+  "file": "tools/helpers.py",
+  "op": "set",
+  "text": "\"\"\"Helpers.\"\"\"\n\n\ndef get_procedure():\n    \"\"\"The procedure.\"\"\"\n    return 'Step: check the account first. Step: check the account first. Step: check the account first. Step: check the account first. Step: check the account first. Step: check the account first. Step: check the account first. Step: check the account first. Step: check the account first. Step: check the account first. '\n"
+ }
+]

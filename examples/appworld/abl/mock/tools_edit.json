@@ -1,0 +1,7 @@
+[
+ {
+  "file": "tools/helpers.py",
+  "op": "set",
+  "text": "\"\"\"Helpers.\"\"\"\n\n\ndef count_items(items):\n    \"\"\"Number of items in a list (0 for None).\"\"\"\n    return len(items or [])\n"
+ }
+]

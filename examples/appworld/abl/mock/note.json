@@ -1,0 +1,7 @@
+[
+ {
+  "file": "tools/api_notes.json",
+  "op": "set",
+  "text": "{\"api_docs\": \"Call show_api_doc before calling an API for the first time.\"}"
+ }
+]
