@@ -4009,3 +4009,11 @@ Next: final remaining cells.
 ```json
 {"cp": 476, "prev_cp": 475, "prev_commit": "2560c0fd0f292d64ba21c9bf9558b134ea9e34fc", "utc": "2026-10-25T14:42:23Z", "kind": "result", "phase": "P3", "done_through": "final/5020", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/final/progress.json": "8e92c2b02d29f3399435f8d5df7e3396d171b7d9e70bb62c347c9c1fab702731"}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 48.09, "peak_pct": 97.6, "state": "OK", "stale": false}, "window": {"window": "final", "cells_total": 10920, "cells_done": 5020, "order_sha256": "725f659aefadafd4a8d1ee86b74ca9f00e2800e9a4974abc85dbac6b63c722f5"}}
 ```
+
+## TA-0477 · 2026-10-25T14:46Z · P3 posted trace2skill · posted
+
+Posted 'Trace2Skill hourly status' on #925 (trace2skill): https://github.com/skillberry-ai/cap-evolve/issues/925#issuecomment-6399066192
+
+```json
+{"cp": 477, "prev_cp": 476, "prev_commit": "a044d257b49ac243302e4eaa640a656b5b94a4da", "utc": "2026-10-25T14:46:16Z", "kind": "posted", "phase": "P3", "done_through": "final/5020", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 47.93, "peak_pct": 97.6, "state": "OK", "stale": false}, "post": "trace2skill/status_20261025T144600", "url": "https://github.com/skillberry-ai/cap-evolve/issues/925#issuecomment-6399066192"}
+```
