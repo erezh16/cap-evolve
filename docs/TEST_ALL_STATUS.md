@@ -4681,3 +4681,12 @@ Posted 'EvoSkill hourly status' on #921 (evoskill): https://github.com/skillberr
 ```json
 {"cp": 556, "prev_cp": 555, "prev_commit": "9bed4fa164fdd943068a4b2d01738910edbfee80", "utc": "2026-10-25T17:27:46Z", "kind": "posted", "phase": "P3", "done_through": "final/5767", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 49.62, "peak_pct": 97.6, "state": "OK", "stale": false}, "post": "evoskill/status_20261025T172736", "url": "https://github.com/skillberry-ai/cap-evolve/issues/921#issuecomment-6400811763"}
 ```
+
+## TA-0557 · 2026-10-25T17:28Z · P3 final window · result
+
+final window: 28 cells since the last entry; 5795/10920 done (ace 468, altk 433, cape_k02 429, evoskill 472, gepa 402, gepa_full 455, harnesslens 448, metaharness 454, miprov2 433, seed 424, skillopt 459, trace2skill 453, wikiskill 465); infra still missing 0, retries 17.
+Next: final remaining cells.
+
+```json
+{"cp": 557, "prev_cp": 556, "prev_commit": "c7756563970ab7e9681d6f34e55db595309cc8d9", "utc": "2026-10-25T17:28:17Z", "kind": "result", "phase": "P3", "done_through": "final/5795", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/final/progress.json": "c91fc56ddb9e39915ebcbe3ed7d3ec6a1fccf5c0fab5382940f5830869d466aa"}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 47.18, "peak_pct": 97.6, "state": "OK", "stale": false}, "window": {"window": "final", "cells_total": 10920, "cells_done": 5795, "order_sha256": "725f659aefadafd4a8d1ee86b74ca9f00e2800e9a4974abc85dbac6b63c722f5"}}
+```
