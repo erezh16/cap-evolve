@@ -1629,3 +1629,11 @@ Next: final remaining cells.
 ```json
 {"cp": 193, "prev_cp": 192, "prev_commit": "686a8777f262a1d52b5e81f542e8751f8cb412ac", "utc": "2026-10-25T04:58:19Z", "kind": "result", "phase": "P3", "done_through": "final/1926", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/final/progress.json": "0e8bd9b3074c1a16e694c84d005fbc8046e811154e600b7e622ef69f9e0a63f4"}, "code": "1365a97f7a1680769356749d6b69542580ce4219", "open_decisions": [], "memory": {"used_pct": 46.42, "peak_pct": 49.28, "state": "OK", "stale": false}, "window": {"window": "final", "cells_total": 10920, "cells_done": 1926, "order_sha256": "725f659aefadafd4a8d1ee86b74ca9f00e2800e9a4974abc85dbac6b63c722f5"}}
 ```
+
+## TA-0194 · 2026-10-25T05:00Z · P3 posted seed · posted
+
+Posted 'seed agent hourly status' on #915 (seed): https://github.com/skillberry-ai/cap-evolve/issues/915#issuecomment-6393689251
+
+```json
+{"cp": 194, "prev_cp": 193, "prev_commit": "c70c623e1d409a7a1747888f6e3678377293199e", "utc": "2026-10-25T05:00:07Z", "kind": "posted", "phase": "P3", "done_through": "final/1926", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "1365a97f7a1680769356749d6b69542580ce4219", "open_decisions": [], "memory": {"used_pct": 44.2, "peak_pct": 49.28, "state": "OK", "stale": false}, "post": "seed/status_20261025T050000", "url": "https://github.com/skillberry-ai/cap-evolve/issues/915#issuecomment-6393689251"}
+```
