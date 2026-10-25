@@ -280,3 +280,11 @@ A8 PASS (10 dev episodes: max prompt 12,767 tokens < 34K; H_max 16,910, P_max 3,
 ```json
 {"cp": 32, "prev_cp": 31, "prev_commit": "b119f645f7169370e5dd6b11dcdefe64874a6869", "utc": "2026-10-25T13:20:49Z", "kind": "result", "phase": "P2", "done_through": "P2/A11", "next": "P2/A10 A13 A9 A-ABL", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "b119f645f7169370e5dd6b11dcdefe64874a6869", "open_decisions": [], "memory": {"used_pct": 7.36, "peak_pct": 23.21, "state": "OK", "stale": false}}
 ```
+
+## ABL-0033 · 2026-10-25T13:21Z · P2 posted abl_ref · posted
+
+Posted 'Cap-evolve full (reference) hourly status' on #930 (abl_ref): https://github.com/skillberry-ai/cap-evolve/issues/930#issuecomment-6398175506
+
+```json
+{"cp": 33, "prev_cp": 32, "prev_commit": "c0e7b009cff10e8c2fbbbec8298e723e2a53e370", "utc": "2026-10-25T13:21:49Z", "kind": "posted", "phase": "P2", "done_through": "P2/A11", "next": "P2/A10 A13 A9 A-ABL", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "b119f645f7169370e5dd6b11dcdefe64874a6869", "open_decisions": [], "memory": {"used_pct": 7.39, "peak_pct": 23.21, "state": "OK", "stale": false}, "post": "abl_ref/status_20261025T1321", "url": "https://github.com/skillberry-ai/cap-evolve/issues/930#issuecomment-6398175506"}
+```

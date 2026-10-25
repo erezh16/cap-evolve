@@ -291,7 +291,7 @@ def _imp_run(proj: Path, run_dir: Path) -> dict:
         t = w.read_text(encoding="utf-8")
         inst.append({"cid": w.parent.name, "has": {s: (s in t) for s in REQUIRED_STRINGS},
                      "forbidden": [s for s in FORBIDDEN_STRINGS if s in t] + sorted(set(UNFILLED_RE.findall(t)))})
-    diff = DIFF_OUT.read_text() if DIFF_OUT.exists() else ""
+    diff = diff_out().read_text() if diff_out().exists() else ""
     out["5_instructions"] = {"ok": bool(inst) and all(all(i["has"].values()) and not i["forbidden"] for i in inst)
                              and diff_only_insertion(diff), "iterations": len(inst),
                              "diff_only_insertion": diff_only_insertion(diff), "detail": inst}
