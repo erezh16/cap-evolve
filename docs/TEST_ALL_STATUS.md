@@ -3536,3 +3536,11 @@ Posted 'HarnessLens: window 40% done' on #923 (harnesslens): https://github.com/
 ```json
 {"cp": 420, "prev_cp": 419, "prev_commit": "6cf552bcf20707888312ecd458a4339f76777e83", "utc": "2026-10-25T12:37:56Z", "kind": "posted", "phase": "P3", "done_through": "final/4365", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 46.51, "peak_pct": 92.21, "state": "OK", "stale": false}, "post": "harnesslens/window_40pct", "url": "https://github.com/skillberry-ai/cap-evolve/issues/923#issuecomment-6397731004"}
 ```
+
+## TA-0421 · 2026-10-25T12:38Z · P3 posted miprov2 · posted
+
+Posted 'MIPROv2: window 40% done' on #924 (miprov2): https://github.com/skillberry-ai/cap-evolve/issues/924#issuecomment-6397731892
+
+```json
+{"cp": 421, "prev_cp": 420, "prev_commit": "9ef3c5ecd29416ef33119e1af25920dfeda21d11", "utc": "2026-10-25T12:38:02Z", "kind": "posted", "phase": "P3", "done_through": "final/4365", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 46.6, "peak_pct": 92.21, "state": "OK", "stale": false}, "post": "miprov2/window_40pct", "url": "https://github.com/skillberry-ai/cap-evolve/issues/924#issuecomment-6397731892"}
+```
