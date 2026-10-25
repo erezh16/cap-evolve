@@ -34,3 +34,11 @@ Hourly status posts on #930 to #935 are late (plan section 12): the last post on
 ```json
 {"cp": 2, "prev_cp": 1, "prev_commit": "6363ce4c626abd8ec2f7db495b9c35d102d1d31d", "utc": "2026-10-25T10:23:42Z", "kind": "error", "phase": "P1", "done_through": "P1/B0", "next": "P1/autopost then P1/B1", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "6363ce4c626abd8ec2f7db495b9c35d102d1d31d", "open_decisions": [], "memory": {"used_pct": 4.73, "peak_pct": 5.31, "state": "OK", "stale": false}}
 ```
+
+## ABL-0003 · 2026-10-25T10:23Z · P1 posted abl_ref · posted
+
+Posted 'Cap-evolve full (reference) hourly status' on #930 (abl_ref): https://github.com/skillberry-ai/cap-evolve/issues/930#issuecomment-6396465620
+
+```json
+{"cp": 3, "prev_cp": 2, "prev_commit": "1db81db4428b041d1f027e9e19ef6defc18ceb98", "utc": "2026-10-25T10:23:55Z", "kind": "posted", "phase": "P1", "done_through": "P1/B0", "next": "P1/autopost then P1/B1", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "6363ce4c626abd8ec2f7db495b9c35d102d1d31d", "open_decisions": [], "memory": {"used_pct": 4.81, "peak_pct": 5.31, "state": "OK", "stale": false}, "post": "abl_ref/status_20261025T1023", "url": "https://github.com/skillberry-ai/cap-evolve/issues/930#issuecomment-6396465620"}
+```
