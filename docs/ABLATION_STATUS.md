@@ -476,3 +476,11 @@ Posted 'Cap evolve traces and score only hourly status' on #935 (abl_tracescore)
 ```json
 {"cp": 56, "prev_cp": 55, "prev_commit": "aea27593f2caa59b774dad610e8801b6c9a15375", "utc": "2026-10-25T15:20:32Z", "kind": "posted", "phase": "P2", "done_through": "P2/A-ABL-CC-daemon", "next": "P2/A-ABL-CC (user decision), A9 per arm, A13", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "54e148b40a77536e052c1dda164e0752cb8dc2f6", "open_decisions": ["abl_cc init: bundled skills, auto-memory, tool list"], "memory": {"used_pct": 4.56, "peak_pct": 23.21, "state": "OK", "stale": false}, "post": "abl_tracescore/status_20261025T1520", "url": "https://github.com/skillberry-ai/cap-evolve/issues/935#issuecomment-6399434290"}
 ```
+
+## ABL-0057 · 2026-10-25T15:28Z · P2 A-ABL-CC session init resolved · decision
+
+User decision (2026-10-25), answering ABL-0042: same CLI for all arms. Claude Code CLI 2.1.270 is used unchanged by every arm, so its bundled skills (17, none from the user or the project), its empty auto-memory directory and its full tool set are part of plain Claude Code for abl_cc and equally present in every cap-evolve optimizer session; main registry command line stays untouched (J4, D4). The A-ABL-CC init item is a recorded deviation from plan 10.2 (which expected no skill and a tool list matching the flags), reported in the abl_cc results. Verified for abl_cc: no plugins, no MCP servers, no CLAUDE.md, no user or project settings (--setting-sources none), an empty config dir before the session, model aws/claude-sonnet-5-5 only, permission mode acceptEdits. The probe config dir is archived with the A9 material.
+
+```json
+{"cp": 57, "prev_cp": 56, "prev_commit": "0d4138e6b7c9f3d254c5c688d3af2c058d2fba0c", "utc": "2026-10-25T15:28:00Z", "kind": "decision", "phase": "P2", "done_through": "P2/A-ABL-CC", "next": "P2/A9 per arm, A13", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "54e148b40a77536e052c1dda164e0752cb8dc2f6", "open_decisions": [], "memory": {"used_pct": 4.57, "peak_pct": 23.21, "state": "OK", "stale": false}}
+```
