@@ -1,7 +1,7 @@
 {
  "window": "final",
  "cells_total": 10920,
- "cells_done": 3582,
+ "cells_done": 3583,
  "per_arm": {
   "ace": {
    "done": 285,
@@ -46,7 +46,7 @@
    "context_exceeded": 0
   },
   "wikiskill": {
-   "done": 303,
+   "done": 304,
    "infra_missing": 0,
    "infra_retries": 1,
    "context_exceeded": 0
