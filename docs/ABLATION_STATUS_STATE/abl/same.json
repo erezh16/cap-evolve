@@ -1,0 +1,82 @@
+{
+ "reference": "abl_ref",
+ "arms": {
+  "abl_prompt": {
+   "capevolve.yaml": {
+    "diff_lines": [
+     "-capabilities: [system-prompt, tools]",
+     "+capabilities: [system-prompt]",
+     "-protected_paths: [default, \"memory/*\"]",
+     "+protected_paths: [default, \"memory/*\", \"tools/*\"]"
+    ],
+    "ok": true
+   },
+   "INSTRUCTIONS.md": {
+    "ok": true,
+    "changed_lines": 17
+   },
+   "launcher_env": {
+    "differing_keys": [],
+    "ok": true
+   },
+   "ok": true
+  },
+  "abl_tools": {
+   "capevolve.yaml": {
+    "diff_lines": [
+     "-capabilities: [system-prompt, tools]",
+     "+capabilities: [tools]",
+     "-protected_paths: [default, \"memory/*\"]",
+     "+protected_paths: [default, \"memory/*\", \"policy/*\"]"
+    ],
+    "ok": true
+   },
+   "INSTRUCTIONS.md": {
+    "ok": true,
+    "changed_lines": 10
+   },
+   "launcher_env": {
+    "differing_keys": [
+     "AW_ABL_TOOLS_LINT"
+    ],
+    "ok": true
+   },
+   "ok": true
+  },
+  "abl_notrace": {
+   "capevolve.yaml": {
+    "diff_lines": [],
+    "ok": true
+   },
+   "INSTRUCTIONS.md": {
+    "ok": true,
+    "changed_lines": 9
+   },
+   "launcher_env": {
+    "differing_keys": [
+     "AW_ABL_FEEDBACK"
+    ],
+    "ok": true
+   },
+   "ok": true
+  },
+  "abl_tracescore": {
+   "capevolve.yaml": {
+    "diff_lines": [],
+    "ok": true
+   },
+   "INSTRUCTIONS.md": {
+    "ok": true,
+    "changed_lines": 6
+   },
+   "launcher_env": {
+    "differing_keys": [
+     "AW_ABL_FEEDBACK"
+    ],
+    "ok": true
+   },
+   "ok": true
+  }
+ },
+ "ok": true
+}

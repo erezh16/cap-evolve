@@ -1,0 +1,28 @@
+# cap-evolve spec of the five cap-evolve ablation arms (docs/ABLATIONS.md §9.3). run_abl.py setup fills the instructions
+# path, the reference path, K, the arm's capabilities and protected_paths, then writes it into the arm's project.
+capabilities: @CAPABILITIES@
+capability_path: seed_capability
+actions: [edit]
+optimizer_skill: claude-code
+optimizer_model: aws/claude-sonnet-5-5
+optimizer_max_turns: 200
+max_optimizer_usd: 0                           # off (D12); no optimizer_usd_per_iter key, so no --max-budget-usd
+target_model: openai/gpt-oss-120b-a100
+algorithm_skill: hill-climb
+algorithm_focus: all
+orchestration_mode: deterministic
+memory_skill: md-files
+optimizer_instructions_file: @INSTRUCTIONS@
+runner_repo_path: @REFERENCE@
+capability_sources: [reference/api_index.md, reference/react_agent_notes.md]
+dataset_source: adapter
+split_ids_file: split_ids.json                 # train = val = official train ∪ dev (147), test = []
+num_trials: 1
+gate_mode: paired
+gate_k_se: @K_SE@                              # user guideline 10. MUST be explicit
+max_iterations: 6
+stall: 0
+max_metric_calls: 1029                         # 147 baseline (cached) + 6 × 147
+protected_paths: @PROTECTED@
+store: git
+# no objectives: block -> single objective = reward
