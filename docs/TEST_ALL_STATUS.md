@@ -2981,3 +2981,11 @@ Resume (cell loop ended at the first PAUSE (TA-0349); progress_log fixed). Plan:
 ```json
 {"cp": 354, "prev_cp": 353, "prev_commit": "9fbae7c555cc8f42998869cf486f2a2269b6e09d", "utc": "2026-10-25T10:20:53Z", "kind": "resume", "phase": "P3", "done_through": "final/3583", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 7.35, "peak_pct": 92.21, "state": "OK", "stale": false}, "plan": ["13 artifacts re-verified by their own hash rules", "relaunch the window runner (3583 cell records on disk are kept, not re-run)"], "restarted": false}
 ```
+
+## TA-0355 · 2026-10-25T10:23Z · P3 posted wikiskill · posted
+
+Posted 'WikiSkill hourly status' on #920 (wikiskill): https://github.com/skillberry-ai/cap-evolve/issues/920#issuecomment-6396459903
+
+```json
+{"cp": 355, "prev_cp": 354, "prev_commit": "cfe658049a87de10aa0f5b72a9513e10090ea4ef", "utc": "2026-10-25T10:23:18Z", "kind": "posted", "phase": "P3", "done_through": "final/3583", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 48.45, "peak_pct": 92.21, "state": "OK", "stale": false}, "post": "wikiskill/status_20261025T102300", "url": "https://github.com/skillberry-ai/cap-evolve/issues/920#issuecomment-6396459903"}
+```
