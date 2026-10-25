@@ -43,7 +43,7 @@ def sh(*a, cwd=None, env=None, check=True):
 
 
 def env_for(clone: Path, state: Path) -> dict:
-    e = {**os.environ, "AW_REPO": str(clone), "AW_STATE": str(state), "AW_BRANCH": BR,
+    e = {**os.environ, "AW_REPO": str(clone), "AW_STATE": str(state), "AW_BRANCH": BR, "AW_REMOTE": "origin",
          "AW_LEDGER_NAME": LEDGER, "AW_ENV_FILE": str(BASE / "fake.env"), "AW_SECRETS_FILE": str(P.ENV_FILE)}
     return P.setup_env(e)
 
