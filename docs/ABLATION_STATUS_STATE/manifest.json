@@ -78,5 +78,15 @@
   "trials": 2,
   "trial_seeds": "5000 + trial",
   "infra_retries": 3
+ },
+ "m_cap": {
+  "tokens": 13500,
+  "chars": 30000,
+  "P_max": 3230,
+  "H_max": 16910,
+  "min_chars_per_token": 3.548,
+  "template_overhead_max": 157,
+  "encoding": "o200k_harmony",
+  "rule": "min(30000 chars, 34000 - P_max - H_max tokens), tokens floored to 500"
  }
 }

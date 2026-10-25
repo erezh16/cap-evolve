@@ -272,3 +272,11 @@ Acceptance (none counted, phase accept): A1 PASS (gateway via opt_llm, JSON repl
 ```json
 {"cp": 31, "prev_cp": 30, "prev_commit": "023acd8b066d7ca9432faf89902766b4ab0b4a92", "utc": "2026-10-25T13:08:19Z", "kind": "result", "phase": "P2", "done_through": "P2/A12", "next": "P2/A8 A10 A11 A13 A9 A-ABL", "arm": null, "counts": {}, "spend": {}, "artifacts": {"local/acceptance/a7.json": "f678330dca1ef0833757b1f028fff9e30eb46ddfe15352bc712cc239a34f0195"}, "code": "023acd8b066d7ca9432faf89902766b4ab0b4a92", "open_decisions": [], "memory": {"used_pct": 2.15, "peak_pct": 6.18, "state": "OK", "stale": false}}
 ```
+
+## ABL-0032 · 2026-10-25T13:20Z · P2 acceptance A8 A11 · result
+
+A8 PASS (10 dev episodes: max prompt 12,767 tokens < 34K; H_max 16,910, P_max 3,230, M_cap 13,500 tokens / 30,000 chars; 3 dev episodes with a maximal memory block stayed under 13.3K prompt tokens, tiktoken = vLLM; 0 infra). Memory is sealed in this run (D13), so M_cap only bounds the lint. A11 PASS on the second run (guard period 5 s; PAUSE within 4.5 s of crossing; no episode slot and no optimizer call start while paused; resume only below the low mark; transitions logged). The first run failed only its last item, spawn_check_reads_memstate: ~/bin/memok-abl worked but did not name the file it reads, which the check looks for; memok-abl now prints its MEMSTATE path (behaviour unchanged). None counted.
+
+```json
+{"cp": 32, "prev_cp": 31, "prev_commit": "b119f645f7169370e5dd6b11dcdefe64874a6869", "utc": "2026-10-25T13:20:49Z", "kind": "result", "phase": "P2", "done_through": "P2/A11", "next": "P2/A10 A13 A9 A-ABL", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "b119f645f7169370e5dd6b11dcdefe64874a6869", "open_decisions": [], "memory": {"used_pct": 7.36, "peak_pct": 23.21, "state": "OK", "stale": false}}
+```
