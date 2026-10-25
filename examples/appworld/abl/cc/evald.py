@@ -34,7 +34,8 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 ABL = HERE.parent
 EX = ABL.parent
-sys.path[:0] = [str(ABL), str(EX / "common"), str(EX / "scripts")]
+# abl/ is NOT put on sys.path: its adapter.py would shadow the shared adapters/adapter.py the evaluator imports
+sys.path[:0] = [str(EX / "common"), str(EX / "scripts")]
 ARM = "abl_cc"
 os.environ["AW_CAPE_ARM"] = ARM
 os.environ.setdefault("AW_EXAMPLE", str(EX))
@@ -132,8 +133,17 @@ def budget() -> dict:
     return {"rollouts_used": u, "rollouts_left": BUDGET - u, "budget": BUDGET}
 
 
+def _abl_adapter():
+    """abl/adapter.py (its _rollout and the filtered score, full = the reference), loaded under its own name."""
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("abl_project_adapter", ABL / "adapter.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+
 def handle(work: Path, req_file: Path) -> dict:
-    import adapter as AD                     # abl/adapter.py: _rollout and the filtered score (full = reference)
+    AD = _abl_adapter()
     ticket = req_file.stem
     res_dir = work / ".eval" / "results" / ticket
     status = res_dir / "status.json"
