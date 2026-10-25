@@ -174,3 +174,13 @@ Next: P1/B5.2.
 ```json
 {"cp": 19, "prev_cp": 18, "prev_commit": "a7d056fcbe1c2c9db544a5b5c300f23025011acd", "utc": "2026-10-25T11:49:20Z", "kind": "heartbeat", "phase": "P1", "done_through": "P1/B5.1", "next": "P1/B5.2", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "d472197dea03facebc1f85b859e35320b3ef6d56", "open_decisions": [], "memory": {"used_pct": 1.93, "peak_pct": 5.46, "state": "OK", "stale": false}, "runner": "none"}
 ```
+
+## ABL-0020 · 2026-10-25T12:14Z · P1 heartbeat · heartbeat
+
+No checkpoint for 25 min. Phase P1, last result: P1/B5.1.
+Runner: no runner. Last log line: `2026-10-25T12:13:44Z | memguard | - | sample 4.93% (1614 MB) state OK peak 6.2%`.
+Next: P1/B5.2.
+
+```json
+{"cp": 20, "prev_cp": 19, "prev_commit": "3ba978c5ae45e4c34ccd1f04a27a2ae9e0cfbe4b", "utc": "2026-10-25T12:14:22Z", "kind": "heartbeat", "phase": "P1", "done_through": "P1/B5.1", "next": "P1/B5.2", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "d472197dea03facebc1f85b859e35320b3ef6d56", "open_decisions": [], "memory": {"used_pct": 4.86, "peak_pct": 6.18, "state": "OK", "stale": false}, "runner": "none"}
+```
