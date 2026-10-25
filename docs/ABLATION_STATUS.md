@@ -630,3 +630,11 @@ Posted 'shared seed baseline done' on #935 (abl_tracescore): https://github.com/
 ```json
 {"cp": 75, "prev_cp": 74, "prev_commit": "af0dad54302f31bf367649e112d804b5b2fbad6c", "utc": "2026-10-25T16:29:34Z", "kind": "posted", "phase": "P3", "done_through": "P3/seed", "next": "P4/searches", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "cd5e6c7eb6301a8d71df5a71c35d3edb37506eb8", "open_decisions": [], "memory": {"used_pct": 4.59, "peak_pct": 44.02, "state": "OK", "stale": false}, "post": "abl_tracescore/p3_done", "url": "https://github.com/skillberry-ai/cap-evolve/issues/935#issuecomment-6400183750"}
 ```
+
+## ABL-0076 · 2026-10-25T16:30Z · P4 searches launched · phase_start
+
+P4: chain(s) abl_ref, abl_prompt, abl_tools started (search, freeze, isolation scan); pid files AW_STATE/p4/<arm>.pid. Running now: abl_ref, abl_prompt, abl_tools. Global slots 24; memory 4.59%.
+
+```json
+{"cp": 76, "prev_cp": 75, "prev_commit": "84702736d6481e987b841e59bb6d6054b723853e", "utc": "2026-10-25T16:30:04Z", "kind": "phase_start", "phase": "P4", "done_through": "P3/seed", "next": "P4/searches", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "cd5e6c7eb6301a8d71df5a71c35d3edb37506eb8", "open_decisions": [], "memory": {"used_pct": 4.59, "peak_pct": 44.02, "state": "OK", "stale": false}}
+```
