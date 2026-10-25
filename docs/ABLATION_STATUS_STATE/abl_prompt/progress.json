@@ -14,15 +14,15 @@
  "best_search_score": 0.4013605442176871,
  "best_search_label": "val = train ∪ dev (147), a fit metric, selection-biased",
  "metric_calls": 147,
- "capevolve_optimizer_usd": 0.0,
+ "capevolve_optimizer_usd": 18.60217725,
  "optimizer": {
-  "calls": 0,
-  "prompt_tokens": 0,
-  "completion_tokens": 0,
-  "cache_read": 0,
-  "cache_write": 0,
-  "proxy_usd": 0.0,
-  "seconds": 0
+  "calls": 1,
+  "prompt_tokens": 1288379,
+  "completion_tokens": 153306,
+  "cache_read": 13625292,
+  "cache_write": 1211989,
+  "proxy_usd": 7.44,
+  "seconds": 795.9
  },
  "voided_steps": 0,
  "feedback_mode": "full",
