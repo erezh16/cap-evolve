@@ -62,18 +62,18 @@ def main() -> int:
     if P.LEDGER_PREFIX != "CE2":
         raise SystemExit("source ce2/env.sh first")
     plan = []
-    git("fetch", "-q", "origin", P.BRANCH, check=False)
-    ab = git("rev-list", "--left-right", "--count", f"HEAD...origin/{P.BRANCH}", check=False).stdout.split()
+    git("fetch", "-q", P.REMOTE, P.BRANCH, check=False)
+    ab = git("rev-list", "--left-right", "--count", f"HEAD...{P.REMOTE}/{P.BRANCH}", check=False).stdout.split()
     if len(ab) == 2:
         ahead, behind = map(int, ab)
         if ahead and behind:
             raise SystemExit("local and origin eval-ce2 have diverged: stop and ask the user")
         if behind:
             plan.append(f"fast-forward {behind}")
-            a.dry_run or git("merge", "--ff-only", f"origin/{P.BRANCH}")
+            a.dry_run or git("merge", "--ff-only", f"{P.REMOTE}/{P.BRANCH}")
         if ahead:
             plan.append(f"push {ahead}")
-            a.dry_run or git("push", "-q", "origin", f"HEAD:{P.BRANCH}")
+            a.dry_run or git("push", "-q", P.REMOTE, f"HEAD:{P.BRANCH}")
     rel = str(P.LEDGER.relative_to(P.REPO))
     if git("diff", "--name-only", "--", rel).stdout.strip():
         plan.append("drop torn uncommitted ledger tail")

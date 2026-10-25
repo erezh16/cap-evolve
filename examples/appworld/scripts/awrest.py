@@ -21,6 +21,7 @@ EXAMPLE = Path(__file__).resolve().parents[1]
 LEDGER = REPO / "docs" / os.environ.get("AW_LEDGER_NAME", "EVAL_APPWORLD_REST.md")
 PUSHED = REPO / "docs" / (LEDGER.stem + "_STATE")
 BRANCH = os.environ.get("AW_BRANCH", "eval-rest")
+REMOTE = os.environ.get("AW_REMOTE", "origin")   # the git remote that receives BRANCH (ablations: fork)
 LEDGER_MARKER = "<!-- CHECKPOINTS BELOW THIS LINE -->"
 
 AW_HOME = Path(os.environ.get("AW_HOME", "/workspace/aw_rest"))
@@ -304,4 +305,6 @@ if os.environ.get("AW_PROFILE") == "ce2":
     from awce2 import *  # noqa: E402,F401,F403
 elif os.environ.get("AW_PROFILE") == "ce3":     # CE3 is one more CE2 arm: CE2's code paths with CE3's constants
     from awce3 import *  # noqa: E402,F401,F403
+elif os.environ.get("AW_PROFILE") == "abl":     # the ablations (docs/ABLATIONS.md): CE2's code paths, abl constants
+    from awabl import *  # noqa: E402,F401,F403
 LEDGER_ID = LEDGER_ID or LEDGER_PREFIX

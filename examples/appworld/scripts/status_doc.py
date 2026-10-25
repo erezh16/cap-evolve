@@ -252,7 +252,7 @@ def _push(ps: dict) -> None:
         ps["unpushed"] = ps.get("unpushed", 0) + 1
         P.write_json(PUSH_STATE, ps)
         return
-    r = git("push", "-q", "origin", f"HEAD:{P.BRANCH}", check=False)
+    r = git("push", "-q", P.REMOTE, f"HEAD:{P.BRANCH}", check=False)
     if r.returncode == 0:
         P.write_json(PUSH_STATE, {"unpushed": 0, "last_push_utc": _fmt_utc(utcnow())[1]})
         return
