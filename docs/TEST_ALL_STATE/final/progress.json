@@ -1,12 +1,12 @@
 {
  "window": "final",
  "cells_total": 10920,
- "cells_done": 3577,
+ "cells_done": 3579,
  "per_arm": {
   "ace": {
-   "done": 284,
+   "done": 285,
    "infra_missing": 0,
-   "infra_retries": 0,
+   "infra_retries": 1,
    "context_exceeded": 0
   },
   "gepa_full": {
@@ -22,7 +22,7 @@
    "context_exceeded": 0
   },
   "evoskill": {
-   "done": 291,
+   "done": 292,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
