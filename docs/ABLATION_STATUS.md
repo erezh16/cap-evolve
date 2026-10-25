@@ -344,3 +344,11 @@ A-ABL-CORE and the per-arm checks (plan 9.6, 10.3 to 10.6), 1-iteration mock dry
 ```json
 {"cp": 40, "prev_cp": 39, "prev_commit": "a84cf00f359030e499b2a87a6275fec36401c407", "utc": "2026-10-25T13:53:43Z", "kind": "result", "phase": "P2", "done_through": "P2/A-ABL-arms", "next": "P2/A9 per arm, A-ABL-CC", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "a84cf00f359030e499b2a87a6275fec36401c407", "open_decisions": [], "memory": {"used_pct": 2.16, "peak_pct": 23.21, "state": "OK", "stale": false}}
 ```
+
+## ABL-0041 · 2026-10-25T14:06Z · P2 A-ABL-CC daemon · result
+
+A-ABL-CC daemon items PASS (evald.py dry mode: 4 dev ids, accept namespace, B = 8; a throwaway workdir set up by run_cc.py; 0 rollouts counted against the real B = 882): six requests through ./eval_candidate: (1) a byte copy of the seed was served from the shared accept cache, 0 rollouts; (2) a new candidate cost 4 rollouts (4 of 8 used); (3) the same candidate resubmitted was free (4 cache hits); (4) a lint-violating helper was rejected with 0 rollouts and its violations returned; (5) a second new candidate cost 4 (8 of 8); (6) a third new candidate was refused before running (budget spent, 0 rollouts). Results are in the reference format: trajectories/*.json with input, rollout (trace with steps, metadata with every F1 field) and score (F1 feedback text), and summary.json with mean and per-task reward, lint status, rollouts used and left; ./eval_status reads them. Path refusals (absolute path, .., symlink out, symlinked surface, extra request keys, bad JSON) are covered by the offline tests (ABL-0029). Repair: evald put abl/ first on sys.path, so the evaluator imported abl/adapter.py instead of the shared adapter (every request errored, nothing ran); evald now loads abl/adapter.py by path. Prompt sha256 check: run_cc.py check-config (PROMPT.txt = the plan three lines, 12e145ec...).
+
+```json
+{"cp": 41, "prev_cp": 40, "prev_commit": "54e148b40a77536e052c1dda164e0752cb8dc2f6", "utc": "2026-10-25T14:06:06Z", "kind": "result", "phase": "P2", "done_through": "P2/A-ABL-CC-daemon", "next": "P2/A-ABL-CC session init, A9 per arm, A13", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "54e148b40a77536e052c1dda164e0752cb8dc2f6", "open_decisions": [], "memory": {"used_pct": 2.16, "peak_pct": 23.21, "state": "OK", "stale": false}}
+```
