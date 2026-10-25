@@ -500,3 +500,11 @@ P2 done: every acceptance check of plan section 14 has passed and is in the ledg
 ```json
 {"cp": 59, "prev_cp": 58, "prev_commit": "6f18e48814cc261ad97ccbf4c08af7a9adc4c723", "utc": "2026-10-25T15:46:22Z", "kind": "phase_done", "phase": "P2", "done_through": "P2/acceptance", "next": "P3/seed", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "6f18e48814cc261ad97ccbf4c08af7a9adc4c723", "open_decisions": [], "memory": {"used_pct": 2.13, "peak_pct": 23.21, "state": "OK", "stale": false}}
 ```
+
+## ABL-0060 · 2026-10-25T15:47Z · P3 shared seed baseline · phase_start
+
+P3 starts: the shared seed baseline, run once (rule Q4): seed_capability (SEED_HASH 85a0da9cec2206a7..., recomputed, equal to the REST and CE2 value) on 90 train + 57 dev, 1 trial, trial seed 100, 24 global slots, through the shared evaluator (phase P3, charged to no arm). Every acceptance check required before a counted rollout has passed (ABL-0059). memok-abl OK, memcheck OK.
+
+```json
+{"cp": 60, "prev_cp": 59, "prev_commit": "6fe2dcd88c6157b26a62a13c94b1d7774794ba97", "utc": "2026-10-25T15:47:40Z", "kind": "phase_start", "phase": "P3", "done_through": "P2/acceptance", "next": "P3/seed", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "6f18e48814cc261ad97ccbf4c08af7a9adc4c723", "open_decisions": [], "memory": {"used_pct": 2.18, "peak_pct": 23.21, "state": "OK", "stale": false}}
+```
