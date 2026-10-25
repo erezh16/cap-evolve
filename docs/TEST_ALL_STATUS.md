@@ -4707,3 +4707,11 @@ Next: final remaining cells.
 ```json
 {"cp": 559, "prev_cp": 558, "prev_commit": "7acdcbc744492e5813c4be44b8a2af09562f0186", "utc": "2026-10-25T17:33:19Z", "kind": "result", "phase": "P3", "done_through": "final/5811", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/final/progress.json": "98692f72c172868f958d3ab7865c623891b51983bd8d64ca76cd5af8d59ad32f"}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 49.54, "peak_pct": 97.6, "state": "OK", "stale": false}, "window": {"window": "final", "cells_total": 10920, "cells_done": 5811, "order_sha256": "725f659aefadafd4a8d1ee86b74ca9f00e2800e9a4974abc85dbac6b63c722f5"}}
 ```
+
+## TA-0560 · 2026-10-25T17:36Z · P3 posted harnesslens · posted
+
+Posted 'HarnessLens hourly status' on #923 (harnesslens): https://github.com/skillberry-ai/cap-evolve/issues/923#issuecomment-6400910663
+
+```json
+{"cp": 560, "prev_cp": 559, "prev_commit": "070aab5c96e9137a4783aba98d6d47f3cf934d47", "utc": "2026-10-25T17:36:52Z", "kind": "posted", "phase": "P3", "done_through": "final/5811", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 48.14, "peak_pct": 97.6, "state": "OK", "stale": false}, "post": "harnesslens/status_20261025T173648", "url": "https://github.com/skillberry-ai/cap-evolve/issues/923#issuecomment-6400910663"}
+```
