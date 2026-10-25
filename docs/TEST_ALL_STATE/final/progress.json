@@ -1,52 +1,52 @@
 {
  "window": "final",
  "cells_total": 10920,
- "cells_done": 1230,
+ "cells_done": 1260,
  "per_arm": {
   "ace": {
-   "done": 86,
-   "infra_missing": 0,
-   "infra_retries": 0,
-   "context_exceeded": 0
-  },
-  "evoskill": {
-   "done": 113,
-   "infra_missing": 0,
-   "infra_retries": 0,
-   "context_exceeded": 0
-  },
-  "altk": {
-   "done": 89,
-   "infra_missing": 0,
-   "infra_retries": 0,
-   "context_exceeded": 0
-  },
-  "trace2skill": {
    "done": 91,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
   },
+  "evoskill": {
+   "done": 116,
+   "infra_missing": 0,
+   "infra_retries": 0,
+   "context_exceeded": 0
+  },
+  "altk": {
+   "done": 90,
+   "infra_missing": 0,
+   "infra_retries": 0,
+   "context_exceeded": 0
+  },
+  "trace2skill": {
+   "done": 93,
+   "infra_missing": 0,
+   "infra_retries": 0,
+   "context_exceeded": 0
+  },
   "gepa": {
-   "done": 108,
+   "done": 111,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
   },
   "seed": {
-   "done": 100,
+   "done": 101,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
   },
   "harnesslens": {
-   "done": 84,
+   "done": 87,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
   },
   "cape_k02": {
-   "done": 101,
+   "done": 104,
    "infra_missing": 0,
    "infra_retries": 2,
    "context_exceeded": 0
@@ -58,25 +58,25 @@
    "context_exceeded": 0
   },
   "skillopt": {
-   "done": 98,
+   "done": 100,
    "infra_missing": 0,
    "infra_retries": 1,
    "context_exceeded": 0
   },
   "metaharness": {
-   "done": 96,
-   "infra_missing": 0,
-   "infra_retries": 0,
-   "context_exceeded": 0
-  },
-  "wikiskill": {
    "done": 100,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
   },
+  "wikiskill": {
+   "done": 101,
+   "infra_missing": 0,
+   "infra_retries": 0,
+   "context_exceeded": 0
+  },
   "miprov2": {
-   "done": 73,
+   "done": 75,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
