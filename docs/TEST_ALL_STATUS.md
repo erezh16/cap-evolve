@@ -999,3 +999,11 @@ Posted 'EvoSkill hourly status' on #921 (evoskill): https://github.com/skillberr
 ```json
 {"cp": 118, "prev_cp": 117, "prev_commit": "81031b52b25ce7f3aecfb7665fd1a3029e9f7bcf", "utc": "2026-10-25T02:27:42Z", "kind": "posted", "phase": "P3", "done_through": "final/1091", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "1365a97f7a1680769356749d6b69542580ce4219", "open_decisions": [], "memory": {"used_pct": 46.44, "peak_pct": 49.28, "state": "OK", "stale": false}, "post": "evoskill/status_20261025T022736", "url": "https://github.com/skillberry-ai/cap-evolve/issues/921#issuecomment-6392452754"}
 ```
+
+## TA-0119 · 2026-10-25T02:28Z · P3 posted seed · posted
+
+Posted 'seed agent: window 10% done' on #915 (seed): https://github.com/skillberry-ai/cap-evolve/issues/915#issuecomment-6392455835
+
+```json
+{"cp": 119, "prev_cp": 118, "prev_commit": "de97926dcf0575c04ae20bb48ff6557fe4a238df", "utc": "2026-10-25T02:28:05Z", "kind": "posted", "phase": "P3", "done_through": "final/1091", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "1365a97f7a1680769356749d6b69542580ce4219", "open_decisions": [], "memory": {"used_pct": 46.52, "peak_pct": 49.28, "state": "OK", "stale": false}, "post": "seed/window_10pct", "url": "https://github.com/skillberry-ai/cap-evolve/issues/915#issuecomment-6392455835"}
+```
