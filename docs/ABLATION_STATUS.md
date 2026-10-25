@@ -106,3 +106,13 @@ B5 piece 1 done: the feedback filter (plan 9.7). abl/feedback_filter.py, a pure 
 ```json
 {"cp": 11, "prev_cp": 10, "prev_commit": "d472197dea03facebc1f85b859e35320b3ef6d56", "utc": "2026-10-25T10:38:41Z", "kind": "result", "phase": "P1", "done_through": "P1/B5.1", "next": "P1/B5.2", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "d472197dea03facebc1f85b859e35320b3ef6d56", "open_decisions": [], "memory": {"used_pct": 4.79, "peak_pct": 5.46, "state": "OK", "stale": false}}
 ```
+
+## ABL-0012 · 2026-10-25T11:04Z · P1 heartbeat · heartbeat
+
+No checkpoint for 25 min. Phase P1, last result: P1/B5.1.
+Runner: no runner. Last log line: `2026-10-25T11:03:38Z | memguard | - | sample 1.93% (631 MB) state OK peak 5.5%`.
+Next: P1/B5.2.
+
+```json
+{"cp": 12, "prev_cp": 11, "prev_commit": "542b0430d4438481aedbc980c2280fb804abcb3f", "utc": "2026-10-25T11:04:19Z", "kind": "heartbeat", "phase": "P1", "done_through": "P1/B5.1", "next": "P1/B5.2", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "d472197dea03facebc1f85b859e35320b3ef6d56", "open_decisions": [], "memory": {"used_pct": 1.93, "peak_pct": 5.46, "state": "OK", "stale": false}, "runner": "none"}
+```
