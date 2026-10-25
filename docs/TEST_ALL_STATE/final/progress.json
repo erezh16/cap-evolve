@@ -1,22 +1,22 @@
 {
  "window": "final",
  "cells_total": 10920,
- "cells_done": 4365,
+ "cells_done": 4389,
  "per_arm": {
   "ace": {
-   "done": 342,
+   "done": 348,
    "infra_missing": 0,
    "infra_retries": 1,
    "context_exceeded": 0
   },
   "gepa_full": {
-   "done": 350,
+   "done": 352,
    "infra_missing": 0,
    "infra_retries": 2,
    "context_exceeded": 0
   },
   "metaharness": {
-   "done": 343,
+   "done": 345,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
@@ -28,13 +28,13 @@
    "context_exceeded": 0
   },
   "miprov2": {
-   "done": 318,
+   "done": 319,
    "infra_missing": 0,
    "infra_retries": 1,
    "context_exceeded": 0
   },
   "wikiskill": {
-   "done": 354,
+   "done": 355,
    "infra_missing": 0,
    "infra_retries": 1,
    "context_exceeded": 0
@@ -46,37 +46,37 @@
    "context_exceeded": 0
   },
   "harnesslens": {
-   "done": 326,
+   "done": 328,
    "infra_missing": 0,
    "infra_retries": 1,
    "context_exceeded": 0
   },
   "altk": {
-   "done": 333,
+   "done": 334,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
   },
   "trace2skill": {
-   "done": 344,
+   "done": 345,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
   },
   "gepa": {
-   "done": 310,
+   "done": 314,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
   },
   "skillopt": {
-   "done": 334,
+   "done": 337,
    "infra_missing": 0,
    "infra_retries": 2,
    "context_exceeded": 0
   },
   "seed": {
-   "done": 320,
+   "done": 321,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
