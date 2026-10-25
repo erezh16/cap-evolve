@@ -2939,3 +2939,11 @@ Error found at 10:10 UTC. At 09:58 one episode's memory growth took the containe
 ```json
 {"cp": 349, "prev_cp": 348, "prev_commit": "33782d4f874e27425e20bdf84b88fffe42a7382c", "utc": "2026-10-25T10:12:58Z", "kind": "error", "phase": "P3", "done_through": "final/3579", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "1365a97f7a1680769356749d6b69542580ce4219", "open_decisions": [], "memory": {"used_pct": 11.33, "peak_pct": 92.21, "state": "OK", "stale": false}}
 ```
+
+## TA-0350 · 2026-10-25T10:13Z · P3 posted gepa · posted
+
+Posted 'GEPA hourly status' on #918 (gepa): https://github.com/skillberry-ai/cap-evolve/issues/918#issuecomment-6396372222
+
+```json
+{"cp": 350, "prev_cp": 349, "prev_commit": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "utc": "2026-10-25T10:13:53Z", "kind": "posted", "phase": "P3", "done_through": "final/3579", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 9.63, "peak_pct": 92.21, "state": "OK", "stale": false}, "post": "gepa/status_20261025T101348", "url": "https://github.com/skillberry-ai/cap-evolve/issues/918#issuecomment-6396372222"}
+```
