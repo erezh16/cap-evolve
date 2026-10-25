@@ -1781,3 +1781,11 @@ Posted 'MIPROv2 hourly status' on #924 (miprov2): https://github.com/skillberry-
 ```json
 {"cp": 211, "prev_cp": 210, "prev_commit": "cdf199fe91d2de7004b0c1726f9639f96608540f", "utc": "2026-10-25T05:41:29Z", "kind": "posted", "phase": "P3", "done_through": "final/2160", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "1365a97f7a1680769356749d6b69542580ce4219", "open_decisions": [], "memory": {"used_pct": 46.51, "peak_pct": 49.28, "state": "OK", "stale": false}, "post": "miprov2/status_20261025T054124", "url": "https://github.com/skillberry-ai/cap-evolve/issues/924#issuecomment-6394022109"}
 ```
+
+## TA-0212 · 2026-10-25T05:43Z · P3 posted seed · posted
+
+Posted 'seed agent: window 20% done' on #915 (seed): https://github.com/skillberry-ai/cap-evolve/issues/915#issuecomment-6394035881
+
+```json
+{"cp": 212, "prev_cp": 211, "prev_commit": "ec90de391c248e00e6a526d507603057b829ab75", "utc": "2026-10-25T05:43:12Z", "kind": "posted", "phase": "P3", "done_through": "final/2160", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "1365a97f7a1680769356749d6b69542580ce4219", "open_decisions": [], "memory": {"used_pct": 46.6, "peak_pct": 49.28, "state": "OK", "stale": false}, "post": "seed/window_20pct", "url": "https://github.com/skillberry-ai/cap-evolve/issues/915#issuecomment-6394035881"}
+```
