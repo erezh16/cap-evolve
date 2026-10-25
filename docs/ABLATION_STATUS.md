@@ -776,3 +776,11 @@ P4 abl_ref: iteration 2: val 0.6258503401360545, reject. Counted rollouts 147 of
 ```json
 {"cp": 93, "prev_cp": 92, "prev_commit": "009712615ece4204dbceca40086f06bf7e0cfccf", "utc": "2026-10-25T17:55:40Z", "kind": "result", "phase": "P4", "done_through": "P3/seed", "next": "P4/searches", "arm": "abl_ref", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {"STATE/abl_ref/progress.json": "95b0d5b6c6446db72129ed732beec6826237aef4409602860e9bb2ebb0ef941a"}, "code": "cd5e6c7eb6301a8d71df5a71c35d3edb37506eb8", "open_decisions": [], "memory": {"used_pct": 8.41, "peak_pct": 49.03, "state": "OK", "stale": false}, "iteration": 2, "verdict": {"candidate": "cand_0002", "accept": false, "val": 0.6258503401360545, "parent_val": 0.6258503401360545, "indecisive": false, "kind": "step"}}
 ```
+
+## ABL-0094 · 2026-10-25T17:55Z · P4 posted abl_ref · posted
+
+Posted 'Cap-evolve full (reference) iteration 2' on #930 (abl_ref): https://github.com/skillberry-ai/cap-evolve/issues/930#issuecomment-6401114321
+
+```json
+{"cp": 94, "prev_cp": 93, "prev_commit": "643e9669f5ef23d7bd937fabe278c97db4f694ad", "utc": "2026-10-25T17:55:43Z", "kind": "posted", "phase": "P4", "done_through": "P3/seed", "next": "P4/searches", "arm": "abl_ref", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "cd5e6c7eb6301a8d71df5a71c35d3edb37506eb8", "open_decisions": [], "memory": {"used_pct": 8.49, "peak_pct": 49.03, "state": "OK", "stale": false}, "post": "abl_ref/iter_2", "url": "https://github.com/skillberry-ai/cap-evolve/issues/930#issuecomment-6401114321"}
+```
