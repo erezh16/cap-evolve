@@ -1,0 +1,7 @@
+[
+ {
+  "file": "policy/notes.txt",
+  "op": "set",
+  "text": "Read each API's documentation before calling it.\n"
+ }
+]

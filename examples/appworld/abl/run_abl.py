@@ -308,9 +308,12 @@ def _imp_run(proj: Path, run_dir: Path) -> dict:
             else:
                 row[name] = "sha_match" if sh256(f) == sh256(src) else "sha_differs"
         g.append(row)
-    out["6_guidance"] = {"ok": bool(g) and all(r.get("tools") == "sha_match" and r.get("system-prompt") == "sha_match"
-                                               and r.get("diagnose") == "head_match" for r in g), "detail": g,
-                         "pinned_sha256": {k: sh256(v) for k, v in GUIDANCE.items()}}
+    # §9.6.6: a capability's guidance exists ONLY where the arm's capabilities put it, and equals the pin there
+    caps = {c.strip() for c in ARM_CONFIG[CAND]["capabilities"].strip("[]").split(",")}
+    want = {"tools": "sha_match" if "tools" in caps else "missing",
+            "system-prompt": "sha_match" if "system-prompt" in caps else "missing", "diagnose": "head_match"}
+    out["6_guidance"] = {"ok": bool(g) and all(all(r.get(k) == v for k, v in want.items()) for r in g), "detail": g,
+                         "expected": want, "pinned_sha256": {k: sh256(v) for k, v in GUIDANCE.items()}}
     out["7_hill_climb_script"] = {"ok": bool(hc), "path": str(HC_RUN), "sha256": sh256(HC_RUN)}
     return out
 

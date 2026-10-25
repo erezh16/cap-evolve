@@ -1,0 +1,7 @@
+[
+ {
+  "file": "tools/extra_helpers.py",
+  "op": "set",
+  "text": "\"\"\"Extra helpers.\"\"\"\n\n\ndef first(items):\n    \"\"\"First item or None.\"\"\"\n    return (items or [None])[0]\n"
+ }
+]
