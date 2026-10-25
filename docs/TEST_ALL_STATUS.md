@@ -3464,3 +3464,11 @@ Posted 'HarnessLens hourly status' on #923 (harnesslens): https://github.com/ski
 ```json
 {"cp": 411, "prev_cp": 410, "prev_commit": "c29b3d4aa0063d0285582807c7f1fe256a4cdfa8", "utc": "2026-10-25T12:36:52Z", "kind": "posted", "phase": "P3", "done_through": "final/4365", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 46.43, "peak_pct": 92.21, "state": "OK", "stale": false}, "post": "harnesslens/status_20261025T123648", "url": "https://github.com/skillberry-ai/cap-evolve/issues/923#issuecomment-6397720450"}
 ```
+
+## TA-0412 · 2026-10-25T12:37Z · P3 posted seed · posted
+
+Posted 'seed agent: window 40% done' on #915 (seed): https://github.com/skillberry-ai/cap-evolve/issues/915#issuecomment-6397724030
+
+```json
+{"cp": 412, "prev_cp": 411, "prev_commit": "3c9fd4317ba7c976bcce2b58a76c7bea1b9eb91a", "utc": "2026-10-25T12:37:14Z", "kind": "posted", "phase": "P3", "done_through": "final/4365", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 46.51, "peak_pct": 92.21, "state": "OK", "stale": false}, "post": "seed/window_40pct", "url": "https://github.com/skillberry-ai/cap-evolve/issues/915#issuecomment-6397724030"}
+```
