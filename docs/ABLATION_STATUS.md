@@ -232,3 +232,11 @@ Posted 'Cap evolve traces and score only hourly status' on #935 (abl_tracescore)
 ```json
 {"cp": 26, "prev_cp": 25, "prev_commit": "80244804d63c2a0b3d4bfebd70b32b46d880e0ff", "utc": "2026-10-25T12:22:47Z", "kind": "posted", "phase": "P1", "done_through": "P1/B5.1", "next": "P1/B5.2", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "d472197dea03facebc1f85b859e35320b3ef6d56", "open_decisions": [], "memory": {"used_pct": 4.88, "peak_pct": 6.18, "state": "OK", "stale": false}, "post": "abl_tracescore/status_20261025T1222", "url": "https://github.com/skillberry-ai/cap-evolve/issues/935#issuecomment-6397581765"}
 ```
+
+## ABL-0027 · 2026-10-25T12:36Z · P1 build B5.2 tools lint · result
+
+B5 piece 2 done: the tools-only anti-smuggling lint (plan 10.4) in adapters/lints.py, active only with AW_ABL_TOOLS_LINT=1 (unset = the reference lint, unchanged: the 15 existing offline tests pass). It rejects a helper whose return value is more than 200 characters of fixed literal text: a string literal, the literal parts of an f-string, + or % of literals, a literal join over a list or tuple of literals, .format/.strip of a literal, or a module-level or local string constant returned by name. Docstrings and api_notes are not rejected (they are the tools surface). Design point for fairness: the evaluator cache is keyed by candidate tree only, so a tree first scored by another arm could otherwise be served to abl_tools without its lint; with the switch on, common/evaluator.py now runs the lint before the cache lookup (a reject costs 0 rollouts, logged in lint_rejects.jsonl). For every other arm the evaluator path is unchanged. Tests abl/tests/test_tools_lint.py (synthetic helpers): literal, f-string, join, concat, module and local constants rejected; a normal paged helper with a long docstring passes; threshold 200 passes, 201 rejected; off without the switch. 12/12 abl tests pass.
+
+```json
+{"cp": 27, "prev_cp": 26, "prev_commit": "b1c5cc0c3b386c13b69131f45d7fb1183b59568d", "utc": "2026-10-25T12:36:57Z", "kind": "result", "phase": "P1", "done_through": "P1/B5.2", "next": "P1/B5.3", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "b1c5cc0c3b386c13b69131f45d7fb1183b59568d", "open_decisions": [], "memory": {"used_pct": 2.92, "peak_pct": 6.18, "state": "OK", "stale": false}}
+```
