@@ -392,3 +392,11 @@ Posted 'Cap evolve tools only hourly status' on #933 (abl_tools): https://github
 ```json
 {"cp": 46, "prev_cp": 45, "prev_commit": "65ec0e5f7e74e884c5a2e146cb1927aedcc5b60c", "utc": "2026-10-25T14:21:12Z", "kind": "posted", "phase": "P2", "done_through": "P2/A-ABL-CC-daemon", "next": "P2/A-ABL-CC (user decision), A9 per arm, A13", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "54e148b40a77536e052c1dda164e0752cb8dc2f6", "open_decisions": ["abl_cc init: bundled skills, auto-memory, tool list"], "memory": {"used_pct": 1.99, "peak_pct": 23.21, "state": "OK", "stale": false}, "post": "abl_tools/status_20261025T1421", "url": "https://github.com/skillberry-ai/cap-evolve/issues/933#issuecomment-6398800941"}
 ```
+
+## ABL-0047 · 2026-10-25T14:21Z · P2 posted abl_notrace · posted
+
+Posted 'Cap evolve no traces hourly status' on #934 (abl_notrace): https://github.com/skillberry-ai/cap-evolve/issues/934#issuecomment-6398801411
+
+```json
+{"cp": 47, "prev_cp": 46, "prev_commit": "6da5b308350bc8d4d8b0b23ef1c026c9cee1a933", "utc": "2026-10-25T14:21:15Z", "kind": "posted", "phase": "P2", "done_through": "P2/A-ABL-CC-daemon", "next": "P2/A-ABL-CC (user decision), A9 per arm, A13", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "54e148b40a77536e052c1dda164e0752cb8dc2f6", "open_decisions": ["abl_cc init: bundled skills, auto-memory, tool list"], "memory": {"used_pct": 2.04, "peak_pct": 23.21, "state": "OK", "stale": false}, "post": "abl_notrace/status_20261025T1421", "url": "https://github.com/skillberry-ai/cap-evolve/issues/934#issuecomment-6398801411"}
+```
