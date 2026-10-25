@@ -3,10 +3,10 @@
  "arm": "abl_prompt",
  "k_se": 0.2,
  "counted_rollouts": 147,
- "cache_hits": 147,
+ "cache_hits": 294,
  "lint_rejects": 0,
- "iterations_done": 1,
- "iterations_consumed": 1,
+ "iterations_done": 2,
+ "iterations_consumed": 2,
  "accepted": 1,
  "iterations": [
   {
@@ -21,24 +21,32 @@
    "k_se": 0.2,
    "bar": 0.0095,
    "would_pass_k1": true
+  },
+  {
+   "candidate": "cand_0002",
+   "accept": false,
+   "val": 0.6598639455782312,
+   "parent_val": 0.6598639455782312,
+   "indecisive": false,
+   "kind": "step"
   }
  ],
  "baseline_val": 0.4013605442176871,
  "baseline_label": "seed, shared P3 baseline",
  "best_search_score": 0.6598639455782312,
  "best_search_label": "val = train ∪ dev (147), a fit metric, selection-biased",
- "metric_calls": 294,
- "capevolve_optimizer_usd": 18.60217725,
+ "metric_calls": 441,
+ "capevolve_optimizer_usd": 19.713441,
  "optimizer": {
-  "calls": 1,
-  "prompt_tokens": 1288379,
-  "completion_tokens": 153306,
-  "cache_read": 13625292,
-  "cache_write": 1211989,
-  "proxy_usd": 7.44,
-  "seconds": 795.9
+  "calls": 2,
+  "prompt_tokens": 1412288,
+  "completion_tokens": 155987,
+  "cache_read": 14213682,
+  "cache_write": 1316388,
+  "proxy_usd": 7.89,
+  "seconds": 1043.5
  },
  "voided_steps": 0,
  "feedback_mode": "full",
- "eta": "5 of 6 iterations left (CE2/CE3: about 45 to 70 min each)"
+ "eta": "4 of 6 iterations left (CE2/CE3: about 45 to 70 min each)"
 }
