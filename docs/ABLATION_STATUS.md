@@ -164,3 +164,13 @@ Posted 'Cap evolve traces and score only hourly status' on #935 (abl_tracescore)
 ```json
 {"cp": 18, "prev_cp": 17, "prev_commit": "28ed719e272760142084ed332ccde04c6f2dce12", "utc": "2026-10-25T11:23:32Z", "kind": "posted", "phase": "P1", "done_through": "P1/B5.1", "next": "P1/B5.2", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "d472197dea03facebc1f85b859e35320b3ef6d56", "open_decisions": [], "memory": {"used_pct": 1.94, "peak_pct": 5.46, "state": "OK", "stale": false}, "post": "abl_tracescore/status_20261025T1123", "url": "https://github.com/skillberry-ai/cap-evolve/issues/935#issuecomment-6397011970"}
 ```
+
+## ABL-0019 · 2026-10-25T11:49Z · P1 heartbeat · heartbeat
+
+No checkpoint for 25 min. Phase P1, last result: P1/B5.1.
+Runner: no runner. Last log line: `2026-10-25T11:48:41Z | memguard | - | sample 1.93% (633 MB) state OK peak 5.5%`.
+Next: P1/B5.2.
+
+```json
+{"cp": 19, "prev_cp": 18, "prev_commit": "a7d056fcbe1c2c9db544a5b5c300f23025011acd", "utc": "2026-10-25T11:49:20Z", "kind": "heartbeat", "phase": "P1", "done_through": "P1/B5.1", "next": "P1/B5.2", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "d472197dea03facebc1f85b859e35320b3ef6d56", "open_decisions": [], "memory": {"used_pct": 1.93, "peak_pct": 5.46, "state": "OK", "stale": false}, "runner": "none"}
+```
