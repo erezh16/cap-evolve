@@ -6162,3 +6162,11 @@ Next: final remaining cells.
 ```json
 {"cp": 732, "prev_cp": 731, "prev_commit": "e06c2a344a35931c3dc8a33feb2f7e06b6006e34", "utc": "2026-10-25T23:30:24Z", "kind": "result", "phase": "P3", "done_through": "final/7701", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/final/progress.json": "f81a271839b911298c477c1e11700946a1ded1dcb7707ff985b0472ce8566831"}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 46.79, "peak_pct": 97.6, "state": "OK", "stale": false}, "window": {"window": "final", "cells_total": 10920, "cells_done": 7701, "order_sha256": "725f659aefadafd4a8d1ee86b74ca9f00e2800e9a4974abc85dbac6b63c722f5"}}
 ```
+
+## TA-0733 · 2026-10-25T23:32Z · P3 posted metaharness · posted
+
+Posted 'Meta-Harness hourly status' on #922 (metaharness): https://github.com/skillberry-ai/cap-evolve/issues/922#issuecomment-6404927649
+
+```json
+{"cp": 733, "prev_cp": 732, "prev_commit": "ffbabe04e6cfba91110f677548494d8166091486", "utc": "2026-10-25T23:32:25Z", "kind": "posted", "phase": "P3", "done_through": "final/7701", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 45.58, "peak_pct": 97.6, "state": "OK", "stale": false}, "post": "metaharness/status_20261025T233212", "url": "https://github.com/skillberry-ai/cap-evolve/issues/922#issuecomment-6404927649"}
+```
