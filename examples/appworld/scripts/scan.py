@@ -29,7 +29,9 @@ import sandbox as SB  # noqa: E402
 
 LITERALS = ("test_normal", "test_challenge", "root_full", "ground_truth", "answer.json", "compiled_solution",
             "generate/tasks", "src/appworld/apps", "solution.py")
-if P.LEDGER_PREFIX == "CE2":   # CE2 §4.1 rule 5: REST's run data and the other arm's run dir as well
+if P.LEDGER_ID == "ABL":       # ABLATIONS R1.5: earlier evaluations' homes; other arms' roots are added per arm below
+    LITERALS = LITERALS + ("aw_rest", "aw_ce2", "aw_ce3")
+elif P.LEDGER_PREFIX == "CE2":   # CE2 §4.1 rule 5: REST's run data and the other arm's run dir as well
     LITERALS = LITERALS + ("aw_rest/cape_run", "aw_rest/state", "aw_ce2/run_k1", "aw_ce2/run_k2")
     if P.LEDGER_ID == "CE3":   # CE3: CE2's state and opt dirs are another arm's run too
         LITERALS = LITERALS + ("aw_ce2/state", "aw_ce2/opt")
@@ -72,13 +74,14 @@ def scan(c: str, id_re: re.Pattern) -> dict:
                                                 and p.name not in ("rollouts.jsonl", "cache_hits.jsonl")]
         counts: Counter = Counter()
         n_hit = 0
-        own = (None if P.LEDGER_ID == "CE3" else f"aw_ce2/run_k{c[-1]}") if P.LEDGER_PREFIX == "CE2" else None
+        own = (None if P.LEDGER_ID in ("CE3", "ABL") else f"aw_ce2/run_k{c[-1]}") if P.LEDGER_PREFIX == "CE2" else None
+        lits = LITERALS + (tuple(f"aw_abl/arms/{o}" for o in P.CANDIDATES if o != c) if P.LEDGER_ID == "ABL" else ())
         for p in files:
             if p.stat().st_size > 200_000_000:
                 continue
             text = p.read_bytes().decode("utf-8", "ignore")
             hit = Counter({"test_id": len(id_re.findall(text))})
-            for lit in LITERALS:
+            for lit in lits:
                 if lit != own:                # the arm's own run dir path is everywhere in its own records
                     hit[lit] = text.count(lit)
             hit = +hit

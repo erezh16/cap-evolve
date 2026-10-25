@@ -27,7 +27,7 @@ EX = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(EX / "scripts"))
 import awrest as P  # noqa: E402
 
-BR = "acceptance/eval-ce2-status-test" if P.LEDGER_PREFIX == "CE2" else "acceptance/eval-rest-status-test"
+BR = "acceptance/eval-abl-status-test" if P.LEDGER_ID == "ABL" else "acceptance/eval-ce2-status-test" if P.LEDGER_PREFIX == "CE2" else "acceptance/eval-rest-status-test"
 BASE = P.AW_HOME / "acceptance_a10"
 ORIGIN = str(P.AW_HOME / "acceptance_a10_remote.git")       # a local bare remote: the test never touches GitHub
 LEDGER = "EVAL_A10_TEST.md"

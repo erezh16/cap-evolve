@@ -266,7 +266,7 @@ def main() -> int:
                                                "cross_window": True,
                                                "label": "cross-window: the reused arm ran in CE2's window (2026-10-23)"}
         res["windows"] = {"this window": list(P.CANDIDATES), "reused from CE2's window (2026-10-23)": list(P.REUSED_WINDOW_ARMS)}
-    if P.LEDGER_PREFIX == "CE2" and not cross:   # CE2 §16: ce2_k2 − ce2_k1, same bootstrap (confounds K with search randomness)
+    if P.LEDGER_ID == "CE2" and not cross:   # CE2 §16: ce2_k2 − ce2_k1, same bootstrap (confounds K with search randomness)
         a2, a1 = P.CANDIDATES[1], P.CANDIDATES[0]
         ct, cs = bootstrap(cells, a2, a1, scen, rng)
         res["k2_vs_k1"] = {"d_tgc": res["arms"][a2]["tgc"] - res["arms"][a1]["tgc"], "ci_tgc": ct,
