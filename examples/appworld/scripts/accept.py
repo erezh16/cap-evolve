@@ -429,7 +429,8 @@ def a13() -> int:
     import threading
     import evaluator as E
     dev = E.split_ids("dev")[:4]
-    if P.LEDGER_PREFIX == "CE2":            # on the REAL reused cache, before the throwaway paths below are set
+    REUSED = P.LEDGER_ID in ("CE2", "CE3")   # a reused seed cache; ABLATIONS runs its own P3 (D8)
+    if REUSED:            # on the REAL reused cache, before the throwaway paths below are set
         pre = a13_ce2()
     saved_cache, saved_done = E.CACHE, E.SEED_DONE
     E.CACHE = P.AW_STATE / "a13" / "cache"
@@ -437,10 +438,10 @@ def a13() -> int:
     shutil.rmtree(P.AW_STATE / "a13", ignore_errors=True)
     shutil.rmtree(P.AW_STATE / "acc_a13", ignore_errors=True)
     res = {}
-    if P.LEDGER_PREFIX == "CE2":
+    if REUSED:
         res = pre
     try:
-        if P.LEDGER_PREFIX == "CE2":
+        if REUSED:
             raise _SkipMiniP3
         # mini P3: the seed on 4 dev ids, phase P3 (charged to the throwaway "a13seed" ledger file via a patched path)
         saved_lf = E._ledger_file
@@ -494,7 +495,7 @@ def a13() -> int:
     if prev is None:
         size_file.unlink(missing_ok=True)
     res["slot_peak_with_size_2"] = peak[0]
-    if P.LEDGER_PREFIX == "CE2":
+    if REUSED:
         res["ok"] = (res["seed_reuse_ok"] and res["same_tree_is_seed"] and res["identical_served_from_cache"]
                      and res["counted_after"] == 0 and res["seed_rerun_refused"] and peak[0] == 2)
     else:
