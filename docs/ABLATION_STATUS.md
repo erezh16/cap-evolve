@@ -360,3 +360,11 @@ A-ABL-CC item 1 FAILS as specified. One real claude -p call through the shim wit
 ```json
 {"cp": 42, "prev_cp": 41, "prev_commit": "0ef799c3cbbcd3c9988fc9886ecdb277d0935603", "utc": "2026-10-25T14:07:12Z", "kind": "decision", "phase": "P2", "done_through": "P2/A-ABL-CC-daemon", "next": "P2/A-ABL-CC (user decision), A9 per arm, A13", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "54e148b40a77536e052c1dda164e0752cb8dc2f6", "open_decisions": ["abl_cc init: bundled skills, auto-memory, tool list"], "memory": {"used_pct": 2.12, "peak_pct": 23.21, "state": "OK", "stale": false}}
 ```
+
+## ABL-0043 · 2026-10-25T14:21Z · P2 posted abl_ref · posted
+
+Posted 'Cap-evolve full (reference) hourly status' on #930 (abl_ref): https://github.com/skillberry-ai/cap-evolve/issues/930#issuecomment-6398799492
+
+```json
+{"cp": 43, "prev_cp": 42, "prev_commit": "b335064b38fa6a6158a1b344de4878c21dc7e8b6", "utc": "2026-10-25T14:21:04Z", "kind": "posted", "phase": "P2", "done_through": "P2/A-ABL-CC-daemon", "next": "P2/A-ABL-CC (user decision), A9 per arm, A13", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "54e148b40a77536e052c1dda164e0752cb8dc2f6", "open_decisions": ["abl_cc init: bundled skills, auto-memory, tool list"], "memory": {"used_pct": 1.98, "peak_pct": 23.21, "state": "OK", "stale": false}, "post": "abl_ref/status_20261025T1421", "url": "https://github.com/skillberry-ai/cap-evolve/issues/930#issuecomment-6398799492"}
+```
