@@ -2736,3 +2736,11 @@ Next: final remaining cells.
 ```json
 {"cp": 325, "prev_cp": 324, "prev_commit": "e248df2b38d292d29ed9be9f30af1b67f96560ae", "utc": "2026-10-25T09:14:30Z", "kind": "result", "phase": "P3", "done_through": "final/3318", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/final/progress.json": "87623e12628ef6545d6256e1edea8dd6ab35538378bd41d3785171241aa18b0f"}, "code": "1365a97f7a1680769356749d6b69542580ce4219", "open_decisions": [], "memory": {"used_pct": 47.6, "peak_pct": 50.12, "state": "OK", "stale": false}, "window": {"window": "final", "cells_total": 10920, "cells_done": 3318, "order_sha256": "725f659aefadafd4a8d1ee86b74ca9f00e2800e9a4974abc85dbac6b63c722f5"}}
 ```
+
+## TA-0326 · 2026-10-25T09:18Z · P3 posted skillopt · posted
+
+Posted 'SkillOpt hourly status' on #919 (skillopt): https://github.com/skillberry-ai/cap-evolve/issues/919#issuecomment-6395857853
+
+```json
+{"cp": 326, "prev_cp": 325, "prev_commit": "988dd9480fd596dc1869bd5ef7bc5d1deaa077a7", "utc": "2026-10-25T09:18:42Z", "kind": "posted", "phase": "P3", "done_through": "final/3318", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "1365a97f7a1680769356749d6b69542580ce4219", "open_decisions": [], "memory": {"used_pct": 48.94, "peak_pct": 50.12, "state": "OK", "stale": false}, "post": "skillopt/status_20261025T091824", "url": "https://github.com/skillberry-ai/cap-evolve/issues/919#issuecomment-6395857853"}
+```
