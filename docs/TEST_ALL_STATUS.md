@@ -4306,3 +4306,11 @@ Next: final remaining cells.
 ```json
 {"cp": 511, "prev_cp": 510, "prev_commit": "84e00ff70532829b9bd6471fdc3eea7aaa8e7b56", "utc": "2026-10-25T16:07:50Z", "kind": "result", "phase": "P3", "done_through": "final/5457", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/final/progress.json": "af1291192d845266f1c129baeb6f14c64597286fa720210483c52800d77f0c76"}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 48.23, "peak_pct": 97.6, "state": "OK", "stale": false}, "window": {"window": "final", "cells_total": 10920, "cells_done": 5457, "order_sha256": "725f659aefadafd4a8d1ee86b74ca9f00e2800e9a4974abc85dbac6b63c722f5"}}
 ```
+
+## TA-0512 · 2026-10-25T16:08Z · P3 posted seed · posted
+
+Posted 'seed agent: window 50% done' on #915 (seed): https://github.com/skillberry-ai/cap-evolve/issues/915#issuecomment-6399956892
+
+```json
+{"cp": 512, "prev_cp": 511, "prev_commit": "b707caad5cc3737060213e0f6a16affb7b56594f", "utc": "2026-10-25T16:08:50Z", "kind": "posted", "phase": "P3", "done_through": "final/5457", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 48.26, "peak_pct": 97.6, "state": "OK", "stale": false}, "post": "seed/window_50pct", "url": "https://github.com/skillberry-ai/cap-evolve/issues/915#issuecomment-6399956892"}
+```
