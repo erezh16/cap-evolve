@@ -1,0 +1,18 @@
+--- INSTRUCTIONS.abl_ref.md
++++ INSTRUCTIONS.abl_notrace.md
+@@ -37,10 +37,11 @@
+ 
+ How episodes run and are scored: `./guidance/sources/react_agent_notes.md` (REPL, trimming,
+ termination, blocked modules) and `./guidance/sources/api_index.md` (every app and API).
+-`./trajectories/` holds one JSON per rollout: `input.instruction`, `rollout.trace` (per step:
+-thought, reasoning excerpt, code, output truncated to 2,000 chars), `rollout.metadata`
+-(termination, steps, tokens, failed requirement texts, collateral-damage flag) and
+-`score.feedback`. A requirement text says WHAT the evaluator checked, never the gold value.
++`./trajectories/` holds one JSON per rollout with NO conversation: `input.instruction`,
++`rollout.metadata` (termination, steps, tokens, failed requirement texts, collateral-damage flag)
++and `score.feedback`. `rollout.trace` is empty: this run does not show you what the agent did,
++only how each task was graded. A requirement text says WHAT the evaluator checked, never the gold
++value.
+ Do NOT try to find gold answers, solutions or test data anywhere on disk, and do NOT run
+ AppWorld episodes yourself (AppWorld is not available to you; the harness re-scores you).
+ 

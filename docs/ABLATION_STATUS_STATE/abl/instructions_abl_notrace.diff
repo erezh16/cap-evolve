@@ -1,0 +1,49 @@
+--- INSTRUCTIONS.base.md
++++ INSTRUCTIONS.abl_notrace.md
+@@ -8,6 +8,46 @@
+ 
+ GOAL: raise the objective score as much as you can THIS iteration, then STOP (the harness
+ re-scores your work; don't run the evaluation yourself). Every capability you were given is fair game. Take your time, study these instructions in detail and be meticulous. Generating a high-quality result is far more important than speed of execution.
++
++## AppWorld facts for THIS run
++**Objective score for this run.** This run has a single objective, the AppWorld task reward: 1.0 if every AppWorld test of the task passes, else 0.0. The harness scores a candidate by the mean reward over the 147 optimization tasks, one trial each, and accepts it only if the mean paired gain over the current best clears its noise gate. Partial passes earn nothing; the failed-requirement texts in each trajectory say which checks failed. There are no other components (no cost or length objective).
++
++The candidate is three files; nothing else is read by the agent under test:
++- `policy/instructions.txt` — the ReAct prompt (capability system-prompt). A Jinja template
++  rendered with `instruction`, `main_user`, `app_descriptions` ONLY, split into chat messages
++  on `USER:` / `ASSISTANT:` lines. Keep that structure, keep the worked demo format (one
++  ```python block per ASSISTANT turn), and keep the final block
++  `My name is: … Task: {{ instruction }}` last. At most 8,000 tokens.
++- `tools/helpers.py` — plain Python functions (capability tools), executed once in the agent's
++  REPL before step 1. They are NOT model tools: the agent calls them from its own code, e.g.
++  `items = fetch_all_pages(apis, "spotify", "show_playlist_library", access_token=t)`. Rules
++  (the lint enforces them): helpers take `apis` and app/API names as PARAMETERS
++  (`getattr(getattr(apis, app_name), api_name)`), no `apis.<app>.` attribute chains, no string
++  literal equal to an app or API name, imports only re/json/math/datetime/itertools/
++  collections/functools, no file/network access, no top-level calls, at most 400 lines. This is
++  AppWorld's rule against hardcoded API calls: a helper must be useful across tasks.
++- `tools/api_notes.json` — `{"app": note, "app.api": note}`; each note (at most 400
++  characters) is appended as a `note` field to what `apis.api_docs.show_api_doc` /
++  `show_api_descriptions` return. Use it for API facts the docs leave implicit (pagination,
++  formats, which API returns what). The original doc text cannot be changed.
++- `memory/` is NOT part of this run: do not create or edit files there.
++Prompt edits, helper code and API notes must be GENERAL: no 8-gram copied from any task
++instruction, no supervisor name/email/phone, no task-specific value (the lint rejects these).
++AppWorld permits generic hints, not task-specific ones.
++
++How episodes run and are scored: `./guidance/sources/react_agent_notes.md` (REPL, trimming,
++termination, blocked modules) and `./guidance/sources/api_index.md` (every app and API).
++`./trajectories/` holds one JSON per rollout with NO conversation: `input.instruction`,
++`rollout.metadata` (termination, steps, tokens, failed requirement texts, collateral-damage flag)
++and `score.feedback`. `rollout.trace` is empty: this run does not show you what the agent did,
++only how each task was graded. A requirement text says WHAT the evaluator checked, never the gold
++value.
++Do NOT try to find gold answers, solutions or test data anywhere on disk, and do NOT run
++AppWorld episodes yourself (AppWorld is not available to you; the harness re-scores you).
++
++LINT BEFORE YOU STOP — a failing candidate is rejected without being run:
++`AW_LINT_CACHE={AW_LINT_CACHE} {AW_LINT_PY} {AW_LINTS} .` must print `"ok": true`.
++You may test helper code offline with plain Python on fake `apis` objects.
+ 
+ ## PREPARATION: 
+ Complete these steps before beginning to work on the edits. These preparation steps are MANDATORY and CRITICAL to the success of the optimization. Make sure you complete them properly before doing anything else.
