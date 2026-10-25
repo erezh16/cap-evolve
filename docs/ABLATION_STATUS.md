@@ -26,3 +26,11 @@ User decision (2026-10-25), replacing the relaunch decision of ABL-0000: the orc
 ```json
 {"cp": 1, "prev_cp": 0, "prev_commit": "e8c5fd3b899c8a74eafec0e17d743684c2190a5a", "utc": "2026-10-25T10:16:21Z", "kind": "decision", "phase": "P0", "done_through": "P1/B0", "next": "P1/autopost then P1/B1 (new session in base)", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "8ac42a2ac8bbf3f22e296a02eee70b4ddfac2e28", "open_decisions": [], "memory": {"used_pct": 4.12, "peak_pct": 5.31, "state": "OK", "stale": false}}
 ```
+
+## ABL-0002 · 2026-10-25T10:23Z · P1 hourly posts late · error
+
+Hourly status posts on #930 to #935 are late (plan section 12): the last post on each issue is from about 07:30 UTC (issue bodies and a bot labelling comment), more than 60 minutes ago, because autopost was not started in B0 (CE3-0002 lesson not applied; open item of ABL-0001). Repair now: autopost.py and post.py adapted to the abl profile (six arms; abl_cc reports evaluations of 6 and no gate; no money or token cap; plan and ledger references point to docs/ABLATIONS.md); autopost loop and the heartbeat (60 s post-age and guard checks) are started next, and the first hourly status goes to all six issues at once. Session 5cbfcce5 added to AW_SESSION_IDS. Memory guard alive (5 s, OK, 4.7%).
+
+```json
+{"cp": 2, "prev_cp": 1, "prev_commit": "6363ce4c626abd8ec2f7db495b9c35d102d1d31d", "utc": "2026-10-25T10:23:42Z", "kind": "error", "phase": "P1", "done_through": "P1/B0", "next": "P1/autopost then P1/B1", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "6363ce4c626abd8ec2f7db495b9c35d102d1d31d", "open_decisions": [], "memory": {"used_pct": 4.73, "peak_pct": 5.31, "state": "OK", "stale": false}}
+```
