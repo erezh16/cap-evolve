@@ -508,3 +508,13 @@ P3 starts: the shared seed baseline, run once (rule Q4): seed_capability (SEED_H
 ```json
 {"cp": 60, "prev_cp": 59, "prev_commit": "6fe2dcd88c6157b26a62a13c94b1d7774794ba97", "utc": "2026-10-25T15:47:40Z", "kind": "phase_start", "phase": "P3", "done_through": "P2/acceptance", "next": "P3/seed", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "6f18e48814cc261ad97ccbf4c08af7a9adc4c723", "open_decisions": [], "memory": {"used_pct": 2.18, "peak_pct": 23.21, "state": "OK", "stale": false}}
 ```
+
+## ABL-0061 · 2026-10-25T16:13Z · P3 heartbeat · heartbeat
+
+No checkpoint for 25 min. Phase P3, last result: P2/acceptance.
+Runner: alive (pid 81493). Last log line: `2026-10-25T16:13:05Z | memguard | - | sample 10.21% (3346 MB) state OK peak 44.0%`.
+Next: P3/seed.
+
+```json
+{"cp": 61, "prev_cp": 60, "prev_commit": "78a742b5431c371c38b102dac713df9c551c5d26", "utc": "2026-10-25T16:13:28Z", "kind": "heartbeat", "phase": "P3", "done_through": "P2/acceptance", "next": "P3/seed", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "6f18e48814cc261ad97ccbf4c08af7a9adc4c723", "open_decisions": [], "memory": {"used_pct": 10.21, "peak_pct": 44.02, "state": "OK", "stale": false}, "runner": "alive"}
+```
