@@ -77,7 +77,7 @@ def main(argv: list[str]) -> int:
     r_no = Rollout(task_id=tid, trace=[], metadata=dict(fields_noop, n_steps=0, termination="max_steps"))
     s1, s2, s0 = ad.score(task, r_ok), ad.score(task, r_ok), ad.score(task, r_no)
     print("A5.1 released solution: not repeated (CE2 §17)" if no_sol else
-          f"A5.1 released solution -> reward {s1.reward} (solution output: {out.strip()[:80]!r})")
+          f"A5.1 released solution -> reward {s1.reward} (output not printed: rule R1)")
     print(f"A5.2 no-op -> reward {s0.reward}")
     det = s1.to_dict() == s2.to_dict() and s0.to_dict() == ad.score(task, r_no).to_dict()
     print(f"A5.3 score twice identical: {det}")

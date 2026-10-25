@@ -111,7 +111,7 @@ def _run_base_check(script: str, *args: str) -> tuple[int, str]:
     env = P.setup_env(dict(os.environ))
     env["APPWORLD_ROOT"] = str(P.ROOT_OPT)
     env.setdefault("AW_EVAL", str(P.AW_BUILD))
-    if P.LEDGER_PREFIX == "CE2":
+    if P.LEDGER_ID in ("CE2", "CE3"):       # CE2 §17 skipped the released-solution probe; ABLATIONS A5 runs it (trusted)
         env["AW_A5_NO_SOLUTION"] = "1"
     r = subprocess.run([str(P.VENV_PY), "-I", str(EX / "scripts" / script), *args], capture_output=True, text=True,
                        env=env, cwd=str(P.SCRATCH))
