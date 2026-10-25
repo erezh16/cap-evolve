@@ -87,8 +87,10 @@ def b2() -> None:
     if not P.VENV_PY.exists():
         sh(f"{UV} venv -q -p 3.11 {v}")
     sh(f"{UV} pip install -q -p {v} torch --index-url https://download.pytorch.org/whl/cpu")
+    # ABLATIONS B2: no gepa arm; the evaluator's cap_evolve import is the code under test (abl-main), the only core
+    core, extra = (P.CAPE_TREE / "core", "") if P.LEDGER_ID == "ABL" else (P.REPO / "core", " 'gepa==0.1.4'")
     sh(f"{UV} pip install -q -p {v} -e {P.APPWORLD_SRC} -e '{P.APPWORLD_SRC}/experiments[simplified]' "
-       f"'pydantic>=2.12,<2.13' 'fastapi==0.143.0' -e {P.REPO / 'core'} tiktoken 'gepa==0.1.4' anthropic")  # fastapi 0.156 breaks AppWorld's Path(embed=)
+       f"'pydantic>=2.12,<2.13' 'fastapi==0.143.0' -e {core} tiktoken{extra} anthropic")  # fastapi 0.156 breaks AppWorld's Path(embed=)
     sh(f"{v / 'bin' / 'appworld'} install --repo", P.APPWORLD_SRC)
     freeze = sh(f"{UV} pip freeze -p {v}")
     P.atomic_write(P.AW_STATE / "venv-aw.freeze.txt", freeze)
