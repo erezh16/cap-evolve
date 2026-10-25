@@ -439,7 +439,9 @@ def accept(mock_edit: str | None = None) -> int:
                "text": json.dumps({"api_docs": "Call show_api_doc before calling an API for the first time."})}])
     P.write_json(proj.parent.parent / "mock_script.json", {"edits": edits})
     env_ts = f"dry_{root.name}"
-    os.environ["CAPEVOLVE_MOCK_SCRIPT"] = str(proj.parent.parent / "mock_script.json")
+    # passed as AW_MOCK_SCRIPT: the launcher strips inherited CAPEVOLVE_* (§9.2 step 5) and re-exports it only in the
+    # accept phase, so no counted search can ever see a mock script
+    os.environ["AW_MOCK_SCRIPT"] = str(proj.parent.parent / "mock_script.json")
     rc = run_capevolve(proj, ts=env_ts, phase="accept", log=STATE / "accept_dry_run.log")
     rd = latest_run_dir(root, env_ts)
     st = P.read_json(rd / "state.json", {}) or {}

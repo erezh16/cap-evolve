@@ -29,6 +29,9 @@ export AW_CAPE_ARM="$ARM" AW_EXAMPLE="$EX" AW_CAPE_PHASE="${AW_CAPE_PHASE:-searc
 export AW_CAPE_EXTRA_DENY="${AW_CAPE_EXTRA_DENY:-$PROJ/adapters}"
 export APPWORLD_ROOT="$AW_HOME/build/root_opt" AW_KEY_ENV=RITS_API_KET
 export "${SW[@]}"
+# acceptance dry runs only (optimizer_skill mock): never in a counted search
+if [ "$AW_CAPE_PHASE" = accept ] && [ -n "${AW_MOCK_SCRIPT:-}" ]; then export CAPEVOLVE_MOCK_SCRIPT="$AW_MOCK_SCRIPT"; fi
+unset AW_MOCK_SCRIPT
 mkdir -p "$AW_STATE/$ARM" "$AW_STATE/progress"
 until /home/dev/bin/memok-abl >/dev/null 2>&1; do sleep 30; done
 "$VC/bin/python" -I "$HERE/run_abl.py" imp-check --arm "$ARM" --level launch --project "$PROJ" \
