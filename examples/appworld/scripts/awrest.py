@@ -173,7 +173,9 @@ def read_env_file(path: Path | str = ENV_FILE) -> dict[str, str]:
 
 def progress_log(trial: str, phase: str, detail: str) -> None:
     PROGRESS.mkdir(parents=True, exist_ok=True)
-    with open(PROGRESS / f"{trial}.log", "a") as f:
+    # slot names are "<window>/<arm>": a "/" in the file name pointed at a missing dir and the open raised, which ended
+    # the TEST_ALL window's cell loop at its first PAUSE (TA ledger, 2026-10-25). One flat file per name instead.
+    with open(PROGRESS / f"{trial.replace('/', '_')}.log", "a") as f:
         f.write(f"{utcnow()} | {trial} | {phase} | {detail}\n")
 
 

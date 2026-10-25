@@ -2931,3 +2931,11 @@ Next: final remaining cells.
 ```json
 {"cp": 348, "prev_cp": 347, "prev_commit": "4d467527dec0d081f9317612eaacfb3e713a6cf1", "utc": "2026-10-25T10:09:48Z", "kind": "result", "phase": "P3", "done_through": "final/3579", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/final/progress.json": "515ac8383435ccf5e9b439bd9e743a815853d5f1eaa615851fd96e5d170da7a8"}, "code": "1365a97f7a1680769356749d6b69542580ce4219", "open_decisions": [], "memory": {"used_pct": 14.79, "peak_pct": 92.21, "state": "OK", "stale": false}, "window": {"window": "final", "cells_total": 10920, "cells_done": 3579, "order_sha256": "725f659aefadafd4a8d1ee86b74ca9f00e2800e9a4974abc85dbac6b63c722f5"}}
 ```
+
+## TA-0349 · 2026-10-25T10:12Z · P3 cell loop ended at first PAUSE · error
+
+Error found at 10:10 UTC. At 09:58 one episode's memory growth took the container to 90% (peak 92.2%); memguard set PAUSE as designed and cleared it at 10:00 (81.8%). While PAUSE existed, every worker that waited for a slot called progress_log('final/<arm>'), whose '/' pointed at a missing directory: the open raised FileNotFoundError, so each such future failed at once without running an episode, and the queue of not-yet-started cells drained in seconds. No record was written for any of those cells; the 3,579 records on disk are unaffected; 0 cells were run twice. Since then only the 5 episodes that already held slots are running. Repair (this commit): progress_log flattens '/' in the log name. Plan: let the 5 running episodes finish (the runner then exits and relocks root_full), then resume.py --window, which runs only cells without a record, with their recorded trial seeds. Deviation to disclose: the affected cells run later in wall-clock time than their position in the shuffled order.
+
+```json
+{"cp": 349, "prev_cp": 348, "prev_commit": "33782d4f874e27425e20bdf84b88fffe42a7382c", "utc": "2026-10-25T10:12:58Z", "kind": "error", "phase": "P3", "done_through": "final/3579", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "1365a97f7a1680769356749d6b69542580ce4219", "open_decisions": [], "memory": {"used_pct": 11.33, "peak_pct": 92.21, "state": "OK", "stale": false}}
+```
