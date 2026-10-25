@@ -1822,3 +1822,11 @@ Next: final remaining cells.
 ```json
 {"cp": 216, "prev_cp": 215, "prev_commit": "d88ad7e51a0b5ca796b91ec46773f32316c7734e", "utc": "2026-10-25T05:43:31Z", "kind": "result", "phase": "P3", "done_through": "final/2190", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/final/progress.json": "e8df0095935f545b5f6b53b5c4b9e8e7b9c0226a3d69adcbfa78150581ddf0a6"}, "code": "1365a97f7a1680769356749d6b69542580ce4219", "open_decisions": [], "memory": {"used_pct": 45.35, "peak_pct": 49.28, "state": "OK", "stale": false}, "window": {"window": "final", "cells_total": 10920, "cells_done": 2190, "order_sha256": "725f659aefadafd4a8d1ee86b74ca9f00e2800e9a4974abc85dbac6b63c722f5"}}
 ```
+
+## TA-0217 · 2026-10-25T05:43Z · P3 posted skillopt · posted
+
+Posted 'SkillOpt: window 20% done' on #919 (skillopt): https://github.com/skillberry-ai/cap-evolve/issues/919#issuecomment-6394038987
+
+```json
+{"cp": 217, "prev_cp": 216, "prev_commit": "cacab3d14e500ae247a69d492dd053d7d36ed0fd", "utc": "2026-10-25T05:43:33Z", "kind": "posted", "phase": "P3", "done_through": "final/2190", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "1365a97f7a1680769356749d6b69542580ce4219", "open_decisions": [], "memory": {"used_pct": 46.39, "peak_pct": 49.28, "state": "OK", "stale": false}, "post": "skillopt/window_20pct", "url": "https://github.com/skillberry-ai/cap-evolve/issues/919#issuecomment-6394038987"}
+```
