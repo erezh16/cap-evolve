@@ -88,5 +88,9 @@
   "template_overhead_max": 157,
   "encoding": "o200k_harmony",
   "rule": "min(30000 chars, 34000 - P_max - H_max tokens), tokens floored to 500"
+ },
+ "seed": {
+  "SEED_HASH": "85a0da9cec2206a7bc683c11d60b5cb0acac7328d43c6e9197324d1e45971f3c",
+  "baseline": "STATE/seed/baseline.json"
  }
 }

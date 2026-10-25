@@ -566,3 +566,11 @@ Posted 'Cap evolve traces and score only hourly status' on #935 (abl_tracescore)
 ```json
 {"cp": 67, "prev_cp": 66, "prev_commit": "d7bd6a8a5f01f6175a924adca95b7ecba9833f99", "utc": "2026-10-25T16:19:48Z", "kind": "posted", "phase": "P3", "done_through": "P2/acceptance", "next": "P3/seed", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "6f18e48814cc261ad97ccbf4c08af7a9adc4c723", "open_decisions": [], "memory": {"used_pct": 6.83, "peak_pct": 44.02, "state": "OK", "stale": false}, "post": "abl_tracescore/status_20261025T1619", "url": "https://github.com/skillberry-ai/cap-evolve/issues/935#issuecomment-6400076090"}
 ```
+
+## ABL-0068 · 2026-10-25T16:27Z · P3 shared seed baseline · phase_done
+
+P3 done: the seed (SEED_HASH 85a0da9cec2206a7) on 90 train + 57 dev tasks, 1 trial, seed 100. Train TGC 0.3889, dev TGC 0.4211 (selection sets, 1 trial). 147 fresh episode rows (0 infra rows retried), counted once as the shared seed baseline and charged to no candidate. From now on a fresh seed episode raises SeedRerunRefused. Next: P4 candidate searches.
+
+```json
+{"cp": 68, "prev_cp": 67, "prev_commit": "5d621da8a05a1cc806534ab5e95535e3a9864eb0", "utc": "2026-10-25T16:27:21Z", "kind": "phase_done", "phase": "P3", "done_through": "P3/seed", "next": "P4/searches", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {"STATE/seed/baseline.json": "79c3f3f510684345da6e5d7a7d591ea51eda6ce4162aa1b94e8d42b89f505f54", "STATE/manifest.json": "e716cbe1f1bf81663c023368b003f599c0dd22c1fed087c1cf2493cbaebd615b"}, "code": "6f18e48814cc261ad97ccbf4c08af7a9adc4c723", "open_decisions": [], "memory": {"used_pct": 6.8, "peak_pct": 44.02, "state": "OK", "stale": false}}
+```
