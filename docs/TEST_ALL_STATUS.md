@@ -2309,3 +2309,12 @@ Posted 'MIPROv2 hourly status' on #924 (miprov2): https://github.com/skillberry-
 ```json
 {"cp": 274, "prev_cp": 273, "prev_commit": "b7fa1cf21ff3d3bcf987e2d23212402a32ab522b", "utc": "2026-10-25T07:41:43Z", "kind": "posted", "phase": "P3", "done_through": "final/2813", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "1365a97f7a1680769356749d6b69542580ce4219", "open_decisions": [], "memory": {"used_pct": 48.98, "peak_pct": 50.12, "state": "OK", "stale": false}, "post": "miprov2/status_20261025T074124", "url": "https://github.com/skillberry-ai/cap-evolve/issues/924#issuecomment-6394994941"}
 ```
+
+## TA-0275 · 2026-10-25T07:44Z · P3 final window · result
+
+final window: 32 cells since the last entry; 2845/10920 done (ace 220, altk 212, cape_k02 224, evoskill 237, gepa 210, gepa_full 238, harnesslens 207, metaharness 220, miprov2 191, seed 210, skillopt 220, trace2skill 225, wikiskill 231); infra still missing 0, retries 6.
+Next: final remaining cells.
+
+```json
+{"cp": 275, "prev_cp": 274, "prev_commit": "7990575a53ca0136695226758a188c338da18f8e", "utc": "2026-10-25T07:44:05Z", "kind": "result", "phase": "P3", "done_through": "final/2845", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/final/progress.json": "b49335b106fd5f9d5f5d87e799a3053662205758d081de3e1d6d593150a92115"}, "code": "1365a97f7a1680769356749d6b69542580ce4219", "open_decisions": [], "memory": {"used_pct": 48.89, "peak_pct": 50.12, "state": "OK", "stale": false}, "window": {"window": "final", "cells_total": 10920, "cells_done": 2845, "order_sha256": "725f659aefadafd4a8d1ee86b74ca9f00e2800e9a4974abc85dbac6b63c722f5"}}
+```
