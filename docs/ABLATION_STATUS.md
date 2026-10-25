@@ -492,3 +492,11 @@ A9 PASS for EACH of the six arms in its exact launch configuration (the abl shim
 ```json
 {"cp": 58, "prev_cp": 57, "prev_commit": "0ca2124f4f52871123fd0ef4b89a746c4a4770b4", "utc": "2026-10-25T15:35:03Z", "kind": "result", "phase": "P2", "done_through": "P2/A9", "next": "P2/A13, then P2 done", "arm": null, "counts": {}, "spend": {}, "artifacts": {"local/acceptance/a9_abl_ref.json": "3aafd0b51822a6930fcdbecfee1e7da89640e73e5bb5843cd9c9ec3acb6bb746", "local/acceptance/a9_abl_cc.json": "ff0be6ffd5d06193772be9fbba4bf5550c2ab412bd9cdff73f979f7274965321"}, "code": "54e148b40a77536e052c1dda164e0752cb8dc2f6", "open_decisions": [], "memory": {"used_pct": 2.15, "peak_pct": 23.21, "state": "OK", "stale": false}}
 ```
+
+## ABL-0059 · 2026-10-25T15:46Z · P2 acceptance done · phase_done
+
+P2 done: every acceptance check of plan section 14 has passed and is in the ledger, before any counted rollout. A1, A2, A3/A5, A4, A6, A7, A12 (ABL-0031); A8, A11 (ABL-0032); A10 and A-ABL-CORE abl_ref (ABL-0039); A-ABL-CORE and the per-arm checks of 10.3 to 10.6 plus A-ABL-SAME and the filter tests (ABL-0040, ABL-0029, ABL-0011); A-ABL-CC daemon (ABL-0041) and its session-init item, resolved by user decision as a recorded deviation (ABL-0057); A9 for all six arms (ABL-0058); A13 PASS now: a mini P3 on 4 dev ids into a throwaway cache (4 fresh), a candidate identical to the seed then served from the cache (0 counted), a fresh seed episode refused (SeedRerunRefused), slot peak 2 with size 2 and 3 callers. A13 on the REAL cache (plan: before any path swap, CE2-0009) needs the shared seed baseline, so it runs right after P3: an identical-to-seed candidate must be served from the real cache on all 147 ids for every arm, abl_cc daemon included. Next: P3, the shared seed baseline (147 episodes, once).
+
+```json
+{"cp": 59, "prev_cp": 58, "prev_commit": "6f18e48814cc261ad97ccbf4c08af7a9adc4c723", "utc": "2026-10-25T15:46:22Z", "kind": "phase_done", "phase": "P2", "done_through": "P2/acceptance", "next": "P3/seed", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "6f18e48814cc261ad97ccbf4c08af7a9adc4c723", "open_decisions": [], "memory": {"used_pct": 2.13, "peak_pct": 23.21, "state": "OK", "stale": false}}
+```
