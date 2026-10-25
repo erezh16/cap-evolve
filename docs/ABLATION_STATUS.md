@@ -622,3 +622,11 @@ Posted 'shared seed baseline done' on #934 (abl_notrace): https://github.com/ski
 ```json
 {"cp": 74, "prev_cp": 73, "prev_commit": "f686176c8412608556a2f4f1671cb48870da94c0", "utc": "2026-10-25T16:29:31Z", "kind": "posted", "phase": "P3", "done_through": "P3/seed", "next": "P4/searches", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "cd5e6c7eb6301a8d71df5a71c35d3edb37506eb8", "open_decisions": [], "memory": {"used_pct": 4.68, "peak_pct": 44.02, "state": "OK", "stale": false}, "post": "abl_notrace/p3_done", "url": "https://github.com/skillberry-ai/cap-evolve/issues/934#issuecomment-6400183351"}
 ```
+
+## ABL-0075 · 2026-10-25T16:29Z · P3 posted abl_tracescore · posted
+
+Posted 'shared seed baseline done' on #935 (abl_tracescore): https://github.com/skillberry-ai/cap-evolve/issues/935#issuecomment-6400183750
+
+```json
+{"cp": 75, "prev_cp": 74, "prev_commit": "af0dad54302f31bf367649e112d804b5b2fbad6c", "utc": "2026-10-25T16:29:34Z", "kind": "posted", "phase": "P3", "done_through": "P3/seed", "next": "P4/searches", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "cd5e6c7eb6301a8d71df5a71c35d3edb37506eb8", "open_decisions": [], "memory": {"used_pct": 4.59, "peak_pct": 44.02, "state": "OK", "stale": false}, "post": "abl_tracescore/p3_done", "url": "https://github.com/skillberry-ai/cap-evolve/issues/935#issuecomment-6400183750"}
+```
