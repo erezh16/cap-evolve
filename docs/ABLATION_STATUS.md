@@ -428,3 +428,11 @@ Next: P2/A-ABL-CC (user decision), A9 per arm, A13.
 ```json
 {"cp": 50, "prev_cp": 49, "prev_commit": "bfe98fffc3b9e1fe189f7074c6a2b1562e55556e", "utc": "2026-10-25T15:11:26Z", "kind": "heartbeat", "phase": "P2", "done_through": "P2/A-ABL-CC-daemon", "next": "P2/A-ABL-CC (user decision), A9 per arm, A13", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "54e148b40a77536e052c1dda164e0752cb8dc2f6", "open_decisions": ["abl_cc init: bundled skills, auto-memory, tool list"], "memory": {"used_pct": 4.52, "peak_pct": 23.21, "state": "OK", "stale": false}, "runner": "none"}
 ```
+
+## ABL-0051 · 2026-10-25T15:20Z · P2 posted abl_ref · posted
+
+Posted 'Cap-evolve full (reference) hourly status' on #930 (abl_ref): https://github.com/skillberry-ai/cap-evolve/issues/930#issuecomment-6399432132
+
+```json
+{"cp": 51, "prev_cp": 50, "prev_commit": "363d8e022325bf8f7496859592d72f1ce4cee6fc", "utc": "2026-10-25T15:20:20Z", "kind": "posted", "phase": "P2", "done_through": "P2/A-ABL-CC-daemon", "next": "P2/A-ABL-CC (user decision), A9 per arm, A13", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "54e148b40a77536e052c1dda164e0752cb8dc2f6", "open_decisions": ["abl_cc init: bundled skills, auto-memory, tool list"], "memory": {"used_pct": 4.57, "peak_pct": 23.21, "state": "OK", "stale": false}, "post": "abl_ref/status_20261025T1520", "url": "https://github.com/skillberry-ai/cap-evolve/issues/930#issuecomment-6399432132"}
+```
