@@ -3354,3 +3354,11 @@ Next: final remaining cells.
 ```json
 {"cp": 398, "prev_cp": 397, "prev_commit": "4ff56ee50594906a209ade8820c7cfd9bd6b7b5d", "utc": "2026-10-25T12:06:27Z", "kind": "result", "phase": "P3", "done_through": "final/4181", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/final/progress.json": "21d38cb8105690b2f080c3d37d2e781653ef670b24d91ff6041674a1264d3eee"}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 46.38, "peak_pct": 92.21, "state": "OK", "stale": false}, "window": {"window": "final", "cells_total": 10920, "cells_done": 4181, "order_sha256": "725f659aefadafd4a8d1ee86b74ca9f00e2800e9a4974abc85dbac6b63c722f5"}}
 ```
+
+## TA-0399 · 2026-10-25T12:09Z · P3 posted ace · posted
+
+Posted 'ACE hourly status' on #917 (ace): https://github.com/skillberry-ai/cap-evolve/issues/917#issuecomment-6397449831
+
+```json
+{"cp": 399, "prev_cp": 398, "prev_commit": "8b2aa8af99531b16d805fe20913bc8d5117ed56c", "utc": "2026-10-25T12:09:29Z", "kind": "posted", "phase": "P3", "done_through": "final/4181", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 46.38, "peak_pct": 92.21, "state": "OK", "stale": false}, "post": "ace/status_20261025T120912", "url": "https://github.com/skillberry-ai/cap-evolve/issues/917#issuecomment-6397449831"}
+```
