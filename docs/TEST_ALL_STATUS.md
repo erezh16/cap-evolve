@@ -5312,3 +5312,11 @@ Posted 'GEPA-Full: window 60% done' on #926 (gepa_full): https://github.com/skil
 ```json
 {"cp": 631, "prev_cp": 630, "prev_commit": "a4c98184320024835fe9be14b97d58638454a448", "utc": "2026-10-25T20:00:27Z", "kind": "posted", "phase": "P3", "done_through": "final/6551", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 49.55, "peak_pct": 97.6, "state": "OK", "stale": false}, "post": "gepa_full/window_60pct", "url": "https://github.com/skillberry-ai/cap-evolve/issues/926#issuecomment-6402472542"}
 ```
+
+## TA-0632 · 2026-10-25T20:00Z · P3 posted cape_k02 · posted
+
+Posted 'Cap-Evolve-impr2 K=0.2: window 60% done' on #927 (cape_k02): https://github.com/skillberry-ai/cap-evolve/issues/927#issuecomment-6402473786
+
+```json
+{"cp": 632, "prev_cp": 631, "prev_commit": "06dd55df4066cc4702e4f1abe9f8fb9700d82bf6", "utc": "2026-10-25T20:00:33Z", "kind": "posted", "phase": "P3", "done_through": "final/6551", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 49.55, "peak_pct": 97.6, "state": "OK", "stale": false}, "post": "cape_k02/window_60pct", "url": "https://github.com/skillberry-ai/cap-evolve/issues/927#issuecomment-6402473786"}
+```
