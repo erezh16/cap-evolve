@@ -6080,3 +6080,11 @@ Posted 'EvoSkill: window 70% done' on #921 (evoskill): https://github.com/skillb
 ```json
 {"cp": 722, "prev_cp": 721, "prev_commit": "2a9e9d7ba93c1e017183eca5cee13c46ec20526e", "utc": "2026-10-25T23:21:43Z", "kind": "posted", "phase": "P3", "done_through": "final/7639", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 47.0, "peak_pct": 97.6, "state": "OK", "stale": false}, "post": "evoskill/window_70pct", "url": "https://github.com/skillberry-ai/cap-evolve/issues/921#issuecomment-6404821452"}
 ```
+
+## TA-0723 · 2026-10-25T23:21Z · P3 posted metaharness · posted
+
+Posted 'Meta-Harness: window 70% done' on #922 (metaharness): https://github.com/skillberry-ai/cap-evolve/issues/922#issuecomment-6404822327
+
+```json
+{"cp": 723, "prev_cp": 722, "prev_commit": "5721c688aa395a19ca3912ab00befab7668c8584", "utc": "2026-10-25T23:21:49Z", "kind": "posted", "phase": "P3", "done_through": "final/7639", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 47.07, "peak_pct": 97.6, "state": "OK", "stale": false}, "post": "metaharness/window_70pct", "url": "https://github.com/skillberry-ai/cap-evolve/issues/922#issuecomment-6404822327"}
+```
