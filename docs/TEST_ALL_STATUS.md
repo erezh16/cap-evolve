@@ -991,3 +991,11 @@ Next: final remaining cells.
 ```json
 {"cp": 117, "prev_cp": 116, "prev_commit": "6c0aa58bf0c3b44eb57708d23750b62d2b532fd5", "utc": "2026-10-25T02:27:37Z", "kind": "result", "phase": "P3", "done_through": "final/1091", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/final/progress.json": "9a014af5374f75bb2bf1a460dfc661e31842fb42b395c0af7451690b3b5a290c"}, "code": "1365a97f7a1680769356749d6b69542580ce4219", "open_decisions": [], "memory": {"used_pct": 46.42, "peak_pct": 49.28, "state": "OK", "stale": false}, "window": {"window": "final", "cells_total": 10920, "cells_done": 1091, "order_sha256": "725f659aefadafd4a8d1ee86b74ca9f00e2800e9a4974abc85dbac6b63c722f5"}}
 ```
+
+## TA-0118 · 2026-10-25T02:27Z · P3 posted evoskill · posted
+
+Posted 'EvoSkill hourly status' on #921 (evoskill): https://github.com/skillberry-ai/cap-evolve/issues/921#issuecomment-6392452754
+
+```json
+{"cp": 118, "prev_cp": 117, "prev_commit": "81031b52b25ce7f3aecfb7665fd1a3029e9f7bcf", "utc": "2026-10-25T02:27:42Z", "kind": "posted", "phase": "P3", "done_through": "final/1091", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "1365a97f7a1680769356749d6b69542580ce4219", "open_decisions": [], "memory": {"used_pct": 46.44, "peak_pct": 49.28, "state": "OK", "stale": false}, "post": "evoskill/status_20261025T022736", "url": "https://github.com/skillberry-ai/cap-evolve/issues/921#issuecomment-6392452754"}
+```
