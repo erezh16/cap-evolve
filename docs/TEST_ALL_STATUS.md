@@ -6048,3 +6048,11 @@ Posted 'ACE: window 70% done' on #917 (ace): https://github.com/skillberry-ai/ca
 ```json
 {"cp": 718, "prev_cp": 717, "prev_commit": "ee934a9b5f56ec684aa00cdf1d9e648d145f8a11", "utc": "2026-10-25T23:21:22Z", "kind": "posted", "phase": "P3", "done_through": "final/7639", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 45.19, "peak_pct": 97.6, "state": "OK", "stale": false}, "post": "ace/window_70pct", "url": "https://github.com/skillberry-ai/cap-evolve/issues/917#issuecomment-6404817980"}
 ```
+
+## TA-0719 · 2026-10-25T23:21Z · P3 posted gepa · posted
+
+Posted 'GEPA: window 70% done' on #918 (gepa): https://github.com/skillberry-ai/cap-evolve/issues/918#issuecomment-6404818842
+
+```json
+{"cp": 719, "prev_cp": 718, "prev_commit": "cf35968e532e4d7223dcb7e94adcd8ac02b699cf", "utc": "2026-10-25T23:21:27Z", "kind": "posted", "phase": "P3", "done_through": "final/7639", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 46.87, "peak_pct": 97.6, "state": "OK", "stale": false}, "post": "gepa/window_70pct", "url": "https://github.com/skillberry-ai/cap-evolve/issues/918#issuecomment-6404818842"}
+```
