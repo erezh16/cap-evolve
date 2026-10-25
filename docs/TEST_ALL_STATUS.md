@@ -4386,3 +4386,11 @@ Posted 'MIPROv2: window 50% done' on #924 (miprov2): https://github.com/skillber
 ```json
 {"cp": 521, "prev_cp": 520, "prev_commit": "5957e1c30051e3d3d899b29971f0e86c9e048abc", "utc": "2026-10-25T16:09:38Z", "kind": "posted", "phase": "P3", "done_through": "final/5457", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 47.15, "peak_pct": 97.6, "state": "OK", "stale": false}, "post": "miprov2/window_50pct", "url": "https://github.com/skillberry-ai/cap-evolve/issues/924#issuecomment-6399965420"}
 ```
+
+## TA-0522 · 2026-10-25T16:09Z · P3 posted trace2skill · posted
+
+Posted 'Trace2Skill: window 50% done' on #925 (trace2skill): https://github.com/skillberry-ai/cap-evolve/issues/925#issuecomment-6399966369
+
+```json
+{"cp": 522, "prev_cp": 521, "prev_commit": "266dd370835c9701c160bc6d1e620ec73a93de45", "utc": "2026-10-25T16:09:43Z", "kind": "posted", "phase": "P3", "done_through": "final/5457", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 47.19, "peak_pct": 97.6, "state": "OK", "stale": false}, "post": "trace2skill/window_50pct", "url": "https://github.com/skillberry-ai/cap-evolve/issues/925#issuecomment-6399966369"}
+```
