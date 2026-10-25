@@ -4043,3 +4043,11 @@ Next: final remaining cells.
 ```json
 {"cp": 480, "prev_cp": 479, "prev_commit": "32e1035322e95afb0219f970d86a03cefbcbc647", "utc": "2026-10-25T14:52:26Z", "kind": "result", "phase": "P3", "done_through": "final/5077", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/final/progress.json": "e627bad51cae0c0a17d0070e166e9d5e4ff8e3ac7280652ddd5917b9ac45a46e"}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 48.98, "peak_pct": 97.6, "state": "OK", "stale": false}, "window": {"window": "final", "cells_total": 10920, "cells_done": 5077, "order_sha256": "725f659aefadafd4a8d1ee86b74ca9f00e2800e9a4974abc85dbac6b63c722f5"}}
 ```
+
+## TA-0481 · 2026-10-25T14:55Z · P3 posted cape_k02 · posted
+
+Posted 'Cap-Evolve-impr2 K=0.2 hourly status' on #927 (cape_k02): https://github.com/skillberry-ai/cap-evolve/issues/927#issuecomment-6399164590
+
+```json
+{"cp": 481, "prev_cp": 480, "prev_commit": "e6d4595508ab2b77dd984f6a8571db8721acafd5", "utc": "2026-10-25T14:55:22Z", "kind": "posted", "phase": "P3", "done_through": "final/5077", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 49.12, "peak_pct": 97.6, "state": "OK", "stale": false}, "post": "cape_k02/status_20261025T145512", "url": "https://github.com/skillberry-ai/cap-evolve/issues/927#issuecomment-6399164590"}
+```
