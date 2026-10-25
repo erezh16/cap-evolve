@@ -1663,3 +1663,11 @@ Next: final remaining cells.
 ```json
 {"cp": 197, "prev_cp": 196, "prev_commit": "223bd89fd763ca4d8dbf4b7b2f625e7c0b7e84a8", "utc": "2026-10-25T05:08:21Z", "kind": "result", "phase": "P3", "done_through": "final/1995", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/final/progress.json": "2f89a648fcc8b0117816fd21ce71454857506c5b0666b742fb90e8303e251447"}, "code": "1365a97f7a1680769356749d6b69542580ce4219", "open_decisions": [], "memory": {"used_pct": 46.49, "peak_pct": 49.28, "state": "OK", "stale": false}, "window": {"window": "final", "cells_total": 10920, "cells_done": 1995, "order_sha256": "725f659aefadafd4a8d1ee86b74ca9f00e2800e9a4974abc85dbac6b63c722f5"}}
 ```
+
+## TA-0198 · 2026-10-25T05:09Z · P3 posted ace · posted
+
+Posted 'ACE hourly status' on #917 (ace): https://github.com/skillberry-ai/cap-evolve/issues/917#issuecomment-6393767371
+
+```json
+{"cp": 198, "prev_cp": 197, "prev_commit": "65f125983b9bf1af9ecb4259bf6eaf26b7ac57a3", "utc": "2026-10-25T05:09:32Z", "kind": "posted", "phase": "P3", "done_through": "final/1995", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "1365a97f7a1680769356749d6b69542580ce4219", "open_decisions": [], "memory": {"used_pct": 45.04, "peak_pct": 49.28, "state": "OK", "stale": false}, "post": "ace/status_20261025T050912", "url": "https://github.com/skillberry-ai/cap-evolve/issues/917#issuecomment-6393767371"}
+```
