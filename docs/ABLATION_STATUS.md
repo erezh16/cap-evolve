@@ -184,3 +184,11 @@ Next: P1/B5.2.
 ```json
 {"cp": 20, "prev_cp": 19, "prev_commit": "3ba978c5ae45e4c34ccd1f04a27a2ae9e0cfbe4b", "utc": "2026-10-25T12:14:22Z", "kind": "heartbeat", "phase": "P1", "done_through": "P1/B5.1", "next": "P1/B5.2", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "d472197dea03facebc1f85b859e35320b3ef6d56", "open_decisions": [], "memory": {"used_pct": 4.86, "peak_pct": 6.18, "state": "OK", "stale": false}, "runner": "none"}
 ```
+
+## ABL-0021 · 2026-10-25T12:22Z · P1 posted abl_ref · posted
+
+Posted 'Cap-evolve full (reference) hourly status' on #930 (abl_ref): https://github.com/skillberry-ai/cap-evolve/issues/930#issuecomment-6397579835
+
+```json
+{"cp": 21, "prev_cp": 20, "prev_commit": "03e3092b1d029105fd299911d178b09a597d4036", "utc": "2026-10-25T12:22:35Z", "kind": "posted", "phase": "P1", "done_through": "P1/B5.1", "next": "P1/B5.2", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "d472197dea03facebc1f85b859e35320b3ef6d56", "open_decisions": [], "memory": {"used_pct": 4.93, "peak_pct": 6.18, "state": "OK", "stale": false}, "post": "abl_ref/status_20261025T1222", "url": "https://github.com/skillberry-ai/cap-evolve/issues/930#issuecomment-6397579835"}
+```
