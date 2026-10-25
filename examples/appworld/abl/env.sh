@@ -10,4 +10,4 @@ export AW_REMOTE=fork                      # branches go to erezh16/cap-evolve; 
 export AW_REPO=/workspace/worktrees/eval-abl
 # the RITS key stays in the base worktree's .env; it is read by the episode worker only, never copied (R1)
 export AW_ENV_FILE=/workspace/worktrees/base/.env
-export AW_SESSION_IDS=12194466-3ee6-4d3d-afab-8ab8118a33cc   # orchestrating sessions (B0 session; relaunched session appended)
+export AW_SESSION_IDS=12194466-3ee6-4d3d-afab-8ab8118a33cc,5cbfcce5-92a4-4a7f-931d-8014e8ce1e92   # orchestrating sessions (B0 session; relaunched session appended)
