@@ -3405,3 +3405,11 @@ Next: final remaining cells.
 ```json
 {"cp": 404, "prev_cp": 403, "prev_commit": "6f68192b4f2bca72a7b8235c87004b37e4ba3922", "utc": "2026-10-25T12:21:34Z", "kind": "result", "phase": "P3", "done_through": "final/4276", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/final/progress.json": "976766b24a135706ed07cf1080981c9eae610dd234fb02d3dabddb11ff2ca1f8"}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 46.28, "peak_pct": 92.21, "state": "OK", "stale": false}, "window": {"window": "final", "cells_total": 10920, "cells_done": 4276, "order_sha256": "725f659aefadafd4a8d1ee86b74ca9f00e2800e9a4974abc85dbac6b63c722f5"}}
 ```
+
+## TA-0405 · 2026-10-25T12:23Z · P3 posted wikiskill · posted
+
+Posted 'WikiSkill hourly status' on #920 (wikiskill): https://github.com/skillberry-ai/cap-evolve/issues/920#issuecomment-6397584363
+
+```json
+{"cp": 405, "prev_cp": 404, "prev_commit": "e975cefae9326fdb6f847c6eb7fca6faf064e296", "utc": "2026-10-25T12:23:02Z", "kind": "posted", "phase": "P3", "done_through": "final/4276", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 45.01, "peak_pct": 92.21, "state": "OK", "stale": false}, "post": "wikiskill/status_20261025T122300", "url": "https://github.com/skillberry-ai/cap-evolve/issues/920#issuecomment-6397584363"}
+```
