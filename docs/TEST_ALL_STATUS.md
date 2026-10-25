@@ -2973,3 +2973,11 @@ Next: final remaining cells.
 ```json
 {"cp": 353, "prev_cp": 352, "prev_commit": "b897ca4ccb9ccd0065d63723280d77e45f7d4a0b", "utc": "2026-10-25T10:20:08Z", "kind": "result", "phase": "P3", "done_through": "final/3583", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/final/progress.json": "4760befb94bff4c1ac6c654cd365fb653e86edfc9f0f25624a8ef61d5766218d"}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 9.61, "peak_pct": 92.21, "state": "OK", "stale": false}, "window": {"window": "final", "cells_total": 10920, "cells_done": 3583, "order_sha256": "725f659aefadafd4a8d1ee86b74ca9f00e2800e9a4974abc85dbac6b63c722f5"}}
 ```
+
+## TA-0354 · 2026-10-25T10:20Z · P3 resume · resume
+
+Resume (cell loop ended at the first PAUSE (TA-0349); progress_log fixed). Plan: 13 artifacts re-verified by their own hash rules; relaunch the window runner (3583 cell records on disk are kept, not re-run). Window records on disk: 3583. Next: final/cells.
+
+```json
+{"cp": 354, "prev_cp": 353, "prev_commit": "9fbae7c555cc8f42998869cf486f2a2269b6e09d", "utc": "2026-10-25T10:20:53Z", "kind": "resume", "phase": "P3", "done_through": "final/3583", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 7.35, "peak_pct": 92.21, "state": "OK", "stale": false}, "plan": ["13 artifacts re-verified by their own hash rules", "relaunch the window runner (3583 cell records on disk are kept, not re-run)"], "restarted": false}
+```
