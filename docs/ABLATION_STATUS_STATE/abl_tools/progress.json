@@ -1,0 +1,30 @@
+{
+ "stage": "search running",
+ "arm": "abl_tools",
+ "k_se": 0.2,
+ "counted_rollouts": 1,
+ "cache_hits": 147,
+ "lint_rejects": 0,
+ "iterations_done": 0,
+ "iterations_consumed": 0,
+ "accepted": 0,
+ "iterations": [],
+ "baseline_val": 0.4013605442176871,
+ "baseline_label": "seed, shared P3 baseline",
+ "best_search_score": 0.4013605442176871,
+ "best_search_label": "val = train ∪ dev (147), a fit metric, selection-biased",
+ "metric_calls": 147,
+ "capevolve_optimizer_usd": 6.303977250000001,
+ "optimizer": {
+  "calls": 1,
+  "prompt_tokens": 376321,
+  "completion_tokens": 59718,
+  "cache_read": 5022047,
+  "cache_write": 334719,
+  "proxy_usd": 2.52,
+  "seconds": 582.3
+ },
+ "voided_steps": 0,
+ "feedback_mode": "full",
+ "eta": "6 of 6 iterations left (CE2/CE3: about 45 to 70 min each)"
+}

@@ -638,3 +638,11 @@ P4: chain(s) abl_ref, abl_prompt, abl_tools started (search, freeze, isolation s
 ```json
 {"cp": 76, "prev_cp": 75, "prev_commit": "84702736d6481e987b841e59bb6d6054b723853e", "utc": "2026-10-25T16:30:04Z", "kind": "phase_start", "phase": "P4", "done_through": "P3/seed", "next": "P4/searches", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "cd5e6c7eb6301a8d71df5a71c35d3edb37506eb8", "open_decisions": [], "memory": {"used_pct": 4.59, "peak_pct": 44.02, "state": "OK", "stale": false}}
 ```
+
+## ABL-0077 · 2026-10-25T16:41Z · P4 posted abl_tools · posted
+
+Posted 'Cap evolve tools only search started' on #933 (abl_tools): https://github.com/skillberry-ai/cap-evolve/issues/933#issuecomment-6400316296
+
+```json
+{"cp": 77, "prev_cp": 76, "prev_commit": "376881a8b3d04d8f78db4d76b38f7754f13f2f02", "utc": "2026-10-25T16:41:50Z", "kind": "posted", "phase": "P4", "done_through": "P3/seed", "next": "P4/searches", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "cd5e6c7eb6301a8d71df5a71c35d3edb37506eb8", "open_decisions": [], "memory": {"used_pct": 45.27, "peak_pct": 47.88, "state": "OK", "stale": false}, "post": "abl_tools/m4_search_start", "url": "https://github.com/skillberry-ai/cap-evolve/issues/933#issuecomment-6400316296"}
+```
