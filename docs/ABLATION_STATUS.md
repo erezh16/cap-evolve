@@ -3246,3 +3246,11 @@ Posted 'Cap evolve no traces hourly status' on #934 (abl_notrace): https://githu
 ```json
 {"cp": 398, "prev_cp": 397, "prev_commit": "9babc1f732aea48b6c53680acafccb99a7fa130d", "utc": "2026-10-26T18:26:45Z", "kind": "posted", "phase": "P4", "done_through": "P4/abl_cc-session2", "next": "P4: abl_notrace, abl_tracescore searching; abl_cc on the remote host", "arm": "abl_tracescore", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "740e7520353d1497fa9fc215fff222caddfff288", "open_decisions": [], "memory": {"used_pct": 31.71, "peak_pct": 50.31, "state": "OK", "stale": false}, "post": "abl_notrace/status_20261026T1826", "url": "https://github.com/skillberry-ai/cap-evolve/issues/934#issuecomment-6424095396"}
 ```
+
+## ABL-0399 · 2026-10-26T18:29Z · P4 abl_tracescore iteration 5 · result
+
+P4 abl_tracescore: iteration 5: val 0.6803 (parent 0.5306); paired Δ̄ +0.1497, SE 0.0505, K·SE 0.0101 (K = 0.2) → ACCEPT. Counted rollouts 735 of 882; optimizer proxy USD 42.46; best search score (fit metric) 0.6802721088435374.
+
+```json
+{"cp": 399, "prev_cp": 398, "prev_commit": "fb035602e4f8ecfeaf4dbe90095799354956e270", "utc": "2026-10-26T18:29:00Z", "kind": "result", "phase": "P4", "done_through": "P4/abl_cc-session2", "next": "P4: abl_notrace, abl_tracescore searching; abl_cc on the remote host", "arm": "abl_tracescore", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {"STATE/abl_tracescore/progress.json": "b3200db4c14eb087db5b57765701382eab65b6bac703863bbfbf120ba7aee2dc"}, "code": "740e7520353d1497fa9fc215fff222caddfff288", "open_decisions": [], "memory": {"used_pct": 8.12, "peak_pct": 50.31, "state": "OK", "stale": false}, "iteration": 5, "verdict": {"candidate": "cand_0005", "accept": true, "val": 0.6802721088435374, "parent_val": 0.5306122448979592, "indecisive": false, "kind": "step", "delta": 0.1497, "se": 0.0505, "k_se": 0.2, "bar": 0.0101, "would_pass_k1": true}}
+```
