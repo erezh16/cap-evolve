@@ -2646,3 +2646,11 @@ P4: abl_ref step `reset` exited 1; the chain stopped. See AW_STATE/progress/p4_a
 ```json
 {"cp": 323, "prev_cp": 322, "prev_commit": "9347ec391af700b0f60dd505c6bb0a0bb8583192", "utc": "2026-10-26T13:53:03Z", "kind": "error", "phase": "P4", "done_through": "P4/abl_prompt+abl_tools", "next": "P4/searches", "arm": "abl_ref", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "73c8bd6a3a191817465ea8b4130ed0a661b6ba64", "open_decisions": [], "memory": {"used_pct": 9.5, "peak_pct": 49.61, "state": "OK", "stale": false}}
 ```
+
+## ABL-0324 · 2026-10-26T13:53Z · P4 abl_ref iteration 11 · result
+
+P4 abl_ref: iteration 11: val 0.8095 (parent 0.8299); paired Δ̄ -0.0204, SE 0.0297, K·SE 0.0059 (K = 0.2) → reject. Counted rollouts 882 of 882; optimizer proxy USD 34.81; best search score (fit metric) 0.8299319727891157.
+
+```json
+{"cp": 324, "prev_cp": 323, "prev_commit": "54d029393ee1a05efbb2018eb3abda69bade2d1d", "utc": "2026-10-26T13:53:12Z", "kind": "result", "phase": "P4", "done_through": "P4/abl_prompt+abl_tools", "next": "P4/searches", "arm": "abl_ref", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {"STATE/abl_ref/progress.json": "328df6a8913da4e8f61909f6344ee2232b3b9408ce086a5313f310d85a4a9b9e"}, "code": "73c8bd6a3a191817465ea8b4130ed0a661b6ba64", "open_decisions": [], "memory": {"used_pct": 9.48, "peak_pct": 49.61, "state": "OK", "stale": false}, "iteration": 11, "verdict": {"candidate": "cand_0011", "accept": false, "val": 0.8095238095238095, "parent_val": 0.8299319727891157, "indecisive": false, "kind": "step", "delta": -0.0204, "se": 0.0297, "k_se": 0.2, "bar": 0.0059, "would_pass_k1": false}}
+```
