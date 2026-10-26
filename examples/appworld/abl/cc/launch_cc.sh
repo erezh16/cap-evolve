@@ -7,6 +7,8 @@ set -euo pipefail
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ABL="$(cd "$HERE/.." && pwd)"; EX="$(cd "$ABL/.." && pwd)"
 . "$ABL/env.sh"
+# a second session only by explicit user decision (ABL-0341): read before every AW_CC_* variable is stripped
+SECOND="${AW_CC_SECOND_SESSION:-}"
 for v in $(compgen -e); do case "$v" in CAPEVOLVE_*|AW_ABL_*|AW_CC_*) unset "$v";; esac; done
 unset RITS_API_KET RITS_API_KEY CLAUDECODE || true
 ARM=abl_cc
@@ -15,8 +17,6 @@ ROOT="$AW_HOME/arms/$ARM"; WORK="$ROOT/work"; CONF="$ROOT/config"
 export AW_CAPE_ARM=$ARM AW_EXAMPLE="$EX" AW_ABL_FEEDBACK=full AW_KEY_ENV=RITS_API_KET \
        APPWORLD_ROOT="$AW_HOME/build/root_opt" AW_EXPERIMENT="aw_${ARM}_s0"
 mkdir -p "$AW_STATE/$ARM" "$AW_STATE/progress"
-# a second session only by explicit user decision (ABL-0341): AW_CC_SECOND_SESSION=<ledger entry id>; never automatic
-SECOND="${AW_CC_SECOND_SESSION:-}"
 if [ -e "$AW_STATE/$ARM/SESSION_STARTED" ]; then
   [ -n "$SECOND" ] && [ ! -e "$AW_STATE/$ARM/SESSION2_STARTED" ] \
     || { echo "launch_cc.sh: a session already ran; no re-prompting (§13.4)" >&2; exit 3; }
