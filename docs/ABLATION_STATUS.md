@@ -1782,3 +1782,11 @@ Posted 'Cap evolve traces and score only hourly status' on #935 (abl_tracescore)
 ```json
 {"cp": 216, "prev_cp": 215, "prev_commit": "ac00d0fb2f2e820e014b4980cfa6f013cd47e7a7", "utc": "2026-10-26T06:09:40Z", "kind": "posted", "phase": "P4", "done_through": "P4/wave1-iter1", "next": "P4/searches", "arm": "abl_tools", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "311eb9c7c86961d5d3db0c3c91a082cc0a077c4b", "open_decisions": [], "memory": {"used_pct": 4.66, "peak_pct": 49.03, "state": "OK", "stale": false}, "post": "abl_tracescore/status_20261026T0609", "url": "https://github.com/skillberry-ai/cap-evolve/issues/935#issuecomment-6409460628"}
 ```
+
+## ABL-0217 · 2026-10-26T06:10Z · P4 P4 runner restart · repair
+
+Repair: right after the wave-1 resume (06:03 UTC) the P4 runner itself exited: writing its search relaunched ledger entry, git add failed (unable to stat a .tmp-*.json file under docs/ABLATION_STATUS_STATE/abl_prompt/, an atomic-write temp file another process renamed away during the add). The three search chains it had started kept running, unaffected (their resumed optimizer sessions are live; nothing counted is affected). Fix in status_doc.py: the ledger git add excludes .tmp-* files and retries once. The runner is restarted; it sees the three live chains and resumes reporting verdicts and launching the second wave as slots free.
+
+```json
+{"cp": 217, "prev_cp": 216, "prev_commit": "06c41c29a33988eaf8bc39510ae0e9004ff4cac3", "utc": "2026-10-26T06:10:06Z", "kind": "repair", "phase": "P4", "done_through": "P4/wave1-iter1", "next": "P4/searches", "arm": "abl_tools", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "311eb9c7c86961d5d3db0c3c91a082cc0a077c4b", "open_decisions": [], "memory": {"used_pct": 4.55, "peak_pct": 49.03, "state": "OK", "stale": false}}
+```
