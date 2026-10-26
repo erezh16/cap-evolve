@@ -181,7 +181,9 @@ def report_iterations() -> None:
     import post
     seen = P.read_json(D / "reported.json", {}) or {}
     for arm in P.CANDIDATES:
-        if not (run_dir(arm) / "events.jsonl").exists():
+        # abl_cc has no cap-evolve run dir: its unit of progress is the daemon's evaluation log
+        src = (P.AW_STATE / "abl_cc" / "evals.jsonl") if arm == "abl_cc" else (run_dir(arm) / "events.jsonl")
+        if not src.exists():
             continue
         _refresh_progress(arm)
         rows = _rows(arm)
