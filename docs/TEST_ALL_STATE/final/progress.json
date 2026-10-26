@@ -1,7 +1,7 @@
 {
  "window": "final",
  "cells_total": 10920,
- "cells_done": 10913,
+ "cells_done": 10918,
  "per_arm": {
   "evoskill": {
    "done": 840,
@@ -22,7 +22,7 @@
    "context_exceeded": 0
   },
   "altk": {
-   "done": 839,
+   "done": 840,
    "infra_missing": 0,
    "infra_retries": 4,
    "context_exceeded": 0
@@ -34,25 +34,25 @@
    "context_exceeded": 0
   },
   "trace2skill": {
-   "done": 839,
+   "done": 840,
    "infra_missing": 0,
    "infra_retries": 1,
    "context_exceeded": 0
   },
   "metaharness": {
-   "done": 839,
+   "done": 840,
    "infra_missing": 0,
    "infra_retries": 8,
    "context_exceeded": 0
   },
   "gepa": {
-   "done": 839,
+   "done": 840,
    "infra_missing": 0,
    "infra_retries": 5,
    "context_exceeded": 0
   },
   "skillopt": {
-   "done": 839,
+   "done": 840,
    "infra_missing": 0,
    "infra_retries": 4,
    "context_exceeded": 0
