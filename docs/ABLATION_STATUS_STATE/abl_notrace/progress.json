@@ -2,11 +2,11 @@
  "stage": "search running",
  "arm": "abl_notrace",
  "k_se": 0.2,
- "counted_rollouts": 293,
+ "counted_rollouts": 294,
  "cache_hits": 147,
  "lint_rejects": 0,
- "iterations_done": 1,
- "iterations_consumed": 1,
+ "iterations_done": 2,
+ "iterations_consumed": 2,
  "accepted": 1,
  "iterations": [
   {
@@ -21,13 +21,26 @@
    "k_se": 0.2,
    "bar": 0.0098,
    "would_pass_k1": true
+  },
+  {
+   "candidate": "cand_0002",
+   "accept": false,
+   "val": 0.41496598639455784,
+   "parent_val": 0.4897959183673469,
+   "indecisive": false,
+   "kind": "step",
+   "delta": -0.0748,
+   "se": 0.0502,
+   "k_se": 0.2,
+   "bar": 0.01,
+   "would_pass_k1": false
   }
  ],
  "baseline_val": 0.4013605442176871,
  "baseline_label": "seed, shared P3 baseline",
  "best_search_score": 0.4897959183673469,
  "best_search_label": "val = train ∪ dev (147), a fit metric, selection-biased",
- "metric_calls": 294,
+ "metric_calls": 441,
  "capevolve_optimizer_usd": 8.067403500000001,
  "optimizer": {
   "calls": 2,
@@ -40,5 +53,5 @@
  },
  "voided_steps": 0,
  "feedback_mode": "eval_only",
- "eta": "5 of 6 iterations left (CE2/CE3: about 45 to 70 min each)"
+ "eta": "4 of 6 iterations left (CE2/CE3: about 45 to 70 min each)"
 }
