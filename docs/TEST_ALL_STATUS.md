@@ -7149,3 +7149,11 @@ Posted 'WikiSkill hourly status' on #920 (wikiskill): https://github.com/skillbe
 ```json
 {"cp": 850, "prev_cp": 849, "prev_commit": "99fb11cf8e45e85bc064ef682a230049186e020f", "utc": "2026-10-26T06:03:56Z", "kind": "posted", "phase": "P3", "done_through": "final/8759", "next": "final/cells", "arm": "wikiskill", "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 43.91, "peak_pct": 43.91, "state": "OK", "stale": false}, "post": "wikiskill/late_20261026T060355", "url": "https://github.com/skillberry-ai/cap-evolve/issues/920#issuecomment-6409384135"}
 ```
+
+## TA-0851 · 2026-10-26T06:03Z · P3 hourly post late evoskill · error
+
+The last post on the issue of evoskill (#921) is older than 65 minutes (plan section 12.2). Posting its status now.
+
+```json
+{"cp": 851, "prev_cp": 850, "prev_commit": "5cb70e35edfd084810e60d9a36be6653af0a46f9", "utc": "2026-10-26T06:03:58Z", "kind": "error", "phase": "P3", "done_through": "final/8759", "next": "final/cells", "arm": "evoskill", "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 43.91, "peak_pct": 43.91, "state": "OK", "stale": false}}
+```
