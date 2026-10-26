@@ -7245,3 +7245,11 @@ Posted 'GEPA-Full hourly status' on #926 (gepa_full): https://github.com/skillbe
 ```json
 {"cp": 862, "prev_cp": 861, "prev_commit": "3abacbf1dce2f838a3859ae64b614feb412df3a2", "utc": "2026-10-26T06:04:20Z", "kind": "posted", "phase": "P3", "done_through": "final/8759", "next": "final/cells", "arm": "gepa_full", "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 44.29, "peak_pct": 44.29, "state": "OK", "stale": false}, "post": "gepa_full/late_20261026T060419", "url": "https://github.com/skillberry-ai/cap-evolve/issues/926#issuecomment-6409389741"}
 ```
+
+## TA-0863 · 2026-10-26T06:04Z · P3 hourly post late cape_k02 · error
+
+The last post on the issue of cape_k02 (#927) is older than 65 minutes (plan section 12.2). Posting its status now.
+
+```json
+{"cp": 863, "prev_cp": 862, "prev_commit": "b9ae6648e03df54aa48b408d560d480ce816d24a", "utc": "2026-10-26T06:04:21Z", "kind": "error", "phase": "P3", "done_through": "final/8759", "next": "final/cells", "arm": "cape_k02", "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 44.29, "peak_pct": 44.29, "state": "OK", "stale": false}}
+```
