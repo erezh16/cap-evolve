@@ -3126,3 +3126,11 @@ Posted 'Cap evolve traces and score only hourly status' on #935 (abl_tracescore)
 ```json
 {"cp": 383, "prev_cp": 382, "prev_commit": "fb8fbc92188b218fe0634918f49d15767f57ea21", "utc": "2026-10-26T17:12:50Z", "kind": "posted", "phase": "P4", "done_through": "P4/abl_cc-session2", "next": "P4: abl_notrace, abl_tracescore searching; abl_cc on the remote host", "arm": "abl_cc", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "740e7520353d1497fa9fc215fff222caddfff288", "open_decisions": [], "memory": {"used_pct": 45.09, "peak_pct": 50.31, "state": "OK", "stale": false}, "post": "abl_tracescore/status_20261026T1712", "url": "https://github.com/skillberry-ai/cap-evolve/issues/935#issuecomment-6422527934"}
 ```
+
+## ABL-0384 · 2026-10-26T17:22Z · P4 posted abl_prompt · posted
+
+Posted 'Cap evolve prompt only hourly status' on #932 (abl_prompt): https://github.com/skillberry-ai/cap-evolve/issues/932#issuecomment-6422749563
+
+```json
+{"cp": 384, "prev_cp": 383, "prev_commit": "757be789e39f720721a3edc7b6de4cec2206cf7b", "utc": "2026-10-26T17:22:55Z", "kind": "posted", "phase": "P4", "done_through": "P4/abl_cc-session2", "next": "P4: abl_notrace, abl_tracescore searching; abl_cc on the remote host", "arm": "abl_cc", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "740e7520353d1497fa9fc215fff222caddfff288", "open_decisions": [], "memory": {"used_pct": 29.82, "peak_pct": 50.31, "state": "OK", "stale": false}, "post": "abl_prompt/status_20261026T1722", "url": "https://github.com/skillberry-ai/cap-evolve/issues/932#issuecomment-6422749563"}
+```
