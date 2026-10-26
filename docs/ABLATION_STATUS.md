@@ -2244,3 +2244,11 @@ Posted 'Cap evolve tools only 75% of B' on #933 (abl_tools): https://github.com/
 ```json
 {"cp": 273, "prev_cp": 272, "prev_commit": "71ba90cf13e21d6a16aa92f43684d2596f2fcf26", "utc": "2026-10-26T11:11:27Z", "kind": "posted", "phase": "P4", "done_through": "P4/wave1-iter3", "next": "P4/searches", "arm": "abl_tools", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "311eb9c7c86961d5d3db0c3c91a082cc0a077c4b", "open_decisions": [], "memory": {"used_pct": 45.88, "peak_pct": 49.61, "state": "OK", "stale": false}, "post": "abl_tools/m4_budget_75", "url": "https://github.com/skillberry-ai/cap-evolve/issues/933#issuecomment-6414591329"}
 ```
+
+## ABL-0274 · 2026-10-26T11:16Z · P4 abl_ref iteration 9 · result
+
+P4 abl_ref: iteration 9: val 0.8095 (parent 0.7808); paired Δ̄ +0.0342, SE 0.0356, K·SE 0.0071 (K = 0.2) → ACCEPT. Counted rollouts 588 of 882; optimizer proxy USD 24.94; best search score (fit metric) 0.8095238095238095.
+
+```json
+{"cp": 274, "prev_cp": 273, "prev_commit": "e77388d190b1f43ffbde1f6079c57686864ec778", "utc": "2026-10-26T11:16:09Z", "kind": "result", "phase": "P4", "done_through": "P4/wave1-iter3", "next": "P4/searches", "arm": "abl_ref", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {"STATE/abl_ref/progress.json": "b7e36b6424fc3ce25b4998a709304a7263d67a82595d45d93ae3fc5858c21284"}, "code": "311eb9c7c86961d5d3db0c3c91a082cc0a077c4b", "open_decisions": [], "memory": {"used_pct": 46.63, "peak_pct": 49.61, "state": "OK", "stale": false}, "iteration": 9, "verdict": {"candidate": "cand_0009", "accept": true, "val": 0.8095238095238095, "parent_val": 0.7808219178082192, "indecisive": false, "kind": "step", "delta": 0.0342, "se": 0.0356, "k_se": 0.2, "bar": 0.0071, "would_pass_k1": false}}
+```
