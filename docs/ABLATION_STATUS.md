@@ -3502,3 +3502,11 @@ Isolation scan (counts only): abl_notrace: test-id hits 0; models ['aws/claude-s
 ```json
 {"cp": 430, "prev_cp": 429, "prev_commit": "718048e0e69eec5bbc2fb04ef55faeb5f748a1cb", "utc": "2026-10-26T21:09:09Z", "kind": "result", "phase": "P4", "done_through": "P4/abl_cc-session2", "next": "P4: abl_notrace iterations 5-6; abl_cc on the remote host", "arm": "abl_notrace", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {"STATE/isolation_scan.json": "e64c2f4fa3d404ffc677aebad60ae24c1811ea9d7f2d89f1772831e2d855734f"}, "code": "740e7520353d1497fa9fc215fff222caddfff288", "open_decisions": [], "memory": {"used_pct": 2.41, "peak_pct": 50.31, "state": "OK", "stale": false}}
 ```
+
+## ABL-0431 · 2026-10-26T21:09Z · P4 abl_notrace reset failed · error
+
+P4: abl_notrace step `reset` exited 1; the chain stopped. See AW_STATE/progress/p4_abl_notrace.out. No automatic retry: the cause is investigated first (R5).
+
+```json
+{"cp": 431, "prev_cp": 430, "prev_commit": "bd1ff51d9b5098479e2ff8aace3dcb25275eb87e", "utc": "2026-10-26T21:09:11Z", "kind": "error", "phase": "P4", "done_through": "P4/abl_cc-session2", "next": "P4: abl_notrace iterations 5-6; abl_cc on the remote host", "arm": "abl_notrace", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "740e7520353d1497fa9fc215fff222caddfff288", "open_decisions": [], "memory": {"used_pct": 2.41, "peak_pct": 50.31, "state": "OK", "stale": false}}
+```
