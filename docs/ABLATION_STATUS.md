@@ -2846,3 +2846,11 @@ Isolation scan (counts only): abl_cc: test-id hits 0; models ['aws/claude-sonnet
 ```json
 {"cp": 348, "prev_cp": 347, "prev_commit": "408db42301769d4ffcfb6e89e3d92bfd3b576f81", "utc": "2026-10-26T14:18:24Z", "kind": "result", "phase": "P4", "done_through": "P4/abl_cc", "next": "P4/searches", "arm": "abl_cc", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {"STATE/isolation_scan.json": "04a6b2f0ea79b80f08701ad7c352775f4f4eb6d7c5b1cf2d011c9803a00ddf10"}, "code": "5b53a3c9b2b8dcdb9e0a46430597078586bcf5fc", "open_decisions": [], "memory": {"used_pct": 47.32, "peak_pct": 49.61, "state": "OK", "stale": false}}
 ```
+
+## ABL-0349 · 2026-10-26T14:18Z · P4 abl_cc reset failed · error
+
+P4: abl_cc step `reset` exited 1; the chain stopped. See AW_STATE/progress/p4_abl_cc.out. No automatic retry: the cause is investigated first (R5).
+
+```json
+{"cp": 349, "prev_cp": 348, "prev_commit": "1a251f476c59475130a70322db06e43ca5b21e97", "utc": "2026-10-26T14:18:26Z", "kind": "error", "phase": "P4", "done_through": "P4/abl_cc", "next": "P4/searches", "arm": "abl_cc", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "5b53a3c9b2b8dcdb9e0a46430597078586bcf5fc", "open_decisions": [], "memory": {"used_pct": 47.32, "peak_pct": 49.61, "state": "OK", "stale": false}}
+```
