@@ -1,5 +1,5 @@
 {
- "stage": "search running",
+ "stage": "frozen",
  "arm": "abl_prompt",
  "k_se": 0.2,
  "counted_rollouts": 882,
