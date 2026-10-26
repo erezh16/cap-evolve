@@ -10468,3 +10468,11 @@ Posted 'ACE hourly status' on #917 (ace): https://github.com/skillberry-ai/cap-e
 ```json
 {"cp": 1248, "prev_cp": 1247, "prev_commit": "26e6ca963e58dbfd4800acffdfd5ec61b2f7917c", "utc": "2026-10-26T23:09:24Z", "kind": "posted", "phase": "P3", "done_through": "final/10920", "next": "P4/analysis", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "054797ca7f3b421d7fecd5b65b96ade2ce30b343", "open_decisions": [], "memory": {"used_pct": 0.69, "peak_pct": 44.52, "state": "OK", "stale": false}, "post": "ace/status_20261026T230912", "url": "https://github.com/skillberry-ai/cap-evolve/issues/917#issuecomment-6429484603"}
 ```
+
+## TA-1249 · 2026-10-26T23:14Z · P3 hourly post failed gepa · error
+
+Hourly status on gepa: comment on #918 (gepa) failed: HTTP 500, exit 1.
+
+```json
+{"cp": 1249, "prev_cp": 1248, "prev_commit": "c8fe6f88aa79deb02161b45e6ce27fb8a0a66894", "utc": "2026-10-26T23:14:11Z", "kind": "error", "phase": "P3", "done_through": "final/10920", "next": "P4/analysis", "arm": "gepa", "counts": {}, "spend": {}, "artifacts": {}, "code": "054797ca7f3b421d7fecd5b65b96ade2ce30b343", "open_decisions": [], "memory": {"used_pct": 0.74, "peak_pct": 44.52, "state": "OK", "stale": false}}
+```
