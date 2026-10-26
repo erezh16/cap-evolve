@@ -7181,3 +7181,11 @@ Posted 'Meta-Harness hourly status' on #922 (metaharness): https://github.com/sk
 ```json
 {"cp": 854, "prev_cp": 853, "prev_commit": "c6395a573ca24ac466938698649f6262f6e84b01", "utc": "2026-10-26T06:04:04Z", "kind": "posted", "phase": "P3", "done_through": "final/8759", "next": "final/cells", "arm": "metaharness", "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 43.96, "peak_pct": 43.96, "state": "OK", "stale": false}, "post": "metaharness/late_20261026T060403", "url": "https://github.com/skillberry-ai/cap-evolve/issues/922#issuecomment-6409385788"}
 ```
+
+## TA-0855 · 2026-10-26T06:04Z · P3 hourly post late harnesslens · error
+
+The last post on the issue of harnesslens (#923) is older than 65 minutes (plan section 12.2). Posting its status now.
+
+```json
+{"cp": 855, "prev_cp": 854, "prev_commit": "bbd461c2c6ca1106ec034a0e517215980f974972", "utc": "2026-10-26T06:04:05Z", "kind": "error", "phase": "P3", "done_through": "final/8759", "next": "final/cells", "arm": "harnesslens", "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 44.09, "peak_pct": 44.09, "state": "OK", "stale": false}}
+```
