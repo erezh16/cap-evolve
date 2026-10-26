@@ -3318,3 +3318,11 @@ Isolation scan (counts only): abl_tracescore: test-id hits 0; models ['aws/claud
 ```json
 {"cp": 407, "prev_cp": 406, "prev_commit": "a431295998450a99e9c0a82b99539a01ad6d47e3", "utc": "2026-10-26T19:02:19Z", "kind": "result", "phase": "P4", "done_through": "P4/abl_cc-session2", "next": "P4: abl_notrace, abl_tracescore searching; abl_cc on the remote host", "arm": "abl_tracescore", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {"STATE/isolation_scan.json": "7892e8cdacc6b6cf3983ef4379861d806a8e3b42629dc21d3adade1f1d67c271"}, "code": "740e7520353d1497fa9fc215fff222caddfff288", "open_decisions": [], "memory": {"used_pct": 3.78, "peak_pct": 50.31, "state": "OK", "stale": false}}
 ```
+
+## ABL-0408 · 2026-10-26T19:02Z · P4 abl_tracescore reset failed · error
+
+P4: abl_tracescore step `reset` exited 1; the chain stopped. See AW_STATE/progress/p4_abl_tracescore.out. No automatic retry: the cause is investigated first (R5).
+
+```json
+{"cp": 408, "prev_cp": 407, "prev_commit": "b8537b7f9e6eb3d2d80224bfa463e6a1a2e8e689", "utc": "2026-10-26T19:02:22Z", "kind": "error", "phase": "P4", "done_through": "P4/abl_cc-session2", "next": "P4: abl_notrace, abl_tracescore searching; abl_cc on the remote host", "arm": "abl_tracescore", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "740e7520353d1497fa9fc215fff222caddfff288", "open_decisions": [], "memory": {"used_pct": 3.82, "peak_pct": 50.31, "state": "OK", "stale": false}}
+```
