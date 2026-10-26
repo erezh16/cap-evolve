@@ -2782,3 +2782,11 @@ abl_cc single Claude Code session ended after 9 minutes and 3 top-level turns (s
 ```json
 {"cp": 340, "prev_cp": 339, "prev_commit": "38e1020f52ba06c5d2ee23d55601aa8e1adf289d", "utc": "2026-10-26T14:03:56Z", "kind": "abort", "phase": "P4", "done_through": "P4/abl_cc", "next": "P4/abl_cc (user decision)", "arm": "abl_cc", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "73c8bd6a3a191817465ea8b4130ed0a661b6ba64", "open_decisions": ["abl_cc: session ended while waiting; fresh session or freeze as is"], "memory": {"used_pct": 49.24, "peak_pct": 49.61, "state": "OK", "stale": false}}
 ```
+
+## ABL-0341 · 2026-10-26T14:05Z · P4 abl_cc second session · decision
+
+User decision (2026-10-26), answering ABL-0340: start ONE fresh abl_cc session with the same three-line prompt (sha256 checked) on the current workdir (still the seed surfaces plus the session own c0/c1 subdirs), same budget (882; 5 used, 877 left), the running evaluation ticket kept. Recorded deviation from plan 10.2/13.4 (no re-prompting), disclosed in the abl_cc report with the cause (the first session ended its turn while waiting for its first evaluation; its CronCreate reminder cannot fire in print mode). Implementation: launch_cc.sh accepts a second session only with AW_CC_SECOND_SESSION set to this entry and only once (SESSION2_STARTED); the second session gets its own fresh, empty CLAUDE_CONFIG_DIR config2 (no memory or transcript of the first), the same shim, flags and sandbox; its result goes to session2_result.json; scan.py covers config2. No further sessions. The first freeze (inert) and the reset failure of item 1 (the daemon is meant to be running) are superseded: abl_cc is frozen, scanned and reset again after session 2 ends.
+
+```json
+{"cp": 341, "prev_cp": 340, "prev_commit": "319289f3c10c7888e651d78edb8d52a2bd31b3e8", "utc": "2026-10-26T14:05:47Z", "kind": "decision", "phase": "P4", "done_through": "P4/abl_cc", "next": "P4/abl_cc session 2", "arm": "abl_cc", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "319289f3c10c7888e651d78edb8d52a2bd31b3e8", "open_decisions": [], "memory": {"used_pct": 48.31, "peak_pct": 49.61, "state": "OK", "stale": false}}
+```
