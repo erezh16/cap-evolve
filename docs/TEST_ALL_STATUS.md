@@ -7157,3 +7157,11 @@ The last post on the issue of evoskill (#921) is older than 65 minutes (plan sec
 ```json
 {"cp": 851, "prev_cp": 850, "prev_commit": "5cb70e35edfd084810e60d9a36be6653af0a46f9", "utc": "2026-10-26T06:03:58Z", "kind": "error", "phase": "P3", "done_through": "final/8759", "next": "final/cells", "arm": "evoskill", "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 43.91, "peak_pct": 43.91, "state": "OK", "stale": false}}
 ```
+
+## TA-0852 · 2026-10-26T06:04Z · P3 posted evoskill · posted
+
+Posted 'EvoSkill hourly status' on #921 (evoskill): https://github.com/skillberry-ai/cap-evolve/issues/921#issuecomment-6409384942
+
+```json
+{"cp": 852, "prev_cp": 851, "prev_commit": "5b1d36a24b69b26cca38796337fab7dc6653fa0e", "utc": "2026-10-26T06:04:00Z", "kind": "posted", "phase": "P3", "done_through": "final/8759", "next": "final/cells", "arm": "evoskill", "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 43.96, "peak_pct": 43.96, "state": "OK", "stale": false}, "post": "evoskill/late_20261026T060359", "url": "https://github.com/skillberry-ai/cap-evolve/issues/921#issuecomment-6409384942"}
+```
