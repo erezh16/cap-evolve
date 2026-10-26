@@ -3390,3 +3390,11 @@ Repair for ABL-0408 (abl_tracescore reset step failed). Same cause as ABL-0294/0
 ```json
 {"cp": 416, "prev_cp": 415, "prev_commit": "9d375f267e8728d55e24ec04393f88274bf7e003", "utc": "2026-10-26T19:35:58Z", "kind": "repair", "phase": "P4", "done_through": "P4/abl_cc-session2", "next": "P4: abl_notrace iterations 5-6; abl_cc on the remote host", "arm": "abl_tracescore", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "740e7520353d1497fa9fc215fff222caddfff288", "open_decisions": [], "memory": {"used_pct": 42.9, "peak_pct": 50.31, "state": "OK", "stale": false}}
 ```
+
+## ABL-0417 · 2026-10-26T19:36Z · P4 posted abl_tracescore · posted
+
+Posted 'Cap evolve traces and score only: search finished' on #935 (abl_tracescore): https://github.com/skillberry-ai/cap-evolve/issues/935#issuecomment-6425523188
+
+```json
+{"cp": 417, "prev_cp": 416, "prev_commit": "a0452dd462fd02d1316aecbfea5694112429a2e7", "utc": "2026-10-26T19:36:36Z", "kind": "posted", "phase": "P4", "done_through": "P4/abl_cc-session2", "next": "P4: abl_notrace iterations 5-6; abl_cc on the remote host", "arm": "abl_tracescore", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "740e7520353d1497fa9fc215fff222caddfff288", "open_decisions": [], "memory": {"used_pct": 37.87, "peak_pct": 50.31, "state": "OK", "stale": false}, "post": "abl_tracescore/search_done_summary", "url": "https://github.com/skillberry-ai/cap-evolve/issues/935#issuecomment-6425523188"}
+```
