@@ -2742,3 +2742,11 @@ P4: abl_cc step `reset` exited 1; the chain stopped. See AW_STATE/progress/p4_ab
 ```json
 {"cp": 335, "prev_cp": 334, "prev_commit": "fcde2f8e20d4c1e6ed51b17de2a6a5a88676e99d", "utc": "2026-10-26T14:02:28Z", "kind": "error", "phase": "P4", "done_through": "P4/abl_ref", "next": "P4/searches", "arm": "abl_cc", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "73c8bd6a3a191817465ea8b4130ed0a661b6ba64", "open_decisions": [], "memory": {"used_pct": 49.1, "peak_pct": 49.61, "state": "OK", "stale": false}}
 ```
+
+## ABL-0336 · 2026-10-26T14:03Z · P4 posted abl_cc · posted
+
+Posted 'Claude code (plain Claude Code) search started' on #931 (abl_cc): https://github.com/skillberry-ai/cap-evolve/issues/931#issuecomment-6417942200
+
+```json
+{"cp": 336, "prev_cp": 335, "prev_commit": "630e9046f2a400e9ab6beb9bb2b66c4e72f07362", "utc": "2026-10-26T14:03:07Z", "kind": "posted", "phase": "P4", "done_through": "P4/abl_ref", "next": "P4/searches", "arm": "abl_cc", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "73c8bd6a3a191817465ea8b4130ed0a661b6ba64", "open_decisions": [], "memory": {"used_pct": 49.22, "peak_pct": 49.61, "state": "OK", "stale": false}, "post": "abl_cc/m4_search_start", "url": "https://github.com/skillberry-ai/cap-evolve/issues/931#issuecomment-6417942200"}
+```
