@@ -9077,3 +9077,11 @@ User decision (2026-10-26, about 09:20 UTC): compute an interim test score per a
 ```json
 {"cp": 1079, "prev_cp": 1078, "prev_commit": "94c66764be4b138f7b4295edafa990b325584fd7", "utc": "2026-10-26T14:09:03Z", "kind": "decision", "phase": "P3", "done_through": "final/10310", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 34.91, "peak_pct": 44.52, "state": "OK", "stale": false}}
 ```
+
+## TA-1080 · 2026-10-26T14:09Z · P3 posted ace · posted
+
+Posted 'ACE hourly status' on #917 (ace): https://github.com/skillberry-ai/cap-evolve/issues/917#issuecomment-6418085792
+
+```json
+{"cp": 1080, "prev_cp": 1079, "prev_commit": "a8051c8f871c1b07e51a48cfdf6fdb71406c1218", "utc": "2026-10-26T14:09:13Z", "kind": "posted", "phase": "P3", "done_through": "final/10310", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 34.87, "peak_pct": 44.52, "state": "OK", "stale": false}, "post": "ace/status_20261026T140912", "url": "https://github.com/skillberry-ai/cap-evolve/issues/917#issuecomment-6418085792"}
+```
