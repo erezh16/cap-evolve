@@ -8490,3 +8490,11 @@ Posted 'GEPA-Full hourly status' on #926 (gepa_full): https://github.com/skillbe
 ```json
 {"cp": 1009, "prev_cp": 1008, "prev_commit": "24be12aa60dab2645ec2793cf09ac62c7ead9d0c", "utc": "2026-10-26T11:50:53Z", "kind": "posted", "phase": "P3", "done_through": "final/9826", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 32.13, "peak_pct": 44.52, "state": "OK", "stale": false}, "post": "gepa_full/status_20261026T115036", "url": "https://github.com/skillberry-ai/cap-evolve/issues/926#issuecomment-6415302699"}
 ```
+
+## TA-1010 · 2026-10-26T11:51Z · P3 posted seed · posted
+
+Posted 'seed agent: window 90% done' on #915 (seed): https://github.com/skillberry-ai/cap-evolve/issues/915#issuecomment-6415309549
+
+```json
+{"cp": 1010, "prev_cp": 1009, "prev_commit": "bdcebaa847426ea02c6f08354e5247dc893df659", "utc": "2026-10-26T11:51:15Z", "kind": "posted", "phase": "P3", "done_through": "final/9826", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 32.24, "peak_pct": 44.52, "state": "OK", "stale": false}, "post": "seed/window_90pct", "url": "https://github.com/skillberry-ai/cap-evolve/issues/915#issuecomment-6415309549"}
+```
