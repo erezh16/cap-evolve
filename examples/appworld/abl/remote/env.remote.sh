@@ -10,4 +10,5 @@ export AW_BRANCH=eval-abl-cc-remote                     # the remote session com
 export AW_REMOTE=fork
 export AW_REPO=/workspace/worktrees/eval-abl            # EDIT if needed: the eval-abl checkout on the remote host
 export AW_ENV_FILE=/workspace/secrets/rits.env          # EDIT: KEY=VALUE file with RITS_URL and RITS_API_KET (never print it)
+export AW_HOST_ENV="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/env.remote.sh"   # re-applied by abl/env.sh
 export AW_SESSION_IDS=                                  # the remote orchestrating session appends its own id here

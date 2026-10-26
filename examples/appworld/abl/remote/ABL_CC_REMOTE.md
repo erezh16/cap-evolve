@@ -97,7 +97,9 @@ Gateway and RITS credentials (ask the user for them; never print them):
   set its path as `AW_ENV_FILE` in `examples/appworld/abl/remote/env.remote.sh`.
 
 Then add your session id to `AW_SESSION_IDS` in `env.remote.sh`, and from now on **source only `env.remote.sh`** (it
-replaces `abl/env.sh` on this host; `AW_BRANCH=eval-abl-cc-remote`). Commit `env.remote.sh` without the secrets path if
+replaces `abl/env.sh` on this host; `AW_BRANCH=eval-abl-cc-remote`). It sets `AW_HOST_ENV`, so the launchers,
+which source `abl/env.sh` themselves, get this host's values back; check with
+`bash -c '. examples/appworld/abl/remote/env.remote.sh; . examples/appworld/abl/env.sh; echo $AW_BRANCH'` → `eval-abl-cc-remote`. Commit `env.remote.sh` without the secrets path if
 it is private (or keep it uncommitted). Start the log (0.2).
 
 **Executing-agent deny rules (R1.4).** Copy the deny rules from `/workspace/aw_abl/launch/exec-settings.json` of the
