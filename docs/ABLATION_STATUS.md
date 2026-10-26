@@ -2462,3 +2462,11 @@ Posted 'Cap evolve tools only search ended' on #933 (abl_tools): https://github.
 ```json
 {"cp": 300, "prev_cp": 299, "prev_commit": "a42ec1c5d55fd770d7534161a5e9d192aa70397b", "utc": "2026-10-26T12:30:11Z", "kind": "posted", "phase": "P4", "done_through": "P4/wave1-iter3", "next": "P4/searches", "arm": "abl_tools", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "73c8bd6a3a191817465ea8b4130ed0a661b6ba64", "open_decisions": [], "memory": {"used_pct": 7.36, "peak_pct": 49.61, "state": "OK", "stale": false}, "post": "abl_tools/m4_search_done", "url": "https://github.com/skillberry-ai/cap-evolve/issues/933#issuecomment-6416033822"}
 ```
+
+## ABL-0301 · 2026-10-26T12:30Z · P4 posted abl_tools · posted
+
+Posted 'Cap evolve tools only champion frozen' on #933 (abl_tools): https://github.com/skillberry-ai/cap-evolve/issues/933#issuecomment-6416034802
+
+```json
+{"cp": 301, "prev_cp": 300, "prev_commit": "46bbcdc14b68d78cb9c35f2c05ffbeeb9ed9dbd6", "utc": "2026-10-26T12:30:14Z", "kind": "posted", "phase": "P4", "done_through": "P4/wave1-iter3", "next": "P4/searches", "arm": "abl_tools", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "73c8bd6a3a191817465ea8b4130ed0a661b6ba64", "open_decisions": [], "memory": {"used_pct": 7.4, "peak_pct": 49.61, "state": "OK", "stale": false}, "post": "abl_tools/m4_frozen", "url": "https://github.com/skillberry-ai/cap-evolve/issues/933#issuecomment-6416034802"}
+```
