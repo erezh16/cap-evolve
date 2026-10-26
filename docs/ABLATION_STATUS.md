@@ -2854,3 +2854,11 @@ P4: abl_cc step `reset` exited 1; the chain stopped. See AW_STATE/progress/p4_ab
 ```json
 {"cp": 349, "prev_cp": 348, "prev_commit": "1a251f476c59475130a70322db06e43ca5b21e97", "utc": "2026-10-26T14:18:26Z", "kind": "error", "phase": "P4", "done_through": "P4/abl_cc", "next": "P4/searches", "arm": "abl_cc", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "5b53a3c9b2b8dcdb9e0a46430597078586bcf5fc", "open_decisions": [], "memory": {"used_pct": 47.32, "peak_pct": 49.61, "state": "OK", "stale": false}}
 ```
+
+## ABL-0350 · 2026-10-26T14:25Z · P4 posted abl_prompt · posted
+
+Posted 'Cap evolve prompt only hourly status' on #932 (abl_prompt): https://github.com/skillberry-ai/cap-evolve/issues/932#issuecomment-6418469727
+
+```json
+{"cp": 350, "prev_cp": 349, "prev_commit": "4af2671eb3f12f06bd3236cc75ef1c2f9f2d1790", "utc": "2026-10-26T14:25:22Z", "kind": "posted", "phase": "P4", "done_through": "P4/abl_cc", "next": "P4/searches", "arm": "abl_cc", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "5b53a3c9b2b8dcdb9e0a46430597078586bcf5fc", "open_decisions": [], "memory": {"used_pct": 46.94, "peak_pct": 49.61, "state": "OK", "stale": false}, "post": "abl_prompt/status_20261026T1425", "url": "https://github.com/skillberry-ai/cap-evolve/issues/932#issuecomment-6418469727"}
+```
