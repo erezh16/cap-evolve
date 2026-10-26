@@ -10300,3 +10300,11 @@ Posted 'Meta-Harness hourly status' on #922 (metaharness): https://github.com/sk
 ```json
 {"cp": 1227, "prev_cp": 1226, "prev_commit": "0fdf345e0f50860a8343d80f050fb1222789638d", "utc": "2026-10-26T21:32:28Z", "kind": "posted", "phase": "P3", "done_through": "final/10920", "next": "P4/analysis", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "054797ca7f3b421d7fecd5b65b96ade2ce30b343", "open_decisions": [], "memory": {"used_pct": 0.69, "peak_pct": 44.52, "state": "OK", "stale": false}, "post": "metaharness/status_20261026T213212", "url": "https://github.com/skillberry-ai/cap-evolve/issues/922#issuecomment-6427845346"}
 ```
+
+## TA-1228 · 2026-10-26T21:36Z · P3 posted harnesslens · posted
+
+Posted 'HarnessLens hourly status' on #923 (harnesslens): https://github.com/skillberry-ai/cap-evolve/issues/923#issuecomment-6427927387
+
+```json
+{"cp": 1228, "prev_cp": 1227, "prev_commit": "c2867a67bf3d34ddf70e744c4c9d80ef96ef3b05", "utc": "2026-10-26T21:36:51Z", "kind": "posted", "phase": "P3", "done_through": "final/10920", "next": "P4/analysis", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "054797ca7f3b421d7fecd5b65b96ade2ce30b343", "open_decisions": [], "memory": {"used_pct": 0.69, "peak_pct": 44.52, "state": "OK", "stale": false}, "post": "harnesslens/status_20261026T213648", "url": "https://github.com/skillberry-ai/cap-evolve/issues/923#issuecomment-6427927387"}
+```
