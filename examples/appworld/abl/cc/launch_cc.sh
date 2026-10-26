@@ -30,7 +30,7 @@ else   # the second session gets a FRESH, empty config dir too (no memory of the
   [ "$(sha256sum "$HERE/PROMPT.txt" | cut -d" " -f1)" = 12e145ec240640337157fa4172ffe914c138c2e6e4942fc9f2b2e4313a3d7456 ] \
     || { echo "launch_cc.sh: prompt hash differs" >&2; exit 3; }
 fi
-until /home/dev/bin/memok-abl >/dev/null 2>&1; do sleep 30; done
+until "$HOME/bin/memok-abl" >/dev/null 2>&1; do sleep 30; done
 # the daemon: trusted, unsandboxed, outside the session's process tree
 if ! { [ -f "$AW_STATE/$ARM/EVALD.pid" ] && kill -0 "$(cat "$AW_STATE/$ARM/EVALD.pid")" 2>/dev/null; }; then
   nohup "$VC/bin/python" -I "$HERE/evald.py" loop "$WORK" >> "$AW_STATE/progress/abl_cc_evald.out" 2>&1 < /dev/null &

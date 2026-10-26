@@ -2950,3 +2950,11 @@ Cause found (2026-10-26): both abl_cc sessions ended early because Claude Code s
 ```json
 {"cp": 361, "prev_cp": 360, "prev_commit": "eece72be9625368eb2e17e801ddc1df2617817c7", "utc": "2026-10-26T15:07:50Z", "kind": "decision", "phase": "P4", "done_through": "P4/abl_cc-session2", "next": "P4/abl_cc remote (package, check, one fresh session)", "arm": "abl_cc", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "da4f7a418fcbf76d629c4801abe91243d3c4a021", "open_decisions": [], "memory": {"used_pct": 46.9, "peak_pct": 49.61, "state": "OK", "stale": false}}
 ```
+
+## ABL-0362 · 2026-10-26T15:24Z · P4 posted abl_prompt · posted
+
+Posted 'Cap evolve prompt only hourly status' on #932 (abl_prompt): https://github.com/skillberry-ai/cap-evolve/issues/932#issuecomment-6419868804
+
+```json
+{"cp": 362, "prev_cp": 361, "prev_commit": "d7ada94fd3229febbd89016e6149ac46a8167fa0", "utc": "2026-10-26T15:24:52Z", "kind": "posted", "phase": "P4", "done_through": "P4/abl_cc-session2", "next": "P4/abl_cc remote (package, check, one fresh session)", "arm": "abl_cc", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "da4f7a418fcbf76d629c4801abe91243d3c4a021", "open_decisions": [], "memory": {"used_pct": 48.72, "peak_pct": 49.61, "state": "OK", "stale": false}, "post": "abl_prompt/status_20261026T1524", "url": "https://github.com/skillberry-ai/cap-evolve/issues/932#issuecomment-6419868804"}
+```

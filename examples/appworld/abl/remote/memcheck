@@ -1,0 +1,47 @@
+#!/bin/sh
+# memcheck: this container's memory and CPU, from the inside (CONTAINER_AGENT.md §2).
+# Usage: memcheck [per_subagent_MB]   (default 750)
+per=${1:-750}
+cg=/sys/fs/cgroup
+mb() { echo $(( $1 / 1048576 )); }
+if [ -f $cg/memory.max ]; then                      # cgroup v2: every container measured
+    lim=$(cat $cg/memory.max)
+    high=$(cat $cg/memory.high 2>/dev/null || echo max)
+    if [ "$high" != max ] && { [ "$lim" = max ] || [ "$high" -lt "$lim" ]; }; then lim=$high; fi
+    cur=$(cat $cg/memory.current)
+    used=$(awk '$1=="anon"||$1=="shmem"{s+=$2} END{print s+0}' $cg/memory.stat)
+    peak=$(cat $cg/memory.peak 2>/dev/null || echo 0)
+    ooms=$(awk '$1=="oom_kill"{print $2}' $cg/memory.events)
+    group=$(cat $cg/memory.oom.group 2>/dev/null || echo 0)
+    swap=$(cat $cg/memory.swap.max 2>/dev/null || echo 0)
+    set -- $(cat $cg/cpu.max 2>/dev/null || echo max)
+    if [ "$1" = max ]; then cpus=none; else cpus=$(( ($1 + $2 - 1) / $2 )); fi
+elif [ -f $cg/memory/memory.limit_in_bytes ]; then  # cgroup v1 (older hosts; not measured)
+    lim=$(cat $cg/memory/memory.limit_in_bytes)
+    [ "$lim" -ge 4611686018427387904 ] && lim=max
+    cur=$(cat $cg/memory/memory.usage_in_bytes)
+    used=$(awk '$1=="total_rss"||$1=="total_shmem"{s+=$2} END{print s+0}' $cg/memory/memory.stat)
+    peak=$(cat $cg/memory/memory.max_usage_in_bytes)
+    ooms=$(awk '$1=="oom_kill"{print $2}' $cg/memory/memory.oom_control)
+    group=unknown swap=unknown cpus=unknown
+else
+    echo "verdict=UNKNOWN (no cgroup memory files here)"; exit 2
+fi
+age=$(( $(cut -d. -f1 /proc/uptime) - $(awk '{print $22}' /proc/1/stat) / $(getconf CLK_TCK) ))
+echo "container_age_s=$age"
+echo "cpu_limit=$cpus"
+echo "used_MB=$(mb $used)  current_MB=$(mb $cur)  peak_MB=$(mb $peak)"
+echo "oom_kills_since_start=$ooms  oom_kills_whole_container=$group  swap_max=$swap"
+if [ "$lim" = max ]; then
+    avail=$(( $(awk '/^MemAvailable/{print $2}' /proc/meminfo) * 1024 ))
+    echo "limit_MB=none (host memory, shared; MemAvailable_MB=$(mb $avail))"
+    room=$(( avail / 2 ))                           # leave half of a shared host to others
+else
+    echo "limit_MB=$(mb $lim)  used_pct=$(( used * 100 / lim ))"
+    room=$(( lim * 75 / 100 - used ))
+fi
+fit=$(( room / (per * 1048576) )); [ $fit -lt 0 ] && fit=0
+if [ "$lim" != max ] && [ $(( used * 100 / lim )) -ge 85 ]; then v=STOP
+elif [ "$lim" != max ] && [ $(( used * 100 / lim )) -ge 75 ]; then v=CAUTION
+else v=OK; fi
+echo "verdict=$v  subagents_that_fit=$fit (at ${per} MB each, before what they run)"

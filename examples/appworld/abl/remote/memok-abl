@@ -1,0 +1,13 @@
+#!/usr/bin/env python3
+# memok-abl: exit 0 only if the ablation memory guard says OK and its sample is under 30 s old (docs/ABLATIONS.md R2).
+# Remote copy: reads $AW_STATE/MEMSTATE.json (default /workspace/aw_abl/state). Install as ~/bin/memok-abl.
+import datetime as dt, json, os, sys
+path = os.path.join(os.environ.get("AW_STATE", "/workspace/aw_abl/state"), "MEMSTATE.json")
+try:
+    m = json.load(open(path))
+    age = (dt.datetime.now(dt.timezone.utc) - dt.datetime.strptime(m["t"], "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=dt.timezone.utc)).total_seconds()
+except Exception as e:
+    print(f"memok-abl: no MEMSTATE ({type(e).__name__})"); sys.exit(2)
+ok = m.get("state") == "OK" and age < 30
+print(f"memok-abl: memstate {path} state={m.get('state')} used_pct={m.get('used_pct')} peak_pct={m.get('peak_pct')} age_s={age:.0f} -> {'OK' if ok else 'WAIT'}")
+sys.exit(0 if ok else 1)

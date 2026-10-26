@@ -33,7 +33,7 @@ export "${SW[@]}"
 if [ "$AW_CAPE_PHASE" = accept ] && [ -n "${AW_MOCK_SCRIPT:-}" ]; then export CAPEVOLVE_MOCK_SCRIPT="$AW_MOCK_SCRIPT"; fi
 unset AW_MOCK_SCRIPT
 mkdir -p "$AW_STATE/$ARM" "$AW_STATE/progress"
-until /home/dev/bin/memok-abl >/dev/null 2>&1; do sleep 30; done
+until "$HOME/bin/memok-abl" >/dev/null 2>&1; do sleep 30; done
 "$VC/bin/python" -I "$HERE/run_abl.py" imp-check --arm "$ARM" --level launch --project "$PROJ" \
   > "$AW_STATE/$ARM/imp_launch_$TS.json" \
   || { echo "launch_abl.sh: IMP launch / switch checks failed; see imp_launch_$TS.json" >&2; exit 3; }
