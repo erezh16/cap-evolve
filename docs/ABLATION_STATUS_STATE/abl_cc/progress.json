@@ -1,0 +1,32 @@
+{
+ "stage": "frozen (inert)",
+ "arm": "abl_cc",
+ "evaluations_done": 1,
+ "evaluation_requests": 1,
+ "refused": 0,
+ "lint_rejects": 0,
+ "counted_rollouts": 0,
+ "cache_hits": 147,
+ "evaluations": [
+  {
+   "t": "2026-10-26T13:53:53Z",
+   "cand": "85a0da9cec22",
+   "lint": "ok",
+   "mean_reward": 0.4014,
+   "fresh": 0,
+   "rollouts_used": 0
+  }
+ ],
+ "best_search_score": 0.4014,
+ "best_search_label": "best evaluated mean val = train ∪ dev (147), a fit metric, selection-biased; not necessarily the champion",
+ "optimizer": {
+  "calls": 1,
+  "prompt_tokens": 135416,
+  "completion_tokens": 36755,
+  "cache_read": 4769524,
+  "cache_write": 126226,
+  "proxy_usd": 1.66,
+  "seconds": 532.6
+ },
+ "max_turns": 1200
+}

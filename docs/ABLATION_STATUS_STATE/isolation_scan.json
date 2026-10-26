@@ -1060,5 +1060,99 @@
    "k_ok": true,
    "imp_all_ok": true
   }
+ },
+ "abl_cc": {
+  "locations": {
+   "claude -p results": {
+    "files": 1,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "arm state (driver, daemon log)": {
+    "files": 370,
+    "files_hit": 1,
+    "counts": {
+     "root_full": 4,
+     "ground_truth": 2,
+     "src/appworld/apps": 1,
+     "aw_rest": 1,
+     "aw_ce2": 1,
+     "aw_ce3": 1,
+     "aw_abl/arms/abl_ref": 1,
+     "aw_abl/arms/abl_prompt": 1,
+     "aw_abl/arms/abl_tools": 1,
+     "aw_abl/arms/abl_notrace": 1,
+     "aw_abl/arms/abl_tracescore": 1
+    }
+   },
+   "session workdir (incl. .eval spool)": {
+    "files": 200,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "session config dir (transcripts)": {
+    "files": 6,
+    "files_hit": 1,
+    "counts": {
+     "root_full": 2,
+     "aw_rest": 6,
+     "aw_ce2": 4,
+     "aw_ce3": 4,
+     "aw_abl/arms/abl_ref": 2,
+     "aw_abl/arms/abl_prompt": 2,
+     "aw_abl/arms/abl_tools": 2,
+     "aw_abl/arms/abl_notrace": 2,
+     "aw_abl/arms/abl_tracescore": 2
+    }
+   },
+   "archived config dir": {
+    "files": 5,
+    "files_hit": 1,
+    "counts": {
+     "root_full": 2,
+     "aw_rest": 6,
+     "aw_ce2": 4,
+     "aw_ce3": 4,
+     "aw_abl/arms/abl_ref": 2,
+     "aw_abl/arms/abl_prompt": 2,
+     "aw_abl/arms/abl_tools": 2,
+     "aw_abl/arms/abl_notrace": 2,
+     "aw_abl/arms/abl_tracescore": 2
+    }
+   },
+   "frozen artifact": {
+    "files": 4,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "claude tmp rkspace-aw-abl-arms-abl-cc-initcheck-140625-work": {
+    "files": 0,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "claude tmp -workspace-aw-abl-arms-abl-cc-a9-ws": {
+    "files": 1,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "claude tmp -workspace-aw-abl-arms-abl-cc-work": {
+    "files": 3,
+    "files_hit": 0,
+    "counts": {}
+   }
+  },
+  "test_id_hits": 0,
+  "isolation_breach": false,
+  "ce2": {
+   "model_usage_keys": {
+    "aws/claude-sonnet-5-5": 1
+   },
+   "other_models": [],
+   "j1_iterations": null,
+   "j1_all_ok": null,
+   "k_se_cmdline": null,
+   "k_ok": null,
+   "imp_all_ok": null
+  }
  }
 }
