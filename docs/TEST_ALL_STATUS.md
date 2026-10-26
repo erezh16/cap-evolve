@@ -7515,3 +7515,11 @@ Posted 'GEPA hourly status' on #918 (gepa): https://github.com/skillberry-ai/cap
 ```json
 {"cp": 894, "prev_cp": 893, "prev_commit": "adf14b10eb5623a8527e9484d6a2240070ae482e", "utc": "2026-10-26T07:13:59Z", "kind": "posted", "phase": "P3", "done_through": "final/8958", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 31.82, "peak_pct": 44.52, "state": "OK", "stale": false}, "post": "gepa/status_20261026T071348", "url": "https://github.com/skillberry-ai/cap-evolve/issues/918#issuecomment-6410390788"}
 ```
+
+## TA-0895 · 2026-10-26T07:18Z · P3 posted skillopt · posted
+
+Posted 'SkillOpt hourly status' on #919 (skillopt): https://github.com/skillberry-ai/cap-evolve/issues/919#issuecomment-6410461854
+
+```json
+{"cp": 895, "prev_cp": 894, "prev_commit": "d3853e9cf29a9512d48bbb0106ad58e42a1f6cb8", "utc": "2026-10-26T07:18:42Z", "kind": "posted", "phase": "P3", "done_through": "final/8958", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 31.86, "peak_pct": 44.52, "state": "OK", "stale": false}, "post": "skillopt/status_20261026T071824", "url": "https://github.com/skillberry-ai/cap-evolve/issues/919#issuecomment-6410461854"}
+```
