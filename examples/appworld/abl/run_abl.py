@@ -476,7 +476,11 @@ def iteration_rows(rd: Path) -> list[dict]:
     """Per-iteration verdicts (counts and aggregates only): val, paired Δ̄, SE, K·SE, accept; for every arm also
     whether the same Δ̄ / SE would clear K = 1 (a reporting column for ce2_k2, never used to accept; plan §11)."""
     rows = []
-    for e in _run_events(rd):
+    evs = _run_events(rd)
+    # a step whose optimizer session failed (e.g. a gateway 429) scored the parent unchanged: a LOST iteration, not
+    # a real proposal (ABL-0180); it is reported as such and re-run on resume
+    opt_failed = {e.get("candidate") for e in evs if (e.get("kind") or e.get("event")) == "optimizer_error"}
+    for e in evs:
         kind = e.get("kind") or e.get("event")
         # step_indecisive = an evaluation error, a tampered surface (a voided step, §10.3/10.4) or an invalid
         # capability: an iteration consumed with no rollout
@@ -487,6 +491,8 @@ def iteration_rows(rd: Path) -> list[dict]:
         row = {"candidate": e.get("candidate"), "accept": bool(e.get("accept")) and kind == "step", "val": e.get("val"),
                "parent_val": e.get("parent_val"), "indecisive": kind != "step" or bool(e.get("indecisive")),
                "kind": kind}
+        if kind == "step" and e.get("candidate") in opt_failed:
+            row.update(indecisive=True, accept=False, kind="optimizer_failed")
         if m:
             d, k, bar, se = (float(x) for x in m.groups())
             row.update(delta=d, se=se, k_se=k, bar=bar, would_pass_k1=d > 1.0 * se)
@@ -532,7 +538,8 @@ def search() -> int:
         # #876: evaluation-error steps consume iterations; keep 6 SCORED iterations as the target (plan §9.7)
         rows = iteration_rows(rd)
         lost = sum(1 for r in rows if r["indecisive"])
-        extra += ["--max-iterations", str(6 + lost)] if lost else []
+        # 6 SCORED iterations stay the target; every lost step also used 147 metric calls (cached parent re-score)
+        extra += ["--max-iterations", str(6 + lost), "--max-metric-calls", str(1029 + 147 * lost)] if lost else []
         P.progress_log(CAND, "search", f"resume: {len(rows)} steps on record, {lost} indecisive")
     _progress(rd, "search running")
     rc = run_capevolve(proj, ts=RUN_TS, phase="search", extra=extra)
