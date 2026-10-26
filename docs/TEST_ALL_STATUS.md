@@ -7221,3 +7221,11 @@ The last post on the issue of trace2skill (#925) is older than 65 minutes (plan 
 ```json
 {"cp": 859, "prev_cp": 858, "prev_commit": "1215e2b641e6e59a96ebdcda895a2d28a2e51b9a", "utc": "2026-10-26T06:04:13Z", "kind": "error", "phase": "P3", "done_through": "final/8759", "next": "final/cells", "arm": "trace2skill", "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 44.18, "peak_pct": 44.18, "state": "OK", "stale": false}}
 ```
+
+## TA-0860 · 2026-10-26T06:04Z · P3 posted trace2skill · posted
+
+Posted 'Trace2Skill hourly status' on #925 (trace2skill): https://github.com/skillberry-ai/cap-evolve/issues/925#issuecomment-6409388742
+
+```json
+{"cp": 860, "prev_cp": 859, "prev_commit": "220687feeb5153ad554177020694259c20a176a8", "utc": "2026-10-26T06:04:16Z", "kind": "posted", "phase": "P3", "done_through": "final/8759", "next": "final/cells", "arm": "trace2skill", "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 44.29, "peak_pct": 44.29, "state": "OK", "stale": false}, "post": "trace2skill/late_20261026T060415", "url": "https://github.com/skillberry-ai/cap-evolve/issues/925#issuecomment-6409388742"}
+```
