@@ -8538,3 +8538,11 @@ Posted 'WikiSkill: window 90% done' on #920 (wikiskill): https://github.com/skil
 ```json
 {"cp": 1015, "prev_cp": 1014, "prev_commit": "d868a8d596e1e0f8b90f8b314bdd90261f908736", "utc": "2026-10-26T11:51:43Z", "kind": "posted", "phase": "P3", "done_through": "final/9826", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 32.2, "peak_pct": 44.52, "state": "OK", "stale": false}, "post": "wikiskill/window_90pct", "url": "https://github.com/skillberry-ai/cap-evolve/issues/920#issuecomment-6415317618"}
 ```
+
+## TA-1016 · 2026-10-26T11:51Z · P3 posted evoskill · posted
+
+Posted 'EvoSkill: window 90% done' on #921 (evoskill): https://github.com/skillberry-ai/cap-evolve/issues/921#issuecomment-6415319211
+
+```json
+{"cp": 1016, "prev_cp": 1015, "prev_commit": "46fcb90b25c81ca6309c7aaebb35ad144b77978e", "utc": "2026-10-26T11:51:48Z", "kind": "posted", "phase": "P3", "done_through": "final/9826", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 32.21, "peak_pct": 44.52, "state": "OK", "stale": false}, "post": "evoskill/window_90pct", "url": "https://github.com/skillberry-ai/cap-evolve/issues/921#issuecomment-6415319211"}
+```
