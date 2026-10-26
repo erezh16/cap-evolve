@@ -30,7 +30,7 @@ import awrest as P  # noqa: E402
 
 ARM = "abl_cc"
 STATE = P.AW_STATE / ARM
-ROOT = P.RUN_ROOTS[ARM]
+ROOT = P.AW_HOME / "arms" / ARM          # = P.RUN_ROOTS[ARM] on this pod; AW_HOME-relative for the scratch test
 TOP = "return_abl_cc"
 
 

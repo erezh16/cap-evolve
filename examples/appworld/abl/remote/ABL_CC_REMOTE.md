@@ -5,7 +5,8 @@ You are the executing agent of one arm of the AppWorld ablations of cap-evolve: 
 original pod. `abl_cc` moved here because the original pod's sandbox kills any sandboxed Bash command after about 5 s
 (see `DEVAGENT_BWRAP_ISSUES.md` in the package, and ledger entry ABL-0361). Your job: unpack the package, rebuild the
 environment, prove that the sandbox here isolates **and** lets long commands run, restore the arm's state, run **one**
-fresh Claude Code session, let its evaluations finish, and return the result bundle. Nothing else.
+fresh Claude Code session, let its evaluations finish, and upload the result bundle to the Box folder
+`claude-code-ablation/result/` (step 8, item 7). Nothing else.
 
 **What you start with:** this file and the package file **`claude-code-ablation.tar.gz`** with its checksum file
 `claude-code-ablation.tar.gz.sha256`. The user gives them to you, or they are in the user's Box folder
@@ -261,24 +262,58 @@ The session ends on its own (end of turn, the turn cap, or the budget). **No re-
 3. **Isolation scan of the arm:** `python3 -I examples/appworld/scripts/scan.py abl_cc`. Log the test-id hit count
    only. Any hit: stop and ask the user.
 4. **Bundle:** `$AW_HOME/build/venvs/venv-abl/bin/python -I examples/appworld/abl/remote/remote_ctl.py bundle /workspace/aw_abl/export/return_abl_cc`,
-   then `tar -C /workspace/aw_abl/export -czf /workspace/aw_abl/export/abl_cc_return.tar.gz return_abl_cc` and
-   `sha256sum` it. The bundle holds the arm state (evals, rollouts, cache-hit and usage logs, claude_calls, session
-   results, candidates, champion), the workdir, all config dirs (the session transcripts, for the original pod's
-   isolation scan), the check results, and the cache records of every evaluated tree. It **contains task data in the
-   rollout and cache records and in the trajectories**. That is fine for the transfer to the original pod's trusted
-   scripts. It must **not** be committed to git or posted anywhere public. Upload it only where the user tells you
-   (for example the same Box folder this package came from, as `claude-code-ablation/return/`).
+   then:
+
+   ```bash
+   cd /workspace/aw_abl/export
+   tar -czf abl_cc_return.tar.gz return_abl_cc            # the top directory must be return_abl_cc/
+   sha256sum abl_cc_return.tar.gz > abl_cc_return.tar.gz.sha256
+   ```
+
+   The bundle holds the arm state (evals, rollouts, cache-hit and usage logs, claude_calls, session results,
+   candidates, champion), the workdir, all config dirs (the session transcripts, for the original pod's isolation
+   scan), the check results (`checks/probe_long_command.txt`, `checks/a9_abl_cc.json`), and the cache records of every
+   evaluated tree. It **contains task data in the rollout and cache records and in the trajectories**. That is fine for
+   the transfer to the original pod's trusted scripts. It must **not** be committed to git or posted anywhere public.
+   Check before uploading that `checks/probe_long_command.txt` and `checks/a9_abl_cc.json` are in the bundle: the
+   original pod refuses a result without them.
 5. Commit to `eval-abl-cc-remote` only: the log, `docs/ABLATION_STATUS_STATE/abl_cc/progress.json` and
    `docs/ABLATION_STATUS_STATE/abl_cc/artifact/` (the frozen champion: three surface files plus `FREEZE.json`). Before
    committing, check them with the scan result of item 3 above (0 test-id hits in the artifact). Push.
-6. Report to the user: the tarball path and sha256, counts (evaluations, rollouts of 882, best evaluated mean val as a
-   fit metric, champion tree hash, inert or not), optimizer usage (calls, tokens, CLI-reported USD from the session
-   results), the probe and A9 results, and every deviation. **No test number exists for this arm yet**: the champion's
-   held-out test score is produced only in the original pod's single final window (plan P7), together with the
-   other arms.
+6. **Report:** write `/workspace/aw_abl/export/REMOTE_REPORT.md` (uploaded in item 7) and give the same text to the
+   user. It holds: the tarball sha256, counts (evaluations, rollouts of 882, best evaluated mean val as a fit metric,
+   champion tree hash, inert or not), optimizer usage (calls, tokens, CLI-reported USD from the session results), the
+   probe and A9 results, the session's start and end time and stop reason, and every deviation. Counts and hashes
+   only: no task id, task text, trajectory or per-task score. **No test number exists for this arm yet**: the
+   champion's held-out test score is produced only in the original pod's single final window (plan P7), together
+   with the other arms.
+
+7. **Upload the result to Box, automatically, without waiting for the user.** The original pod watches the Box folder
+   `claude-code-ablation/result/` (the same Box folder the package came from) and takes over as soon as the result is
+   complete there. Upload exactly these files, **in this order**, with the marker last:
+
+   ```bash
+   cd /workspace/aw_abl/export
+   R=box:claude-code-ablation/result           # the same Box account and folder the package came from
+   rclone copyto abl_cc_return.tar.gz        $R/abl_cc_return.tar.gz
+   rclone copyto abl_cc_return.tar.gz.sha256 $R/abl_cc_return.tar.gz.sha256
+   rclone copyto REMOTE_REPORT.md            $R/REMOTE_REPORT.md      # item 6, counts only
+   rclone check  . $R --include "abl_cc_return.tar.gz*" --download     # must report 0 differences
+   date -u +%FT%TZ > UPLOAD_COMPLETE && rclone copyto UPLOAD_COMPLETE $R/UPLOAD_COMPLETE
+   ```
+
+   - **`UPLOAD_COMPLETE` goes last**, only after `rclone check` passes. The original pod starts the import when it sees
+     the marker, so a marker before the tarball is complete means the import reads a partial file.
+   - If this host has no rclone remote for that Box account, ask the user once for access (an rclone `box` remote, or
+     another way to put the files in that folder). Do not upload anywhere else.
+   - Do not upload twice. If an upload must be repeated (a failed check), delete `UPLOAD_COMPLETE` from the folder
+     first, upload again, and write the marker last.
+   - Never put anything else in that folder: no unpacked bundle, no logs with task data.
+Your work ends with item 7. The original pod downloads, checks and installs the result, then runs abl_cc's freeze,
+isolation scan and reset check there and continues with the remaining phases.
 
 Do not post on the GitHub issues from this host. The original pod's executing agent records the remote run in the
-ledger and on #931 when the bundle returns.
+ledger and on #931 when the result is imported.
 
 ## 9. Package contents (inside `claude-code-ablation.tar.gz`, unpacked as `$PKG`)
 
