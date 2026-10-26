@@ -2390,3 +2390,11 @@ Posted 'Cap evolve prompt only search ended' on #932 (abl_prompt): https://githu
 ```json
 {"cp": 291, "prev_cp": 290, "prev_commit": "900a1c849a679fe0b9043a1aec6740b3118c9a2c", "utc": "2026-10-26T12:25:59Z", "kind": "posted", "phase": "P4", "done_through": "P4/wave1-iter3", "next": "P4/searches", "arm": "abl_prompt", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "311eb9c7c86961d5d3db0c3c91a082cc0a077c4b", "open_decisions": [], "memory": {"used_pct": 43.56, "peak_pct": 49.61, "state": "OK", "stale": false}, "post": "abl_prompt/m4_search_done", "url": "https://github.com/skillberry-ai/cap-evolve/issues/932#issuecomment-6415955593"}
 ```
+
+## ABL-0292 · 2026-10-26T12:26Z · P4 posted abl_prompt · posted
+
+Posted 'Cap evolve prompt only champion frozen' on #932 (abl_prompt): https://github.com/skillberry-ai/cap-evolve/issues/932#issuecomment-6415956417
+
+```json
+{"cp": 292, "prev_cp": 291, "prev_commit": "42f645095e19586f07c7d45c35ddcaa3155d56f8", "utc": "2026-10-26T12:26:01Z", "kind": "posted", "phase": "P4", "done_through": "P4/wave1-iter3", "next": "P4/searches", "arm": "abl_prompt", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "311eb9c7c86961d5d3db0c3c91a082cc0a077c4b", "open_decisions": [], "memory": {"used_pct": 43.57, "peak_pct": 49.61, "state": "OK", "stale": false}, "post": "abl_prompt/m4_frozen", "url": "https://github.com/skillberry-ai/cap-evolve/issues/932#issuecomment-6415956417"}
+```
