@@ -7077,3 +7077,11 @@ Posted 'ALTK-Evolve hourly status' on #916 (altk): https://github.com/skillberry
 ```json
 {"cp": 841, "prev_cp": 840, "prev_commit": "c412decd900de8486b68c44a460909458e60445b", "utc": "2026-10-26T06:03:36Z", "kind": "posted", "phase": "P3", "done_through": "final/8759", "next": "final/cells", "arm": "altk", "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 10.81, "peak_pct": 10.81, "state": "OK", "stale": false}, "post": "altk/late_20261026T060335", "url": "https://github.com/skillberry-ai/cap-evolve/issues/916#issuecomment-6409379810"}
 ```
+
+## TA-0842 · 2026-10-26T06:03Z · P3 hourly post late ace · error
+
+The last post on the issue of ace (#917) is older than 65 minutes (plan section 12.2). Posting its status now.
+
+```json
+{"cp": 842, "prev_cp": 841, "prev_commit": "d976d88aebb37385e9368a1d38d74cb199ae7283", "utc": "2026-10-26T06:03:38Z", "kind": "error", "phase": "P3", "done_through": "final/8759", "next": "final/cells", "arm": "ace", "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 10.81, "peak_pct": 10.81, "state": "OK", "stale": false}}
+```
