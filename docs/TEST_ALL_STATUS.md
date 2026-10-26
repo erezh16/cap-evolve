@@ -7085,3 +7085,11 @@ The last post on the issue of ace (#917) is older than 65 minutes (plan section 
 ```json
 {"cp": 842, "prev_cp": 841, "prev_commit": "d976d88aebb37385e9368a1d38d74cb199ae7283", "utc": "2026-10-26T06:03:38Z", "kind": "error", "phase": "P3", "done_through": "final/8759", "next": "final/cells", "arm": "ace", "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 10.81, "peak_pct": 10.81, "state": "OK", "stale": false}}
 ```
+
+## TA-0843 · 2026-10-26T06:03Z · P3 posted ace · posted
+
+Posted 'ACE hourly status' on #917 (ace): https://github.com/skillberry-ai/cap-evolve/issues/917#issuecomment-6409380923
+
+```json
+{"cp": 843, "prev_cp": 842, "prev_commit": "d1005c185d6d27266e363069fddc91acb71dfb33", "utc": "2026-10-26T06:03:41Z", "kind": "posted", "phase": "P3", "done_through": "final/8759", "next": "final/cells", "arm": "ace", "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 18.64, "peak_pct": 18.64, "state": "OK", "stale": false}, "post": "ace/late_20261026T060340", "url": "https://github.com/skillberry-ai/cap-evolve/issues/917#issuecomment-6409380923"}
+```
