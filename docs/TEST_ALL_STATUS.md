@@ -10156,3 +10156,11 @@ Posted 'ACE hourly status' on #917 (ace): https://github.com/skillberry-ai/cap-e
 ```json
 {"cp": 1209, "prev_cp": 1208, "prev_commit": "5b2beb0bcc94e1d65b56daecb94d93f565d067e8", "utc": "2026-10-26T20:09:22Z", "kind": "posted", "phase": "P3", "done_through": "final/10920", "next": "P4/analysis", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "054797ca7f3b421d7fecd5b65b96ade2ce30b343", "open_decisions": [], "memory": {"used_pct": 0.69, "peak_pct": 44.52, "state": "OK", "stale": false}, "post": "ace/status_20261026T200912", "url": "https://github.com/skillberry-ai/cap-evolve/issues/917#issuecomment-6426175793"}
 ```
+
+## TA-1210 · 2026-10-26T20:14Z · P3 posted gepa · posted
+
+Posted 'GEPA hourly status' on #918 (gepa): https://github.com/skillberry-ai/cap-evolve/issues/918#issuecomment-6426281097
+
+```json
+{"cp": 1210, "prev_cp": 1209, "prev_commit": "6c46b46ecd39ce94006fa9a27ae27493d3aa0c30", "utc": "2026-10-26T20:14:06Z", "kind": "posted", "phase": "P3", "done_through": "final/10920", "next": "P4/analysis", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "054797ca7f3b421d7fecd5b65b96ade2ce30b343", "open_decisions": [], "memory": {"used_pct": 0.69, "peak_pct": 44.52, "state": "OK", "stale": false}, "post": "gepa/status_20261026T201348", "url": "https://github.com/skillberry-ai/cap-evolve/issues/918#issuecomment-6426281097"}
+```
