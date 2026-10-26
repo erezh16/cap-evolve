@@ -1,16 +1,16 @@
 {
  "window": "final",
  "cells_total": 10920,
- "cells_done": 9570,
+ "cells_done": 9578,
  "per_arm": {
   "evoskill": {
-   "done": 730,
+   "done": 731,
    "infra_missing": 0,
    "infra_retries": 3,
    "context_exceeded": 0
   },
   "ace": {
-   "done": 740,
+   "done": 741,
    "infra_missing": 0,
    "infra_retries": 1,
    "context_exceeded": 0
@@ -22,13 +22,13 @@
    "context_exceeded": 0
   },
   "altk": {
-   "done": 733,
+   "done": 734,
    "infra_missing": 0,
    "infra_retries": 4,
    "context_exceeded": 0
   },
   "gepa_full": {
-   "done": 744,
+   "done": 746,
    "infra_missing": 0,
    "infra_retries": 4,
    "context_exceeded": 0
@@ -40,13 +40,13 @@
    "context_exceeded": 0
   },
   "metaharness": {
-   "done": 729,
+   "done": 730,
    "infra_missing": 0,
    "infra_retries": 6,
    "context_exceeded": 0
   },
   "skillopt": {
-   "done": 739,
+   "done": 740,
    "infra_missing": 0,
    "infra_retries": 3,
    "context_exceeded": 0
@@ -76,7 +76,7 @@
    "context_exceeded": 0
   },
   "gepa": {
-   "done": 721,
+   "done": 722,
    "infra_missing": 0,
    "infra_retries": 3,
    "context_exceeded": 0
