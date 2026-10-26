@@ -7021,3 +7021,11 @@ Next: final remaining cells.
 ```json
 {"cp": 834, "prev_cp": 833, "prev_commit": "1e36d1702d566749bd88ab38694c8c0e739b66c1", "utc": "2026-10-26T03:06:40Z", "kind": "result", "phase": "P3", "done_through": "final/8759", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/final/progress.json": "6ae632b6a0316d0e6ae1ec2d2890e9248614cfbb06226f173c6f83c04cdca7ca"}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 87.29, "peak_pct": 97.6, "state": "PAUSED", "stale": false}, "window": {"window": "final", "cells_total": 10920, "cells_done": 8759, "order_sha256": "725f659aefadafd4a8d1ee86b74ca9f00e2800e9a4974abc85dbac6b63c722f5"}}
 ```
+
+## TA-0835 · 2026-10-26T06:03Z · P3 pod restart (OOM) · error
+
+Pod restart found at 06:02 UTC. memguard samples: container use rose steadily from 46% at 02:52 to 87% at 03:04 (the 24 workers were about 17 GB of it, so one or more episodes grew by about 12 GB), PAUSE at 03:05 (90.4%), a release at 03:07:21 (84.7%), then 98.2% at 03:07:31; the container was OOM-killed and restarted at about 03:09 (container_age_s 10,339 at 06:01; oom_kills_whole_container=1, so the counters were reset). Lost: every process (window runner, memguard, heartbeat, autopost) and the in-flight episodes, which wrote no record and will be re-run with their recorded seeds. Kept: 8,762 cell records on /workspace (atomic writes), 0 missing, 28 infra retries, 0 context_exceeded. About 3 h with no work and no hourly posts (the heartbeat died too). root_full was found 755 (the runner died before relocking) and was relocked to 000 at once; memguard restarted first. Per plan section 4.2: relaunch with 25% fewer slots, 24 -> 18. This is the second near-limit event (the first, 2026-10-25 14:09, peaked at 97.6% and passed); the 30-min episode cap did not stop this growth in time.
+
+```json
+{"cp": 835, "prev_cp": 834, "prev_commit": "38052c24c25e2711c64e07350a94d937f48069c4", "utc": "2026-10-26T06:03:24Z", "kind": "error", "phase": "P3", "done_through": "final/8759", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 3.25, "peak_pct": 3.25, "state": "OK", "stale": false}}
+```
