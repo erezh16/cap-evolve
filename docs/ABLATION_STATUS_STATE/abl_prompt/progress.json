@@ -81,15 +81,15 @@
  "best_search_score": 0.7687074829931972,
  "best_search_label": "val = train ∪ dev (147), a fit metric, selection-biased",
  "metric_calls": 1176,
- "capevolve_optimizer_usd": 32.29084100000001,
+ "capevolve_optimizer_usd": 47.39838550000002,
  "optimizer": {
-  "calls": 7,
-  "prompt_tokens": 2223305,
-  "completion_tokens": 285936,
-  "cache_read": 22938557,
-  "cache_write": 2045310,
-  "proxy_usd": 12.92,
-  "seconds": 2674.2
+  "calls": 8,
+  "prompt_tokens": 3143266,
+  "completion_tokens": 446104,
+  "cache_read": 33789106,
+  "cache_write": 2907922,
+  "proxy_usd": 18.96,
+  "seconds": 4125.6
  },
  "voided_steps": 0,
  "feedback_mode": "full",
