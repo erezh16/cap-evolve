@@ -10180,3 +10180,11 @@ Posted 'WikiSkill hourly status' on #920 (wikiskill): https://github.com/skillbe
 ```json
 {"cp": 1212, "prev_cp": 1211, "prev_commit": "874c7ec6bc03caa29c5ee35b8c18cce7bdf1b0ea", "utc": "2026-10-26T20:23:13Z", "kind": "posted", "phase": "P3", "done_through": "final/10920", "next": "P4/analysis", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "054797ca7f3b421d7fecd5b65b96ade2ce30b343", "open_decisions": [], "memory": {"used_pct": 0.69, "peak_pct": 44.52, "state": "OK", "stale": false}, "post": "wikiskill/status_20261026T202300", "url": "https://github.com/skillberry-ai/cap-evolve/issues/920#issuecomment-6426467830"}
 ```
+
+## TA-1213 · 2026-10-26T20:27Z · P3 posted evoskill · posted
+
+Posted 'EvoSkill hourly status' on #921 (evoskill): https://github.com/skillberry-ai/cap-evolve/issues/921#issuecomment-6426554654
+
+```json
+{"cp": 1213, "prev_cp": 1212, "prev_commit": "9759269a233f145c80cfb3f15d35475e1978a0e3", "utc": "2026-10-26T20:27:37Z", "kind": "posted", "phase": "P3", "done_through": "final/10920", "next": "P4/analysis", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "054797ca7f3b421d7fecd5b65b96ade2ce30b343", "open_decisions": [], "memory": {"used_pct": 0.69, "peak_pct": 44.52, "state": "OK", "stale": false}, "post": "evoskill/status_20261026T202736", "url": "https://github.com/skillberry-ai/cap-evolve/issues/921#issuecomment-6426554654"}
+```
