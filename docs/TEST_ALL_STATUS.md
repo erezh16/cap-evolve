@@ -6484,3 +6484,11 @@ Next: final remaining cells.
 ```json
 {"cp": 770, "prev_cp": 769, "prev_commit": "340454b70b799897b331c81a65d8f09fa7d73fdf", "utc": "2026-10-26T01:00:55Z", "kind": "result", "phase": "P3", "done_through": "final/8234", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/final/progress.json": "6abe677393cf28b8e3662721bf841133fa5092bf4fa9bfd57b44852e2aeb0291"}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 46.92, "peak_pct": 97.6, "state": "OK", "stale": false}, "window": {"window": "final", "cells_total": 10920, "cells_done": 8234, "order_sha256": "725f659aefadafd4a8d1ee86b74ca9f00e2800e9a4974abc85dbac6b63c722f5"}}
 ```
+
+## TA-0771 · 2026-10-26T01:04Z · P3 posted altk · posted
+
+Posted 'ALTK-Evolve hourly status' on #916 (altk): https://github.com/skillberry-ai/cap-evolve/issues/916#issuecomment-6405931422
+
+```json
+{"cp": 771, "prev_cp": 770, "prev_commit": "b8947b0293aa4d25e5baffbe3911b8e82428c95b", "utc": "2026-10-26T01:04:48Z", "kind": "posted", "phase": "P3", "done_through": "final/8234", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 43.41, "peak_pct": 97.6, "state": "OK", "stale": false}, "post": "altk/status_20261026T010436", "url": "https://github.com/skillberry-ai/cap-evolve/issues/916#issuecomment-6405931422"}
+```
