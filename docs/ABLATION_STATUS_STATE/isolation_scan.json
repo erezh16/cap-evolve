@@ -716,5 +716,349 @@
    "k_ok": true,
    "imp_all_ok": true
   }
+ },
+ "abl_ref": {
+  "locations": {
+   "claude -p results": {
+    "files": 11,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "arm state (driver)": {
+    "files": 202,
+    "files_hit": 1,
+    "counts": {
+     "root_full": 3,
+     "ground_truth": 3,
+     "src/appworld/apps": 1,
+     "aw_rest": 1,
+     "aw_ce2": 1,
+     "aw_ce3": 1,
+     "aw_abl/arms/abl_cc": 1,
+     "aw_abl/arms/abl_prompt": 1,
+     "aw_abl/arms/abl_tools": 1,
+     "aw_abl/arms/abl_notrace": 1,
+     "aw_abl/arms/abl_tracescore": 1
+    }
+   },
+   "optimizer workdirs (run dir work/)": {
+    "files": 2206,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "run dir events": {
+    "files": 1,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "frozen artifact": {
+    "files": 4,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "claude transcripts projects/abl-ref--capevolve-run-abl-ref-s0-work-cand-0004": {
+    "files": 1,
+    "files_hit": 1,
+    "counts": {
+     "root_full": 2,
+     "aw_rest": 6,
+     "aw_ce2": 4,
+     "aw_ce3": 4,
+     "aw_abl/arms/abl_cc": 2,
+     "aw_abl/arms/abl_prompt": 2,
+     "aw_abl/arms/abl_tools": 2,
+     "aw_abl/arms/abl_notrace": 2,
+     "aw_abl/arms/abl_tracescore": 2
+    }
+   },
+   "claude transcripts projects/rms-abl-ref--capevolve-run-abl-ref-s0-work-a9-ws": {
+    "files": 3,
+    "files_hit": 2,
+    "counts": {
+     "root_full": 34,
+     "ground_truth": 22,
+     "src/appworld/apps": 10,
+     "aw_rest": 22,
+     "aw_ce2": 18,
+     "aw_ce3": 18,
+     "aw_abl/arms/abl_cc": 14,
+     "aw_abl/arms/abl_prompt": 14,
+     "aw_abl/arms/abl_tools": 14,
+     "aw_abl/arms/abl_notrace": 14,
+     "aw_abl/arms/abl_tracescore": 14
+    }
+   },
+   "claude transcripts projects/abl-ref--capevolve-run-abl-ref-s0-work-cand-0003": {
+    "files": 2,
+    "files_hit": 1,
+    "counts": {
+     "root_full": 2,
+     "aw_rest": 6,
+     "aw_ce2": 4,
+     "aw_ce3": 4,
+     "aw_abl/arms/abl_cc": 2,
+     "aw_abl/arms/abl_prompt": 2,
+     "aw_abl/arms/abl_tools": 2,
+     "aw_abl/arms/abl_notrace": 2,
+     "aw_abl/arms/abl_tracescore": 2
+    }
+   },
+   "claude transcripts projects/abl-ref--capevolve-run-abl-ref-s0-work-cand-0008": {
+    "files": 13,
+    "files_hit": 4,
+    "counts": {
+     "root_full": 14,
+     "aw_rest": 42,
+     "aw_ce2": 28,
+     "aw_ce3": 28,
+     "aw_abl/arms/abl_cc": 14,
+     "aw_abl/arms/abl_prompt": 14,
+     "aw_abl/arms/abl_tools": 14,
+     "aw_abl/arms/abl_notrace": 14,
+     "aw_abl/arms/abl_tracescore": 14
+    }
+   },
+   "claude transcripts projects/abl-ref--capevolve-run-abl-ref-s0-work-cand-0007": {
+    "files": 13,
+    "files_hit": 5,
+    "counts": {
+     "root_full": 12,
+     "aw_rest": 36,
+     "aw_ce2": 24,
+     "aw_ce3": 24,
+     "aw_abl/arms/abl_cc": 12,
+     "aw_abl/arms/abl_prompt": 12,
+     "aw_abl/arms/abl_tools": 12,
+     "aw_abl/arms/abl_notrace": 12,
+     "aw_abl/arms/abl_tracescore": 12
+    }
+   },
+   "claude transcripts projects/abl-ref--capevolve-run-abl-ref-s0-work-cand-0002": {
+    "files": 1,
+    "files_hit": 1,
+    "counts": {
+     "root_full": 2,
+     "aw_rest": 6,
+     "aw_ce2": 4,
+     "aw_ce3": 4,
+     "aw_abl/arms/abl_cc": 2,
+     "aw_abl/arms/abl_prompt": 2,
+     "aw_abl/arms/abl_tools": 2,
+     "aw_abl/arms/abl_notrace": 2,
+     "aw_abl/arms/abl_tracescore": 2
+    }
+   },
+   "claude transcripts projects/abl-ref--capevolve-run-abl-ref-s0-work-cand-0011": {
+    "files": 1,
+    "files_hit": 1,
+    "counts": {
+     "root_full": 4,
+     "aw_rest": 12,
+     "aw_ce2": 8,
+     "aw_ce3": 8,
+     "aw_abl/arms/abl_cc": 4,
+     "aw_abl/arms/abl_prompt": 4,
+     "aw_abl/arms/abl_tools": 4,
+     "aw_abl/arms/abl_notrace": 4,
+     "aw_abl/arms/abl_tracescore": 4
+    }
+   },
+   "claude transcripts projects/abl-ref--capevolve-run-abl-ref-s0-work-cand-0009": {
+    "files": 2,
+    "files_hit": 1,
+    "counts": {
+     "root_full": 6,
+     "aw_rest": 18,
+     "aw_ce2": 12,
+     "aw_ce3": 12,
+     "aw_abl/arms/abl_cc": 6,
+     "aw_abl/arms/abl_prompt": 6,
+     "aw_abl/arms/abl_tools": 6,
+     "aw_abl/arms/abl_notrace": 6,
+     "aw_abl/arms/abl_tracescore": 6
+    }
+   },
+   "claude transcripts projects/ce-aw-abl-arms-abl-ref--capevolve-run-abl-ref-s0": {
+    "files": 0,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "claude transcripts projects/abl-ref--capevolve-run-abl-ref-s0-work-cand-0010": {
+    "files": 9,
+    "files_hit": 5,
+    "counts": {
+     "root_full": 12,
+     "aw_rest": 36,
+     "aw_ce2": 24,
+     "aw_ce3": 24,
+     "aw_abl/arms/abl_cc": 12,
+     "aw_abl/arms/abl_prompt": 12,
+     "aw_abl/arms/abl_tools": 12,
+     "aw_abl/arms/abl_notrace": 12,
+     "aw_abl/arms/abl_tracescore": 12
+    }
+   },
+   "claude transcripts projects/abl-ref--capevolve-run-abl-ref-s0-work-cand-0005": {
+    "files": 1,
+    "files_hit": 1,
+    "counts": {
+     "root_full": 2,
+     "aw_rest": 6,
+     "aw_ce2": 4,
+     "aw_ce3": 4,
+     "aw_abl/arms/abl_cc": 2,
+     "aw_abl/arms/abl_prompt": 2,
+     "aw_abl/arms/abl_tools": 2,
+     "aw_abl/arms/abl_notrace": 2,
+     "aw_abl/arms/abl_tracescore": 2
+    }
+   },
+   "claude transcripts projects/abl-ref--capevolve-run-abl-ref-s0-work-cand-0001": {
+    "files": 1,
+    "files_hit": 1,
+    "counts": {
+     "root_full": 6,
+     "aw_rest": 18,
+     "aw_ce2": 12,
+     "aw_ce3": 12,
+     "aw_abl/arms/abl_cc": 6,
+     "aw_abl/arms/abl_prompt": 6,
+     "aw_abl/arms/abl_tools": 6,
+     "aw_abl/arms/abl_notrace": 6,
+     "aw_abl/arms/abl_tracescore": 6
+    }
+   },
+   "claude transcripts projects/abl-ref--capevolve-run-abl-ref-s0-work-cand-0006": {
+    "files": 1,
+    "files_hit": 1,
+    "counts": {
+     "root_full": 2,
+     "aw_rest": 6,
+     "aw_ce2": 4,
+     "aw_ce3": 4,
+     "aw_abl/arms/abl_cc": 2,
+     "aw_abl/arms/abl_prompt": 2,
+     "aw_abl/arms/abl_tools": 2,
+     "aw_abl/arms/abl_notrace": 2,
+     "aw_abl/arms/abl_tracescore": 2
+    }
+   },
+   "claude transcripts claude-10037/abl-ref--capevolve-run-abl-ref-s0-work-cand-0002": {
+    "files": 0,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "claude transcripts claude-10037/abl-ref--capevolve-run-abl-ref-s0-work-cand-0010": {
+    "files": 17,
+    "files_hit": 4,
+    "counts": {
+     "root_full": 8,
+     "aw_rest": 24,
+     "aw_ce2": 16,
+     "aw_ce3": 16,
+     "aw_abl/arms/abl_cc": 8,
+     "aw_abl/arms/abl_prompt": 8,
+     "aw_abl/arms/abl_tools": 8,
+     "aw_abl/arms/abl_notrace": 8,
+     "aw_abl/arms/abl_tracescore": 8
+    }
+   },
+   "claude transcripts claude-10037/abl-ref--capevolve-run-abl-ref-s0-work-cand-0001": {
+    "files": 0,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "claude transcripts claude-10037/abl-ref--capevolve-run-abl-ref-s0-work-cand-0008": {
+    "files": 20,
+    "files_hit": 3,
+    "counts": {
+     "root_full": 10,
+     "aw_rest": 30,
+     "aw_ce2": 20,
+     "aw_ce3": 20,
+     "aw_abl/arms/abl_cc": 10,
+     "aw_abl/arms/abl_prompt": 10,
+     "aw_abl/arms/abl_tools": 10,
+     "aw_abl/arms/abl_notrace": 10,
+     "aw_abl/arms/abl_tracescore": 10
+    }
+   },
+   "claude transcripts claude-10037/abl-ref--capevolve-run-abl-ref-s0-work-cand-0006": {
+    "files": 0,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "claude transcripts claude-10037/abl-ref--capevolve-run-abl-ref-s0-work-cand-0009": {
+    "files": 1,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "claude transcripts claude-10037/abl-ref--capevolve-run-abl-ref-s0-work-cand-0011": {
+    "files": 0,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "claude transcripts claude-10037/abl-ref--capevolve-run-abl-ref-s0-work-cand-0007": {
+    "files": 20,
+    "files_hit": 4,
+    "counts": {
+     "root_full": 8,
+     "aw_rest": 24,
+     "aw_ce2": 16,
+     "aw_ce3": 16,
+     "aw_abl/arms/abl_cc": 8,
+     "aw_abl/arms/abl_prompt": 8,
+     "aw_abl/arms/abl_tools": 8,
+     "aw_abl/arms/abl_notrace": 8,
+     "aw_abl/arms/abl_tracescore": 8
+    }
+   },
+   "claude transcripts claude-10037/rms-abl-ref--capevolve-run-abl-ref-s0-work-a9-ws": {
+    "files": 1,
+    "files_hit": 1,
+    "counts": {
+     "root_full": 9,
+     "ground_truth": 4,
+     "aw_rest": 6,
+     "aw_ce2": 4,
+     "aw_ce3": 4,
+     "aw_abl/arms/abl_cc": 2,
+     "aw_abl/arms/abl_prompt": 2,
+     "aw_abl/arms/abl_tools": 2,
+     "aw_abl/arms/abl_notrace": 2,
+     "aw_abl/arms/abl_tracescore": 2
+    }
+   },
+   "claude transcripts claude-10037/abl-ref--capevolve-run-abl-ref-s0-work-cand-0005": {
+    "files": 0,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "claude transcripts claude-10037/abl-ref--capevolve-run-abl-ref-s0-work-cand-0004": {
+    "files": 0,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "claude transcripts claude-10037/abl-ref--capevolve-run-abl-ref-s0-work-cand-0003": {
+    "files": 1,
+    "files_hit": 0,
+    "counts": {}
+   }
+  },
+  "test_id_hits": 0,
+  "isolation_breach": false,
+  "ce2": {
+   "model_usage_keys": {
+    "aws/claude-sonnet-5-5": 7
+   },
+   "other_models": [],
+   "j1_iterations": 11,
+   "j1_all_ok": true,
+   "k_se_cmdline": [
+    "0.2"
+   ],
+   "k_ok": true,
+   "imp_all_ok": true
+  }
  }
 }
