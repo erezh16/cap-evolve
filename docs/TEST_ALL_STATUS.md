@@ -7205,3 +7205,11 @@ The last post on the issue of miprov2 (#924) is older than 65 minutes (plan sect
 ```json
 {"cp": 857, "prev_cp": 856, "prev_commit": "3a93e864398f059986e3a8efec62b97dbfde388f", "utc": "2026-10-26T06:04:09Z", "kind": "error", "phase": "P3", "done_through": "final/8759", "next": "final/cells", "arm": "miprov2", "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 44.09, "peak_pct": 44.09, "state": "OK", "stale": false}}
 ```
+
+## TA-0858 · 2026-10-26T06:04Z · P3 posted miprov2 · posted
+
+Posted 'MIPROv2 hourly status' on #924 (miprov2): https://github.com/skillberry-ai/cap-evolve/issues/924#issuecomment-6409387697
+
+```json
+{"cp": 858, "prev_cp": 857, "prev_commit": "386f0ba047907bdfec93c2f2e40093252e0b5962", "utc": "2026-10-26T06:04:12Z", "kind": "posted", "phase": "P3", "done_through": "final/8759", "next": "final/cells", "arm": "miprov2", "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 44.18, "peak_pct": 44.18, "state": "OK", "stale": false}, "post": "miprov2/late_20261026T060411", "url": "https://github.com/skillberry-ai/cap-evolve/issues/924#issuecomment-6409387697"}
+```
