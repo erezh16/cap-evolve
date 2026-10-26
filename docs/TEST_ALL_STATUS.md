@@ -7117,3 +7117,11 @@ The last post on the issue of skillopt (#919) is older than 65 minutes (plan sec
 ```json
 {"cp": 846, "prev_cp": 845, "prev_commit": "daf79a40bfd9f1c498df83b0eb17eca59f2bb7c6", "utc": "2026-10-26T06:03:49Z", "kind": "error", "phase": "P3", "done_through": "final/8759", "next": "final/cells", "arm": "skillopt", "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 38.38, "peak_pct": 38.38, "state": "OK", "stale": false}}
 ```
+
+## TA-0847 · 2026-10-26T06:03Z · P3 slots 24 to 18 · decision
+
+Resumed at 06:03 UTC (TA-0836: 8,762 records kept, 2,158 cells to run; heartbeat and autopost restarted). resume.py's restart test compares container_age_s with the time since the last entry, and the TA-0835 error entry written just before made that interval short, so it did not shrink the pool. Set by hand per plan section 4.2: AW_STATE/slots/SIZE = 18 (25% fewer than 24). The window's thread pool still has 24 threads; only 18 can hold a slot, so at most 18 episodes run at once from here.
+
+```json
+{"cp": 847, "prev_cp": 846, "prev_commit": "a8ea8821f1f19c44e5a515a981201a0b6e7cbe31", "utc": "2026-10-26T06:03:51Z", "kind": "decision", "phase": "P3", "done_through": "final/8759", "next": "final/cells", "arm": "skillopt", "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 43.64, "peak_pct": 43.64, "state": "OK", "stale": false}}
+```
