@@ -3102,3 +3102,11 @@ Package for the abl_cc run on a bubblewrap host (ABL-0361) built and uploaded to
 ```json
 {"cp": 380, "prev_cp": 379, "prev_commit": "5bed105b606592161a6ddb66a71b1836b988b177", "utc": "2026-10-26T16:30:57Z", "kind": "decision", "phase": "P4", "done_through": "P4/abl_cc-session2", "next": "P4: abl_notrace, abl_tracescore searching; abl_cc on the remote host", "arm": "abl_cc", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "740e7520353d1497fa9fc215fff222caddfff288", "open_decisions": [], "memory": {"used_pct": 8.04, "peak_pct": 50.31, "state": "OK", "stale": false}}
 ```
+
+## ABL-0381 · 2026-10-26T16:51Z · P4 posted abl_ref · posted
+
+Posted 'Cap-evolve full (reference) hourly status' on #930 (abl_ref): https://github.com/skillberry-ai/cap-evolve/issues/930#issuecomment-6421919723
+
+```json
+{"cp": 381, "prev_cp": 380, "prev_commit": "e0ce6aa6a80873c77ee64ebc57d92b6b378c57f4", "utc": "2026-10-26T16:51:39Z", "kind": "posted", "phase": "P4", "done_through": "P4/abl_cc-session2", "next": "P4: abl_notrace, abl_tracescore searching; abl_cc on the remote host", "arm": "abl_cc", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "740e7520353d1497fa9fc215fff222caddfff288", "open_decisions": [], "memory": {"used_pct": 46.46, "peak_pct": 50.31, "state": "OK", "stale": false}, "post": "abl_ref/status_20261026T1651", "url": "https://github.com/skillberry-ai/cap-evolve/issues/930#issuecomment-6421919723"}
+```
