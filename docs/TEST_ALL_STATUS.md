@@ -7125,3 +7125,11 @@ Resumed at 06:03 UTC (TA-0836: 8,762 records kept, 2,158 cells to run; heartbeat
 ```json
 {"cp": 847, "prev_cp": 846, "prev_commit": "a8ea8821f1f19c44e5a515a981201a0b6e7cbe31", "utc": "2026-10-26T06:03:51Z", "kind": "decision", "phase": "P3", "done_through": "final/8759", "next": "final/cells", "arm": "skillopt", "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 43.64, "peak_pct": 43.64, "state": "OK", "stale": false}}
 ```
+
+## TA-0848 · 2026-10-26T06:03Z · P3 posted skillopt · posted
+
+Posted 'SkillOpt hourly status' on #919 (skillopt): https://github.com/skillberry-ai/cap-evolve/issues/919#issuecomment-6409383182
+
+```json
+{"cp": 848, "prev_cp": 847, "prev_commit": "17349d7bfc4f303ccdc9d897c890085b50ded7c7", "utc": "2026-10-26T06:03:52Z", "kind": "posted", "phase": "P3", "done_through": "final/8759", "next": "final/cells", "arm": "skillopt", "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 43.64, "peak_pct": 43.64, "state": "OK", "stale": false}, "post": "skillopt/late_20261026T060351", "url": "https://github.com/skillberry-ai/cap-evolve/issues/919#issuecomment-6409383182"}
+```
