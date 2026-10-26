@@ -6931,3 +6931,11 @@ Posted 'SkillOpt: window 80% done' on #919 (skillopt): https://github.com/skillb
 ```json
 {"cp": 823, "prev_cp": 822, "prev_commit": "723bfe02bee3208a6055fd6b2cfa4fb122483565", "utc": "2026-10-26T03:00:14Z", "kind": "posted", "phase": "P3", "done_through": "final/8720", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 73.96, "peak_pct": 97.6, "state": "OK", "stale": false}, "post": "skillopt/window_80pct", "url": "https://github.com/skillberry-ai/cap-evolve/issues/919#issuecomment-6407236443"}
 ```
+
+## TA-0824 · 2026-10-26T03:00Z · P3 posted wikiskill · posted
+
+Posted 'WikiSkill: window 80% done' on #920 (wikiskill): https://github.com/skillberry-ai/cap-evolve/issues/920#issuecomment-6407237486
+
+```json
+{"cp": 824, "prev_cp": 823, "prev_commit": "adfa09556e830a12b6b652efa5163d600241c70e", "utc": "2026-10-26T03:00:19Z", "kind": "posted", "phase": "P3", "done_through": "final/8720", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 74.25, "peak_pct": 97.6, "state": "OK", "stale": false}, "post": "wikiskill/window_80pct", "url": "https://github.com/skillberry-ai/cap-evolve/issues/920#issuecomment-6407237486"}
+```
