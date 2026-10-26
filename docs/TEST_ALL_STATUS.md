@@ -8058,3 +8058,11 @@ Next: final remaining cells.
 ```json
 {"cp": 958, "prev_cp": 957, "prev_commit": "c61dd823055104d6d3eb28c3054b653e30701aee", "utc": "2026-10-26T09:49:54Z", "kind": "result", "phase": "P3", "done_through": "final/9407", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/final/progress.json": "3242faf6ae42c12d4867544eeda9db57d02491ada70720f396de31e846f38333"}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 32.22, "peak_pct": 44.52, "state": "OK", "stale": false}, "window": {"window": "final", "cells_total": 10920, "cells_done": 9407, "order_sha256": "725f659aefadafd4a8d1ee86b74ca9f00e2800e9a4974abc85dbac6b63c722f5"}}
 ```
+
+## TA-0959 · 2026-10-26T09:50Z · P3 posted gepa_full · posted
+
+Posted 'GEPA-Full hourly status' on #926 (gepa_full): https://github.com/skillberry-ai/cap-evolve/issues/926#issuecomment-6413074878
+
+```json
+{"cp": 959, "prev_cp": 958, "prev_commit": "8aca8d4253aa9a528eccc5632672f6f52c27a16c", "utc": "2026-10-26T09:50:43Z", "kind": "posted", "phase": "P3", "done_through": "final/9407", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 32.11, "peak_pct": 44.52, "state": "OK", "stale": false}, "post": "gepa_full/status_20261026T095036", "url": "https://github.com/skillberry-ai/cap-evolve/issues/926#issuecomment-6413074878"}
+```
