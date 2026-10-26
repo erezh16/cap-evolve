@@ -2542,3 +2542,11 @@ Posted 'Cap-evolve full (reference) iteration 10' on #930 (abl_ref): https://git
 ```json
 {"cp": 310, "prev_cp": 309, "prev_commit": "97958e3b0618f3c79609687d5003e23704d87d9a", "utc": "2026-10-26T12:35:36Z", "kind": "posted", "phase": "P4", "done_through": "P4/abl_prompt+abl_tools", "next": "P4/searches", "arm": "abl_ref", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "73c8bd6a3a191817465ea8b4130ed0a661b6ba64", "open_decisions": [], "memory": {"used_pct": 4.96, "peak_pct": 49.61, "state": "OK", "stale": false}, "post": "abl_ref/iter_10", "url": "https://github.com/skillberry-ai/cap-evolve/issues/930#issuecomment-6416135051"}
 ```
+
+## ABL-0311 · 2026-10-26T12:40Z · P4 posted abl_notrace · posted
+
+Posted 'Cap evolve no traces search started' on #934 (abl_notrace): https://github.com/skillberry-ai/cap-evolve/issues/934#issuecomment-6416225191
+
+```json
+{"cp": 311, "prev_cp": 310, "prev_commit": "ac6aa7ad9cf0e0967be118cf95229b1551c2a12f", "utc": "2026-10-26T12:40:21Z", "kind": "posted", "phase": "P4", "done_through": "P4/abl_prompt+abl_tools", "next": "P4/searches", "arm": "abl_ref", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "73c8bd6a3a191817465ea8b4130ed0a661b6ba64", "open_decisions": [], "memory": {"used_pct": 46.24, "peak_pct": 49.61, "state": "OK", "stale": false}, "post": "abl_notrace/m4_search_start", "url": "https://github.com/skillberry-ai/cap-evolve/issues/934#issuecomment-6416225191"}
+```
