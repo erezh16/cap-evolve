@@ -7133,3 +7133,11 @@ Posted 'SkillOpt hourly status' on #919 (skillopt): https://github.com/skillberr
 ```json
 {"cp": 848, "prev_cp": 847, "prev_commit": "17349d7bfc4f303ccdc9d897c890085b50ded7c7", "utc": "2026-10-26T06:03:52Z", "kind": "posted", "phase": "P3", "done_through": "final/8759", "next": "final/cells", "arm": "skillopt", "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 43.64, "peak_pct": 43.64, "state": "OK", "stale": false}, "post": "skillopt/late_20261026T060351", "url": "https://github.com/skillberry-ai/cap-evolve/issues/919#issuecomment-6409383182"}
 ```
+
+## TA-0849 · 2026-10-26T06:03Z · P3 hourly post late wikiskill · error
+
+The last post on the issue of wikiskill (#920) is older than 65 minutes (plan section 12.2). Posting its status now.
+
+```json
+{"cp": 849, "prev_cp": 848, "prev_commit": "5ab1565ae6dbccb05bb7d32d6c903f85040fb243", "utc": "2026-10-26T06:03:54Z", "kind": "error", "phase": "P3", "done_through": "final/8759", "next": "final/cells", "arm": "wikiskill", "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 43.64, "peak_pct": 43.64, "state": "OK", "stale": false}}
+```
