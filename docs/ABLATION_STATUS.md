@@ -2534,3 +2534,11 @@ P4 abl_ref: iteration 10: val 0.8299 (parent 0.8095); paired Δ̄ +0.0204, SE 0.
 ```json
 {"cp": 309, "prev_cp": 308, "prev_commit": "ed38c896707f5bd075ee2cf1239c4ddb6c46ee21", "utc": "2026-10-26T12:35:33Z", "kind": "result", "phase": "P4", "done_through": "P4/abl_prompt+abl_tools", "next": "P4/searches", "arm": "abl_ref", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {"STATE/abl_ref/progress.json": "c7d8590dc9e2836194ca2c81c57ed3b512fd7c7e7f2d65c3279b9bf98111a3cd"}, "code": "73c8bd6a3a191817465ea8b4130ed0a661b6ba64", "open_decisions": [], "memory": {"used_pct": 4.96, "peak_pct": 49.61, "state": "OK", "stale": false}, "iteration": 10, "verdict": {"candidate": "cand_0010", "accept": true, "val": 0.8299319727891157, "parent_val": 0.8095238095238095, "indecisive": false, "kind": "step", "delta": 0.0204, "se": 0.0327, "k_se": 0.2, "bar": 0.0065, "would_pass_k1": false}}
 ```
+
+## ABL-0310 · 2026-10-26T12:35Z · P4 posted abl_ref · posted
+
+Posted 'Cap-evolve full (reference) iteration 10' on #930 (abl_ref): https://github.com/skillberry-ai/cap-evolve/issues/930#issuecomment-6416135051
+
+```json
+{"cp": 310, "prev_cp": 309, "prev_commit": "97958e3b0618f3c79609687d5003e23704d87d9a", "utc": "2026-10-26T12:35:36Z", "kind": "posted", "phase": "P4", "done_through": "P4/abl_prompt+abl_tools", "next": "P4/searches", "arm": "abl_ref", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "73c8bd6a3a191817465ea8b4130ed0a661b6ba64", "open_decisions": [], "memory": {"used_pct": 4.96, "peak_pct": 49.61, "state": "OK", "stale": false}, "post": "abl_ref/iter_10", "url": "https://github.com/skillberry-ai/cap-evolve/issues/930#issuecomment-6416135051"}
+```
