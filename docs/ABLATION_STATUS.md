@@ -2694,3 +2694,11 @@ Posted 'Cap-evolve full (reference) isolation scan' on #930 (abl_ref): https://g
 ```json
 {"cp": 329, "prev_cp": 328, "prev_commit": "1436bfe1a29e97ba53f2fbcf5387547e76fdb4d4", "utc": "2026-10-26T13:54:02Z", "kind": "posted", "phase": "P4", "done_through": "P4/abl_prompt+abl_tools", "next": "P4/searches", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "73c8bd6a3a191817465ea8b4130ed0a661b6ba64", "open_decisions": [], "memory": {"used_pct": 8.85, "peak_pct": 49.61, "state": "OK", "stale": false}, "post": "abl_ref/m4_scanned", "url": "https://github.com/skillberry-ai/cap-evolve/issues/930#issuecomment-6417740766"}
 ```
+
+## ABL-0330 · 2026-10-26T13:54Z · P4 abl_ref reset re-run · repair
+
+abl_ref chain complete. Its reset step (ABL-0323) failed for the same reason as abl_prompt and abl_tools (ABL-0306: AW_CAPE_ARM inherited from the pre-fix runner; the chain was started before that fix); re-run by hand: reset_check items 1 to 6 PASS. abl_ref final: 6 scored iterations (11 steps, 5 lost to the gateway outage and re-run), 5 accepted (scored iterations 1 to 5; 6 rejected), champion cand_0010, search val 0.401 -> 0.830 (fit metric), 882 of 882 counted, optimizer proxy USD 34.81; frozen lint-clean, tree hash 54a4f379 equal to the run candidate; isolation scan 0 test-id hits, only aws/claude-sonnet-5-5, J1 and K = 0.2 in every iteration. Its stored reference renders (spec, INSTRUCTIONS, shim settings) are the ones every later reset check compares with. abl_cc started at 13:53 UTC in the freed slot (the last arm, after the runner env fix).
+
+```json
+{"cp": 330, "prev_cp": 329, "prev_commit": "e256a41f06915cc8ddfe27ea2898134de058bf61", "utc": "2026-10-26T13:54:13Z", "kind": "repair", "phase": "P4", "done_through": "P4/abl_ref", "next": "P4/searches", "arm": "abl_ref", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "73c8bd6a3a191817465ea8b4130ed0a661b6ba64", "open_decisions": [], "memory": {"used_pct": 8.75, "peak_pct": 49.61, "state": "OK", "stale": false}}
+```
