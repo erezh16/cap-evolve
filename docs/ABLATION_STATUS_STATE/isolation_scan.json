@@ -1395,5 +1395,191 @@
    "k_ok": true,
    "imp_all_ok": true
   }
+ },
+ "abl_notrace": {
+  "locations": {
+   "claude -p results": {
+    "files": 6,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "arm state (driver)": {
+    "files": 194,
+    "files_hit": 1,
+    "counts": {
+     "root_full": 3,
+     "ground_truth": 3,
+     "src/appworld/apps": 1,
+     "aw_rest": 1,
+     "aw_ce2": 1,
+     "aw_ce3": 1,
+     "aw_abl/arms/abl_ref": 1,
+     "aw_abl/arms/abl_cc": 1,
+     "aw_abl/arms/abl_prompt": 1,
+     "aw_abl/arms/abl_tools": 1,
+     "aw_abl/arms/abl_tracescore": 1
+    }
+   },
+   "optimizer workdirs (run dir work/)": {
+    "files": 1196,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "run dir events": {
+    "files": 1,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "frozen artifact": {
+    "files": 4,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "claude transcripts projects/ace--capevolve-run-abl-notrace-s0-work-cand-0004": {
+    "files": 2,
+    "files_hit": 1,
+    "counts": {
+     "root_full": 2,
+     "aw_rest": 6
+    }
+   },
+   "claude transcripts projects/ace--capevolve-run-abl-notrace-s0-work-cand-0005": {
+    "files": 2,
+    "files_hit": 1,
+    "counts": {
+     "root_full": 2,
+     "aw_rest": 6
+    }
+   },
+   "claude transcripts projects/notrace--capevolve-run-abl-notrace-s0-work-a9-ws": {
+    "files": 3,
+    "files_hit": 2,
+    "counts": {
+     "root_full": 48,
+     "ground_truth": 25,
+     "src/appworld/apps": 10,
+     "aw_rest": 22,
+     "aw_ce2": 18,
+     "aw_ce3": 18,
+     "aw_abl/arms/abl_ref": 14,
+     "aw_abl/arms/abl_cc": 14,
+     "aw_abl/arms/abl_prompt": 14,
+     "aw_abl/arms/abl_tools": 14,
+     "aw_abl/arms/abl_tracescore": 14
+    }
+   },
+   "claude transcripts projects/ace--capevolve-run-abl-notrace-s0-work-cand-0001": {
+    "files": 1,
+    "files_hit": 1,
+    "counts": {
+     "root_full": 2,
+     "aw_rest": 6,
+     "aw_ce2": 4,
+     "aw_ce3": 4,
+     "aw_abl/arms/abl_ref": 2,
+     "aw_abl/arms/abl_cc": 2,
+     "aw_abl/arms/abl_prompt": 2,
+     "aw_abl/arms/abl_tools": 2,
+     "aw_abl/arms/abl_tracescore": 2
+    }
+   },
+   "claude transcripts projects/l-arms-abl-notrace--capevolve-run-abl-notrace-s0": {
+    "files": 0,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "claude transcripts projects/ace--capevolve-run-abl-notrace-s0-work-cand-0006": {
+    "files": 3,
+    "files_hit": 1,
+    "counts": {
+     "root_full": 2,
+     "aw_rest": 6
+    }
+   },
+   "claude transcripts projects/ace--capevolve-run-abl-notrace-s0-work-cand-0003": {
+    "files": 2,
+    "files_hit": 1,
+    "counts": {
+     "root_full": 4,
+     "aw_rest": 12
+    }
+   },
+   "claude transcripts projects/ace--capevolve-run-abl-notrace-s0-work-cand-0002": {
+    "files": 2,
+    "files_hit": 1,
+    "counts": {
+     "root_full": 2,
+     "aw_rest": 6,
+     "aw_ce2": 4,
+     "aw_ce3": 4,
+     "aw_abl/arms/abl_ref": 2,
+     "aw_abl/arms/abl_cc": 2,
+     "aw_abl/arms/abl_prompt": 2,
+     "aw_abl/arms/abl_tools": 2,
+     "aw_abl/arms/abl_tracescore": 2
+    }
+   },
+   "claude transcripts claude-10037/ace--capevolve-run-abl-notrace-s0-work-cand-0003": {
+    "files": 1,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "claude transcripts claude-10037/notrace--capevolve-run-abl-notrace-s0-work-a9-ws": {
+    "files": 1,
+    "files_hit": 1,
+    "counts": {
+     "root_full": 12,
+     "ground_truth": 4,
+     "aw_rest": 6,
+     "aw_ce2": 4,
+     "aw_ce3": 4,
+     "aw_abl/arms/abl_ref": 2,
+     "aw_abl/arms/abl_cc": 2,
+     "aw_abl/arms/abl_prompt": 2,
+     "aw_abl/arms/abl_tools": 2,
+     "aw_abl/arms/abl_tracescore": 2
+    }
+   },
+   "claude transcripts claude-10037/ace--capevolve-run-abl-notrace-s0-work-cand-0001": {
+    "files": 1,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "claude transcripts claude-10037/ace--capevolve-run-abl-notrace-s0-work-cand-0002": {
+    "files": 1,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "claude transcripts claude-10037/ace--capevolve-run-abl-notrace-s0-work-cand-0006": {
+    "files": 2,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "claude transcripts claude-10037/ace--capevolve-run-abl-notrace-s0-work-cand-0004": {
+    "files": 2,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "claude transcripts claude-10037/ace--capevolve-run-abl-notrace-s0-work-cand-0005": {
+    "files": 1,
+    "files_hit": 0,
+    "counts": {}
+   }
+  },
+  "test_id_hits": 0,
+  "isolation_breach": false,
+  "ce2": {
+   "model_usage_keys": {
+    "aws/claude-sonnet-5-5": 6
+   },
+   "other_models": [],
+   "j1_iterations": 6,
+   "j1_all_ok": true,
+   "k_se_cmdline": [
+    "0.2"
+   ],
+   "k_ok": true,
+   "imp_all_ok": true
+  }
  }
 }
