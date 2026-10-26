@@ -6907,3 +6907,11 @@ Posted 'ALTK-Evolve: window 80% done' on #916 (altk): https://github.com/skillbe
 ```json
 {"cp": 820, "prev_cp": 819, "prev_commit": "f91baeaa65c968090cc167a748afe2b368d16422", "utc": "2026-10-26T02:59:57Z", "kind": "posted", "phase": "P3", "done_through": "final/8720", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 73.03, "peak_pct": 97.6, "state": "OK", "stale": false}, "post": "altk/window_80pct", "url": "https://github.com/skillberry-ai/cap-evolve/issues/916#issuecomment-6407233397"}
 ```
+
+## TA-0821 · 2026-10-26T03:00Z · P3 posted ace · posted
+
+Posted 'ACE: window 80% done' on #917 (ace): https://github.com/skillberry-ai/cap-evolve/issues/917#issuecomment-6407234340
+
+```json
+{"cp": 821, "prev_cp": 820, "prev_commit": "22961bd1f83f8ed853c8ebf828e5e0424fee64ef", "utc": "2026-10-26T03:00:03Z", "kind": "posted", "phase": "P3", "done_through": "final/8720", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 73.35, "peak_pct": 97.6, "state": "OK", "stale": false}, "post": "ace/window_80pct", "url": "https://github.com/skillberry-ai/cap-evolve/issues/917#issuecomment-6407234340"}
+```
