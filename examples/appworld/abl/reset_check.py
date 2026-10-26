@@ -51,6 +51,15 @@ def _sha(b: bytes) -> str:
     return hashlib.sha256(b).hexdigest()
 
 
+def _drop_session_tmp(st: dict) -> bytes:
+    """Other Claude sessions' temp dirs (/tmp/claude-<uid>/<dir>) are denied as they exist at each call, so they vary
+    with time and say nothing about the arm's configuration; every other rule is compared (ABL-0294)."""
+    tmp = f"/tmp/claude-{os.getuid()}/"
+    st["permissions"]["deny"] = [r for r in st["permissions"]["deny"] if tmp not in r]
+    st["sandbox"]["filesystem"]["denyRead"] = [r for r in st["sandbox"]["filesystem"]["denyRead"] if tmp not in r]
+    return json.dumps(st, indent=1, sort_keys=True).encode()
+
+
 def reference_renders() -> dict[str, bytes]:
     """abl_ref's spec, INSTRUCTIONS and shim settings, rendered fresh (no file is written to the arm's project)."""
     import instructions
@@ -59,7 +68,7 @@ def reference_renders() -> dict[str, bytes]:
     spec = (proj / "capevolve.yaml").read_bytes()
     instr = instructions.render("abl_ref").encode()
     work = P.RUN_ROOTS["abl_ref"] / ".capevolve" / f"run_{P.RUN_TS['abl_ref']}" / "work" / "probe"
-    st = json.dumps(SB.settings(work, [proj / "adapters"], "abl_ref"), indent=1, sort_keys=True).encode()
+    st = _drop_session_tmp(SB.settings(work, [proj / "adapters"], "abl_ref"))
     return {"capevolve.yaml": spec, "INSTRUCTIONS.abl_ref.md": instr, "shim_settings.json": st}
 
 
@@ -104,6 +113,8 @@ def check(arm: str, archive: bool = True) -> dict:
         os.environ.update(saved)
     cur = reference_renders()
     stored = {n: (REF_STORE / n).read_bytes() for n in cur if (REF_STORE / n).is_file()}
+    if "shim_settings.json" in stored:          # the same volatile-entry filter on the render stored at launch
+        stored["shim_settings.json"] = _drop_session_tmp(json.loads(stored["shim_settings.json"]))
     res["5_reference_renders"] = {"ok": bool(stored) and len(stored) == len(cur)
                                   and all(stored[n] == cur[n] for n in cur),
                                   "files": {n: {"fresh": _sha(cur[n])[:12], "stored": _sha(stored[n])[:12]

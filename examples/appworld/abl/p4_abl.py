@@ -105,7 +105,10 @@ def failed(arm: str) -> bool:
 
 def start(arm: str) -> None:
     D.mkdir(parents=True, exist_ok=True)
-    env = dict(os.environ)
+    # the runner imports run_abl to read verdicts, and select_arm() sets AW_CAPE_ARM in this process: no chain may
+    # inherit an arm name or switch from the runner (plan 9.2 step 5, 9.8 item 3; ABL-0294)
+    env = {k: v for k, v in os.environ.items()
+           if k not in ("AW_CAPE_ARM", "AW_ABL_FEEDBACK", "AW_ABL_TOOLS_LINT") and not k.startswith("CAPEVOLVE_")}
     p = subprocess.Popen(["/bin/bash", "-c", chain_cmd(arm)], cwd=str(P.REPO), env=env,
                          stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, start_new_session=True)
     (D / f"{arm}.pid").write_text(f"{p.pid} {P.utcnow()}\n")
