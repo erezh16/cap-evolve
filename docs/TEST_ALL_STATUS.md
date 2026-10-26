@@ -7061,3 +7061,11 @@ Posted 'seed agent hourly status' on #915 (seed): https://github.com/skillberry-
 ```json
 {"cp": 839, "prev_cp": 838, "prev_commit": "8e61863d2ebe10bb91adf4b1da6802b9428abdba", "utc": "2026-10-26T06:03:31Z", "kind": "posted", "phase": "P3", "done_through": "final/8759", "next": "final/cells", "arm": "seed", "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 4.06, "peak_pct": 4.06, "state": "OK", "stale": false}, "post": "seed/late_20261026T060329", "url": "https://github.com/skillberry-ai/cap-evolve/issues/915#issuecomment-6409378476"}
 ```
+
+## TA-0840 · 2026-10-26T06:03Z · P3 hourly post late altk · error
+
+The last post on the issue of altk (#916) is older than 65 minutes (plan section 12.2). Posting its status now.
+
+```json
+{"cp": 840, "prev_cp": 839, "prev_commit": "db9d3cfb6f12a7f56ef9f82460f8cb5dac1fb8f7", "utc": "2026-10-26T06:03:33Z", "kind": "error", "phase": "P3", "done_through": "final/8759", "next": "final/cells", "arm": "altk", "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 4.06, "peak_pct": 4.06, "state": "OK", "stale": false}}
+```
