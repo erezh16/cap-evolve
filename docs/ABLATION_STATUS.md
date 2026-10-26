@@ -2154,3 +2154,11 @@ Posted 'Cap evolve prompt only iteration 9' on #932 (abl_prompt): https://github
 ```json
 {"cp": 262, "prev_cp": 261, "prev_commit": "8c1ba66c07828cd27cf47d11ef984a6601114f08", "utc": "2026-10-26T10:13:45Z", "kind": "posted", "phase": "P4", "done_through": "P4/wave1-iter3", "next": "P4/searches", "arm": "abl_prompt", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "311eb9c7c86961d5d3db0c3c91a082cc0a077c4b", "open_decisions": [], "memory": {"used_pct": 11.17, "peak_pct": 49.61, "state": "OK", "stale": false}, "post": "abl_prompt/iter_9", "url": "https://github.com/skillberry-ai/cap-evolve/issues/932#issuecomment-6413514073"}
 ```
+
+## ABL-0263 · 2026-10-26T10:15Z · P4 posted abl_prompt · posted
+
+Posted 'Cap evolve prompt only hourly status' on #932 (abl_prompt): https://github.com/skillberry-ai/cap-evolve/issues/932#issuecomment-6413540737
+
+```json
+{"cp": 263, "prev_cp": 262, "prev_commit": "164fdfc11075a8cba5d57464ec5b2bc0223c0d24", "utc": "2026-10-26T10:15:05Z", "kind": "posted", "phase": "P4", "done_through": "P4/wave1-iter3", "next": "P4/searches", "arm": "abl_prompt", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "311eb9c7c86961d5d3db0c3c91a082cc0a077c4b", "open_decisions": [], "memory": {"used_pct": 7.83, "peak_pct": 49.61, "state": "OK", "stale": false}, "post": "abl_prompt/status_20261026T1015", "url": "https://github.com/skillberry-ai/cap-evolve/issues/932#issuecomment-6413540737"}
+```
