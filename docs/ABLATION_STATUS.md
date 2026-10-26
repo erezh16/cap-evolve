@@ -3046,3 +3046,11 @@ Posted 'Claude code (plain Claude Code) evaluation 3' on #931 (abl_cc): https://
 ```json
 {"cp": 373, "prev_cp": 372, "prev_commit": "21ec6830326f87f6dc8b9628aaf7fe031fca868d", "utc": "2026-10-26T16:09:23Z", "kind": "posted", "phase": "P4", "done_through": "P4/abl_cc-session2", "next": "P4/abl_cc remote (package, check, one fresh session)", "arm": "abl_cc", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "b1ffc63893fd1882e73a00b7542dfc971b51058b", "open_decisions": [], "memory": {"used_pct": 28.55, "peak_pct": 50.31, "state": "OK", "stale": false}, "post": "abl_cc/eval_3", "url": "https://github.com/skillberry-ai/cap-evolve/issues/931#issuecomment-6420901368"}
 ```
+
+## ABL-0374 · 2026-10-26T16:13Z · P4 posted abl_tracescore · posted
+
+Posted 'Cap evolve traces and score only 50% of B' on #935 (abl_tracescore): https://github.com/skillberry-ai/cap-evolve/issues/935#issuecomment-6420991845
+
+```json
+{"cp": 374, "prev_cp": 373, "prev_commit": "8cee3deb2f5de2c63b8d111cc65446d557dd1799", "utc": "2026-10-26T16:13:20Z", "kind": "posted", "phase": "P4", "done_through": "P4/abl_cc-session2", "next": "P4/abl_cc remote (package, check, one fresh session)", "arm": "abl_cc", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "b1ffc63893fd1882e73a00b7542dfc971b51058b", "open_decisions": [], "memory": {"used_pct": 8.46, "peak_pct": 50.31, "state": "OK", "stale": false}, "post": "abl_tracescore/m4_budget_50", "url": "https://github.com/skillberry-ai/cap-evolve/issues/935#issuecomment-6420991845"}
+```
