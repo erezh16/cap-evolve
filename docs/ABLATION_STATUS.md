@@ -2766,3 +2766,11 @@ Posted 'Claude code (plain Claude Code) champion frozen' on #931 (abl_cc): https
 ```json
 {"cp": 338, "prev_cp": 337, "prev_commit": "bf4f47b17c3c0727e0ecebf4bdba16324aefe18a", "utc": "2026-10-26T14:03:13Z", "kind": "posted", "phase": "P4", "done_through": "P4/abl_ref", "next": "P4/searches", "arm": "abl_cc", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "73c8bd6a3a191817465ea8b4130ed0a661b6ba64", "open_decisions": [], "memory": {"used_pct": 49.27, "peak_pct": 49.61, "state": "OK", "stale": false}, "post": "abl_cc/m4_frozen", "url": "https://github.com/skillberry-ai/cap-evolve/issues/931#issuecomment-6417944728"}
 ```
+
+## ABL-0339 · 2026-10-26T14:03Z · P4 posted abl_cc · posted
+
+Posted 'Claude code (plain Claude Code) isolation scan' on #931 (abl_cc): https://github.com/skillberry-ai/cap-evolve/issues/931#issuecomment-6417945911
+
+```json
+{"cp": 339, "prev_cp": 338, "prev_commit": "af4649ea683a9fe43175bcdd50f942523ba2fc1f", "utc": "2026-10-26T14:03:16Z", "kind": "posted", "phase": "P4", "done_through": "P4/abl_ref", "next": "P4/searches", "arm": "abl_cc", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "73c8bd6a3a191817465ea8b4130ed0a661b6ba64", "open_decisions": [], "memory": {"used_pct": 49.36, "peak_pct": 49.61, "state": "OK", "stale": false}, "post": "abl_cc/m4_scanned", "url": "https://github.com/skillberry-ai/cap-evolve/issues/931#issuecomment-6417945911"}
+```
