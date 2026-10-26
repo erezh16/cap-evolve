@@ -7229,3 +7229,11 @@ Posted 'Trace2Skill hourly status' on #925 (trace2skill): https://github.com/ski
 ```json
 {"cp": 860, "prev_cp": 859, "prev_commit": "220687feeb5153ad554177020694259c20a176a8", "utc": "2026-10-26T06:04:16Z", "kind": "posted", "phase": "P3", "done_through": "final/8759", "next": "final/cells", "arm": "trace2skill", "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 44.29, "peak_pct": 44.29, "state": "OK", "stale": false}, "post": "trace2skill/late_20261026T060415", "url": "https://github.com/skillberry-ai/cap-evolve/issues/925#issuecomment-6409388742"}
 ```
+
+## TA-0861 · 2026-10-26T06:04Z · P3 hourly post late gepa_full · error
+
+The last post on the issue of gepa_full (#926) is older than 65 minutes (plan section 12.2). Posting its status now.
+
+```json
+{"cp": 861, "prev_cp": 860, "prev_commit": "b6b0608ad636f433907f3cacf019ec16b27ef854", "utc": "2026-10-26T06:04:17Z", "kind": "error", "phase": "P3", "done_through": "final/8759", "next": "final/cells", "arm": "gepa_full", "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 44.29, "peak_pct": 44.29, "state": "OK", "stale": false}}
+```
