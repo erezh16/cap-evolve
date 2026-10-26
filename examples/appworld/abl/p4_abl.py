@@ -49,7 +49,8 @@ def chain_cmd(arm: str) -> str:
     drv = HERE / "run_abl.py"
     log = P.PROGRESS / f"p4_{arm}.out"
     if arm == "abl_cc":
-        cmds = {"search": f"bash {HERE / 'cc' / 'launch_cc.sh'}", "freeze": f"{VC_PY} -I {HERE / 'cc' / 'run_cc.py'} freeze"}
+        sec = (state(arm).get("second_session") or "")       # ABL-0341: one recorded second session
+        cmds = {"search": (f"AW_CC_SECOND_SESSION={sec} " if sec else "") + f"bash {HERE / 'cc' / 'launch_cc.sh'}", "freeze": f"{VC_PY} -I {HERE / 'cc' / 'run_cc.py'} freeze"}
     else:
         cmds = {"search": f"{VC_PY} -I {drv} search --arm {arm}", "freeze": f"{VC_PY} -I {drv} freeze --arm {arm}"}
     cmds["scan"] = f"{P.VENV_PY} -I {EX / 'scripts' / 'scan.py'} {arm}"
