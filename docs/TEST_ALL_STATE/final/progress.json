@@ -1,7 +1,7 @@
 {
  "window": "final",
  "cells_total": 10920,
- "cells_done": 10919,
+ "cells_done": 10920,
  "per_arm": {
   "evoskill": {
    "done": 840,
@@ -64,7 +64,7 @@
    "context_exceeded": 0
   },
   "seed": {
-   "done": 839,
+   "done": 840,
    "infra_missing": 0,
    "infra_retries": 2,
    "context_exceeded": 0
