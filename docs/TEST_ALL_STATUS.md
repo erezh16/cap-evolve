@@ -10316,3 +10316,11 @@ Posted 'MIPROv2 hourly status' on #924 (miprov2): https://github.com/skillberry-
 ```json
 {"cp": 1229, "prev_cp": 1228, "prev_commit": "92c6ae05feda2a337f97422a6180ba29b27d6e1c", "utc": "2026-10-26T21:41:35Z", "kind": "posted", "phase": "P3", "done_through": "final/10920", "next": "P4/analysis", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "054797ca7f3b421d7fecd5b65b96ade2ce30b343", "open_decisions": [], "memory": {"used_pct": 0.75, "peak_pct": 44.52, "state": "OK", "stale": false}, "post": "miprov2/status_20261026T214124", "url": "https://github.com/skillberry-ai/cap-evolve/issues/924#issuecomment-6428016874"}
 ```
+
+## TA-1230 · 2026-10-26T21:46Z · P3 posted trace2skill · posted
+
+Posted 'Trace2Skill hourly status' on #925 (trace2skill): https://github.com/skillberry-ai/cap-evolve/issues/925#issuecomment-6428100447
+
+```json
+{"cp": 1230, "prev_cp": 1229, "prev_commit": "e83137beb999fafe9a71d54ad75af120ce9fb79b", "utc": "2026-10-26T21:46:18Z", "kind": "posted", "phase": "P3", "done_through": "final/10920", "next": "P4/analysis", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "054797ca7f3b421d7fecd5b65b96ade2ce30b343", "open_decisions": [], "memory": {"used_pct": 0.69, "peak_pct": 44.52, "state": "OK", "stale": false}, "post": "trace2skill/status_20261026T214600", "url": "https://github.com/skillberry-ai/cap-evolve/issues/925#issuecomment-6428100447"}
+```
