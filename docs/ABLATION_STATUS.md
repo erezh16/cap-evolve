@@ -2414,3 +2414,11 @@ P4: abl_prompt step `reset` exited 1; the chain stopped. See AW_STATE/progress/p
 ```json
 {"cp": 294, "prev_cp": 293, "prev_commit": "c9159e35ed0ea197202eba43627a6d9542fa9f30", "utc": "2026-10-26T12:26:33Z", "kind": "error", "phase": "P4", "done_through": "P4/wave1-iter3", "next": "P4/searches", "arm": "abl_prompt", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "311eb9c7c86961d5d3db0c3c91a082cc0a077c4b", "open_decisions": [], "memory": {"used_pct": 36.84, "peak_pct": 49.61, "state": "OK", "stale": false}}
 ```
+
+## ABL-0295 · 2026-10-26T12:26Z · P4 searches launched · phase_start
+
+P4: chain(s) abl_notrace started (search, freeze, isolation scan); pid files AW_STATE/p4/<arm>.pid. Running now: abl_ref, abl_tools, abl_notrace. Global slots 24; memory 33.43%.
+
+```json
+{"cp": 295, "prev_cp": 294, "prev_commit": "b45b198da0f5f31f4ec095b5d88d638866782e9d", "utc": "2026-10-26T12:26:45Z", "kind": "phase_start", "phase": "P4", "done_through": "P4/wave1-iter3", "next": "P4/searches", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "311eb9c7c86961d5d3db0c3c91a082cc0a077c4b", "open_decisions": [], "memory": {"used_pct": 33.43, "peak_pct": 49.61, "state": "OK", "stale": false}}
+```
