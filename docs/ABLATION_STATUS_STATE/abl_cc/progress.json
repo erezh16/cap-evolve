@@ -1,11 +1,11 @@
 {
- "stage": "frozen (inert)",
+ "stage": "plain Claude Code session",
  "arm": "abl_cc",
- "evaluations_done": 1,
- "evaluation_requests": 1,
+ "evaluations_done": 2,
+ "evaluation_requests": 2,
  "refused": 0,
  "lint_rejects": 0,
- "counted_rollouts": 98,
+ "counted_rollouts": 147,
  "cache_hits": 147,
  "evaluations": [
   {
@@ -15,18 +15,26 @@
    "mean_reward": 0.4014,
    "fresh": 0,
    "rollouts_used": 0
+  },
+  {
+   "t": "2026-10-26T14:01:00Z",
+   "cand": "f65494a6b0e5",
+   "lint": "ok",
+   "mean_reward": 0.5986,
+   "fresh": 147,
+   "rollouts_used": 147
   }
  ],
- "best_search_score": 0.4014,
+ "best_search_score": 0.5986,
  "best_search_label": "best evaluated mean val = train ∪ dev (147), a fit metric, selection-biased; not necessarily the champion",
  "optimizer": {
-  "calls": 2,
-  "prompt_tokens": 257830,
-  "completion_tokens": 54732,
-  "cache_read": 7309379,
-  "cache_write": 233860,
-  "proxy_usd": 2.64,
-  "seconds": 803.3
+  "calls": 3,
+  "prompt_tokens": 306301,
+  "completion_tokens": 55112,
+  "cache_read": 7343682,
+  "cache_write": 274829,
+  "proxy_usd": 2.77,
+  "seconds": 816.7
  },
  "max_turns": 1200
 }
