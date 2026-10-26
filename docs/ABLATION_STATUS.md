@@ -2974,3 +2974,11 @@ Posted 'Claude code (plain Claude Code) 25% of B' on #931 (abl_cc): https://gith
 ```json
 {"cp": 364, "prev_cp": 363, "prev_commit": "fca36b709a638f46c16c07bec3902aec4dd325d0", "utc": "2026-10-26T15:29:59Z", "kind": "posted", "phase": "P4", "done_through": "P4/abl_cc-session2", "next": "P4/abl_cc remote (package, check, one fresh session)", "arm": "abl_cc", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "fca36b709a638f46c16c07bec3902aec4dd325d0", "open_decisions": [], "memory": {"used_pct": 48.67, "peak_pct": 49.61, "state": "OK", "stale": false}, "post": "abl_cc/m4_budget_25", "url": "https://github.com/skillberry-ai/cap-evolve/issues/931#issuecomment-6419986215"}
 ```
+
+## ABL-0365 · 2026-10-26T15:34Z · P4 abl_tracescore iteration 2 · result
+
+P4 abl_tracescore: iteration 2: val 0.5306 (parent 0.4898); paired Δ̄ +0.0408, SE 0.0491, K·SE 0.0098 (K = 0.2) → ACCEPT. Counted rollouts 294 of 882; optimizer proxy USD 17.86; best search score (fit metric) 0.5306122448979592.
+
+```json
+{"cp": 365, "prev_cp": 364, "prev_commit": "fe8f6d7bb72be1b42c0cd3d9b58a2ee76e5e6dac", "utc": "2026-10-26T15:34:49Z", "kind": "result", "phase": "P4", "done_through": "P4/abl_cc-session2", "next": "P4/abl_cc remote (package, check, one fresh session)", "arm": "abl_tracescore", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {"STATE/abl_tracescore/progress.json": "d94c2d8a5ee34f0f414a68423872da7bdc221c4e0f1c365ec3ba8f5ba31187ac"}, "code": "fca36b709a638f46c16c07bec3902aec4dd325d0", "open_decisions": [], "memory": {"used_pct": 49.48, "peak_pct": 50.31, "state": "OK", "stale": false}, "iteration": 2, "verdict": {"candidate": "cand_0002", "accept": true, "val": 0.5306122448979592, "parent_val": 0.4897959183673469, "indecisive": false, "kind": "step", "delta": 0.0408, "se": 0.0491, "k_se": 0.2, "bar": 0.0098, "would_pass_k1": false}}
+```
