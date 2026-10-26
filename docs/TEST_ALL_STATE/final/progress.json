@@ -1,7 +1,7 @@
 {
  "window": "final",
  "cells_total": 10920,
- "cells_done": 10918,
+ "cells_done": 10919,
  "per_arm": {
   "evoskill": {
    "done": 840,
@@ -76,9 +76,9 @@
    "context_exceeded": 0
   },
   "cape_k02": {
-   "done": 839,
+   "done": 840,
    "infra_missing": 0,
-   "infra_retries": 6,
+   "infra_retries": 7,
    "context_exceeded": 0
   }
  },
