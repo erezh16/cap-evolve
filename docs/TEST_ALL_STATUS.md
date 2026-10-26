@@ -7109,3 +7109,11 @@ Posted 'GEPA hourly status' on #918 (gepa): https://github.com/skillberry-ai/cap
 ```json
 {"cp": 845, "prev_cp": 844, "prev_commit": "180e2cc3f8e04528e68656284d95e59400d6959d", "utc": "2026-10-26T06:03:46Z", "kind": "posted", "phase": "P3", "done_through": "final/8759", "next": "final/cells", "arm": "gepa", "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 38.38, "peak_pct": 38.38, "state": "OK", "stale": false}, "post": "gepa/late_20261026T060345", "url": "https://github.com/skillberry-ai/cap-evolve/issues/918#issuecomment-6409382025"}
 ```
+
+## TA-0846 · 2026-10-26T06:03Z · P3 hourly post late skillopt · error
+
+The last post on the issue of skillopt (#919) is older than 65 minutes (plan section 12.2). Posting its status now.
+
+```json
+{"cp": 846, "prev_cp": 845, "prev_commit": "daf79a40bfd9f1c498df83b0eb17eca59f2bb7c6", "utc": "2026-10-26T06:03:49Z", "kind": "error", "phase": "P3", "done_through": "final/8759", "next": "final/cells", "arm": "skillopt", "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 38.38, "peak_pct": 38.38, "state": "OK", "stale": false}}
+```
