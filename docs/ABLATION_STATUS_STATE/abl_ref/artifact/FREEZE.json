@@ -1,0 +1,310 @@
+{
+ "arm": "abl_ref",
+ "k_se": 0.2,
+ "switches": {
+  "AW_ABL_FEEDBACK": "full"
+ },
+ "best_id": "cand_0010",
+ "inert": false,
+ "label": "",
+ "tree_sha256": "54a4f3799ae887761849d5b96e7da0f0e0e4939000ac18c528c60b5d652790c2",
+ "run_candidate_tree_sha256": "54a4f3799ae887761849d5b96e7da0f0e0e4939000ac18c528c60b5d652790c2",
+ "seed_tree_sha256": "85a0da9cec2206a7bc683c11d60b5cb0acac7328d43c6e9197324d1e45971f3c",
+ "best_val": 0.8299319727891157,
+ "imp": {
+  "1_code_pin": {
+   "ok": true,
+   "cap_evolve_file": "/workspace/worktrees/abl-main/core/cap_evolve/__init__.py",
+   "head": "75b3bcdd0fc7292f9717f2b6dcb720f147452df9",
+   "clean": true
+  },
+  "2_skills_pin": {
+   "ok": true,
+   "resolved": "/workspace/worktrees/abl-main/skills",
+   "home_skills_exists": true
+  },
+  "3_spec_k_se": {
+   "ok": true,
+   "value": 0.2,
+   "expected": 0.2
+  },
+  "switch_spec": {
+   "ok": true,
+   "capabilities": "[system-prompt, tools]",
+   "protected": "[default, \"memory/*\"]"
+  },
+  "switch_env": {
+   "ok": false,
+   "env": {
+    "AW_ABL_FEEDBACK": null,
+    "AW_ABL_TOOLS_LINT": null
+   },
+   "expected": {
+    "AW_ABL_FEEDBACK": "full"
+   },
+   "note": "the launcher's environment (os.environ of this check) must carry exactly the arm's switches"
+  },
+  "3_run_config": {
+   "ok": true,
+   "run_config_events": 2,
+   "spec_k_se": 0.2
+  },
+  "4_effective_k_se": {
+   "ok": true,
+   "hill_climb_cmdlines": 2,
+   "k_se_values": [
+    "0.2"
+   ],
+   "expected": 0.2,
+   "gate_events_mentioning_k_se": 0
+  },
+  "5_instructions": {
+   "ok": true,
+   "iterations": 11,
+   "diff_only_insertion": true,
+   "detail": [
+    {
+     "cid": "cand_0001",
+     "has": {
+      "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+      "## PREPARATION:": true,
+      "### 1. Understand the objective score": true,
+      "## Strategies for constructing edits:": true,
+      "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+      "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+      "## AppWorld facts for THIS run": true,
+      "**Objective score for this run.**": true
+     },
+     "forbidden": []
+    },
+    {
+     "cid": "cand_0002",
+     "has": {
+      "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+      "## PREPARATION:": true,
+      "### 1. Understand the objective score": true,
+      "## Strategies for constructing edits:": true,
+      "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+      "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+      "## AppWorld facts for THIS run": true,
+      "**Objective score for this run.**": true
+     },
+     "forbidden": []
+    },
+    {
+     "cid": "cand_0003",
+     "has": {
+      "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+      "## PREPARATION:": true,
+      "### 1. Understand the objective score": true,
+      "## Strategies for constructing edits:": true,
+      "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+      "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+      "## AppWorld facts for THIS run": true,
+      "**Objective score for this run.**": true
+     },
+     "forbidden": []
+    },
+    {
+     "cid": "cand_0004",
+     "has": {
+      "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+      "## PREPARATION:": true,
+      "### 1. Understand the objective score": true,
+      "## Strategies for constructing edits:": true,
+      "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+      "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+      "## AppWorld facts for THIS run": true,
+      "**Objective score for this run.**": true
+     },
+     "forbidden": []
+    },
+    {
+     "cid": "cand_0005",
+     "has": {
+      "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+      "## PREPARATION:": true,
+      "### 1. Understand the objective score": true,
+      "## Strategies for constructing edits:": true,
+      "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+      "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+      "## AppWorld facts for THIS run": true,
+      "**Objective score for this run.**": true
+     },
+     "forbidden": []
+    },
+    {
+     "cid": "cand_0006",
+     "has": {
+      "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+      "## PREPARATION:": true,
+      "### 1. Understand the objective score": true,
+      "## Strategies for constructing edits:": true,
+      "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+      "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+      "## AppWorld facts for THIS run": true,
+      "**Objective score for this run.**": true
+     },
+     "forbidden": []
+    },
+    {
+     "cid": "cand_0007",
+     "has": {
+      "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+      "## PREPARATION:": true,
+      "### 1. Understand the objective score": true,
+      "## Strategies for constructing edits:": true,
+      "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+      "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+      "## AppWorld facts for THIS run": true,
+      "**Objective score for this run.**": true
+     },
+     "forbidden": []
+    },
+    {
+     "cid": "cand_0008",
+     "has": {
+      "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+      "## PREPARATION:": true,
+      "### 1. Understand the objective score": true,
+      "## Strategies for constructing edits:": true,
+      "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+      "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+      "## AppWorld facts for THIS run": true,
+      "**Objective score for this run.**": true
+     },
+     "forbidden": []
+    },
+    {
+     "cid": "cand_0009",
+     "has": {
+      "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+      "## PREPARATION:": true,
+      "### 1. Understand the objective score": true,
+      "## Strategies for constructing edits:": true,
+      "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+      "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+      "## AppWorld facts for THIS run": true,
+      "**Objective score for this run.**": true
+     },
+     "forbidden": []
+    },
+    {
+     "cid": "cand_0010",
+     "has": {
+      "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+      "## PREPARATION:": true,
+      "### 1. Understand the objective score": true,
+      "## Strategies for constructing edits:": true,
+      "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+      "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+      "## AppWorld facts for THIS run": true,
+      "**Objective score for this run.**": true
+     },
+     "forbidden": []
+    },
+    {
+     "cid": "cand_0011",
+     "has": {
+      "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+      "## PREPARATION:": true,
+      "### 1. Understand the objective score": true,
+      "## Strategies for constructing edits:": true,
+      "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+      "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+      "## AppWorld facts for THIS run": true,
+      "**Objective score for this run.**": true
+     },
+     "forbidden": []
+    }
+   ]
+  },
+  "6_guidance": {
+   "ok": true,
+   "detail": [
+    {
+     "cid": "cand_0001",
+     "tools": "sha_match",
+     "system-prompt": "sha_match",
+     "diagnose": "head_match"
+    },
+    {
+     "cid": "cand_0002",
+     "tools": "sha_match",
+     "system-prompt": "sha_match",
+     "diagnose": "head_match"
+    },
+    {
+     "cid": "cand_0003",
+     "tools": "sha_match",
+     "system-prompt": "sha_match",
+     "diagnose": "head_match"
+    },
+    {
+     "cid": "cand_0004",
+     "tools": "sha_match",
+     "system-prompt": "sha_match",
+     "diagnose": "head_match"
+    },
+    {
+     "cid": "cand_0005",
+     "tools": "sha_match",
+     "system-prompt": "sha_match",
+     "diagnose": "head_match"
+    },
+    {
+     "cid": "cand_0006",
+     "tools": "sha_match",
+     "system-prompt": "sha_match",
+     "diagnose": "head_match"
+    },
+    {
+     "cid": "cand_0007",
+     "tools": "sha_match",
+     "system-prompt": "sha_match",
+     "diagnose": "head_match"
+    },
+    {
+     "cid": "cand_0008",
+     "tools": "sha_match",
+     "system-prompt": "sha_match",
+     "diagnose": "head_match"
+    },
+    {
+     "cid": "cand_0009",
+     "tools": "sha_match",
+     "system-prompt": "sha_match",
+     "diagnose": "head_match"
+    },
+    {
+     "cid": "cand_0010",
+     "tools": "sha_match",
+     "system-prompt": "sha_match",
+     "diagnose": "head_match"
+    },
+    {
+     "cid": "cand_0011",
+     "tools": "sha_match",
+     "system-prompt": "sha_match",
+     "diagnose": "head_match"
+    }
+   ],
+   "expected": {
+    "tools": "sha_match",
+    "system-prompt": "sha_match",
+    "diagnose": "head_match"
+   },
+   "pinned_sha256": {
+    "tools": "d6a5ec65e46113a64124cfc2e842a95a493e1c13679f380361ec4447a69d994a",
+    "system-prompt": "4df6976688391b55e783b9cb6631523718c40a4ed4fbee77d71d450d105de51b",
+    "diagnose": "ef0eb2fc3cf971eae63f377b3e318664d617e17c2aa70de79557e825b24ff677"
+   }
+  },
+  "7_hill_climb_script": {
+   "ok": true,
+   "path": "/workspace/worktrees/abl-main/skills/algorithms/hill-climb/scripts/run.py",
+   "sha256": "4951ca13ea8aeaadb0d6e259dd74070fb59cd9a41c4a166f32acf8138567e141"
+  },
+  "all_ok": false
+ }
+}
