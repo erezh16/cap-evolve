@@ -1494,3 +1494,11 @@ Error, wave 1 of P4. From 2026-10-25 17:55 UTC every optimizer session of abl_re
 ```json
 {"cp": 180, "prev_cp": 179, "prev_commit": "f78fc41b81afac295ea96b315c692afb2aeecb99", "utc": "2026-10-26T05:57:51Z", "kind": "error", "phase": "P4", "done_through": "P4/wave1-iter1", "next": "P4/wave1 resume (iterations 2-6 redone)", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "cd5e6c7eb6301a8d71df5a71c35d3edb37506eb8", "open_decisions": [], "memory": {"used_pct": 4.87, "peak_pct": 49.03, "state": "OK", "stale": false}}
 ```
+
+## ABL-0181 · 2026-10-26T06:02Z · P4 resume wave 1 · repair
+
+Repair for ABL-0180. New gateway key verified: A1 PASS (opt_llm and the claude CLI answer, modelUsage only aws/claude-sonnet-5-5); the gateway host is unchanged (contextguru.vpc.cloud9.ibm.com), so the A9-checked sandbox network allowlist and the stored reference shim settings still hold. The driver now counts a step whose optimizer session failed (optimizer_error, the parent re-scored from the cache) as a lost iteration, reported as optimizer_failed, never as a rejected proposal. Each first-wave arm (abl_ref, abl_prompt, abl_tools: 1 scored iteration and 5 lost) resumes in place through launch_abl.sh --resume with --max-iterations 11 and --max-metric-calls 1764 (= 1029 + 5 x 147 cached re-scores), so it still gets 6 SCORED iterations and the same 882 counted rollouts (B unchanged; the lost steps cost 0 counted). The test split is empty (finalize scored 0 tasks, test_used with 0 ids), so cap-evolve resume skips finalize and regenerates the report only. IMP launch checks run again at the relaunch. The second wave (abl_notrace, abl_tracescore, abl_cc) starts as first-wave chains finish, as planned. Applied equally to the three arms.
+
+```json
+{"cp": 181, "prev_cp": 180, "prev_commit": "cf93278d3c279c9529fea88ae9c6ca67ce47cef0", "utc": "2026-10-26T06:02:22Z", "kind": "repair", "phase": "P4", "done_through": "P4/wave1-iter1", "next": "P4/searches", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "cf93278d3c279c9529fea88ae9c6ca67ce47cef0", "open_decisions": [], "memory": {"used_pct": 3.18, "peak_pct": 49.03, "state": "OK", "stale": false}}
+```
