@@ -7029,3 +7029,11 @@ Pod restart found at 06:02 UTC. memguard samples: container use rose steadily fr
 ```json
 {"cp": 835, "prev_cp": 834, "prev_commit": "38052c24c25e2711c64e07350a94d937f48069c4", "utc": "2026-10-26T06:03:24Z", "kind": "error", "phase": "P3", "done_through": "final/8759", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 3.25, "peak_pct": 3.25, "state": "OK", "stale": false}}
 ```
+
+## TA-0836 · 2026-10-26T06:03Z · P3 resume · resume
+
+Resume (pod OOM restart at about 03:09 UTC; relaunch with 25% fewer slots (section 4.2)). Plan: remove the stale RUNNING.pid; 13 artifacts re-verified by their own hash rules; restart status_doc.py; restart autopost.py; relaunch the window runner (8762 cell records on disk are kept, not re-run). Window records on disk: 8762. Next: final/cells.
+
+```json
+{"cp": 836, "prev_cp": 835, "prev_commit": "7cdbed20030b795b92fcc1602e3bb5d2ecd19729", "utc": "2026-10-26T06:03:26Z", "kind": "resume", "phase": "P3", "done_through": "final/8759", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 3.32, "peak_pct": 3.32, "state": "OK", "stale": false}, "plan": ["remove the stale RUNNING.pid", "13 artifacts re-verified by their own hash rules", "restart status_doc.py", "restart autopost.py", "relaunch the window runner (8762 cell records on disk are kept, not re-run)"], "restarted": false}
+```
