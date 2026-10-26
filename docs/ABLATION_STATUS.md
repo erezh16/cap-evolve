@@ -1254,3 +1254,13 @@ Posted 'Cap-evolve full (reference) hourly status' on #930 (abl_ref): https://gi
 ```json
 {"cp": 151, "prev_cp": 150, "prev_commit": "4b5525697b09da4083fad6d5991ca16e2b32d487", "utc": "2026-10-26T01:46:27Z", "kind": "posted", "phase": "P4", "done_through": "P3/seed", "next": "P4/searches", "arm": "abl_prompt", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "cd5e6c7eb6301a8d71df5a71c35d3edb37506eb8", "open_decisions": [], "memory": {"used_pct": 4.68, "peak_pct": 49.03, "state": "OK", "stale": false}, "post": "abl_ref/status_20261026T0146", "url": "https://github.com/skillberry-ai/cap-evolve/issues/930#issuecomment-6406398850"}
 ```
+
+## ABL-0152 · 2026-10-26T02:11Z · P4 heartbeat · heartbeat
+
+No checkpoint for 25 min. Phase P4, last result: P3/seed.
+Runner: no runner. Last log line: `2026-10-26T02:10:58Z | memguard | - | sample 4.64% (1519 MB) state OK peak 49.0%`.
+Next: P4/searches.
+
+```json
+{"cp": 152, "prev_cp": 151, "prev_commit": "288820f40c4d8d89a5fe435a2d63e0f42037b4bf", "utc": "2026-10-26T02:11:46Z", "kind": "heartbeat", "phase": "P4", "done_through": "P3/seed", "next": "P4/searches", "arm": "abl_prompt", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "cd5e6c7eb6301a8d71df5a71c35d3edb37506eb8", "open_decisions": [], "memory": {"used_pct": 4.63, "peak_pct": 49.03, "state": "OK", "stale": false}, "runner": "none"}
+```
