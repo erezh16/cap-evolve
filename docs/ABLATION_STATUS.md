@@ -3582,3 +3582,11 @@ Posted 'Claude code (plain Claude Code) hourly status' on #931 (abl_cc): https:/
 ```json
 {"cp": 440, "prev_cp": 439, "prev_commit": "f1180514591cd5e1ebb1cb952ab3598fe8367c31", "utc": "2026-10-26T21:23:39Z", "kind": "posted", "phase": "P4", "done_through": "P4/abl_cc-session2", "next": "P4: abl_cc on the remote host; then P5 dev diagnostic", "arm": "abl_notrace", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "740e7520353d1497fa9fc215fff222caddfff288", "open_decisions": [], "memory": {"used_pct": 2.27, "peak_pct": 50.31, "state": "OK", "stale": false}, "post": "abl_cc/status_20261026T2123", "url": "https://github.com/skillberry-ai/cap-evolve/issues/931#issuecomment-6427661183"}
 ```
+
+## ABL-0441 · 2026-10-26T21:45Z · P4 posted abl_ref · posted
+
+Posted 'Cap-evolve full (reference) hourly status' on #930 (abl_ref): https://github.com/skillberry-ai/cap-evolve/issues/930#issuecomment-6428091226
+
+```json
+{"cp": 441, "prev_cp": 440, "prev_commit": "ba5e9684e9b55ba7392943a9c6f37ec8480511f3", "utc": "2026-10-26T21:45:47Z", "kind": "posted", "phase": "P4", "done_through": "P4/abl_cc-session2", "next": "P4: abl_cc on the remote host; then P5 dev diagnostic", "arm": "abl_notrace", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "740e7520353d1497fa9fc215fff222caddfff288", "open_decisions": [], "memory": {"used_pct": 2.2, "peak_pct": 50.31, "state": "OK", "stale": false}, "post": "abl_ref/status_20261026T2145", "url": "https://github.com/skillberry-ai/cap-evolve/issues/930#issuecomment-6428091226"}
+```
