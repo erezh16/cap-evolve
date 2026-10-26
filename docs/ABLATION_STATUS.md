@@ -2170,3 +2170,11 @@ P4 abl_tools: iteration 9: val 0.6599 (parent 0.5510); paired Δ̄ +0.1088, SE 0
 ```json
 {"cp": 264, "prev_cp": 263, "prev_commit": "517e5d44a253e6261626551f63a2600009e1dfad", "utc": "2026-10-26T10:21:49Z", "kind": "result", "phase": "P4", "done_through": "P4/wave1-iter3", "next": "P4/searches", "arm": "abl_tools", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {"STATE/abl_tools/progress.json": "3742716dd960e406440c6735dcb4666f46e6cd21a24b36f4b838c79a6c5541fb"}, "code": "311eb9c7c86961d5d3db0c3c91a082cc0a077c4b", "open_decisions": [], "memory": {"used_pct": 45.89, "peak_pct": 49.61, "state": "OK", "stale": false}, "iteration": 9, "verdict": {"candidate": "cand_0009", "accept": true, "val": 0.6598639455782312, "parent_val": 0.5510204081632653, "indecisive": false, "kind": "step", "delta": 0.1088, "se": 0.0454, "k_se": 0.2, "bar": 0.0091, "would_pass_k1": true}}
 ```
+
+## ABL-0265 · 2026-10-26T10:21Z · P4 posted abl_tools · posted
+
+Posted 'Cap evolve tools only iteration 9' on #933 (abl_tools): https://github.com/skillberry-ai/cap-evolve/issues/933#issuecomment-6413670641
+
+```json
+{"cp": 265, "prev_cp": 264, "prev_commit": "0bf359538b198f9e55f936cd517cf1b28a2cf581", "utc": "2026-10-26T10:21:52Z", "kind": "posted", "phase": "P4", "done_through": "P4/wave1-iter3", "next": "P4/searches", "arm": "abl_tools", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "311eb9c7c86961d5d3db0c3c91a082cc0a077c4b", "open_decisions": [], "memory": {"used_pct": 45.89, "peak_pct": 49.61, "state": "OK", "stale": false}, "post": "abl_tools/iter_9", "url": "https://github.com/skillberry-ai/cap-evolve/issues/933#issuecomment-6413670641"}
+```
