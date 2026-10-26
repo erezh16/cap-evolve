@@ -232,7 +232,12 @@ def _append_locked(kind, phase, label, prose, done_through, next_unit, extra, ar
     spec = [x for x in PATHSPEC if (P.REPO / x).exists()]
     msg = f"status: {P.LEDGER_ID}-{cp:04d} {phase} {subject or done_through or label}\n\n{TRAILER}\n"
     try:
-        git("add", "--", *spec)
+        # exclude in-flight atomic-write temp files: another process may rename one away between git's directory scan
+        # and its stat (ABL-0208: "unable to stat .tmp-*.json"); one retry covers any other transient race
+        add = ["add", "--", *spec, ":(exclude,glob)**/.tmp-*"]
+        if git(*add, check=False).returncode:
+            time.sleep(1)
+            git(*add)
         git("commit", "-q", "-m", msg, "--", *spec)
     except subprocess.CalledProcessError as e:
         git("checkout", "--", str(P.LEDGER.relative_to(P.REPO)), check=False)
