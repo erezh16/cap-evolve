@@ -3270,3 +3270,11 @@ P4 abl_notrace: iteration 4: val 0.4966 (parent 0.5170); paired Δ̄ -0.0204, SE
 ```json
 {"cp": 401, "prev_cp": 400, "prev_commit": "19c0098579b7fe7de13956d496b80e64998344e9", "utc": "2026-10-26T18:40:12Z", "kind": "result", "phase": "P4", "done_through": "P4/abl_cc-session2", "next": "P4: abl_notrace, abl_tracescore searching; abl_cc on the remote host", "arm": "abl_notrace", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {"STATE/abl_notrace/progress.json": "adcd247f9f16ec0f02a97aab943583993b4ed61d2db6689f0aac4ac43043a26c"}, "code": "740e7520353d1497fa9fc215fff222caddfff288", "open_decisions": [], "memory": {"used_pct": 44.6, "peak_pct": 50.31, "state": "OK", "stale": false}, "iteration": 4, "verdict": {"candidate": "cand_0004", "accept": false, "val": 0.4965986394557823, "parent_val": 0.5170068027210885, "indecisive": false, "kind": "step", "delta": -0.0204, "se": 0.0515, "k_se": 0.2, "bar": 0.0103, "would_pass_k1": false}}
 ```
+
+## ABL-0402 · 2026-10-26T18:40Z · P4 posted abl_notrace · posted
+
+Posted 'Cap evolve no traces iteration 4' on #934 (abl_notrace): https://github.com/skillberry-ai/cap-evolve/issues/934#issuecomment-6424377576
+
+```json
+{"cp": 402, "prev_cp": 401, "prev_commit": "70a1fae4bc543a8f1dd3c13b89f6868f3a338758", "utc": "2026-10-26T18:40:15Z", "kind": "posted", "phase": "P4", "done_through": "P4/abl_cc-session2", "next": "P4: abl_notrace, abl_tracescore searching; abl_cc on the remote host", "arm": "abl_notrace", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "740e7520353d1497fa9fc215fff222caddfff288", "open_decisions": [], "memory": {"used_pct": 44.66, "peak_pct": 50.31, "state": "OK", "stale": false}, "post": "abl_notrace/iter_4", "url": "https://github.com/skillberry-ai/cap-evolve/issues/934#issuecomment-6424377576"}
+```
