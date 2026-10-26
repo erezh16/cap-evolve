@@ -1064,12 +1064,12 @@
  "abl_cc": {
   "locations": {
    "claude -p results": {
-    "files": 1,
+    "files": 2,
     "files_hit": 0,
     "counts": {}
    },
    "arm state (driver, daemon log)": {
-    "files": 370,
+    "files": 375,
     "files_hit": 1,
     "counts": {
      "root_full": 4,
@@ -1086,7 +1086,7 @@
     }
    },
    "session workdir (incl. .eval spool)": {
-    "files": 200,
+    "files": 204,
     "files_hit": 0,
     "counts": {}
    },
@@ -1103,6 +1103,21 @@
      "aw_abl/arms/abl_tools": 2,
      "aw_abl/arms/abl_notrace": 2,
      "aw_abl/arms/abl_tracescore": 2
+    }
+   },
+   "second session config dir (ABL-0341)": {
+    "files": 5,
+    "files_hit": 1,
+    "counts": {
+     "root_full": 6,
+     "aw_rest": 18,
+     "aw_ce2": 12,
+     "aw_ce3": 12,
+     "aw_abl/arms/abl_ref": 6,
+     "aw_abl/arms/abl_prompt": 6,
+     "aw_abl/arms/abl_tools": 6,
+     "aw_abl/arms/abl_notrace": 6,
+     "aw_abl/arms/abl_tracescore": 6
     }
    },
    "archived config dir": {
@@ -1136,7 +1151,7 @@
     "counts": {}
    },
    "claude tmp -workspace-aw-abl-arms-abl-cc-work": {
-    "files": 3,
+    "files": 4,
     "files_hit": 0,
     "counts": {}
    }
@@ -1145,7 +1160,7 @@
   "isolation_breach": false,
   "ce2": {
    "model_usage_keys": {
-    "aws/claude-sonnet-5-5": 1
+    "aws/claude-sonnet-5-5": 2
    },
    "other_models": [],
    "j1_iterations": null,

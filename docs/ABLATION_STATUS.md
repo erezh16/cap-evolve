@@ -2838,3 +2838,11 @@ abl_cc second session (ABL-0341) started 2026-10-26 14:13:44 UTC with a fresh em
 ```json
 {"cp": 347, "prev_cp": 346, "prev_commit": "b759e1ec7904500f8e0057e323ef7f895192e5f0", "utc": "2026-10-26T14:14:04Z", "kind": "repair", "phase": "P4", "done_through": "P4/abl_cc", "next": "P4/searches", "arm": "abl_cc", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "5b53a3c9b2b8dcdb9e0a46430597078586bcf5fc", "open_decisions": [], "memory": {"used_pct": 47.83, "peak_pct": 49.61, "state": "OK", "stale": false}}
 ```
+
+## ABL-0348 · 2026-10-26T14:18Z · P4 isolation scan · result
+
+Isolation scan (counts only): abl_cc: test-id hits 0; models ['aws/claude-sonnet-5-5'], other models []; J1 in None iteration(s) ok=None; K on the command line None ok=None. Literal-string counts per location are in the pushed scan file.
+
+```json
+{"cp": 348, "prev_cp": 347, "prev_commit": "408db42301769d4ffcfb6e89e3d92bfd3b576f81", "utc": "2026-10-26T14:18:24Z", "kind": "result", "phase": "P4", "done_through": "P4/abl_cc", "next": "P4/searches", "arm": "abl_cc", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {"STATE/isolation_scan.json": "04a6b2f0ea79b80f08701ad7c352775f4f4eb6d7c5b1cf2d011c9803a00ddf10"}, "code": "5b53a3c9b2b8dcdb9e0a46430597078586bcf5fc", "open_decisions": [], "memory": {"used_pct": 47.32, "peak_pct": 49.61, "state": "OK", "stale": false}}
+```
