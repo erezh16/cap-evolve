@@ -2790,3 +2790,11 @@ User decision (2026-10-26), answering ABL-0340: start ONE fresh abl_cc session w
 ```json
 {"cp": 341, "prev_cp": 340, "prev_commit": "319289f3c10c7888e651d78edb8d52a2bd31b3e8", "utc": "2026-10-26T14:05:47Z", "kind": "decision", "phase": "P4", "done_through": "P4/abl_cc", "next": "P4/abl_cc session 2", "arm": "abl_cc", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "319289f3c10c7888e651d78edb8d52a2bd31b3e8", "open_decisions": [], "memory": {"used_pct": 48.31, "peak_pct": 49.61, "state": "OK", "stale": false}}
 ```
+
+## ABL-0342 · 2026-10-26T14:06Z · P4 search relaunched · phase_start
+
+P4: chain(s) abl_cc started (search, freeze, isolation scan); pid files AW_STATE/p4/<arm>.pid. Running now: abl_notrace, abl_tracescore, abl_cc. Global slots 24; memory 47.28%.
+
+```json
+{"cp": 342, "prev_cp": 341, "prev_commit": "b18dad3208055ce53504b183d333f0b7feecdfb0", "utc": "2026-10-26T14:06:35Z", "kind": "phase_start", "phase": "P4", "done_through": "P4/abl_cc", "next": "P4/abl_cc session 2", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "b18dad3208055ce53504b183d333f0b7feecdfb0", "open_decisions": [], "memory": {"used_pct": 47.28, "peak_pct": 49.61, "state": "OK", "stale": false}}
+```
