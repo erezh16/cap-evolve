@@ -2478,3 +2478,11 @@ Isolation scan (counts only): abl_tools: test-id hits 0; models ['aws/claude-son
 ```json
 {"cp": 302, "prev_cp": 301, "prev_commit": "f01b0b79aae9aaa6c5ee2f034f4c78111152d838", "utc": "2026-10-26T12:30:29Z", "kind": "result", "phase": "P4", "done_through": "P4/wave1-iter3", "next": "P4/searches", "arm": "abl_tools", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {"STATE/isolation_scan.json": "7a7f349e3a6cc778ba8115c6a07d44b9e51f61be42f07611faa1015b9760b79c"}, "code": "73c8bd6a3a191817465ea8b4130ed0a661b6ba64", "open_decisions": [], "memory": {"used_pct": 5.7, "peak_pct": 49.61, "state": "OK", "stale": false}}
 ```
+
+## ABL-0303 · 2026-10-26T12:30Z · P4 abl_tools reset failed · error
+
+P4: abl_tools step `reset` exited 1; the chain stopped. See AW_STATE/progress/p4_abl_tools.out. No automatic retry: the cause is investigated first (R5).
+
+```json
+{"cp": 303, "prev_cp": 302, "prev_commit": "146bec7cddc8ea5787de796d1c11c5d459f39b73", "utc": "2026-10-26T12:30:31Z", "kind": "error", "phase": "P4", "done_through": "P4/wave1-iter3", "next": "P4/searches", "arm": "abl_tools", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "73c8bd6a3a191817465ea8b4130ed0a661b6ba64", "open_decisions": [], "memory": {"used_pct": 5.7, "peak_pct": 49.61, "state": "OK", "stale": false}}
+```
