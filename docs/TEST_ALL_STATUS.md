@@ -10476,3 +10476,12 @@ Hourly status on gepa: comment on #918 (gepa) failed: HTTP 500, exit 1.
 ```json
 {"cp": 1249, "prev_cp": 1248, "prev_commit": "c8fe6f88aa79deb02161b45e6ce27fb8a0a66894", "utc": "2026-10-26T23:14:11Z", "kind": "error", "phase": "P3", "done_through": "final/10920", "next": "P4/analysis", "arm": "gepa", "counts": {}, "spend": {}, "artifacts": {}, "code": "054797ca7f3b421d7fecd5b65b96ade2ce30b343", "open_decisions": [], "memory": {"used_pct": 0.74, "peak_pct": 44.52, "state": "OK", "stale": false}}
 ```
+
+## TA-1250 · 2026-10-26T23:14Z · P3 posted gepa · posted
+
+Posted 'GEPA hourly status' on #918 (gepa): https://github.com/skillberry-ai/cap-evolve/issues/918#issuecomment-6429562881
+Push note: 1 earlier checkpoint commit(s) were not pushed (error: failed to push some refs to 'github.com:erezh16/cap-evolve.git'); this checkpoint pushes them.
+
+```json
+{"cp": 1250, "prev_cp": 1249, "prev_commit": "0f849b3225a34c8b14ad8f2f997b7a4231a0a6b7", "utc": "2026-10-26T23:14:37Z", "kind": "posted", "phase": "P3", "done_through": "final/10920", "next": "P4/analysis", "arm": "gepa", "counts": {}, "spend": {}, "artifacts": {}, "code": "054797ca7f3b421d7fecd5b65b96ade2ce30b343", "open_decisions": [], "memory": {"used_pct": 0.69, "peak_pct": 44.52, "state": "OK", "stale": false}, "post": "gepa/status_20261026T231348", "url": "https://github.com/skillberry-ai/cap-evolve/issues/918#issuecomment-6429562881"}
+```
