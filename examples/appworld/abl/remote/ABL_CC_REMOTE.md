@@ -3,11 +3,16 @@
 You are the executing agent of one arm of the AppWorld ablations of cap-evolve: **`abl_cc`, plain Claude Code** (issue
 [skillberry-ai/cap-evolve#931](https://github.com/skillberry-ai/cap-evolve/issues/931)). The other five arms ran on the
 original pod. `abl_cc` moved here because the original pod's sandbox kills any sandboxed Bash command after about 5 s
-(see `DEVAGENT_BWRAP_ISSUES.md` in this package, and ledger entry ABL-0361). Your job: rebuild the environment, prove
-that the sandbox here isolates **and** lets long commands run, restore the arm's state, run **one** fresh Claude Code
-session, let its evaluations finish, and return the result bundle. Nothing else.
+(see `DEVAGENT_BWRAP_ISSUES.md` in the package, and ledger entry ABL-0361). Your job: unpack the package, rebuild the
+environment, prove that the sandbox here isolates **and** lets long commands run, restore the arm's state, run **one**
+fresh Claude Code session, let its evaluations finish, and return the result bundle. Nothing else.
 
-Read this whole file before any action. Then read, in the `eval-abl` checkout: `docs/ABLATIONS.md` (the plan; at least
+**What you start with:** this file and the package file **`claude-code-ablation.tar.gz`** with its checksum file
+`claude-code-ablation.tar.gz.sha256`. The user gives them to you, or they are in the user's Box folder
+`claude-code-ablation` (for example `rclone copy box:claude-code-ablation/ <dir>` if an rclone remote `box:` is set up).
+Nothing is unpacked yet. Step 1 unpacks it; every later step uses the unpacked directory, called `$PKG` below.
+
+Read this whole file before any action. Then, after step 2 (the checkout), read in the `eval-abl` checkout: `docs/ABLATIONS.md` (the plan; at least
 sections 3, 4, 9.7, 10.2, 11, 13.2, 13.4 and 14 A9), `docs/ABLATION_STATUS.md` entries ABL-0340, ABL-0341, ABL-0347 and
 ABL-0361, and `examples/appworld/abl/cc/` (driver, daemon, prompt). If a source disagrees with this file, or a choice
 could favour one arm, **stop and ask the user**.
@@ -29,16 +34,16 @@ What the rules mean here, in addition to the text:
   (`state/cache/`), and the trajectories under `work/.eval/results/*/trajectories/`. Trusted scripts handle these;
   you run them and read only their counts, booleans and hashes. Never print a task id, task text or trajectory.
   The other five arms' state is **not** in this package and must never be fetched.
-- **R2 (memory).** Install `memcheck` and `memok-abl` (step 2), start `memguard.py` before anything heavy, and run
+- **R2 (memory).** Install `memcheck` and `memok-abl` (step 3), start `memguard.py` before anything heavy, and run
   `~/bin/memok-abl && ~/bin/memcheck` before every process launch and every sub-agent spawn.
 - **R3 (ledger).** This host does **not** write `docs/ABLATION_STATUS.md` (that ledger has one writer, on the original
-  pod). Keep your own append-only log in `REMOTE_LOG.md` (step 0.2) and commit it only to branch
+  pod). Keep your own append-only log in `docs/ABL_CC_REMOTE_LOG.md` (section 0.2) and commit it only to branch
   **`eval-abl-cc-remote`** of the fork. Never commit or push to `eval-abl`, `ablations`, `main` or any other branch.
 - **R5.** Check every number against its source. Prefer a correct pause to a fast wrong step. On anything surprising,
   stop and ask the user.
 - **Never** disable or weaken the sandbox, never add flags or tools to the session, never re-prompt the session, never
   edit `PROMPT.txt`, `launch_cc.sh`, `evald.py`, `sandbox_cc/claude` or `common/sandbox.py` beyond the host paths
-  named in step 1. A change to them is a user decision.
+  named in step 2. A change to them is a user decision.
 
 ### 0.1 What must stay identical to the original pod
 
@@ -58,14 +63,39 @@ What the rules mean here, in addition to the text:
 
 ### 0.2 Your log
 
-Create `docs/ABL_CC_REMOTE_LOG.md` on branch `eval-abl-cc-remote` (step 1). Append one short entry per step:
+Create `docs/ABL_CC_REMOTE_LOG.md` on branch `eval-abl-cc-remote` (step 2), and log step 1 there too. Append one short entry per step:
 UTC time, step, result (counts, booleans, hashes only), and any deviation. Commit and push after each entry:
 `git -C $AW_REPO commit -m "abl_cc remote: <step>" -- docs/ABL_CC_REMOTE_LOG.md && git -C $AW_REPO push fork HEAD:eval-abl-cc-remote`.
 Before every commit, check that the diff has no task id, task text, path under the sealed set, secret or score per task.
 
 ---
 
-## 1. Host requirements and checkout
+## 1. Unpack the package file
+
+Do this first: step 2 needs the code commit recorded in the package. The package holds AppWorld task data (train and
+dev only) in its cache records, rollout logs and trajectories, so it is part of the sealed set (R1). **Unpack and check
+it only with the commands below; never list, open or grep its contents yourself.** Only the trusted scripts read it.
+You may read the two text documents (`ABL_CC_REMOTE.md`, `DEVAGENT_BWRAP_ISSUES.md`) and the manifest fields named
+below.
+
+```bash
+# the directory that holds the two files you were given
+IN=/path/to/the/downloaded/files
+cd "$IN" && sha256sum -c claude-code-ablation.tar.gz.sha256        # must print: claude-code-ablation.tar.gz: OK
+mkdir -p /workspace/aw_abl_pkg && [ -z "$(ls -A /workspace/aw_abl_pkg)" ]   # a new, empty directory
+tar -xzf "$IN/claude-code-ablation.tar.gz" -C /workspace/aw_abl_pkg --no-same-owner
+export PKG=/workspace/aw_abl_pkg/claude-code-ablation
+python3 -I -c "import json,sys;m=json.load(open(sys.argv[1]));print(m['code_commit'], m['snapshot_utc'], json.dumps(m['arm_status']))" "$PKG/PACKAGE_MANIFEST.json"
+cmp "$PKG/ABL_CC_REMOTE.md" "$IN/ABL_CC_REMOTE.md" && echo "instructions match the package copy"
+```
+
+If the checksum fails, or the instructions you were given differ from the copy in the package, stop and ask the user.
+Note `code_commit` (used in step 2) and `arm_status` (used in step 6). Keep `$PKG` outside every git checkout, and
+never commit it. Set `PKG` again in every new shell (or add `export PKG=…` to `env.remote.sh` in step 2).
+
+The package has the full file list with a sha256 for every file in `PACKAGE_MANIFEST.json`; step 6 checks every one.
+
+## 2. Host requirements and checkout
 
 The host needs: Linux x86_64 with **unprivileged user namespaces allowed** (check: `unshare -Ur true` exits 0, and
 `bwrap --unshare-all --ro-bind / / --dev /dev --proc /proc -- true` exits 0). It also needs `bubblewrap` and `socat`
@@ -82,7 +112,7 @@ is fine too.
 mkdir -p /workspace/worktrees && cd /workspace/worktrees
 git clone git@github.com:erezh16/cap-evolve.git eval-abl && cd eval-abl
 git remote rename origin fork && git remote add origin git@github.com:skillberry-ai/cap-evolve.git
-git checkout -b eval-abl-cc-remote <code_commit from PACKAGE_MANIFEST.json>
+git checkout -b eval-abl-cc-remote <code_commit from step 1>
 git worktree add --detach /workspace/worktrees/abl-main 75b3bcdd0fc7292f9717f2b6dcb720f147452df9
 ```
 
@@ -102,11 +132,14 @@ which source `abl/env.sh` themselves, get this host's values back; check with
 `bash -c '. examples/appworld/abl/remote/env.remote.sh; . examples/appworld/abl/env.sh; echo $AW_BRANCH'` → `eval-abl-cc-remote`. Commit `env.remote.sh` without the secrets path if
 it is private (or keep it uncommitted). Start the log (0.2).
 
-**Executing-agent deny rules (R1.4).** Copy the deny rules from `/workspace/aw_abl/launch/exec-settings.json` of the
-package (`launch/exec-settings.json`) to `/workspace/worktrees/eval-abl/.claude/settings.local.json` and launch your
-own session with `--settings` pointing at it, as on the original pod.
+**Executing-agent deny rules (R1.4).** Copy the deny rules from `$PKG/launch/exec-settings.json` (the original pod's
+`/workspace/aw_abl/launch/exec-settings.json`) to `/workspace/worktrees/eval-abl/.claude/settings.local.json` and launch your
+own session with `--settings` pointing at it, as on the original pod. Add the package's data
+directories to the denied paths too: `Read(//workspace/aw_abl_pkg/claude-code-ablation/cache/**)`,
+`…/state_abl_cc/**`, `…/arm_abl_cc/**` and `…/state_root/**` (and the same with `Edit(`). The two documents,
+`PACKAGE_MANIFEST.json`, `reference_manifest.json` and `launch/` stay readable.
 
-## 2. Memory guard (R2), before anything heavy
+## 3. Memory guard (R2), before anything heavy
 
 ```bash
 . /workspace/worktrees/eval-abl/examples/appworld/abl/remote/env.remote.sh
@@ -119,7 +152,7 @@ sleep 10; ~/bin/memok-abl && ~/bin/memcheck
 
 `memok-abl` must print `-> OK`. Restart the guard whenever `MEMSTATE.json` is older than 30 s.
 
-## 3. Build (plan section 6.2, B2 to B4) and compare with the original pod
+## 4. Build (plan section 6.2, B2 to B4) and compare with the original pod
 
 Run each step and keep only its one-line JSON:
 
@@ -138,17 +171,17 @@ byte-equal to venv-aw's (122 packages). Then:
 
 ```bash
 $AW_HOME/build/venvs/venv-abl/bin/python -I examples/appworld/abl/verify_build.py      # must exit 0
-$AW_HOME/build/venvs/venv-abl/bin/python -I examples/appworld/abl/remote/remote_ctl.py compare-manifest <PKG_DIR>
+$AW_HOME/build/venvs/venv-abl/bin/python -I examples/appworld/abl/remote/remote_ctl.py compare-manifest "$PKG"
 ```
 
 `compare-manifest` compares this host's `docs/ABLATION_STATUS_STATE/manifest.json` with the original pod's
-(`reference_manifest.json` in the package): AppWorld commit and diff hash, venv freezes, the data tree and split hashes,
+(`$PKG/reference_manifest.json`): AppWorld commit and diff hash, venv freezes, the data tree and split hashes,
 counts, root_opt tree hash and 0 test-id hits, the reference tree hash, the seed capability hash, and the memory cap.
 **Every key must match** (`"ok": true`). If one differs, stop and ask the user: a different build is a different
 experiment. Do not edit the reference manifest. Do not commit the manifest the build wrote over the original one.
 Restore the original with `git checkout -- docs/ABLATION_STATUS_STATE/manifest.json` after the comparison.
 
-## 4. Gate checks on this host (all must pass before the restore and the session)
+## 5. Gate checks on this host (all must pass before the restore and the session)
 
 Run them in this order and log each result:
 
@@ -164,21 +197,21 @@ Run them in this order and log each result:
    `AW_STATE/abl_cc/accept/`. The probe does the same. That is why both run **before** the restore: the arm's
    restored logs then contain only the real sessions. A9 plants its secrets in the sealed places (`root_opt` gold,
    `root_full`, the app source, `AW_STATE`, …); you never read them, and A9 removes them itself.
-4. Never start `evald.py` by hand: only `launch_cc.sh` starts it (step 6).
+4. Never start `evald.py` by hand: only `launch_cc.sh` starts it (step 7).
 
 If any check fails, stop and ask the user. Do not change the sandbox to make a check pass.
 
-## 5. Restore the arm's state (after the gate checks)
+## 6. Restore the arm's state (after the gate checks)
 
 ```bash
-$AW_HOME/build/venvs/venv-abl/bin/python -I examples/appworld/abl/remote/remote_ctl.py restore <PKG_DIR>
+$AW_HOME/build/venvs/venv-abl/bin/python -I examples/appworld/abl/remote/remote_ctl.py restore "$PKG"
 ```
 
 It checks every package file against `PACKAGE_MANIFEST.json` and every cache record against
 `cache/LISTING.sha256`. It then copies the cache records into `AW_STATE/cache/main/` (the seed tree, so a seed copy is
 free, and every candidate tree evaluated so far, so a resubmission is free). It also copies `state_abl_cc/` to
 `AW_STATE/abl_cc/`, the session workdir and config dirs to `AW_HOME/arms/abl_cc/`, and the seed-baseline marker. Record
-its JSON in the log. Expect: `evaluations_done` = the number in `PACKAGE_MANIFEST.json`, `rollouts_used` + `rollouts_left`
+its JSON in the log. Expect: the same `arm_status` you noted in step 1: `evaluations_done` = the number in `PACKAGE_MANIFEST.json`, `rollouts_used` + `rollouts_left`
 = 882, `open_tickets` = 0, `inflight_markers` = 0, and `sessions_started` = `SESSION_STARTED`, `SESSION2_STARTED`.
 
 What the earlier sessions did is in the package manifest (`arm_status`). The workdir is what session 2 left: the seed
@@ -187,7 +220,7 @@ results). Session 3 starts from exactly this workdir. That matches the original 
 (ABL-0341): same workdir, earlier results visible in `.eval/results/`, no memory of the earlier sessions (fresh config
 dir).
 
-## 6. The one session (session 3)
+## 7. The one session (session 3)
 
 This is one fresh session with the same three-line prompt, the remaining budget, the current workdir and an empty
 config dir (`config3`). It is a recorded deviation from the plan's no-re-prompting rule, by user decision (ABL-0361),
@@ -217,7 +250,7 @@ While it runs:
 
 The session ends on its own (end of turn, the turn cap, or the budget). **No re-prompt and no further session.**
 
-## 7. After the session ends
+## 8. After the session ends
 
 1. **Let the daemon finish** any ticket still running: wait until `remote_ctl.py status` shows `open_tickets: 0`, and
    until `AW_STATE/abl_cc/inflight/` is empty. Then stop the daemon: `kill $(cat $AW_STATE/abl_cc/EVALD.pid)`.
@@ -237,7 +270,7 @@ The session ends on its own (end of turn, the turn cap, or the budget). **No re-
    (for example the same Box folder this package came from, as `claude-code-ablation/return/`).
 5. Commit to `eval-abl-cc-remote` only: the log, `docs/ABLATION_STATUS_STATE/abl_cc/progress.json` and
    `docs/ABLATION_STATUS_STATE/abl_cc/artifact/` (the frozen champion: three surface files plus `FREEZE.json`). Before
-   committing, check them with the scan result of step 3 (0 test-id hits in the artifact). Push.
+   committing, check them with the scan result of item 3 above (0 test-id hits in the artifact). Push.
 6. Report to the user: the tarball path and sha256, counts (evaluations, rollouts of 882, best evaluated mean val as a
    fit metric, champion tree hash, inert or not), optimizer usage (calls, tokens, CLI-reported USD from the session
    results), the probe and A9 results, and every deviation. **No test number exists for this arm yet**: the champion's
@@ -247,11 +280,11 @@ The session ends on its own (end of turn, the turn cap, or the budget). **No re-
 Do not post on the GitHub issues from this host. The original pod's executing agent records the remote run in the
 ledger and on #931 when the bundle returns.
 
-## 8. Package contents
+## 9. Package contents (inside `claude-code-ablation.tar.gz`, unpacked as `$PKG`)
 
 | path | what |
 |---|---|
-| `ABL_CC_REMOTE.md` | this file (also in the repo at `examples/appworld/abl/remote/`) |
+| `ABL_CC_REMOTE.md` | this file (also in the repo at `examples/appworld/abl/remote/`, and next to the tarball in Box) |
 | `DEVAGENT_BWRAP_ISSUES.md` | why the arm moved: the original pod's sandbox kills long commands |
 | `PACKAGE_MANIFEST.json` | code commit, snapshot time, arm status (counts), sha256 of every file below |
 | `reference_manifest.json` | the original pod's build manifest (hashes, counts) for `compare-manifest` |
