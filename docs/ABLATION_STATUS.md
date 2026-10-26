@@ -1582,3 +1582,11 @@ Posted 'Cap evolve prompt only iteration 3' on #932 (abl_prompt): https://github
 ```json
 {"cp": 191, "prev_cp": 190, "prev_commit": "b87babdb5acda2e43d533723f3aba2b70bb62e3e", "utc": "2026-10-26T06:02:41Z", "kind": "posted", "phase": "P4", "done_through": "P4/wave1-iter1", "next": "P4/searches", "arm": "abl_prompt", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "cf93278d3c279c9529fea88ae9c6ca67ce47cef0", "open_decisions": [], "memory": {"used_pct": 3.23, "peak_pct": 49.03, "state": "OK", "stale": false}, "post": "abl_prompt/iter_3", "url": "https://github.com/skillberry-ai/cap-evolve/issues/932#issuecomment-6409367943"}
 ```
+
+## ABL-0192 · 2026-10-26T06:02Z · P4 abl_prompt iteration 4 · result
+
+P4 abl_prompt: iteration 4: evaluation error (indecisive; consumes the iteration, #876). Counted rollouts 147 of 882; optimizer proxy USD 8.01; best search score (fit metric) 0.6598639455782312.
+
+```json
+{"cp": 192, "prev_cp": 191, "prev_commit": "138ec2e9856906c443b9c17d93fc2e8fc0a9a205", "utc": "2026-10-26T06:02:43Z", "kind": "result", "phase": "P4", "done_through": "P4/wave1-iter1", "next": "P4/searches", "arm": "abl_prompt", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {"STATE/abl_prompt/progress.json": "5dd46a4d0321860ffb383b29816a3c28d4c438c2cc74ed24e192bcc906ededa8"}, "code": "cf93278d3c279c9529fea88ae9c6ca67ce47cef0", "open_decisions": [], "memory": {"used_pct": 3.23, "peak_pct": 49.03, "state": "OK", "stale": false}, "iteration": 4, "verdict": {"candidate": "cand_0004", "accept": false, "val": 0.6598639455782312, "parent_val": 0.6598639455782312, "indecisive": true, "kind": "optimizer_failed"}}
+```
