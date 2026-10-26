@@ -3326,3 +3326,11 @@ P4: abl_tracescore step `reset` exited 1; the chain stopped. See AW_STATE/progre
 ```json
 {"cp": 408, "prev_cp": 407, "prev_commit": "b8537b7f9e6eb3d2d80224bfa463e6a1a2e8e689", "utc": "2026-10-26T19:02:22Z", "kind": "error", "phase": "P4", "done_through": "P4/abl_cc-session2", "next": "P4: abl_notrace, abl_tracescore searching; abl_cc on the remote host", "arm": "abl_tracescore", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "740e7520353d1497fa9fc215fff222caddfff288", "open_decisions": [], "memory": {"used_pct": 3.82, "peak_pct": 50.31, "state": "OK", "stale": false}}
 ```
+
+## ABL-0409 · 2026-10-26T19:02Z · P4 abl_tracescore iteration 6 · result
+
+P4 abl_tracescore: iteration 6: val 0.7483 (parent 0.6803); paired Δ̄ +0.0680, SE 0.0417, K·SE 0.0083 (K = 0.2) → ACCEPT. Counted rollouts 882 of 882; optimizer proxy USD 48.51; best search score (fit metric) 0.7482993197278912.
+
+```json
+{"cp": 409, "prev_cp": 408, "prev_commit": "28262e09ae07b9275963bffff6cb8ca122ae262f", "utc": "2026-10-26T19:02:29Z", "kind": "result", "phase": "P4", "done_through": "P4/abl_cc-session2", "next": "P4: abl_notrace, abl_tracescore searching; abl_cc on the remote host", "arm": "abl_tracescore", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {"STATE/abl_tracescore/progress.json": "aac799c7a3cdcea9d6b4e5f2d8970b5c26e8e569047b56784d8799bff737c8aa"}, "code": "740e7520353d1497fa9fc215fff222caddfff288", "open_decisions": [], "memory": {"used_pct": 3.74, "peak_pct": 50.31, "state": "OK", "stale": false}, "iteration": 6, "verdict": {"candidate": "cand_0006", "accept": true, "val": 0.7482993197278912, "parent_val": 0.6802721088435374, "indecisive": false, "kind": "step", "delta": 0.068, "se": 0.0417, "k_se": 0.2, "bar": 0.0083, "would_pass_k1": true}}
+```
