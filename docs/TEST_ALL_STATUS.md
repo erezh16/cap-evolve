@@ -7101,3 +7101,11 @@ The last post on the issue of gepa (#918) is older than 65 minutes (plan section
 ```json
 {"cp": 844, "prev_cp": 843, "prev_commit": "c92460bf9a14ad14cc253eb175196fcbc0b3180d", "utc": "2026-10-26T06:03:43Z", "kind": "error", "phase": "P3", "done_through": "final/8759", "next": "final/cells", "arm": "gepa", "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 18.64, "peak_pct": 18.64, "state": "OK", "stale": false}}
 ```
+
+## TA-0845 · 2026-10-26T06:03Z · P3 posted gepa · posted
+
+Posted 'GEPA hourly status' on #918 (gepa): https://github.com/skillberry-ai/cap-evolve/issues/918#issuecomment-6409382025
+
+```json
+{"cp": 845, "prev_cp": 844, "prev_commit": "180e2cc3f8e04528e68656284d95e59400d6959d", "utc": "2026-10-26T06:03:46Z", "kind": "posted", "phase": "P3", "done_through": "final/8759", "next": "final/cells", "arm": "gepa", "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 38.38, "peak_pct": 38.38, "state": "OK", "stale": false}, "post": "gepa/late_20261026T060345", "url": "https://github.com/skillberry-ai/cap-evolve/issues/918#issuecomment-6409382025"}
+```
