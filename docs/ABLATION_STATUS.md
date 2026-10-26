@@ -2422,3 +2422,11 @@ P4: chain(s) abl_notrace started (search, freeze, isolation scan); pid files AW_
 ```json
 {"cp": 295, "prev_cp": 294, "prev_commit": "b45b198da0f5f31f4ec095b5d88d638866782e9d", "utc": "2026-10-26T12:26:45Z", "kind": "phase_start", "phase": "P4", "done_through": "P4/wave1-iter3", "next": "P4/searches", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "311eb9c7c86961d5d3db0c3c91a082cc0a077c4b", "open_decisions": [], "memory": {"used_pct": 33.43, "peak_pct": 49.61, "state": "OK", "stale": false}}
 ```
+
+## ABL-0296 · 2026-10-26T12:27Z · P4 posted abl_prompt · posted
+
+Posted 'Cap evolve prompt only isolation scan' on #932 (abl_prompt): https://github.com/skillberry-ai/cap-evolve/issues/932#issuecomment-6415976471
+
+```json
+{"cp": 296, "prev_cp": 295, "prev_commit": "5c0f645dbc2c62d2e06622d71ac1de06709e3ca2", "utc": "2026-10-26T12:27:05Z", "kind": "posted", "phase": "P4", "done_through": "P4/wave1-iter3", "next": "P4/searches", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "311eb9c7c86961d5d3db0c3c91a082cc0a077c4b", "open_decisions": [], "memory": {"used_pct": 28.84, "peak_pct": 49.61, "state": "OK", "stale": false}, "post": "abl_prompt/m4_scanned", "url": "https://github.com/skillberry-ai/cap-evolve/issues/932#issuecomment-6415976471"}
+```
