@@ -1558,3 +1558,11 @@ P4 abl_ref: iteration 6: evaluation error (indecisive; consumes the iteration, #
 ```json
 {"cp": 188, "prev_cp": 187, "prev_commit": "3fff74ff123f614abbf75ca2774d26bbc5a1ffd6", "utc": "2026-10-26T06:02:35Z", "kind": "result", "phase": "P4", "done_through": "P4/wave1-iter1", "next": "P4/searches", "arm": "abl_ref", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {"STATE/abl_ref/progress.json": "658c1d676dccc46cdf7208f48e5801c3a3d2066012ebd7b0bad6808831b7463a"}, "code": "cf93278d3c279c9529fea88ae9c6ca67ce47cef0", "open_decisions": [], "memory": {"used_pct": 3.31, "peak_pct": 49.03, "state": "OK", "stale": false}, "iteration": 6, "verdict": {"candidate": "cand_0006", "accept": false, "val": 0.6258503401360545, "parent_val": 0.6258503401360545, "indecisive": true, "kind": "optimizer_failed"}}
 ```
+
+## ABL-0189 · 2026-10-26T06:02Z · P4 posted abl_ref · posted
+
+Posted 'Cap-evolve full (reference) iteration 6' on #930 (abl_ref): https://github.com/skillberry-ai/cap-evolve/issues/930#issuecomment-6409367140
+
+```json
+{"cp": 189, "prev_cp": 188, "prev_commit": "dec335612d226a6b5f0046b8f4ea96e7b1d61e39", "utc": "2026-10-26T06:02:37Z", "kind": "posted", "phase": "P4", "done_through": "P4/wave1-iter1", "next": "P4/searches", "arm": "abl_ref", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "cf93278d3c279c9529fea88ae9c6ca67ce47cef0", "open_decisions": [], "memory": {"used_pct": 3.31, "peak_pct": 49.03, "state": "OK", "stale": false}, "post": "abl_ref/iter_6", "url": "https://github.com/skillberry-ai/cap-evolve/issues/930#issuecomment-6409367140"}
+```
