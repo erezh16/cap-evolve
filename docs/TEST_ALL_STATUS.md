@@ -7253,3 +7253,11 @@ The last post on the issue of cape_k02 (#927) is older than 65 minutes (plan sec
 ```json
 {"cp": 863, "prev_cp": 862, "prev_commit": "b9ae6648e03df54aa48b408d560d480ce816d24a", "utc": "2026-10-26T06:04:21Z", "kind": "error", "phase": "P3", "done_through": "final/8759", "next": "final/cells", "arm": "cape_k02", "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 44.29, "peak_pct": 44.29, "state": "OK", "stale": false}}
 ```
+
+## TA-0864 · 2026-10-26T06:04Z · P3 posted cape_k02 · posted
+
+Posted 'Cap-Evolve-impr2 K=0.2 hourly status' on #927 (cape_k02): https://github.com/skillberry-ai/cap-evolve/issues/927#issuecomment-6409390590
+
+```json
+{"cp": 864, "prev_cp": 863, "prev_commit": "cea444391a90dce39acedda6e070940166417b0f", "utc": "2026-10-26T06:04:23Z", "kind": "posted", "phase": "P3", "done_through": "final/8759", "next": "final/cells", "arm": "cape_k02", "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 44.29, "peak_pct": 44.29, "state": "OK", "stale": false}, "post": "cape_k02/late_20261026T060422", "url": "https://github.com/skillberry-ai/cap-evolve/issues/927#issuecomment-6409390590"}
+```
