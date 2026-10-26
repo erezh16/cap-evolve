@@ -38,8 +38,10 @@ def _sha(p: Path) -> str:
 
 
 def restore(pkg: Path) -> int:
-    if STATE.exists() or ROOT.exists():
-        raise SystemExit("restore: AW_STATE/abl_cc or AW_HOME/arms/abl_cc already exists; refusing to overwrite")
+    # the gate checks (probe, A9) run first and leave only AW_STATE/abl_cc/accept/ and an empty arm root behind
+    if (STATE.exists() and {p.name for p in STATE.iterdir()} - {"accept", "inflight"}) or \
+            (ROOT.exists() and any(ROOT.iterdir())):
+        raise SystemExit("restore: AW_STATE/abl_cc or AW_HOME/arms/abl_cc already holds arm state; refusing to overwrite")
     man = json.loads((pkg / "PACKAGE_MANIFEST.json").read_text())
     bad = [rel for rel, h in man["files"].items() if _sha(pkg / rel) != h]
     if bad:
@@ -61,8 +63,8 @@ def restore(pkg: Path) -> int:
         t.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(pkg / "cache" / "main" / rel, t)
         n += 1
-    shutil.copytree(pkg / "state_abl_cc", STATE, symlinks=True)
-    ROOT.mkdir(parents=True)
+    shutil.copytree(pkg / "state_abl_cc", STATE, symlinks=True, dirs_exist_ok=True)
+    ROOT.mkdir(parents=True, exist_ok=True)
     shutil.copytree(pkg / "arm_abl_cc" / "work", ROOT / "work", symlinks=True)
     for d in sorted((pkg / "arm_abl_cc").glob("config*")):
         shutil.copytree(d, ROOT / d.name, symlinks=True)
