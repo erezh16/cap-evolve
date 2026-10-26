@@ -9069,3 +9069,11 @@ Next: final remaining cells.
 ```json
 {"cp": 1078, "prev_cp": 1077, "prev_commit": "042f4c6d6412c73cad1dc9756738c0f4922778cd", "utc": "2026-10-26T14:06:37Z", "kind": "result", "phase": "P3", "done_through": "final/10310", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/final/progress.json": "d27c866cb4a314eef0d8d064d40831fd4234ed7ba6d9c0c8d1f996083a668bc9"}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 34.49, "peak_pct": 44.52, "state": "OK", "stale": false}, "window": {"window": "final", "cells_total": 10920, "cells_done": 10310, "order_sha256": "725f659aefadafd4a8d1ee86b74ca9f00e2800e9a4974abc85dbac6b63c722f5"}}
 ```
+
+## TA-1079 · 2026-10-26T14:09Z · P3 interim score look · decision
+
+User decision (2026-10-26, about 09:20 UTC): compute an interim test score per arm before the window completes, overriding plan sections 4.1 and 12.2 for this one look. A trusted script (test_all/interim_report.py) reads the cell records and writes aggregates only (per arm: cells done, success rate over finished episodes, interim TGC over the tasks with at least one finished trial; no task id or per-task outcome) to docs/TEST_ALL_INTERIM_REPORT.md in the base worktree. That file is not committed, pushed or posted; no score enters this ledger or any issue. To disclose in the results: one interim look at about 85% of the window; it did not change the window, its order, its seeds or any setting.
+
+```json
+{"cp": 1079, "prev_cp": 1078, "prev_commit": "94c66764be4b138f7b4295edafa990b325584fd7", "utc": "2026-10-26T14:09:03Z", "kind": "decision", "phase": "P3", "done_through": "final/10310", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 34.91, "peak_pct": 44.52, "state": "OK", "stale": false}}
+```
