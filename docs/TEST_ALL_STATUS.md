@@ -7197,3 +7197,11 @@ Posted 'HarnessLens hourly status' on #923 (harnesslens): https://github.com/ski
 ```json
 {"cp": 856, "prev_cp": 855, "prev_commit": "f8e262d3a34a41980dfe10e76e6db66b748831a2", "utc": "2026-10-26T06:04:08Z", "kind": "posted", "phase": "P3", "done_through": "final/8759", "next": "final/cells", "arm": "harnesslens", "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 44.09, "peak_pct": 44.09, "state": "OK", "stale": false}, "post": "harnesslens/late_20261026T060407", "url": "https://github.com/skillberry-ai/cap-evolve/issues/923#issuecomment-6409386653"}
 ```
+
+## TA-0857 · 2026-10-26T06:04Z · P3 hourly post late miprov2 · error
+
+The last post on the issue of miprov2 (#924) is older than 65 minutes (plan section 12.2). Posting its status now.
+
+```json
+{"cp": 857, "prev_cp": 856, "prev_commit": "3a93e864398f059986e3a8efec62b97dbfde388f", "utc": "2026-10-26T06:04:09Z", "kind": "error", "phase": "P3", "done_through": "final/8759", "next": "final/cells", "arm": "miprov2", "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 44.09, "peak_pct": 44.09, "state": "OK", "stale": false}}
+```
