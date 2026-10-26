@@ -7261,3 +7261,11 @@ Posted 'Cap-Evolve-impr2 K=0.2 hourly status' on #927 (cape_k02): https://github
 ```json
 {"cp": 864, "prev_cp": 863, "prev_commit": "cea444391a90dce39acedda6e070940166417b0f", "utc": "2026-10-26T06:04:23Z", "kind": "posted", "phase": "P3", "done_through": "final/8759", "next": "final/cells", "arm": "cape_k02", "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 44.29, "peak_pct": 44.29, "state": "OK", "stale": false}, "post": "cape_k02/late_20261026T060422", "url": "https://github.com/skillberry-ai/cap-evolve/issues/927#issuecomment-6409390590"}
 ```
+
+## TA-0865 · 2026-10-26T06:04Z · P3 posted altk · posted
+
+Posted 'ALTK-Evolve hourly status' on #916 (altk): https://github.com/skillberry-ai/cap-evolve/issues/916#issuecomment-6409396880
+
+```json
+{"cp": 865, "prev_cp": 864, "prev_commit": "5c1ca76d0360d405550c529716c6c281610521f1", "utc": "2026-10-26T06:04:52Z", "kind": "posted", "phase": "P3", "done_through": "final/8759", "next": "final/cells", "arm": "cape_k02", "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 44.33, "peak_pct": 44.33, "state": "OK", "stale": false}, "post": "altk/status_20261026T060436", "url": "https://github.com/skillberry-ai/cap-evolve/issues/916#issuecomment-6409396880"}
+```
