@@ -2510,3 +2510,11 @@ Repair for ABL-0294 and ABL-0303 (abl_prompt and abl_tools reset step failed; th
 ```json
 {"cp": 306, "prev_cp": 305, "prev_commit": "4154a6543ca10f7494db5df941828395a3a9a182", "utc": "2026-10-26T12:31:32Z", "kind": "repair", "phase": "P4", "done_through": "P4/abl_prompt+abl_tools", "next": "P4/searches", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "73c8bd6a3a191817465ea8b4130ed0a661b6ba64", "open_decisions": [], "memory": {"used_pct": 6.26, "peak_pct": 49.61, "state": "OK", "stale": false}}
 ```
+
+## ABL-0307 · 2026-10-26T12:32Z · P4 posted abl_prompt · posted
+
+Posted 'search finished' on #932 (abl_prompt): https://github.com/skillberry-ai/cap-evolve/issues/932#issuecomment-6416071637
+
+```json
+{"cp": 307, "prev_cp": 306, "prev_commit": "bc68c87351d28492d9943002606d8f70d4e36079", "utc": "2026-10-26T12:32:11Z", "kind": "posted", "phase": "P4", "done_through": "P4/abl_prompt+abl_tools", "next": "P4/searches", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "73c8bd6a3a191817465ea8b4130ed0a661b6ba64", "open_decisions": [], "memory": {"used_pct": 6.27, "peak_pct": 49.61, "state": "OK", "stale": false}, "post": "abl_prompt/search_done_summary", "url": "https://github.com/skillberry-ai/cap-evolve/issues/932#issuecomment-6416071637"}
+```
