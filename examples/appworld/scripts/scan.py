@@ -44,6 +44,7 @@ def locations(c: str) -> dict[str, Path]:
         out = {"claude -p results": st / "claude_calls", "arm state (driver, daemon log)": st,
                "session workdir (incl. .eval spool)": root / "work", "session config dir (transcripts)": root / "config",
                "second session config dir (ABL-0341)": root / "config2",
+               "third session config dir (ABL-0361, remote host)": root / "config3",
                "archived config dir": P.AW_STATE / "archive" / c, "frozen artifact": P.PUSHED / c / "artifact"}
         for d in (Path(f"/tmp/claude-{__import__('os').getuid()}")).glob(str(root).replace("/", "-").replace("_", "-") + "*"):
             out[f"claude tmp {d.name[-48:]}"] = d
