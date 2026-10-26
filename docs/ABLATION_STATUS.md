@@ -2494,3 +2494,11 @@ P4: chain(s) abl_tracescore started (search, freeze, isolation scan); pid files 
 ```json
 {"cp": 304, "prev_cp": 303, "prev_commit": "913acc420e0bc4cb22ce246d4db94ca8ea5d6718", "utc": "2026-10-26T12:30:53Z", "kind": "phase_start", "phase": "P4", "done_through": "P4/wave1-iter3", "next": "P4/searches", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "73c8bd6a3a191817465ea8b4130ed0a661b6ba64", "open_decisions": [], "memory": {"used_pct": 5.59, "peak_pct": 49.61, "state": "OK", "stale": false}}
 ```
+
+## ABL-0305 · 2026-10-26T12:31Z · P4 posted abl_tools · posted
+
+Posted 'Cap evolve tools only isolation scan' on #933 (abl_tools): https://github.com/skillberry-ai/cap-evolve/issues/933#issuecomment-6416055011
+
+```json
+{"cp": 305, "prev_cp": 304, "prev_commit": "231e75063a5832464e9ea99dc833278858406627", "utc": "2026-10-26T12:31:17Z", "kind": "posted", "phase": "P4", "done_through": "P4/wave1-iter3", "next": "P4/searches", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "73c8bd6a3a191817465ea8b4130ed0a661b6ba64", "open_decisions": [], "memory": {"used_pct": 6.34, "peak_pct": 49.61, "state": "OK", "stale": false}, "post": "abl_tools/m4_scanned", "url": "https://github.com/skillberry-ai/cap-evolve/issues/933#issuecomment-6416055011"}
+```
