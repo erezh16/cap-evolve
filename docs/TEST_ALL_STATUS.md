@@ -7045,3 +7045,11 @@ The last post on the issue of seed (#915) is older than 65 minutes (plan section
 ```json
 {"cp": 837, "prev_cp": 836, "prev_commit": "5161866c30d41f9fbf23faed6279b41960757242", "utc": "2026-10-26T06:03:28Z", "kind": "error", "phase": "P3", "done_through": "final/8759", "next": "final/cells", "arm": "seed", "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 3.32, "peak_pct": 3.32, "state": "OK", "stale": false}}
 ```
+
+## TA-0838 · 2026-10-26T06:03Z · P3 posted seed · posted
+
+Posted 'seed agent hourly status' on #915 (seed): https://github.com/skillberry-ai/cap-evolve/issues/915#issuecomment-6409377915
+
+```json
+{"cp": 838, "prev_cp": 837, "prev_commit": "813c15d33eee1d8da6c4ae39e26da3ba4b07d889", "utc": "2026-10-26T06:03:29Z", "kind": "posted", "phase": "P3", "done_through": "final/8759", "next": "final/cells", "arm": "seed", "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 3.32, "peak_pct": 3.32, "state": "OK", "stale": false}, "post": "seed/status_20261026T060000", "url": "https://github.com/skillberry-ai/cap-evolve/issues/915#issuecomment-6409377915"}
+```
