@@ -3662,3 +3662,11 @@ User request (2026-10-26): the remote instructions must start from the package f
 ```json
 {"cp": 450, "prev_cp": 449, "prev_commit": "3fec8825ea49b2d587d1328d87bcb021c318705e", "utc": "2026-10-26T23:14:44Z", "kind": "repair", "phase": "P4", "done_through": "P4/abl_cc-session2", "next": "P4: abl_cc on the remote host; then P5 dev diagnostic", "arm": "abl_cc", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "3fec8825ea49b2d587d1328d87bcb021c318705e", "open_decisions": [], "memory": {"used_pct": 4.78, "peak_pct": 50.31, "state": "OK", "stale": false}}
 ```
+
+## ABL-0451 · 2026-10-26T23:18Z · P4 posted abl_prompt · posted
+
+Posted 'Cap evolve prompt only hourly status' on #932 (abl_prompt): https://github.com/skillberry-ai/cap-evolve/issues/932#issuecomment-6429625976
+
+```json
+{"cp": 451, "prev_cp": 450, "prev_commit": "5bb7d0945fd1792cee96438beb6b287486ce853b", "utc": "2026-10-26T23:18:35Z", "kind": "posted", "phase": "P4", "done_through": "P4/abl_cc-session2", "next": "P4: abl_cc on the remote host; then P5 dev diagnostic", "arm": "abl_cc", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "3fec8825ea49b2d587d1328d87bcb021c318705e", "open_decisions": [], "memory": {"used_pct": 4.72, "peak_pct": 50.31, "state": "OK", "stale": false}, "post": "abl_prompt/status_20261026T2318", "url": "https://github.com/skillberry-ai/cap-evolve/issues/932#issuecomment-6429625976"}
+```
