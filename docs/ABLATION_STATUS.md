@@ -2814,3 +2814,11 @@ P4: chain(s) abl_cc started (search, freeze, isolation scan); pid files AW_STATE
 ```json
 {"cp": 344, "prev_cp": 343, "prev_commit": "5b53a3c9b2b8dcdb9e0a46430597078586bcf5fc", "utc": "2026-10-26T14:07:40Z", "kind": "phase_start", "phase": "P4", "done_through": "P4/abl_cc", "next": "P4/abl_cc session 2", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "5b53a3c9b2b8dcdb9e0a46430597078586bcf5fc", "open_decisions": [], "memory": {"used_pct": 48.74, "peak_pct": 49.61, "state": "OK", "stale": false}}
 ```
+
+## ABL-0345 · 2026-10-26T14:07Z · P4 abl_cc search failed · error
+
+P4: abl_cc step `search` exited 1; the chain stopped. See AW_STATE/progress/p4_abl_cc.out. No automatic retry: the cause is investigated first (R5).
+
+```json
+{"cp": 345, "prev_cp": 344, "prev_commit": "dc39ffdee73883304f25ff5b6d4a3dc16241a3a8", "utc": "2026-10-26T14:07:41Z", "kind": "error", "phase": "P4", "done_through": "P4/abl_cc", "next": "P4/abl_cc session 2", "arm": "abl_cc", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "5b53a3c9b2b8dcdb9e0a46430597078586bcf5fc", "open_decisions": [], "memory": {"used_pct": 48.81, "peak_pct": 49.61, "state": "OK", "stale": false}}
+```
