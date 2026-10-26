@@ -7,8 +7,10 @@ set -euo pipefail
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ABL="$(cd "$HERE/.." && pwd)"; EX="$(cd "$ABL/.." && pwd)"
 . "$ABL/env.sh"
-# a second session only by explicit user decision (ABL-0341): read before every AW_CC_* variable is stripped
-SECOND="${AW_CC_SECOND_SESSION:-}"
+# a later session only by explicit user decision (ABL-0341: session 2; ABL-0361: session 3 on the remote host):
+# AW_CC_SESSION=N (N >= 2; AW_CC_SECOND_SESSION=1 means N=2). Read before every AW_CC_* variable is stripped.
+SESS="${AW_CC_SESSION:-}"; [ -z "$SESS" ] && [ -n "${AW_CC_SECOND_SESSION:-}" ] && SESS=2
+SECOND="$SESS"
 for v in $(compgen -e); do case "$v" in CAPEVOLVE_*|AW_ABL_*|AW_CC_*) unset "$v";; esac; done
 unset RITS_API_KET RITS_API_KEY CLAUDECODE || true
 ARM=abl_cc
@@ -18,15 +20,16 @@ export AW_CAPE_ARM=$ARM AW_EXAMPLE="$EX" AW_ABL_FEEDBACK=full AW_KEY_ENV=RITS_AP
        APPWORLD_ROOT="$AW_HOME/build/root_opt" AW_EXPERIMENT="aw_${ARM}_s0"
 mkdir -p "$AW_STATE/$ARM" "$AW_STATE/progress"
 if [ -e "$AW_STATE/$ARM/SESSION_STARTED" ]; then
-  [ -n "$SECOND" ] && [ ! -e "$AW_STATE/$ARM/SESSION2_STARTED" ] \
+  [ -n "$SECOND" ] && [ "$SECOND" -ge 2 ] && [ ! -e "$AW_STATE/$ARM/SESSION${SECOND}_STARTED" ] \
+    && { [ "$SECOND" = 2 ] || [ -e "$AW_STATE/$ARM/SESSION$((SECOND-1))_STARTED" ]; } \
     || { echo "launch_cc.sh: a session already ran; no re-prompting (§13.4)" >&2; exit 3; }
 fi
 "$VC/bin/python" -I "$HERE/run_cc.py" setup > /dev/null
 if [ -z "$SECOND" ]; then
   "$VC/bin/python" -I "$HERE/run_cc.py" check-config > "$AW_STATE/$ARM/check_config.json" \
     || { echo "launch_cc.sh: config dir not empty or prompt hash differs" >&2; exit 3; }
-else   # the second session gets a FRESH, empty config dir too (no memory of the first); prompt hash still checked
-  CONF="$ROOT/config2"; mkdir -p "$CONF"; [ -z "$(ls -A "$CONF")" ] || { echo "launch_cc.sh: config2 not empty" >&2; exit 3; }
+else   # a later session gets a FRESH, empty config dir too (no memory of the earlier ones); prompt hash still checked
+  CONF="$ROOT/config$SECOND"; mkdir -p "$CONF"; [ -z "$(ls -A "$CONF")" ] || { echo "launch_cc.sh: config$SECOND not empty" >&2; exit 3; }
   [ "$(sha256sum "$HERE/PROMPT.txt" | cut -d" " -f1)" = 12e145ec240640337157fa4172ffe914c138c2e6e4942fc9f2b2e4313a3d7456 ] \
     || { echo "launch_cc.sh: prompt hash differs" >&2; exit 3; }
 fi
@@ -38,7 +41,7 @@ if ! { [ -f "$AW_STATE/$ARM/EVALD.pid" ] && kill -0 "$(cat "$AW_STATE/$ARM/EVALD
 fi
 export PATH="$ABL/sandbox_cc:$PATH" CLAUDE_CONFIG_DIR="$CONF"
 [ "$(command -v claude)" = "$ABL/sandbox_cc/claude" ] || { echo "launch_cc.sh: shim not first on PATH" >&2; exit 3; }
-if [ -n "$SECOND" ]; then date -u +%FT%TZ > "$AW_STATE/$ARM/SESSION2_STARTED"; RES=session2_result.json
+if [ -n "$SECOND" ]; then date -u +%FT%TZ > "$AW_STATE/$ARM/SESSION${SECOND}_STARTED"; RES=session${SECOND}_result.json
 else date -u +%FT%TZ > "$AW_STATE/$ARM/SESSION_STARTED"; RES=session_result.json; fi
 echo $$ > "$AW_STATE/$ARM/session.pid"
 cd "$WORK"
