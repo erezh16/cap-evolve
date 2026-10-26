@@ -7237,3 +7237,11 @@ The last post on the issue of gepa_full (#926) is older than 65 minutes (plan se
 ```json
 {"cp": 861, "prev_cp": 860, "prev_commit": "b6b0608ad636f433907f3cacf019ec16b27ef854", "utc": "2026-10-26T06:04:17Z", "kind": "error", "phase": "P3", "done_through": "final/8759", "next": "final/cells", "arm": "gepa_full", "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 44.29, "peak_pct": 44.29, "state": "OK", "stale": false}}
 ```
+
+## TA-0862 · 2026-10-26T06:04Z · P3 posted gepa_full · posted
+
+Posted 'GEPA-Full hourly status' on #926 (gepa_full): https://github.com/skillberry-ai/cap-evolve/issues/926#issuecomment-6409389741
+
+```json
+{"cp": 862, "prev_cp": 861, "prev_commit": "3abacbf1dce2f838a3859ae64b614feb412df3a2", "utc": "2026-10-26T06:04:20Z", "kind": "posted", "phase": "P3", "done_through": "final/8759", "next": "final/cells", "arm": "gepa_full", "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 44.29, "peak_pct": 44.29, "state": "OK", "stale": false}, "post": "gepa_full/late_20261026T060419", "url": "https://github.com/skillberry-ai/cap-evolve/issues/926#issuecomment-6409389741"}
+```
