@@ -2702,3 +2702,11 @@ abl_ref chain complete. Its reset step (ABL-0323) failed for the same reason as 
 ```json
 {"cp": 330, "prev_cp": 329, "prev_commit": "e256a41f06915cc8ddfe27ea2898134de058bf61", "utc": "2026-10-26T13:54:13Z", "kind": "repair", "phase": "P4", "done_through": "P4/abl_ref", "next": "P4/searches", "arm": "abl_ref", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "73c8bd6a3a191817465ea8b4130ed0a661b6ba64", "open_decisions": [], "memory": {"used_pct": 8.75, "peak_pct": 49.61, "state": "OK", "stale": false}}
 ```
+
+## ABL-0331 · 2026-10-26T13:54Z · P4 posted abl_ref · posted
+
+Posted 'search finished' on #930 (abl_ref): https://github.com/skillberry-ai/cap-evolve/issues/930#issuecomment-6417745757
+
+```json
+{"cp": 331, "prev_cp": 330, "prev_commit": "67c4e1b0aea6bc6d5129363970e769da8b533390", "utc": "2026-10-26T13:54:16Z", "kind": "posted", "phase": "P4", "done_through": "P4/abl_ref", "next": "P4/searches", "arm": "abl_ref", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "73c8bd6a3a191817465ea8b4130ed0a661b6ba64", "open_decisions": [], "memory": {"used_pct": 7.11, "peak_pct": 49.61, "state": "OK", "stale": false}, "post": "abl_ref/search_done_summary", "url": "https://github.com/skillberry-ai/cap-evolve/issues/930#issuecomment-6417745757"}
+```
