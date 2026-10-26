@@ -10252,3 +10252,11 @@ Posted 'ALTK-Evolve hourly status' on #916 (altk): https://github.com/skillberry
 ```json
 {"cp": 1221, "prev_cp": 1220, "prev_commit": "8935bfd8e0d284a410707bbb579a0df2f36e922f", "utc": "2026-10-26T21:04:46Z", "kind": "posted", "phase": "P3", "done_through": "final/10920", "next": "P4/analysis", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "054797ca7f3b421d7fecd5b65b96ade2ce30b343", "open_decisions": [], "memory": {"used_pct": 0.69, "peak_pct": 44.52, "state": "OK", "stale": false}, "post": "altk/status_20261026T210436", "url": "https://github.com/skillberry-ai/cap-evolve/issues/916#issuecomment-6427291609"}
 ```
+
+## TA-1222 · 2026-10-26T21:09Z · P3 posted ace · posted
+
+Posted 'ACE hourly status' on #917 (ace): https://github.com/skillberry-ai/cap-evolve/issues/917#issuecomment-6427385623
+
+```json
+{"cp": 1222, "prev_cp": 1221, "prev_commit": "654d534e16ddc07c8b7cbd806683fd2e635dc28e", "utc": "2026-10-26T21:09:30Z", "kind": "posted", "phase": "P3", "done_through": "final/10920", "next": "P4/analysis", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "054797ca7f3b421d7fecd5b65b96ade2ce30b343", "open_decisions": [], "memory": {"used_pct": 0.69, "peak_pct": 44.52, "state": "OK", "stale": false}, "post": "ace/status_20261026T210912", "url": "https://github.com/skillberry-ai/cap-evolve/issues/917#issuecomment-6427385623"}
+```
