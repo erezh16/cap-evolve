@@ -10068,3 +10068,11 @@ Posted 'SkillOpt hourly status' on #919 (skillopt): https://github.com/skillberr
 ```json
 {"cp": 1198, "prev_cp": 1197, "prev_commit": "9139f6240974b270c55bfeb14b6573350475e905", "utc": "2026-10-26T19:18:42Z", "kind": "posted", "phase": "P3", "done_through": "final/10920", "next": "P4/analysis", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "054797ca7f3b421d7fecd5b65b96ade2ce30b343", "open_decisions": [], "memory": {"used_pct": 0.75, "peak_pct": 44.52, "state": "OK", "stale": false}, "post": "skillopt/status_20261026T191824", "url": "https://github.com/skillberry-ai/cap-evolve/issues/919#issuecomment-6425165721"}
 ```
+
+## TA-1199 · 2026-10-26T19:23Z · P3 posted wikiskill · posted
+
+Posted 'WikiSkill hourly status' on #920 (wikiskill): https://github.com/skillberry-ai/cap-evolve/issues/920#issuecomment-6425252692
+
+```json
+{"cp": 1199, "prev_cp": 1198, "prev_commit": "310ac44de1533714178050086a61ea2713f1aea6", "utc": "2026-10-26T19:23:05Z", "kind": "posted", "phase": "P3", "done_through": "final/10920", "next": "P4/analysis", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "054797ca7f3b421d7fecd5b65b96ade2ce30b343", "open_decisions": [], "memory": {"used_pct": 0.69, "peak_pct": 44.52, "state": "OK", "stale": false}, "post": "wikiskill/status_20261026T192300", "url": "https://github.com/skillberry-ai/cap-evolve/issues/920#issuecomment-6425252692"}
+```
