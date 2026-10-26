@@ -7189,3 +7189,11 @@ The last post on the issue of harnesslens (#923) is older than 65 minutes (plan 
 ```json
 {"cp": 855, "prev_cp": 854, "prev_commit": "bbd461c2c6ca1106ec034a0e517215980f974972", "utc": "2026-10-26T06:04:05Z", "kind": "error", "phase": "P3", "done_through": "final/8759", "next": "final/cells", "arm": "harnesslens", "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 44.09, "peak_pct": 44.09, "state": "OK", "stale": false}}
 ```
+
+## TA-0856 · 2026-10-26T06:04Z · P3 posted harnesslens · posted
+
+Posted 'HarnessLens hourly status' on #923 (harnesslens): https://github.com/skillberry-ai/cap-evolve/issues/923#issuecomment-6409386653
+
+```json
+{"cp": 856, "prev_cp": 855, "prev_commit": "f8e262d3a34a41980dfe10e76e6db66b748831a2", "utc": "2026-10-26T06:04:08Z", "kind": "posted", "phase": "P3", "done_through": "final/8759", "next": "final/cells", "arm": "harnesslens", "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 44.09, "peak_pct": 44.09, "state": "OK", "stale": false}, "post": "harnesslens/late_20261026T060407", "url": "https://github.com/skillberry-ai/cap-evolve/issues/923#issuecomment-6409386653"}
+```
