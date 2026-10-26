@@ -3694,3 +3694,11 @@ User decision (2026-10-26): the remote executing agent uploads the abl_cc result
 ```json
 {"cp": 454, "prev_cp": 453, "prev_commit": "3a1b43498b159baf3bdafe53afbf33644e752e2b", "utc": "2026-10-26T23:29:26Z", "kind": "decision", "phase": "P4", "done_through": "P4/abl_cc-session2", "next": "P4: abl_cc on the remote host; result watcher armed", "arm": "abl_cc", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "3a1b43498b159baf3bdafe53afbf33644e752e2b", "open_decisions": [], "memory": {"used_pct": 4.79, "peak_pct": 50.31, "state": "OK", "stale": false}}
 ```
+
+## ABL-0455 · 2026-10-26T23:44Z · P4 posted abl_ref · posted
+
+Posted 'Cap-evolve full (reference) hourly status' on #930 (abl_ref): https://github.com/skillberry-ai/cap-evolve/issues/930#issuecomment-6430016985
+
+```json
+{"cp": 455, "prev_cp": 454, "prev_commit": "f093c2e5031327338cef5383dbb15e09f02de653", "utc": "2026-10-26T23:44:52Z", "kind": "posted", "phase": "P4", "done_through": "P4/abl_cc-session2", "next": "P4: abl_cc on the remote host; result watcher armed", "arm": "abl_cc", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "3a1b43498b159baf3bdafe53afbf33644e752e2b", "open_decisions": [], "memory": {"used_pct": 4.7, "peak_pct": 50.31, "state": "OK", "stale": false}, "post": "abl_ref/status_20261026T2344", "url": "https://github.com/skillberry-ai/cap-evolve/issues/930#issuecomment-6430016985"}
+```
