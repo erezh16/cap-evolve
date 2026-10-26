@@ -2622,3 +2622,11 @@ Posted 'Cap-evolve full (reference) search ended' on #930 (abl_ref): https://git
 ```json
 {"cp": 320, "prev_cp": 319, "prev_commit": "0d1b2488b83b9ca7b97ab5e8f7801316c19186d1", "utc": "2026-10-26T13:52:56Z", "kind": "posted", "phase": "P4", "done_through": "P4/abl_prompt+abl_tools", "next": "P4/searches", "arm": "abl_ref", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "73c8bd6a3a191817465ea8b4130ed0a661b6ba64", "open_decisions": [], "memory": {"used_pct": 9.52, "peak_pct": 49.61, "state": "OK", "stale": false}, "post": "abl_ref/m4_search_done", "url": "https://github.com/skillberry-ai/cap-evolve/issues/930#issuecomment-6417716773"}
 ```
+
+## ABL-0321 · 2026-10-26T13:52Z · P4 posted abl_ref · posted
+
+Posted 'Cap-evolve full (reference) champion frozen' on #930 (abl_ref): https://github.com/skillberry-ai/cap-evolve/issues/930#issuecomment-6417717806
+
+```json
+{"cp": 321, "prev_cp": 320, "prev_commit": "7c6c14abd7247650bce38481713e569e3b1e0362", "utc": "2026-10-26T13:52:59Z", "kind": "posted", "phase": "P4", "done_through": "P4/abl_prompt+abl_tools", "next": "P4/searches", "arm": "abl_ref", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "73c8bd6a3a191817465ea8b4130ed0a661b6ba64", "open_decisions": [], "memory": {"used_pct": 9.52, "peak_pct": 49.61, "state": "OK", "stale": false}, "post": "abl_ref/m4_frozen", "url": "https://github.com/skillberry-ai/cap-evolve/issues/930#issuecomment-6417717806"}
+```
