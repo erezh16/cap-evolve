@@ -2830,3 +2830,11 @@ P4: chain(s) abl_cc started (search, freeze, isolation scan); pid files AW_STATE
 ```json
 {"cp": 346, "prev_cp": 345, "prev_commit": "1a754a42eeb542c7bf958ee8f7fa5db489eae8e2", "utc": "2026-10-26T14:13:44Z", "kind": "phase_start", "phase": "P4", "done_through": "P4/abl_cc", "next": "P4/abl_cc session 2", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "5b53a3c9b2b8dcdb9e0a46430597078586bcf5fc", "open_decisions": [], "memory": {"used_pct": 48.87, "peak_pct": 49.61, "state": "OK", "stale": false}}
 ```
+
+## ABL-0347 · 2026-10-26T14:14Z · P4 abl_cc session 2 started · repair
+
+abl_cc second session (ABL-0341) started 2026-10-26 14:13:44 UTC with a fresh empty CLAUDE_CONFIG_DIR (config2), the same prompt (hash checked), shim, flags and sandbox. Two launch attempts before it refused to start, spending nothing: (1) 14:06 (ABL-0343, exit 3) the launcher stripped AW_CC_* variables before reading the second-session flag, so it saw a second session without the decision and refused, as designed; fixed by reading the flag first. (2) 14:07 (ABL-0345, exit 1) the first reset had made the arm root read-only (reset item 6), so config2 could not be created; write access restored on the arm root and its workdir only (the first session config dir stays read-only as evidence). The first-session evaluation ticket kept running in evald throughout.
+
+```json
+{"cp": 347, "prev_cp": 346, "prev_commit": "b759e1ec7904500f8e0057e323ef7f895192e5f0", "utc": "2026-10-26T14:14:04Z", "kind": "repair", "phase": "P4", "done_through": "P4/abl_cc", "next": "P4/searches", "arm": "abl_cc", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "5b53a3c9b2b8dcdb9e0a46430597078586bcf5fc", "open_decisions": [], "memory": {"used_pct": 47.83, "peak_pct": 49.61, "state": "OK", "stale": false}}
+```
