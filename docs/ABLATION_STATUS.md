@@ -2048,3 +2048,11 @@ P4 abl_prompt: iteration 8: val 0.8163 (parent 0.7687); paired Δ̄ +0.0476, SE 
 ```json
 {"cp": 249, "prev_cp": 248, "prev_commit": "815a536472f795ee5d5ef3d0209fb531d4a6f8f4", "utc": "2026-10-26T09:15:17Z", "kind": "result", "phase": "P4", "done_through": "P4/wave1-iter1", "next": "P4/searches", "arm": "abl_prompt", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {"STATE/abl_prompt/progress.json": "0a73c60bca8b811f198aa6a68151074c197f5da89d1f108c5e75b2868c629706"}, "code": "311eb9c7c86961d5d3db0c3c91a082cc0a077c4b", "open_decisions": [], "memory": {"used_pct": 13.79, "peak_pct": 49.61, "state": "OK", "stale": false}, "iteration": 8, "verdict": {"candidate": "cand_0008", "accept": true, "val": 0.8163265306122449, "parent_val": 0.7687074829931972, "indecisive": false, "kind": "step", "delta": 0.0476, "se": 0.0352, "k_se": 0.2, "bar": 0.007, "would_pass_k1": true}}
 ```
+
+## ABL-0250 · 2026-10-26T09:15Z · P4 posted abl_prompt · posted
+
+Posted 'Cap evolve prompt only iteration 8' on #932 (abl_prompt): https://github.com/skillberry-ai/cap-evolve/issues/932#issuecomment-6412410157
+
+```json
+{"cp": 250, "prev_cp": 249, "prev_commit": "dd8eef7ccd80f2906dc3d1ade46a676f0ee68d85", "utc": "2026-10-26T09:15:20Z", "kind": "posted", "phase": "P4", "done_through": "P4/wave1-iter1", "next": "P4/searches", "arm": "abl_prompt", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "311eb9c7c86961d5d3db0c3c91a082cc0a077c4b", "open_decisions": [], "memory": {"used_pct": 13.7, "peak_pct": 49.61, "state": "OK", "stale": false}, "post": "abl_prompt/iter_8", "url": "https://github.com/skillberry-ai/cap-evolve/issues/932#issuecomment-6412410157"}
+```
