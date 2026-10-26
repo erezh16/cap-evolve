@@ -3542,3 +3542,11 @@ Posted 'Cap evolve no traces isolation scan' on #934 (abl_notrace): https://gith
 ```json
 {"cp": 435, "prev_cp": 434, "prev_commit": "78ba6599c75490fd9fdbc4d4f364f943e9bec7a0", "utc": "2026-10-26T21:09:27Z", "kind": "posted", "phase": "P4", "done_through": "P4/abl_cc-session2", "next": "P4: abl_notrace iterations 5-6; abl_cc on the remote host", "arm": "abl_notrace", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "740e7520353d1497fa9fc215fff222caddfff288", "open_decisions": [], "memory": {"used_pct": 2.39, "peak_pct": 50.31, "state": "OK", "stale": false}, "post": "abl_notrace/m4_scanned", "url": "https://github.com/skillberry-ai/cap-evolve/issues/934#issuecomment-6427384461"}
 ```
+
+## ABL-0436 · 2026-10-26T21:09Z · P4 abl_notrace reset re-run · repair
+
+Repair for ABL-0431 (abl_notrace reset step failed). Same cause as ABL-0408 and ABL-0306: only item 3 failed, finding AW_CAPE_ARM inherited from the P4 runner; this chain was started at 12:26 UTC, before the ABL-0306 fix. Its search ran under its own launcher env, so no search step was affected. Re-run by hand in a clean env (no AW_CAPE_ARM, AW_ABL_*, CAPEVOLVE_*): reset_check items 1 to 6 PASS; recorded through p4_abl.py mark. abl_notrace final: 6 scored iterations, 3 accepted (iterations 1, 3 and 6), champion cand_0006, search val 0.401 -> 0.612 (fit metric, selection-biased), 882 of 882 counted, 0 lint rejects, 0 voided steps, optimizer proxy USD 13.72; frozen tree 973ebcb4 equal to the run candidate, not inert; isolation scan (ABL-0430) 0 test-id hits, only aws/claude-sonnet-5-5, J1 in all 6 iterations, K = 0.2 on the command line. All five cap-evolve arms have now finished P4. Only abl_cc remains (remote host, ABL-0361 / ABL-0380); P5 waits for it.
+
+```json
+{"cp": 436, "prev_cp": 435, "prev_commit": "5886833f2a31d08d74ecf7870367de64ed024675", "utc": "2026-10-26T21:09:57Z", "kind": "repair", "phase": "P4", "done_through": "P4/abl_cc-session2", "next": "P4: abl_cc on the remote host; then P5 dev diagnostic", "arm": "abl_notrace", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "740e7520353d1497fa9fc215fff222caddfff288", "open_decisions": [], "memory": {"used_pct": 2.34, "peak_pct": 50.31, "state": "OK", "stale": false}}
+```
