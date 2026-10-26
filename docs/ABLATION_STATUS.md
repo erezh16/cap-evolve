@@ -2398,3 +2398,11 @@ Posted 'Cap evolve prompt only champion frozen' on #932 (abl_prompt): https://gi
 ```json
 {"cp": 292, "prev_cp": 291, "prev_commit": "42f645095e19586f07c7d45c35ddcaa3155d56f8", "utc": "2026-10-26T12:26:01Z", "kind": "posted", "phase": "P4", "done_through": "P4/wave1-iter3", "next": "P4/searches", "arm": "abl_prompt", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "311eb9c7c86961d5d3db0c3c91a082cc0a077c4b", "open_decisions": [], "memory": {"used_pct": 43.57, "peak_pct": 49.61, "state": "OK", "stale": false}, "post": "abl_prompt/m4_frozen", "url": "https://github.com/skillberry-ai/cap-evolve/issues/932#issuecomment-6415956417"}
 ```
+
+## ABL-0293 · 2026-10-26T12:26Z · P4 isolation scan · result
+
+Isolation scan (counts only): abl_prompt: test-id hits 0; models ['aws/claude-sonnet-5-5'], other models []; J1 in 11 iteration(s) ok=True; K on the command line ['0.2'] ok=True. Literal-string counts per location are in the pushed scan file.
+
+```json
+{"cp": 293, "prev_cp": 292, "prev_commit": "f5591cc108802be66d860d28627cf68c298f70df", "utc": "2026-10-26T12:26:31Z", "kind": "result", "phase": "P4", "done_through": "P4/wave1-iter3", "next": "P4/searches", "arm": "abl_prompt", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {"STATE/isolation_scan.json": "94a2fcdee4c8978a11a6604ea1208902a6ad36fcbd8f98a67cacb8ac25d7dc11"}, "code": "311eb9c7c86961d5d3db0c3c91a082cc0a077c4b", "open_decisions": [], "memory": {"used_pct": 36.84, "peak_pct": 49.61, "state": "OK", "stale": false}}
+```

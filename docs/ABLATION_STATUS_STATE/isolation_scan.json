@@ -1,0 +1,366 @@
+{
+ "abl_prompt": {
+  "locations": {
+   "claude -p results": {
+    "files": 11,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "arm state (driver)": {
+    "files": 601,
+    "files_hit": 1,
+    "counts": {
+     "root_full": 4,
+     "ground_truth": 3,
+     "src/appworld/apps": 1,
+     "aw_rest": 1,
+     "aw_ce2": 1,
+     "aw_ce3": 1,
+     "aw_abl/arms/abl_ref": 1,
+     "aw_abl/arms/abl_cc": 1,
+     "aw_abl/arms/abl_tools": 1,
+     "aw_abl/arms/abl_notrace": 1,
+     "aw_abl/arms/abl_tracescore": 1
+    }
+   },
+   "optimizer workdirs (run dir work/)": {
+    "files": 2032,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "run dir events": {
+    "files": 1,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "frozen artifact": {
+    "files": 4,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "claude transcripts projects/abl-arms-abl-prompt--capevolve-run-abl-prompt-s0": {
+    "files": 0,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "claude transcripts projects/ompt--capevolve-run-abl-prompt-s0-work-cand-0006": {
+    "files": 1,
+    "files_hit": 1,
+    "counts": {
+     "root_full": 2,
+     "aw_rest": 6,
+     "aw_ce2": 4,
+     "aw_ce3": 4,
+     "aw_abl/arms/abl_ref": 2,
+     "aw_abl/arms/abl_cc": 2,
+     "aw_abl/arms/abl_tools": 2,
+     "aw_abl/arms/abl_notrace": 2,
+     "aw_abl/arms/abl_tracescore": 2
+    }
+   },
+   "claude transcripts projects/ompt--capevolve-run-abl-prompt-s0-work-cand-0009": {
+    "files": 7,
+    "files_hit": 3,
+    "counts": {
+     "root_full": 8,
+     "aw_rest": 24,
+     "aw_ce2": 16,
+     "aw_ce3": 16,
+     "aw_abl/arms/abl_ref": 8,
+     "aw_abl/arms/abl_cc": 8,
+     "aw_abl/arms/abl_tools": 8,
+     "aw_abl/arms/abl_notrace": 8,
+     "aw_abl/arms/abl_tracescore": 8
+    }
+   },
+   "claude transcripts projects/l-prompt--capevolve-run-abl-prompt-s0-work-a9-ws": {
+    "files": 3,
+    "files_hit": 2,
+    "counts": {
+     "root_full": 37,
+     "ground_truth": 22,
+     "src/appworld/apps": 10,
+     "aw_rest": 22,
+     "aw_ce2": 18,
+     "aw_ce3": 18,
+     "aw_abl/arms/abl_ref": 14,
+     "aw_abl/arms/abl_cc": 14,
+     "aw_abl/arms/abl_tools": 14,
+     "aw_abl/arms/abl_notrace": 14,
+     "aw_abl/arms/abl_tracescore": 14
+    }
+   },
+   "claude transcripts projects/ompt--capevolve-run-abl-prompt-s0-work-cand-0010": {
+    "files": 15,
+    "files_hit": 4,
+    "counts": {
+     "root_full": 10,
+     "aw_rest": 30,
+     "aw_ce2": 20,
+     "aw_ce3": 20,
+     "aw_abl/arms/abl_ref": 10,
+     "aw_abl/arms/abl_cc": 10,
+     "aw_abl/arms/abl_tools": 10,
+     "aw_abl/arms/abl_notrace": 10,
+     "aw_abl/arms/abl_tracescore": 10
+    }
+   },
+   "claude transcripts projects/ompt--capevolve-run-abl-prompt-s0-work-cand-0001": {
+    "files": 9,
+    "files_hit": 4,
+    "counts": {
+     "root_full": 14,
+     "aw_rest": 42,
+     "aw_ce2": 28,
+     "aw_ce3": 28,
+     "aw_abl/arms/abl_ref": 14,
+     "aw_abl/arms/abl_cc": 14,
+     "aw_abl/arms/abl_tools": 14,
+     "aw_abl/arms/abl_notrace": 14,
+     "aw_abl/arms/abl_tracescore": 14
+    }
+   },
+   "claude transcripts projects/ompt--capevolve-run-abl-prompt-s0-work-cand-0002": {
+    "files": 1,
+    "files_hit": 1,
+    "counts": {
+     "root_full": 2,
+     "aw_rest": 6,
+     "aw_ce2": 4,
+     "aw_ce3": 4,
+     "aw_abl/arms/abl_ref": 2,
+     "aw_abl/arms/abl_cc": 2,
+     "aw_abl/arms/abl_tools": 2,
+     "aw_abl/arms/abl_notrace": 2,
+     "aw_abl/arms/abl_tracescore": 2
+    }
+   },
+   "claude transcripts projects/ompt--capevolve-run-abl-prompt-s0-work-cand-0003": {
+    "files": 2,
+    "files_hit": 1,
+    "counts": {
+     "root_full": 2,
+     "aw_rest": 6,
+     "aw_ce2": 4,
+     "aw_ce3": 4,
+     "aw_abl/arms/abl_ref": 2,
+     "aw_abl/arms/abl_cc": 2,
+     "aw_abl/arms/abl_tools": 2,
+     "aw_abl/arms/abl_notrace": 2,
+     "aw_abl/arms/abl_tracescore": 2
+    }
+   },
+   "claude transcripts projects/ompt--capevolve-run-abl-prompt-s0-work-cand-0005": {
+    "files": 1,
+    "files_hit": 1,
+    "counts": {
+     "root_full": 2,
+     "aw_rest": 6,
+     "aw_ce2": 4,
+     "aw_ce3": 4,
+     "aw_abl/arms/abl_ref": 2,
+     "aw_abl/arms/abl_cc": 2,
+     "aw_abl/arms/abl_tools": 2,
+     "aw_abl/arms/abl_notrace": 2,
+     "aw_abl/arms/abl_tracescore": 2
+    }
+   },
+   "claude transcripts projects/ompt--capevolve-run-abl-prompt-s0-work-cand-0007": {
+    "files": 9,
+    "files_hit": 4,
+    "counts": {
+     "root_full": 10,
+     "aw_rest": 30,
+     "aw_ce2": 20,
+     "aw_ce3": 20,
+     "aw_abl/arms/abl_ref": 10,
+     "aw_abl/arms/abl_cc": 10,
+     "aw_abl/arms/abl_tools": 10,
+     "aw_abl/arms/abl_notrace": 10,
+     "aw_abl/arms/abl_tracescore": 10
+    }
+   },
+   "claude transcripts projects/ompt--capevolve-run-abl-prompt-s0-work-cand-0004": {
+    "files": 1,
+    "files_hit": 1,
+    "counts": {
+     "root_full": 2,
+     "aw_rest": 6,
+     "aw_ce2": 4,
+     "aw_ce3": 4,
+     "aw_abl/arms/abl_ref": 2,
+     "aw_abl/arms/abl_cc": 2,
+     "aw_abl/arms/abl_tools": 2,
+     "aw_abl/arms/abl_notrace": 2,
+     "aw_abl/arms/abl_tracescore": 2
+    }
+   },
+   "claude transcripts projects/ompt--capevolve-run-abl-prompt-s0-work-cand-0011": {
+    "files": 1,
+    "files_hit": 1,
+    "counts": {
+     "root_full": 4,
+     "aw_rest": 12,
+     "aw_ce2": 8,
+     "aw_ce3": 8,
+     "aw_abl/arms/abl_ref": 4,
+     "aw_abl/arms/abl_cc": 4,
+     "aw_abl/arms/abl_tools": 4,
+     "aw_abl/arms/abl_notrace": 4,
+     "aw_abl/arms/abl_tracescore": 4
+    }
+   },
+   "claude transcripts projects/ompt--capevolve-run-abl-prompt-s0-work-cand-0008": {
+    "files": 9,
+    "files_hit": 4,
+    "counts": {
+     "root_full": 12,
+     "aw_rest": 36,
+     "aw_ce2": 24,
+     "aw_ce3": 24,
+     "aw_abl/arms/abl_ref": 12,
+     "aw_abl/arms/abl_cc": 12,
+     "aw_abl/arms/abl_tools": 12,
+     "aw_abl/arms/abl_notrace": 12,
+     "aw_abl/arms/abl_tracescore": 12
+    }
+   },
+   "claude transcripts claude-10037/ompt--capevolve-run-abl-prompt-s0-work-cand-0011": {
+    "files": 0,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "claude transcripts claude-10037/ompt--capevolve-run-abl-prompt-s0-work-cand-0008": {
+    "files": 6,
+    "files_hit": 3,
+    "counts": {
+     "root_full": 8,
+     "aw_rest": 24,
+     "aw_ce2": 16,
+     "aw_ce3": 16,
+     "aw_abl/arms/abl_ref": 8,
+     "aw_abl/arms/abl_cc": 8,
+     "aw_abl/arms/abl_tools": 8,
+     "aw_abl/arms/abl_notrace": 8,
+     "aw_abl/arms/abl_tracescore": 8
+    }
+   },
+   "claude transcripts claude-10037/ompt--capevolve-run-abl-prompt-s0-work-cand-0005": {
+    "files": 0,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "claude transcripts claude-10037/ompt--capevolve-run-abl-prompt-s0-work-cand-0007": {
+    "files": 10,
+    "files_hit": 3,
+    "counts": {
+     "root_full": 6,
+     "aw_rest": 18,
+     "aw_ce2": 12,
+     "aw_ce3": 12,
+     "aw_abl/arms/abl_ref": 6,
+     "aw_abl/arms/abl_cc": 6,
+     "aw_abl/arms/abl_tools": 6,
+     "aw_abl/arms/abl_notrace": 6,
+     "aw_abl/arms/abl_tracescore": 6
+    }
+   },
+   "claude transcripts claude-10037/ompt--capevolve-run-abl-prompt-s0-work-cand-0006": {
+    "files": 0,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "claude transcripts claude-10037/ompt--capevolve-run-abl-prompt-s0-work-cand-0010": {
+    "files": 12,
+    "files_hit": 3,
+    "counts": {
+     "root_full": 6,
+     "aw_rest": 18,
+     "aw_ce2": 12,
+     "aw_ce3": 12,
+     "aw_abl/arms/abl_ref": 6,
+     "aw_abl/arms/abl_cc": 6,
+     "aw_abl/arms/abl_tools": 6,
+     "aw_abl/arms/abl_notrace": 6,
+     "aw_abl/arms/abl_tracescore": 6
+    }
+   },
+   "claude transcripts claude-10037/l-prompt--capevolve-run-abl-prompt-s0-work-a9-ws": {
+    "files": 1,
+    "files_hit": 1,
+    "counts": {
+     "root_full": 11,
+     "ground_truth": 4,
+     "aw_rest": 6,
+     "aw_ce2": 4,
+     "aw_ce3": 4,
+     "aw_abl/arms/abl_ref": 2,
+     "aw_abl/arms/abl_cc": 2,
+     "aw_abl/arms/abl_tools": 2,
+     "aw_abl/arms/abl_notrace": 2,
+     "aw_abl/arms/abl_tracescore": 2
+    }
+   },
+   "claude transcripts claude-10037/ompt--capevolve-run-abl-prompt-s0-work-cand-0003": {
+    "files": 1,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "claude transcripts claude-10037/ompt--capevolve-run-abl-prompt-s0-work-cand-0009": {
+    "files": 13,
+    "files_hit": 2,
+    "counts": {
+     "root_full": 4,
+     "aw_rest": 12,
+     "aw_ce2": 8,
+     "aw_ce3": 8,
+     "aw_abl/arms/abl_ref": 4,
+     "aw_abl/arms/abl_cc": 4,
+     "aw_abl/arms/abl_tools": 4,
+     "aw_abl/arms/abl_notrace": 4,
+     "aw_abl/arms/abl_tracescore": 4
+    }
+   },
+   "claude transcripts claude-10037/ompt--capevolve-run-abl-prompt-s0-work-cand-0002": {
+    "files": 0,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "claude transcripts claude-10037/ompt--capevolve-run-abl-prompt-s0-work-cand-0001": {
+    "files": 9,
+    "files_hit": 3,
+    "counts": {
+     "root_full": 10,
+     "aw_rest": 30,
+     "aw_ce2": 20,
+     "aw_ce3": 20,
+     "aw_abl/arms/abl_ref": 10,
+     "aw_abl/arms/abl_cc": 10,
+     "aw_abl/arms/abl_tools": 10,
+     "aw_abl/arms/abl_notrace": 10,
+     "aw_abl/arms/abl_tracescore": 10
+    }
+   },
+   "claude transcripts claude-10037/ompt--capevolve-run-abl-prompt-s0-work-cand-0004": {
+    "files": 0,
+    "files_hit": 0,
+    "counts": {}
+   }
+  },
+  "test_id_hits": 0,
+  "isolation_breach": false,
+  "ce2": {
+   "model_usage_keys": {
+    "aws/claude-sonnet-5-5": 8
+   },
+   "other_models": [],
+   "j1_iterations": 11,
+   "j1_all_ok": true,
+   "k_se_cmdline": [
+    "0.2"
+   ],
+   "k_ok": true,
+   "imp_all_ok": true
+  }
+ }
+}
