@@ -1710,3 +1710,11 @@ Posted 'Cap evolve tools only iteration 6' on #933 (abl_tools): https://github.c
 ```json
 {"cp": 207, "prev_cp": 206, "prev_commit": "5d3fa9e5d7429a944eb5ba93b62c80ff53aa2d59", "utc": "2026-10-26T06:03:13Z", "kind": "posted", "phase": "P4", "done_through": "P4/wave1-iter1", "next": "P4/searches", "arm": "abl_tools", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "cf93278d3c279c9529fea88ae9c6ca67ce47cef0", "open_decisions": [], "memory": {"used_pct": 3.25, "peak_pct": 49.03, "state": "OK", "stale": false}, "post": "abl_tools/iter_6", "url": "https://github.com/skillberry-ai/cap-evolve/issues/933#issuecomment-6409374809"}
 ```
+
+## ABL-0208 · 2026-10-26T06:05Z · P4 posted abl_ref · posted
+
+Posted 'gateway outage and resume' on #930 (abl_ref): https://github.com/skillberry-ai/cap-evolve/issues/930#issuecomment-6409404259
+
+```json
+{"cp": 208, "prev_cp": 207, "prev_commit": "db4ae3bec7b3328bbae07411b56cbcbf9b3d1dff", "utc": "2026-10-26T06:05:23Z", "kind": "posted", "phase": "P4", "done_through": "P4/wave1-iter1", "next": "P4/searches", "arm": "abl_tools", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "cf93278d3c279c9529fea88ae9c6ca67ce47cef0", "open_decisions": [], "memory": {"used_pct": 4.43, "peak_pct": 49.03, "state": "OK", "stale": false}, "post": "abl_ref/resume_20261026", "url": "https://github.com/skillberry-ai/cap-evolve/issues/930#issuecomment-6409404259"}
+```
