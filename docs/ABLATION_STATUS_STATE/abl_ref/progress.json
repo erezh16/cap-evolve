@@ -3,10 +3,10 @@
  "arm": "abl_ref",
  "k_se": 0.2,
  "counted_rollouts": 147,
- "cache_hits": 294,
+ "cache_hits": 882,
  "lint_rejects": 0,
- "iterations_done": 2,
- "iterations_consumed": 2,
+ "iterations_done": 1,
+ "iterations_consumed": 6,
  "accepted": 1,
  "iterations": [
   {
@@ -27,26 +27,58 @@
    "accept": false,
    "val": 0.6258503401360545,
    "parent_val": 0.6258503401360545,
-   "indecisive": false,
-   "kind": "step"
+   "indecisive": true,
+   "kind": "optimizer_failed"
+  },
+  {
+   "candidate": "cand_0003",
+   "accept": false,
+   "val": 0.6258503401360545,
+   "parent_val": 0.6258503401360545,
+   "indecisive": true,
+   "kind": "optimizer_failed"
+  },
+  {
+   "candidate": "cand_0004",
+   "accept": false,
+   "val": 0.6258503401360545,
+   "parent_val": 0.6258503401360545,
+   "indecisive": true,
+   "kind": "optimizer_failed"
+  },
+  {
+   "candidate": "cand_0005",
+   "accept": false,
+   "val": 0.6258503401360545,
+   "parent_val": 0.6258503401360545,
+   "indecisive": true,
+   "kind": "optimizer_failed"
+  },
+  {
+   "candidate": "cand_0006",
+   "accept": false,
+   "val": 0.6258503401360545,
+   "parent_val": 0.6258503401360545,
+   "indecisive": true,
+   "kind": "optimizer_failed"
   }
  ],
  "baseline_val": 0.4013605442176871,
  "baseline_label": "seed, shared P3 baseline",
  "best_search_score": 0.6258503401360545,
  "best_search_label": "val = train ∪ dev (147), a fit metric, selection-biased",
- "metric_calls": 441,
- "capevolve_optimizer_usd": 10.201108000000001,
+ "metric_calls": 1029,
+ "capevolve_optimizer_usd": 11.601569750000001,
  "optimizer": {
-  "calls": 2,
-  "prompt_tokens": 630721,
-  "completion_tokens": 119020,
-  "cache_read": 6688766,
-  "cache_write": 582096,
-  "proxy_usd": 4.08,
-  "seconds": 1295.9
+  "calls": 6,
+  "prompt_tokens": 747686,
+  "completion_tokens": 124111,
+  "cache_read": 7823952,
+  "cache_write": 678711,
+  "proxy_usd": 4.64,
+  "seconds": 2119.0
  },
  "voided_steps": 0,
  "feedback_mode": "full",
- "eta": "4 of 6 iterations left (CE2/CE3: about 45 to 70 min each)"
+ "eta": "5 of 6 iterations left (CE2/CE3: about 45 to 70 min each)"
 }
