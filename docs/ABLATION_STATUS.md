@@ -2032,3 +2032,11 @@ Posted 'Cap evolve tools only iteration 8' on #933 (abl_tools): https://github.c
 ```json
 {"cp": 247, "prev_cp": 246, "prev_commit": "d66f7ffab2ffa8d13fe097d9a96a9e00af25ebc6", "utc": "2026-10-26T09:10:14Z", "kind": "posted", "phase": "P4", "done_through": "P4/wave1-iter1", "next": "P4/searches", "arm": "abl_tools", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "311eb9c7c86961d5d3db0c3c91a082cc0a077c4b", "open_decisions": [], "memory": {"used_pct": 47.3, "peak_pct": 49.61, "state": "OK", "stale": false}, "post": "abl_tools/iter_8", "url": "https://github.com/skillberry-ai/cap-evolve/issues/933#issuecomment-6412316168"}
 ```
+
+## ABL-0248 · 2026-10-26T09:10Z · P4 posted abl_tools · posted
+
+Posted 'Cap evolve tools only 50% of B' on #933 (abl_tools): https://github.com/skillberry-ai/cap-evolve/issues/933#issuecomment-6412325290
+
+```json
+{"cp": 248, "prev_cp": 247, "prev_commit": "ec2d72751792961d5dd4fc2bc881433dcb4c0cad", "utc": "2026-10-26T09:10:44Z", "kind": "posted", "phase": "P4", "done_through": "P4/wave1-iter1", "next": "P4/searches", "arm": "abl_tools", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "311eb9c7c86961d5d3db0c3c91a082cc0a077c4b", "open_decisions": [], "memory": {"used_pct": 42.26, "peak_pct": 49.61, "state": "OK", "stale": false}, "post": "abl_tools/m4_budget_50", "url": "https://github.com/skillberry-ai/cap-evolve/issues/933#issuecomment-6412325290"}
+```
