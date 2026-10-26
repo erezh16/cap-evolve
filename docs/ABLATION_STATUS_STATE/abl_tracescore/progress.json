@@ -2,7 +2,7 @@
  "stage": "search running",
  "arm": "abl_tracescore",
  "k_se": 0.2,
- "counted_rollouts": 246,
+ "counted_rollouts": 266,
  "cache_hits": 147,
  "lint_rejects": 0,
  "iterations_done": 1,
