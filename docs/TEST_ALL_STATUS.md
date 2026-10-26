@@ -7141,3 +7141,11 @@ The last post on the issue of wikiskill (#920) is older than 65 minutes (plan se
 ```json
 {"cp": 849, "prev_cp": 848, "prev_commit": "5ab1565ae6dbccb05bb7d32d6c903f85040fb243", "utc": "2026-10-26T06:03:54Z", "kind": "error", "phase": "P3", "done_through": "final/8759", "next": "final/cells", "arm": "wikiskill", "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 43.64, "peak_pct": 43.64, "state": "OK", "stale": false}}
 ```
+
+## TA-0850 · 2026-10-26T06:03Z · P3 posted wikiskill · posted
+
+Posted 'WikiSkill hourly status' on #920 (wikiskill): https://github.com/skillberry-ai/cap-evolve/issues/920#issuecomment-6409384135
+
+```json
+{"cp": 850, "prev_cp": 849, "prev_commit": "99fb11cf8e45e85bc064ef682a230049186e020f", "utc": "2026-10-26T06:03:56Z", "kind": "posted", "phase": "P3", "done_through": "final/8759", "next": "final/cells", "arm": "wikiskill", "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 43.91, "peak_pct": 43.91, "state": "OK", "stale": false}, "post": "wikiskill/late_20261026T060355", "url": "https://github.com/skillberry-ai/cap-evolve/issues/920#issuecomment-6409384135"}
+```
