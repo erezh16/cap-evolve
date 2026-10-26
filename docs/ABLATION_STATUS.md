@@ -2074,3 +2074,11 @@ Next: P4/searches.
 ```json
 {"cp": 252, "prev_cp": 251, "prev_commit": "2e5c133462d9f211b75360b04556df1e50c10192", "utc": "2026-10-26T09:40:58Z", "kind": "heartbeat", "phase": "P4", "done_through": "P4/wave1-iter1", "next": "P4/searches", "arm": "abl_prompt", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "311eb9c7c86961d5d3db0c3c91a082cc0a077c4b", "open_decisions": [], "memory": {"used_pct": 45.96, "peak_pct": 49.61, "state": "OK", "stale": false}, "runner": "none"}
 ```
+
+## ABL-0253 · 2026-10-26T09:45Z · P4 R1 note: episode file names printed · error
+
+Rule R1 note (executing session). While checking why abl_ref third iteration was one episode short, a process listing printed the last argument of eight running episode workers: their output-file paths under /tmp/aw_abl/scratch, whose file names carry the train/dev task id of the episode. Only those path names (8 train/dev task ids, no test id, no file content, no gold, no trajectory) reached the orchestrating transcript; nothing was opened. Train/dev ids are not gold, but the orchestrating sessions must not print task ids, so this is recorded and the transcript is part of the P6 orchestrating-session scan (which counts test ids; none can be in these names, since search episodes run on root_opt). No optimizer is affected. Further process checks print only pids, elapsed times and the arm name.
+
+```json
+{"cp": 253, "prev_cp": 252, "prev_commit": "d72fec8fff2ae58b6e05ca39e8bc8c4ed1b77d07", "utc": "2026-10-26T09:45:32Z", "kind": "error", "phase": "P4", "done_through": "P4/wave1-iter3", "next": "P4/searches", "arm": "abl_prompt", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "311eb9c7c86961d5d3db0c3c91a082cc0a077c4b", "open_decisions": [], "memory": {"used_pct": 46.08, "peak_pct": 49.61, "state": "OK", "stale": false}}
+```
