@@ -2406,3 +2406,11 @@ Isolation scan (counts only): abl_prompt: test-id hits 0; models ['aws/claude-so
 ```json
 {"cp": 293, "prev_cp": 292, "prev_commit": "f5591cc108802be66d860d28627cf68c298f70df", "utc": "2026-10-26T12:26:31Z", "kind": "result", "phase": "P4", "done_through": "P4/wave1-iter3", "next": "P4/searches", "arm": "abl_prompt", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {"STATE/isolation_scan.json": "94a2fcdee4c8978a11a6604ea1208902a6ad36fcbd8f98a67cacb8ac25d7dc11"}, "code": "311eb9c7c86961d5d3db0c3c91a082cc0a077c4b", "open_decisions": [], "memory": {"used_pct": 36.84, "peak_pct": 49.61, "state": "OK", "stale": false}}
 ```
+
+## ABL-0294 · 2026-10-26T12:26Z · P4 abl_prompt reset failed · error
+
+P4: abl_prompt step `reset` exited 1; the chain stopped. See AW_STATE/progress/p4_abl_prompt.out. No automatic retry: the cause is investigated first (R5).
+
+```json
+{"cp": 294, "prev_cp": 293, "prev_commit": "c9159e35ed0ea197202eba43627a6d9542fa9f30", "utc": "2026-10-26T12:26:33Z", "kind": "error", "phase": "P4", "done_through": "P4/wave1-iter3", "next": "P4/searches", "arm": "abl_prompt", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "311eb9c7c86961d5d3db0c3c91a082cc0a077c4b", "open_decisions": [], "memory": {"used_pct": 36.84, "peak_pct": 49.61, "state": "OK", "stale": false}}
+```
