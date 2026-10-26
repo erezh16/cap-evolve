@@ -1790,3 +1790,11 @@ Repair: right after the wave-1 resume (06:03 UTC) the P4 runner itself exited: w
 ```json
 {"cp": 217, "prev_cp": 216, "prev_commit": "06c41c29a33988eaf8bc39510ae0e9004ff4cac3", "utc": "2026-10-26T06:10:06Z", "kind": "repair", "phase": "P4", "done_through": "P4/wave1-iter1", "next": "P4/searches", "arm": "abl_tools", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "311eb9c7c86961d5d3db0c3c91a082cc0a077c4b", "open_decisions": [], "memory": {"used_pct": 4.55, "peak_pct": 49.03, "state": "OK", "stale": false}}
 ```
+
+## ABL-0218 · 2026-10-26T06:31Z · P4 posted abl_tools · posted
+
+Posted 'Cap evolve tools only hourly status' on #933 (abl_tools): https://github.com/skillberry-ai/cap-evolve/issues/933#issuecomment-6409776920
+
+```json
+{"cp": 218, "prev_cp": 217, "prev_commit": "cde092340fb90f80360aa1e74149af6574a055b7", "utc": "2026-10-26T06:31:43Z", "kind": "posted", "phase": "P4", "done_through": "P4/wave1-iter1", "next": "P4/searches", "arm": "abl_tools", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "311eb9c7c86961d5d3db0c3c91a082cc0a077c4b", "open_decisions": [], "memory": {"used_pct": 45.3, "peak_pct": 49.03, "state": "OK", "stale": false}, "post": "abl_tools/status_20261026T0631", "url": "https://github.com/skillberry-ai/cap-evolve/issues/933#issuecomment-6409776920"}
+```
