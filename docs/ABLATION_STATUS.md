@@ -3534,3 +3534,11 @@ Posted 'Cap evolve no traces champion frozen' on #934 (abl_notrace): https://git
 ```json
 {"cp": 434, "prev_cp": 433, "prev_commit": "df64b391dd7005f030dd9b7a8b332bf5dce44f49", "utc": "2026-10-26T21:09:23Z", "kind": "posted", "phase": "P4", "done_through": "P4/abl_cc-session2", "next": "P4: abl_notrace iterations 5-6; abl_cc on the remote host", "arm": "abl_notrace", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "740e7520353d1497fa9fc215fff222caddfff288", "open_decisions": [], "memory": {"used_pct": 2.39, "peak_pct": 50.31, "state": "OK", "stale": false}, "post": "abl_notrace/m4_frozen", "url": "https://github.com/skillberry-ai/cap-evolve/issues/934#issuecomment-6427383344"}
 ```
+
+## ABL-0435 · 2026-10-26T21:09Z · P4 posted abl_notrace · posted
+
+Posted 'Cap evolve no traces isolation scan' on #934 (abl_notrace): https://github.com/skillberry-ai/cap-evolve/issues/934#issuecomment-6427384461
+
+```json
+{"cp": 435, "prev_cp": 434, "prev_commit": "78ba6599c75490fd9fdbc4d4f364f943e9bec7a0", "utc": "2026-10-26T21:09:27Z", "kind": "posted", "phase": "P4", "done_through": "P4/abl_cc-session2", "next": "P4: abl_notrace iterations 5-6; abl_cc on the remote host", "arm": "abl_notrace", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "740e7520353d1497fa9fc215fff222caddfff288", "open_decisions": [], "memory": {"used_pct": 2.39, "peak_pct": 50.31, "state": "OK", "stale": false}, "post": "abl_notrace/m4_scanned", "url": "https://github.com/skillberry-ai/cap-evolve/issues/934#issuecomment-6427384461"}
+```
