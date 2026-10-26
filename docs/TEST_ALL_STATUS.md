@@ -7069,3 +7069,11 @@ The last post on the issue of altk (#916) is older than 65 minutes (plan section
 ```json
 {"cp": 840, "prev_cp": 839, "prev_commit": "db9d3cfb6f12a7f56ef9f82460f8cb5dac1fb8f7", "utc": "2026-10-26T06:03:33Z", "kind": "error", "phase": "P3", "done_through": "final/8759", "next": "final/cells", "arm": "altk", "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 4.06, "peak_pct": 4.06, "state": "OK", "stale": false}}
 ```
+
+## TA-0841 · 2026-10-26T06:03Z · P3 posted altk · posted
+
+Posted 'ALTK-Evolve hourly status' on #916 (altk): https://github.com/skillberry-ai/cap-evolve/issues/916#issuecomment-6409379810
+
+```json
+{"cp": 841, "prev_cp": 840, "prev_commit": "c412decd900de8486b68c44a460909458e60445b", "utc": "2026-10-26T06:03:36Z", "kind": "posted", "phase": "P3", "done_through": "final/8759", "next": "final/cells", "arm": "altk", "counts": {}, "spend": {}, "artifacts": {}, "code": "3d810a266d0c1b424b25adb199bf09c74aa402f2", "open_decisions": [], "memory": {"used_pct": 10.81, "peak_pct": 10.81, "state": "OK", "stale": false}, "post": "altk/late_20261026T060335", "url": "https://github.com/skillberry-ai/cap-evolve/issues/916#issuecomment-6409379810"}
+```
