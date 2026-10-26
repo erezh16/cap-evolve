@@ -2718,3 +2718,11 @@ P4 abl_tracescore: iteration 1: val 0.4898 (parent 0.4014); paired Δ̄ +0.0884,
 ```json
 {"cp": 332, "prev_cp": 331, "prev_commit": "b9fecacb637207742d516ab16c738e290db3f2cf", "utc": "2026-10-26T13:55:25Z", "kind": "result", "phase": "P4", "done_through": "P4/abl_ref", "next": "P4/searches", "arm": "abl_tracescore", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {"STATE/abl_tracescore/progress.json": "bc38d58f9229056c3d7549e5379ff63a8632aa1e16e1bb52828ead3b3b97737d"}, "code": "73c8bd6a3a191817465ea8b4130ed0a661b6ba64", "open_decisions": [], "memory": {"used_pct": 5.86, "peak_pct": 49.61, "state": "OK", "stale": false}, "iteration": 1, "verdict": {"candidate": "cand_0001", "accept": true, "val": 0.4897959183673469, "parent_val": 0.4013605442176871, "indecisive": false, "kind": "step", "delta": 0.0884, "se": 0.0501, "k_se": 0.2, "bar": 0.01, "would_pass_k1": true}}
 ```
+
+## ABL-0333 · 2026-10-26T13:55Z · P4 posted abl_tracescore · posted
+
+Posted 'Cap evolve traces and score only iteration 1' on #935 (abl_tracescore): https://github.com/skillberry-ai/cap-evolve/issues/935#issuecomment-6417771548
+
+```json
+{"cp": 333, "prev_cp": 332, "prev_commit": "90e3036ece7b48cc575297d839b922afd15d6d6f", "utc": "2026-10-26T13:55:28Z", "kind": "posted", "phase": "P4", "done_through": "P4/abl_ref", "next": "P4/searches", "arm": "abl_tracescore", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "73c8bd6a3a191817465ea8b4130ed0a661b6ba64", "open_decisions": [], "memory": {"used_pct": 5.86, "peak_pct": 49.61, "state": "OK", "stale": false}, "post": "abl_tracescore/iter_1", "url": "https://github.com/skillberry-ai/cap-evolve/issues/935#issuecomment-6417771548"}
+```
