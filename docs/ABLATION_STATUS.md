@@ -3782,3 +3782,11 @@ The user fixed this pod's sandbox (2026-10-27; still landrun + proot, by user st
 ```json
 {"cp": 465, "prev_cp": 464, "prev_commit": "4b71c097a005e055dd966edb7b66acd5a061f817", "utc": "2026-10-27T01:09:31Z", "kind": "result", "phase": "P4", "done_through": "P4/abl_cc-session2", "next": "P4: abl_cc session 3", "arm": "abl_cc", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "4b71c097a005e055dd966edb7b66acd5a061f817", "open_decisions": [], "memory": {"used_pct": 4.81, "peak_pct": 50.31, "state": "OK", "stale": false}}
 ```
+
+## ABL-0466 · 2026-10-27T01:12Z · P4 searches launched · phase_start
+
+P4: chain(s) abl_cc started (search, freeze, isolation scan); pid files AW_STATE/p4/<arm>.pid. Running now: abl_cc. Global slots 24; memory 4.78%.
+
+```json
+{"cp": 466, "prev_cp": 465, "prev_commit": "207e8bf0d67325f704bc94f15631962f4efc52aa", "utc": "2026-10-27T01:12:09Z", "kind": "phase_start", "phase": "P4", "done_through": "P4/abl_cc-session2", "next": "P4: abl_cc session 3", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "207e8bf0d67325f704bc94f15631962f4efc52aa", "open_decisions": [], "memory": {"used_pct": 4.78, "peak_pct": 50.31, "state": "OK", "stale": false}}
+```
