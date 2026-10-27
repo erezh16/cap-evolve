@@ -3910,3 +3910,11 @@ P4 done: all six chains (search, freeze, isolation scan, reset check) finished. 
 ```json
 {"cp": 481, "prev_cp": 480, "prev_commit": "9573e1b919f6877f8ecbb5e9421b94d3d391e0cb", "utc": "2026-10-27T02:26:03Z", "kind": "phase_done", "phase": "P4", "done_through": "P4/searches", "next": "P5/dev", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "207e8bf0d67325f704bc94f15631962f4efc52aa", "open_decisions": [], "memory": {"used_pct": 2.37, "peak_pct": 50.31, "state": "OK", "stale": false}}
 ```
+
+## ABL-0482 · 2026-10-27T02:26Z · P5 dev diagnostic · phase_done
+
+P5 dev diagnostic done (57 dev tasks, 1 trial, seed 100; the seed's numbers are its P3 records). seed 0.4211 (0 fresh, 57 cached); abl_ref 0.8772 (0 fresh, 57 cached); abl_cc 0.4211 (0 fresh, 57 cached); abl_prompt 0.8596 (0 fresh, 57 cached); abl_tools 0.7018 (0 fresh, 57 cached); abl_notrace 0.5614 (0 fresh, 57 cached); abl_tracescore 0.7544 (0 fresh, 57 cached). Next: P6 full isolation scan.
+
+```json
+{"cp": 482, "prev_cp": 481, "prev_commit": "49366997dccac076722242628611923b63088cba", "utc": "2026-10-27T02:26:09Z", "kind": "phase_done", "phase": "P5", "done_through": "P5/dev", "next": "P6/scan", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {"STATE/p5dev/progress.json": "94b5f77dbc2145a8203ced8fff4b767cf22571e51a211bed4c9e16ac28e5e9a5"}, "code": "207e8bf0d67325f704bc94f15631962f4efc52aa", "open_decisions": [], "memory": {"used_pct": 2.46, "peak_pct": 50.31, "state": "OK", "stale": false}}
+```

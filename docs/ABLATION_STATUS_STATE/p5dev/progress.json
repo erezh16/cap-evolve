@@ -1,0 +1,55 @@
+{
+ "window": "p5dev",
+ "per_arm": {
+  "seed": {
+   "tgc": 0.4211,
+   "n": 57,
+   "cache_hits": 57,
+   "fresh": 0,
+   "infra": 0
+  },
+  "abl_ref": {
+   "tgc": 0.8772,
+   "n": 57,
+   "cache_hits": 57,
+   "fresh": 0,
+   "infra": 0
+  },
+  "abl_cc": {
+   "tgc": 0.4211,
+   "n": 57,
+   "cache_hits": 57,
+   "fresh": 0,
+   "infra": 0
+  },
+  "abl_prompt": {
+   "tgc": 0.8596,
+   "n": 57,
+   "cache_hits": 57,
+   "fresh": 0,
+   "infra": 0
+  },
+  "abl_tools": {
+   "tgc": 0.7018,
+   "n": 57,
+   "cache_hits": 57,
+   "fresh": 0,
+   "infra": 0
+  },
+  "abl_notrace": {
+   "tgc": 0.5614,
+   "n": 57,
+   "cache_hits": 57,
+   "fresh": 0,
+   "infra": 0
+  },
+  "abl_tracescore": {
+   "tgc": 0.7544,
+   "n": 57,
+   "cache_hits": 57,
+   "fresh": 0,
+   "infra": 0
+  }
+ },
+ "label": "dev TGC, 1 trial, selection-biased for arms that selected on dev"
+}
