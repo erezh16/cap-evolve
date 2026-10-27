@@ -10798,3 +10798,11 @@ Posted 'HarnessLens results' on #923 (harnesslens): https://github.com/skillberr
 ```json
 {"cp": 1289, "prev_cp": 1288, "prev_commit": "0b3534dc30287e412c6b1df3b7ac313ab2127634", "utc": "2026-10-27T01:29:14Z", "kind": "posted", "phase": "P4", "done_through": "analysis", "next": "P5/results", "arm": "gepa", "counts": {}, "spend": {}, "artifacts": {}, "code": "a0e79d2d197eceebf46d0f8d9d41b232cf857098", "open_decisions": [], "memory": {"used_pct": 1.34, "peak_pct": 44.52, "state": "OK", "stale": false}, "post": "harnesslens/results", "url": "https://github.com/skillberry-ai/cap-evolve/issues/923#issuecomment-6431462208"}
 ```
+
+## TA-1290 · 2026-10-27T01:29Z · P4 posted miprov2 · posted
+
+Posted 'MIPROv2 results' on #924 (miprov2): https://github.com/skillberry-ai/cap-evolve/issues/924#issuecomment-6431463634
+
+```json
+{"cp": 1290, "prev_cp": 1289, "prev_commit": "5e26e5f188c86c0c6d71a0c0ed8ce40369ae9dad", "utc": "2026-10-27T01:29:21Z", "kind": "posted", "phase": "P4", "done_through": "analysis", "next": "P5/results", "arm": "gepa", "counts": {}, "spend": {}, "artifacts": {}, "code": "a0e79d2d197eceebf46d0f8d9d41b232cf857098", "open_decisions": [], "memory": {"used_pct": 1.34, "peak_pct": 44.52, "state": "OK", "stale": false}, "post": "miprov2/results", "url": "https://github.com/skillberry-ai/cap-evolve/issues/924#issuecomment-6431463634"}
+```
