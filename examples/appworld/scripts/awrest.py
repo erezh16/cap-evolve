@@ -173,8 +173,9 @@ def read_env_file(path: Path | str = ENV_FILE) -> dict[str, str]:
 
 
 def progress_log(trial: str, phase: str, detail: str) -> None:
-    PROGRESS.mkdir(parents=True, exist_ok=True)
-    with open(PROGRESS / f"{trial}.log", "a") as f:
+    f = PROGRESS / f"{trial}.log"
+    f.parent.mkdir(parents=True, exist_ok=True)     # a slot name like "final/<arm>" has a subdirectory (ABL-0684)
+    with open(f, "a") as f:
         f.write(f"{utcnow()} | {trial} | {phase} | {detail}\n")
 
 
