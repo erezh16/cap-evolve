@@ -10766,3 +10766,11 @@ Posted 'SkillOpt results' on #919 (skillopt): https://github.com/skillberry-ai/c
 ```json
 {"cp": 1285, "prev_cp": 1284, "prev_commit": "d0e8201c28c91c1ff85bea4ff5173eef975dd9e5", "utc": "2026-10-27T01:28:51Z", "kind": "posted", "phase": "P4", "done_through": "analysis", "next": "P5/results", "arm": "gepa", "counts": {}, "spend": {}, "artifacts": {}, "code": "a0e79d2d197eceebf46d0f8d9d41b232cf857098", "open_decisions": [], "memory": {"used_pct": 1.36, "peak_pct": 44.52, "state": "OK", "stale": false}, "post": "skillopt/results", "url": "https://github.com/skillberry-ai/cap-evolve/issues/919#issuecomment-6431457155"}
 ```
+
+## TA-1286 · 2026-10-27T01:28Z · P4 posted wikiskill · posted
+
+Posted 'WikiSkill results' on #920 (wikiskill): https://github.com/skillberry-ai/cap-evolve/issues/920#issuecomment-6431458564
+
+```json
+{"cp": 1286, "prev_cp": 1285, "prev_commit": "2935db7455a8157fe0565e06fca0ed156f559970", "utc": "2026-10-27T01:28:57Z", "kind": "posted", "phase": "P4", "done_through": "analysis", "next": "P5/results", "arm": "gepa", "counts": {}, "spend": {}, "artifacts": {}, "code": "a0e79d2d197eceebf46d0f8d9d41b232cf857098", "open_decisions": [], "memory": {"used_pct": 1.35, "peak_pct": 44.52, "state": "OK", "stale": false}, "post": "wikiskill/results", "url": "https://github.com/skillberry-ai/cap-evolve/issues/920#issuecomment-6431458564"}
+```
