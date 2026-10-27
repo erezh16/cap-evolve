@@ -49,8 +49,15 @@ def chain_cmd(arm: str) -> str:
     drv = HERE / "run_abl.py"
     log = P.PROGRESS / f"p4_{arm}.out"
     if arm == "abl_cc":
-        sec = (state(arm).get("second_session") or "")       # ABL-0341: one recorded second session
-        cmds = {"search": (f"AW_CC_SECOND_SESSION={sec} " if sec else "") + f"bash {HERE / 'cc' / 'launch_cc.sh'}", "freeze": f"{VC_PY} -I {HERE / 'cc' / 'run_cc.py'} freeze"}
+        st_ = state(arm)
+        sec = (st_.get("second_session") or "")       # ABL-0341: one recorded second session
+        n = st_.get("session")                        # ABL-0462/0465: session 3, after the sandbox fix
+        pre = f"AW_CC_SESSION={int(n)} " if n else (f"AW_CC_SECOND_SESSION={sec} " if sec else "")
+        search = pre + f"bash {HERE / 'cc' / 'launch_cc.sh'}"
+        if n:   # the session's evaluations still count: let the daemon finish them before the freeze (§10.2)
+            # drain even if the CLI exits non-zero (e.g. the turn cap); the step keeps the session's exit code
+            search = f"{{ {search}; r=$?; bash {HERE / 'cc' / 'drain_evald.sh'} && [ $r -eq 0 ]; }}"
+        cmds = {"search": search, "freeze": f"{VC_PY} -I {HERE / 'cc' / 'run_cc.py'} freeze"}
     else:
         cmds = {"search": f"{VC_PY} -I {drv} search --arm {arm}", "freeze": f"{VC_PY} -I {drv} freeze --arm {arm}"}
     cmds["scan"] = f"{P.VENV_PY} -I {EX / 'scripts' / 'scan.py'} {arm}"
@@ -293,10 +300,29 @@ def status() -> int:
     return 0
 
 
+def rearm(arm: str, session: int, reason: str) -> int:
+    """By user decision only (ABL-0462): a held chain runs again from its first step, with a numbered session for
+    abl_cc. The earlier steps' records stay in the ledger; their results are superseded by the new run."""
+    st = state(arm)
+    if alive(arm):
+        raise SystemExit(f"rearm: the {arm} chain is running")
+    st.setdefault("notes", []).append(f"{P.utcnow()} rearmed: {reason}; earlier done {st.get('done', [])}")
+    st["done"] = []
+    for k in ("stopped_by_decision", "failed", "interrupted", "stopped_by_guard"):
+        st.pop(k, None)
+    if session:
+        st["session"] = session
+    P.write_json(D / f"{arm}.json", st)
+    return 0
+
+
 if __name__ == "__main__":
     a = sys.argv
     if a[1] == "mark":
         raise SystemExit(mark(a[2], a[3], int(a[4])))
+    if a[1] == "rearm":
+        raise SystemExit(rearm(a[2], int(a[a.index("--session") + 1]) if "--session" in a else 0,
+                               a[a.index("--reason") + 1]))
     if a[1] == "status":
         raise SystemExit(status())
     raise SystemExit(loop())
