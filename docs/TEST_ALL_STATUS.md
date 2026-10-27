@@ -10742,3 +10742,11 @@ Posted 'ALTK-Evolve results' on #916 (altk): https://github.com/skillberry-ai/ca
 ```json
 {"cp": 1282, "prev_cp": 1281, "prev_commit": "b6b682739c233bf5e608b4dd0a71373ea6fa0e94", "utc": "2026-10-27T01:28:35Z", "kind": "posted", "phase": "P4", "done_through": "analysis", "next": "P5/results", "arm": "gepa", "counts": {}, "spend": {}, "artifacts": {}, "code": "a0e79d2d197eceebf46d0f8d9d41b232cf857098", "open_decisions": [], "memory": {"used_pct": 1.34, "peak_pct": 44.52, "state": "OK", "stale": false}, "post": "altk/results", "url": "https://github.com/skillberry-ai/cap-evolve/issues/916#issuecomment-6431453342"}
 ```
+
+## TA-1283 · 2026-10-27T01:28Z · P4 posted ace · posted
+
+Posted 'ACE results' on #917 (ace): https://github.com/skillberry-ai/cap-evolve/issues/917#issuecomment-6431454599
+
+```json
+{"cp": 1283, "prev_cp": 1282, "prev_commit": "d16b203944669f8fb5d784d016474adce570caf6", "utc": "2026-10-27T01:28:40Z", "kind": "posted", "phase": "P4", "done_through": "analysis", "next": "P5/results", "arm": "gepa", "counts": {}, "spend": {}, "artifacts": {}, "code": "a0e79d2d197eceebf46d0f8d9d41b232cf857098", "open_decisions": [], "memory": {"used_pct": 1.35, "peak_pct": 44.52, "state": "OK", "stale": false}, "post": "ace/results", "url": "https://github.com/skillberry-ai/cap-evolve/issues/917#issuecomment-6431454599"}
+```
