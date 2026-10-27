@@ -3758,3 +3758,11 @@ User decision (2026-10-27), replacing ABL-0361's remote-host plan and ABL-0454's
 ```json
 {"cp": 462, "prev_cp": 461, "prev_commit": "87bab76e99ec38dcb96becc9ec17adb7be9f56ed", "utc": "2026-10-27T00:46:24Z", "kind": "decision", "phase": "P4", "done_through": "P4/abl_cc-session2", "next": "P4: abl_cc waits for the user's sandbox fix on this pod", "arm": "abl_cc", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "3a1b43498b159baf3bdafe53afbf33644e752e2b", "open_decisions": [], "memory": {"used_pct": 4.74, "peak_pct": 50.31, "state": "OK", "stale": false}}
 ```
+
+## ABL-0463 · 2026-10-27T00:56Z · P4 posted abl_tracescore · posted
+
+Posted 'Cap evolve traces and score only hourly status' on #935 (abl_tracescore): https://github.com/skillberry-ai/cap-evolve/issues/935#issuecomment-6431023503
+
+```json
+{"cp": 463, "prev_cp": 462, "prev_commit": "02254fc82a91593ba8c2c946db14e86e940e7a22", "utc": "2026-10-27T00:56:32Z", "kind": "posted", "phase": "P4", "done_through": "P4/abl_cc-session2", "next": "P4: abl_cc waits for the user's sandbox fix on this pod", "arm": "abl_cc", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "02254fc82a91593ba8c2c946db14e86e940e7a22", "open_decisions": [], "memory": {"used_pct": 4.73, "peak_pct": 50.31, "state": "OK", "stale": false}, "post": "abl_tracescore/status_20261027T0056", "url": "https://github.com/skillberry-ai/cap-evolve/issues/935#issuecomment-6431023503"}
+```
