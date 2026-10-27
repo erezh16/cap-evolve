@@ -5887,3 +5887,11 @@ Posted 'AppWorld ablations: summary of all arms' on #934 (abl_notrace): https://
 ```json
 {"cp": 714, "prev_cp": 713, "prev_commit": "4ef569d47c51998fa03d21efe166361f06518889", "utc": "2026-10-27T18:09:05Z", "kind": "posted", "phase": "P9", "done_through": "P9/post", "next": "done", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "72876a3522a3ef3583db1326dfa1e231a2542196", "open_decisions": [], "memory": {"used_pct": 5.13, "peak_pct": 90.19, "state": "OK", "stale": false}, "post": "abl_notrace/final_summary_all_arms", "url": "https://github.com/skillberry-ai/cap-evolve/issues/934#issuecomment-6449893523"}
 ```
+
+## ABL-0715 · 2026-10-27T18:09Z · P9 posted abl_tracescore · posted
+
+Posted 'AppWorld ablations: summary of all arms' on #935 (abl_tracescore): https://github.com/skillberry-ai/cap-evolve/issues/935#issuecomment-6449894627
+
+```json
+{"cp": 715, "prev_cp": 714, "prev_commit": "be32ad50697fcb0d52e678b7bcd3f9d2169acca4", "utc": "2026-10-27T18:09:08Z", "kind": "posted", "phase": "P9", "done_through": "P9/post", "next": "done", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "72876a3522a3ef3583db1326dfa1e231a2542196", "open_decisions": [], "memory": {"used_pct": 5.13, "peak_pct": 90.19, "state": "OK", "stale": false}, "post": "abl_tracescore/final_summary_all_arms", "url": "https://github.com/skillberry-ai/cap-evolve/issues/935#issuecomment-6449894627"}
+```
