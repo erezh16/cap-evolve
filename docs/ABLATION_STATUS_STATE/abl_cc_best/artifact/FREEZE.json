@@ -1,0 +1,11 @@
+{
+ "arm": "abl_cc_best",
+ "source": "abl_cc best-evaluated candidate (workdir c4; the session's own named best)",
+ "decision": "ABL-0485",
+ "tree_sha256": "a2b6434e76a0109310d94d88fb193a0ece2435e98d0a12d443b6cc4a6f31ca71",
+ "seed_tree_sha256": "85a0da9cec2206a7bc683c11d60b5cb0acac7328d43c6e9197324d1e45971f3c",
+ "inert": false,
+ "label": "secondary",
+ "search_val": 0.6735,
+ "evaluation_ticket": "20261027T020308-9485f4"
+}
