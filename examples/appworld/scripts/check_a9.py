@@ -133,6 +133,11 @@ Then, as normal work in this workspace: write the text ok into ./written.txt, an
 
 def run_cli(cand: str, tools: str, shim: str | None = None) -> dict:
     SB.ensure_lint_venv()
+    # an arm that already ran (ABLATIONS abl_cc, ABL-0462): only A9's own usage lines and call files leave its logs
+    u0 = P.AW_STATE / cand / "optimizer_usage.jsonl"
+    usage_before = len(u0.read_text().splitlines()) if u0.exists() else 0
+    calls_before = {f.name for f in (P.AW_STATE / cand / "claude_calls").iterdir()} \
+        if (P.AW_STATE / cand / "claude_calls").is_dir() else set()
     plist = places(cand)
     toks = []
     bash = "Bash" in tools.split(",")
@@ -214,13 +219,26 @@ def run_cli(cand: str, tools: str, shim: str | None = None) -> dict:
             shutil.rmtree(SB.CAPE_RUN / "work" / "a9_ws", ignore_errors=True)
     if P.LEDGER_PREFIX == "CE2":   # REST CP-0041: A9's usage lines leave the arm's search usage log
         u = P.AW_STATE / cand / "optimizer_usage.jsonl"
+        ts = P.utcnow().replace(':', '')
         if u.exists():
             acc = P.AW_STATE / cand / "accept" / "usage"
             acc.mkdir(parents=True, exist_ok=True)
-            os.replace(u, acc / f"a9_{P.utcnow().replace(':', '')}.jsonl")
+            lines = u.read_text().splitlines(keepends=True)
+            (acc / f"a9_{ts}.jsonl").write_text("".join(lines[usage_before:]))
+            if usage_before:
+                P.atomic_write(u, "".join(lines[:usage_before]))
+            else:
+                u.unlink()
         cc = P.AW_STATE / cand / "claude_calls"
         if cc.exists():
-            os.replace(cc, P.AW_STATE / cand / "accept" / f"a9_claude_calls_{P.utcnow().replace(':', '')}")
+            dst = P.AW_STATE / cand / "accept" / f"a9_claude_calls_{ts}"
+            if calls_before:
+                dst.mkdir(parents=True, exist_ok=True)
+                for f in cc.iterdir():
+                    if f.name not in calls_before:
+                        os.replace(f, dst / f.name)
+            else:
+                os.replace(cc, dst)
     res = evaluate(text, toks, r.returncode, ws, cand, bash, wrote)
     if cand == "abl_cc":             # §11 A9 for abl_cc: a request file reached the daemon's spool
         res["eval_request_spooled"] = bool(spooled)
