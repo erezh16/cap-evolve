@@ -11270,3 +11270,13 @@ Next: P5/results.
 ```json
 {"cp": 1337, "prev_cp": 1336, "prev_commit": "c145c48b1563f7cbd6301a81c23bce1f22e51818", "utc": "2026-10-27T19:51:49Z", "kind": "heartbeat", "phase": "P4", "done_through": "analysis", "next": "P5/results", "arm": "gepa", "counts": {}, "spend": {}, "artifacts": {}, "code": "a0e79d2d197eceebf46d0f8d9d41b232cf857098", "open_decisions": [], "memory": {"used_pct": 1.19, "peak_pct": 44.52, "state": "OK", "stale": false}, "runner": "none"}
 ```
+
+## TA-1338 · 2026-10-27T20:16Z · P4 heartbeat · heartbeat
+
+No checkpoint for 25 min. Phase P4, last result: analysis.
+Runner: no runner. Last log line: `2026-10-27T20:16:05Z | memguard | - | sample 1.18% (388 MB) state OK peak 44.5%`.
+Next: P5/results.
+
+```json
+{"cp": 1338, "prev_cp": 1337, "prev_commit": "f2cf4162f61d2a39f4328e0a341713f568ca8135", "utc": "2026-10-27T20:16:51Z", "kind": "heartbeat", "phase": "P4", "done_through": "analysis", "next": "P5/results", "arm": "gepa", "counts": {}, "spend": {}, "artifacts": {}, "code": "a0e79d2d197eceebf46d0f8d9d41b232cf857098", "open_decisions": [], "memory": {"used_pct": 1.18, "peak_pct": 44.52, "state": "OK", "stale": false}, "runner": "none"}
+```
