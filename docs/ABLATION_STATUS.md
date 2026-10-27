@@ -4246,3 +4246,11 @@ Isolation scan (counts only): abl_ref: test-id hits 0; models ['aws/claude-sonne
 ```json
 {"cp": 523, "prev_cp": 522, "prev_commit": "105663a5001bb321da06c96c745aa5e351b24dbd", "utc": "2026-10-27T08:31:30Z", "kind": "result", "phase": "P6", "done_through": "P6/scan", "next": "P7/final", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {"STATE/isolation_scan.json": "864217cd3804e37c510a9542fab42e63f4390d3e215fcab143bcc9621f570bb8"}, "code": "844a9e68eec362ba7da5c8cdc47334d6be7a733a", "open_decisions": [], "memory": {"used_pct": 4.97, "peak_pct": 50.31, "state": "OK", "stale": false}}
 ```
+
+## ABL-0524 · 2026-10-27T08:31Z · P7 final window · phase_start
+
+P7 starts: 168 test_normal x 8 arm(s) (seed, abl_ref, abl_cc, abl_prompt, abl_tools, abl_notrace, abl_tracescore, abl_cc_best) x 2 trials = 2,688 cells in one shuffled order (seed None), 24 global slots; root_full is unlocked by window.py for the window and relocked at its end; only rewards, counters and infra flags are read.
+
+```json
+{"cp": 524, "prev_cp": 523, "prev_commit": "3e12cc6a8f4cc363a553ae002e52ce39937dc8ed", "utc": "2026-10-27T08:31:34Z", "kind": "phase_start", "phase": "P7", "done_through": "P6/scan", "next": "P7/final", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "844a9e68eec362ba7da5c8cdc47334d6be7a733a", "open_decisions": [], "memory": {"used_pct": 4.98, "peak_pct": 50.31, "state": "OK", "stale": false}}
+```
