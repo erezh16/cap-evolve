@@ -1,11 +1,11 @@
 {
  "stage": "plain Claude Code session",
  "arm": "abl_cc",
- "evaluations_done": 3,
- "evaluation_requests": 3,
+ "evaluations_done": 4,
+ "evaluation_requests": 4,
  "refused": 0,
  "lint_rejects": 0,
- "counted_rollouts": 387,
+ "counted_rollouts": 441,
  "cache_hits": 147,
  "evaluations": [
   {
@@ -31,9 +31,17 @@
    "mean_reward": 0.5306,
    "fresh": 147,
    "rollouts_used": 294
+  },
+  {
+   "t": "2026-10-27T01:27:59Z",
+   "cand": "403457a0bdb6",
+   "lint": "ok",
+   "mean_reward": 0.6667,
+   "fresh": 147,
+   "rollouts_used": 441
   }
  ],
- "best_search_score": 0.5986,
+ "best_search_score": 0.6667,
  "best_search_label": "best evaluated mean val = train ∪ dev (147), a fit metric, selection-biased; not necessarily the champion",
  "optimizer": {
   "calls": 3,
