@@ -3902,3 +3902,11 @@ Isolation scan (counts only): abl_cc: test-id hits 0; models ['aws/claude-sonnet
 ```json
 {"cp": 480, "prev_cp": 479, "prev_commit": "40afef62cbc711dff09662e02efa011db93540b4", "utc": "2026-10-27T02:25:40Z", "kind": "result", "phase": "P4", "done_through": "P4/abl_cc-session2", "next": "P4: abl_cc session 3", "arm": "abl_cc", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {"STATE/isolation_scan.json": "0550e05d832f310c42379d12e7891a7e42f546c880b3b7948fedb6596a90ee5e"}, "code": "207e8bf0d67325f704bc94f15631962f4efc52aa", "open_decisions": [], "memory": {"used_pct": 2.4, "peak_pct": 50.31, "state": "OK", "stale": false}}
 ```
+
+## ABL-0481 · 2026-10-27T02:26Z · P4 searches done · phase_done
+
+P4 done: all six chains (search, freeze, isolation scan, reset check) finished. Next: P5 dev diagnostic.
+
+```json
+{"cp": 481, "prev_cp": 480, "prev_commit": "9573e1b919f6877f8ecbb5e9421b94d3d391e0cb", "utc": "2026-10-27T02:26:03Z", "kind": "phase_done", "phase": "P4", "done_through": "P4/searches", "next": "P5/dev", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "207e8bf0d67325f704bc94f15631962f4efc52aa", "open_decisions": [], "memory": {"used_pct": 2.37, "peak_pct": 50.31, "state": "OK", "stale": false}}
+```
