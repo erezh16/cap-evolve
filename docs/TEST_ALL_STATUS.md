@@ -10806,3 +10806,11 @@ Posted 'MIPROv2 results' on #924 (miprov2): https://github.com/skillberry-ai/cap
 ```json
 {"cp": 1290, "prev_cp": 1289, "prev_commit": "5e26e5f188c86c0c6d71a0c0ed8ce40369ae9dad", "utc": "2026-10-27T01:29:21Z", "kind": "posted", "phase": "P4", "done_through": "analysis", "next": "P5/results", "arm": "gepa", "counts": {}, "spend": {}, "artifacts": {}, "code": "a0e79d2d197eceebf46d0f8d9d41b232cf857098", "open_decisions": [], "memory": {"used_pct": 1.34, "peak_pct": 44.52, "state": "OK", "stale": false}, "post": "miprov2/results", "url": "https://github.com/skillberry-ai/cap-evolve/issues/924#issuecomment-6431463634"}
 ```
+
+## TA-1291 · 2026-10-27T01:29Z · P4 posted trace2skill · posted
+
+Posted 'Trace2Skill results' on #925 (trace2skill): https://github.com/skillberry-ai/cap-evolve/issues/925#issuecomment-6431464868
+
+```json
+{"cp": 1291, "prev_cp": 1290, "prev_commit": "fc8f74a8d6c278434fe4b202f6075d1ba06c62ed", "utc": "2026-10-27T01:29:26Z", "kind": "posted", "phase": "P4", "done_through": "analysis", "next": "P5/results", "arm": "gepa", "counts": {}, "spend": {}, "artifacts": {}, "code": "a0e79d2d197eceebf46d0f8d9d41b232cf857098", "open_decisions": [], "memory": {"used_pct": 1.34, "peak_pct": 44.52, "state": "OK", "stale": false}, "post": "trace2skill/results", "url": "https://github.com/skillberry-ai/cap-evolve/issues/925#issuecomment-6431464868"}
+```
