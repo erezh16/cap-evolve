@@ -3750,3 +3750,11 @@ Posted 'Cap-evolve full (reference) hourly status' on #930 (abl_ref): https://gi
 ```json
 {"cp": 461, "prev_cp": 460, "prev_commit": "e63fd2a463a00f9d3d5dbea4637dc409c98068e9", "utc": "2026-10-27T00:43:26Z", "kind": "posted", "phase": "P4", "done_through": "P4/abl_cc-session2", "next": "P4: abl_cc on the remote host; result watcher armed", "arm": "abl_cc", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "3a1b43498b159baf3bdafe53afbf33644e752e2b", "open_decisions": [], "memory": {"used_pct": 4.71, "peak_pct": 50.31, "state": "OK", "stale": false}, "post": "abl_ref/status_20261027T0043", "url": "https://github.com/skillberry-ai/cap-evolve/issues/930#issuecomment-6430845669"}
 ```
+
+## ABL-0462 · 2026-10-27T00:46Z · P4 abl_cc back on this pod · decision
+
+User decision (2026-10-27), replacing ABL-0361's remote-host plan and ABL-0454's Box handoff: the user fixes the sandbox of this pod from outside and signals when done; abl_cc then continues here, run by this session. The Box result watcher (remote/watch_result.sh) is stopped; nothing was uploaded to box:claude-code-ablation/result and nothing was imported. The package in Box is no longer used. abl_cc state is unchanged since ABL-0380: 3 evaluations done (0.4014 seed copy, 0.5986, 0.5306), 294 of 882 rollouts used, 588 left; sessions 1 and 2 ran; no ticket open; evald stopped; the P4 chain is held (stopped_by_decision). When the user signals: verify the fix with the long-command probe through the arm's own shim and sandbox (90 s sleep and 100 s loop must finish), confirm that real bubblewrap is the tier, re-run A9 for abl_cc in its exact launch configuration (planted secrets, 0 leaked), and only then start the one session 3 (same prompt hash, fresh config3, same shim, flags and sandbox, the remaining budget), as ABL-0361 set out for the remote host.
+
+```json
+{"cp": 462, "prev_cp": 461, "prev_commit": "87bab76e99ec38dcb96becc9ec17adb7be9f56ed", "utc": "2026-10-27T00:46:24Z", "kind": "decision", "phase": "P4", "done_through": "P4/abl_cc-session2", "next": "P4: abl_cc waits for the user's sandbox fix on this pod", "arm": "abl_cc", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "3a1b43498b159baf3bdafe53afbf33644e752e2b", "open_decisions": [], "memory": {"used_pct": 4.74, "peak_pct": 50.31, "state": "OK", "stale": false}}
+```
