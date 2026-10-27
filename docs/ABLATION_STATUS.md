@@ -5639,3 +5639,11 @@ P7: `final window (2565/2688 cells)` exited 1; the chain stopped. See AW_STATE/p
 ```json
 {"cp": 684, "prev_cp": 683, "prev_commit": "4acd70bbdad9ba4ef580d576b09b3a9e89c7b422", "utc": "2026-10-27T17:16:33Z", "kind": "error", "phase": "P7", "done_through": "final/2565", "next": "final/cells", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "844a9e68eec362ba7da5c8cdc47334d6be7a733a", "open_decisions": [], "memory": {"used_pct": 2.45, "peak_pct": 90.19, "state": "OK", "stale": false}}
 ```
+
+## ABL-0685 · 2026-10-27T17:18Z · P7 final window resume · repair
+
+Repair for ABL-0684 (final window stopped at 2,565 of 2,688 cells, 17:16 UTC). Cause: plumbing, not an episode. At 17:00:46 the memory guard paused new work (90.2%, resumed 17:01:31 at 84.7%; peak of the run). A waiting slot logs one line under progress/<slot name>.log; the window's slot names are final/<arm>, and the directory progress/final/ did not exist, so the write raised FileNotFoundError, the thread pool re-raised it and the window process exited. No record was lost or altered: 2,565 records on disk, written atomically, each complete; every in-flight episode ended with the process (its cell has no record and runs again). root_full was left unlocked by the crash (the relock runs only when the window completes); relocked by hand at once (mode 000) until the resume. Fix: progress_log creates the log's parent directory (commit on fork/eval-abl). Resume: after_p4.py --from P7: window.py final regenerates the order from the same seed and checks its sha256 against the manifest, checks the frozen artifacts' hashes, unlocks root_full, skips the 2,565 recorded cells and runs the remaining 123; then P8 and P9.
+
+```json
+{"cp": 685, "prev_cp": 684, "prev_commit": "72876a3522a3ef3583db1326dfa1e231a2542196", "utc": "2026-10-27T17:18:45Z", "kind": "repair", "phase": "P7", "done_through": "final/2565", "next": "P7: remaining 123 cells, then P8 and P9", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "72876a3522a3ef3583db1326dfa1e231a2542196", "open_decisions": [], "memory": {"used_pct": 2.31, "peak_pct": 90.19, "state": "OK", "stale": false}}
+```
