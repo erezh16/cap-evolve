@@ -4513,3 +4513,11 @@ Next: final remaining cells.
 ```json
 {"cp": 554, "prev_cp": 553, "prev_commit": "2afa4e1ac6e09abf25ce0711770191a9cf9f9b95", "utc": "2026-10-27T10:07:05Z", "kind": "result", "phase": "P7", "done_through": "final/564", "next": "final/cells", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {"STATE/final/progress.json": "53f77252480544ccb1a960fb1808b23eb9e53e01c938d0b8328f93c86cf75e99"}, "code": "844a9e68eec362ba7da5c8cdc47334d6be7a733a", "open_decisions": [], "memory": {"used_pct": 43.61, "peak_pct": 50.31, "state": "OK", "stale": false}, "window": {"window": "final", "cells_total": 2688, "cells_done": 564, "order_sha256": "100420c984d708820c4d527c7b3217f3dc588e34659b93bd185e684122eeebc8"}}
 ```
+
+## ABL-0555 · 2026-10-27T10:09Z · P7 posted abl_tools · posted
+
+Posted 'Cap evolve tools only hourly status' on #933 (abl_tools): https://github.com/skillberry-ai/cap-evolve/issues/933#issuecomment-6439076124
+
+```json
+{"cp": 555, "prev_cp": 554, "prev_commit": "a1c12fe36a7099e27e8bb9d750983534fe6b799d", "utc": "2026-10-27T10:09:07Z", "kind": "posted", "phase": "P7", "done_through": "final/564", "next": "final/cells", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "844a9e68eec362ba7da5c8cdc47334d6be7a733a", "open_decisions": [], "memory": {"used_pct": 43.59, "peak_pct": 50.31, "state": "OK", "stale": false}, "post": "abl_tools/status_20261027T1009", "url": "https://github.com/skillberry-ai/cap-evolve/issues/933#issuecomment-6439076124"}
+```
