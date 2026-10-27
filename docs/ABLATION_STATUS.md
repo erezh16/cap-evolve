@@ -5647,3 +5647,11 @@ Repair for ABL-0684 (final window stopped at 2,565 of 2,688 cells, 17:16 UTC). C
 ```json
 {"cp": 685, "prev_cp": 684, "prev_commit": "72876a3522a3ef3583db1326dfa1e231a2542196", "utc": "2026-10-27T17:18:45Z", "kind": "repair", "phase": "P7", "done_through": "final/2565", "next": "P7: remaining 123 cells, then P8 and P9", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "72876a3522a3ef3583db1326dfa1e231a2542196", "open_decisions": [], "memory": {"used_pct": 2.31, "peak_pct": 90.19, "state": "OK", "stale": false}}
 ```
+
+## ABL-0686 · 2026-10-27T17:18Z · P7 final window · phase_start
+
+P7 starts: 168 test_normal x 8 arm(s) (seed, abl_ref, abl_cc, abl_prompt, abl_tools, abl_notrace, abl_tracescore, abl_cc_best) x 2 trials = 2,688 cells in one shuffled order (seed 2026102507), 24 global slots; root_full is unlocked by window.py for the window and relocked at its end; only rewards, counters and infra flags are read.
+
+```json
+{"cp": 686, "prev_cp": 685, "prev_commit": "328cc16d03890163aae23f95bad60531a32e790b", "utc": "2026-10-27T17:18:50Z", "kind": "phase_start", "phase": "P7", "done_through": "P6/scan", "next": "P7/final", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "72876a3522a3ef3583db1326dfa1e231a2542196", "open_decisions": [], "memory": {"used_pct": 2.32, "peak_pct": 90.19, "state": "OK", "stale": false}}
+```
