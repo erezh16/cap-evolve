@@ -138,5 +138,13 @@
    "abl_cc_best": "secondary"
   },
   "utc": "2026-10-27T08:27:51Z"
+ },
+ "final_order": {
+  "seed": 2026102507,
+  "sha256": "100420c984d708820c4d527c7b3217f3dc588e34659b93bd185e684122eeebc8",
+  "cells": 2688,
+  "trials": 2,
+  "trial_seeds": "5000 + trial",
+  "infra_retries": 3
  }
 }
