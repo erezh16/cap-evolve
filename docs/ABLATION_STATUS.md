@@ -5783,3 +5783,11 @@ P7 done (2,688 cells; root_full relocked). P8 analysis done (final/analysis.json
 ```json
 {"cp": 701, "prev_cp": 700, "prev_commit": "435ac44060113e469c1ec8080031730c68907570", "utc": "2026-10-27T18:06:10Z", "kind": "phase_done", "phase": "P8", "done_through": "P8/analysis", "next": "P9/post", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {"STATE/final/analysis.json": "536f885eee10870cf05c1cd4a9527874faaa7372cfccbd8551e3f6ac71f1d6ce", "STATE/final/RESULTS.md": "75e1d94b91c04f3540f674baa17aeee41d0190d5be44d511e614de93bc28c18a"}, "code": "72876a3522a3ef3583db1326dfa1e231a2542196", "open_decisions": [], "memory": {"used_pct": 5.03, "peak_pct": 90.19, "state": "OK", "stale": false}}
 ```
+
+## ABL-0702 · 2026-10-27T18:06Z · P9 results drafts · result
+
+P9: the six per-arm results comments drafted in docs/ABLATION_STATUS_STATE/<arm>/RESULTS.md by abl/report_abl.py from final/analysis.json and the pushed state; each passes the content filter when posted.
+
+```json
+{"cp": 702, "prev_cp": 701, "prev_commit": "d481141f059e5c6b6614c18ebaf4a5739a9d0e96", "utc": "2026-10-27T18:06:12Z", "kind": "result", "phase": "P9", "done_through": "P8/analysis", "next": "P9/post", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "72876a3522a3ef3583db1326dfa1e231a2542196", "open_decisions": [], "memory": {"used_pct": 5.03, "peak_pct": 90.19, "state": "OK", "stale": false}}
+```
