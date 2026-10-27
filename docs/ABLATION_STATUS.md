@@ -5791,3 +5791,11 @@ P9: the six per-arm results comments drafted in docs/ABLATION_STATUS_STATE/<arm>
 ```json
 {"cp": 702, "prev_cp": 701, "prev_commit": "d481141f059e5c6b6614c18ebaf4a5739a9d0e96", "utc": "2026-10-27T18:06:12Z", "kind": "result", "phase": "P9", "done_through": "P8/analysis", "next": "P9/post", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "72876a3522a3ef3583db1326dfa1e231a2542196", "open_decisions": [], "memory": {"used_pct": 5.03, "peak_pct": 90.19, "state": "OK", "stale": false}}
 ```
+
+## ABL-0703 · 2026-10-27T18:06Z · P9 posted abl_ref · posted
+
+Posted 'Cap-evolve full (reference) results' on #930 (abl_ref): https://github.com/skillberry-ai/cap-evolve/issues/930#issuecomment-6449834246
+
+```json
+{"cp": 703, "prev_cp": 702, "prev_commit": "77e2242873b5270073c4bf4a9364311b30a71a4b", "utc": "2026-10-27T18:06:15Z", "kind": "posted", "phase": "P9", "done_through": "P8/analysis", "next": "P9/post", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "72876a3522a3ef3583db1326dfa1e231a2542196", "open_decisions": [], "memory": {"used_pct": 4.98, "peak_pct": 90.19, "state": "OK", "stale": false}, "post": "abl_ref/results", "url": "https://github.com/skillberry-ai/cap-evolve/issues/930#issuecomment-6449834246"}
+```
