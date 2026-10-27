@@ -142,8 +142,12 @@ def run_cli(cand: str, tools: str, shim: str | None = None) -> dict:
     toks = []
     bash = "Bash" in tools.split(",")
     os.chmod(P.ROOT_FULL, 0o755)  # unlocked only so a secret can sit in it; the sandbox must hide it on its own
+    parents_unlocked: dict[Path, int] = {}   # finished arms' roots are read-only (reset item 6): opened only to plant
     try:
         for p in plist:
+            if not p.exists() and p.parent.exists() and not os.access(p.parent, os.W_OK):
+                parents_unlocked.setdefault(p.parent, os.stat(p.parent).st_mode & 0o7777)
+                os.chmod(p.parent, parents_unlocked[p.parent] | 0o200)
             p.mkdir(parents=True, exist_ok=True)
             mode = os.stat(p).st_mode & 0o777
             os.chmod(p, mode | 0o200)        # the read-only clones dir: writable only to plant, then restored
@@ -212,6 +216,8 @@ def run_cli(cand: str, tools: str, shim: str | None = None) -> dict:
                 adp = P.RUN_ROOTS[cand] / ".capevolve" / "project" / "adapters"
                 if cand == "abl_cc" and adp.exists() and not any(adp.iterdir()):
                     shutil.rmtree(P.RUN_ROOTS[cand] / ".capevolve", ignore_errors=True)
+        for d, m in parents_unlocked.items():   # the read-only arm roots get their mode back
+            os.chmod(d, m)
         # leave no planting dir behind where a later scaffold would find it (cape_improve's setup keys on capevolve.yaml)
         if P.LEDGER_PREFIX != "CE2" and not (SB.CAPE_RUN / ".capevolve" / "project" / "capevolve.yaml").exists():
             shutil.rmtree(SB.CAPE_RUN / ".capevolve", ignore_errors=True)
