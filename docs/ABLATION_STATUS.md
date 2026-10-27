@@ -3926,3 +3926,11 @@ abl_cc session 3 ended 2026-10-27 02:25 UTC (end_turn, success, 6 top-level turn
 ```json
 {"cp": 483, "prev_cp": 482, "prev_commit": "ece76c96a93706dc1ccad25f0df257ec0cfcc5a1", "utc": "2026-10-27T02:28:32Z", "kind": "decision", "phase": "P6", "done_through": "P5/dev", "next": "P6 paused: user decision on abl_cc's champion before P7", "arm": "abl_cc", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "207e8bf0d67325f704bc94f15631962f4efc52aa", "open_decisions": [], "memory": {"used_pct": 2.43, "peak_pct": 50.31, "state": "OK", "stale": false}}
 ```
+
+## ABL-0484 · 2026-10-27T02:29Z · P6 isolation scan · result
+
+Isolation scan (counts only): abl_ref: test-id hits 0; models ['aws/claude-sonnet-5-5'], other models []; J1 in 11 iteration(s) ok=True; K on the command line ['0.2'] ok=True; abl_cc: test-id hits 0; models ['aws/claude-sonnet-5-5'], other models []; J1 in None iteration(s) ok=None; K on the command line None ok=None; abl_prompt: test-id hits 0; models ['aws/claude-sonnet-5-5'], other models []; J1 in 11 iteration(s) ok=True; K on the command line ['0.2'] ok=True; abl_tools: test-id hits 0; models ['aws/claude-sonnet-5-5'], other models []; J1 in 11 iteration(s) ok=True; K on the command line ['0.2'] ok=True; abl_notrace: test-id hits 0; models ['aws/claude-sonnet-5-5'], other models []; J1 in 6 iteration(s) ok=True; K on the command line ['0.2'] ok=True; abl_tracescore: test-id hits 0; models ['aws/claude-sonnet-5-5'], other models []; J1 in 6 iteration(s) ok=True; K on the command line ['0.2'] ok=True; orchestrating sessions: test-id hits 0 over 61 files. Literal-string counts per location are in the pushed scan file.
+
+```json
+{"cp": 484, "prev_cp": 483, "prev_commit": "b61d562172797601b8cd64876357e8e54745c62a", "utc": "2026-10-27T02:29:46Z", "kind": "result", "phase": "P6", "done_through": "P6/scan", "next": "P7/final", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {"STATE/isolation_scan.json": "c849b59b9191dc74c0608cd8e4914d7a32ff90859c427c2d0a1ff5abc5303d75"}, "code": "207e8bf0d67325f704bc94f15631962f4efc52aa", "open_decisions": [], "memory": {"used_pct": 2.45, "peak_pct": 50.31, "state": "OK", "stale": false}}
+```

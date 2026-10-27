@@ -371,7 +371,7 @@
     "counts": {}
    },
    "arm state (driver)": {
-    "files": 659,
+    "files": 660,
     "files_hit": 1,
     "counts": {
      "root_full": 4,
@@ -725,7 +725,7 @@
     "counts": {}
    },
    "arm state (driver)": {
-    "files": 202,
+    "files": 203,
     "files_hit": 1,
     "counts": {
      "root_full": 3,
@@ -1194,7 +1194,7 @@
     "counts": {}
    },
    "arm state (driver)": {
-    "files": 194,
+    "files": 195,
     "files_hit": 1,
     "counts": {
      "root_full": 4,
@@ -1420,7 +1420,7 @@
     "counts": {}
    },
    "arm state (driver)": {
-    "files": 194,
+    "files": 195,
     "files_hit": 1,
     "counts": {
      "root_full": 3,
@@ -1597,5 +1597,25 @@
    "k_ok": true,
    "imp_all_ok": true
   }
+ },
+ "_orchestrating_sessions": {
+  "files": 61,
+  "counts": {
+   "test_normal": 325,
+   "test_challenge": 149,
+   "root_full": 578,
+   "ground_truth": 120,
+   "answer.json": 95,
+   "compiled_solution": 59,
+   "generate/tasks": 30,
+   "src/appworld/apps": 63,
+   "solution.py": 99,
+   "aw_rest": 289,
+   "aw_ce2": 305,
+   "aw_ce3": 115
+  },
+  "test_id_hits": 0,
+  "scope": "sessions ['12194466-3ee6-4d3d-afab-8ab8118a33cc', '5cbfcce5-92a4-4a7f-931d-8014e8ce1e92']",
+  "out_of_scope_test_id_hits_by_session": {}
  }
 }
