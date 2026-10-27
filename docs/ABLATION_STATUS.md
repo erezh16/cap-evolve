@@ -5655,3 +5655,12 @@ P7 starts: 168 test_normal x 8 arm(s) (seed, abl_ref, abl_cc, abl_prompt, abl_to
 ```json
 {"cp": 686, "prev_cp": 685, "prev_commit": "328cc16d03890163aae23f95bad60531a32e790b", "utc": "2026-10-27T17:18:50Z", "kind": "phase_start", "phase": "P7", "done_through": "P6/scan", "next": "P7/final", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "72876a3522a3ef3583db1326dfa1e231a2542196", "open_decisions": [], "memory": {"used_pct": 2.32, "peak_pct": 90.19, "state": "OK", "stale": false}}
 ```
+
+## ABL-0687 · 2026-10-27T17:23Z · P7 final window · result
+
+final window: 15 cells since the last entry; 2580/2688 done (abl_cc 322, abl_cc_best 321, abl_notrace 325, abl_prompt 321, abl_ref 320, abl_tools 323, abl_tracescore 326, seed 322); infra still missing 0, retries 30.
+Next: final remaining cells.
+
+```json
+{"cp": 687, "prev_cp": 686, "prev_commit": "72bd9d1dab3aa6f9dea1815ea57c3c6bb08169ea", "utc": "2026-10-27T17:23:52Z", "kind": "result", "phase": "P7", "done_through": "final/2580", "next": "final/cells", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {"STATE/final/progress.json": "013301450e934a71e920a0743f6732a7e1fca151c777dd670c43ca2df1ba05ec"}, "code": "72876a3522a3ef3583db1326dfa1e231a2542196", "open_decisions": [], "memory": {"used_pct": 43.61, "peak_pct": 90.19, "state": "OK", "stale": false}, "window": {"window": "final", "cells_total": 2688, "cells_done": 2580, "order_sha256": "100420c984d708820c4d527c7b3217f3dc588e34659b93bd185e684122eeebc8"}}
+```
