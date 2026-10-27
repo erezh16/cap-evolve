@@ -1,7 +1,7 @@
 {
  "window": "final",
  "cells_total": 2688,
- "cells_done": 2687,
+ "cells_done": 2688,
  "per_arm": {
   "abl_tools": {
    "done": 336,
@@ -40,7 +40,7 @@
    "context_exceeded": 0
   },
   "abl_prompt": {
-   "done": 335,
+   "done": 336,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
