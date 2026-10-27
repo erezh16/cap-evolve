@@ -5,7 +5,7 @@
  "evaluation_requests": 4,
  "refused": 0,
  "lint_rejects": 0,
- "counted_rollouts": 441,
+ "counted_rollouts": 511,
  "cache_hits": 147,
  "evaluations": [
   {
