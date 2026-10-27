@@ -56,12 +56,12 @@ def setup(res: dict) -> str:
 
 
 def main_table(res: dict) -> str:
-    L = ["| rank | arm | TGC [95% CI] | SGC | Δ TGC vs seed [95% CI] | Δ SGC vs seed [95% CI] | Holm (78 pairs) | not separable from top | missing |",
-         "|---|---|---|---|---|---|---|---|---|"]
+    L = ["| rank | competitor | arm | TGC [95% CI] | SGC | Δ TGC vs seed [95% CI] | Δ SGC vs seed [95% CI] | Holm (78 pairs) | not separable from top | missing |",
+         "|---|---|---|---|---|---|---|---|---|---|"]
     for r in res["ranking"]:
         a = r["arm"]
         x, v = res["arms"][a], res["vs_seed"].get(a)
-        L.append(f"| {r['rank']} | `{a}` | {pct(x['tgc'])} {ci(r['ci_tgc'])} | {pct(x['sgc'])} | "
+        L.append(f"| {r['rank']} | {P.METHOD_NAMES[a]} | `{a}` | {pct(x['tgc'])} {ci(r['ci_tgc'])} | {pct(x['sgc'])} | "
                  + (f"{pct(v['d_tgc'])} {ci(v['ci_tgc'])} | {pct(v['d_sgc'])} {ci(v['ci_sgc'])} | "
                     f"{'yes' if v['holm_significant_tgc'] else 'no'}" if v else "— | — | —")
                  + f" | {'yes' if r['not_separable_from_top'] else 'no'} | {x['missing']} |")
@@ -203,8 +203,8 @@ def arm_body(res: dict, a: str) -> str:
              f"{x['context_exceeded']}; infra retries {x['infra_retries']}, missing cells {x['missing']}. Cost: n/a (unpriced).",
              f"**Other window (context, not paired):** TGC {pct(e.get('tgc'))} ({e.get('label', 'n/a')}).",
              noise(res)]
-    if a == "seed":
-        parts.insert(5, "**All 13 arms**\n\n" + main_table(res))
+    parts.insert(3, "**All 13 competitors** (ranked by TGC; Δ vs the seed with scenario-clustered bootstrap CIs)\n\n"
+                 + main_table(res))
     if a == "harnesslens":
         parts.insert(3, "**Result for this arm:** HarnessLens's artifact is byte-identical to the seed, so its Δ vs the "
                         "seed is the window's noise check. " + noise(res))
