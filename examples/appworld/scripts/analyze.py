@@ -319,6 +319,16 @@ def main() -> int:
         res["k2_vs_k1"] = {"d_tgc": res["arms"][a2]["tgc"] - res["arms"][a1]["tgc"], "ci_tgc": ct,
                            "d_sgc": res["arms"][a2]["sgc"] - res["arms"][a1]["sgc"], "ci_sgc": cs,
                            "label": "ce2_k2 − ce2_k1; one search seed each: K is confounded with search randomness"}
+    for x in getattr(P, "EXTRA_WINDOW_ARMS", ()):   # ABL-0485: window-only arm, secondary; not in the Holm family
+        ct, cs = bootstrap(cells, x, "seed", scen, rng)
+        res["vs_seed"][x] = {"d_tgc": res["arms"][x]["tgc"] - res["arms"]["seed"]["tgc"], "ci_tgc": ct,
+                             "d_sgc": res["arms"][x]["sgc"] - res["arms"]["seed"]["sgc"], "ci_sgc": cs}
+        for other in ("abl_ref", "abl_cc"):
+            ct, cs = bootstrap(cells, x, other, scen, rng)
+            res.setdefault("pairs", {})[f"{x} − {other}"] = {
+                "d_tgc": res["arms"][x]["tgc"] - res["arms"][other]["tgc"], "ci_tgc": ct,
+                "d_sgc": res["arms"][x]["sgc"] - res["arms"][other]["sgc"], "ci_sgc": cs,
+                "label": "secondary (ABL-0485): abl_cc's best-evaluated candidate, chosen after its search"}
     res["search"] = {c: search_side(c) for c in P.CANDIDATES}
     if cross:   # the reused arms' search-side rows, from CE2's pushed analysis (aggregates only)
         ce2a = P.read_json(P.CE2_PUSHED / "final" / "analysis.json", {}) or {}

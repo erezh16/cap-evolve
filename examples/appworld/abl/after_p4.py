@@ -68,6 +68,10 @@ def p6_gate() -> tuple[bool, str]:
 def main() -> int:
     st = P.read_json(ST, {}) or {}
     done = set(st.get("done", []))
+    if "--from" in sys.argv:                    # re-run this phase and every later one (e.g. after a re-freeze)
+        start = sys.argv[sys.argv.index("--from") + 1]
+        done = {ph for ph in done if ph < start}
+        P.write_json(ST, {"done": sorted(done)})
     (P.AW_STATE / "AFTER_P4.pid").write_text(str(os.getpid()))
 
     def mark(ph):

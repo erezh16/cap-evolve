@@ -26,7 +26,8 @@ A, M, pct, ci = R.A, R.M, R.pct, R.ci
 
 LABEL = {"abl_ref": "reference", "abl_cc": "plain Claude Code: no cap-evolve loop, instructions or gate",
          "abl_prompt": "prompt only", "abl_tools": "tools only", "abl_notrace": "no traces (evaluation feedback only)",
-         "abl_tracescore": "traces + score only (no evaluation feedback)"}
+         "abl_tracescore": "traces + score only (no evaluation feedback)",
+         "abl_cc_best": "abl_cc's best-evaluated candidate (secondary, ABL-0485)"}
 ACTIVATE = {
     "abl_ref": "`capabilities: [system-prompt, tools]`, `protected_paths: [default, \"memory/*\"]`, `AW_ABL_FEEDBACK=full`",
     "abl_prompt": "`capabilities: [system-prompt]`, `protected_paths: [default, \"memory/*\", \"tools/*\"]`, `AW_ABL_FEEDBACK=full`",
@@ -41,7 +42,8 @@ ACTIVATE = {
 def main_table(c: str) -> str:
     a = A["arms"]
     rows = ["| arm | TGC | SGC | Δ TGC vs abl_ref [95% CI] | Δ TGC vs seed [95% CI] | missing |", "|---|---|---|---|---|---|"]
-    for arm in ("seed", "abl_ref", c) if c != "abl_ref" else ("seed", "abl_ref"):
+    extra = tuple(x for x in getattr(P, "EXTRA_WINDOW_ARMS", ()) if c == "abl_cc" and x in a)
+    for arm in (("seed", "abl_ref", c) + extra) if c != "abl_ref" else ("seed", "abl_ref"):
         vr = (A.get("vs_ref") or {}).get(arm)
         vs = (A.get("vs_seed") or {}).get(arm)
         b = "**" if arm == c else ""
