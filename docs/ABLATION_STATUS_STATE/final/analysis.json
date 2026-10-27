@@ -1,0 +1,3425 @@
+{
+ "n_tasks": 168,
+ "n_scenarios": 56,
+ "trials": 2,
+ "cells": 2688,
+ "bootstrap_resamples": 10000,
+ "arms": {
+  "seed": {
+   "tgc": 0.3630952380952381,
+   "sgc": 0.14285714285714285,
+   "tgc_drop_missing": 0.3630952380952381,
+   "sgc_drop_missing": 0.14285714285714285,
+   "by_difficulty": {
+    "Easy": {
+     "n": 57,
+     "tgc": 0.5789473684210527,
+     "n_scenarios": 19,
+     "sgc": 0.34210526315789475
+    },
+    "Medium": {
+     "n": 48,
+     "tgc": 0.2916666666666667,
+     "n_scenarios": 16,
+     "sgc": 0.03125
+    },
+    "Hard": {
+     "n": 63,
+     "tgc": 0.2222222222222222,
+     "n_scenarios": 21,
+     "sgc": 0.047619047619047616
+    }
+   },
+   "episodes": 336,
+   "missing": 0,
+   "prompt_tokens_per_task": 90522.27083333333,
+   "completion_tokens_per_task": 5883.738095238095,
+   "steps_per_task": 12.55952380952381,
+   "episode_seconds": 247.4970238095238,
+   "step_cap_hits": 3,
+   "token_cap_hits": 0,
+   "context_exceeded": 0,
+   "collateral_damage": 13,
+   "complete_task_not_called": 3,
+   "fs_probe": 0,
+   "max_prompt_tokens": 19459,
+   "trials_agree_share": 0.7261904761904762,
+   "prompt_tokens_p50": 62498.0,
+   "prompt_tokens_p90": 184800.0,
+   "completion_tokens_p50": 4129.0,
+   "completion_tokens_p90": 13170.0,
+   "episode_seconds_p50": 175.6,
+   "episode_seconds_p90": 541.1,
+   "pass_fraction": 0.6787372330547818,
+   "infra_retries": 1
+  },
+  "abl_ref": {
+   "tgc": 0.625,
+   "sgc": 0.4017857142857143,
+   "tgc_drop_missing": 0.625,
+   "sgc_drop_missing": 0.4017857142857143,
+   "by_difficulty": {
+    "Easy": {
+     "n": 57,
+     "tgc": 0.8070175438596491,
+     "n_scenarios": 19,
+     "sgc": 0.6842105263157895
+    },
+    "Medium": {
+     "n": 48,
+     "tgc": 0.6979166666666666,
+     "n_scenarios": 16,
+     "sgc": 0.40625
+    },
+    "Hard": {
+     "n": 63,
+     "tgc": 0.40476190476190477,
+     "n_scenarios": 21,
+     "sgc": 0.14285714285714285
+    }
+   },
+   "episodes": 336,
+   "missing": 0,
+   "prompt_tokens_per_task": 136415.1875,
+   "completion_tokens_per_task": 7323.315476190476,
+   "steps_per_task": 11.104166666666666,
+   "episode_seconds": 303.00416666666666,
+   "step_cap_hits": 7,
+   "token_cap_hits": 0,
+   "context_exceeded": 0,
+   "collateral_damage": 10,
+   "complete_task_not_called": 7,
+   "fs_probe": 0,
+   "max_prompt_tokens": 29121,
+   "trials_agree_share": 0.75,
+   "prompt_tokens_p50": 85556.0,
+   "prompt_tokens_p90": 265091.0,
+   "completion_tokens_p50": 4422.0,
+   "completion_tokens_p90": 17000.0,
+   "episode_seconds_p50": 187.2,
+   "episode_seconds_p90": 706.0,
+   "pass_fraction": 0.8138347260909935,
+   "infra_retries": 9
+  },
+  "abl_cc": {
+   "tgc": 0.32142857142857145,
+   "sgc": 0.08928571428571429,
+   "tgc_drop_missing": 0.32142857142857145,
+   "sgc_drop_missing": 0.08928571428571429,
+   "by_difficulty": {
+    "Easy": {
+     "n": 57,
+     "tgc": 0.543859649122807,
+     "n_scenarios": 19,
+     "sgc": 0.21052631578947367
+    },
+    "Medium": {
+     "n": 48,
+     "tgc": 0.20833333333333334,
+     "n_scenarios": 16,
+     "sgc": 0.0
+    },
+    "Hard": {
+     "n": 63,
+     "tgc": 0.20634920634920634,
+     "n_scenarios": 21,
+     "sgc": 0.047619047619047616
+    }
+   },
+   "episodes": 336,
+   "missing": 0,
+   "prompt_tokens_per_task": 99849.94345238095,
+   "completion_tokens_per_task": 6519.922619047619,
+   "steps_per_task": 13.110119047619047,
+   "episode_seconds": 273.8095238095238,
+   "step_cap_hits": 6,
+   "token_cap_hits": 0,
+   "context_exceeded": 0,
+   "collateral_damage": 12,
+   "complete_task_not_called": 6,
+   "fs_probe": 0,
+   "max_prompt_tokens": 21752,
+   "trials_agree_share": 0.7023809523809523,
+   "prompt_tokens_p50": 65603.0,
+   "prompt_tokens_p90": 220433.0,
+   "completion_tokens_p50": 4262.0,
+   "completion_tokens_p90": 14725.0,
+   "episode_seconds_p50": 178.0,
+   "episode_seconds_p90": 577.6,
+   "pass_fraction": 0.6796657381615598,
+   "infra_retries": 3
+  },
+  "abl_prompt": {
+   "tgc": 0.6160714285714286,
+   "sgc": 0.4375,
+   "tgc_drop_missing": 0.6160714285714286,
+   "sgc_drop_missing": 0.4375,
+   "by_difficulty": {
+    "Easy": {
+     "n": 57,
+     "tgc": 0.7631578947368421,
+     "n_scenarios": 19,
+     "sgc": 0.6842105263157895
+    },
+    "Medium": {
+     "n": 48,
+     "tgc": 0.6458333333333334,
+     "n_scenarios": 16,
+     "sgc": 0.34375
+    },
+    "Hard": {
+     "n": 63,
+     "tgc": 0.4603174603174603,
+     "n_scenarios": 21,
+     "sgc": 0.2857142857142857
+    }
+   },
+   "episodes": 336,
+   "missing": 0,
+   "prompt_tokens_per_task": 132536.9255952381,
+   "completion_tokens_per_task": 6141.2827380952385,
+   "steps_per_task": 11.863095238095237,
+   "episode_seconds": 259.84464285714284,
+   "step_cap_hits": 2,
+   "token_cap_hits": 0,
+   "context_exceeded": 0,
+   "collateral_damage": 9,
+   "complete_task_not_called": 2,
+   "fs_probe": 0,
+   "max_prompt_tokens": 24983,
+   "trials_agree_share": 0.8035714285714286,
+   "prompt_tokens_p50": 106787.0,
+   "prompt_tokens_p90": 244671.0,
+   "completion_tokens_p50": 4589.0,
+   "completion_tokens_p90": 12672.0,
+   "episode_seconds_p50": 198.5,
+   "episode_seconds_p90": 533.0,
+   "pass_fraction": 0.8115134633240483,
+   "infra_retries": 0
+  },
+  "abl_tools": {
+   "tgc": 0.5119047619047619,
+   "sgc": 0.29464285714285715,
+   "tgc_drop_missing": 0.5119047619047619,
+   "sgc_drop_missing": 0.29464285714285715,
+   "by_difficulty": {
+    "Easy": {
+     "n": 57,
+     "tgc": 0.7807017543859649,
+     "n_scenarios": 19,
+     "sgc": 0.6052631578947368
+    },
+    "Medium": {
+     "n": 48,
+     "tgc": 0.4791666666666667,
+     "n_scenarios": 16,
+     "sgc": 0.25
+    },
+    "Hard": {
+     "n": 63,
+     "tgc": 0.29365079365079366,
+     "n_scenarios": 21,
+     "sgc": 0.047619047619047616
+    }
+   },
+   "episodes": 336,
+   "missing": 0,
+   "prompt_tokens_per_task": 83355.47321428571,
+   "completion_tokens_per_task": 5556.577380952381,
+   "steps_per_task": 11.178571428571429,
+   "episode_seconds": 233.55982142857144,
+   "step_cap_hits": 1,
+   "token_cap_hits": 0,
+   "context_exceeded": 0,
+   "collateral_damage": 9,
+   "complete_task_not_called": 1,
+   "fs_probe": 0,
+   "max_prompt_tokens": 23277,
+   "trials_agree_share": 0.7261904761904762,
+   "prompt_tokens_p50": 56223.0,
+   "prompt_tokens_p90": 175621.0,
+   "completion_tokens_p50": 3977.0,
+   "completion_tokens_p90": 11986.0,
+   "episode_seconds_p50": 168.6,
+   "episode_seconds_p90": 483.6,
+   "pass_fraction": 0.7479108635097493,
+   "infra_retries": 3
+  },
+  "abl_notrace": {
+   "tgc": 0.49702380952380953,
+   "sgc": 0.32142857142857145,
+   "tgc_drop_missing": 0.49702380952380953,
+   "sgc_drop_missing": 0.32142857142857145,
+   "by_difficulty": {
+    "Easy": {
+     "n": 57,
+     "tgc": 0.7982456140350878,
+     "n_scenarios": 19,
+     "sgc": 0.631578947368421
+    },
+    "Medium": {
+     "n": 48,
+     "tgc": 0.4479166666666667,
+     "n_scenarios": 16,
+     "sgc": 0.28125
+    },
+    "Hard": {
+     "n": 63,
+     "tgc": 0.2619047619047619,
+     "n_scenarios": 21,
+     "sgc": 0.07142857142857142
+    }
+   },
+   "episodes": 336,
+   "missing": 0,
+   "prompt_tokens_per_task": 114467.83928571429,
+   "completion_tokens_per_task": 8393.78869047619,
+   "steps_per_task": 11.05952380952381,
+   "episode_seconds": 349.70416666666665,
+   "step_cap_hits": 4,
+   "token_cap_hits": 0,
+   "context_exceeded": 0,
+   "collateral_damage": 6,
+   "complete_task_not_called": 4,
+   "fs_probe": 0,
+   "max_prompt_tokens": 21307,
+   "trials_agree_share": 0.7678571428571429,
+   "prompt_tokens_p50": 79453.0,
+   "prompt_tokens_p90": 231537.0,
+   "completion_tokens_p50": 5962.0,
+   "completion_tokens_p90": 16417.0,
+   "episode_seconds_p50": 251.4,
+   "episode_seconds_p90": 724.2,
+   "pass_fraction": 0.7163416898792944,
+   "infra_retries": 6
+  },
+  "abl_tracescore": {
+   "tgc": 0.4523809523809524,
+   "sgc": 0.23214285714285715,
+   "tgc_drop_missing": 0.4523809523809524,
+   "sgc_drop_missing": 0.23214285714285715,
+   "by_difficulty": {
+    "Easy": {
+     "n": 57,
+     "tgc": 0.7017543859649122,
+     "n_scenarios": 19,
+     "sgc": 0.4473684210526316
+    },
+    "Medium": {
+     "n": 48,
+     "tgc": 0.4583333333333333,
+     "n_scenarios": 16,
+     "sgc": 0.25
+    },
+    "Hard": {
+     "n": 63,
+     "tgc": 0.2222222222222222,
+     "n_scenarios": 21,
+     "sgc": 0.023809523809523808
+    }
+   },
+   "episodes": 336,
+   "missing": 0,
+   "prompt_tokens_per_task": 94979.18452380953,
+   "completion_tokens_per_task": 5462.372023809524,
+   "steps_per_task": 7.949404761904762,
+   "episode_seconds": 233.29285714285714,
+   "step_cap_hits": 0,
+   "token_cap_hits": 0,
+   "context_exceeded": 0,
+   "collateral_damage": 11,
+   "complete_task_not_called": 0,
+   "fs_probe": 0,
+   "max_prompt_tokens": 24102,
+   "trials_agree_share": 0.7619047619047619,
+   "prompt_tokens_p50": 66615.0,
+   "prompt_tokens_p90": 188164.0,
+   "completion_tokens_p50": 3616.0,
+   "completion_tokens_p90": 12142.0,
+   "episode_seconds_p50": 158.0,
+   "episode_seconds_p90": 504.1,
+   "pass_fraction": 0.7075208913649025,
+   "infra_retries": 7
+  },
+  "abl_cc_best": {
+   "tgc": 0.5565476190476191,
+   "sgc": 0.375,
+   "tgc_drop_missing": 0.5565476190476191,
+   "sgc_drop_missing": 0.375,
+   "by_difficulty": {
+    "Easy": {
+     "n": 57,
+     "tgc": 0.7631578947368421,
+     "n_scenarios": 19,
+     "sgc": 0.6578947368421053
+    },
+    "Medium": {
+     "n": 48,
+     "tgc": 0.6041666666666666,
+     "n_scenarios": 16,
+     "sgc": 0.3125
+    },
+    "Hard": {
+     "n": 63,
+     "tgc": 0.3333333333333333,
+     "n_scenarios": 21,
+     "sgc": 0.16666666666666666
+    }
+   },
+   "episodes": 336,
+   "missing": 0,
+   "prompt_tokens_per_task": 95183.47916666667,
+   "completion_tokens_per_task": 5786.979166666667,
+   "steps_per_task": 10.470238095238095,
+   "episode_seconds": 251.18422619047618,
+   "step_cap_hits": 0,
+   "token_cap_hits": 0,
+   "context_exceeded": 0,
+   "collateral_damage": 8,
+   "complete_task_not_called": 0,
+   "fs_probe": 0,
+   "max_prompt_tokens": 20708,
+   "trials_agree_share": 0.7321428571428571,
+   "prompt_tokens_p50": 74603.0,
+   "prompt_tokens_p90": 191953.0,
+   "completion_tokens_p50": 4557.0,
+   "completion_tokens_p90": 11565.0,
+   "episode_seconds_p50": 191.9,
+   "episode_seconds_p90": 503.3,
+   "pass_fraction": 0.7780872794800371,
+   "infra_retries": 1
+  }
+ },
+ "vs_seed": {
+  "abl_ref": {
+   "d_tgc": 0.2619047619047619,
+   "ci_tgc": [
+    0.193452380952381,
+    0.33035714285714285
+   ],
+   "d_sgc": 0.25892857142857145,
+   "ci_sgc": [
+    0.16964285714285712,
+    0.3571428571428571
+   ],
+   "cross_window": false
+  },
+  "abl_cc": {
+   "d_tgc": -0.04166666666666663,
+   "ci_tgc": [
+    -0.10119047619047619,
+    0.014880952380952384
+   ],
+   "d_sgc": -0.05357142857142856,
+   "ci_sgc": [
+    -0.125,
+    0.017857142857142863
+   ],
+   "cross_window": false
+  },
+  "abl_prompt": {
+   "d_tgc": 0.2529761904761905,
+   "ci_tgc": [
+    0.17261904761904762,
+    0.3363095238095238
+   ],
+   "d_sgc": 0.29464285714285715,
+   "ci_sgc": [
+    0.1964285714285714,
+    0.3928571428571429
+   ],
+   "cross_window": false
+  },
+  "abl_tools": {
+   "d_tgc": 0.14880952380952378,
+   "ci_tgc": [
+    0.07440476190476186,
+    0.22619047619047616
+   ],
+   "d_sgc": 0.1517857142857143,
+   "ci_sgc": [
+    0.04464285714285715,
+    0.25892857142857145
+   ],
+   "cross_window": false
+  },
+  "abl_notrace": {
+   "d_tgc": 0.13392857142857145,
+   "ci_tgc": [
+    0.041666666666666685,
+    0.22619047619047622
+   ],
+   "d_sgc": 0.1785714285714286,
+   "ci_sgc": [
+    0.07142857142857145,
+    0.2857142857142857
+   ],
+   "cross_window": false
+  },
+  "abl_tracescore": {
+   "d_tgc": 0.0892857142857143,
+   "ci_tgc": [
+    0.01785714285714285,
+    0.16666666666666663
+   ],
+   "d_sgc": 0.0892857142857143,
+   "ci_sgc": [
+    -0.008928571428571425,
+    0.1964285714285714
+   ],
+   "cross_window": false
+  },
+  "abl_cc_best": {
+   "d_tgc": 0.193452380952381,
+   "ci_tgc": [
+    0.11904761904761901,
+    0.2708333333333333
+   ],
+   "d_sgc": 0.23214285714285715,
+   "ci_sgc": [
+    0.13392857142857142,
+    0.3392857142857143
+   ]
+  }
+ },
+ "vs_ref": {
+  "abl_cc": {
+   "d_tgc": -0.30357142857142855,
+   "ci_tgc": [
+    -0.38095238095238093,
+    -0.22619047619047616
+   ],
+   "d_sgc": -0.3125,
+   "ci_sgc": [
+    -0.4285714285714286,
+    -0.19642857142857142
+   ],
+   "p_raw": 0.0,
+   "p_holm": 0.0
+  },
+  "abl_prompt": {
+   "d_tgc": -0.008928571428571397,
+   "ci_tgc": [
+    -0.06547619047619047,
+    0.04761904761904767
+   ],
+   "d_sgc": 0.0357142857142857,
+   "ci_sgc": [
+    -0.05357142857142855,
+    0.125
+   ],
+   "p_raw": 0.7794,
+   "p_holm": 0.7794
+  },
+  "abl_tools": {
+   "d_tgc": -0.11309523809523814,
+   "ci_tgc": [
+    -0.1875,
+    -0.044642857142857095
+   ],
+   "d_sgc": -0.10714285714285715,
+   "ci_sgc": [
+    -0.21428571428571425,
+    -0.008928571428571397
+   ],
+   "p_raw": 0.0004,
+   "p_holm": 0.0008
+  },
+  "abl_notrace": {
+   "d_tgc": -0.12797619047619047,
+   "ci_tgc": [
+    -0.19940476190476186,
+    -0.059523809523809534
+   ],
+   "d_sgc": -0.08035714285714285,
+   "ci_sgc": [
+    -0.1875,
+    0.0267857142857143
+   ],
+   "p_raw": 0.0,
+   "p_holm": 0.0
+  },
+  "abl_tracescore": {
+   "d_tgc": -0.17261904761904762,
+   "ci_tgc": [
+    -0.22619047619047616,
+    -0.12202380952380948
+   ],
+   "d_sgc": -0.16964285714285715,
+   "ci_sgc": [
+    -0.2589285714285714,
+    -0.0892857142857143
+   ],
+   "p_raw": 0.0,
+   "p_holm": 0.0
+  }
+ },
+ "pairs": {
+  "abl_prompt − abl_tools": {
+   "d_tgc": 0.10416666666666674,
+   "ci_tgc": [
+    0.03273809523809523,
+    0.17559523809523814
+   ],
+   "d_sgc": 0.14285714285714285,
+   "ci_sgc": [
+    0.0625,
+    0.2321428571428571
+   ],
+   "label": "secondary; one search seed each"
+  },
+  "abl_notrace − abl_tracescore": {
+   "d_tgc": 0.04464285714285715,
+   "ci_tgc": [
+    -0.008928571428571452,
+    0.10119047619047616
+   ],
+   "d_sgc": 0.0892857142857143,
+   "ci_sgc": [
+    0.01785714285714285,
+    0.16964285714285715
+   ],
+   "label": "secondary; one search seed each"
+  },
+  "abl_cc_best − abl_ref": {
+   "d_tgc": -0.06845238095238093,
+   "ci_tgc": [
+    -0.13095238095238093,
+    -0.008928571428571397
+   ],
+   "d_sgc": -0.0267857142857143,
+   "ci_sgc": [
+    -0.125,
+    0.07142857142857145
+   ],
+   "label": "secondary (ABL-0485): abl_cc's best-evaluated candidate, chosen after its search"
+  },
+  "abl_cc_best − abl_cc": {
+   "d_tgc": 0.23511904761904762,
+   "ci_tgc": [
+    0.1607142857142857,
+    0.31249999999999994
+   ],
+   "d_sgc": 0.2857142857142857,
+   "ci_sgc": [
+    0.1875,
+    0.38392857142857145
+   ],
+   "label": "secondary (ABL-0485): abl_cc's best-evaluated candidate, chosen after its search"
+  }
+ },
+ "search": {
+  "abl_ref": {
+   "optimizer": {
+    "calls": 11,
+    "errors": 5,
+    "models": [
+     "aws/claude-sonnet-5-5"
+    ],
+    "input_tokens": 4823827,
+    "output_tokens": 906919,
+    "cache_read_tokens": 69384831,
+    "cache_write_tokens": 4437449,
+    "proxy_usd": 34.81,
+    "cli_reported_usd": 87.03,
+    "per_role": {
+     "optimizer/cand_0001": {
+      "calls": 1,
+      "in": 630721,
+      "out": 119020,
+      "cache_read": 6688766,
+      "cache_write": 582096
+     },
+     "optimizer/cand_0002": {
+      "calls": 1,
+      "in": 0,
+      "out": 0,
+      "cache_read": 0,
+      "cache_write": 0
+     },
+     "optimizer/cand_0003": {
+      "calls": 1,
+      "in": 116965,
+      "out": 5091,
+      "cache_read": 1135186,
+      "cache_write": 96615
+     },
+     "optimizer/cand_0004": {
+      "calls": 1,
+      "in": 0,
+      "out": 0,
+      "cache_read": 0,
+      "cache_write": 0
+     },
+     "optimizer/cand_0005": {
+      "calls": 1,
+      "in": 0,
+      "out": 0,
+      "cache_read": 0,
+      "cache_write": 0
+     },
+     "optimizer/cand_0006": {
+      "calls": 1,
+      "in": 0,
+      "out": 0,
+      "cache_read": 0,
+      "cache_write": 0
+     },
+     "optimizer/cand_0007": {
+      "calls": 1,
+      "in": 962894,
+      "out": 221498,
+      "cache_read": 19123473,
+      "cache_write": 880244
+     },
+     "optimizer/cand_0008": {
+      "calls": 1,
+      "in": 1125310,
+      "out": 184153,
+      "cache_read": 14825256,
+      "cache_write": 1047198
+     },
+     "optimizer/cand_0009": {
+      "calls": 1,
+      "in": 715164,
+      "out": 99212,
+      "cache_read": 7784265,
+      "cache_write": 663349
+     },
+     "optimizer/cand_0010": {
+      "calls": 1,
+      "in": 913394,
+      "out": 200474,
+      "cache_read": 14016309,
+      "cache_write": 842041
+     },
+     "optimizer/cand_0011": {
+      "calls": 1,
+      "in": 359379,
+      "out": 77471,
+      "cache_read": 5811576,
+      "cache_write": 325906
+     }
+    },
+    "call_seconds_mean": 697.5,
+    "call_seconds_p90": 1251.93,
+    "optimizer_seconds_total": 7672
+   },
+   "rollouts": {
+    "counted": 882,
+    "cache_hits": 996,
+    "lint_reject_batches": 0,
+    "infra": 1,
+    "mean_reward_counted": 0.7608,
+    "prompt_tokens": {
+     "mean": 72590.6,
+     "p50": 59252.0,
+     "p90": 134232.0
+    },
+    "completion_tokens": {
+     "mean": 3895.6,
+     "p50": 3075.0,
+     "p90": 7654.0
+    },
+    "max_prompt_tokens": 29901,
+    "steps": {
+     "mean": 7.5,
+     "p50": 6.0,
+     "p90": 13.0
+    },
+    "episode_seconds": {
+     "mean": 211.3,
+     "p50": 168.9,
+     "p90": 415.7
+    },
+    "step_cap_hits": 0,
+    "token_cap_hits": 0,
+    "context_exceeded": 0,
+    "search_wall": [
+     "2026-10-25T16:52:41Z",
+     "2026-10-26T13:52:13Z"
+    ]
+   },
+   "champion_search_score": null,
+   "champion_search_label": null,
+   "time_to_champion": null,
+   "freeze": {
+    "arm": "abl_ref",
+    "k_se": 0.2,
+    "switches": {
+     "AW_ABL_FEEDBACK": "full"
+    },
+    "best_id": "cand_0010",
+    "inert": false,
+    "label": "",
+    "tree_sha256": "54a4f3799ae887761849d5b96e7da0f0e0e4939000ac18c528c60b5d652790c2",
+    "run_candidate_tree_sha256": "54a4f3799ae887761849d5b96e7da0f0e0e4939000ac18c528c60b5d652790c2",
+    "seed_tree_sha256": "85a0da9cec2206a7bc683c11d60b5cb0acac7328d43c6e9197324d1e45971f3c",
+    "best_val": 0.8299319727891157,
+    "imp": {
+     "1_code_pin": {
+      "ok": true,
+      "cap_evolve_file": "/workspace/worktrees/abl-main/core/cap_evolve/__init__.py",
+      "head": "75b3bcdd0fc7292f9717f2b6dcb720f147452df9",
+      "clean": true
+     },
+     "2_skills_pin": {
+      "ok": true,
+      "resolved": "/workspace/worktrees/abl-main/skills",
+      "home_skills_exists": true
+     },
+     "3_spec_k_se": {
+      "ok": true,
+      "value": 0.2,
+      "expected": 0.2
+     },
+     "switch_spec": {
+      "ok": true,
+      "capabilities": "[system-prompt, tools]",
+      "protected": "[default, \"memory/*\"]"
+     },
+     "switch_env": {
+      "ok": false,
+      "env": {
+       "AW_ABL_FEEDBACK": null,
+       "AW_ABL_TOOLS_LINT": null
+      },
+      "expected": {
+       "AW_ABL_FEEDBACK": "full"
+      },
+      "note": "the launcher's environment (os.environ of this check) must carry exactly the arm's switches"
+     },
+     "3_run_config": {
+      "ok": true,
+      "run_config_events": 2,
+      "spec_k_se": 0.2
+     },
+     "4_effective_k_se": {
+      "ok": true,
+      "hill_climb_cmdlines": 2,
+      "k_se_values": [
+       "0.2"
+      ],
+      "expected": 0.2,
+      "gate_events_mentioning_k_se": 0
+     },
+     "5_instructions": {
+      "ok": true,
+      "iterations": 11,
+      "diff_only_insertion": true,
+      "detail": [
+       {
+        "cid": "cand_0001",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       },
+       {
+        "cid": "cand_0002",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       },
+       {
+        "cid": "cand_0003",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       },
+       {
+        "cid": "cand_0004",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       },
+       {
+        "cid": "cand_0005",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       },
+       {
+        "cid": "cand_0006",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       },
+       {
+        "cid": "cand_0007",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       },
+       {
+        "cid": "cand_0008",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       },
+       {
+        "cid": "cand_0009",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       },
+       {
+        "cid": "cand_0010",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       },
+       {
+        "cid": "cand_0011",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       }
+      ]
+     },
+     "6_guidance": {
+      "ok": true,
+      "detail": [
+       {
+        "cid": "cand_0001",
+        "tools": "sha_match",
+        "system-prompt": "sha_match",
+        "diagnose": "head_match"
+       },
+       {
+        "cid": "cand_0002",
+        "tools": "sha_match",
+        "system-prompt": "sha_match",
+        "diagnose": "head_match"
+       },
+       {
+        "cid": "cand_0003",
+        "tools": "sha_match",
+        "system-prompt": "sha_match",
+        "diagnose": "head_match"
+       },
+       {
+        "cid": "cand_0004",
+        "tools": "sha_match",
+        "system-prompt": "sha_match",
+        "diagnose": "head_match"
+       },
+       {
+        "cid": "cand_0005",
+        "tools": "sha_match",
+        "system-prompt": "sha_match",
+        "diagnose": "head_match"
+       },
+       {
+        "cid": "cand_0006",
+        "tools": "sha_match",
+        "system-prompt": "sha_match",
+        "diagnose": "head_match"
+       },
+       {
+        "cid": "cand_0007",
+        "tools": "sha_match",
+        "system-prompt": "sha_match",
+        "diagnose": "head_match"
+       },
+       {
+        "cid": "cand_0008",
+        "tools": "sha_match",
+        "system-prompt": "sha_match",
+        "diagnose": "head_match"
+       },
+       {
+        "cid": "cand_0009",
+        "tools": "sha_match",
+        "system-prompt": "sha_match",
+        "diagnose": "head_match"
+       },
+       {
+        "cid": "cand_0010",
+        "tools": "sha_match",
+        "system-prompt": "sha_match",
+        "diagnose": "head_match"
+       },
+       {
+        "cid": "cand_0011",
+        "tools": "sha_match",
+        "system-prompt": "sha_match",
+        "diagnose": "head_match"
+       }
+      ],
+      "expected": {
+       "tools": "sha_match",
+       "system-prompt": "sha_match",
+       "diagnose": "head_match"
+      },
+      "pinned_sha256": {
+       "tools": "d6a5ec65e46113a64124cfc2e842a95a493e1c13679f380361ec4447a69d994a",
+       "system-prompt": "4df6976688391b55e783b9cb6631523718c40a4ed4fbee77d71d450d105de51b",
+       "diagnose": "ef0eb2fc3cf971eae63f377b3e318664d617e17c2aa70de79557e825b24ff677"
+      }
+     },
+     "7_hill_climb_script": {
+      "ok": true,
+      "path": "/workspace/worktrees/abl-main/skills/algorithms/hill-climb/scripts/run.py",
+      "sha256": "4951ca13ea8aeaadb0d6e259dd74070fb59cd9a41c4a166f32acf8138567e141"
+     },
+     "all_ok": false
+    }
+   },
+   "iterations": [
+    {
+     "candidate": "cand_0001",
+     "accept": true,
+     "val": 0.6258503401360545,
+     "parent_val": 0.4013605442176871,
+     "indecisive": false,
+     "kind": "step",
+     "delta": 0.2245,
+     "se": 0.0481,
+     "k_se": 0.2,
+     "bar": 0.0096,
+     "would_pass_k1": true
+    },
+    {
+     "candidate": "cand_0002",
+     "accept": false,
+     "val": 0.6258503401360545,
+     "parent_val": 0.6258503401360545,
+     "indecisive": true,
+     "kind": "optimizer_failed"
+    },
+    {
+     "candidate": "cand_0003",
+     "accept": false,
+     "val": 0.6258503401360545,
+     "parent_val": 0.6258503401360545,
+     "indecisive": true,
+     "kind": "optimizer_failed"
+    },
+    {
+     "candidate": "cand_0004",
+     "accept": false,
+     "val": 0.6258503401360545,
+     "parent_val": 0.6258503401360545,
+     "indecisive": true,
+     "kind": "optimizer_failed"
+    },
+    {
+     "candidate": "cand_0005",
+     "accept": false,
+     "val": 0.6258503401360545,
+     "parent_val": 0.6258503401360545,
+     "indecisive": true,
+     "kind": "optimizer_failed"
+    },
+    {
+     "candidate": "cand_0006",
+     "accept": false,
+     "val": 0.6258503401360545,
+     "parent_val": 0.6258503401360545,
+     "indecisive": true,
+     "kind": "optimizer_failed"
+    },
+    {
+     "candidate": "cand_0007",
+     "accept": true,
+     "val": 0.7142857142857143,
+     "parent_val": 0.6258503401360545,
+     "indecisive": false,
+     "kind": "step",
+     "delta": 0.0884,
+     "se": 0.0482,
+     "k_se": 0.2,
+     "bar": 0.0096,
+     "would_pass_k1": true
+    },
+    {
+     "candidate": "cand_0008",
+     "accept": true,
+     "val": 0.7808219178082192,
+     "parent_val": 0.7142857142857143,
+     "indecisive": false,
+     "kind": "step",
+     "delta": 0.0685,
+     "se": 0.0397,
+     "k_se": 0.2,
+     "bar": 0.0079,
+     "would_pass_k1": true
+    },
+    {
+     "candidate": "cand_0009",
+     "accept": true,
+     "val": 0.8095238095238095,
+     "parent_val": 0.7808219178082192,
+     "indecisive": false,
+     "kind": "step",
+     "delta": 0.0342,
+     "se": 0.0356,
+     "k_se": 0.2,
+     "bar": 0.0071,
+     "would_pass_k1": false
+    },
+    {
+     "candidate": "cand_0010",
+     "accept": true,
+     "val": 0.8299319727891157,
+     "parent_val": 0.8095238095238095,
+     "indecisive": false,
+     "kind": "step",
+     "delta": 0.0204,
+     "se": 0.0327,
+     "k_se": 0.2,
+     "bar": 0.0065,
+     "would_pass_k1": false
+    },
+    {
+     "candidate": "cand_0011",
+     "accept": false,
+     "val": 0.8095238095238095,
+     "parent_val": 0.8299319727891157,
+     "indecisive": false,
+     "kind": "step",
+     "delta": -0.0204,
+     "se": 0.0297,
+     "k_se": 0.2,
+     "bar": 0.0059,
+     "would_pass_k1": false
+    }
+   ],
+   "iterations_done": 6,
+   "iterations_consumed": 11,
+   "accepted": 5,
+   "best_search_score": 0.8299319727891157,
+   "metric_calls": 1764,
+   "capevolve_optimizer_usd": 87.03133675000002,
+   "model_usage_by_model": {
+    "aws/claude-sonnet-5-5": {
+     "in": 386378,
+     "out": 906919,
+     "cache_read": 69384831,
+     "cache_write": 4437449,
+     "results": 7
+    }
+   },
+   "k_se": 0.2
+  },
+  "abl_cc": {
+   "optimizer": {
+    "calls": 4,
+    "errors": 0,
+    "models": [
+     "aws/claude-sonnet-5-5"
+    ],
+    "input_tokens": 1667605,
+    "output_tokens": 245279,
+    "cache_read_tokens": 25255525,
+    "cache_write_tokens": 1558299,
+    "proxy_usd": 11.62,
+    "cli_reported_usd": 29.05,
+    "per_role": {
+     "optimizer/work": {
+      "calls": 4,
+      "in": 1667605,
+      "out": 245279,
+      "cache_read": 25255525,
+      "cache_write": 1558299
+     }
+    },
+    "call_seconds_mean": 1300.0,
+    "call_seconds_p90": 4383.22,
+    "optimizer_seconds_total": 5200
+   },
+   "rollouts": {
+    "counted": 588,
+    "cache_hits": 261,
+    "lint_reject_batches": 0,
+    "infra": 0,
+    "mean_reward_counted": 0.6173,
+    "prompt_tokens": {
+     "mean": 71275.9,
+     "p50": 61806.0,
+     "p90": 121189.0
+    },
+    "completion_tokens": {
+     "mean": 4246.7,
+     "p50": 3572.0,
+     "p90": 7472.0
+    },
+    "max_prompt_tokens": 19879,
+    "steps": {
+     "mean": 8.9,
+     "p50": 8.0,
+     "p90": 14.0
+    },
+    "episode_seconds": {
+     "mean": 193.9,
+     "p50": 162.3,
+     "p90": 337.7
+    },
+    "step_cap_hits": 0,
+    "token_cap_hits": 0,
+    "context_exceeded": 0,
+    "search_wall": [
+     "2026-10-26T14:02:44Z",
+     "2026-10-27T02:24:48Z"
+    ]
+   },
+   "champion_search_score": null,
+   "champion_search_label": null,
+   "time_to_champion": null,
+   "freeze": {
+    "arm": "abl_cc",
+    "tree_sha256": "85a0da9cec2206a7bc683c11d60b5cb0acac7328d43c6e9197324d1e45971f3c",
+    "seed_tree_sha256": "85a0da9cec2206a7bc683c11d60b5cb0acac7328d43c6e9197324d1e45971f3c",
+    "inert": true,
+    "label": "inert",
+    "deviation": null,
+    "champion_evaluated": true,
+    "champion_val": 0.4014,
+    "best_evaluated": {
+     "cand": "a2b6434e76a0",
+     "val": 0.6735
+    },
+    "sessions": 4,
+    "session_stop": "success",
+    "workdir_commits": 1
+   },
+   "iterations": null,
+   "iterations_done": null,
+   "iterations_consumed": null,
+   "accepted": null,
+   "best_search_score": 0.6735,
+   "metric_calls": null,
+   "capevolve_optimizer_usd": null,
+   "model_usage_by_model": {
+    "aws/claude-sonnet-5-5": {
+     "in": 109306,
+     "out": 245279,
+     "cache_read": 25255525,
+     "cache_write": 1558299,
+     "results": 4
+    }
+   },
+   "k_se": null,
+   "evaluations_done": 5,
+   "evaluation_requests": 5,
+   "refused": 0,
+   "lint_rejects": 0,
+   "evaluations": [
+    {
+     "t": "2026-10-26T13:53:53Z",
+     "cand": "85a0da9cec22",
+     "lint": "ok",
+     "mean_reward": 0.4014,
+     "fresh": 0,
+     "rollouts_used": 0
+    },
+    {
+     "t": "2026-10-26T14:01:00Z",
+     "cand": "f65494a6b0e5",
+     "lint": "ok",
+     "mean_reward": 0.5986,
+     "fresh": 147,
+     "rollouts_used": 147
+    },
+    {
+     "t": "2026-10-26T15:01:02Z",
+     "cand": "1c44a0ccba68",
+     "lint": "ok",
+     "mean_reward": 0.5306,
+     "fresh": 147,
+     "rollouts_used": 294
+    },
+    {
+     "t": "2026-10-27T01:27:59Z",
+     "cand": "403457a0bdb6",
+     "lint": "ok",
+     "mean_reward": 0.6667,
+     "fresh": 147,
+     "rollouts_used": 441
+    },
+    {
+     "t": "2026-10-27T02:03:12Z",
+     "cand": "a2b6434e76a0",
+     "lint": "ok",
+     "mean_reward": 0.6735,
+     "fresh": 147,
+     "rollouts_used": 588
+    }
+   ],
+   "max_turns": 1200
+  },
+  "abl_prompt": {
+   "optimizer": {
+    "calls": 11,
+    "errors": 5,
+    "models": [
+     "aws/claude-sonnet-5-5"
+    ],
+    "input_tokens": 4571125,
+    "output_tokens": 706930,
+    "cache_read_tokens": 53797578,
+    "cache_write_tokens": 4200268,
+    "proxy_usd": 29.07,
+    "cli_reported_usd": 72.68,
+    "per_role": {
+     "optimizer/cand_0001": {
+      "calls": 1,
+      "in": 1288379,
+      "out": 153306,
+      "cache_read": 13625292,
+      "cache_write": 1211989
+     },
+     "optimizer/cand_0002": {
+      "calls": 1,
+      "in": 123909,
+      "out": 2681,
+      "cache_read": 588390,
+      "cache_write": 104399
+     },
+     "optimizer/cand_0003": {
+      "calls": 1,
+      "in": 42257,
+      "out": 320,
+      "cache_read": 105635,
+      "cache_write": 22877
+     },
+     "optimizer/cand_0004": {
+      "calls": 1,
+      "in": 0,
+      "out": 0,
+      "cache_read": 0,
+      "cache_write": 0
+     },
+     "optimizer/cand_0005": {
+      "calls": 1,
+      "in": 0,
+      "out": 0,
+      "cache_read": 0,
+      "cache_write": 0
+     },
+     "optimizer/cand_0006": {
+      "calls": 1,
+      "in": 0,
+      "out": 0,
+      "cache_read": 0,
+      "cache_write": 0
+     },
+     "optimizer/cand_0007": {
+      "calls": 1,
+      "in": 768760,
+      "out": 129629,
+      "cache_read": 8619240,
+      "cache_write": 706045
+     },
+     "optimizer/cand_0008": {
+      "calls": 1,
+      "in": 919961,
+      "out": 160168,
+      "cache_read": 10850549,
+      "cache_write": 862612
+     },
+     "optimizer/cand_0009": {
+      "calls": 1,
+      "in": 560336,
+      "out": 99860,
+      "cache_read": 10300995,
+      "cache_write": 514079
+     },
+     "optimizer/cand_0010": {
+      "calls": 1,
+      "in": 538648,
+      "out": 98021,
+      "cache_read": 6530303,
+      "cache_write": 479117
+     },
+     "optimizer/cand_0011": {
+      "calls": 1,
+      "in": 328875,
+      "out": 62945,
+      "cache_read": 3177174,
+      "cache_write": 299150
+     }
+    },
+    "call_seconds_mean": 549.7,
+    "call_seconds_p90": 879.19,
+    "optimizer_seconds_total": 6047
+   },
+   "rollouts": {
+    "counted": 882,
+    "cache_hits": 996,
+    "lint_reject_batches": 0,
+    "infra": 0,
+    "mean_reward_counted": 0.7551,
+    "prompt_tokens": {
+     "mean": 95612.1,
+     "p50": 85520.0,
+     "p90": 156009.0
+    },
+    "completion_tokens": {
+     "mean": 4054.3,
+     "p50": 3556.0,
+     "p90": 7105.0
+    },
+    "max_prompt_tokens": 21374,
+    "steps": {
+     "mean": 9.5,
+     "p50": 9.0,
+     "p90": 15.0
+    },
+    "episode_seconds": {
+     "mean": 226.1,
+     "p50": 192.6,
+     "p90": 376.8
+    },
+    "step_cap_hits": 0,
+    "token_cap_hits": 0,
+    "context_exceeded": 0,
+    "search_wall": [
+     "2026-10-25T16:46:13Z",
+     "2026-10-26T12:25:40Z"
+    ]
+   },
+   "champion_search_score": null,
+   "champion_search_label": null,
+   "time_to_champion": null,
+   "freeze": {
+    "arm": "abl_prompt",
+    "k_se": 0.2,
+    "switches": {
+     "AW_ABL_FEEDBACK": "full"
+    },
+    "best_id": "cand_0008",
+    "inert": false,
+    "label": "",
+    "tree_sha256": "f979201fc17b5e55725b5032b411a486af837b470997a1bbfb40a818ba850eaa",
+    "run_candidate_tree_sha256": "f979201fc17b5e55725b5032b411a486af837b470997a1bbfb40a818ba850eaa",
+    "seed_tree_sha256": "85a0da9cec2206a7bc683c11d60b5cb0acac7328d43c6e9197324d1e45971f3c",
+    "best_val": 0.8163265306122449,
+    "imp": {
+     "1_code_pin": {
+      "ok": true,
+      "cap_evolve_file": "/workspace/worktrees/abl-main/core/cap_evolve/__init__.py",
+      "head": "75b3bcdd0fc7292f9717f2b6dcb720f147452df9",
+      "clean": true
+     },
+     "2_skills_pin": {
+      "ok": true,
+      "resolved": "/workspace/worktrees/abl-main/skills",
+      "home_skills_exists": true
+     },
+     "3_spec_k_se": {
+      "ok": true,
+      "value": 0.2,
+      "expected": 0.2
+     },
+     "switch_spec": {
+      "ok": true,
+      "capabilities": "[system-prompt]",
+      "protected": "[default, \"memory/*\", \"tools/*\"]"
+     },
+     "switch_env": {
+      "ok": false,
+      "env": {
+       "AW_ABL_FEEDBACK": null,
+       "AW_ABL_TOOLS_LINT": null
+      },
+      "expected": {
+       "AW_ABL_FEEDBACK": "full"
+      },
+      "note": "the launcher's environment (os.environ of this check) must carry exactly the arm's switches"
+     },
+     "3_run_config": {
+      "ok": true,
+      "run_config_events": 2,
+      "spec_k_se": 0.2
+     },
+     "4_effective_k_se": {
+      "ok": true,
+      "hill_climb_cmdlines": 2,
+      "k_se_values": [
+       "0.2"
+      ],
+      "expected": 0.2,
+      "gate_events_mentioning_k_se": 0
+     },
+     "5_instructions": {
+      "ok": true,
+      "iterations": 11,
+      "diff_only_insertion": true,
+      "detail": [
+       {
+        "cid": "cand_0001",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       },
+       {
+        "cid": "cand_0002",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       },
+       {
+        "cid": "cand_0003",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       },
+       {
+        "cid": "cand_0004",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       },
+       {
+        "cid": "cand_0005",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       },
+       {
+        "cid": "cand_0006",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       },
+       {
+        "cid": "cand_0007",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       },
+       {
+        "cid": "cand_0008",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       },
+       {
+        "cid": "cand_0009",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       },
+       {
+        "cid": "cand_0010",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       },
+       {
+        "cid": "cand_0011",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       }
+      ]
+     },
+     "6_guidance": {
+      "ok": true,
+      "detail": [
+       {
+        "cid": "cand_0001",
+        "tools": "missing",
+        "system-prompt": "sha_match",
+        "diagnose": "head_match"
+       },
+       {
+        "cid": "cand_0002",
+        "tools": "missing",
+        "system-prompt": "sha_match",
+        "diagnose": "head_match"
+       },
+       {
+        "cid": "cand_0003",
+        "tools": "missing",
+        "system-prompt": "sha_match",
+        "diagnose": "head_match"
+       },
+       {
+        "cid": "cand_0004",
+        "tools": "missing",
+        "system-prompt": "sha_match",
+        "diagnose": "head_match"
+       },
+       {
+        "cid": "cand_0005",
+        "tools": "missing",
+        "system-prompt": "sha_match",
+        "diagnose": "head_match"
+       },
+       {
+        "cid": "cand_0006",
+        "tools": "missing",
+        "system-prompt": "sha_match",
+        "diagnose": "head_match"
+       },
+       {
+        "cid": "cand_0007",
+        "tools": "missing",
+        "system-prompt": "sha_match",
+        "diagnose": "head_match"
+       },
+       {
+        "cid": "cand_0008",
+        "tools": "missing",
+        "system-prompt": "sha_match",
+        "diagnose": "head_match"
+       },
+       {
+        "cid": "cand_0009",
+        "tools": "missing",
+        "system-prompt": "sha_match",
+        "diagnose": "head_match"
+       },
+       {
+        "cid": "cand_0010",
+        "tools": "missing",
+        "system-prompt": "sha_match",
+        "diagnose": "head_match"
+       },
+       {
+        "cid": "cand_0011",
+        "tools": "missing",
+        "system-prompt": "sha_match",
+        "diagnose": "head_match"
+       }
+      ],
+      "expected": {
+       "tools": "missing",
+       "system-prompt": "sha_match",
+       "diagnose": "head_match"
+      },
+      "pinned_sha256": {
+       "tools": "d6a5ec65e46113a64124cfc2e842a95a493e1c13679f380361ec4447a69d994a",
+       "system-prompt": "4df6976688391b55e783b9cb6631523718c40a4ed4fbee77d71d450d105de51b",
+       "diagnose": "ef0eb2fc3cf971eae63f377b3e318664d617e17c2aa70de79557e825b24ff677"
+      }
+     },
+     "7_hill_climb_script": {
+      "ok": true,
+      "path": "/workspace/worktrees/abl-main/skills/algorithms/hill-climb/scripts/run.py",
+      "sha256": "4951ca13ea8aeaadb0d6e259dd74070fb59cd9a41c4a166f32acf8138567e141"
+     },
+     "all_ok": false
+    }
+   },
+   "iterations": [
+    {
+     "candidate": "cand_0001",
+     "accept": true,
+     "val": 0.6598639455782312,
+     "parent_val": 0.4013605442176871,
+     "indecisive": false,
+     "kind": "step",
+     "delta": 0.2585,
+     "se": 0.0474,
+     "k_se": 0.2,
+     "bar": 0.0095,
+     "would_pass_k1": true
+    },
+    {
+     "candidate": "cand_0002",
+     "accept": false,
+     "val": 0.6598639455782312,
+     "parent_val": 0.6598639455782312,
+     "indecisive": true,
+     "kind": "optimizer_failed"
+    },
+    {
+     "candidate": "cand_0003",
+     "accept": false,
+     "val": 0.6598639455782312,
+     "parent_val": 0.6598639455782312,
+     "indecisive": true,
+     "kind": "optimizer_failed"
+    },
+    {
+     "candidate": "cand_0004",
+     "accept": false,
+     "val": 0.6598639455782312,
+     "parent_val": 0.6598639455782312,
+     "indecisive": true,
+     "kind": "optimizer_failed"
+    },
+    {
+     "candidate": "cand_0005",
+     "accept": false,
+     "val": 0.6598639455782312,
+     "parent_val": 0.6598639455782312,
+     "indecisive": true,
+     "kind": "optimizer_failed"
+    },
+    {
+     "candidate": "cand_0006",
+     "accept": false,
+     "val": 0.6598639455782312,
+     "parent_val": 0.6598639455782312,
+     "indecisive": true,
+     "kind": "optimizer_failed"
+    },
+    {
+     "candidate": "cand_0007",
+     "accept": true,
+     "val": 0.7687074829931972,
+     "parent_val": 0.6598639455782312,
+     "indecisive": false,
+     "kind": "step",
+     "delta": 0.1088,
+     "se": 0.0422,
+     "k_se": 0.2,
+     "bar": 0.0084,
+     "would_pass_k1": true
+    },
+    {
+     "candidate": "cand_0008",
+     "accept": true,
+     "val": 0.8163265306122449,
+     "parent_val": 0.7687074829931972,
+     "indecisive": false,
+     "kind": "step",
+     "delta": 0.0476,
+     "se": 0.0352,
+     "k_se": 0.2,
+     "bar": 0.007,
+     "would_pass_k1": true
+    },
+    {
+     "candidate": "cand_0009",
+     "accept": false,
+     "val": 0.7551020408163265,
+     "parent_val": 0.8163265306122449,
+     "indecisive": false,
+     "kind": "step",
+     "delta": -0.0612,
+     "se": 0.0401,
+     "k_se": 0.2,
+     "bar": 0.008,
+     "would_pass_k1": false
+    },
+    {
+     "candidate": "cand_0010",
+     "accept": false,
+     "val": 0.7755102040816326,
+     "parent_val": 0.8163265306122449,
+     "indecisive": false,
+     "kind": "step",
+     "delta": -0.0408,
+     "se": 0.0372,
+     "k_se": 0.2,
+     "bar": 0.0074,
+     "would_pass_k1": false
+    },
+    {
+     "candidate": "cand_0011",
+     "accept": false,
+     "val": 0.7551020408163265,
+     "parent_val": 0.8163265306122449,
+     "indecisive": false,
+     "kind": "step",
+     "delta": -0.0612,
+     "se": 0.0401,
+     "k_se": 0.2,
+     "bar": 0.008,
+     "would_pass_k1": false
+    }
+   ],
+   "iterations_done": 6,
+   "iterations_consumed": 11,
+   "accepted": 3,
+   "best_search_score": 0.8163265306122449,
+   "metric_calls": 1764,
+   "capevolve_optimizer_usd": 72.67799900000003,
+   "model_usage_by_model": {
+    "aws/claude-sonnet-5-5": {
+     "in": 370857,
+     "out": 706930,
+     "cache_read": 53797578,
+     "cache_write": 4200268,
+     "results": 8
+    }
+   },
+   "k_se": 0.2
+  },
+  "abl_tools": {
+   "optimizer": {
+    "calls": 11,
+    "errors": 5,
+    "models": [
+     "aws/claude-sonnet-5-5"
+    ],
+    "input_tokens": 5545978,
+    "output_tokens": 828741,
+    "cache_read_tokens": 63863733,
+    "cache_write_tokens": 5035829,
+    "proxy_usd": 34.67,
+    "cli_reported_usd": 86.68,
+    "per_role": {
+     "optimizer/cand_0001": {
+      "calls": 1,
+      "in": 376321,
+      "out": 59718,
+      "cache_read": 5022047,
+      "cache_write": 334719
+     },
+     "optimizer/cand_0002": {
+      "calls": 1,
+      "in": 0,
+      "out": 0,
+      "cache_read": 0,
+      "cache_write": 0
+     },
+     "optimizer/cand_0003": {
+      "calls": 1,
+      "in": 58684,
+      "out": 608,
+      "cache_read": 97877,
+      "cache_write": 38734
+     },
+     "optimizer/cand_0004": {
+      "calls": 1,
+      "in": 0,
+      "out": 0,
+      "cache_read": 0,
+      "cache_write": 0
+     },
+     "optimizer/cand_0005": {
+      "calls": 1,
+      "in": 0,
+      "out": 0,
+      "cache_read": 0,
+      "cache_write": 0
+     },
+     "optimizer/cand_0006": {
+      "calls": 1,
+      "in": 0,
+      "out": 0,
+      "cache_read": 0,
+      "cache_write": 0
+     },
+     "optimizer/cand_0007": {
+      "calls": 1,
+      "in": 390581,
+      "out": 49018,
+      "cache_read": 3453808,
+      "cache_write": 356825
+     },
+     "optimizer/cand_0008": {
+      "calls": 1,
+      "in": 1246366,
+      "out": 196624,
+      "cache_read": 14355088,
+      "cache_write": 1061020
+     },
+     "optimizer/cand_0009": {
+      "calls": 1,
+      "in": 1283699,
+      "out": 199176,
+      "cache_read": 16873761,
+      "cache_write": 1203748
+     },
+     "optimizer/cand_0010": {
+      "calls": 1,
+      "in": 1128830,
+      "out": 149595,
+      "cache_read": 10172735,
+      "cache_write": 1061713
+     },
+     "optimizer/cand_0011": {
+      "calls": 1,
+      "in": 1061497,
+      "out": 174002,
+      "cache_read": 13888417,
+      "cache_write": 979070
+     }
+    },
+    "call_seconds_mean": 634.1,
+    "call_seconds_p90": 1269.94,
+    "optimizer_seconds_total": 6975
+   },
+   "rollouts": {
+    "counted": 882,
+    "cache_hits": 996,
+    "lint_reject_batches": 0,
+    "infra": 0,
+    "mean_reward_counted": 0.5329,
+    "prompt_tokens": {
+     "mean": 55326.9,
+     "p50": 40309.0,
+     "p90": 115201.0
+    },
+    "completion_tokens": {
+     "mean": 3962.3,
+     "p50": 2932.0,
+     "p90": 7921.0
+    },
+    "max_prompt_tokens": 17016,
+    "steps": {
+     "mean": 8.5,
+     "p50": 7.0,
+     "p90": 16.0
+    },
+    "episode_seconds": {
+     "mean": 222.8,
+     "p50": 169.0,
+     "p90": 424.8
+    },
+    "step_cap_hits": 0,
+    "token_cap_hits": 0,
+    "context_exceeded": 0,
+    "search_wall": [
+     "2026-10-25T16:41:07Z",
+     "2026-10-26T12:29:37Z"
+    ]
+   },
+   "champion_search_score": null,
+   "champion_search_label": null,
+   "time_to_champion": null,
+   "freeze": {
+    "arm": "abl_tools",
+    "k_se": 0.2,
+    "switches": {
+     "AW_ABL_FEEDBACK": "full",
+     "AW_ABL_TOOLS_LINT": "1"
+    },
+    "best_id": "cand_0011",
+    "inert": false,
+    "label": "",
+    "tree_sha256": "d78dcf6138cd9f41c9ec819aaa43c0c78f6b68bdc983d04058ba64b8731c0434",
+    "run_candidate_tree_sha256": "d78dcf6138cd9f41c9ec819aaa43c0c78f6b68bdc983d04058ba64b8731c0434",
+    "seed_tree_sha256": "85a0da9cec2206a7bc683c11d60b5cb0acac7328d43c6e9197324d1e45971f3c",
+    "best_val": 0.6938775510204082,
+    "imp": {
+     "1_code_pin": {
+      "ok": true,
+      "cap_evolve_file": "/workspace/worktrees/abl-main/core/cap_evolve/__init__.py",
+      "head": "75b3bcdd0fc7292f9717f2b6dcb720f147452df9",
+      "clean": true
+     },
+     "2_skills_pin": {
+      "ok": true,
+      "resolved": "/workspace/worktrees/abl-main/skills",
+      "home_skills_exists": true
+     },
+     "3_spec_k_se": {
+      "ok": true,
+      "value": 0.2,
+      "expected": 0.2
+     },
+     "switch_spec": {
+      "ok": true,
+      "capabilities": "[tools]",
+      "protected": "[default, \"memory/*\", \"policy/*\"]"
+     },
+     "switch_env": {
+      "ok": false,
+      "env": {
+       "AW_ABL_FEEDBACK": null,
+       "AW_ABL_TOOLS_LINT": null
+      },
+      "expected": {
+       "AW_ABL_FEEDBACK": "full",
+       "AW_ABL_TOOLS_LINT": "1"
+      },
+      "note": "the launcher's environment (os.environ of this check) must carry exactly the arm's switches"
+     },
+     "3_run_config": {
+      "ok": true,
+      "run_config_events": 2,
+      "spec_k_se": 0.2
+     },
+     "4_effective_k_se": {
+      "ok": true,
+      "hill_climb_cmdlines": 2,
+      "k_se_values": [
+       "0.2"
+      ],
+      "expected": 0.2,
+      "gate_events_mentioning_k_se": 0
+     },
+     "5_instructions": {
+      "ok": true,
+      "iterations": 11,
+      "diff_only_insertion": true,
+      "detail": [
+       {
+        "cid": "cand_0001",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       },
+       {
+        "cid": "cand_0002",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       },
+       {
+        "cid": "cand_0003",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       },
+       {
+        "cid": "cand_0004",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       },
+       {
+        "cid": "cand_0005",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       },
+       {
+        "cid": "cand_0006",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       },
+       {
+        "cid": "cand_0007",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       },
+       {
+        "cid": "cand_0008",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       },
+       {
+        "cid": "cand_0009",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       },
+       {
+        "cid": "cand_0010",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       },
+       {
+        "cid": "cand_0011",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       }
+      ]
+     },
+     "6_guidance": {
+      "ok": true,
+      "detail": [
+       {
+        "cid": "cand_0001",
+        "tools": "sha_match",
+        "system-prompt": "missing",
+        "diagnose": "head_match"
+       },
+       {
+        "cid": "cand_0002",
+        "tools": "sha_match",
+        "system-prompt": "missing",
+        "diagnose": "head_match"
+       },
+       {
+        "cid": "cand_0003",
+        "tools": "sha_match",
+        "system-prompt": "missing",
+        "diagnose": "head_match"
+       },
+       {
+        "cid": "cand_0004",
+        "tools": "sha_match",
+        "system-prompt": "missing",
+        "diagnose": "head_match"
+       },
+       {
+        "cid": "cand_0005",
+        "tools": "sha_match",
+        "system-prompt": "missing",
+        "diagnose": "head_match"
+       },
+       {
+        "cid": "cand_0006",
+        "tools": "sha_match",
+        "system-prompt": "missing",
+        "diagnose": "head_match"
+       },
+       {
+        "cid": "cand_0007",
+        "tools": "sha_match",
+        "system-prompt": "missing",
+        "diagnose": "head_match"
+       },
+       {
+        "cid": "cand_0008",
+        "tools": "sha_match",
+        "system-prompt": "missing",
+        "diagnose": "head_match"
+       },
+       {
+        "cid": "cand_0009",
+        "tools": "sha_match",
+        "system-prompt": "missing",
+        "diagnose": "head_match"
+       },
+       {
+        "cid": "cand_0010",
+        "tools": "sha_match",
+        "system-prompt": "missing",
+        "diagnose": "head_match"
+       },
+       {
+        "cid": "cand_0011",
+        "tools": "sha_match",
+        "system-prompt": "missing",
+        "diagnose": "head_match"
+       }
+      ],
+      "expected": {
+       "tools": "sha_match",
+       "system-prompt": "missing",
+       "diagnose": "head_match"
+      },
+      "pinned_sha256": {
+       "tools": "d6a5ec65e46113a64124cfc2e842a95a493e1c13679f380361ec4447a69d994a",
+       "system-prompt": "4df6976688391b55e783b9cb6631523718c40a4ed4fbee77d71d450d105de51b",
+       "diagnose": "ef0eb2fc3cf971eae63f377b3e318664d617e17c2aa70de79557e825b24ff677"
+      }
+     },
+     "7_hill_climb_script": {
+      "ok": true,
+      "path": "/workspace/worktrees/abl-main/skills/algorithms/hill-climb/scripts/run.py",
+      "sha256": "4951ca13ea8aeaadb0d6e259dd74070fb59cd9a41c4a166f32acf8138567e141"
+     },
+     "all_ok": false
+    }
+   },
+   "iterations": [
+    {
+     "candidate": "cand_0001",
+     "accept": false,
+     "val": 0.3197278911564626,
+     "parent_val": 0.4013605442176871,
+     "indecisive": false,
+     "kind": "step",
+     "delta": -0.0816,
+     "se": 0.0506,
+     "k_se": 0.2,
+     "bar": 0.0101,
+     "would_pass_k1": false
+    },
+    {
+     "candidate": "cand_0002",
+     "accept": false,
+     "val": 0.4013605442176871,
+     "parent_val": 0.4013605442176871,
+     "indecisive": true,
+     "kind": "optimizer_failed"
+    },
+    {
+     "candidate": "cand_0003",
+     "accept": false,
+     "val": 0.4013605442176871,
+     "parent_val": 0.4013605442176871,
+     "indecisive": true,
+     "kind": "optimizer_failed"
+    },
+    {
+     "candidate": "cand_0004",
+     "accept": false,
+     "val": 0.4013605442176871,
+     "parent_val": 0.4013605442176871,
+     "indecisive": true,
+     "kind": "optimizer_failed"
+    },
+    {
+     "candidate": "cand_0005",
+     "accept": false,
+     "val": 0.4013605442176871,
+     "parent_val": 0.4013605442176871,
+     "indecisive": true,
+     "kind": "optimizer_failed"
+    },
+    {
+     "candidate": "cand_0006",
+     "accept": false,
+     "val": 0.4013605442176871,
+     "parent_val": 0.4013605442176871,
+     "indecisive": true,
+     "kind": "optimizer_failed"
+    },
+    {
+     "candidate": "cand_0007",
+     "accept": false,
+     "val": 0.30612244897959184,
+     "parent_val": 0.4013605442176871,
+     "indecisive": false,
+     "kind": "step",
+     "delta": -0.0952,
+     "se": 0.0446,
+     "k_se": 0.2,
+     "bar": 0.0089,
+     "would_pass_k1": false
+    },
+    {
+     "candidate": "cand_0008",
+     "accept": true,
+     "val": 0.5510204081632653,
+     "parent_val": 0.4013605442176871,
+     "indecisive": false,
+     "kind": "step",
+     "delta": 0.1497,
+     "se": 0.0523,
+     "k_se": 0.2,
+     "bar": 0.0105,
+     "would_pass_k1": true
+    },
+    {
+     "candidate": "cand_0009",
+     "accept": true,
+     "val": 0.6598639455782312,
+     "parent_val": 0.5510204081632653,
+     "indecisive": false,
+     "kind": "step",
+     "delta": 0.1088,
+     "se": 0.0454,
+     "k_se": 0.2,
+     "bar": 0.0091,
+     "would_pass_k1": true
+    },
+    {
+     "candidate": "cand_0010",
+     "accept": false,
+     "val": 0.6666666666666666,
+     "parent_val": 0.6598639455782312,
+     "indecisive": false,
+     "kind": "step",
+     "delta": 0.0068,
+     "se": 0.0437,
+     "k_se": 0.2,
+     "bar": 0.0087,
+     "would_pass_k1": false
+    },
+    {
+     "candidate": "cand_0011",
+     "accept": true,
+     "val": 0.6938775510204082,
+     "parent_val": 0.6598639455782312,
+     "indecisive": false,
+     "kind": "step",
+     "delta": 0.034,
+     "se": 0.0457,
+     "k_se": 0.2,
+     "bar": 0.0091,
+     "would_pass_k1": false
+    }
+   ],
+   "iterations_done": 6,
+   "iterations_consumed": 11,
+   "accepted": 3,
+   "best_search_score": 0.6938775510204082,
+   "metric_calls": 1764,
+   "capevolve_optimizer_usd": 86.67506775000001,
+   "model_usage_by_model": {
+    "aws/claude-sonnet-5-5": {
+     "in": 510149,
+     "out": 828741,
+     "cache_read": 63863733,
+     "cache_write": 5035829,
+     "results": 7
+    }
+   },
+   "k_se": 0.2
+  },
+  "abl_notrace": {
+   "optimizer": {
+    "calls": 6,
+    "errors": 0,
+    "models": [
+     "aws/claude-sonnet-5-5"
+    ],
+    "input_tokens": 1107710,
+    "output_tokens": 766983,
+    "cache_read_tokens": 16793246,
+    "cache_write_tokens": 961352,
+    "proxy_usd": 13.72,
+    "cli_reported_usd": 34.31,
+    "per_role": {
+     "optimizer/cand_0001": {
+      "calls": 1,
+      "in": 156981,
+      "out": 73004,
+      "cache_read": 1867468,
+      "cache_write": 133191
+     },
+     "optimizer/cand_0002": {
+      "calls": 1,
+      "in": 149132,
+      "out": 99800,
+      "cache_read": 1912524,
+      "cache_write": 128203
+     },
+     "optimizer/cand_0003": {
+      "calls": 1,
+      "in": 330510,
+      "out": 181458,
+      "cache_read": 4286101,
+      "cache_write": 302230
+     },
+     "optimizer/cand_0004": {
+      "calls": 1,
+      "in": 167715,
+      "out": 135258,
+      "cache_read": 2791388,
+      "cache_write": 142571
+     },
+     "optimizer/cand_0005": {
+      "calls": 1,
+      "in": 134896,
+      "out": 190122,
+      "cache_read": 3900481,
+      "cache_write": 113483
+     },
+     "optimizer/cand_0006": {
+      "calls": 1,
+      "in": 168476,
+      "out": 87341,
+      "cache_read": 2035284,
+      "cache_write": 141674
+     }
+    },
+    "call_seconds_mean": 1136.6,
+    "call_seconds_p90": 1724.25,
+    "optimizer_seconds_total": 6820
+   },
+   "rollouts": {
+    "counted": 882,
+    "cache_hits": 261,
+    "lint_reject_batches": 0,
+    "infra": 0,
+    "mean_reward_counted": 0.5,
+    "prompt_tokens": {
+     "mean": 89450.9,
+     "p50": 70831.0,
+     "p90": 159854.0
+    },
+    "completion_tokens": {
+     "mean": 6476.0,
+     "p50": 5245.0,
+     "p90": 11757.0
+    },
+    "max_prompt_tokens": 25458,
+    "steps": {
+     "mean": 9.3,
+     "p50": 8.0,
+     "p90": 16.0
+    },
+    "episode_seconds": {
+     "mean": 288.5,
+     "p50": 235.3,
+     "p90": 510.9
+    },
+    "step_cap_hits": 0,
+    "token_cap_hits": 0,
+    "context_exceeded": 0,
+    "search_wall": [
+     "2026-10-26T12:39:47Z",
+     "2026-10-26T21:08:51Z"
+    ]
+   },
+   "champion_search_score": null,
+   "champion_search_label": null,
+   "time_to_champion": null,
+   "freeze": {
+    "arm": "abl_notrace",
+    "k_se": 0.2,
+    "switches": {
+     "AW_ABL_FEEDBACK": "eval_only"
+    },
+    "best_id": "cand_0006",
+    "inert": false,
+    "label": "",
+    "tree_sha256": "973ebcb4af6b3bddc83a597c6eedb12e65c03a7da34a4b81fba01c63da9723c8",
+    "run_candidate_tree_sha256": "973ebcb4af6b3bddc83a597c6eedb12e65c03a7da34a4b81fba01c63da9723c8",
+    "seed_tree_sha256": "85a0da9cec2206a7bc683c11d60b5cb0acac7328d43c6e9197324d1e45971f3c",
+    "best_val": 0.6122448979591837,
+    "imp": {
+     "1_code_pin": {
+      "ok": true,
+      "cap_evolve_file": "/workspace/worktrees/abl-main/core/cap_evolve/__init__.py",
+      "head": "75b3bcdd0fc7292f9717f2b6dcb720f147452df9",
+      "clean": true
+     },
+     "2_skills_pin": {
+      "ok": true,
+      "resolved": "/workspace/worktrees/abl-main/skills",
+      "home_skills_exists": true
+     },
+     "3_spec_k_se": {
+      "ok": true,
+      "value": 0.2,
+      "expected": 0.2
+     },
+     "switch_spec": {
+      "ok": true,
+      "capabilities": "[system-prompt, tools]",
+      "protected": "[default, \"memory/*\"]"
+     },
+     "switch_env": {
+      "ok": false,
+      "env": {
+       "AW_ABL_FEEDBACK": null,
+       "AW_ABL_TOOLS_LINT": null
+      },
+      "expected": {
+       "AW_ABL_FEEDBACK": "eval_only"
+      },
+      "note": "the launcher's environment (os.environ of this check) must carry exactly the arm's switches"
+     },
+     "3_run_config": {
+      "ok": true,
+      "run_config_events": 1,
+      "spec_k_se": 0.2
+     },
+     "4_effective_k_se": {
+      "ok": true,
+      "hill_climb_cmdlines": 1,
+      "k_se_values": [
+       "0.2"
+      ],
+      "expected": 0.2,
+      "gate_events_mentioning_k_se": 0
+     },
+     "5_instructions": {
+      "ok": true,
+      "iterations": 6,
+      "diff_only_insertion": true,
+      "detail": [
+       {
+        "cid": "cand_0001",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       },
+       {
+        "cid": "cand_0002",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       },
+       {
+        "cid": "cand_0003",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       },
+       {
+        "cid": "cand_0004",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       },
+       {
+        "cid": "cand_0005",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       },
+       {
+        "cid": "cand_0006",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       }
+      ]
+     },
+     "6_guidance": {
+      "ok": true,
+      "detail": [
+       {
+        "cid": "cand_0001",
+        "tools": "sha_match",
+        "system-prompt": "sha_match",
+        "diagnose": "head_match"
+       },
+       {
+        "cid": "cand_0002",
+        "tools": "sha_match",
+        "system-prompt": "sha_match",
+        "diagnose": "head_match"
+       },
+       {
+        "cid": "cand_0003",
+        "tools": "sha_match",
+        "system-prompt": "sha_match",
+        "diagnose": "head_match"
+       },
+       {
+        "cid": "cand_0004",
+        "tools": "sha_match",
+        "system-prompt": "sha_match",
+        "diagnose": "head_match"
+       },
+       {
+        "cid": "cand_0005",
+        "tools": "sha_match",
+        "system-prompt": "sha_match",
+        "diagnose": "head_match"
+       },
+       {
+        "cid": "cand_0006",
+        "tools": "sha_match",
+        "system-prompt": "sha_match",
+        "diagnose": "head_match"
+       }
+      ],
+      "expected": {
+       "tools": "sha_match",
+       "system-prompt": "sha_match",
+       "diagnose": "head_match"
+      },
+      "pinned_sha256": {
+       "tools": "d6a5ec65e46113a64124cfc2e842a95a493e1c13679f380361ec4447a69d994a",
+       "system-prompt": "4df6976688391b55e783b9cb6631523718c40a4ed4fbee77d71d450d105de51b",
+       "diagnose": "ef0eb2fc3cf971eae63f377b3e318664d617e17c2aa70de79557e825b24ff677"
+      }
+     },
+     "7_hill_climb_script": {
+      "ok": true,
+      "path": "/workspace/worktrees/abl-main/skills/algorithms/hill-climb/scripts/run.py",
+      "sha256": "4951ca13ea8aeaadb0d6e259dd74070fb59cd9a41c4a166f32acf8138567e141"
+     },
+     "all_ok": false
+    }
+   },
+   "iterations": [
+    {
+     "candidate": "cand_0001",
+     "accept": true,
+     "val": 0.4897959183673469,
+     "parent_val": 0.4013605442176871,
+     "indecisive": false,
+     "kind": "step",
+     "delta": 0.0884,
+     "se": 0.0492,
+     "k_se": 0.2,
+     "bar": 0.0098,
+     "would_pass_k1": true
+    },
+    {
+     "candidate": "cand_0002",
+     "accept": false,
+     "val": 0.41496598639455784,
+     "parent_val": 0.4897959183673469,
+     "indecisive": false,
+     "kind": "step",
+     "delta": -0.0748,
+     "se": 0.0502,
+     "k_se": 0.2,
+     "bar": 0.01,
+     "would_pass_k1": false
+    },
+    {
+     "candidate": "cand_0003",
+     "accept": true,
+     "val": 0.5170068027210885,
+     "parent_val": 0.4897959183673469,
+     "indecisive": false,
+     "kind": "step",
+     "delta": 0.0272,
+     "se": 0.0528,
+     "k_se": 0.2,
+     "bar": 0.0106,
+     "would_pass_k1": false
+    },
+    {
+     "candidate": "cand_0004",
+     "accept": false,
+     "val": 0.4965986394557823,
+     "parent_val": 0.5170068027210885,
+     "indecisive": false,
+     "kind": "step",
+     "delta": -0.0204,
+     "se": 0.0515,
+     "k_se": 0.2,
+     "bar": 0.0103,
+     "would_pass_k1": false
+    },
+    {
+     "candidate": "cand_0005",
+     "accept": false,
+     "val": 0.46938775510204084,
+     "parent_val": 0.5170068027210885,
+     "indecisive": false,
+     "kind": "step",
+     "delta": -0.0476,
+     "se": 0.0514,
+     "k_se": 0.2,
+     "bar": 0.0103,
+     "would_pass_k1": false
+    },
+    {
+     "candidate": "cand_0006",
+     "accept": true,
+     "val": 0.6122448979591837,
+     "parent_val": 0.5170068027210885,
+     "indecisive": false,
+     "kind": "step",
+     "delta": 0.0952,
+     "se": 0.0514,
+     "k_se": 0.2,
+     "bar": 0.0103,
+     "would_pass_k1": true
+    }
+   ],
+   "iterations_done": 6,
+   "iterations_consumed": 6,
+   "accepted": 3,
+   "best_search_score": 0.6122448979591837,
+   "metric_calls": 1029,
+   "capevolve_optimizer_usd": 34.311438,
+   "model_usage_by_model": {
+    "aws/claude-sonnet-5-5": {
+     "in": 146358,
+     "out": 766983,
+     "cache_read": 16793246,
+     "cache_write": 961352,
+     "results": 6
+    }
+   },
+   "k_se": 0.2
+  },
+  "abl_tracescore": {
+   "optimizer": {
+    "calls": 6,
+    "errors": 0,
+    "models": [
+     "aws/claude-sonnet-5-5"
+    ],
+    "input_tokens": 6862651,
+    "output_tokens": 1203676,
+    "cache_read_tokens": 97860463,
+    "cache_write_tokens": 6356956,
+    "proxy_usd": 48.51,
+    "cli_reported_usd": 121.28,
+    "per_role": {
+     "optimizer/cand_0001": {
+      "calls": 1,
+      "in": 1328202,
+      "out": 199848,
+      "cache_read": 18252113,
+      "cache_write": 1247836
+     },
+     "optimizer/cand_0002": {
+      "calls": 1,
+      "in": 1336044,
+      "out": 220989,
+      "cache_read": 17162013,
+      "cache_write": 1229875
+     },
+     "optimizer/cand_0003": {
+      "calls": 1,
+      "in": 727635,
+      "out": 199248,
+      "cache_read": 17117327,
+      "cache_write": 660258
+     },
+     "optimizer/cand_0004": {
+      "calls": 1,
+      "in": 1458580,
+      "out": 247085,
+      "cache_read": 19398287,
+      "cache_write": 1349237
+     },
+     "optimizer/cand_0005": {
+      "calls": 1,
+      "in": 1027308,
+      "out": 196090,
+      "cache_read": 14832228,
+      "cache_write": 959438
+     },
+     "optimizer/cand_0006": {
+      "calls": 1,
+      "in": 984882,
+      "out": 140416,
+      "cache_read": 11098495,
+      "cache_write": 910312
+     }
+    },
+    "call_seconds_mean": 974.8,
+    "call_seconds_p90": 1481.72,
+    "optimizer_seconds_total": 5849
+   },
+   "rollouts": {
+    "counted": 882,
+    "cache_hits": 261,
+    "lint_reject_batches": 0,
+    "infra": 0,
+    "mean_reward_counted": 0.5828,
+    "prompt_tokens": {
+     "mean": 70425.7,
+     "p50": 59335.0,
+     "p90": 132445.0
+    },
+    "completion_tokens": {
+     "mean": 3952.8,
+     "p50": 3148.0,
+     "p90": 7484.0
+    },
+    "max_prompt_tokens": 25407,
+    "steps": {
+     "mean": 7.1,
+     "p50": 6.0,
+     "p90": 12.0
+    },
+    "episode_seconds": {
+     "mean": 190.3,
+     "p50": 152.7,
+     "p90": 347.0
+    },
+    "step_cap_hits": 1,
+    "token_cap_hits": 0,
+    "context_exceeded": 0,
+    "search_wall": [
+     "2026-10-26T12:47:52Z",
+     "2026-10-26T19:01:30Z"
+    ]
+   },
+   "champion_search_score": null,
+   "champion_search_label": null,
+   "time_to_champion": null,
+   "freeze": {
+    "arm": "abl_tracescore",
+    "k_se": 0.2,
+    "switches": {
+     "AW_ABL_FEEDBACK": "trace_score"
+    },
+    "best_id": "cand_0006",
+    "inert": false,
+    "label": "",
+    "tree_sha256": "c2da5909d55fac51bdc26ef678b53d302c2184869a144182db3a6431ff28327c",
+    "run_candidate_tree_sha256": "c2da5909d55fac51bdc26ef678b53d302c2184869a144182db3a6431ff28327c",
+    "seed_tree_sha256": "85a0da9cec2206a7bc683c11d60b5cb0acac7328d43c6e9197324d1e45971f3c",
+    "best_val": 0.7482993197278912,
+    "imp": {
+     "1_code_pin": {
+      "ok": true,
+      "cap_evolve_file": "/workspace/worktrees/abl-main/core/cap_evolve/__init__.py",
+      "head": "75b3bcdd0fc7292f9717f2b6dcb720f147452df9",
+      "clean": true
+     },
+     "2_skills_pin": {
+      "ok": true,
+      "resolved": "/workspace/worktrees/abl-main/skills",
+      "home_skills_exists": true
+     },
+     "3_spec_k_se": {
+      "ok": true,
+      "value": 0.2,
+      "expected": 0.2
+     },
+     "switch_spec": {
+      "ok": true,
+      "capabilities": "[system-prompt, tools]",
+      "protected": "[default, \"memory/*\"]"
+     },
+     "switch_env": {
+      "ok": false,
+      "env": {
+       "AW_ABL_FEEDBACK": null,
+       "AW_ABL_TOOLS_LINT": null
+      },
+      "expected": {
+       "AW_ABL_FEEDBACK": "trace_score"
+      },
+      "note": "the launcher's environment (os.environ of this check) must carry exactly the arm's switches"
+     },
+     "3_run_config": {
+      "ok": true,
+      "run_config_events": 1,
+      "spec_k_se": 0.2
+     },
+     "4_effective_k_se": {
+      "ok": true,
+      "hill_climb_cmdlines": 1,
+      "k_se_values": [
+       "0.2"
+      ],
+      "expected": 0.2,
+      "gate_events_mentioning_k_se": 0
+     },
+     "5_instructions": {
+      "ok": true,
+      "iterations": 6,
+      "diff_only_insertion": true,
+      "detail": [
+       {
+        "cid": "cand_0001",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       },
+       {
+        "cid": "cand_0002",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       },
+       {
+        "cid": "cand_0003",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       },
+       {
+        "cid": "cand_0004",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       },
+       {
+        "cid": "cand_0005",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       },
+       {
+        "cid": "cand_0006",
+        "has": {
+         "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+         "## PREPARATION:": true,
+         "### 1. Understand the objective score": true,
+         "## Strategies for constructing edits:": true,
+         "### 4. Make capabilities that are SOFT and allow JUDGEMENT CALLS": true,
+         "### 6. On code surfaces (tools, MCP): prefer code over prose": true,
+         "## AppWorld facts for THIS run": true,
+         "**Objective score for this run.**": true
+        },
+        "forbidden": []
+       }
+      ]
+     },
+     "6_guidance": {
+      "ok": true,
+      "detail": [
+       {
+        "cid": "cand_0001",
+        "tools": "sha_match",
+        "system-prompt": "sha_match",
+        "diagnose": "head_match"
+       },
+       {
+        "cid": "cand_0002",
+        "tools": "sha_match",
+        "system-prompt": "sha_match",
+        "diagnose": "head_match"
+       },
+       {
+        "cid": "cand_0003",
+        "tools": "sha_match",
+        "system-prompt": "sha_match",
+        "diagnose": "head_match"
+       },
+       {
+        "cid": "cand_0004",
+        "tools": "sha_match",
+        "system-prompt": "sha_match",
+        "diagnose": "head_match"
+       },
+       {
+        "cid": "cand_0005",
+        "tools": "sha_match",
+        "system-prompt": "sha_match",
+        "diagnose": "head_match"
+       },
+       {
+        "cid": "cand_0006",
+        "tools": "sha_match",
+        "system-prompt": "sha_match",
+        "diagnose": "head_match"
+       }
+      ],
+      "expected": {
+       "tools": "sha_match",
+       "system-prompt": "sha_match",
+       "diagnose": "head_match"
+      },
+      "pinned_sha256": {
+       "tools": "d6a5ec65e46113a64124cfc2e842a95a493e1c13679f380361ec4447a69d994a",
+       "system-prompt": "4df6976688391b55e783b9cb6631523718c40a4ed4fbee77d71d450d105de51b",
+       "diagnose": "ef0eb2fc3cf971eae63f377b3e318664d617e17c2aa70de79557e825b24ff677"
+      }
+     },
+     "7_hill_climb_script": {
+      "ok": true,
+      "path": "/workspace/worktrees/abl-main/skills/algorithms/hill-climb/scripts/run.py",
+      "sha256": "4951ca13ea8aeaadb0d6e259dd74070fb59cd9a41c4a166f32acf8138567e141"
+     },
+     "all_ok": false
+    }
+   },
+   "iterations": [
+    {
+     "candidate": "cand_0001",
+     "accept": true,
+     "val": 0.4897959183673469,
+     "parent_val": 0.4013605442176871,
+     "indecisive": false,
+     "kind": "step",
+     "delta": 0.0884,
+     "se": 0.0501,
+     "k_se": 0.2,
+     "bar": 0.01,
+     "would_pass_k1": true
+    },
+    {
+     "candidate": "cand_0002",
+     "accept": true,
+     "val": 0.5306122448979592,
+     "parent_val": 0.4897959183673469,
+     "indecisive": false,
+     "kind": "step",
+     "delta": 0.0408,
+     "se": 0.0491,
+     "k_se": 0.2,
+     "bar": 0.0098,
+     "would_pass_k1": false
+    },
+    {
+     "candidate": "cand_0003",
+     "accept": false,
+     "val": 0.5306122448979592,
+     "parent_val": 0.5306122448979592,
+     "indecisive": false,
+     "kind": "step",
+     "delta": 0.0,
+     "se": 0.0546,
+     "k_se": 0.2,
+     "bar": 0.0109,
+     "would_pass_k1": false
+    },
+    {
+     "candidate": "cand_0004",
+     "accept": false,
+     "val": 0.5170068027210885,
+     "parent_val": 0.5306122448979592,
+     "indecisive": false,
+     "kind": "step",
+     "delta": -0.0136,
+     "se": 0.0529,
+     "k_se": 0.2,
+     "bar": 0.0106,
+     "would_pass_k1": false
+    },
+    {
+     "candidate": "cand_0005",
+     "accept": true,
+     "val": 0.6802721088435374,
+     "parent_val": 0.5306122448979592,
+     "indecisive": false,
+     "kind": "step",
+     "delta": 0.1497,
+     "se": 0.0505,
+     "k_se": 0.2,
+     "bar": 0.0101,
+     "would_pass_k1": true
+    },
+    {
+     "candidate": "cand_0006",
+     "accept": true,
+     "val": 0.7482993197278912,
+     "parent_val": 0.6802721088435374,
+     "indecisive": false,
+     "kind": "step",
+     "delta": 0.068,
+     "se": 0.0417,
+     "k_se": 0.2,
+     "bar": 0.0083,
+     "would_pass_k1": true
+    }
+   ],
+   "iterations_done": 6,
+   "iterations_consumed": 6,
+   "accepted": 4,
+   "best_search_score": 0.7482993197278912,
+   "metric_calls": 1029,
+   "capevolve_optimizer_usd": 121.28158150000003,
+   "model_usage_by_model": {
+    "aws/claude-sonnet-5-5": {
+     "in": 505695,
+     "out": 1203676,
+     "cache_read": 97860463,
+     "cache_write": 6356956,
+     "results": 6
+    }
+   },
+   "k_se": 0.2
+  }
+ },
+ "seed_baseline": {
+  "label": "reused from REST P3 (2026-10-20), not re-run, not counted",
+  "reuse_check": {}
+ },
+ "spend_per_provider": {
+  "RITS (agent, unpriced)": "n/a (unpriced); tokens in the arm tables",
+  "gateway (optimizer)": {
+   "abl_ref": 34.81,
+   "abl_cc": 11.62,
+   "abl_prompt": 29.07,
+   "abl_tools": 34.67,
+   "abl_notrace": 13.72,
+   "abl_tracescore": 48.51
+  }
+ },
+ "window_wall": [
+  "2026-10-27T08:33:03.816645Z",
+  "2026-10-27T18:04:00.635609Z"
+ ],
+ "dev_diagnostic_tgc": {
+  "seed": 0.4211,
+  "abl_ref": 0.8772,
+  "abl_cc": 0.4211,
+  "abl_prompt": 0.8596,
+  "abl_tools": 0.7018,
+  "abl_notrace": 0.5614,
+  "abl_tracescore": 0.7544,
+  "abl_cc_best": 0.7018
+ },
+ "manifest": {
+  "appworld": {
+   "commit": "42b5bcf3cd334fee33f0c37c02070a9f5807add5",
+   "git_diff_sha256": "755de8b83b1e24b490e54993417a9a0a78b2ce3805bb895057ae2a3dd6914cf6",
+   "patch_sha256": "755de8b83b1e24b490e54993417a9a0a78b2ce3805bb895057ae2a3dd6914cf6"
+  },
+  "candidates": null,
+  "m_cap": {
+   "tokens": 13500,
+   "chars": 30000,
+   "P_max": 3230,
+   "H_max": 16910,
+   "min_chars_per_token": 3.548,
+   "template_overhead_max": 157,
+   "encoding": "o200k_harmony",
+   "rule": "min(30000 chars, 34000 - P_max - H_max tokens), tokens floored to 500"
+  },
+  "final_order": {
+   "seed": 2026102507,
+   "sha256": "100420c984d708820c4d527c7b3217f3dc588e34659b93bd185e684122eeebc8",
+   "cells": 2688,
+   "trials": 2,
+   "trial_seeds": "5000 + trial",
+   "infra_retries": 3
+  },
+  "freeze": {
+   "tree_sha256": {
+    "seed": "85a0da9cec2206a7bc683c11d60b5cb0acac7328d43c6e9197324d1e45971f3c",
+    "abl_ref": "54a4f3799ae887761849d5b96e7da0f0e0e4939000ac18c528c60b5d652790c2",
+    "abl_cc": "85a0da9cec2206a7bc683c11d60b5cb0acac7328d43c6e9197324d1e45971f3c",
+    "abl_prompt": "f979201fc17b5e55725b5032b411a486af837b470997a1bbfb40a818ba850eaa",
+    "abl_tools": "d78dcf6138cd9f41c9ec819aaa43c0c78f6b68bdc983d04058ba64b8731c0434",
+    "abl_notrace": "973ebcb4af6b3bddc83a597c6eedb12e65c03a7da34a4b81fba01c63da9723c8",
+    "abl_tracescore": "c2da5909d55fac51bdc26ef678b53d302c2184869a144182db3a6431ff28327c",
+    "abl_cc_best": "a2b6434e76a0109310d94d88fb193a0ece2435e98d0a12d443b6cc4a6f31ca71"
+   },
+   "labels": {
+    "seed": "seed",
+    "abl_ref": "",
+    "abl_cc": "inert",
+    "abl_prompt": "",
+    "abl_tools": "",
+    "abl_notrace": "",
+    "abl_tracescore": "",
+    "abl_cc_best": "secondary"
+   },
+   "utc": "2026-10-27T08:27:51Z"
+  },
+  "opt_model": null,
+  "agent_model": null,
+  "budget": null,
+  "trials": null,
+  "prices_usd_per_mtok": null
+ },
+ "isolation": {
+  "abl_ref": {
+   "test_id_hits": 0,
+   "breach": false
+  },
+  "abl_cc": {
+   "test_id_hits": 0,
+   "breach": false
+  },
+  "abl_prompt": {
+   "test_id_hits": 0,
+   "breach": false
+  },
+  "abl_tools": {
+   "test_id_hits": 0,
+   "breach": false
+  },
+  "abl_notrace": {
+   "test_id_hits": 0,
+   "breach": false
+  },
+  "abl_tracescore": {
+   "test_id_hits": 0,
+   "breach": false
+  }
+ }
+}
