@@ -5631,3 +5631,11 @@ Next: final remaining cells.
 ```json
 {"cp": 683, "prev_cp": 682, "prev_commit": "3bb577722636f825334258b28bd0a92042ff1b42", "utc": "2026-10-27T17:16:31Z", "kind": "result", "phase": "P7", "done_through": "final/2565", "next": "final/cells", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {"STATE/final/progress.json": "d922bb739c8c5353dfde18305636a3474c461b8645a3bc5bc11d91de2d740cb8"}, "code": "844a9e68eec362ba7da5c8cdc47334d6be7a733a", "open_decisions": [], "memory": {"used_pct": 4.17, "peak_pct": 90.19, "state": "OK", "stale": false}, "window": {"window": "final", "cells_total": 2688, "cells_done": 2565, "order_sha256": "100420c984d708820c4d527c7b3217f3dc588e34659b93bd185e684122eeebc8"}}
 ```
+
+## ABL-0684 · 2026-10-27T17:16Z · P7 final window (2565/2688 cells) failed · error
+
+P7: `final window (2565/2688 cells)` exited 1; the chain stopped. See AW_STATE/progress/p7.out. No automatic retry: the cause is investigated first (R5).
+
+```json
+{"cp": 684, "prev_cp": 683, "prev_commit": "4acd70bbdad9ba4ef580d576b09b3a9e89c7b422", "utc": "2026-10-27T17:16:33Z", "kind": "error", "phase": "P7", "done_through": "final/2565", "next": "final/cells", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "844a9e68eec362ba7da5c8cdc47334d6be7a733a", "open_decisions": [], "memory": {"used_pct": 2.45, "peak_pct": 90.19, "state": "OK", "stale": false}}
+```
