@@ -4014,3 +4014,11 @@ Posted 'Cap evolve no traces hourly status' on #934 (abl_notrace): https://githu
 ```json
 {"cp": 494, "prev_cp": 493, "prev_commit": "9ff3dcca6042785ac01ab2e2f8735356e04ab49b", "utc": "2026-10-27T04:01:23Z", "kind": "posted", "phase": "P6", "done_through": "P6/scan", "next": "P7/final", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "207e8bf0d67325f704bc94f15631962f4efc52aa", "open_decisions": [], "memory": {"used_pct": 2.28, "peak_pct": 50.31, "state": "OK", "stale": false}, "post": "abl_notrace/status_20261027T0401", "url": "https://github.com/skillberry-ai/cap-evolve/issues/934#issuecomment-6433418446"}
 ```
+
+## ABL-0495 · 2026-10-27T04:12Z · P6 posted abl_prompt · posted
+
+Posted 'Cap evolve prompt only hourly status' on #932 (abl_prompt): https://github.com/skillberry-ai/cap-evolve/issues/932#issuecomment-6433562049
+
+```json
+{"cp": 495, "prev_cp": 494, "prev_commit": "7863a0cb5ec5b8095e932d8d34197552782de7b4", "utc": "2026-10-27T04:12:29Z", "kind": "posted", "phase": "P6", "done_through": "P6/scan", "next": "P7/final", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "207e8bf0d67325f704bc94f15631962f4efc52aa", "open_decisions": [], "memory": {"used_pct": 2.28, "peak_pct": 50.31, "state": "OK", "stale": false}, "post": "abl_prompt/status_20261027T0412", "url": "https://github.com/skillberry-ai/cap-evolve/issues/932#issuecomment-6433562049"}
+```
