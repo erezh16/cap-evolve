@@ -10782,3 +10782,11 @@ Posted 'EvoSkill results' on #921 (evoskill): https://github.com/skillberry-ai/c
 ```json
 {"cp": 1287, "prev_cp": 1286, "prev_commit": "64a1ca3cfae9260b652517946368282da8b4f2bb", "utc": "2026-10-27T01:29:03Z", "kind": "posted", "phase": "P4", "done_through": "analysis", "next": "P5/results", "arm": "gepa", "counts": {}, "spend": {}, "artifacts": {}, "code": "a0e79d2d197eceebf46d0f8d9d41b232cf857098", "open_decisions": [], "memory": {"used_pct": 1.36, "peak_pct": 44.52, "state": "OK", "stale": false}, "post": "evoskill/results", "url": "https://github.com/skillberry-ai/cap-evolve/issues/921#issuecomment-6431459809"}
 ```
+
+## TA-1288 · 2026-10-27T01:29Z · P4 posted metaharness · posted
+
+Posted 'Meta-Harness results' on #922 (metaharness): https://github.com/skillberry-ai/cap-evolve/issues/922#issuecomment-6431461021
+
+```json
+{"cp": 1288, "prev_cp": 1287, "prev_commit": "588a51f1b171da6cc3a7baf7813ba31e73d85693", "utc": "2026-10-27T01:29:09Z", "kind": "posted", "phase": "P4", "done_through": "analysis", "next": "P5/results", "arm": "gepa", "counts": {}, "spend": {}, "artifacts": {}, "code": "a0e79d2d197eceebf46d0f8d9d41b232cf857098", "open_decisions": [], "memory": {"used_pct": 1.34, "peak_pct": 44.52, "state": "OK", "stale": false}, "post": "metaharness/results", "url": "https://github.com/skillberry-ai/cap-evolve/issues/922#issuecomment-6431461021"}
+```
