@@ -10734,3 +10734,11 @@ Posted 'seed agent results' on #915 (seed): https://github.com/skillberry-ai/cap
 ```json
 {"cp": 1281, "prev_cp": 1280, "prev_commit": "93b0bd86fc67ecbc03640e9e669ce72c59c5c426", "utc": "2026-10-27T01:28:29Z", "kind": "posted", "phase": "P4", "done_through": "analysis", "next": "P5/results", "arm": "gepa", "counts": {}, "spend": {}, "artifacts": {}, "code": "a0e79d2d197eceebf46d0f8d9d41b232cf857098", "open_decisions": [], "memory": {"used_pct": 1.28, "peak_pct": 44.52, "state": "OK", "stale": false}, "post": "seed/results", "url": "https://github.com/skillberry-ai/cap-evolve/issues/915#issuecomment-6431452094"}
 ```
+
+## TA-1282 · 2026-10-27T01:28Z · P4 posted altk · posted
+
+Posted 'ALTK-Evolve results' on #916 (altk): https://github.com/skillberry-ai/cap-evolve/issues/916#issuecomment-6431453342
+
+```json
+{"cp": 1282, "prev_cp": 1281, "prev_commit": "b6b682739c233bf5e608b4dd0a71373ea6fa0e94", "utc": "2026-10-27T01:28:35Z", "kind": "posted", "phase": "P4", "done_through": "analysis", "next": "P5/results", "arm": "gepa", "counts": {}, "spend": {}, "artifacts": {}, "code": "a0e79d2d197eceebf46d0f8d9d41b232cf857098", "open_decisions": [], "memory": {"used_pct": 1.34, "peak_pct": 44.52, "state": "OK", "stale": false}, "post": "altk/results", "url": "https://github.com/skillberry-ai/cap-evolve/issues/916#issuecomment-6431453342"}
+```
