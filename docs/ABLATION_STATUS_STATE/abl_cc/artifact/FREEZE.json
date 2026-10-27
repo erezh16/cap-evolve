@@ -8,10 +8,10 @@
  "champion_evaluated": true,
  "champion_val": 0.4014,
  "best_evaluated": {
-  "cand": "85a0da9cec22",
-  "val": 0.4014
+  "cand": "a2b6434e76a0",
+  "val": 0.6735
  },
- "sessions": 2,
+ "sessions": 4,
  "session_stop": "success",
  "workdir_commits": 1
 }

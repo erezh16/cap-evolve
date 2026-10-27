@@ -1064,29 +1064,29 @@
  "abl_cc": {
   "locations": {
    "claude -p results": {
-    "files": 2,
+    "files": 4,
     "files_hit": 0,
     "counts": {}
    },
    "arm state (driver, daemon log)": {
-    "files": 375,
-    "files_hit": 1,
+    "files": 388,
+    "files_hit": 2,
     "counts": {
-     "root_full": 4,
-     "ground_truth": 2,
-     "src/appworld/apps": 1,
-     "aw_rest": 1,
-     "aw_ce2": 1,
-     "aw_ce3": 1,
-     "aw_abl/arms/abl_ref": 1,
-     "aw_abl/arms/abl_prompt": 1,
-     "aw_abl/arms/abl_tools": 1,
-     "aw_abl/arms/abl_notrace": 1,
-     "aw_abl/arms/abl_tracescore": 1
+     "root_full": 7,
+     "ground_truth": 4,
+     "src/appworld/apps": 2,
+     "aw_rest": 2,
+     "aw_ce2": 2,
+     "aw_ce3": 2,
+     "aw_abl/arms/abl_ref": 2,
+     "aw_abl/arms/abl_prompt": 2,
+     "aw_abl/arms/abl_tools": 2,
+     "aw_abl/arms/abl_notrace": 2,
+     "aw_abl/arms/abl_tracescore": 2
     }
    },
    "session workdir (incl. .eval spool)": {
-    "files": 204,
+    "files": 807,
     "files_hit": 0,
     "counts": {}
    },
@@ -1120,6 +1120,14 @@
      "aw_abl/arms/abl_tracescore": 6
     }
    },
+   "third session config dir (ABL-0361, remote host)": {
+    "files": 17,
+    "files_hit": 5,
+    "counts": {
+     "root_full": 24,
+     "aw_rest": 24
+    }
+   },
    "archived config dir": {
     "files": 5,
     "files_hit": 1,
@@ -1145,22 +1153,30 @@
     "files_hit": 0,
     "counts": {}
    },
+   "claude tmp -workspace-aw-abl-arms-abl-cc-probe-wait-work": {
+    "files": 0,
+    "files_hit": 0,
+    "counts": {}
+   },
    "claude tmp -workspace-aw-abl-arms-abl-cc-a9-ws": {
     "files": 1,
     "files_hit": 0,
     "counts": {}
    },
    "claude tmp -workspace-aw-abl-arms-abl-cc-work": {
-    "files": 4,
-    "files_hit": 0,
-    "counts": {}
+    "files": 13,
+    "files_hit": 4,
+    "counts": {
+     "root_full": 12,
+     "aw_rest": 12
+    }
    }
   },
   "test_id_hits": 0,
   "isolation_breach": false,
   "ce2": {
    "model_usage_keys": {
-    "aws/claude-sonnet-5-5": 2
+    "aws/claude-sonnet-5-5": 4
    },
    "other_models": [],
    "j1_iterations": null,

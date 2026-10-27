@@ -3894,3 +3894,11 @@ Posted 'Claude code (plain Claude Code) evaluation 5' on #931 (abl_cc): https://
 ```json
 {"cp": 479, "prev_cp": 478, "prev_commit": "671c96935e3f69d1034f084c3ef528826ac712e5", "utc": "2026-10-27T02:25:00Z", "kind": "posted", "phase": "P4", "done_through": "P4/abl_cc-session2", "next": "P4: abl_cc session 3", "arm": "abl_cc", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "207e8bf0d67325f704bc94f15631962f4efc52aa", "open_decisions": [], "memory": {"used_pct": 3.49, "peak_pct": 50.31, "state": "OK", "stale": false}, "post": "abl_cc/eval_5", "url": "https://github.com/skillberry-ai/cap-evolve/issues/931#issuecomment-6432196461"}
 ```
+
+## ABL-0480 · 2026-10-27T02:25Z · P4 isolation scan · result
+
+Isolation scan (counts only): abl_cc: test-id hits 0; models ['aws/claude-sonnet-5-5'], other models []; J1 in None iteration(s) ok=None; K on the command line None ok=None. Literal-string counts per location are in the pushed scan file.
+
+```json
+{"cp": 480, "prev_cp": 479, "prev_commit": "40afef62cbc711dff09662e02efa011db93540b4", "utc": "2026-10-27T02:25:40Z", "kind": "result", "phase": "P4", "done_through": "P4/abl_cc-session2", "next": "P4: abl_cc session 3", "arm": "abl_cc", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {"STATE/isolation_scan.json": "0550e05d832f310c42379d12e7891a7e42f546c880b3b7948fedb6596a90ee5e"}, "code": "207e8bf0d67325f704bc94f15631962f4efc52aa", "open_decisions": [], "memory": {"used_pct": 2.4, "peak_pct": 50.31, "state": "OK", "stale": false}}
+```

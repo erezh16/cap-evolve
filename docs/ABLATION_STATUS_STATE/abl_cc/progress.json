@@ -1,5 +1,5 @@
 {
- "stage": "plain Claude Code session",
+ "stage": "frozen (inert)",
  "arm": "abl_cc",
  "evaluations_done": 5,
  "evaluation_requests": 5,
@@ -52,13 +52,13 @@
  "best_search_score": 0.6735,
  "best_search_label": "best evaluated mean val = train ∪ dev (147), a fit metric, selection-biased; not necessarily the champion",
  "optimizer": {
-  "calls": 3,
-  "prompt_tokens": 306301,
-  "completion_tokens": 55112,
-  "cache_read": 7343682,
-  "cache_write": 274829,
-  "proxy_usd": 2.77,
-  "seconds": 816.7
+  "calls": 4,
+  "prompt_tokens": 1667605,
+  "completion_tokens": 245279,
+  "cache_read": 25255525,
+  "cache_write": 1558299,
+  "proxy_usd": 11.62,
+  "seconds": 5199.9
  },
  "max_turns": 1200
 }
