@@ -10717,3 +10717,12 @@ Posted 'EvoSkill hourly status' on #921 (evoskill): https://github.com/skillberr
 ```json
 {"cp": 1279, "prev_cp": 1278, "prev_commit": "a0e79d2d197eceebf46d0f8d9d41b232cf857098", "utc": "2026-10-27T01:27:45Z", "kind": "posted", "phase": "P3", "done_through": "final/10920", "next": "P4/analysis", "arm": "gepa", "counts": {}, "spend": {}, "artifacts": {}, "code": "a0e79d2d197eceebf46d0f8d9d41b232cf857098", "open_decisions": [], "memory": {"used_pct": 1.3, "peak_pct": 44.52, "state": "OK", "stale": false}, "post": "evoskill/status_20261027T012736", "url": "https://github.com/skillberry-ai/cap-evolve/issues/921#issuecomment-6431442220"}
 ```
+
+## TA-1280 · 2026-10-27T01:28Z · P4 analysis · phase_done
+
+P4 analysis done: `analyze_all.py` over all 10,920 records (0 missing); wrote `final/analysis.json` and `final/RESULTS.md`; drafted the 13 results comments (`<arm>/RESULTS.md`). `report_all.py` change: every arm's comment now carries the ranked table of all 13 competitors (user request, 2026-10-27).
+Next: P5/results posts.
+
+```json
+{"cp": 1280, "prev_cp": 1279, "prev_commit": "53fee9960c395ba1a06dbead31e3266fa5893d17", "utc": "2026-10-27T01:28:12Z", "kind": "phase_done", "phase": "P4", "done_through": "analysis", "next": "P5/results", "arm": "gepa", "counts": {}, "spend": {}, "artifacts": {"STATE/final/analysis.json": "871a37089c14c715c2accbc6a4fbbe24bc9ccb4e70bb9440ae7f07f774c2f5e3", "STATE/final/RESULTS.md": "d3faccff0deacce022b99a4a952c0040b5f5acd797108d42e8d9018e428ce56d"}, "code": "a0e79d2d197eceebf46d0f8d9d41b232cf857098", "open_decisions": [], "memory": {"used_pct": 1.28, "peak_pct": 44.52, "state": "OK", "stale": false}}
+```
