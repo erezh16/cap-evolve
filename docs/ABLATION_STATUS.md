@@ -4230,3 +4230,11 @@ User decision (2026-10-27), answering ABL-0483: report both. abl_cc's champion s
 ```json
 {"cp": 521, "prev_cp": 520, "prev_commit": "844a9e68eec362ba7da5c8cdc47334d6be7a733a", "utc": "2026-10-27T08:27:35Z", "kind": "decision", "phase": "P5", "done_through": "P6/scan", "next": "P5 re-run with 8 arms", "arm": "abl_cc", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {"STATE/abl_cc_best/artifact/FREEZE.json": "1ff82d2edc7a92e223533ebd2e8057fb9b25a30fd4bdb6b6555ad9f6bd606df9"}, "code": "844a9e68eec362ba7da5c8cdc47334d6be7a733a", "open_decisions": [], "memory": {"used_pct": 4.86, "peak_pct": 50.31, "state": "OK", "stale": false}}
 ```
+
+## ABL-0522 · 2026-10-27T08:27Z · P5 dev diagnostic · phase_done
+
+P5 dev diagnostic done (57 dev tasks, 1 trial, seed 100; the seed's numbers are its P3 records). seed 0.4211 (0 fresh, 57 cached); abl_ref 0.8772 (0 fresh, 57 cached); abl_cc 0.4211 (0 fresh, 57 cached); abl_prompt 0.8596 (0 fresh, 57 cached); abl_tools 0.7018 (0 fresh, 57 cached); abl_notrace 0.5614 (0 fresh, 57 cached); abl_tracescore 0.7544 (0 fresh, 57 cached); abl_cc_best 0.7018 (0 fresh, 57 cached). Next: P6 full isolation scan.
+
+```json
+{"cp": 522, "prev_cp": 521, "prev_commit": "accc972369fb71915f71d47882b8a9f002ba3c15", "utc": "2026-10-27T08:27:55Z", "kind": "phase_done", "phase": "P5", "done_through": "P5/dev", "next": "P6/scan", "arm": "abl_cc", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {"STATE/p5dev/progress.json": "829bcd24450d7744822ffdb64fc1c8ba2c3986026c9bf4c507bcc38b59cdcac0"}, "code": "844a9e68eec362ba7da5c8cdc47334d6be7a733a", "open_decisions": [], "memory": {"used_pct": 5.13, "peak_pct": 50.31, "state": "OK", "stale": false}}
+```

@@ -49,6 +49,13 @@
    "cache_hits": 57,
    "fresh": 0,
    "infra": 0
+  },
+  "abl_cc_best": {
+   "tgc": 0.7018,
+   "n": 57,
+   "cache_hits": 57,
+   "fresh": 0,
+   "infra": 0
   }
  },
  "label": "dev TGC, 1 trial, selection-biased for arms that selected on dev"

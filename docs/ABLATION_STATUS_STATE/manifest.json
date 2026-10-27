@@ -115,5 +115,28 @@
    },
    "utc": "2026-10-27T02:26:06Z"
   }
+ },
+ "freeze": {
+  "tree_sha256": {
+   "seed": "85a0da9cec2206a7bc683c11d60b5cb0acac7328d43c6e9197324d1e45971f3c",
+   "abl_ref": "54a4f3799ae887761849d5b96e7da0f0e0e4939000ac18c528c60b5d652790c2",
+   "abl_cc": "85a0da9cec2206a7bc683c11d60b5cb0acac7328d43c6e9197324d1e45971f3c",
+   "abl_prompt": "f979201fc17b5e55725b5032b411a486af837b470997a1bbfb40a818ba850eaa",
+   "abl_tools": "d78dcf6138cd9f41c9ec819aaa43c0c78f6b68bdc983d04058ba64b8731c0434",
+   "abl_notrace": "973ebcb4af6b3bddc83a597c6eedb12e65c03a7da34a4b81fba01c63da9723c8",
+   "abl_tracescore": "c2da5909d55fac51bdc26ef678b53d302c2184869a144182db3a6431ff28327c",
+   "abl_cc_best": "a2b6434e76a0109310d94d88fb193a0ece2435e98d0a12d443b6cc4a6f31ca71"
+  },
+  "labels": {
+   "seed": "seed",
+   "abl_ref": "",
+   "abl_cc": "inert",
+   "abl_prompt": "",
+   "abl_tools": "",
+   "abl_notrace": "",
+   "abl_tracescore": "",
+   "abl_cc_best": "secondary"
+  },
+  "utc": "2026-10-27T08:27:51Z"
  }
 }
