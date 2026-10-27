@@ -4238,3 +4238,11 @@ P5 dev diagnostic done (57 dev tasks, 1 trial, seed 100; the seed's numbers are 
 ```json
 {"cp": 522, "prev_cp": 521, "prev_commit": "accc972369fb71915f71d47882b8a9f002ba3c15", "utc": "2026-10-27T08:27:55Z", "kind": "phase_done", "phase": "P5", "done_through": "P5/dev", "next": "P6/scan", "arm": "abl_cc", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {"STATE/p5dev/progress.json": "829bcd24450d7744822ffdb64fc1c8ba2c3986026c9bf4c507bcc38b59cdcac0"}, "code": "844a9e68eec362ba7da5c8cdc47334d6be7a733a", "open_decisions": [], "memory": {"used_pct": 5.13, "peak_pct": 50.31, "state": "OK", "stale": false}}
 ```
+
+## ABL-0523 · 2026-10-27T08:31Z · P6 isolation scan · result
+
+Isolation scan (counts only): abl_ref: test-id hits 0; models ['aws/claude-sonnet-5-5'], other models []; J1 in 11 iteration(s) ok=True; K on the command line ['0.2'] ok=True; abl_cc: test-id hits 0; models ['aws/claude-sonnet-5-5'], other models []; J1 in None iteration(s) ok=None; K on the command line None ok=None; abl_prompt: test-id hits 0; models ['aws/claude-sonnet-5-5'], other models []; J1 in 11 iteration(s) ok=True; K on the command line ['0.2'] ok=True; abl_tools: test-id hits 0; models ['aws/claude-sonnet-5-5'], other models []; J1 in 11 iteration(s) ok=True; K on the command line ['0.2'] ok=True; abl_notrace: test-id hits 0; models ['aws/claude-sonnet-5-5'], other models []; J1 in 6 iteration(s) ok=True; K on the command line ['0.2'] ok=True; abl_tracescore: test-id hits 0; models ['aws/claude-sonnet-5-5'], other models []; J1 in 6 iteration(s) ok=True; K on the command line ['0.2'] ok=True; orchestrating sessions: test-id hits 0 over 61 files. Literal-string counts per location are in the pushed scan file.
+
+```json
+{"cp": 523, "prev_cp": 522, "prev_commit": "105663a5001bb321da06c96c745aa5e351b24dbd", "utc": "2026-10-27T08:31:30Z", "kind": "result", "phase": "P6", "done_through": "P6/scan", "next": "P7/final", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {"STATE/isolation_scan.json": "864217cd3804e37c510a9542fab42e63f4390d3e215fcab143bcc9621f570bb8"}, "code": "844a9e68eec362ba7da5c8cdc47334d6be7a733a", "open_decisions": [], "memory": {"used_pct": 4.97, "peak_pct": 50.31, "state": "OK", "stale": false}}
+```

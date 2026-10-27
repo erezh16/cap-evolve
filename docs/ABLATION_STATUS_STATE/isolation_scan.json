@@ -1601,18 +1601,18 @@
  "_orchestrating_sessions": {
   "files": 61,
   "counts": {
-   "test_normal": 325,
+   "test_normal": 344,
    "test_challenge": 149,
-   "root_full": 578,
+   "root_full": 587,
    "ground_truth": 120,
    "answer.json": 95,
    "compiled_solution": 59,
    "generate/tasks": 30,
    "src/appworld/apps": 63,
    "solution.py": 99,
-   "aw_rest": 289,
-   "aw_ce2": 305,
-   "aw_ce3": 115
+   "aw_rest": 299,
+   "aw_ce2": 307,
+   "aw_ce3": 117
   },
   "test_id_hits": 0,
   "scope": "sessions ['12194466-3ee6-4d3d-afab-8ab8118a33cc', '5cbfcce5-92a4-4a7f-931d-8014e8ce1e92']",
