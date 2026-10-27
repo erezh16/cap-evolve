@@ -5807,3 +5807,11 @@ Posted 'Claude code (plain Claude Code) results' on #931 (abl_cc): https://githu
 ```json
 {"cp": 704, "prev_cp": 703, "prev_commit": "812f89939b62c6c61b5ff8b82a54a73469c53dd2", "utc": "2026-10-27T18:06:18Z", "kind": "posted", "phase": "P9", "done_through": "P8/analysis", "next": "P9/post", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "72876a3522a3ef3583db1326dfa1e231a2542196", "open_decisions": [], "memory": {"used_pct": 5.11, "peak_pct": 90.19, "state": "OK", "stale": false}, "post": "abl_cc/results", "url": "https://github.com/skillberry-ai/cap-evolve/issues/931#issuecomment-6449835364"}
 ```
+
+## ABL-0705 · 2026-10-27T18:06Z · P9 posted abl_prompt · posted
+
+Posted 'Cap evolve prompt only results' on #932 (abl_prompt): https://github.com/skillberry-ai/cap-evolve/issues/932#issuecomment-6449836360
+
+```json
+{"cp": 705, "prev_cp": 704, "prev_commit": "b5557346d8fa9156b51f8274f7f2efaebefa3731", "utc": "2026-10-27T18:06:21Z", "kind": "posted", "phase": "P9", "done_through": "P8/analysis", "next": "P9/post", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "72876a3522a3ef3583db1326dfa1e231a2542196", "open_decisions": [], "memory": {"used_pct": 5.11, "peak_pct": 90.19, "state": "OK", "stale": false}, "post": "abl_prompt/results", "url": "https://github.com/skillberry-ai/cap-evolve/issues/932#issuecomment-6449836360"}
+```
