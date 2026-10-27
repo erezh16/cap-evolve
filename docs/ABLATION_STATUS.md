@@ -3886,3 +3886,11 @@ P4 abl_cc: evaluation 5: mean val 0.6735 (lint ok); 147 new rollouts, 588 of 882
 ```json
 {"cp": 478, "prev_cp": 477, "prev_commit": "3f24e17690619c2f0c9b7a68c1a7a2fce81eb3b3", "utc": "2026-10-27T02:24:57Z", "kind": "result", "phase": "P4", "done_through": "P4/abl_cc-session2", "next": "P4: abl_cc session 3", "arm": "abl_cc", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {"STATE/abl_cc/progress.json": "239987115ba1808160d6a54a4e6b5f1038facf3f5b30a73a4bca6ed96e35c499"}, "code": "207e8bf0d67325f704bc94f15631962f4efc52aa", "open_decisions": [], "memory": {"used_pct": 3.45, "peak_pct": 50.31, "state": "OK", "stale": false}, "iteration": 5, "verdict": {"t": "2026-10-27T02:03:12Z", "ticket": "20261027T020308-9485f4", "cand": "a2b6434e76a0", "state": "done", "lint": "ok", "mean_reward": 0.6735, "fresh": 147, "cache_hits": 0, "rollouts_used": 588, "rollouts_left": 294, "budget": 882}}
 ```
+
+## ABL-0479 · 2026-10-27T02:25Z · P4 posted abl_cc · posted
+
+Posted 'Claude code (plain Claude Code) evaluation 5' on #931 (abl_cc): https://github.com/skillberry-ai/cap-evolve/issues/931#issuecomment-6432196461
+
+```json
+{"cp": 479, "prev_cp": 478, "prev_commit": "671c96935e3f69d1034f084c3ef528826ac712e5", "utc": "2026-10-27T02:25:00Z", "kind": "posted", "phase": "P4", "done_through": "P4/abl_cc-session2", "next": "P4: abl_cc session 3", "arm": "abl_cc", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "207e8bf0d67325f704bc94f15631962f4efc52aa", "open_decisions": [], "memory": {"used_pct": 3.49, "peak_pct": 50.31, "state": "OK", "stale": false}, "post": "abl_cc/eval_5", "url": "https://github.com/skillberry-ai/cap-evolve/issues/931#issuecomment-6432196461"}
+```
