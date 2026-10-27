@@ -4739,3 +4739,11 @@ Next: final remaining cells.
 ```json
 {"cp": 580, "prev_cp": 579, "prev_commit": "61b1bebb03304e8c503a42b221c575cd31609eed", "utc": "2026-10-27T11:37:37Z", "kind": "result", "phase": "P7", "done_through": "final/952", "next": "final/cells", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {"STATE/final/progress.json": "e9dda0ed572bf0506022d761b5a7628102b0e993df637adafe48d377fb3e260c"}, "code": "844a9e68eec362ba7da5c8cdc47334d6be7a733a", "open_decisions": [], "memory": {"used_pct": 43.64, "peak_pct": 50.31, "state": "OK", "stale": false}, "window": {"window": "final", "cells_total": 2688, "cells_done": 952, "order_sha256": "100420c984d708820c4d527c7b3217f3dc588e34659b93bd185e684122eeebc8"}}
 ```
+
+## ABL-0581 · 2026-10-27T11:41Z · P7 posted abl_cc · posted
+
+Posted 'Claude code (plain Claude Code) hourly status' on #931 (abl_cc): https://github.com/skillberry-ai/cap-evolve/issues/931#issuecomment-6441003297
+
+```json
+{"cp": 581, "prev_cp": 580, "prev_commit": "a8d8744007a825faae8e232a1bf900955b955f0e", "utc": "2026-10-27T11:41:24Z", "kind": "posted", "phase": "P7", "done_through": "final/952", "next": "final/cells", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "844a9e68eec362ba7da5c8cdc47334d6be7a733a", "open_decisions": [], "memory": {"used_pct": 41.28, "peak_pct": 50.31, "state": "OK", "stale": false}, "post": "abl_cc/status_20261027T1141", "url": "https://github.com/skillberry-ai/cap-evolve/issues/931#issuecomment-6441003297"}
+```
