@@ -5839,3 +5839,11 @@ Posted 'Cap evolve traces and score only results' on #935 (abl_tracescore): http
 ```json
 {"cp": 708, "prev_cp": 707, "prev_commit": "2d7d5434987f401106bf1a35fd30bdbcc43e1441", "utc": "2026-10-27T18:06:31Z", "kind": "posted", "phase": "P9", "done_through": "P8/analysis", "next": "P9/post", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "72876a3522a3ef3583db1326dfa1e231a2542196", "open_decisions": [], "memory": {"used_pct": 5.08, "peak_pct": 90.19, "state": "OK", "stale": false}, "post": "abl_tracescore/results", "url": "https://github.com/skillberry-ai/cap-evolve/issues/935#issuecomment-6449839500"}
 ```
+
+## ABL-0709 · 2026-10-27T18:06Z · P9 evaluation complete · phase_done
+
+P9 done: results comment(s) posted on #930 (abl_ref), #931 (abl_cc), #932 (abl_prompt), #933 (abl_tools), #934 (abl_notrace), #935 (abl_tracescore); URLs in the posted entries above. root_full is locked (chmod 000). The background loops (autopost, heartbeat, memguard) are stopped next by the executing session.
+
+```json
+{"cp": 709, "prev_cp": 708, "prev_commit": "1be24be9a2435d041a886b15b80e0093dcc17b70", "utc": "2026-10-27T18:06:32Z", "kind": "phase_done", "phase": "P9", "done_through": "P9/post", "next": "done", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "72876a3522a3ef3583db1326dfa1e231a2542196", "open_decisions": [], "memory": {"used_pct": 5.08, "peak_pct": 90.19, "state": "OK", "stale": false}}
+```
