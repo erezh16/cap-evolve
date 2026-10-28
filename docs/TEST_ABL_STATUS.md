@@ -431,3 +431,11 @@ Gate-arm tracking issues: abl_nogate #948, abl_naivegate #949. Their hourly time
 ```json
 {"cp": 52, "prev_cp": 51, "prev_commit": "068cb75137bce07b3db629f71d1519c0885267f9", "utc": "2026-10-28T19:20:25Z", "kind": "result", "phase": "W", "done_through": "P2/T1,T2,T4-T10", "next": "P2/T3 then P3/window1 (launch_when_clear.py waiting for the gate run)", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 3.84, "peak_pct": 45.67, "state": "OK", "stale": false}, "issues_gate": {"abl_nogate": 948, "abl_naivegate": 949}}
 ```
+
+## TB-0053 · 2026-10-28T19:24Z · W gate arms fetch, lint, T4, T5 · result
+
+Window 2 arms (abl_nogate, abl_naivegate): fetch + rule-S hash check, lint, T4 injection and T5 context (1 dev episode each): PASS. Window 2 runs after window 1.
+
+```json
+{"cp": 53, "prev_cp": 52, "prev_commit": "f1be6fbb4b16d6394a817dc9d5033959dd7c663f", "utc": "2026-10-28T19:24:00Z", "kind": "result", "phase": "W", "done_through": "P2/T1,T2,T4-T10", "next": "P2/T3 then P3/window1 (launch_when_clear.py waiting for the gate run)", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 3.76, "peak_pct": 45.67, "state": "OK", "stale": false}, "gate_accept": {"fetch": 0, "lint": 0, "t4": 0, "t5": 0}}
+```

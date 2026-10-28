@@ -139,6 +139,46 @@
     "tools/api_notes.json": "80668fc0e728a925b77d802621144ed42a64d94b06ee3e0ad9d44148032d0b0d",
     "tools/helpers.py": "ee718d595dbec8c7780261125cec97a87517751171f3a0e2e6ffc9a8443bab95"
    }
+  },
+  "abl_nogate": {
+   "rule": "S",
+   "expected": "cdbc5827f70b02e1b388c4e8a29dc0b5125fd905399c2b3a396d904efd19b1e9",
+   "computed": "cdbc5827f70b02e1b388c4e8a29dc0b5125fd905399c2b3a396d904efd19b1e9",
+   "source": "local",
+   "source_path": "/workspace/worktrees/eval-abl/docs/ABLATION_STATUS_STATE/abl_nogate/artifact",
+   "surfaces_present": {
+    "P": true,
+    "T_helpers": true,
+    "T_notes": true,
+    "M_playbook": false,
+    "M_retrieval": false
+   },
+   "scored_rule_s": "cdbc5827f70b02e1b388c4e8a29dc0b5125fd905399c2b3a396d904efd19b1e9",
+   "scored_files": {
+    "policy/instructions.txt": "7d7bcd3b49d146aacc0e1393466730ce2e6595112dc1bece0c0e57a1ddc2fdb0",
+    "tools/api_notes.json": "d3b03b9325e68076f7b834b99e31ccb8d19bbdfbd45177de18ec8cb56e7f27a6",
+    "tools/helpers.py": "65b61bb44eea1b8b46d2fb06e9dc41b0b2a2e77c925761f76a5988e313021647"
+   }
+  },
+  "abl_naivegate": {
+   "rule": "S",
+   "expected": "fa2bfe23ace7fc0546953d9b047445dab6fa111655d657d31fbf897d8c31bb51",
+   "computed": "fa2bfe23ace7fc0546953d9b047445dab6fa111655d657d31fbf897d8c31bb51",
+   "source": "local",
+   "source_path": "/workspace/worktrees/eval-abl/docs/ABLATION_STATUS_STATE/abl_naivegate/artifact",
+   "surfaces_present": {
+    "P": true,
+    "T_helpers": true,
+    "T_notes": true,
+    "M_playbook": false,
+    "M_retrieval": false
+   },
+   "scored_rule_s": "fa2bfe23ace7fc0546953d9b047445dab6fa111655d657d31fbf897d8c31bb51",
+   "scored_files": {
+    "policy/instructions.txt": "83604a05f4a83e247ccfb8a71a2b200633067e48d72f83d22a3a5262cf8fb357",
+    "tools/api_notes.json": "77db33441a1a9b851efdbfc8af9a134b8221e86bda5b801a86ebaaa397f18d45",
+    "tools/helpers.py": "30a9783fe88447d39f704a3bd484f60c1267dfa13421e4ac31a8f0ee53e26eed"
+   }
   }
  },
  "seed_equals_harnesslens_bytewise": null,
@@ -294,6 +334,50 @@
      "chars": 13221,
      "lines": 57,
      "tokens_o200k": 3083
+    }
+   }
+  },
+  "abl_nogate": {
+   "pass": true,
+   "violations": [],
+   "disclosed_exception": [],
+   "sizes": {
+    "policy/instructions.txt": {
+     "chars": 33050,
+     "lines": 409,
+     "tokens_o200k": 7810
+    },
+    "tools/helpers.py": {
+     "chars": 23205,
+     "lines": 397,
+     "tokens_o200k": 6161
+    },
+    "tools/api_notes.json": {
+     "chars": 13347,
+     "lines": 56,
+     "tokens_o200k": 3059
+    }
+   }
+  },
+  "abl_naivegate": {
+   "pass": true,
+   "violations": [],
+   "disclosed_exception": [],
+   "sizes": {
+    "policy/instructions.txt": {
+     "chars": 33361,
+     "lines": 424,
+     "tokens_o200k": 8000
+    },
+    "tools/helpers.py": {
+     "chars": 20984,
+     "lines": 400,
+     "tokens_o200k": 5451
+    },
+    "tools/api_notes.json": {
+     "chars": 11838,
+     "lines": 54,
+     "tokens_o200k": 2727
     }
    }
   }
