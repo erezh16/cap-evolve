@@ -903,3 +903,12 @@ Posted 'Cap evolve naive gate: window started' on #949 (abl_naivegate): https://
 ```json
 {"cp": 111, "prev_cp": 110, "prev_commit": "f8850f3354ba81a877a47bd8952e4eae971deeed", "utc": "2026-10-28T23:30:11Z", "kind": "posted", "phase": "P3", "done_through": "P2/T1,T2,T4-T10", "next": "P3/window1", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 43.78, "peak_pct": 45.67, "state": "OK", "stale": false}, "post": "abl_naivegate/window_started", "url": "https://github.com/skillberry-ai/cap-evolve/issues/949#issuecomment-6483441246"}
 ```
+
+## TB-0112 · 2026-10-28T23:32Z · P3 final window · result
+
+final window: 16 cells since the last entry; 16/5880 done (abl_cc_best 1, abl_prompt 1, abl_ref 2, abl_tools 4, abl_tracescore 3, seed 5); infra still missing 0, retries 0.
+Next: final remaining cells.
+
+```json
+{"cp": 112, "prev_cp": 111, "prev_commit": "c27925e3eeecfae61a8648bdb772d41b776d2323", "utc": "2026-10-28T23:32:48Z", "kind": "result", "phase": "P3", "done_through": "final/16", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/final/progress.json": "98fbfbae7ab71d45dc3c37921b89cdad0da9f3733561b4acfd1b6ffcba401055"}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 43.72, "peak_pct": 45.67, "state": "OK", "stale": false}, "window": {"window": "final", "cells_total": 5880, "cells_done": 16, "order_sha256": "b6198022056314527fd71a2c5eae463ee68b159c751679a369baff6495038772"}}
+```
