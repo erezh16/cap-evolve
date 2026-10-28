@@ -7117,3 +7117,11 @@ Posted 'Cap evolve naive gate results' on #939 (abl_naivegate): https://github.c
 ```json
 {"cp": 860, "prev_cp": 859, "prev_commit": "6051f3c0d6357f79755bf4c3074df150a641e8c9", "utc": "2026-10-28T23:30:22Z", "kind": "posted", "phase": "P8", "done_through": "P8/gate analysis", "next": "P9/gate results posts", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "5d3d1088e11f68cda9b4ed9df70432092c3b5309", "open_decisions": [], "memory": {"used_pct": 44.9, "peak_pct": 48.95, "state": "OK", "stale": false}, "post": "abl_naivegate/results", "url": "https://github.com/skillberry-ai/cap-evolve/issues/939#issuecomment-6483444245"}
 ```
+
+## ABL-0861 · 2026-10-28T23:30Z · P9 gate arms: evaluation complete · phase_done
+
+P9 done: results posted on #938 (abl_nogate) and #939 (abl_naivegate), RESULTS.md for each pushed under docs/ABLATION_STATUS_STATE/<arm>/. The gate-arm work of docs/ABLATIONS_GATE.md is complete. root_full is locked (mode 000). autopost stops posting hourly status on an issue once its results post exists, so the posts on #938 and #939 end here. The memory guard and the heartbeat keep running.
+
+```json
+{"cp": 861, "prev_cp": 860, "prev_commit": "4feb1c181cabff704506292801c599f170b8e70e", "utc": "2026-10-28T23:30:49Z", "kind": "phase_done", "phase": "P9", "done_through": "P9/gate", "next": "none (gate arms complete)", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "5d3d1088e11f68cda9b4ed9df70432092c3b5309", "open_decisions": [], "memory": {"used_pct": 44.92, "peak_pct": 48.95, "state": "OK", "stale": false}}
+```
