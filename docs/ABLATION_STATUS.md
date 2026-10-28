@@ -6533,3 +6533,11 @@ P4 done for the gate arms (abl_nogate, abl_naivegate): search, freeze, isolation
 ```json
 {"cp": 793, "prev_cp": 792, "prev_commit": "c9109b090b9a3dd0d7652a11da29552a80aa8215", "utc": "2026-10-28T19:17:41Z", "kind": "phase_done", "phase": "P4", "done_through": "P4/gate searches", "next": "P5/gate dev", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "573f9c6d89fa088ab07146b847b334fe655da00e", "open_decisions": [], "memory": {"used_pct": 3.7, "peak_pct": 48.95, "state": "OK", "stale": false}}
 ```
+
+## ABL-0794 · 2026-10-28T19:21Z · P6 isolation scan · result
+
+Isolation scan (counts only): abl_nogate: test-id hits 0; models ['aws/claude-sonnet-5-5'], other models []; J1 in 6 iteration(s) ok=True; K on the command line ['-100000'] ok=True; abl_naivegate: test-id hits 0; models ['aws/claude-sonnet-5-5'], other models []; J1 in 6 iteration(s) ok=True; K on the command line ['0'] ok=True; orchestrating sessions: test-id hits 2 over 100 files. Literal-string counts per location are in the pushed scan file.
+
+```json
+{"cp": 794, "prev_cp": 793, "prev_commit": "a62106320f1aa4ae371567394baa81f9a33019ce", "utc": "2026-10-28T19:21:22Z", "kind": "result", "phase": "P6", "done_through": "P6/scan", "next": "P7/final", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {"STATE/isolation_scan.json": "c158f21a8ede9f92eac8d7fb0129240813e9c1651cad41edad480d95935b6c07"}, "code": "573f9c6d89fa088ab07146b847b334fe655da00e", "open_decisions": [], "memory": {"used_pct": 8.99, "peak_pct": 48.95, "state": "OK", "stale": false}}
+```

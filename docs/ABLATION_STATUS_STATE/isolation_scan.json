@@ -1599,23 +1599,24 @@
   }
  },
  "_orchestrating_sessions": {
-  "files": 61,
+  "files": 100,
   "counts": {
-   "test_normal": 344,
-   "test_challenge": 149,
-   "root_full": 587,
-   "ground_truth": 120,
-   "answer.json": 95,
-   "compiled_solution": 59,
-   "generate/tasks": 30,
-   "src/appworld/apps": 63,
-   "solution.py": 99,
-   "aw_rest": 299,
-   "aw_ce2": 307,
-   "aw_ce3": 117
+   "test_id": 2,
+   "test_normal": 443,
+   "test_challenge": 170,
+   "root_full": 840,
+   "ground_truth": 164,
+   "answer.json": 117,
+   "compiled_solution": 81,
+   "generate/tasks": 46,
+   "src/appworld/apps": 96,
+   "solution.py": 125,
+   "aw_rest": 352,
+   "aw_ce2": 384,
+   "aw_ce3": 171
   },
-  "test_id_hits": 0,
-  "scope": "sessions ['12194466-3ee6-4d3d-afab-8ab8118a33cc', '5cbfcce5-92a4-4a7f-931d-8014e8ce1e92']",
+  "test_id_hits": 2,
+  "scope": "sessions ['12194466-3ee6-4d3d-afab-8ab8118a33cc', '5cbfcce5-92a4-4a7f-931d-8014e8ce1e92', '6ed71d64-7054-4436-a671-44beacc9f258']",
   "out_of_scope_test_id_hits_by_session": {}
  },
  "abl_nogate": {
@@ -1626,7 +1627,7 @@
     "counts": {}
    },
    "arm state (driver)": {
-    "files": 369,
+    "files": 370,
     "files_hit": 1,
     "counts": {
      "root_full": 2,
@@ -1813,7 +1814,7 @@
     "counts": {}
    },
    "arm state (driver)": {
-    "files": 367,
+    "files": 368,
     "files_hit": 1,
     "counts": {
      "root_full": 3,

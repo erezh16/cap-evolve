@@ -1,0 +1,18 @@
+{
+ "window": "p5dev_gate",
+ "per_arm": {
+  "abl_nogate": {
+   "tgc": 0.8421,
+   "n": 57,
+   "cache_hits": 57,
+   "fresh": 0
+  },
+  "abl_naivegate": {
+   "tgc": 0.8421,
+   "n": 57,
+   "cache_hits": 57,
+   "fresh": 0
+  }
+ },
+ "label": "dev TGC, 1 trial, selection-biased (dev is in the search set)"
+}
