@@ -86,8 +86,8 @@ def run() -> int:
     (clone / "docs" / (Path(LEDGER).stem + "_STATE")).mkdir(exist_ok=True)
     shutil.copy2(P.PUSHED / "manifest.json", clone / "docs" / (Path(LEDGER).stem + "_STATE") / "manifest.json")
     if P.TESTALL:    # awrest's testall branch pins PUSHED to docs/TEST_ALL_STATE: give the clone's copy there too
-        (clone / "docs" / "TEST_ALL_STATE").mkdir(exist_ok=True)
-        shutil.copy2(P.PUSHED / "manifest.json", clone / "docs" / "TEST_ALL_STATE" / "manifest.json")
+        (clone / P.PUSHED.relative_to(P.REPO)).mkdir(exist_ok=True)      # docs/TEST_ALL_STATE or docs/TEST_ABL_STATE
+        shutil.copy2(P.PUSHED / "manifest.json", clone / P.PUSHED.relative_to(P.REPO) / "manifest.json")
     state.mkdir()
     shutil.copy2(P.PUBLISH_CACHE, state / "publish_cache.json")
     shutil.copy2(P.LINT_CACHE, state / "lint_cache.json")
