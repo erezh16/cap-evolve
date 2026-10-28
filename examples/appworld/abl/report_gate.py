@@ -111,6 +111,27 @@ def search_rows(c: str) -> str:
         "- agent cost: n/a (RITS, unpriced); tokens per episode in the test table"])
 
 
+def interpretation(c: str) -> str:
+    """What the two gate arms jointly say. The naive gate's search made exactly the decisions abl_ref's rule would have
+    made, so its gap to abl_ref is a measured floor of search randomness plus cross-window change, not a gate effect."""
+    nv, ng, pr = A["vs_ref"]["abl_naivegate"], A["vs_ref"]["abl_nogate"], A["pairs"][f"{GATE[0]} − {GATE[1]}"]
+    same = {a: sum(1 for r in (P.read_json(P.PUSHED / a / "progress.json", {}) or {}).get("iterations") or []
+                   if "delta" in r and (r["delta"] > 0.2 * r["se"]) != bool(r.get("accept"))) for a in GATE}
+    return (f"- The naive gate made **{same['abl_naivegate']} decisions** that differ from `abl_ref`'s rule: every gain it "
+            "kept also cleared 0.2·SE. So its search ran exactly as `abl_ref`'s rule would have run it, and its test "
+            f"difference from `abl_ref` ({ci(nv, 'tgc')} TGC) **cannot be attributed to the gate**. It measures what one "
+            "independent search of the same configuration, scored a day later, differs by: search randomness plus any "
+            "cross-window change.\n"
+            f"- The no gate arm differs from `abl_ref` by {ci(ng, 'tgc')} TGC, about the same as the naive gate. In the same "
+            f"window, no gate − naive gate is {ci(pr, 'tgc')} TGC, which includes 0. So removing the gate, which here meant "
+            f"keeping {same['abl_nogate']} candidates that `abl_ref`'s rule would have rejected, shows **no measurable "
+            "effect beyond that floor** at this budget.\n"
+            "- The CIs and p-values above resample tasks and scenarios. They do not include the variation between searches, "
+            "which this pair of arms suggests is about as large as the gaps measured here. Read the p-values against "
+            "`abl_ref` as \"these two champions score lower than this particular `abl_ref` champion\", not as an effect of "
+            "the gate.")
+
+
 def body(c: str) -> str:
     iso = (P.read_json(P.PUSHED / "isolation_scan.json", {}) or {}).get(c) or {}
     sess = (P.read_json(P.PUSHED / "isolation_scan.json", {}) or {}).get("_orchestrating_sessions") or {}
@@ -133,7 +154,10 @@ def body(c: str) -> str:
 
 95% CI: scenario-clustered paired bootstrap (56 clusters, 10,000 resamples); per-task pairs line up by (task, trial) across the two windows.
 
-**Cross-window caveat (D16).** The gate arms ran about a day after the first window. Any change in RITS serving between the two windows is mixed into every contrast with `abl_ref` or the seed. Drift check: infra-retry and context-exceeded rates, first window {dc.get('first_window_rate')}, gate window {dc.get('gate_window_rate')}; flagged: {dc.get('flag') or 'none'}. The `{GATE[0]} − {GATE[1]}` contrast is in-window.
+### How to read this (both gate arms together)
+{interpretation(c)}
+
+**Cross-window caveat (D16).** The gate arms ran about a day after the first window. Any change in RITS serving between the two windows is mixed into every contrast with `abl_ref` or the seed. Drift check (rate per episode; seed + `abl_ref` in the first window vs the two gate arms): infra retries {dc['first_window_rate']['infra_retries']:.4f} vs {dc['gate_window_rate']['infra_retries']:.4f}, context-exceeded {dc['first_window_rate']['context_exceeded']:.4f} vs {dc['gate_window_rate']['context_exceeded']:.4f}; flagged (more than 2× and at least 3 episodes apart): {', '.join(dc.get('flag') or []) or 'none'}. A retry re-runs an infrastructure failure with a new seed; no cell is missing in either window. The `{GATE[0]} − {GATE[1]}` contrast is in-window.
 
 Context (first window, all arms):
 {first_window_context()}
