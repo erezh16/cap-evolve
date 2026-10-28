@@ -535,3 +535,11 @@ Posted 'Claude code, best evaluated candidate hourly status' on #942 (abl_cc_bes
 ```json
 {"cp": 65, "prev_cp": 64, "prev_commit": "343ebcb85927751595a5c0104770ba5aa4c26bed", "utc": "2026-10-28T20:13:32Z", "kind": "posted", "phase": "W", "done_through": "P2/T1,T2,T4-T10", "next": "P3/window1", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 24.15, "peak_pct": 45.67, "state": "OK", "stale": false}, "post": "abl_cc_best/status_20261028T201320", "url": "https://github.com/skillberry-ai/cap-evolve/issues/942#issuecomment-6479512359"}
 ```
+
+## TB-0066 · 2026-10-28T20:20Z · W posted abl_prompt · posted
+
+Posted 'Cap evolve prompt only hourly status' on #943 (abl_prompt): https://github.com/skillberry-ai/cap-evolve/issues/943#issuecomment-6479707983
+
+```json
+{"cp": 66, "prev_cp": 65, "prev_commit": "f6bf3d6d81b110be1fa8df48885bd006478afa79", "utc": "2026-10-28T20:20:14Z", "kind": "posted", "phase": "W", "done_through": "P2/T1,T2,T4-T10", "next": "P3/window1", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 24.2, "peak_pct": 45.67, "state": "OK", "stale": false}, "post": "abl_prompt/status_20261028T202000", "url": "https://github.com/skillberry-ai/cap-evolve/issues/943#issuecomment-6479707983"}
+```
