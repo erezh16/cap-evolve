@@ -390,3 +390,11 @@ Posted 'Cap evolve tools only: build and acceptance done' on #944 (abl_tools): h
 ```json
 {"cp": 47, "prev_cp": 46, "prev_commit": "0f867e3ec790b236dbe929d651c2b80ef7407390", "utc": "2026-10-28T19:16:53Z", "kind": "posted", "phase": "P2", "done_through": "P2/T1,T2,T4-T10", "next": "P2/T3 then P3/window1 (launch_when_clear.py waiting for the gate run)", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "a407702300d0bfa6f06c7bd42f3232d63e3ae2b6", "open_decisions": [], "memory": {"used_pct": 3.8, "peak_pct": 45.67, "state": "OK", "stale": false}, "post": "abl_tools/accept_done", "url": "https://github.com/skillberry-ai/cap-evolve/issues/944#issuecomment-6478304673"}
 ```
+
+## TB-0048 · 2026-10-28T19:16Z · P2 posted abl_notrace · posted
+
+Posted 'Cap evolve no traces: build and acceptance done' on #945 (abl_notrace): https://github.com/skillberry-ai/cap-evolve/issues/945#issuecomment-6478306720
+
+```json
+{"cp": 48, "prev_cp": 47, "prev_commit": "354a95d41b535828d4609a77d1e53ea350a32e89", "utc": "2026-10-28T19:16:59Z", "kind": "posted", "phase": "P2", "done_through": "P2/T1,T2,T4-T10", "next": "P2/T3 then P3/window1 (launch_when_clear.py waiting for the gate run)", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "a407702300d0bfa6f06c7bd42f3232d63e3ae2b6", "open_decisions": [], "memory": {"used_pct": 3.7, "peak_pct": 45.67, "state": "OK", "stale": false}, "post": "abl_notrace/accept_done", "url": "https://github.com/skillberry-ai/cap-evolve/issues/945#issuecomment-6478306720"}
+```
