@@ -6023,3 +6023,11 @@ Posted 'Cap evolve no gate search started' on #938 (abl_nogate): https://github.
 ```json
 {"cp": 731, "prev_cp": 730, "prev_commit": "18924d7fe00cc554b39a6a9addfae11ab1040f5c", "utc": "2026-10-28T11:47:29Z", "kind": "posted", "phase": "P4", "done_through": "P2/gate", "next": "P4/gate searches", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "92163dfd239c99b679a7af04cf5e1023e234b94f", "open_decisions": [], "memory": {"used_pct": 43.51, "peak_pct": 45.32, "state": "OK", "stale": false}, "post": "abl_nogate/m4_search_start", "url": "https://github.com/skillberry-ai/cap-evolve/issues/938#issuecomment-6468168151"}
 ```
+
+## ABL-0732 · 2026-10-28T12:10Z · P4 slots · decision
+
+Global episode slots set to 12: user request 2026-10-28: another workload is starting in this pod in another session; this run's share is about 12 episode slots (was 24). In-flight episodes finish; no new episode starts above 12 (rule R2).
+
+```json
+{"cp": 732, "prev_cp": 731, "prev_commit": "cb40bac367ca6538619bf747ca3bfa04c15c0a8e", "utc": "2026-10-28T12:10:23Z", "kind": "decision", "phase": "P4", "done_through": "P2/gate", "next": "P4/gate searches", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "92163dfd239c99b679a7af04cf5e1023e234b94f", "open_decisions": [], "memory": {"used_pct": 46.97, "peak_pct": 48.95, "state": "OK", "stale": false}}
+```
