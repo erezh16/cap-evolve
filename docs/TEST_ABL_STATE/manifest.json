@@ -331,5 +331,27 @@
  "window2_arms_pending": [
   "abl_nogate",
   "abl_naivegate"
- ]
+ ],
+ "window2_arms": [
+  "abl_nogate",
+  "abl_naivegate"
+ ],
+ "gate_artifacts": {
+  "abl_nogate": {
+   "local": "/workspace/worktrees/eval-abl/docs/ABLATION_STATUS_STATE/abl_nogate/artifact",
+   "box": null,
+   "hash": "cdbc5827f70b02e1b388c4e8a29dc0b5125fd905399c2b3a396d904efd19b1e9",
+   "rule": "S"
+  },
+  "abl_naivegate": {
+   "local": "/workspace/worktrees/eval-abl/docs/ABLATION_STATUS_STATE/abl_naivegate/artifact",
+   "box": null,
+   "hash": "fa2bfe23ace7fc0546953d9b047445dab6fa111655d657d31fbf897d8c31bb51",
+   "rule": "S"
+  }
+ },
+ "gate_surfaces_changed": {
+  "abl_nogate": "P + T",
+  "abl_naivegate": "P + T"
+ }
 }
