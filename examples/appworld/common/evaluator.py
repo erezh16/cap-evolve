@@ -260,6 +260,15 @@ def _evaluate_local(cand: str, cdir: Path, task_ids: list[str], phase: str, tag:
     tasks = {t: A._task_cached(t, root) for t in dict.fromkeys(task_ids)}
     out: dict[str, dict] = {}
     todo = []
+    if os.environ.get("AW_ABL_TOOLS_LINT") == "1":
+        # ABLATIONS §10.4: the arm's own lint runs before the cross-arm tree-hash cache, so a cached record of the
+        # same tree made by an arm without this lint can never serve a candidate this arm must reject
+        v = lint(cdir)
+        if v:
+            P.append_jsonl(P.AW_STATE / cand / "lint_rejects.jsonl",
+                           {"t": P.utcnow(), "phase": phase, "tag": tag, "cand": h[:12], "tasks": len(tasks),
+                            "violations": len(v)})
+            return [_lint_reject_record(tasks[t], v) for t in task_ids]
     for tid in tasks:
         cp = _cache_path(h, tid, seed, phase)
         if cp.exists():                                           # rule 2: cache hit, not counted

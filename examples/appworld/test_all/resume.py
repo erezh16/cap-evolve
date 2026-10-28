@@ -39,19 +39,19 @@ def git(*a, check=True):
 
 
 def sync(plan, dry):
-    git("fetch", "-q", "origin", P.BRANCH, check=False)
-    ab = git("rev-list", "--left-right", "--count", f"HEAD...origin/{P.BRANCH}", check=False).stdout.split()
+    git("fetch", "-q", P.REMOTE, P.BRANCH, check=False)
+    ab = git("rev-list", "--left-right", "--count", f"HEAD...{P.REMOTE}/{P.BRANCH}", check=False).stdout.split()
     if len(ab) == 2:
         ahead, behind = map(int, ab)
         if ahead and behind:
-            raise SystemExit("local and origin/test-all have diverged: stop and ask the user")
+            raise SystemExit(f"local and {P.REMOTE}/{P.BRANCH} have diverged: stop and ask the user")
         if behind:
             plan.append(f"fast-forward {behind} commit(s)")
-            dry or git("merge", "--ff-only", f"origin/{P.BRANCH}")
+            dry or git("merge", "--ff-only", f"{P.REMOTE}/{P.BRANCH}")
         elif ahead:
             plan.append(f"push {ahead} commit(s)")
             if not dry:
-                git("push", "-q", "origin", f"HEAD:{P.BRANCH}")
+                git("push", "-q", P.REMOTE, f"HEAD:{P.BRANCH}")
                 P.write_json(S.PUSH_STATE, {"unpushed": 0})
     rel = str(P.LEDGER.relative_to(P.REPO))
     if git("diff", "--name-only", "--", rel).stdout.strip():

@@ -52,7 +52,7 @@ def main() -> int:
     res, ok = {}, True
     for arm in P.ARMS:
         v = [safe(x) for x in lints.lint_candidate(ART / arm)]
-        exc = [x for x in v if arm == "ace" and ACE_EXCEPTION.match(x)]
+        exc = [x for x in v if arm == "ace" and ACE_EXCEPTION.match(x)]   # TEST_ALL D6 only; none in TEST_ABL
         other = [x for x in v if x not in exc]
         res[arm] = {"violations": v, "disclosed_exception": exc, "pass": not other, "sizes": sizes(ART / arm)}
         ok &= not other

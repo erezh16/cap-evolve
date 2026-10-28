@@ -141,8 +141,9 @@ def fetch_all() -> int:
         print(json.dumps({"arm": arm, "rule": r["rule"], "source": r.get("source"), "match": r["match"],
                           "computed": (r.get("computed") or "")[:16], "files": len(r.get("scored_files", []))}))
     # §6.1 step 5: seed and harnesslens scored copies byte-identical, file by file
-    same = (ok and [(f["path"], f["sha256"]) for f in out["seed"]["scored_files"]]
-            == [(f["path"], f["sha256"]) for f in out["harnesslens"]["scored_files"]])
+    # TEST_ABL has no seed-identical arm (plan §6): the check does not apply, recorded as None
+    same = None if "harnesslens" not in P.ARMS else (ok and [(f["path"], f["sha256"]) for f in out["seed"]["scored_files"]]
+                                                       == [(f["path"], f["sha256"]) for f in out["harnesslens"]["scored_files"]])
     m = {"utc": P.utcnow(), "arms": out, "seed_equals_harnesslens_bytewise": same, "all_match": ok}
     P.write_json(MANIFEST, m)
     if ok:
@@ -152,7 +153,7 @@ def fetch_all() -> int:
                                      for a, v in out.items()},
                           seed_equals_harnesslens_bytewise=same)
     print(json.dumps({"all_match": ok, "seed_equals_harnesslens_bytewise": same}))
-    return 0 if ok and same else 1
+    return 0 if ok and same is not False else 1
 
 
 def verify_only() -> int:

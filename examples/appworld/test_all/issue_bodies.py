@@ -22,12 +22,15 @@ sys.path.insert(0, str(EX / "scripts"))
 import awrest as P  # noqa: E402
 import status_doc as S  # noqa: E402
 
-PLAN = P.REPO / "docs" / "TEST_ALL.md"
+PLAN = P.REPO / "docs" / getattr(P, "PLAN_NAME", "TEST_ALL.md")
 COMMON = ("0", "1", "3", "4", "5", "6", "8", "9", "11", "12", "13", "14", "15", "16")
 KEEP_FULL = ("0", "3")
 LIMIT = 65536
 PLAN_URL = "https://github.com/erezh16/cap-evolve/blob/cap-evolve-impr2/docs/TEST_ALL.md"
 LEDGER_URL = "https://github.com/erezh16/cap-evolve/blob/test-all/docs/TEST_ALL_STATUS.md"
+if getattr(P, "TESTABL", False):          # TEST_ABL: the plan and the ledger both live on branch test-abl
+    PLAN_URL = "https://github.com/erezh16/cap-evolve/blob/test-abl/docs/TEST_ABL.md"
+    LEDGER_URL = "https://github.com/erezh16/cap-evolve/blob/test-abl/docs/TEST_ABL_STATUS.md"
 
 PARTICULAR = {
     "seed": "The **baseline** every Δ of this evaluation is measured against: AppWorld's official simplified ReAct code "
@@ -53,6 +56,34 @@ PARTICULAR = {
 }
 
 
+if getattr(P, "TESTABL", False):
+    PARTICULAR = {
+        "seed": "The **baseline**: AppWorld's official simplified ReAct code agent with its stock prompt, no helpers, no "
+                "API notes and no memory. Every ablation arm started its search from it. Its first request is "
+                "byte-identical to stock (checked in T4). Every arm − seed Δ is a secondary contrast (§11).",
+        "abl_ref": "**The reference.** Full cap-evolve (`main` `75b3bcd`, hill-climb, paired gate K = 0.2), with nothing "
+                   "ablated. The primary contrasts of this evaluation are each ablation arm − `abl_ref` (§11, D12).",
+        "abl_cc_best": "**Plain Claude Code, secondary artifact.** The `abl_cc` arm was one plain Claude Code session "
+                       "without cap-evolve. Its final working directory equals the seed (inert) and is excluded here "
+                       "(D2). This arm is the **best candidate that session evaluated** (the session's own named best, "
+                       "ablation ledger decision ABL-0485), frozen and scored as a secondary artifact. It was picked by "
+                       "its search score, so it is selection-biased in the same way as every champion.",
+        "abl_prompt": "**Prompt only.** Only `policy/instructions.txt` could change; `tools/` stayed byte-identical to "
+                      "the seed (verified at fetch).",
+        "abl_tools": "**Tools only.** Only `tools/helpers.py` and `tools/api_notes.json` could change; the prompt stayed "
+                     "byte-identical to the seed. The frozen champion changed only `tools/api_notes.json` (measured at "
+                     "planning, file sha256 vs the seed's).",
+        "abl_notrace": "**No traces.** The proposer saw each rollout's reward and evaluation feedback, but no "
+                       "conversation trace. The artifact surfaces are the reference's.",
+        "abl_tracescore": "**Traces and score only.** The proposer saw full conversation traces and only the 0/1 reward, "
+                          "with no evaluation feedback. The artifact surfaces are the reference's.",
+        "abl_nogate": "**No gate (deferred, §3.2).** Every scored candidate was kept. Scored in window 2, after "
+                      "window 1; comparisons with window-1 arms are cross-window.",
+        "abl_naivegate": "**Naive gate (deferred, §3.2).** A candidate was kept iff its mean paired gain was above 0. "
+                         "Scored in window 2, after window 1; comparisons with window-1 arms are cross-window.",
+    }
+
+
 def sections(text: str) -> dict[str, str]:
     """'## N. Title' sections of the plan, by number, verbatim (heading included)."""
     parts = re.split(r"(?m)^(?=## \d+\. )", text)
@@ -72,6 +103,8 @@ def table_row(text: str, arm: str) -> tuple[str, str]:
 
 
 def own_section(text: str, arm: str) -> str:
+    if getattr(P, "TESTABL", False):
+        return own_section_testabl(text, arm)
     hdr, row = table_row(text, arm)
     a = (P.manifest().get("artifacts") or {}).get(arm, {})
     lint = (P.manifest().get("lint") or {}).get(arm, {})
@@ -100,7 +133,48 @@ def own_section(text: str, arm: str) -> str:
     return "\n".join(lines) + "\n"
 
 
+def own_section_testabl(text: str, arm: str) -> str:
+    sec = sections(text)["3"]
+    lines = sec.splitlines()
+    head = next(i for i, l in enumerate(lines) if l.startswith("| # | arm id"))
+    hdr = "\n".join(lines[head:head + 2])
+    row = next(l for l in lines if re.match(rf"\| \d+ \| `{re.escape(arm)}` \|", l))
+    a = (P.manifest().get("artifacts") or {}).get(arm, {})
+    lint = (P.manifest().get("lint") or {}).get(arm, {})
+    spec = P.ARTIFACTS.get(arm)
+    out = [f"## This arm: {P.METHOD_NAMES[arm]} (`{arm}`)", "", "Its row of §3:", "", hdr, row, "",
+           f"- **Source:** {P.SOURCE_EVAL[arm]}."
+           + (f" Search issue: #{P.SEARCH_ISSUES[arm]}." if arm in P.SEARCH_ISSUES else ""),
+           f"- **Surfaces searched:** {P.SURFACES_OF[arm]}; **changed vs the seed:** "
+           f"{P.SURFACES_CHANGED.get(arm, 'measured at fetch')}."]
+    if spec:
+        out.append(f"- **Expected hash** (rule S, the ablation freeze): `{spec['hash']}`; fetch result: "
+                   + (f"source {a.get('source')}, computed `{a.get('computed')}`, match "
+                      f"{'yes' if a.get('computed') == spec['hash'] else 'NO'}" if a else "not fetched yet (B3)") + ".")
+    out.append("- **Lint** (§6): " + ("pass" if lint.get("pass") else "FAIL" if lint else "not run yet (B3)") + ".")
+    out += ["", ("**What this artifact is and is not.** It is one **frozen artifact**, from one search with one search "
+                 "seed. Scoring it here measures this artifact under one shared test condition. It does **not** measure "
+                 "the ablated factor free of search randomness (§3, §12.3).") if arm != "seed" else
+            "**What this artifact is.** The unmodified agent, not trained or modified in any way."]
+    if arm in PARTICULAR:
+        out += ["", PARTICULAR[arm]]
+    return "\n".join(out) + "\n"
+
+
 def header(arm: str, n_issue: int | None = None) -> str:
+    if getattr(P, "TESTABL", False):
+        win = "window 2 (the gate arms, after window 1)" if arm in P.GATE_ARMS else "window 1"
+        return (f"# AppWorld TEST_ABL: {P.METHOD_NAMES[arm]} (`{arm}`), test_normal × 5 trials (gpt-oss-120b)\n\n"
+                f"This issue tracks the **{P.METHOD_NAMES[arm]}** arm (`{arm}`) of the AppWorld TEST_ABL evaluation: "
+                f"a **test-only** evaluation of the frozen champions of the AppWorld ablation study (#930 to #935, "
+                f"#938, #939) and the seed agent, on `test_normal` (168 tasks), 5 trials per task, with no training of "
+                f"any kind. It follows the protocol of `docs/TEST_ALL.md`. This arm is scored in {win}.\n\n"
+                f"- Plan: [`docs/TEST_ABL.md`]({PLAN_URL}) on branch `test-abl` of the `erezh16/cap-evolve` fork.\n"
+                f"- Ledger: [`docs/TEST_ABL_STATUS.md`]({LEDGER_URL}) on branch `test-abl`.\n"
+                f"- Progress is posted here **at least hourly** (this arm's slot: {P.HOURLY_OFFSET_S[arm] // 60:02d}:"
+                f"{P.HOURLY_OFFSET_S[arm] % 60:02d} past each UTC hour), plus milestones. **No test score of any arm is "
+                f"posted before its window completes** and the analysis has run.\n\n"
+                "Below: this arm's own section, then the common sections of the plan, verbatim.\n")
     return (f"# AppWorld TEST_ALL: {P.METHOD_NAMES[arm]} (`{arm}`), test_normal × 5 trials (gpt-oss-120b)\n\n"
             f"This issue tracks the **{P.METHOD_NAMES[arm]}** arm (`{arm}`) of the AppWorld TEST_ALL evaluation: 13 frozen "
             f"artifacts (the seed agent + 12 champions of earlier evaluations) scored together on `test_normal` "
@@ -129,7 +203,7 @@ def build(out: Path) -> dict:
     text = PLAN.read_text()
     out.mkdir(parents=True, exist_ok=True)
     res = {}
-    for arm in P.ARMS:
+    for arm in (P.ISSUE_ARMS if hasattr(P, "ISSUE_ARMS") else P.ARMS):
         b, short = body(arm, text), False
         if len(b) > LIMIT:
             b, short = body(arm, text, short=True), True

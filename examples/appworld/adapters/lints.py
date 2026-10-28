@@ -25,6 +25,8 @@ NGRAM = 8
 TEMPLATE_VARS = {"instruction", "main_user", "app_descriptions"}
 REQUIRED_VARS = {"instruction", "main_user"}
 HELPER_IMPORTS = {"re", "json", "math", "datetime", "itertools", "collections", "functools"}
+# ABLATIONS §10.4: the tools-only arm's anti-smuggling lint, on only with AW_ABL_TOOLS_LINT=1 (off = the reference)
+SMUGGLE_MAX_LITERAL = 200
 BANNED_CALLS = {"open", "exec", "eval", "compile", "__import__", "input", "breakpoint", "globals", "locals", "vars"}
 
 
@@ -172,6 +174,62 @@ def lint_helpers(src: str) -> list[str]:
     return list(dict.fromkeys(out + _leaks(src, what)))
 
 
+def _literal_chars(node, consts: dict) -> int:
+    """Characters of fixed literal text an expression evaluates to: a string literal, the literal parts of an
+    f-string, a + of such parts, a literal separator's .join over a list/tuple of literals, or a module-level string
+    constant named in any of these. Anything computed from arguments or calls adds nothing."""
+    if isinstance(node, ast.Constant) and isinstance(node.value, str):
+        return len(node.value)
+    if isinstance(node, ast.JoinedStr):
+        return sum(len(v.value) for v in node.values if isinstance(v, ast.Constant) and isinstance(v.value, str))
+    if isinstance(node, ast.BinOp) and isinstance(node.op, (ast.Add, ast.Mod)):
+        return _literal_chars(node.left, consts) + _literal_chars(node.right, consts)
+    if isinstance(node, ast.Name):
+        return consts.get(node.id, 0)
+    if (isinstance(node, ast.Call) and isinstance(node.func, ast.Attribute) and node.func.attr == "join"
+            and node.args and isinstance(node.args[0], (ast.List, ast.Tuple))):
+        parts = [_literal_chars(e, consts) for e in node.args[0].elts]
+        sep = _literal_chars(node.func.value, consts)
+        return sum(parts) + sep * max(0, len(parts) - 1)
+    if isinstance(node, ast.Call) and isinstance(node.func, ast.Attribute) and node.func.attr in ("format", "strip"):
+        return _literal_chars(node.func.value, consts)
+    return 0
+
+
+def lint_tools_smuggling(src: str) -> list[str]:
+    """§10.4: reject a helper that returns fixed procedure text (> SMUGGLE_MAX_LITERAL literal characters).
+    Docstrings and api_notes are tool descriptions, which the tools surface owns, so they are not checked."""
+    what = "tools/helpers.py"
+    try:
+        tree = ast.parse(src)
+    except SyntaxError:
+        return []                                   # lint_helpers already reports it
+    consts = {}
+    for node in tree.body:
+        if isinstance(node, ast.Assign):
+            n = _literal_chars(node.value, consts)
+            for t in node.targets:
+                if isinstance(t, ast.Name):
+                    consts[t.id] = n
+    out = []
+    for fn in (n for n in ast.walk(tree) if isinstance(n, (ast.FunctionDef, ast.AsyncFunctionDef))):
+        local = dict(consts)
+        for node in ast.walk(fn):
+            if isinstance(node, ast.Assign):
+                n = _literal_chars(node.value, local)
+                for t in node.targets:
+                    if isinstance(t, ast.Name):
+                        local[t.id] = max(local.get(t.id, 0), n)
+        for node in ast.walk(fn):
+            if isinstance(node, ast.Return) and node.value is not None:
+                n = _literal_chars(node.value, local)
+                if n > SMUGGLE_MAX_LITERAL:
+                    out.append(f"{what}: line {node.lineno}: helper {fn.name}() returns {n} characters of fixed "
+                               f"literal text (> {SMUGGLE_MAX_LITERAL}); in this run a helper may not return "
+                               "procedure or checklist text")
+    return out
+
+
 def lint_notes(raw: str) -> list[str]:
     what = "tools/api_notes.json"
     try:
@@ -208,6 +266,8 @@ def lint_candidate(cdir: Path) -> list[str]:
     h = cdir / "tools" / "helpers.py"
     if h.is_file():
         out += lint_helpers(h.read_text(encoding="utf-8"))
+        if os.environ.get("AW_ABL_TOOLS_LINT") == "1":
+            out += lint_tools_smuggling(h.read_text(encoding="utf-8"))
     n = cdir / "tools" / "api_notes.json"
     if n.is_file():
         out += lint_notes(n.read_text(encoding="utf-8"))

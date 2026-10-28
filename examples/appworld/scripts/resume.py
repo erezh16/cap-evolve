@@ -34,20 +34,20 @@ def git(*a, check=True):
 
 
 def sync_branch(plan: list[str], dry: bool) -> None:
-    git("fetch", "-q", "origin", P.BRANCH, check=False)
-    ab = git("rev-list", "--left-right", "--count", f"HEAD...origin/{P.BRANCH}", check=False).stdout.split()
+    git("fetch", "-q", P.REMOTE, P.BRANCH, check=False)
+    ab = git("rev-list", "--left-right", "--count", f"HEAD...{P.REMOTE}/{P.BRANCH}", check=False).stdout.split()
     if len(ab) == 2:
         ahead, behind = map(int, ab)
         if behind and not ahead:
             plan.append(f"fast-forward {behind} commit(s) from origin")
             if not dry:
-                git("merge", "--ff-only", f"origin/{P.BRANCH}")
+                git("merge", "--ff-only", f"{P.REMOTE}/{P.BRANCH}")
         elif behind and ahead:
             raise SystemExit("local and origin have diverged: stop and ask the user")
         elif ahead:
             plan.append(f"push {ahead} unpushed checkpoint commit(s)")
             if not dry:
-                git("push", "-q", "origin", f"HEAD:{P.BRANCH}")
+                git("push", "-q", P.REMOTE, f"HEAD:{P.BRANCH}")
                 P.write_json(S.PUSH_STATE, {"unpushed": 0})
     rel = str(P.LEDGER.relative_to(P.REPO))
     if git("diff", "--name-only", "--", rel).stdout.strip():

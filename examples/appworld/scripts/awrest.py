@@ -21,6 +21,7 @@ EXAMPLE = Path(__file__).resolve().parents[1]
 LEDGER = REPO / "docs" / os.environ.get("AW_LEDGER_NAME", "EVAL_APPWORLD_REST.md")
 PUSHED = REPO / "docs" / (LEDGER.stem + "_STATE")
 BRANCH = os.environ.get("AW_BRANCH", "eval-rest")
+REMOTE = os.environ.get("AW_REMOTE", "origin")   # the git remote that receives BRANCH (TEST_ABL: fork)
 LEDGER_MARKER = "<!-- CHECKPOINTS BELOW THIS LINE -->"
 
 AW_HOME = Path(os.environ.get("AW_HOME", "/workspace/aw_rest"))
@@ -310,5 +311,10 @@ elif os.environ.get("AW_PROFILE") == "testall":  # TEST_ALL (docs/TEST_ALL.md): 
     from awtestall import *  # noqa: E402,F401,F403
     PUSHED = REPO / "docs" / "TEST_ALL_STATE"     # plan §11, §12.3: docs/TEST_ALL_STATE/ (not <ledger stem>_STATE)
     ISSUES = {a: int(n) for a, n in (manifest().get("issues") or {}).items()}   # written once by open_issues.py
+elif os.environ.get("AW_PROFILE") == "testabl":  # TEST_ABL (docs/TEST_ABL.md): TEST_ALL's protocol, the ablation arms
+    from awtestabl import *  # noqa: E402,F401,F403
+    PUSHED = REPO / "docs" / "TEST_ABL_STATE"
+    ISSUES = {a: int(n) for a, n in (manifest().get("issues") or {}).items()}   # written once by open_issues.py
 LEDGER_ID = LEDGER_ID or LEDGER_PREFIX
-TESTALL = os.environ.get("AW_PROFILE") == "testall"
+TESTALL = os.environ.get("AW_PROFILE") in ("testall", "testabl")   # TEST_ABL reuses TEST_ALL's paths
+TESTABL = os.environ.get("AW_PROFILE") == "testabl"

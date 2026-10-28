@@ -28,12 +28,14 @@ LABELS = ("paper-experiment", "algorithm")
 
 
 def title(arm: str) -> str:
+    if getattr(P, "TESTABL", False):
+        return f"AppWorld TEST_ABL: {P.METHOD_NAMES[arm]} ({arm}), test_normal × 5 trials (gpt-oss-120b)"
     return f"AppWorld TEST_ALL: {P.METHOD_NAMES[arm]} ({arm}), test_normal × 5 trials (gpt-oss-120b)"
 
 
 def existing() -> dict[str, int]:
     r = subprocess.run(["gh", "issue", "list", "-R", P.ISSUE_REPO, "--state", "all", "--limit", "200", "--search",
-                        "\"AppWorld TEST_ALL\" in:title", "--json", "number,title"], capture_output=True, text=True,
+                        f"\"AppWorld {P.EVAL_NAME}\" in:title", "--json", "number,title"], capture_output=True, text=True,
                        check=True)
     return {x["title"]: x["number"] for x in json.loads(r.stdout)}
 
@@ -48,7 +50,8 @@ def main() -> int:
         return 1
     have = dict(P.manifest().get("issues") or {})
     ex = existing()
-    for arm in P.ARMS:
+    arms = P.ISSUE_ARMS if hasattr(P, "ISSUE_ARMS") else P.ARMS
+    for arm in arms:
         if arm in have:
             continue
         t = title(arm)
@@ -73,8 +76,8 @@ def main() -> int:
         P.update_manifest(issues=have)
         print(json.dumps({"arm": arm, "issue": have[arm], "url": url}))
         time.sleep(3)
-    ok = all(a in have for a in P.ARMS)
-    print(json.dumps({"issues": have, "all_13": ok}))
+    ok = all(a in have for a in arms)
+    print(json.dumps({"issues": have, "all_open": ok}))
     return 0 if ok or dry else 1
 
 

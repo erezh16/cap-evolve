@@ -63,6 +63,8 @@ def _ce2_deny(cand: str) -> list[Path]:
     if cand in P.CANDIDATES:
         out += [P.RUN_ROOTS[c] for c in P.CANDIDATES if c != cand]
         out += [P.RUN_ROOTS[cand] / ".capevolve" / "project" / "adapters"]
+    if P.LEDGER_ID == "ABL":                # ABLATIONS §11 / R1: every earlier evaluation's home and scratch
+        out += [*P.EARLIER_HOMES, Path("/tmp/aw_ce2"), Path("/tmp/aw_ce3")]
     if P.LEDGER_ID == "CE3":                # CE3 plan section 2: CE2's searches, state and artifacts are another arm's run
         out += [*P.CE2_RUN_ROOTS, P.CE2_HOME / "state", P.CE2_HOME / "opt", P.CE2_PUSHED, Path("/tmp/aw_ce2")]
     return out
@@ -84,7 +86,8 @@ def _other_session_tmp() -> list[Path]:
     """Other sessions' dirs under Claude's temp root (sub-agent transcripts). The root itself stays readable:
     the CLI keeps its per-command cwd file there."""
     root = Path(f"/tmp/claude-{os.getuid()}")
-    own = (("-workspace-aw-ce3-opt", "-workspace-aw-ce3-run-k") if P.LEDGER_ID == "CE3" else
+    own = (("-workspace-aw-abl-opt", "-workspace-aw-abl-arms") if P.LEDGER_ID == "ABL" else
+           ("-workspace-aw-ce3-opt", "-workspace-aw-ce3-run-k") if P.LEDGER_ID == "CE3" else
            ("-workspace-aw-ce2-opt", "-workspace-aw-ce2-run-k") if P.LEDGER_PREFIX == "CE2" else ("-tmp-aw-rest-opt",))
     return [p for p in root.iterdir() if p.is_dir() and not p.name.startswith(own)] if root.exists() else []
 

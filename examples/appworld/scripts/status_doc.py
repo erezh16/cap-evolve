@@ -189,7 +189,7 @@ def _append_locked(kind, phase, label, prose, done_through, next_unit, extra, ar
         notes.append(f"Push note: {ps['unpushed']} earlier checkpoint commit(s) were not pushed "
                      f"({ps.get('last_error', 'unknown error')}); this checkpoint pushes them.")
     if ps.get("blocked"):
-        notes.append("Push note: pushing is stopped (non-fast-forward on origin); commits are local "
+        notes.append("Push note: pushing is stopped (non-fast-forward on the remote); commits are local "
                      "until the user decides.")
     obj = {"cp": cp, "prev_cp": prev.get("cp"), "prev_commit": git("rev-parse", "HEAD").stdout.strip(),
            "utc": head_sec, "kind": kind, "phase": phase,
@@ -252,7 +252,7 @@ def _push(ps: dict) -> None:
         ps["unpushed"] = ps.get("unpushed", 0) + 1
         P.write_json(PUSH_STATE, ps)
         return
-    r = git("push", "-q", "origin", f"HEAD:{P.BRANCH}", check=False)
+    r = git("push", "-q", P.REMOTE, f"HEAD:{P.BRANCH}", check=False)
     if r.returncode == 0:
         P.write_json(PUSH_STATE, {"unpushed": 0, "last_push_utc": _fmt_utc(utcnow())[1]})
         return
