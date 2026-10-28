@@ -6307,3 +6307,11 @@ P4 abl_naivegate: iteration 4: val 0.7619 (parent 0.7687); paired Δ̄ -0.0068, 
 ```json
 {"cp": 765, "prev_cp": 764, "prev_commit": "cb5843a1c268c413827f8673ebadd9a005d28d82", "utc": "2026-10-28T17:16:45Z", "kind": "result", "phase": "P4", "done_through": "P2/gate", "next": "P4/gate searches", "arm": "abl_naivegate", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {"STATE/abl_naivegate/progress.json": "d733edbc22a5657ca66b48ec5beea2e0988474483aff2c7599b1ce56d8402e8c"}, "code": "92163dfd239c99b679a7af04cf5e1023e234b94f", "open_decisions": [], "memory": {"used_pct": 28.81, "peak_pct": 48.95, "state": "OK", "stale": false}, "iteration": 4, "verdict": {"candidate": "cand_0004", "accept": false, "val": 0.7619047619047619, "parent_val": 0.7687074829931972, "indecisive": false, "kind": "step", "delta": -0.0068, "se": 0.0404, "k_se": 0.0, "bar": 0.0, "would_pass_k1": false}}
 ```
+
+## ABL-0766 · 2026-10-28T17:16Z · P4 posted abl_naivegate · posted
+
+Posted 'Cap evolve naive gate iteration 4' on #939 (abl_naivegate): https://github.com/skillberry-ai/cap-evolve/issues/939#issuecomment-6475707414
+
+```json
+{"cp": 766, "prev_cp": 765, "prev_commit": "74d246befb4c670057acc0d20391796f8dad8766", "utc": "2026-10-28T17:16:48Z", "kind": "posted", "phase": "P4", "done_through": "P2/gate", "next": "P4/gate searches", "arm": "abl_naivegate", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "92163dfd239c99b679a7af04cf5e1023e234b94f", "open_decisions": [], "memory": {"used_pct": 27.17, "peak_pct": 48.95, "state": "OK", "stale": false}, "post": "abl_naivegate/iter_4", "url": "https://github.com/skillberry-ai/cap-evolve/issues/939#issuecomment-6475707414"}
+```
