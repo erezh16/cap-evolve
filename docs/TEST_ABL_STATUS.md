@@ -887,3 +887,11 @@ Posted 'Cap evolve traces and score only: window started' on #946 (abl_tracescor
 ```json
 {"cp": 109, "prev_cp": 108, "prev_commit": "64b8b0778c74b9d69f68baf51d89bb6f941c56a6", "utc": "2026-10-28T23:30:01Z", "kind": "posted", "phase": "P3", "done_through": "P2/T1,T2,T4-T10", "next": "P3/window1", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 43.34, "peak_pct": 45.67, "state": "OK", "stale": false}, "post": "abl_tracescore/window_started", "url": "https://github.com/skillberry-ai/cap-evolve/issues/946#issuecomment-6483438194"}
 ```
+
+## TB-0110 · 2026-10-28T23:30Z · P3 posted abl_nogate · posted
+
+Posted 'Cap evolve no gate: window started' on #948 (abl_nogate): https://github.com/skillberry-ai/cap-evolve/issues/948#issuecomment-6483439687
+
+```json
+{"cp": 110, "prev_cp": 109, "prev_commit": "a60bf70a6410ed9a0e90f792c6a63ce57838fa36", "utc": "2026-10-28T23:30:06Z", "kind": "posted", "phase": "P3", "done_through": "P2/T1,T2,T4-T10", "next": "P3/window1", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 44.78, "peak_pct": 45.67, "state": "OK", "stale": false}, "post": "abl_nogate/window_started", "url": "https://github.com/skillberry-ai/cap-evolve/issues/948#issuecomment-6483439687"}
+```
