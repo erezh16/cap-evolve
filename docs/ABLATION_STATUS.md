@@ -6485,3 +6485,11 @@ Posted 'Cap evolve naive gate search ended' on #939 (abl_naivegate): https://git
 ```json
 {"cp": 787, "prev_cp": 786, "prev_commit": "94b1eec04072f3387b7112f4a377a282c406147e", "utc": "2026-10-28T19:16:13Z", "kind": "posted", "phase": "P4", "done_through": "P2/gate", "next": "P4/gate searches", "arm": "abl_nogate", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "573f9c6d89fa088ab07146b847b334fe655da00e", "open_decisions": [], "memory": {"used_pct": 3.61, "peak_pct": 48.95, "state": "OK", "stale": false}, "post": "abl_naivegate/m4_search_done", "url": "https://github.com/skillberry-ai/cap-evolve/issues/939#issuecomment-6478290014"}
 ```
+
+## ABL-0788 · 2026-10-28T19:16Z · P4 posted abl_naivegate · posted
+
+Posted 'Cap evolve naive gate champion frozen' on #939 (abl_naivegate): https://github.com/skillberry-ai/cap-evolve/issues/939#issuecomment-6478290971
+
+```json
+{"cp": 788, "prev_cp": 787, "prev_commit": "3ed4f96955856145414bb0d8f9c495f020b9593f", "utc": "2026-10-28T19:16:15Z", "kind": "posted", "phase": "P4", "done_through": "P2/gate", "next": "P4/gate searches", "arm": "abl_nogate", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "573f9c6d89fa088ab07146b847b334fe655da00e", "open_decisions": [], "memory": {"used_pct": 3.65, "peak_pct": 48.95, "state": "OK", "stale": false}, "post": "abl_naivegate/m4_frozen", "url": "https://github.com/skillberry-ai/cap-evolve/issues/939#issuecomment-6478290971"}
+```
