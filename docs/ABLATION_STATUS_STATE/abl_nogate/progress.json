@@ -91,7 +91,7 @@
  "baseline_val": 0.4013605442176871,
  "baseline_label": "seed, shared P3 baseline",
  "best_search_score": 0.8231292517006803,
- "best_search_label": "val = train ∪ dev (147), a fit metric, selection-biased",
+ "best_search_label": "val = train \u222a dev (147), a fit metric, selection-biased",
  "metric_calls": 1029,
  "capevolve_optimizer_usd": 125.93188650000002,
  "optimizer": {
@@ -105,5 +105,6 @@
  },
  "voided_steps": 0,
  "feedback_mode": "full",
- "eta": "0 of 6 iterations left (CE2/CE3: about 45 to 70 min each)"
+ "eta": "0 of 6 iterations left (CE2/CE3: about 45 to 70 min each)",
+ "champion_val": 0.782312925170068
 }

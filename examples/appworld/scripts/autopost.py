@@ -96,6 +96,8 @@ def status_body(c: str) -> str:
              f"{u['cache_read'] / 1e6:.2f}M cache-read tokens; proxy ${u['usd']} at Sonnet 5.5 list price",
              "- best search-time score so far: " + (f"{best} ({pr.get('best_search_label', 'selection-biased')})"
                                                     if best is not None else "n/a"),
+             *([f"- current champion's search score (last accepted candidate; no gate keeps losses): {pr['champion_val']:.4f}"]
+               if c in getattr(P, "GATE_ARMS", ()) and pr.get("champion_val") is not None else []),
              f"- memory: {mem.get('used_pct')}% of {mem.get('limit_MB')} MB (peak {mem.get('peak_pct')}%), "
              f"guard {mem.get('state')}"
              + (" (guard sample stale)" if mem.get("stale") else ""),

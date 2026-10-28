@@ -66,7 +66,7 @@
     {
      "cid": "cand_0001",
      "has": {
-      "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+      "# Optimize the capability \u2014 ship the edit with the largest expected objective score gain": true,
       "## PREPARATION:": true,
       "### 1. Understand the objective score": true,
       "## Strategies for constructing edits:": true,
@@ -80,7 +80,7 @@
     {
      "cid": "cand_0002",
      "has": {
-      "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+      "# Optimize the capability \u2014 ship the edit with the largest expected objective score gain": true,
       "## PREPARATION:": true,
       "### 1. Understand the objective score": true,
       "## Strategies for constructing edits:": true,
@@ -94,7 +94,7 @@
     {
      "cid": "cand_0003",
      "has": {
-      "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+      "# Optimize the capability \u2014 ship the edit with the largest expected objective score gain": true,
       "## PREPARATION:": true,
       "### 1. Understand the objective score": true,
       "## Strategies for constructing edits:": true,
@@ -108,7 +108,7 @@
     {
      "cid": "cand_0004",
      "has": {
-      "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+      "# Optimize the capability \u2014 ship the edit with the largest expected objective score gain": true,
       "## PREPARATION:": true,
       "### 1. Understand the objective score": true,
       "## Strategies for constructing edits:": true,
@@ -122,7 +122,7 @@
     {
      "cid": "cand_0005",
      "has": {
-      "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+      "# Optimize the capability \u2014 ship the edit with the largest expected objective score gain": true,
       "## PREPARATION:": true,
       "### 1. Understand the objective score": true,
       "## Strategies for constructing edits:": true,
@@ -136,7 +136,7 @@
     {
      "cid": "cand_0006",
      "has": {
-      "# Optimize the capability — ship the edit with the largest expected objective score gain": true,
+      "# Optimize the capability \u2014 ship the edit with the largest expected objective score gain": true,
       "## PREPARATION:": true,
       "### 1. Understand the objective score": true,
       "## Strategies for constructing edits:": true,
@@ -206,5 +206,7 @@
    "sha256": "4951ca13ea8aeaadb0d6e259dd74070fb59cd9a41c4a166f32acf8138567e141"
   },
   "all_ok": false
- }
+ },
+ "champion_val": 0.782312925170068,
+ "best_val_label": "best val seen during the search (spent.best_val), not necessarily the champion's"
 }

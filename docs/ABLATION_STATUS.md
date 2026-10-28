@@ -6445,3 +6445,11 @@ Posted 'Cap evolve no gate isolation scan' on #938 (abl_nogate): https://github.
 ```json
 {"cp": 782, "prev_cp": 781, "prev_commit": "4664bef2920d3fbaeedb982c477c571af56c573d", "utc": "2026-10-28T18:49:32Z", "kind": "posted", "phase": "P4", "done_through": "P2/gate", "next": "P4/gate searches", "arm": "abl_nogate", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "92163dfd239c99b679a7af04cf5e1023e234b94f", "open_decisions": [], "memory": {"used_pct": 27.54, "peak_pct": 48.95, "state": "OK", "stale": false}, "post": "abl_nogate/m4_scanned", "url": "https://github.com/skillberry-ai/cap-evolve/issues/938#issuecomment-6477693672"}
 ```
+
+## ABL-0783 · 2026-10-28T18:50Z · P4 posted abl_nogate · posted
+
+Posted 'Cap evolve no gate: champion score correction' on #938 (abl_nogate): https://github.com/skillberry-ai/cap-evolve/issues/938#issuecomment-6477710840
+
+```json
+{"cp": 783, "prev_cp": 782, "prev_commit": "67c6432f477e999ea5fb0fcf1a5f658b3a1993f0", "utc": "2026-10-28T18:50:14Z", "kind": "posted", "phase": "P4", "done_through": "P2/gate", "next": "P4/gate searches", "arm": "abl_nogate", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "92163dfd239c99b679a7af04cf5e1023e234b94f", "open_decisions": [], "memory": {"used_pct": 27.56, "peak_pct": 48.95, "state": "OK", "stale": false}, "post": "abl_nogate/m_gate_champion_correction", "url": "https://github.com/skillberry-ai/cap-evolve/issues/938#issuecomment-6477710840"}
+```

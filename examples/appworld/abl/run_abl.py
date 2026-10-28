@@ -555,6 +555,7 @@ def _progress(rd: Path, stage: str) -> dict:
           "accepted": sum(1 for r in rows if r.get("accept")), "iterations": rows,
           "baseline_val": base.get("val") or base.get("score"), "baseline_label": "seed, shared P3 baseline",
           "best_search_score": best,
+          "champion_val": next((r["val"] for r in reversed(rows) if r.get("accept")), None),   # G2.1
           "best_search_label": "val = train ∪ dev (147), a fit metric, selection-biased",
           "metric_calls": st.get("spent", {}).get("metric_calls"),
           "capevolve_optimizer_usd": st.get("spent", {}).get("optimizer_usd"),
@@ -617,6 +618,11 @@ def freeze() -> int:
     fz = {"arm": CAND, "k_se": K, "switches": arm_switches(CAND), "best_id": best, "inert": inert, "label": "inert" if inert else "",
           "tree_sha256": th, "run_candidate_tree_sha256": src_hash, "seed_tree_sha256": E.seed_hash(),
           "best_val": st.get("spent", {}).get("best_val"), "imp": imp_check("full", rd)}
+    # ABLATIONS_GATE.md G2.1: the champion is the LAST accepted candidate; cap-evolve's spent.best_val is the best val
+    # SEEN. They are equal under any gate that only accepts gains, not under abl_nogate, so both are recorded.
+    acc = [r for r in iteration_rows(rd) if r.get("accept")]
+    fz["champion_val"] = acc[-1]["val"] if acc else (P.read_json(rd / "baseline.json", {}) or {}).get("val", {}).get("reward")
+    fz["best_val_label"] = "best val seen during the search (spent.best_val), not necessarily the champion's"
     P.write_json(art / "FREEZE.json", fz)
     _progress(rd, "frozen" + (" (inert: nothing accepted)" if inert else ""))
     print(json.dumps({k: fz[k] for k in ("arm", "best_id", "inert", "tree_sha256", "best_val")}))
