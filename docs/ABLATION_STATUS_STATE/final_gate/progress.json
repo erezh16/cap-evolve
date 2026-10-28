@@ -1,16 +1,16 @@
 {
  "window": "final_gate",
  "cells_total": 672,
- "cells_done": 290,
+ "cells_done": 304,
  "per_arm": {
   "abl_naivegate": {
-   "done": 144,
+   "done": 152,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
   },
   "abl_nogate": {
-   "done": 146,
+   "done": 152,
    "infra_missing": 0,
    "infra_retries": 1,
    "context_exceeded": 0
