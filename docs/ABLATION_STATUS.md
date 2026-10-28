@@ -6827,3 +6827,12 @@ Next: final_gate remaining cells.
 ```json
 {"cp": 827, "prev_cp": 826, "prev_commit": "0334f0a62e97a6fb56899740b7f6035aab8918f7", "utc": "2026-10-28T21:16:36Z", "kind": "result", "phase": "P7", "done_through": "final_gate/304", "next": "final_gate/cells", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {"STATE/final_gate/progress.json": "a0ece210a8c3074b7f08300a1255af78c836cd50a54a04e43eacf97c785f4a09"}, "code": "ecebf74d736464ed1f612b4464f2265cf63b67ee", "open_decisions": [], "memory": {"used_pct": 24.11, "peak_pct": 48.95, "state": "OK", "stale": false}, "window": {"window": "final_gate", "cells_total": 672, "cells_done": 304, "order_sha256": "70a4e4fb2d2daaa9b52e5fdb9ece4224c1d5d10ef96d633947211d2e3e9c2816"}}
 ```
+
+## ABL-0828 · 2026-10-28T21:21Z · P7 gate window · result
+
+gate window: 17 cells since the last entry; 321/672 done (abl_naivegate 160, abl_nogate 161); infra still missing 0, retries 1.
+Next: final_gate remaining cells.
+
+```json
+{"cp": 828, "prev_cp": 827, "prev_commit": "426e5f69ab3dda62e670413f45c1b0c3de0d912c", "utc": "2026-10-28T21:21:37Z", "kind": "result", "phase": "P7", "done_through": "final_gate/321", "next": "final_gate/cells", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {"STATE/final_gate/progress.json": "a5ab25bc2dedfad2844fefcc5945d58cb06380645b90ee19ce35c8884ae3d48f"}, "code": "ecebf74d736464ed1f612b4464f2265cf63b67ee", "open_decisions": [], "memory": {"used_pct": 23.06, "peak_pct": 48.95, "state": "OK", "stale": false}, "window": {"window": "final_gate", "cells_total": 672, "cells_done": 321, "order_sha256": "70a4e4fb2d2daaa9b52e5fdb9ece4224c1d5d10ef96d633947211d2e3e9c2816"}}
+```
