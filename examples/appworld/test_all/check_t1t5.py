@@ -67,8 +67,8 @@ def main(arms: list[str]) -> int:
     t1 = {"max_model_len": mml, "seed_episode": recs[0], "key_hits": hits,
           "ok": mml == 40144 and not recs[0]["infra_error"] and recs[0]["termination"] is not None and hits == 0}
     t5 = {"episodes": recs[1:], "ok": all(not r["infra_error"] and r["termination"] != "context_exceeded" for r in recs[1:])}
-    P.write_json(P.AW_STATE / "acceptance" / "t1.json", t1)
-    P.write_json(P.AW_STATE / "acceptance" / "t5.json", t5)
+    P.write_json(P.AW_STATE / "acceptance" / ("t1_w2.json" if getattr(P, "WINDOW", "1") == "2" else "t1.json"), t1)
+    P.write_json(P.AW_STATE / "acceptance" / ("t5_w2.json" if getattr(P, "WINDOW", "1") == "2" else "t5.json"), t5)
     print(json.dumps({"t1": t1, "t5": t5}))
     return 0 if t1["ok"] and t5["ok"] else 1
 

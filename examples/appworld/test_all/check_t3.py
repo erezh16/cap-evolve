@@ -47,7 +47,7 @@ def main() -> int:
         res["matches_manifest"] = True
     res["ok"] = all(res[k] for k in ("reproducible", "each_cell_once", "idx_ok", "root_full_relocked",
                                      "matches_manifest")) and res["cells"] == P.FINAL_CELLS and res["per_arm"] == [168 * W.FINAL_TRIALS]
-    P.write_json(P.AW_STATE / "acceptance" / "t3.json", res)
+    P.write_json(P.AW_STATE / "acceptance" / ("t3_w2.json" if getattr(P, "WINDOW", "1") == "2" else "t3.json"), res)
     print(json.dumps(res))
     return 0 if res["ok"] else 1
 

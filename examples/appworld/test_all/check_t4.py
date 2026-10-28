@@ -58,7 +58,7 @@ def main() -> int:
         m_stock = [dict(m) for m in stock.messages]
     Cap = aw_agent.build_agent_class()
     res, ok = {"stock_messages": len(m_stock)}, True
-    for arm in P.ARMS:
+    for arm in (tuple(P.WINDOW_ARMS) if getattr(P, "TESTABL", False) else P.ARMS):
         cdir = ART / arm
         cand = aw_agent.read_candidate(cdir)
         mem = ad._memory_block(cdir, tid)
@@ -108,10 +108,10 @@ def main() -> int:
         res[arm] = r
         print(json.dumps({"arm": arm, **r}))
     if getattr(P, "TESTABL", False):
-        res["ok"] = ok and res["seed"]["byte_identical_to_stock"]
+        res["ok"] = ok and (res["seed"]["byte_identical_to_stock"] if "seed" in res else True)
         import shutil
         shutil.rmtree(P.ROOT_OPT / "experiments" / "outputs" / "probes_testabl", ignore_errors=True)
-        P.write_json(P.AW_STATE / "acceptance" / "t4.json", res)
+        P.write_json(P.AW_STATE / "acceptance" / ("t4_w2.json" if getattr(P, "WINDOW", "1") == "2" else "t4.json"), res)
         print(json.dumps({"ok": res["ok"]}))
         return 0 if res["ok"] else 1
     # altk: the lookup works for the keys it has (inside this trusted script; only counts and a length are printed)
@@ -124,7 +124,7 @@ def main() -> int:
     res["ok"] = ok and res["seed_harnesslens_identical"]
     import shutil
     shutil.rmtree(P.ROOT_OPT / "experiments" / "outputs" / "probes_testabl", ignore_errors=True)
-    P.write_json(P.AW_STATE / "acceptance" / "t4.json", res)
+    P.write_json(P.AW_STATE / "acceptance" / ("t4_w2.json" if getattr(P, "WINDOW", "1") == "2" else "t4.json"), res)
     print(json.dumps({"altk_retrieval": res["altk_retrieval"], "ok": res["ok"]}))
     return 0 if res["ok"] else 1
 

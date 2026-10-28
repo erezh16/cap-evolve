@@ -50,15 +50,16 @@ def sizes(d: Path) -> dict:
 
 def main() -> int:
     res, ok = {}, True
-    for arm in P.ARMS:
+    arms = tuple(P.WINDOW_ARMS) if getattr(P, "TESTABL", False) else tuple(P.ARMS)
+    for arm in arms:
         v = [safe(x) for x in lints.lint_candidate(ART / arm)]
         exc = [x for x in v if arm == "ace" and ACE_EXCEPTION.match(x)]   # TEST_ALL D6 only; none in TEST_ABL
         other = [x for x in v if x not in exc]
         res[arm] = {"violations": v, "disclosed_exception": exc, "pass": not other, "sizes": sizes(ART / arm)}
         ok &= not other
         print(json.dumps({"arm": arm, "n_violations": len(v), "violations": v, "pass_except_D6": not other}))
-    P.write_json(P.AW_STATE / "final" / "lint.json", res)
-    P.update_manifest(lint={a: {"pass": r["pass"], "violations": r["violations"],
+    P.write_json(P.AW_STATE / "final" / ("lint_w2.json" if getattr(P, "WINDOW", "1") == "2" else "lint.json"), res)
+    P.update_manifest(lint=(P.manifest().get("lint") or {}) | {a: {"pass": r["pass"], "violations": r["violations"],
                                 "disclosed_exception": r["disclosed_exception"], "sizes": r["sizes"]}
                             for a, r in res.items()})
     print(json.dumps({"all_pass_except_D6": ok}))

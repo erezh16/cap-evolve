@@ -5,13 +5,22 @@ path (TESTALL is true for both profiles) with these values. Window 1 scores ARMS
 when they are ready (plan §3.2), and are scored in a second window (AW_STATE/final2). Nothing is trained.
 """
 
+import json
 import os
 from pathlib import Path
+
+# Plan §3.2: the gate arms join only when ready. gate_join.py records them in the pushed manifest (`window2_arms`,
+# `gate_artifacts`, `gate_surfaces_changed`); every process reads them from there, so no code changes mid-run.
+try:
+    _M = json.loads((Path(os.environ.get("AW_REPO", "/workspace/worktrees/test-abl")) / "docs" / "TEST_ABL_STATE"
+                     / "manifest.json").read_text())
+except (FileNotFoundError, ValueError):
+    _M = {}
 
 ARMS = ("seed", "abl_ref", "abl_cc_best", "abl_prompt", "abl_tools", "abl_notrace", "abl_tracescore")
 GATE_ARMS = ("abl_nogate", "abl_naivegate")
 # Plan §3.2: empty until both gate champions are frozen, reset, scanned and the gate run's P7 is done.
-WINDOW2_ARMS: tuple = ()
+WINDOW2_ARMS: tuple = tuple(_M.get("window2_arms") or ())
 ALL_ARMS = ARMS + WINDOW2_ARMS
 CANDIDATES = ARMS[1:]
 REF_ARM = "abl_ref"
@@ -65,12 +74,14 @@ BOX_ROOT = "eval-data:appworld/"
 ARTIFACTS = {"seed": {"local": Path("/workspace/worktrees/eval-abl/examples/appworld/seed_capability"), "box": None,
                       "hash": _HASH["seed"], "rule": "S"}}
 ARTIFACTS |= {a: {"local": _ABL / a / "artifact", "box": _BOX[a], "hash": _HASH[a], "rule": "S"} for a in _BOX}
+ARTIFACTS |= {a: {"local": Path(v["local"]), "box": v.get("box"), "hash": v["hash"], "rule": "S"}
+              for a, v in (_M.get("gate_artifacts") or {}).items()}
 SURFACES_OF = {"seed": "none", "abl_ref": "P + T", "abl_cc_best": "P + T", "abl_prompt": "P", "abl_tools": "T",
                "abl_notrace": "P + T", "abl_tracescore": "P + T", "abl_nogate": "P + T", "abl_naivegate": "P + T"}
 # Measured 2026-10-28 (file sha256 vs the seed's): abl_tools changed only tools/api_notes.json.
-SURFACES_CHANGED = {"seed": "none", "abl_ref": "P + T", "abl_cc_best": "P + T", "abl_prompt": "P",
+SURFACES_CHANGED = {**(_M.get("gate_surfaces_changed") or {}), "seed": "none", "abl_ref": "P + T", "abl_cc_best": "P + T", "abl_prompt": "P",
                     "abl_tools": "T (notes only)", "abl_notrace": "P + T", "abl_tracescore": "P + T",
-                    "abl_nogate": "measured at fetch", "abl_naivegate": "measured at fetch"}
+                    **{a: (_M.get("gate_surfaces_changed") or {}).get(a, "measured at fetch") for a in GATE_ARMS}}
 SOURCE_EVAL = {"seed": "the unmodified AppWorld ReAct agent",
                "abl_ref": "full cap-evolve main 75b3bcd, hill-climb, gate K = 0.2 (ablation study, #930)",
                "abl_cc_best": "plain Claude Code, one session, no cap-evolve; its best evaluated candidate (ablation study, #931)",

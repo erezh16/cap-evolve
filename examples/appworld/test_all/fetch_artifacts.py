@@ -73,6 +73,11 @@ def rule_b(d: Path) -> str:
 RULES = {"S": rule_s, "F": rule_f, "B": rule_b}
 
 
+def window_arms() -> tuple:
+    """TEST_ABL: the arms of the current window (AW_WINDOW); TEST_ALL: all arms."""
+    return tuple(P.WINDOW_ARMS) if getattr(P, "TESTABL", False) else tuple(P.ARMS)
+
+
 # ---------------------------------------------------------------- fetch
 
 def _files(d: Path) -> list[dict]:
@@ -132,7 +137,7 @@ def make_scored(arm: str, src: Path) -> dict:
 def fetch_all() -> int:
     ART.mkdir(parents=True, exist_ok=True)
     out, ok = {}, True
-    for arm in P.ARMS:
+    for arm in window_arms():
         r = fetch_one(arm, P.ARTIFACTS[arm])
         if r["match"]:
             r.update(make_scored(arm, r.pop("_dir")))
@@ -145,9 +150,9 @@ def fetch_all() -> int:
     same = None if "harnesslens" not in P.ARMS else (ok and [(f["path"], f["sha256"]) for f in out["seed"]["scored_files"]]
                                                        == [(f["path"], f["sha256"]) for f in out["harnesslens"]["scored_files"]])
     m = {"utc": P.utcnow(), "arms": out, "seed_equals_harnesslens_bytewise": same, "all_match": ok}
-    P.write_json(MANIFEST, m)
+    P.write_json(MANIFEST.with_name(MANIFEST.stem + ("_w2" if getattr(P, "WINDOW", "1") == "2" else "") + ".json"), m)
     if ok:
-        P.update_manifest(artifacts={a: {k: v[k] for k in ("rule", "expected", "computed", "source", "source_path",
+        P.update_manifest(artifacts=(P.manifest().get("artifacts") or {}) | {a: {k: v[k] for k in ("rule", "expected", "computed", "source", "source_path",
                                                            "surfaces_present", "scored_rule_s")}
                                      | {"scored_files": {f["path"]: f["sha256"] for f in v["scored_files"]}}
                                      for a, v in out.items()},
@@ -160,13 +165,13 @@ def verify_only() -> int:
     """§6.3: re-check every scored copy with its arm's rule (as recorded at freeze); print flags only."""
     arts = P.manifest().get("artifacts") or {}
     bad = check_scored(arts)
-    print(json.dumps({"verified": len(P.ARMS) - len(bad), "mismatch": bad}))
+    print(json.dumps({"verified": len(window_arms()) - len(bad), "mismatch": bad}))
     return 0 if not bad else 1
 
 
 def check_scored(arts: dict) -> list[str]:
     bad = []
-    for arm in P.ARMS:
+    for arm in window_arms():
         a, d = arts.get(arm), ART / arm
         if not a or not d.is_dir():
             bad.append(arm)
