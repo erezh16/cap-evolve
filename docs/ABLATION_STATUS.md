@@ -5911,3 +5911,11 @@ At the start of the gate-arm work (2026-10-28) the orchestrating session's /work
 ```json
 {"cp": 717, "prev_cp": 716, "prev_commit": "b30521e51eaf193fa77864f766e3053f358dd3f6", "utc": "2026-10-28T11:13:16Z", "kind": "error", "phase": "P0", "done_through": "P9/post", "next": "P1/gate B1", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "b30521e51eaf193fa77864f766e3053f358dd3f6", "open_decisions": [], "memory": {"used_pct": 3.55, "peak_pct": 5.28, "state": "OK", "stale": false}}
 ```
+
+## ABL-0718 · 2026-10-28T11:13Z · P0 R1.4 deny rules restored · repair
+
+The 40 deny rules of /workspace/aw_abl/launch/exec-settings.json were written into base/.claude/settings.local.json; the result equals the 2026-10-27 backup. The empty file was kept as settings.local.json.empty-20261028. eval-abl/.claude/settings.local.json still has the same 40 rules. Live probe: a Read of AW_STATE/cache/deny_probe.txt is refused. root_full mode 000; abl-main clean at 75b3bcd.
+
+```json
+{"cp": 718, "prev_cp": 717, "prev_commit": "b982f987c12744f6e131f8a848565fd52294c7f1", "utc": "2026-10-28T11:13:17Z", "kind": "repair", "phase": "P0", "done_through": "P9/post", "next": "P1/gate B1", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "b30521e51eaf193fa77864f766e3053f358dd3f6", "open_decisions": [], "memory": {"used_pct": 3.62, "peak_pct": 5.28, "state": "OK", "stale": false}}
+```
