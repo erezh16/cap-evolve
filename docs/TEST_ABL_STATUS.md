@@ -823,3 +823,11 @@ T3 (window 1 order): seed 2026102801, cells 5880, per arm [840], sha256 b6198022
 ```json
 {"cp": 101, "prev_cp": 100, "prev_commit": "5afcd32ebd8df62d09b271872edce4e518e17d77", "utc": "2026-10-28T23:27:45Z", "kind": "result", "phase": "P2", "done_through": "P2/T1,T2,T4-T10", "next": "P3/window1", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 3.51, "peak_pct": 45.67, "state": "OK", "stale": false}, "t3": {"seed": 2026102801, "trials": 5, "arms": 7, "tasks": 168, "cells": 5880, "sha256": "b6198022056314527fd71a2c5eae463ee68b159c751679a369baff6495038772", "reproducible": true, "each_cell_once": true, "idx_ok": true, "per_arm": [840], "root_full_relocked": true, "matches_manifest": true, "ok": true}}
 ```
+
+## TB-0102 · 2026-10-28T23:27Z · P3 window 1 start · phase_start
+
+Window 1 starts: the gate run's P7 window has completed. 5,880 cells, 24 global slots in this run's own pool, trial seeds 7000 + k; root_full is unlocked by window.py for the window and relocked at its end.
+
+```json
+{"cp": 102, "prev_cp": 101, "prev_commit": "a4f429ed313f70f96f92cf812832f9b04798aaa4", "utc": "2026-10-28T23:27:47Z", "kind": "phase_start", "phase": "P3", "done_through": "P2/T1,T2,T4-T10", "next": "P3/window1", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 3.51, "peak_pct": 45.67, "state": "OK", "stale": false}}
+```
