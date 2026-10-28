@@ -236,6 +236,15 @@ def loop() -> int:
                 and not state(a).get("stopped_by_decision") and not (state(a).get("stopped_by_guard") and k2_stopped)]
         if not running and not todo:
             if all(finished(a) for a in ORDER):
+                gate = tuple(getattr(P, "GATE_ARMS", ()))
+                if gate:    # ABLATIONS_GATE.md G6/G7: the first wave's P5-P9 are done; the gate arms get their own
+                    S.append("phase_done", "P4", "gate searches done",
+                             f"P4 done for the gate arms ({', '.join(gate)}): search, freeze, isolation scan and reset "
+                             "check finished. Next: G6 P5/P6 and the gate window (G7), started by hand after a check "
+                             "(R5); after_p4.py is NOT started (it is the first wave's P5-P9).",
+                             done_through="P4/gate searches", next_unit="P5/gate dev", extra={"arm": None},
+                             subject="P4 gate done")
+                    return 0
                 S.append("phase_done", "P4", "searches done",
                          "P4 done: all six chains (search, freeze, isolation scan, reset check) finished. Next: P5 dev "
                          "diagnostic.", done_through="P4/searches", next_unit="P5/dev", extra={"arm": None},
