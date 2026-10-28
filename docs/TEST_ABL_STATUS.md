@@ -479,3 +479,11 @@ Window 1 waits for the gate run (plan §8.1): a gate-run window or P5-P9 chain i
 ```json
 {"cp": 58, "prev_cp": 57, "prev_commit": "10597a81d6b02b7bbeb77e0cebca1f239cdc850a", "utc": "2026-10-28T19:39:44Z", "kind": "result", "phase": "W", "done_through": "P2/T1,T2,T4-T10", "next": "P3/window1", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 24.12, "peak_pct": 45.67, "state": "OK", "stale": false}}
 ```
+
+## TB-0059 · 2026-10-28T19:40Z · W posted abl_tracescore · posted
+
+Posted 'Cap evolve traces and score only hourly status' on #946 (abl_tracescore): https://github.com/skillberry-ai/cap-evolve/issues/946#issuecomment-6478806316
+
+```json
+{"cp": 59, "prev_cp": 58, "prev_commit": "a8abe6dbbc88ae99dc9c2e1d7224abd1b7cb93f4", "utc": "2026-10-28T19:40:09Z", "kind": "posted", "phase": "W", "done_through": "P2/T1,T2,T4-T10", "next": "P3/window1", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 24.17, "peak_pct": 45.67, "state": "OK", "stale": false}, "post": "abl_tracescore/status_20261028T194000", "url": "https://github.com/skillberry-ai/cap-evolve/issues/946#issuecomment-6478806316"}
+```
