@@ -591,3 +591,11 @@ Posted 'Cap evolve naive gate hourly status' on #949 (abl_naivegate): https://gi
 ```json
 {"cp": 72, "prev_cp": 71, "prev_commit": "699280ba1648968b561c77289e319e7e9051cbcf", "utc": "2026-10-28T20:53:28Z", "kind": "posted", "phase": "W", "done_through": "P2/T1,T2,T4-T10", "next": "P3/window1", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 22.82, "peak_pct": 45.67, "state": "OK", "stale": false}, "post": "abl_naivegate/status_20261028T205320", "url": "https://github.com/skillberry-ai/cap-evolve/issues/949#issuecomment-6480436277"}
 ```
+
+## TB-0073 · 2026-10-28T21:00Z · W posted seed · posted
+
+Posted 'seed agent hourly status' on #940 (seed): https://github.com/skillberry-ai/cap-evolve/issues/940#issuecomment-6480566935
+
+```json
+{"cp": 73, "prev_cp": 72, "prev_commit": "3d33329009f597fae0e3440aa2de49b1237d329b", "utc": "2026-10-28T21:00:11Z", "kind": "posted", "phase": "W", "done_through": "P2/T1,T2,T4-T10", "next": "P3/window1", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 24.09, "peak_pct": 45.67, "state": "OK", "stale": false}, "post": "seed/status_20261028T210000", "url": "https://github.com/skillberry-ai/cap-evolve/issues/940#issuecomment-6480566935"}
+```
