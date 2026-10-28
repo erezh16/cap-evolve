@@ -455,3 +455,11 @@ Posted 'Cap evolve naive gate: build and acceptance done' on #949 (abl_naivegate
 ```json
 {"cp": 55, "prev_cp": 54, "prev_commit": "48fc289a55c633822172ebf707089eef7349ff54", "utc": "2026-10-28T19:25:11Z", "kind": "posted", "phase": "W", "done_through": "P2/T1,T2,T4-T10", "next": "P2/T3 then P3/window1 (launch_when_clear.py waiting for the gate run)", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 3.81, "peak_pct": 45.67, "state": "OK", "stale": false}, "post": "abl_naivegate/accept_done", "url": "https://github.com/skillberry-ai/cap-evolve/issues/949#issuecomment-6478488349"}
 ```
+
+## TB-0056 · 2026-10-28T19:26Z · W posted abl_tools · posted
+
+Posted 'Cap evolve tools only hourly status' on #944 (abl_tools): https://github.com/skillberry-ai/cap-evolve/issues/944#issuecomment-6478521500
+
+```json
+{"cp": 56, "prev_cp": 55, "prev_commit": "4daed2d1cc86bf23ee9d17f2d40812b9be067980", "utc": "2026-10-28T19:26:43Z", "kind": "posted", "phase": "W", "done_through": "P2/T1,T2,T4-T10", "next": "P2/T3 then P3/window1 (launch_when_clear.py waiting for the gate run)", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 23.11, "peak_pct": 45.67, "state": "OK", "stale": false}, "post": "abl_tools/status_20261028T192640", "url": "https://github.com/skillberry-ai/cap-evolve/issues/944#issuecomment-6478521500"}
+```
