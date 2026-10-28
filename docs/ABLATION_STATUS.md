@@ -7101,3 +7101,11 @@ P8 for the gate arms (analyze_gate.py; analyze.py's bootstrap and Holm unchanged
 ```json
 {"cp": 858, "prev_cp": 857, "prev_commit": "d3b2d64ce5cbdca20672e8262bc3a5fea3aa5c1c", "utc": "2026-10-28T23:30:16Z", "kind": "phase_done", "phase": "P8", "done_through": "P8/gate analysis", "next": "P9/gate results posts", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {"STATE/final_gate/analysis.json": "99c7eb60e07dc4b1b3b3e69785926ba0c60f7a0549855087ba902bb07393ba19"}, "code": "7ddbbae11c09092407f3bf93b4c540be618098a0", "open_decisions": [], "memory": {"used_pct": 44.83, "peak_pct": 48.95, "state": "OK", "stale": false}}
 ```
+
+## ABL-0859 · 2026-10-28T23:30Z · P8 posted abl_nogate · posted
+
+Posted 'Cap evolve no gate results' on #938 (abl_nogate): https://github.com/skillberry-ai/cap-evolve/issues/938#issuecomment-6483443325
+
+```json
+{"cp": 859, "prev_cp": 858, "prev_commit": "5d3d1088e11f68cda9b4ed9df70432092c3b5309", "utc": "2026-10-28T23:30:19Z", "kind": "posted", "phase": "P8", "done_through": "P8/gate analysis", "next": "P9/gate results posts", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "5d3d1088e11f68cda9b4ed9df70432092c3b5309", "open_decisions": [], "memory": {"used_pct": 44.83, "peak_pct": 48.95, "state": "OK", "stale": false}, "post": "abl_nogate/results", "url": "https://github.com/skillberry-ai/cap-evolve/issues/938#issuecomment-6483443325"}
+```
