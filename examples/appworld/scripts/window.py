@@ -269,5 +269,76 @@ def final() -> int:
     return rc
 
 
+# ------------------------------------------------------------------ the gate arms' window (docs/ABLATIONS_GATE.md G7)
+
+GATE_DIR = "final_gate"
+GATE_ART = P.AW_STATE / GATE_DIR / "artifacts"
+GATE_ORDER_SEED = 2026102807           # G7: 20261028 + the same fixed suffix, recorded in manifest.json before any cell
+
+
+def gate_freeze() -> int:
+    """G7: copy each gate arm's pushed champion into final_gate/artifacts/, lint it, and record its tree hash; the hash
+    must equal the run's own record (FREEZE.json). The first window's artifacts and records are not touched."""
+    import evaluator as E
+    GATE_ART.mkdir(parents=True, exist_ok=True)
+    hashes = {}
+    for arm in P.GATE_ARMS:
+        src = artifact_dir(arm)
+        fz = P.read_json(src / "FREEZE.json", {}) or {}
+        dst = GATE_ART / arm
+        shutil.rmtree(dst, ignore_errors=True)
+        shutil.copytree(src, dst, ignore=shutil.ignore_patterns("README.md", "FREEZE.json"))
+        (dst / "memory").mkdir(exist_ok=True)
+        v = E.lint(dst)
+        if v:
+            raise SystemExit(f"frozen artifact {arm} fails the lint: {v}")
+        hashes[arm] = E.tree_hash(dst)
+        if hashes[arm] != fz.get("tree_sha256"):
+            raise SystemExit(f"{arm}: frozen tree {hashes[arm][:16]} != the run's record {str(fz.get('tree_sha256'))[:16]}")
+    ids = P.read_split("test_normal", P.ROOT_FULL) if os.access(P.ROOT_FULL, os.R_OK) else None
+    order_info = {"seed": GATE_ORDER_SEED, "arms": list(P.GATE_ARMS), "trials": FINAL_TRIALS,
+                  "trial_seeds": "5000 + trial (as the first window)", "infra_retries": 3}
+    P.update_manifest(gate_freeze={"tree_sha256": hashes, "utc": P.utcnow()}, gate_order=order_info)
+    print(json.dumps({"frozen": {a: h[:16] for a, h in hashes.items()}, "order": order_info, "ids_read": ids is not None}))
+    return 0
+
+
+def gate_final() -> int:
+    """G7: 168 test_normal × the 2 gate arms × 2 trials = 672 cells, one shuffled order, trial seeds 5000 + k. The seed
+    and abl_ref cells are the first window's (reused, not re-run)."""
+    os.environ["AW_ALLOW_SEALED"] = "final-eval-only"
+    os.environ["AW_APPWORLD_ROOT"] = str(P.ROOT_FULL)
+    if (os.stat(P.ROOT_FULL).st_mode & 0o777) == 0:
+        os.chmod(P.ROOT_FULL, 0o755)
+        P.progress_log(GATE_DIR, "P7", "root_full unlocked for the gate window")
+    ids = P.read_split("test_normal", P.ROOT_FULL)
+    if len(ids) != 168:
+        raise SystemExit("expected 168 test_normal ids")
+    order = make_order(ids, list(P.GATE_ARMS), FINAL_TRIALS, GATE_ORDER_SEED)
+    m = P.manifest()
+    rec = m.get("gate_order", {})
+    if rec.get("seed") != GATE_ORDER_SEED or rec.get("sha256") not in (None, order_sha(order)):
+        raise SystemExit("gate order seed or sha256 differs from the record in manifest.json")
+    P.write_json(P.AW_STATE / GATE_DIR / "order.json", order)
+    P.update_manifest(gate_order={**rec, "sha256": order_sha(order), "cells": len(order)})
+    caps = {a: GATE_ART / a for a in P.GATE_ARMS}
+    for a in P.GATE_ARMS:
+        import evaluator as E
+        if E.tree_hash(caps[a]) != m["gate_freeze"]["tree_sha256"][a]:
+            raise SystemExit(f"frozen artifact {a} changed since the gate freeze")
+    pidf = _own_pid("window gate")
+    try:
+        rc = Window(GATE_DIR, "P7", "gate window", order, caps, P.ROOT_FULL, P.FINAL_SEED_BASE, True,
+                    P.global_slots(), 3, "P8/gate analysis").run()
+    finally:
+        pidf.unlink(missing_ok=True)
+    done = len(list((P.AW_STATE / GATE_DIR / "records").glob("*.json")))
+    if done >= len(order):
+        os.chmod(P.ROOT_FULL, 0o000)
+        P.progress_log(GATE_DIR, "P7", "gate window complete; root_full relocked")
+    return rc
+
+
 if __name__ == "__main__":
-    raise SystemExit({"freeze": freeze, "dev": dev, "final": final}[sys.argv[1]]())
+    raise SystemExit({"freeze": freeze, "dev": dev, "final": final, "gate-freeze": gate_freeze,
+                      "gate-final": gate_final}[sys.argv[1]]())

@@ -146,5 +146,22 @@
   "trials": 2,
   "trial_seeds": "5000 + trial",
   "infra_retries": 3
+ },
+ "gate_freeze": {
+  "tree_sha256": {
+   "abl_nogate": "cdbc5827f70b02e1b388c4e8a29dc0b5125fd905399c2b3a396d904efd19b1e9",
+   "abl_naivegate": "fa2bfe23ace7fc0546953d9b047445dab6fa111655d657d31fbf897d8c31bb51"
+  },
+  "utc": "2026-10-28T19:25:06Z"
+ },
+ "gate_order": {
+  "seed": 2026102807,
+  "arms": [
+   "abl_nogate",
+   "abl_naivegate"
+  ],
+  "trials": 2,
+  "trial_seeds": "5000 + trial (as the first window)",
+  "infra_retries": 3
  }
 }

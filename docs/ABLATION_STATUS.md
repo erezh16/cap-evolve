@@ -6557,3 +6557,11 @@ P6 for the gate arms: scan.py abl_nogate abl_naivegate --full, with this session
 ```json
 {"cp": 796, "prev_cp": 795, "prev_commit": "c0c97d558a7433ebbb1087ca63036b4fb6821e0d", "utc": "2026-10-28T19:23:25Z", "kind": "error", "phase": "P6", "done_through": "P5/gate dev", "next": "P6/gate reset", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "6cee65ba61fa557547b4a54318682fe2dc265a77", "open_decisions": [], "memory": {"used_pct": 5.62, "peak_pct": 48.95, "state": "OK", "stale": false}}
 ```
+
+## ABL-0797 · 2026-10-28T19:25Z · P6 gate arms: P6 done, champions frozen for the gate window · phase_done
+
+P6 for the gate arms done: full isolation scan (ABL-0794/0796: both arms 0 test-id hits, J1 and K ok, models only aws/claude-sonnet-5-5; the orchestrating-transcript note is ABL-0796) and reset_check.py for both arms (6/6 each; item 6 had already passed at the end of each chain). G7 freeze (window.py gate-freeze, new mode; the first window's artifacts, order and records are not touched): abl_nogate cand_0006 tree cdbc5827f70b02e1..., abl_naivegate cand_0006 tree fa2bfe23ace7fc05...; each equals its run's own FREEZE.json record and passes the lint. Recorded in manifest.json BEFORE any window cell: gate_freeze hashes and gate_order (seed 2026102807, arms abl_nogate and abl_naivegate, 2 trials, trial seeds 5000 + k as the first window, 3 infra retries). The order's sha256 is written when the window regenerates it from the seed (root_full is unlocked only by the window). The first window's final_order (2688 cells, sha256 100420c9...) is unchanged. Next: P7 gate window, 672 cells at 12 slots.
+
+```json
+{"cp": 797, "prev_cp": 796, "prev_commit": "ec65fa3cc463e50cb00d066beeed6aec83f71d2e", "utc": "2026-10-28T19:25:29Z", "kind": "phase_done", "phase": "P6", "done_through": "P6/gate", "next": "P7/gate window", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {"STATE/manifest.json": "87d6898c4658f905b863d44196026435ca47df5d18b843e0e972db3032fbdf2f"}, "code": "6cee65ba61fa557547b4a54318682fe2dc265a77", "open_decisions": [], "memory": {"used_pct": 3.79, "peak_pct": 48.95, "state": "OK", "stale": false}}
+```
