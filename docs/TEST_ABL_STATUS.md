@@ -647,3 +647,11 @@ Posted 'Cap evolve no traces hourly status' on #945 (abl_notrace): https://githu
 ```json
 {"cp": 79, "prev_cp": 78, "prev_commit": "821d54d90f147953afcd512dc206637b6b5f1920", "utc": "2026-10-28T21:33:24Z", "kind": "posted", "phase": "W", "done_through": "P2/T1,T2,T4-T10", "next": "P3/window1", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 24.11, "peak_pct": 45.67, "state": "OK", "stale": false}, "post": "abl_notrace/status_20261028T213320", "url": "https://github.com/skillberry-ai/cap-evolve/issues/945#issuecomment-6481213727"}
 ```
+
+## TB-0080 · 2026-10-28T21:40Z · W posted abl_tracescore · posted
+
+Posted 'Cap evolve traces and score only hourly status' on #946 (abl_tracescore): https://github.com/skillberry-ai/cap-evolve/issues/946#issuecomment-6481344636
+
+```json
+{"cp": 80, "prev_cp": 79, "prev_commit": "4418579da34b79e3957f9bc097591537ae2312ed", "utc": "2026-10-28T21:40:06Z", "kind": "posted", "phase": "W", "done_through": "P2/T1,T2,T4-T10", "next": "P3/window1", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 24.01, "peak_pct": 45.67, "state": "OK", "stale": false}, "post": "abl_tracescore/status_20261028T214000", "url": "https://github.com/skillberry-ai/cap-evolve/issues/946#issuecomment-6481344636"}
+```
