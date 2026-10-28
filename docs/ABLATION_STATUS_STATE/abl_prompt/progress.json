@@ -3,7 +3,7 @@
  "arm": "abl_prompt",
  "k_se": 0.2,
  "counted_rollouts": 882,
- "cache_hits": 882,
+ "cache_hits": 996,
  "lint_rejects": 0,
  "iterations_done": 6,
  "iterations_consumed": 11,

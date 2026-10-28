@@ -5983,3 +5983,11 @@ P2 done for abl_nogate and abl_naivegate, every check PASS before any counted ro
 ```json
 {"cp": 726, "prev_cp": 725, "prev_commit": "a7578886e6393c77304b8473e4e5b8d16e28fedb", "utc": "2026-10-28T11:29:36Z", "kind": "phase_done", "phase": "P2", "done_through": "P2/gate", "next": "P4/gate searches", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "a7578886e6393c77304b8473e4e5b8d16e28fedb", "open_decisions": [], "memory": {"used_pct": 2.82, "peak_pct": 16.9, "state": "OK", "stale": false}}
 ```
+
+## ABL-0727 · 2026-10-28T11:29Z · P4 searches launched · phase_start
+
+P4: chain(s) abl_nogate, abl_naivegate started (search, freeze, isolation scan); pid files AW_STATE/p4/<arm>.pid. Running now: abl_nogate, abl_naivegate. Global slots 24; memory 2.86%.
+
+```json
+{"cp": 727, "prev_cp": 726, "prev_commit": "92163dfd239c99b679a7af04cf5e1023e234b94f", "utc": "2026-10-28T11:29:50Z", "kind": "phase_start", "phase": "P4", "done_through": "P2/gate", "next": "P4/gate searches", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "92163dfd239c99b679a7af04cf5e1023e234b94f", "open_decisions": [], "memory": {"used_pct": 2.86, "peak_pct": 16.9, "state": "OK", "stale": false}}
+```
