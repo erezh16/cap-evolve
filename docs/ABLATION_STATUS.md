@@ -6031,3 +6031,11 @@ Global episode slots set to 12: user request 2026-10-28: another workload is sta
 ```json
 {"cp": 732, "prev_cp": 731, "prev_commit": "cb40bac367ca6538619bf747ca3bfa04c15c0a8e", "utc": "2026-10-28T12:10:23Z", "kind": "decision", "phase": "P4", "done_through": "P2/gate", "next": "P4/gate searches", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "92163dfd239c99b679a7af04cf5e1023e234b94f", "open_decisions": [], "memory": {"used_pct": 46.97, "peak_pct": 48.95, "state": "OK", "stale": false}}
 ```
+
+## ABL-0733 · 2026-10-28T12:32Z · P4 abl_nogate iteration 1 · result
+
+P4 abl_nogate: iteration 1: val 0.5782 (parent 0.4014); paired Δ̄ +0.1769, SE 0.0508, K·SE -5080.7183 (K = -100000) → ACCEPT. Counted rollouts 147 of 882; optimizer proxy USD 7.73; best search score (fit metric) 0.5782312925170068.
+
+```json
+{"cp": 733, "prev_cp": 732, "prev_commit": "1519b2253b5c394669ac6a675ae9c32c844eea54", "utc": "2026-10-28T12:32:40Z", "kind": "result", "phase": "P4", "done_through": "P2/gate", "next": "P4/gate searches", "arm": "abl_nogate", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {"STATE/abl_nogate/progress.json": "b814551cd47b32590bef3b8c72064bb9f1ee2908e00bee12109200e4fe13459a"}, "code": "92163dfd239c99b679a7af04cf5e1023e234b94f", "open_decisions": [], "memory": {"used_pct": 11.02, "peak_pct": 48.95, "state": "OK", "stale": false}, "iteration": 1, "verdict": {"candidate": "cand_0001", "accept": true, "val": 0.5782312925170068, "parent_val": 0.4013605442176871, "indecisive": false, "kind": "step", "delta": 0.1769, "se": 0.0508, "k_se": -100000.0, "bar": -5080.7183, "would_pass_k1": true}}
+```
