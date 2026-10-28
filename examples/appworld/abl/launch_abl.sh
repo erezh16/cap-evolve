@@ -16,6 +16,7 @@ case "$ARM" in
   abl_tools) SW=(AW_ABL_FEEDBACK=full AW_ABL_TOOLS_LINT=1);;
   abl_notrace) SW=(AW_ABL_FEEDBACK=eval_only);;
   abl_tracescore) SW=(AW_ABL_FEEDBACK=trace_score);;
+  abl_nogate|abl_naivegate) SW=(AW_ABL_FEEDBACK=full);;   # ABLATIONS_GATE.md G5: only gate_k_se differs
   *) echo "launch_abl.sh: unknown arm $ARM (abl_cc uses abl/cc/launch_cc.sh)" >&2; exit 2;;
 esac
 . "$HERE/env.sh"

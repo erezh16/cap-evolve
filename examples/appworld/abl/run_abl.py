@@ -56,6 +56,11 @@ ARM_CONFIG = {
                        "feedback": "eval_only", "tools_lint": False},
     "abl_tracescore": {"capabilities": "[system-prompt, tools]", "protected": '[default, "memory/*"]',
                        "feedback": "trace_score", "tools_lint": False},
+    # ABLATIONS_GATE.md G5: abl_ref's row; the arm differs only in gate_k_se (P.K_SE) and its facts clause
+    "abl_nogate":     {"capabilities": "[system-prompt, tools]", "protected": '[default, "memory/*"]',
+                       "feedback": "full", "tools_lint": False},
+    "abl_naivegate":  {"capabilities": "[system-prompt, tools]", "protected": '[default, "memory/*"]',
+                       "feedback": "full", "tools_lint": False},
 }
 
 
@@ -246,7 +251,7 @@ def _imp_launch(proj: Path | None) -> dict:
                            "resolved": sd, "home_skills_exists": Path("~/.claude/skills").expanduser().is_dir()}
     if proj:
         spec = (proj / "capevolve.yaml").read_text()
-        m = re.search(r"^gate_k_se:\s*([0-9.]+)", spec, re.M)
+        m = re.search(r"^gate_k_se:\s*(-?[0-9.]+)", spec, re.M)
         out["3_spec_k_se"] = {"ok": bool(m) and float(m.group(1)) == K, "value": m and float(m.group(1)), "expected": K}
         cfg = ARM_CONFIG[CAND]
         caps = re.search(r"^capabilities:\s*(.+)$", spec, re.M)
@@ -275,7 +280,7 @@ def _imp_run(proj: Path, run_dir: Path) -> dict:
         spec_path = proj.parent.parent / spec_path
     kse = None
     if spec_path and spec_path.is_file():
-        m = re.search(r"^gate_k_se:\s*([0-9.]+)", spec_path.read_text(), re.M)
+        m = re.search(r"^gate_k_se:\s*(-?[0-9.]+)", spec_path.read_text(), re.M)
         kse = m and float(m.group(1))
     out["3_run_config"] = {"ok": bool(rc) and kse == K, "run_config_events": len(rc), "spec_k_se": kse}
     cmdlog = STATE / f"proc_cmdlines_{run_dir.name}.jsonl"     # one log per run dir (dry run vs search)
@@ -408,11 +413,45 @@ print(json.dumps(out))
     if ce3:
         d["ok"] = (c["0.3"]["accept_k0.2"] is True and c["0.3"]["accept_k1"] is False
                    and c["0.1"]["accept_k0.2"] is False and d["gate_file"].startswith(str(PIN / "core")))
+    if CAND in getattr(P, "GATE_ARMS", ()):
+        d["gate_arm"] = gate_arm_unit_check()
+        d["ok"] = d["ok"] and d["gate_arm"]["ok"]
     else:
         d["ok"] = (c["1.5"]["accept_k1"] is True and c["1.5"]["accept_k2"] is False
                    and c["2.5"]["accept_k1"] is True and c["2.5"]["accept_k2"] is True
                    and c["0.7"]["accept_k1"] is False and c["0.7"]["accept_k2"] is False
                    and d["gate_file"].startswith(str(PIN / "core")))
+    return d
+
+
+def gate_arm_unit_check() -> dict:
+    """ABLATIONS_GATE.md G5 with the PINNED gate.py at the arm's own K. abl_nogate (K = -100000): a 20-task regression
+    and +1 task are accepted, an all-zero vector is rejected (SE = 0 fallback). abl_naivegate (K = 0): +0.1·SE is
+    accepted (abl_ref's 0.2 rejects it), -0.1·SE and the all-zero vector are rejected."""
+    code = r"""
+import json, math, sys
+from cap_evolve import gate
+k = float(sys.argv[1]); n = 147
+e = [0.1 if i % 2 else -0.1 for i in range(n - 1)] + [0.0]
+mu = sum(e) / n; e = [x - mu for x in e]
+se0 = math.sqrt(sum(x * x for x in e) / (n - 1) / n)
+vecs = {"reg20": [-1.0] * 20 + [0.0] * (n - 20), "plus1": [1.0] + [0.0] * (n - 1), "zero": [0.0] * n,
+        "+0.1se": [x + 0.1 * se0 for x in e], "-0.1se": [x - 0.1 * se0 for x in e]}
+out = {"gate_file": gate.__file__, "k_se": k, "cases": {}}
+for name, d in vecs.items():
+    for kk in (k, 0.2):
+        g = gate.decide(0.0, sum(d) / n, mode="paired", k_se=kk, paired_deltas=d)
+        out["cases"].setdefault(name, {})[f"accept_k{kk:g}"] = g.accept
+print(json.dumps(out))
+"""
+    r = subprocess.run([str(CAPE_PY), "-c", code, kfmt(K)], capture_output=True, text=True, env=cape_env("accept"))
+    d = json.loads(r.stdout.strip().splitlines()[-1])
+    c, kk = d["cases"], f"accept_k{K:g}"
+    want = ({"reg20": True, "plus1": True, "zero": False} if CAND == "abl_nogate"
+            else {"+0.1se": True, "-0.1se": False, "zero": False, "plus1": True, "reg20": False})
+    d["expected"] = want
+    d["ok"] = (all(c[n][kk] is v for n, v in want.items()) and d["gate_file"].startswith(str(PIN / "core"))
+               and (CAND != "abl_naivegate" or c["+0.1se"]["accept_k0.2"] is False))
     return d
 
 
@@ -469,7 +508,7 @@ def accept(mock_edit: str | None = None) -> int:
 
 # ---------------------------------------------------------------- search / freeze
 
-_GATE_RE = re.compile(r"paired Δ̄=([+-][0-9.]+) (?:>|<=) ([0-9.]+)·SE=([0-9.]+) \(SE=([0-9.]+)")
+_GATE_RE = re.compile(r"paired Δ̄=([+-][0-9.]+) (?:>|<=) (-?[0-9.]+)·SE=(-?[0-9.]+) \(SE=([0-9.]+)")   # K < 0: abl_nogate
 
 
 def iteration_rows(rd: Path) -> list[dict]:
@@ -586,9 +625,11 @@ def freeze() -> int:
 
 # A-ABL-SAME (rule Q4, §5.4): what each arm may differ in from abl_ref, besides run dir, run ts and its own paths
 SAME_ALLOWED_SPEC = {"abl_ref": (), "abl_prompt": ("capabilities:", "protected_paths:"),
-                     "abl_tools": ("capabilities:", "protected_paths:"), "abl_notrace": (), "abl_tracescore": ()}
+                     "abl_tools": ("capabilities:", "protected_paths:"), "abl_notrace": (), "abl_tracescore": (),
+                     "abl_nogate": ("gate_k_se:",), "abl_naivegate": ("gate_k_se:",)}
 SAME_ALLOWED_ENV = {"abl_ref": (), "abl_prompt": (), "abl_tools": ("AW_ABL_TOOLS_LINT",),
-                    "abl_notrace": ("AW_ABL_FEEDBACK",), "abl_tracescore": ("AW_ABL_FEEDBACK",)}
+                    "abl_notrace": ("AW_ABL_FEEDBACK",), "abl_tracescore": ("AW_ABL_FEEDBACK",),
+                    "abl_nogate": (), "abl_naivegate": ()}
 _ARM_ENV_KEYS = ("AW_CAPE_ARM", "AW_EXPERIMENT", "AW_CAPE_EXTRA_DENY", "AW_CAPE_TS")   # the arm's own name and paths
 
 

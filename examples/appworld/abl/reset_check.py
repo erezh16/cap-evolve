@@ -55,8 +55,12 @@ def _drop_session_tmp(st: dict) -> bytes:
     """Other Claude sessions' temp dirs (/tmp/claude-<uid>/<dir>) are denied as they exist at each call, so they vary
     with time and say nothing about the arm's configuration; every other rule is compared (ABL-0294)."""
     tmp = f"/tmp/claude-{os.getuid()}/"
-    st["permissions"]["deny"] = [r for r in st["permissions"]["deny"] if tmp not in r]
-    st["sandbox"]["filesystem"]["denyRead"] = [r for r in st["sandbox"]["filesystem"]["denyRead"] if tmp not in r]
+    # ABLATIONS_GATE.md G6: adding the gate arms adds their roots to every other arm's deny list (more is denied, never
+    # less). abl_ref's render was stored before they existed, so their own deny entries are left out of the comparison.
+    gate = tuple(f"/{a}" for a in getattr(P, "GATE_ARMS", ()))
+    keep = lambda r: tmp not in r and not any(g + "/" in r or r.endswith(g) for g in gate)  # noqa: E731
+    st["permissions"]["deny"] = [r for r in st["permissions"]["deny"] if keep(r)]
+    st["sandbox"]["filesystem"]["denyRead"] = [r for r in st["sandbox"]["filesystem"]["denyRead"] if keep(r)]
     return json.dumps(st, indent=1, sort_keys=True).encode()
 
 

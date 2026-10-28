@@ -27,7 +27,8 @@ A, M, pct, ci = R.A, R.M, R.pct, R.ci
 LABEL = {"abl_ref": "reference", "abl_cc": "plain Claude Code: no cap-evolve loop, instructions or gate",
          "abl_prompt": "prompt only", "abl_tools": "tools only", "abl_notrace": "no traces (evaluation feedback only)",
          "abl_tracescore": "traces + score only (no evaluation feedback)",
-         "abl_cc_best": "abl_cc's best-evaluated candidate (secondary, ABL-0485)"}
+         "abl_cc_best": "abl_cc's best-evaluated candidate (secondary, ABL-0485)",
+         "abl_nogate": "no gate", "abl_naivegate": "naive gate (any gain)"}
 ACTIVATE = {
     "abl_ref": "`capabilities: [system-prompt, tools]`, `protected_paths: [default, \"memory/*\"]`, `AW_ABL_FEEDBACK=full`",
     "abl_prompt": "`capabilities: [system-prompt]`, `protected_paths: [default, \"memory/*\", \"tools/*\"]`, `AW_ABL_FEEDBACK=full`",
@@ -35,6 +36,8 @@ ACTIVATE = {
                  "`AW_ABL_TOOLS_LINT=1`",
     "abl_notrace": "as the reference, plus `AW_ABL_FEEDBACK=eval_only`",
     "abl_tracescore": "as the reference, plus `AW_ABL_FEEDBACK=trace_score`",
+    "abl_nogate": "as the reference, with `gate_k_se: -100000` (every scored candidate is kept)",
+    "abl_naivegate": "as the reference, with `gate_k_se: 0` (kept iff the mean paired gain is above 0)",
     "abl_cc": "one `claude -p` session with the 3-line prompt, `--max-turns 1200`, an empty `CLAUDE_CONFIG_DIR`, the same "
               "sandbox shim, the eval daemon `abl/cc/evald.py` (B = 882, reference feedback content)"}
 

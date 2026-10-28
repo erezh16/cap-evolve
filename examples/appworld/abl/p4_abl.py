@@ -36,7 +36,8 @@ if P.LEDGER_ID != "ABL":
 D = P.AW_STATE / "p4"
 VC_PY = P.VENVS / "venv-abl" / "bin" / "python"
 STEPS = ("search", "freeze", "scan", "reset")
-WAVES = (("abl_ref", "abl_prompt", "abl_tools"), ("abl_notrace", "abl_tracescore", "abl_cc"))   # R4
+WAVES = (("abl_ref", "abl_prompt", "abl_tools"), ("abl_notrace", "abl_tracescore", "abl_cc"),
+         ("abl_nogate", "abl_naivegate"))   # R4; the third wave is ABLATIONS_GATE.md G6
 ORDER = tuple(a for w in WAVES for a in w)
 MAX_RUNNING = 3
 

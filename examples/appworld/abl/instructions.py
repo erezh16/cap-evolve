@@ -22,7 +22,7 @@ BASE = HERE / "INSTRUCTIONS.base.md"
 FACTS_REF = HERE / "facts_ref.md"
 BASE_SHA256 = "84de4f00a5254c47f0627a9e753129375ce12d20ecdcbeeb0e266d6106de2fce"
 ANCHOR = "## PREPARATION:"
-CAPE_ARMS = ("abl_ref", "abl_prompt", "abl_tools", "abl_notrace", "abl_tracescore")
+CAPE_ARMS = ("abl_ref", "abl_prompt", "abl_tools", "abl_notrace", "abl_tracescore", "abl_nogate", "abl_naivegate")
 
 # the reference's three-file bullet list (facts_ref.md), split by bullet so the surface arms can keep theirs
 _B_POLICY_START = "- `policy/instructions.txt` — the ReAct prompt (capability system-prompt)."
@@ -35,6 +35,9 @@ _TRAJ_REF = ("`./trajectories/` holds one JSON per rollout: `input.instruction`,
              "thought, reasoning excerpt, code, output truncated to 2,000 chars), `rollout.metadata`\n"
              "(termination, steps, tokens, failed requirement texts, collateral-damage flag) and\n"
              "`score.feedback`. A requirement text says WHAT the evaluator checked, never the gold value.\n")
+_GATE_REF = "and accepts it only if the mean paired gain over the current best clears its noise gate."
+_GATE_NOTE = ("The paragraph \"How your edit is judged\" further below describes the framework's default significance "
+              "bar; it does not apply in this run")
 _PARTIAL_REF = "Partial passes earn nothing; the failed-requirement texts in each trajectory say which checks failed."
 
 
@@ -85,6 +88,15 @@ def facts_for(arm: str) -> str:
                      "thought, reasoning excerpt, code, output truncated to 2,000 chars), `rollout.metadata`\n"
                      "(termination, steps, tokens) and `score.feedback`, which is only `Task reward: 0` or\n"
                      "`Task reward: 1`. Infer why a run lost reward from the conversation itself.\n")
+    if arm == "abl_nogate":       # ABLATIONS_GATE.md G4: only the gate clause changes
+        return _once(f, _GATE_REF,
+                     "and in this run keeps every candidate that is scored: there is no acceptance gate, so the "
+                     "candidate you ship becomes the new current best whatever its score, even if it is lower. A "
+                     "candidate that fails the lint is not run and not kept. " + _GATE_NOTE + ".")
+    if arm == "abl_naivegate":    # ABLATIONS_GATE.md G4
+        return _once(f, _GATE_REF,
+                     "and keeps it if its mean paired gain over the current best is above zero: any net gain, however "
+                     "small, is kept, with no noise margin. " + _GATE_NOTE + ", where the bar is zero.")
     raise SystemExit(f"instructions: no instructions for arm {arm!r}")
 
 

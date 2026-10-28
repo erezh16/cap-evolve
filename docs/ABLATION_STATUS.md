@@ -5951,3 +5951,11 @@ Hourly status posts restarted for the gate arms only: autopost.py and the heartb
 ```json
 {"cp": 722, "prev_cp": 721, "prev_commit": "c2614bdf9252c5d425df0f1e7ab64b91e49a9930", "utc": "2026-10-28T11:16:00Z", "kind": "repair", "phase": "P1", "done_through": "P9/post", "next": "P1/gate B1", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "b30521e51eaf193fa77864f766e3053f358dd3f6", "open_decisions": [], "memory": {"used_pct": 2.74, "peak_pct": 5.28, "state": "OK", "stale": false}}
 ```
+
+## ABL-0723 · 2026-10-28T11:19Z · P1 gate arms: B1 and B5 code · result
+
+Gate-arm code (ABLATIONS_GATE.md G6 B1/B5), offline tests 21/21 pass (abl/tests, 4 new in test_gate_arms.py). launch_abl.sh: abl_nogate and abl_naivegate cases (AW_ABL_FEEDBACK=full, nothing else). run_abl.py: ARM_CONFIG rows equal to abl_ref's; A-ABL-SAME allows only gate_k_se in the spec and no env key; the spec and verdict regexes now read a negative or zero K (they read only [0-9.] before); gate_arm_unit_check (G5 cases at the arm's K, pinned gate.py). instructions.py: two facts_for branches, each one _once() replacement of the gate clause; the diff vs abl_ref is one line out, one line in; the five earlier arms' renders are byte-identical to before. p4_abl.py: a third wave (abl_nogate, abl_naivegate). report_abl.py: labels and activation lines. reset_check.py: item 5 leaves the gate arms' own deny entries out of the comparison with abl_ref's stored settings (they add denials, never remove one); item 5 passes for abl_ref.
+
+```json
+{"cp": 723, "prev_cp": 722, "prev_commit": "48cd75394470eeb9287091f2eb5e506c6380f529", "utc": "2026-10-28T11:19:57Z", "kind": "result", "phase": "P1", "done_through": "P9/post", "next": "P1/gate setup", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "48cd75394470eeb9287091f2eb5e506c6380f529", "open_decisions": [], "memory": {"used_pct": 2.75, "peak_pct": 5.28, "state": "OK", "stale": false}}
+```
