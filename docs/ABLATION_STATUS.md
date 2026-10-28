@@ -5895,3 +5895,11 @@ Posted 'AppWorld ablations: summary of all arms' on #935 (abl_tracescore): https
 ```json
 {"cp": 715, "prev_cp": 714, "prev_commit": "be32ad50697fcb0d52e678b7bcd3f9d2169acca4", "utc": "2026-10-27T18:09:08Z", "kind": "posted", "phase": "P9", "done_through": "P9/post", "next": "done", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "72876a3522a3ef3583db1326dfa1e231a2542196", "open_decisions": [], "memory": {"used_pct": 5.13, "peak_pct": 90.19, "state": "OK", "stale": false}, "post": "abl_tracescore/final_summary_all_arms", "url": "https://github.com/skillberry-ai/cap-evolve/issues/935#issuecomment-6449894627"}
 ```
+
+## ABL-0716 · 2026-10-28T11:13Z · P0 gate arms: decisions D14 to D17 · decision
+
+User request (2026-10-28): two more cap-evolve ablation arms under docs/ABLATIONS.md, planned in docs/ABLATIONS_GATE.md (fork/ablations a284343): abl_nogate (no acceptance gate; issue #938) and abl_naivegate (keep iff mean paired gain > 0; issue #939). D14: same models and budget as every earlier arm (gpt-oss-120b on RITS, aws/claude-sonnet-5-5, B = 882, 6 scored iterations). D15: made from main's own keys, gate_mode paired with gate_k_se -100000 (no gate) and 0 (naive); core unchanged (D4). D16 (user decision): the final window scores only the two new champions, trial seeds 5000 + k; the seed and abl_ref cells are reused from the first window, a disclosed cross-window comparison. D17 (user decision): each arm's AppWorld facts section states its true acceptance rule. Profile: GATE_ARMS appended to CANDIDATES and CAPE_ARMS, ISSUES 938/939, K_SE -100000 / 0.
+
+```json
+{"cp": 716, "prev_cp": 715, "prev_commit": "a02c52fad3849bbefe2cd5c3d9ef2630b213a546", "utc": "2026-10-28T11:13:14Z", "kind": "decision", "phase": "P0", "done_through": "P9/post", "next": "P1/gate B1", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "72876a3522a3ef3583db1326dfa1e231a2542196", "open_decisions": [], "memory": {"used_pct": 3.55, "peak_pct": 5.28, "state": "OK", "stale": false}, "arms": ["abl_nogate", "abl_naivegate"], "issues": {"abl_nogate": 938, "abl_naivegate": 939}, "k_se": {"abl_nogate": -100000, "abl_naivegate": 0}}
+```
