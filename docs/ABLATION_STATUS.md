@@ -5919,3 +5919,11 @@ The 40 deny rules of /workspace/aw_abl/launch/exec-settings.json were written in
 ```json
 {"cp": 718, "prev_cp": 717, "prev_commit": "b982f987c12744f6e131f8a848565fd52294c7f1", "utc": "2026-10-28T11:13:17Z", "kind": "repair", "phase": "P0", "done_through": "P9/post", "next": "P1/gate B1", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "b30521e51eaf193fa77864f766e3053f358dd3f6", "open_decisions": [], "memory": {"used_pct": 3.62, "peak_pct": 5.28, "state": "OK", "stale": false}}
 ```
+
+## ABL-0719 · 2026-10-28T11:13Z · P0 gate arms: memory guard restarted · resume
+
+Every runner was dead (all pid files). memguard.py was restarted first (R2; MEMSTATE had been about 16 h stale, recorded peak 90.19%): fresh state within 8 s, used 3.6%, state OK. Next the heartbeat and autopost; posts go only to issues without a results post, so only #938 and #939.
+
+```json
+{"cp": 719, "prev_cp": 718, "prev_commit": "784c8b640f0c0a5e7e0b83d092e3c098a48ffc77", "utc": "2026-10-28T11:13:19Z", "kind": "resume", "phase": "P0", "done_through": "P9/post", "next": "P1/gate B1", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "b30521e51eaf193fa77864f766e3053f358dd3f6", "open_decisions": [], "memory": {"used_pct": 3.62, "peak_pct": 5.28, "state": "OK", "stale": false}}
+```
