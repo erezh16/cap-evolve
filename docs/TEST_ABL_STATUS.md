@@ -190,3 +190,11 @@ Posted 'seed agent hourly status' on #940 (seed): https://github.com/skillberry-
 ```json
 {"cp": 22, "prev_cp": 21, "prev_commit": "cb6737e63d49acc75e3c8705f6ab84b504f55710", "utc": "2026-10-28T17:00:12Z", "kind": "posted", "phase": "P0", "done_through": "B0..B3", "next": "B4 window code; P2 acceptance", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "016bcda89b03e6c91a45557cd83771aad216e12e", "open_decisions": [], "memory": {"used_pct": 28.14, "peak_pct": 29.23, "state": "OK", "stale": false}, "post": "seed/status_20261028T170000", "url": "https://github.com/skillberry-ai/cap-evolve/issues/940#issuecomment-6475337554"}
 ```
+
+## TB-0023 · 2026-10-28T17:06Z · P0 posted abl_ref · posted
+
+Posted 'Cap-evolve full (reference) hourly status' on #941 (abl_ref): https://github.com/skillberry-ai/cap-evolve/issues/941#issuecomment-6475486675
+
+```json
+{"cp": 23, "prev_cp": 22, "prev_commit": "36673828dd2dba093bcd280f06716f8eb3c90c73", "utc": "2026-10-28T17:06:55Z", "kind": "posted", "phase": "P0", "done_through": "B0..B3", "next": "B4 window code; P2 acceptance", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "016bcda89b03e6c91a45557cd83771aad216e12e", "open_decisions": [], "memory": {"used_pct": 27.23, "peak_pct": 29.23, "state": "OK", "stale": false}, "post": "abl_ref/status_20261028T170640", "url": "https://github.com/skillberry-ai/cap-evolve/issues/941#issuecomment-6475486675"}
+```
