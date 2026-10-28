@@ -1,0 +1,20 @@
+{
+ "window": "final_gate",
+ "cells_total": 672,
+ "cells_done": 13,
+ "per_arm": {
+  "abl_nogate": {
+   "done": 8,
+   "infra_missing": 0,
+   "infra_retries": 0,
+   "context_exceeded": 0
+  },
+  "abl_naivegate": {
+   "done": 5,
+   "infra_missing": 0,
+   "infra_retries": 0,
+   "context_exceeded": 0
+  }
+ },
+ "order_sha256": "70a4e4fb2d2daaa9b52e5fdb9ece4224c1d5d10ef96d633947211d2e3e9c2816"
+}
