@@ -6007,3 +6007,11 @@ Posted 'Cap evolve naive gate search started' on #939 (abl_naivegate): https://g
 ```json
 {"cp": 729, "prev_cp": 728, "prev_commit": "c67b3c7bbb9aafab1b63eb73aa91e8f5de48e418", "utc": "2026-10-28T11:31:34Z", "kind": "posted", "phase": "P4", "done_through": "P2/gate", "next": "P4/gate searches", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "92163dfd239c99b679a7af04cf5e1023e234b94f", "open_decisions": [], "memory": {"used_pct": 4.33, "peak_pct": 16.9, "state": "OK", "stale": false}, "post": "abl_naivegate/m_gate_start", "url": "https://github.com/skillberry-ai/cap-evolve/issues/939#issuecomment-6467863453"}
 ```
+
+## ABL-0730 · 2026-10-28T11:42Z · P4 posted abl_naivegate · posted
+
+Posted 'Cap evolve naive gate search started' on #939 (abl_naivegate): https://github.com/skillberry-ai/cap-evolve/issues/939#issuecomment-6468068484
+
+```json
+{"cp": 730, "prev_cp": 729, "prev_commit": "43fa85e7d420c37105cf1b1bfc3ff0fc91a8bf21", "utc": "2026-10-28T11:42:20Z", "kind": "posted", "phase": "P4", "done_through": "P2/gate", "next": "P4/gate searches", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "92163dfd239c99b679a7af04cf5e1023e234b94f", "open_decisions": [], "memory": {"used_pct": 43.69, "peak_pct": 45.0, "state": "OK", "stale": false}, "post": "abl_naivegate/m4_search_start", "url": "https://github.com/skillberry-ai/cap-evolve/issues/939#issuecomment-6468068484"}
+```
