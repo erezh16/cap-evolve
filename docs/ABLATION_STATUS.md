@@ -6379,3 +6379,13 @@ Posted 'Cap evolve no gate hourly status' on #938 (abl_nogate): https://github.c
 ```json
 {"cp": 774, "prev_cp": 773, "prev_commit": "c859acf61686b30f685f021d36c1e97225dd848a", "utc": "2026-10-28T18:18:48Z", "kind": "posted", "phase": "P4", "done_through": "P2/gate", "next": "P4/gate searches", "arm": "abl_naivegate", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "92163dfd239c99b679a7af04cf5e1023e234b94f", "open_decisions": [], "memory": {"used_pct": 28.9, "peak_pct": 48.95, "state": "OK", "stale": false}, "post": "abl_nogate/status_20261028T1818", "url": "https://github.com/skillberry-ai/cap-evolve/issues/938#issuecomment-6477044573"}
 ```
+
+## ABL-0775 · 2026-10-28T18:43Z · P4 heartbeat · heartbeat
+
+No checkpoint for 25 min. Phase P4, last result: P2/gate.
+Runner: alive (pid 882156). Last log line: `2026-10-28T18:43:01Z | memguard | - | sample 25.81% (8458 MB) state OK peak 49.0%`.
+Next: P4/gate searches.
+
+```json
+{"cp": 775, "prev_cp": 774, "prev_commit": "fc8a94d4b0539e39e29fff502be05b2c4c47f620", "utc": "2026-10-28T18:43:59Z", "kind": "heartbeat", "phase": "P4", "done_through": "P2/gate", "next": "P4/gate searches", "arm": "abl_naivegate", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "92163dfd239c99b679a7af04cf5e1023e234b94f", "open_decisions": [], "memory": {"used_pct": 28.36, "peak_pct": 48.95, "state": "OK", "stale": false}, "runner": "alive"}
+```
