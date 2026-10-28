@@ -326,3 +326,11 @@ Window 1 waits for the gate run (plan §8.1): gate searches running (abl_naivega
 ```json
 {"cp": 39, "prev_cp": 38, "prev_commit": "122166a1532ca2bbe34db2c930581c0301f6568e", "utc": "2026-10-28T19:08:49Z", "kind": "result", "phase": "W", "done_through": "B0..B3", "next": "P3/window1", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "cb0b20e8143d4f476d3eba9c35c55a422b41c132", "open_decisions": [], "memory": {"used_pct": 30.03, "peak_pct": 45.67, "state": "OK", "stale": false}}
 ```
+
+## TB-0040 · 2026-10-28T19:09Z · W waiting for the gate run (window 1) · result
+
+Window 1 waits for the gate run (plan §8.1): gate searches running (abl_naivegate).
+
+```json
+{"cp": 40, "prev_cp": 39, "prev_commit": "e002885e822d4994cb90b8cd75eb0996b5739243", "utc": "2026-10-28T19:09:21Z", "kind": "result", "phase": "W", "done_through": "B0..B3", "next": "P3/window1", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "e002885e822d4994cb90b8cd75eb0996b5739243", "open_decisions": [], "memory": {"used_pct": 28.58, "peak_pct": 45.67, "state": "OK", "stale": false}}
+```
