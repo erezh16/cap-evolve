@@ -49,7 +49,7 @@ def main(arms: list[str]) -> int:
                                  headers={"RITS_API_KEY": key})
     with urllib.request.urlopen(req, timeout=60) as resp:
         mml = json.loads(resp.read())["data"][0].get("max_model_len")
-    os.environ["AW_EXPERIMENT"] = "acc_testall"
+    os.environ["AW_EXPERIMENT"] = "acc_testabl" if getattr(P, "TESTABL", False) else "acc_testall"
     os.environ["AW_INFRA_RETRIES"] = "1"
     dev = P.read_split("dev")
     (P.SCRATCH / "scratch").mkdir(parents=True, exist_ok=True)

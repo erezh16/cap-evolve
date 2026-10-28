@@ -32,7 +32,7 @@ def main() -> int:
     trip = Counter((c["arm"], c["task_id"], c["trial"]) for c in o1)
     res = {"seed": W.FINAL_ORDER_SEED, "trials": W.FINAL_TRIALS, "arms": len(W.WINDOW_ARMS), "tasks": len(set(ids)),
            "cells": len(o1), "sha256": W.order_sha(o1), "reproducible": W.order_sha(o1) == W.order_sha(o2),
-           "each_cell_once": len(trip) == len(o1) == 168 * 13 * 5 and set(trip.values()) == {1},
+           "each_cell_once": len(trip) == len(o1) == 168 * len(W.WINDOW_ARMS) * W.FINAL_TRIALS and set(trip.values()) == {1},
            "idx_ok": [c["idx"] for c in o1] == list(range(len(o1))),
            "per_arm": sorted(set(Counter(c["arm"] for c in o1).values())),
            "root_full_relocked": (os.stat(P.ROOT_FULL).st_mode & 0o777) == 0}
@@ -45,7 +45,7 @@ def main() -> int:
                                        "infra_retries": 3})
         res["matches_manifest"] = True
     res["ok"] = all(res[k] for k in ("reproducible", "each_cell_once", "idx_ok", "root_full_relocked",
-                                     "matches_manifest")) and res["cells"] == 10920 and res["per_arm"] == [840]
+                                     "matches_manifest")) and res["cells"] == P.FINAL_CELLS and res["per_arm"] == [168 * W.FINAL_TRIALS]
     P.write_json(P.AW_STATE / "acceptance" / "t3.json", res)
     print(json.dumps(res))
     return 0 if res["ok"] else 1

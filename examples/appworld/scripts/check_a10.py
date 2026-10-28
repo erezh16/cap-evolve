@@ -27,10 +27,11 @@ EX = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(EX / "scripts"))
 import awrest as P  # noqa: E402
 
-BR = ("acceptance/test-all-status-test" if P.LEDGER_PREFIX == "TA" else "acceptance/eval-ce2-status-test"
+BR = ("acceptance/test-abl-status-test" if P.LEDGER_ID == "TB" else "acceptance/test-all-status-test" if P.LEDGER_PREFIX == "TA" else "acceptance/eval-ce2-status-test"
       if P.LEDGER_PREFIX == "CE2" else "acceptance/eval-rest-status-test")
-BASE = P.AW_HOME / "acceptance_a10"
-ORIGIN = str(P.AW_HOME / "acceptance_a10_remote.git")       # a local bare remote: the test never touches GitHub
+_A10 = P.AW_STATE if getattr(P, "TESTABL", False) else P.AW_HOME   # TEST_ABL: inside its own state, never the ablation run's
+BASE = _A10 / "acceptance_a10"
+ORIGIN = str(_A10 / "acceptance_a10_remote.git")       # a local bare remote: the test never touches GitHub
 LEDGER = "EVAL_A10_TEST.md"
 
 
@@ -45,7 +46,7 @@ def sh(*a, cwd=None, env=None, check=True):
 
 def env_for(clone: Path, state: Path) -> dict:
     e = {**os.environ, "AW_REPO": str(clone), "AW_STATE": str(state), "AW_BRANCH": BR,
-         "AW_LEDGER_NAME": LEDGER, "AW_ENV_FILE": str(BASE / "fake.env"), "AW_SECRETS_FILE": str(P.ENV_FILE)}
+         "AW_LEDGER_NAME": LEDGER, "AW_REMOTE": "origin", "AW_ENV_FILE": str(BASE / "fake.env"), "AW_SECRETS_FILE": str(P.ENV_FILE)}
     return P.setup_env(e)
 
 

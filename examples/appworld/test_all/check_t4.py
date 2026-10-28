@@ -52,7 +52,7 @@ def main() -> int:
     tok = lambda t: len(enc.encode(t, disallowed_special=()))  # noqa: E731
     tid = load_task_ids("dev")[0]
     ad = Adapter()
-    with AppWorld(task_id=tid, experiment_name="probes/t4_stock") as world:
+    with AppWorld(task_id=tid, experiment_name="probes_testabl/t4_stock") as world:
         stock = SimplifiedReActCodeAgent(**kwargs(str(STOCK)))
         stock.initialize(world)
         m_stock = [dict(m) for m in stock.messages]
@@ -63,7 +63,7 @@ def main() -> int:
         cand = aw_agent.read_candidate(cdir)
         mem = ad._memory_block(cdir, tid)
         agent = Cap(candidate=cand, memory_block=mem, **kwargs(str(cdir / "policy" / "instructions.txt")))
-        with AppWorld(task_id=tid, experiment_name=f"probes/t4_{arm}") as world:
+        with AppWorld(task_id=tid, experiment_name=f"probes_testabl/t4_{arm}") as world:
             agent.initialize(world)
             msgs = [dict(m) for m in agent.messages]
             noted = None
@@ -86,18 +86,34 @@ def main() -> int:
              "byte_identical_to_stock": json.dumps(msgs) == json.dumps(m_stock)}
         changed = P.SURFACES_CHANGED[arm]
         exp = []
-        if changed == "none":
-            exp.append(r["byte_identical_to_stock"] and r["messages"] == 23)
-        if arm in ("ace", "skillopt", "wikiskill", "evoskill", "trace2skill"):
-            exp.append(placed)
-        if arm == "altk":
-            exp.append(not has_mem)    # retrieval.json is keyed by test ids: no block for a dev id (checked below)
-        if "T" in changed:
-            exp.append((not helpers or (r["helpers_defined"] and notice)) and (not cand["notes"] or bool(noted)))
+        if getattr(P, "TESTABL", False):        # TEST_ABL §9 T4: no memory surface; P changes the request; T is live
+            exp.append(not has_mem)
+            if changed == "none":
+                exp.append(r["byte_identical_to_stock"] and r["messages"] == 23)
+            if "P" in changed:
+                exp.append(not r["byte_identical_to_stock"])
+            if "T" in changed or "P" in changed:
+                exp.append((not helpers or (r["helpers_defined"] and notice)) and (not cand["notes"] or bool(noted)))
+        else:
+            if changed == "none":
+                exp.append(r["byte_identical_to_stock"] and r["messages"] == 23)
+            if arm in ("ace", "skillopt", "wikiskill", "evoskill", "trace2skill"):
+                exp.append(placed)
+            if arm == "altk":
+                exp.append(not has_mem)    # retrieval.json is keyed by test ids: no block for a dev id (checked below)
+            if "T" in changed:
+                exp.append((not helpers or (r["helpers_defined"] and notice)) and (not cand["notes"] or bool(noted)))
         r["expected_ok"] = all(exp)
         ok &= r["expected_ok"]
         res[arm] = r
         print(json.dumps({"arm": arm, **r}))
+    if getattr(P, "TESTABL", False):
+        res["ok"] = ok and res["seed"]["byte_identical_to_stock"]
+        import shutil
+        shutil.rmtree(P.ROOT_OPT / "experiments" / "outputs" / "probes_testabl", ignore_errors=True)
+        P.write_json(P.AW_STATE / "acceptance" / "t4.json", res)
+        print(json.dumps({"ok": res["ok"]}))
+        return 0 if res["ok"] else 1
     # altk: the lookup works for the keys it has (inside this trusted script; only counts and a length are printed)
     rj = json.loads((ART / "altk" / "memory" / "retrieval.json").read_text())
     k0 = sorted(rj)[0]
@@ -107,7 +123,7 @@ def main() -> int:
     res["seed_harnesslens_identical"] = res["seed"]["byte_identical_to_stock"] and res["harnesslens"]["byte_identical_to_stock"]
     res["ok"] = ok and res["seed_harnesslens_identical"]
     import shutil
-    shutil.rmtree(P.ROOT_OPT / "experiments" / "outputs" / "probes", ignore_errors=True)
+    shutil.rmtree(P.ROOT_OPT / "experiments" / "outputs" / "probes_testabl", ignore_errors=True)
     P.write_json(P.AW_STATE / "acceptance" / "t4.json", res)
     print(json.dumps({"altk_retrieval": res["altk_retrieval"], "ok": res["ok"]}))
     return 0 if res["ok"] else 1
