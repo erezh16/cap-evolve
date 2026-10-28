@@ -14,3 +14,11 @@ TEST_ABL B0. Test-only evaluation of the AppWorld ablation champions under docs/
 ```json
 {"cp": 0, "prev_cp": null, "prev_commit": "84aa75276a7368bd1fe5a8e0a994c2938b316ce1", "utc": "2026-10-28T14:08:21Z", "kind": "decision", "phase": "P0", "done_through": "B0..B3", "next": "B4 window code; P2 acceptance", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "84aa75276a7368bd1fe5a8e0a994c2938b316ce1", "open_decisions": [], "memory": {"used_pct": 27.41, "peak_pct": 28.43, "state": "OK", "stale": false}, "issues": {"seed": 940, "abl_ref": 941, "abl_cc_best": 942, "abl_prompt": 943, "abl_tools": 944, "abl_notrace": 945, "abl_tracescore": 946}}
 ```
+
+## TB-0001 · 2026-10-28T14:08Z · P0 posted seed · posted
+
+Posted 'seed agent hourly status' on #940 (seed): https://github.com/skillberry-ai/cap-evolve/issues/940#issuecomment-6471209770
+
+```json
+{"cp": 1, "prev_cp": 0, "prev_commit": "016bcda89b03e6c91a45557cd83771aad216e12e", "utc": "2026-10-28T14:08:34Z", "kind": "posted", "phase": "P0", "done_through": "B0..B3", "next": "B4 window code; P2 acceptance", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "016bcda89b03e6c91a45557cd83771aad216e12e", "open_decisions": [], "memory": {"used_pct": 28.49, "peak_pct": 28.49, "state": "OK", "stale": false}, "post": "seed/status_20261028T140000", "url": "https://github.com/skillberry-ai/cap-evolve/issues/940#issuecomment-6471209770"}
+```
