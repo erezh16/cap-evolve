@@ -316,7 +316,9 @@
   "abl_prompt": 943,
   "abl_tools": 944,
   "abl_notrace": 945,
-  "abl_tracescore": 946
+  "abl_tracescore": 946,
+  "abl_nogate": 948,
+  "abl_naivegate": 949
  },
  "plan": "docs/TEST_ABL.md",
  "window1_arms": [

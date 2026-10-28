@@ -423,3 +423,11 @@ Push note: 1 earlier checkpoint commit(s) were not pushed (error: failed to push
 ```json
 {"cp": 51, "prev_cp": 50, "prev_commit": "6a8fb3006b0396c06b7dc5b466736bafcf12057c", "utc": "2026-10-28T19:20:14Z", "kind": "decision", "phase": "W", "done_through": "P2/T1,T2,T4-T10", "next": "P2/T3 then P3/window1 (launch_when_clear.py waiting for the gate run)", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 3.71, "peak_pct": 45.67, "state": "OK", "stale": false}, "gate": {"abl_nogate": {"search_alive": false, "freeze_hash": "cdbc5827f70b02e1b388c4e8a29dc0b5125fd905399c2b3a396d904efd19b1e9", "local_hash_ok": true, "reset_ok": true, "scan_hits": 0, "inert": false, "label": ""}, "abl_naivegate": {"search_alive": false, "freeze_hash": "fa2bfe23ace7fc0546953d9b047445dab6fa111655d657d31fbf897d8c31bb51", "local_hash_ok": true, "reset_ok": true, "scan_hits": 0, "inert": false, "label": ""}}}
 ```
+
+## TB-0052 · 2026-10-28T19:20Z · W gate issues opened · result
+
+Gate-arm tracking issues: abl_nogate #948, abl_naivegate #949. Their hourly timers start now (autopost reads the open issues).
+
+```json
+{"cp": 52, "prev_cp": 51, "prev_commit": "068cb75137bce07b3db629f71d1519c0885267f9", "utc": "2026-10-28T19:20:25Z", "kind": "result", "phase": "W", "done_through": "P2/T1,T2,T4-T10", "next": "P2/T3 then P3/window1 (launch_when_clear.py waiting for the gate run)", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 3.84, "peak_pct": 45.67, "state": "OK", "stale": false}, "issues_gate": {"abl_nogate": 948, "abl_naivegate": 949}}
+```
