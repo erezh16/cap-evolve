@@ -6633,3 +6633,11 @@ Posted 'Cap evolve no gate hourly status' on #938 (abl_nogate): https://github.c
 ```json
 {"cp": 805, "prev_cp": 804, "prev_commit": "afb3a8c62af454388658845c17a8ee38019c0153", "utc": "2026-10-28T19:49:00Z", "kind": "posted", "phase": "P7", "done_through": "final_gate/52", "next": "final_gate/cells", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "ecebf74d736464ed1f612b4464f2265cf63b67ee", "open_decisions": [], "memory": {"used_pct": 24.15, "peak_pct": 48.95, "state": "OK", "stale": false}, "post": "abl_nogate/status_20261028T1948", "url": "https://github.com/skillberry-ai/cap-evolve/issues/938#issuecomment-6478984972"}
 ```
+
+## ABL-0806 · 2026-10-28T19:49Z · P7 posted abl_nogate · posted
+
+Posted 'Cap evolve no gate hourly status' on #938 (abl_nogate): https://github.com/skillberry-ai/cap-evolve/issues/938#issuecomment-6478985130
+
+```json
+{"cp": 806, "prev_cp": 805, "prev_commit": "38304c445024032a4a1f00d8200e99322f28e0f2", "utc": "2026-10-28T19:49:04Z", "kind": "posted", "phase": "P7", "done_through": "final_gate/52", "next": "final_gate/cells", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "ecebf74d736464ed1f612b4464f2265cf63b67ee", "open_decisions": [], "memory": {"used_pct": 24.17, "peak_pct": 48.95, "state": "OK", "stale": false}, "post": "abl_nogate/status_20261028T1949", "url": "https://github.com/skillberry-ai/cap-evolve/issues/938#issuecomment-6478985130"}
+```
