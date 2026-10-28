@@ -6565,3 +6565,11 @@ P6 for the gate arms done: full isolation scan (ABL-0794/0796: both arms 0 test-
 ```json
 {"cp": 797, "prev_cp": 796, "prev_commit": "ec65fa3cc463e50cb00d066beeed6aec83f71d2e", "utc": "2026-10-28T19:25:29Z", "kind": "phase_done", "phase": "P6", "done_through": "P6/gate", "next": "P7/gate window", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {"STATE/manifest.json": "87d6898c4658f905b863d44196026435ca47df5d18b843e0e972db3032fbdf2f"}, "code": "6cee65ba61fa557547b4a54318682fe2dc265a77", "open_decisions": [], "memory": {"used_pct": 3.79, "peak_pct": 48.95, "state": "OK", "stale": false}}
 ```
+
+## ABL-0798 · 2026-10-28T19:26Z · P7 gate window started · phase_start
+
+P7 gate window started (window.py gate-final, pid in AW_STATE/RUNNING.pid, watched by the heartbeat): 168 test_normal × abl_nogate, abl_naivegate × 2 trials = 672 cells in one shuffled order (seed 2026102807, sha256 70a4e4fb2d2daaa9..., now in manifest.json), trial seeds 5000 + k as the first window, 12 global slots (ABL-0732), 3 infra retries. root_full unlocked by the window for this phase; it relocks at the end. The seed and abl_ref cells are the first window's (D16). No test trajectory is opened by anyone; only rewards, counters and infra flags are read.
+
+```json
+{"cp": 798, "prev_cp": 797, "prev_commit": "26dc66a6ce2303c22a7e44ed867ce57ca22354c9", "utc": "2026-10-28T19:26:25Z", "kind": "phase_start", "phase": "P7", "done_through": "P6/gate", "next": "P7/gate window cells", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {"STATE/manifest.json": "bae029a6b32d87faa4ec32de8b9efde829c983df51a613b2ef5aae87113cf23a"}, "code": "26dc66a6ce2303c22a7e44ed867ce57ca22354c9", "open_decisions": [], "memory": {"used_pct": 24.14, "peak_pct": 48.95, "state": "OK", "stale": false}}
+```

@@ -162,6 +162,8 @@
   ],
   "trials": 2,
   "trial_seeds": "5000 + trial (as the first window)",
-  "infra_retries": 3
+  "infra_retries": 3,
+  "sha256": "70a4e4fb2d2daaa9b52e5fdb9ece4224c1d5d10ef96d633947211d2e3e9c2816",
+  "cells": 672
  }
 }
