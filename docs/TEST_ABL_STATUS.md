@@ -751,3 +751,11 @@ Window 1 waits for the gate run (plan §8.1): a gate-run window or P5-P9 chain i
 ```json
 {"cp": 92, "prev_cp": 91, "prev_commit": "5acfbbbdc245040374d12f48b7e0eed010c50d5f", "utc": "2026-10-28T22:42:06Z", "kind": "result", "phase": "W", "done_through": "P2/T1,T2,T4-T10", "next": "P3/window1", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 24.01, "peak_pct": 45.67, "state": "OK", "stale": false}}
 ```
+
+## TB-0093 · 2026-10-28T22:46Z · W posted abl_nogate · posted
+
+Posted 'Cap evolve no gate hourly status' on #948 (abl_nogate): https://github.com/skillberry-ai/cap-evolve/issues/948#issuecomment-6482661338
+
+```json
+{"cp": 93, "prev_cp": 92, "prev_commit": "74ec681a9e6577080335004223d4590698e6d60f", "utc": "2026-10-28T22:46:50Z", "kind": "posted", "phase": "W", "done_through": "P2/T1,T2,T4-T10", "next": "P3/window1", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 23.99, "peak_pct": 45.67, "state": "OK", "stale": false}, "post": "abl_nogate/status_20261028T224640", "url": "https://github.com/skillberry-ai/cap-evolve/issues/948#issuecomment-6482661338"}
+```
