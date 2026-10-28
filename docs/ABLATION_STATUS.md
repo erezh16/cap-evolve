@@ -6181,3 +6181,11 @@ Posted 'Cap evolve naive gate hourly status' on #939 (abl_naivegate): https://gi
 ```json
 {"cp": 750, "prev_cp": 749, "prev_commit": "ae7d667f8e90b4e0987ccf46874e50389720d52b", "utc": "2026-10-28T14:44:09Z", "kind": "posted", "phase": "P4", "done_through": "P2/gate", "next": "P4/gate searches", "arm": "abl_naivegate", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "92163dfd239c99b679a7af04cf5e1023e234b94f", "open_decisions": [], "memory": {"used_pct": 26.8, "peak_pct": 48.95, "state": "OK", "stale": false}, "post": "abl_naivegate/status_20261028T1444", "url": "https://github.com/skillberry-ai/cap-evolve/issues/939#issuecomment-6472084584"}
 ```
+
+## ABL-0751 · 2026-10-28T14:44Z · P4 abl_nogate iteration 3 · result
+
+P4 abl_nogate: iteration 3: val 0.8231 (parent 0.6939); paired Δ̄ +0.1293, SE 0.0413, K·SE -4126.4277 (K = -100000) → ACCEPT. Counted rollouts 441 of 882; optimizer proxy USD 24.52; best search score (fit metric) 0.8231292517006803.
+
+```json
+{"cp": 751, "prev_cp": 750, "prev_commit": "576b39ccb74d3c5f55c434f039c8d8a980d29f29", "utc": "2026-10-28T14:44:37Z", "kind": "result", "phase": "P4", "done_through": "P2/gate", "next": "P4/gate searches", "arm": "abl_nogate", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {"STATE/abl_nogate/progress.json": "85a9cb06d696983c21549a83c0a0d7b559c0adc75c6118b83a08a7061d3268c3"}, "code": "92163dfd239c99b679a7af04cf5e1023e234b94f", "open_decisions": [], "memory": {"used_pct": 28.72, "peak_pct": 48.95, "state": "OK", "stale": false}, "iteration": 3, "verdict": {"candidate": "cand_0003", "accept": true, "val": 0.8231292517006803, "parent_val": 0.6938775510204082, "indecisive": false, "kind": "step", "delta": 0.1293, "se": 0.0413, "k_se": -100000.0, "bar": -4126.4277, "would_pass_k1": true}}
+```
