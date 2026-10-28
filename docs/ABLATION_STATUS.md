@@ -6389,3 +6389,11 @@ Next: P4/gate searches.
 ```json
 {"cp": 775, "prev_cp": 774, "prev_commit": "fc8a94d4b0539e39e29fff502be05b2c4c47f620", "utc": "2026-10-28T18:43:59Z", "kind": "heartbeat", "phase": "P4", "done_through": "P2/gate", "next": "P4/gate searches", "arm": "abl_naivegate", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "92163dfd239c99b679a7af04cf5e1023e234b94f", "open_decisions": [], "memory": {"used_pct": 28.36, "peak_pct": 48.95, "state": "OK", "stale": false}, "runner": "alive"}
 ```
+
+## ABL-0776 · 2026-10-28T18:48Z · P4 abl_nogate iteration 6 · result
+
+P4 abl_nogate: iteration 6: val 0.7823 (parent 0.7891); paired Δ̄ -0.0068, SE 0.0392, K·SE -3920.8218 (K = -100000) → ACCEPT. Counted rollouts 882 of 882; optimizer proxy USD 50.37; best search score (fit metric) 0.8231292517006803.
+
+```json
+{"cp": 776, "prev_cp": 775, "prev_commit": "2f9bc364fc2efa80665d5c14d0782f9411a8583f", "utc": "2026-10-28T18:48:10Z", "kind": "result", "phase": "P4", "done_through": "P2/gate", "next": "P4/gate searches", "arm": "abl_nogate", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {"STATE/abl_nogate/progress.json": "3beecb21bde5c17d07b7cbec28b3071c4c39beacfef5efba16203f89635187eb"}, "code": "92163dfd239c99b679a7af04cf5e1023e234b94f", "open_decisions": [], "memory": {"used_pct": 25.1, "peak_pct": 48.95, "state": "OK", "stale": false}, "iteration": 6, "verdict": {"candidate": "cand_0006", "accept": true, "val": 0.782312925170068, "parent_val": 0.7891156462585034, "indecisive": false, "kind": "step", "delta": -0.0068, "se": 0.0392, "k_se": -100000.0, "bar": -3920.8218, "would_pass_k1": false}}
+```
