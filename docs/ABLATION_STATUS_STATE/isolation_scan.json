@@ -1617,5 +1617,192 @@
   "test_id_hits": 0,
   "scope": "sessions ['12194466-3ee6-4d3d-afab-8ab8118a33cc', '5cbfcce5-92a4-4a7f-931d-8014e8ce1e92']",
   "out_of_scope_test_id_hits_by_session": {}
+ },
+ "abl_nogate": {
+  "locations": {
+   "claude -p results": {
+    "files": 6,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "arm state (driver)": {
+    "files": 369,
+    "files_hit": 1,
+    "counts": {
+     "root_full": 2,
+     "ground_truth": 3,
+     "src/appworld/apps": 1,
+     "aw_rest": 1,
+     "aw_ce2": 1,
+     "aw_ce3": 1,
+     "aw_abl/arms/abl_ref": 1,
+     "aw_abl/arms/abl_cc": 1,
+     "aw_abl/arms/abl_prompt": 1,
+     "aw_abl/arms/abl_tools": 1,
+     "aw_abl/arms/abl_notrace": 1,
+     "aw_abl/arms/abl_tracescore": 1,
+     "aw_abl/arms/abl_naivegate": 1
+    }
+   },
+   "optimizer workdirs (run dir work/)": {
+    "files": 1202,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "run dir events": {
+    "files": 1,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "frozen artifact": {
+    "files": 4,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "claude transcripts projects/gate--capevolve-run-abl-nogate-s0-work-cand-0002": {
+    "files": 10,
+    "files_hit": 5,
+    "counts": {
+     "root_full": 38,
+     "aw_rest": 38
+    }
+   },
+   "claude transcripts projects/gate--capevolve-run-abl-nogate-s0-work-cand-0001": {
+    "files": 9,
+    "files_hit": 5,
+    "counts": {
+     "root_full": 14,
+     "aw_rest": 14
+    }
+   },
+   "claude transcripts projects/gate--capevolve-run-abl-nogate-s0-work-cand-0004": {
+    "files": 13,
+    "files_hit": 3,
+    "counts": {
+     "root_full": 10,
+     "aw_rest": 10
+    }
+   },
+   "claude transcripts projects/gate--capevolve-run-abl-nogate-s0-work-cand-0005": {
+    "files": 11,
+    "files_hit": 4,
+    "counts": {
+     "root_full": 14,
+     "aw_rest": 14
+    }
+   },
+   "claude transcripts projects/gate--capevolve-run-abl-nogate-s0-work-cand-0003": {
+    "files": 10,
+    "files_hit": 3,
+    "counts": {
+     "root_full": 10,
+     "aw_rest": 10
+    }
+   },
+   "claude transcripts projects/abl-arms-abl-nogate--capevolve-run-abl-nogate-s0": {
+    "files": 0,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "claude transcripts projects/gate--capevolve-run-abl-nogate-s0-work-cand-0006": {
+    "files": 13,
+    "files_hit": 4,
+    "counts": {
+     "root_full": 12,
+     "aw_rest": 12
+    }
+   },
+   "claude transcripts projects/l-nogate--capevolve-run-abl-nogate-s0-work-a9-ws": {
+    "files": 4,
+    "files_hit": 3,
+    "counts": {
+     "root_full": 41,
+     "ground_truth": 26,
+     "src/appworld/apps": 12,
+     "aw_rest": 18,
+     "aw_ce2": 12,
+     "aw_ce3": 12,
+     "aw_abl/arms/abl_ref": 12,
+     "aw_abl/arms/abl_cc": 12,
+     "aw_abl/arms/abl_prompt": 12,
+     "aw_abl/arms/abl_tools": 12,
+     "aw_abl/arms/abl_notrace": 12,
+     "aw_abl/arms/abl_tracescore": 12,
+     "aw_abl/arms/abl_naivegate": 12
+    }
+   },
+   "claude transcripts claude-10037/gate--capevolve-run-abl-nogate-s0-work-cand-0003": {
+    "files": 17,
+    "files_hit": 2,
+    "counts": {
+     "root_full": 6,
+     "aw_rest": 6
+    }
+   },
+   "claude transcripts claude-10037/gate--capevolve-run-abl-nogate-s0-work-cand-0001": {
+    "files": 17,
+    "files_hit": 4,
+    "counts": {
+     "root_full": 10,
+     "aw_rest": 10
+    }
+   },
+   "claude transcripts claude-10037/gate--capevolve-run-abl-nogate-s0-work-cand-0002": {
+    "files": 21,
+    "files_hit": 4,
+    "counts": {
+     "root_full": 30,
+     "aw_rest": 30
+    }
+   },
+   "claude transcripts claude-10037/gate--capevolve-run-abl-nogate-s0-work-cand-0005": {
+    "files": 21,
+    "files_hit": 3,
+    "counts": {
+     "root_full": 10,
+     "aw_rest": 10
+    }
+   },
+   "claude transcripts claude-10037/l-nogate--capevolve-run-abl-nogate-s0-work-a9-ws": {
+    "files": 1,
+    "files_hit": 1,
+    "counts": {
+     "root_full": 11,
+     "ground_truth": 4,
+     "aw_rest": 2
+    }
+   },
+   "claude transcripts claude-10037/gate--capevolve-run-abl-nogate-s0-work-cand-0006": {
+    "files": 18,
+    "files_hit": 3,
+    "counts": {
+     "root_full": 6,
+     "aw_rest": 6
+    }
+   },
+   "claude transcripts claude-10037/gate--capevolve-run-abl-nogate-s0-work-cand-0004": {
+    "files": 12,
+    "files_hit": 2,
+    "counts": {
+     "root_full": 4,
+     "aw_rest": 4
+    }
+   }
+  },
+  "test_id_hits": 0,
+  "isolation_breach": false,
+  "ce2": {
+   "model_usage_keys": {
+    "aws/claude-sonnet-5-5": 6
+   },
+   "other_models": [],
+   "j1_iterations": 6,
+   "j1_all_ok": true,
+   "k_se_cmdline": [
+    "-100000"
+   ],
+   "k_ok": true,
+   "imp_all_ok": true
+  }
  }
 }

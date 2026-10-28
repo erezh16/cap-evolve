@@ -6429,3 +6429,11 @@ Posted 'Cap evolve no gate champion frozen' on #938 (abl_nogate): https://github
 ```json
 {"cp": 780, "prev_cp": 779, "prev_commit": "179c2cd75b6c034145bcddb93b815e2ce6e28b69", "utc": "2026-10-28T18:48:29Z", "kind": "posted", "phase": "P4", "done_through": "P2/gate", "next": "P4/gate searches", "arm": "abl_nogate", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "92163dfd239c99b679a7af04cf5e1023e234b94f", "open_decisions": [], "memory": {"used_pct": 27.47, "peak_pct": 48.95, "state": "OK", "stale": false}, "post": "abl_nogate/m4_frozen", "url": "https://github.com/skillberry-ai/cap-evolve/issues/938#issuecomment-6477671121"}
 ```
+
+## ABL-0781 · 2026-10-28T18:48Z · P4 isolation scan · result
+
+Isolation scan (counts only): abl_nogate: test-id hits 0; models ['aws/claude-sonnet-5-5'], other models []; J1 in 6 iteration(s) ok=True; K on the command line ['-100000'] ok=True. Literal-string counts per location are in the pushed scan file.
+
+```json
+{"cp": 781, "prev_cp": 780, "prev_commit": "68f7f5e67deb655443ddff23eb8cf6d26a356e47", "utc": "2026-10-28T18:48:54Z", "kind": "result", "phase": "P4", "done_through": "P2/gate", "next": "P4/gate searches", "arm": "abl_nogate", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {"STATE/isolation_scan.json": "3db0c19875bdb7d3b159b1dd9d2261bcba7af7b6e6e2c6c31a78932feff082f6"}, "code": "92163dfd239c99b679a7af04cf5e1023e234b94f", "open_decisions": [], "memory": {"used_pct": 24.05, "peak_pct": 48.95, "state": "OK", "stale": false}}
+```
