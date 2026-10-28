@@ -5959,3 +5959,11 @@ Gate-arm code (ABLATIONS_GATE.md G6 B1/B5), offline tests 21/21 pass (abl/tests,
 ```json
 {"cp": 723, "prev_cp": 722, "prev_commit": "48cd75394470eeb9287091f2eb5e506c6380f529", "utc": "2026-10-28T11:19:57Z", "kind": "result", "phase": "P1", "done_through": "P9/post", "next": "P1/gate setup", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "48cd75394470eeb9287091f2eb5e506c6380f529", "open_decisions": [], "memory": {"used_pct": 2.75, "peak_pct": 5.28, "state": "OK", "stale": false}}
 ```
+
+## ABL-0724 · 2026-10-28T11:24Z · P2 gate arms: A-ABL-SAME and A-ABL-CORE · result
+
+A-ABL-SAME (rule Q4) PASS for all seven cap-evolve arms: abl_nogate and abl_naivegate differ from abl_ref only in the gate_k_se line of capevolve.yaml and the one gate-clause line of the INSTRUCTIONS; launcher env identical. A-ABL-CORE PASS for both (1-iteration mock dry runs on 4 dev ids, accept namespace, 0 counted): cap-evolve check ok; IMP 1 code pin 75b3bcd clean, 2 skills = abl-main/skills, 3 gate_k_se -100000 / 0 in spec and run_config, 4 --k-se -100000 / --k-se 0 on the hill-climb command line, 5 J1 strings present and none forbidden, 6 guidance sha256 equal, 7 pinned hill-climb run.py; switch checks ok. Gate unit check (pinned gate.py, G5 cases): abl_nogate accepts a 20-task regression and +1 task, rejects an all-zero vector; abl_naivegate accepts +0.1 SE (abl_ref's 0.2 rejects it), rejects -0.1 SE, the all-zero vector and the regression. Dry runs: abl_nogate's mock edit (end every task at once, new mock/make_regress_edit.py) scored val 0.0 vs parent 0.75 and was ACCEPTED and became best_id (G5.1); abl_naivegate's mock prompt edit scored a positive paired gain and was accepted. Repair: the first two dry runs failed only the switch_env item because they were launched without the launcher's AW_ABL_FEEDBACK=full in the environment of the check; re-run with it.
+
+```json
+{"cp": 724, "prev_cp": 723, "prev_commit": "bdd394f8cdcbcd363de126019f6bc5a431bf7a97", "utc": "2026-10-28T11:24:05Z", "kind": "result", "phase": "P2", "done_through": "P9/post", "next": "P2/gate A13 A9", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "bdd394f8cdcbcd363de126019f6bc5a431bf7a97", "open_decisions": [], "memory": {"used_pct": 2.81, "peak_pct": 10.17, "state": "OK", "stale": false}}
+```

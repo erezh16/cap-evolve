@@ -76,6 +76,42 @@
     "ok": true
    },
    "ok": true
+  },
+  "abl_nogate": {
+   "capevolve.yaml": {
+    "diff_lines": [
+     "-gate_k_se: 0.2                              # user guideline 10. MUST be explicit",
+     "+gate_k_se: -100000                              # user guideline 10. MUST be explicit"
+    ],
+    "ok": true
+   },
+   "INSTRUCTIONS.md": {
+    "ok": true,
+    "changed_lines": 2
+   },
+   "launcher_env": {
+    "differing_keys": [],
+    "ok": true
+   },
+   "ok": true
+  },
+  "abl_naivegate": {
+   "capevolve.yaml": {
+    "diff_lines": [
+     "-gate_k_se: 0.2                              # user guideline 10. MUST be explicit",
+     "+gate_k_se: 0                              # user guideline 10. MUST be explicit"
+    ],
+    "ok": true
+   },
+   "INSTRUCTIONS.md": {
+    "ok": true,
+    "changed_lines": 2
+   },
+   "launcher_env": {
+    "differing_keys": [],
+    "ok": true
+   },
+   "ok": true
   }
  },
  "ok": true
