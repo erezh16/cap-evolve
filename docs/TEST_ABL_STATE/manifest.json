@@ -439,5 +439,13 @@
  "gate_surfaces_changed": {
   "abl_nogate": "P + T",
   "abl_naivegate": "P + T"
+ },
+ "final_order": {
+  "seed": 2026102801,
+  "sha256": "b6198022056314527fd71a2c5eae463ee68b159c751679a369baff6495038772",
+  "cells": 5880,
+  "trials": 5,
+  "trial_seeds": "7000 + trial",
+  "infra_retries": 3
  }
 }

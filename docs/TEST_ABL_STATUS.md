@@ -815,3 +815,11 @@ Posted 'Cap evolve tools only hourly status' on #944 (abl_tools): https://github
 ```json
 {"cp": 100, "prev_cp": 99, "prev_commit": "c8b2f23d23b8180c1ab58e1c0a0da963f2e4166e", "utc": "2026-10-28T23:26:46Z", "kind": "posted", "phase": "W", "done_through": "P2/T1,T2,T4-T10", "next": "P3/window1", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 5.26, "peak_pct": 45.67, "state": "OK", "stale": false}, "post": "abl_tools/status_20261028T232640", "url": "https://github.com/skillberry-ai/cap-evolve/issues/944#issuecomment-6483381835"}
 ```
+
+## TB-0101 · 2026-10-28T23:27Z · P2 T3 order (window 1) · result
+
+T3 (window 1 order): seed 2026102801, cells 5880, per arm [840], sha256 b619802205631452…, reproducible True, each cell once True, root_full relocked True: PASS.
+
+```json
+{"cp": 101, "prev_cp": 100, "prev_commit": "5afcd32ebd8df62d09b271872edce4e518e17d77", "utc": "2026-10-28T23:27:45Z", "kind": "result", "phase": "P2", "done_through": "P2/T1,T2,T4-T10", "next": "P3/window1", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 3.51, "peak_pct": 45.67, "state": "OK", "stale": false}, "t3": {"seed": 2026102801, "trials": 5, "arms": 7, "tasks": 168, "cells": 5880, "sha256": "b6198022056314527fd71a2c5eae463ee68b159c751679a369baff6495038772", "reproducible": true, "each_cell_once": true, "idx_ok": true, "per_arm": [840], "root_full_relocked": true, "matches_manifest": true, "ok": true}}
+```
