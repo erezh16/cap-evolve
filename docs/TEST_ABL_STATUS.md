@@ -831,3 +831,11 @@ Window 1 starts: the gate run's P7 window has completed. 5,880 cells, 24 global 
 ```json
 {"cp": 102, "prev_cp": 101, "prev_commit": "a4f429ed313f70f96f92cf812832f9b04798aaa4", "utc": "2026-10-28T23:27:47Z", "kind": "phase_start", "phase": "P3", "done_through": "P2/T1,T2,T4-T10", "next": "P3/window1", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 3.51, "peak_pct": 45.67, "state": "OK", "stale": false}}
 ```
+
+## TB-0103 · 2026-10-28T23:29Z · P3 posted seed · posted
+
+Posted 'seed agent: window started' on #940 (seed): https://github.com/skillberry-ai/cap-evolve/issues/940#issuecomment-6483428944
+
+```json
+{"cp": 103, "prev_cp": 102, "prev_commit": "d4e4ebb51403c0d7f795b88373fe017a998c422a", "utc": "2026-10-28T23:29:29Z", "kind": "posted", "phase": "P3", "done_through": "P2/T1,T2,T4-T10", "next": "P3/window1", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 44.73, "peak_pct": 45.67, "state": "OK", "stale": false}, "post": "seed/window_started", "url": "https://github.com/skillberry-ai/cap-evolve/issues/940#issuecomment-6483428944"}
+```
