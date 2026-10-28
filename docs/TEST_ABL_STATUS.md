@@ -350,3 +350,11 @@ Acceptance on dev ids only (none counted), run while the gate searches were live
 ```json
 {"cp": 42, "prev_cp": 41, "prev_commit": "a407702300d0bfa6f06c7bd42f3232d63e3ae2b6", "utc": "2026-10-28T19:15:54Z", "kind": "result", "phase": "P2", "done_through": "P2/T1,T2,T4-T10", "next": "P2/T3 then P3/window1 (launch_when_clear.py waiting for the gate run)", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "a407702300d0bfa6f06c7bd42f3232d63e3ae2b6", "open_decisions": [], "memory": {"used_pct": 6.03, "peak_pct": 45.67, "state": "OK", "stale": false}}
 ```
+
+## TB-0043 · 2026-10-28T19:16Z · P2 posted seed · posted
+
+Posted 'seed agent: build and acceptance done' on #940 (seed): https://github.com/skillberry-ai/cap-evolve/issues/940#issuecomment-6478297151
+
+```json
+{"cp": 43, "prev_cp": 42, "prev_commit": "382cd041047f36ec79694a42755ef9e93e6bcae8", "utc": "2026-10-28T19:16:32Z", "kind": "posted", "phase": "P2", "done_through": "P2/T1,T2,T4-T10", "next": "P2/T3 then P3/window1 (launch_when_clear.py waiting for the gate run)", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "a407702300d0bfa6f06c7bd42f3232d63e3ae2b6", "open_decisions": [], "memory": {"used_pct": 3.77, "peak_pct": 45.67, "state": "OK", "stale": false}, "post": "seed/accept_done", "url": "https://github.com/skillberry-ai/cap-evolve/issues/940#issuecomment-6478297151"}
+```
