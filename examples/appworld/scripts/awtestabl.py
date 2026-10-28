@@ -35,6 +35,7 @@ FINAL_TRIALS = 5
 FINAL_SEED_BASE = 7000                     # trial seeds 7000 + k (plan §0, D4)
 FINAL_ORDER_SEED = 2026102802 if WINDOW == "2" else 2026102801
 FINAL_DIR_NAME = "final2" if WINDOW == "2" else "final"
+ORDER_KEY = "final_order2" if WINDOW == "2" else "final_order"   # manifest.json key of the window's order
 WINDOW_ARMS = WINDOW2_ARMS if WINDOW == "2" else ARMS
 FINAL_CELLS = 168 * len(WINDOW_ARMS) * FINAL_TRIALS   # 5,880 (window 1), 1,680 (window 2)
 BUDGET_ROLLOUTS = 0

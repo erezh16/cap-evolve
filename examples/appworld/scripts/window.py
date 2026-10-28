@@ -45,7 +45,10 @@ WINDOW_ARMS = tuple(getattr(P, "FINAL_ARMS_RUN", P.ARMS))   # CE3: ("ce3_k02",);
 FINAL_TRIALS = 2
 if P.TESTALL:                           # TEST_ALL §8: 13 arms × 168 × 5 trials, order seed 2026102501, joins nothing
     FINAL_ORDER_SEED, FINAL_TRIALS, WINDOW_ARMS = P.FINAL_ORDER_SEED, P.FINAL_TRIALS, tuple(P.ARMS)
-FINAL_DIR = "final"
+if getattr(P, "TESTABL", False):        # TEST_ABL §8.2: window 1 or 2 (AW_WINDOW), its own arms, dir and order key
+    WINDOW_ARMS = tuple(P.WINDOW_ARMS)
+FINAL_DIR = getattr(P, "FINAL_DIR_NAME", "final")
+ORDER_KEY = getattr(P, "ORDER_KEY", "final_order")
 ART = P.AW_STATE / FINAL_DIR / "artifacts"
 KEEP = ("success", "num_tests", "pass_count", "n_steps", "prompt_tokens", "completion_tokens", "max_prompt_tokens",
         "termination", "collateral_damage", "complete_task_called", "api_errors", "trimmed_steps", "fs_probe",
@@ -257,19 +260,21 @@ def final() -> int:
         raise SystemExit("expected 168 test_normal ids")
     order = make_order(ids, list(WINDOW_ARMS), FINAL_TRIALS, FINAL_ORDER_SEED)
     m = P.manifest()
-    if m.get("final_order", {}).get("sha256") not in (None, order_sha(order)):
+    if m.get(ORDER_KEY, {}).get("sha256") not in (None, order_sha(order)):
         raise SystemExit("regenerated final order differs from the recorded sha256")
-    if P.TESTALL and m.get("final_order", {}).get("seed") not in (None, FINAL_ORDER_SEED):
+    if P.TESTALL and m.get(ORDER_KEY, {}).get("seed") not in (None, FINAL_ORDER_SEED):
         raise SystemExit("manifest final_order seed differs from the plan's")
     P.write_json(P.AW_STATE / FINAL_DIR / "order.json", order)
-    P.update_manifest(final_order={"seed": FINAL_ORDER_SEED, "sha256": order_sha(order), "cells": len(order),
+    P.update_manifest(**{ORDER_KEY: {"seed": FINAL_ORDER_SEED, "sha256": order_sha(order), "cells": len(order),
                                    "trials": FINAL_TRIALS, "trial_seeds": f"{P.FINAL_SEED_BASE} + trial",
-                                   "infra_retries": 3})
+                                   "infra_retries": 3}})
     caps = _check_frozen()
     pidf = _own_pid("window final")
     phase, nxt = ("P3", "P4/analysis") if P.TESTALL else ("P7", "P8/analysis")
+    if getattr(P, "TESTABL", False) and P.WINDOW == "2":
+        phase, nxt = "P6", "P7/analysis window 2"
     try:
-        rc = Window(FINAL_DIR, phase, "final window", order, caps, P.ROOT_FULL, P.FINAL_SEED_BASE, True,
+        rc = Window(FINAL_DIR, phase, "final window" if FINAL_DIR == "final" else f"window {FINAL_DIR}", order, caps, P.ROOT_FULL, P.FINAL_SEED_BASE, True,
                     P.global_slots(), 3, nxt).run()
     finally:
         pidf.unlink(missing_ok=True)

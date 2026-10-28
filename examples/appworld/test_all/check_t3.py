@@ -36,13 +36,14 @@ def main() -> int:
            "idx_ok": [c["idx"] for c in o1] == list(range(len(o1))),
            "per_arm": sorted(set(Counter(c["arm"] for c in o1).values())),
            "root_full_relocked": (os.stat(P.ROOT_FULL).st_mode & 0o777) == 0}
-    m = P.manifest().get("final_order") or {}
+    key = getattr(P, "ORDER_KEY", "final_order")
+    m = P.manifest().get(key) or {}
     if m.get("sha256") not in (None, res["sha256"]):
         res["matches_manifest"] = False
     else:
-        P.update_manifest(final_order={"seed": W.FINAL_ORDER_SEED, "sha256": res["sha256"], "cells": len(o1),
-                                       "trials": W.FINAL_TRIALS, "trial_seeds": f"{P.FINAL_SEED_BASE} + trial",
-                                       "infra_retries": 3})
+        P.update_manifest(**{key: {"seed": W.FINAL_ORDER_SEED, "sha256": res["sha256"], "cells": len(o1),
+                                   "trials": W.FINAL_TRIALS, "trial_seeds": f"{P.FINAL_SEED_BASE} + trial",
+                                   "infra_retries": 3}})
         res["matches_manifest"] = True
     res["ok"] = all(res[k] for k in ("reproducible", "each_cell_once", "idx_ok", "root_full_relocked",
                                      "matches_manifest")) and res["cells"] == P.FINAL_CELLS and res["per_arm"] == [168 * W.FINAL_TRIALS]
