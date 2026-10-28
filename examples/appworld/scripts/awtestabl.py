@@ -69,7 +69,8 @@ SURFACES_OF = {"seed": "none", "abl_ref": "P + T", "abl_cc_best": "P + T", "abl_
                "abl_notrace": "P + T", "abl_tracescore": "P + T", "abl_nogate": "P + T", "abl_naivegate": "P + T"}
 # Measured 2026-10-28 (file sha256 vs the seed's): abl_tools changed only tools/api_notes.json.
 SURFACES_CHANGED = {"seed": "none", "abl_ref": "P + T", "abl_cc_best": "P + T", "abl_prompt": "P",
-                    "abl_tools": "T (notes only)", "abl_notrace": "P + T", "abl_tracescore": "P + T"}
+                    "abl_tools": "T (notes only)", "abl_notrace": "P + T", "abl_tracescore": "P + T",
+                    "abl_nogate": "measured at fetch", "abl_naivegate": "measured at fetch"}
 SOURCE_EVAL = {"seed": "the unmodified AppWorld ReAct agent",
                "abl_ref": "full cap-evolve main 75b3bcd, hill-climb, gate K = 0.2 (ablation study, #930)",
                "abl_cc_best": "plain Claude Code, one session, no cap-evolve; its best evaluated candidate (ablation study, #931)",

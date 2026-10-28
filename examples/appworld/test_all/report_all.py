@@ -30,6 +30,11 @@ DEVIATIONS = ("**Deviations and disclosures.** ACE's playbook (55,513 chars) is 
               "from there (D11). Other deviations, if any, are in the ledger (`docs/TEST_ALL_STATUS.md`).")
 
 
+def _arms() -> list[str]:
+    """The arms of the analysed window (TEST_ABL: window 1's 7 or window 2's 2); TEST_ALL: its 13."""
+    return list(P.WINDOW_ARMS) if getattr(P, "TESTABL", False) else list(P.ARMS)
+
+
 def pct(x):
     return "n/a" if x is None else f"{100 * x:.1f}"
 
@@ -70,7 +75,7 @@ def main_table(res: dict) -> str:
 
 def difficulty_table(res: dict) -> str:
     L = ["| arm | Easy TGC | Medium TGC | Hard TGC | Easy SGC | Medium SGC | Hard SGC |", "|---|---|---|---|---|---|---|"]
-    for a in P.ARMS:
+    for a in _arms():
         b = res["arms"][a]["by_difficulty"]
         L.append(f"| `{a}` | " + " | ".join(pct(b[n]["tgc"]) for n in ("Easy", "Medium", "Hard")) + " | "
                  + " | ".join(pct(b[n]["sgc"]) for n in ("Easy", "Medium", "Hard")) + " |")
@@ -81,7 +86,7 @@ def cost_table(res: dict) -> str:
     L = ["| arm | prompt tok/ep (mean / p50 / p90) | completion tok/ep (mean / p50 / p90) | steps (mean) | s/ep (mean / p50 / p90) | max prompt | step-cap | token-cap | ctx-exceeded | collateral | infra retries | pass fraction |",
          "|---|---|---|---|---|---|---|---|---|---|---|---|"]
     f = lambda d: f"{d['mean']:,.0f} / {d['p50']:,.0f} / {d['p90']:,.0f}" if d["mean"] is not None else "n/a"  # noqa: E731
-    for a in P.ARMS:
+    for a in _arms():
         x = res["arms"][a]
         L.append(f"| `{a}` | {f(x['prompt_tokens'])} | {f(x['completion_tokens'])} | {x['steps']['mean']:.1f} | "
                  f"{f(x['episode_seconds'])} | {x['max_prompt_tokens']:,} | {x['step_cap_hits']} | {x['token_cap_hits']} | "
@@ -93,7 +98,7 @@ def stoch_table(res: dict) -> str:
     K = res["trials"]
     L = ["| arm | tasks passing 0/1/2/3/4/5 of 5 | stable | flaky | pass@1 … pass@5 | pass^1 … pass^5 | within-task var share |",
          "|---|---|---|---|---|---|---|"]
-    for a in P.ARMS:
+    for a in _arms():
         s = res["stochastic"][a]
         L.append(f"| `{a}` | {'/'.join(str(s['pass_count_distribution'][str(i)]) for i in range(K + 1))} | "
                  f"{pct(s['stable_share'])} | {pct(s['flaky_share'])} | "
@@ -107,7 +112,7 @@ def sensitivity_table(res: dict) -> str:
     K = res["trials"]
     L = ["| arm | " + " | ".join(f"TGC, first {n} | Δ vs seed, first {n} [95% CI]" for n in range(1, K + 1)) + " |",
          "|---|" + "---|" * (2 * K)]
-    for a in P.ARMS:
+    for a in _arms():
         cells = []
         for n in range(1, K + 1):
             r = res["trial_sensitivity"][str(n)]
@@ -127,7 +132,7 @@ def pair_matrix(res: dict) -> str:
 
 def earlier_table(res: dict) -> str:
     L = ["| arm | this window TGC (5 trials) | other window TGC (2 trials) | other window |", "|---|---|---|---|"]
-    for a in P.ARMS:
+    for a in _arms():
         e = res["earlier_windows"].get(a, {})
         L.append(f"| `{a}` | {pct(res['arms'][a]['tgc'])} | {pct(e.get('tgc'))} | {e.get('label', '')} |")
     s = res["earlier_windows"].get("_seed_in_other_windows", {})
@@ -144,7 +149,8 @@ def noise(res: dict) -> str:
 def flaky_summary(res: dict) -> str:
     f = res["flakiness_across_arms"]
     return ("**Flakiness across arms.** Pearson correlation of TGC with flaky share over the 13 arms: "
-            f"{f['pearson_tgc_vs_flaky_share']:.2f}. Mean flaky share by surface changed: "
+            + ("n/a" if f["pearson_tgc_vs_flaky_share"] is None else f"{f['pearson_tgc_vs_flaky_share']:.2f}")
+            + ". Mean flaky share by surface changed: "
             + ", ".join(f"{k} {pct(v)} (n={f['n_arms_by_surface_changed'][k]})"
                         for k, v in f["mean_flaky_share_by_surface_changed"].items())
             + ". By difficulty (mean over arms): "
@@ -213,7 +219,132 @@ def arm_body(res: dict, a: str) -> str:
     return "\n\n".join(parts) + "\n"
 
 
+ABL_RESULTS_URL = "https://github.com/erezh16/cap-evolve/blob/test-abl/docs/TEST_ABL_STATE/{d}/RESULTS.md"
+ABL_LIMITS = ("**What these numbers cannot support.** Each champion came from **one** search with one search seed, so "
+              "every ablation − reference contrast mixes the ablated factor with search randomness. This is a **single** "
+              "test window, with 5 trials per task. In earlier AppWorld windows, identical artifacts drifted 4 to 6 TGC "
+              "points between windows, and there is no seed-identical arm here to measure the within-window part "
+              "(`abl_cc` was excluded). Differences of a few points are therefore not resolved, and a null result is a "
+              "bound, not evidence of no effect. `abl_cc_best` was chosen by its search score (selection-biased). These "
+              "are statements about the **artifacts**, not about the methods in general.")
+ABL_DEVIATIONS = ("**Deviations and disclosures.** Protocol: `docs/TEST_ALL.md` with the ablation champions as its "
+                  "arms (plan `docs/TEST_ABL.md` §15). `abl_cc` (seed-identical) was excluded. The gate arms are "
+                  "scored in a second window after this one (cross-window comparisons, labelled). Every issue and "
+                  "decision during execution is in `docs/TEST_ABL_ADDENDUM.md` and the ledger `docs/TEST_ABL_STATUS.md`.")
+
+
+def setup_abl(res: dict) -> str:
+    fo = res.get("manifest", {}).get("final_order") or {}
+    rows = ["| arm | what it is | surfaces changed vs seed | hash (rule S) | source |", "|---|---|---|---|---|"]
+    for a in _arms():
+        v = res["artifacts"].get(a, {})
+        rows.append(f"| `{a}` | {P.SOURCE_EVAL[a]} | {v.get('surfaces_changed')} | `{(v.get('computed') or '')[:16]}…` | "
+                    f"{v.get('source')} |")
+    return ("**Setup.** AppWorld `42b5bcf`, `test_normal` (168 tasks, 56 scenarios; Easy 57 / Medium 48 / Hard 63). Agent "
+            f"`{P.AGENT_MODEL}` on RITS (reasoning medium, temperature 0, the official simplified ReAct code agent, 50 "
+            "steps, 100K completion tokens per task, 30-min wall cap); no optimizer. One shuffled window of "
+            f"{res['cells']:,} cells ({len(_arms())} arms × 168 × {res['trials']} trials, trial seeds "
+            f"{P.FINAL_SEED_BASE}+k, order seed {fo.get('seed')}, order sha256 `{(fo.get('sha256') or '')[:16]}…`). "
+            "Code: branch `test-abl` of `erezh16/cap-evolve`.\n\n" + "\n".join(rows))
+
+
+def ref_table(res: dict) -> str:
+    vr = res.get("vs_ref") or {}
+    if not vr:
+        return "(No `abl_ref` in this window: the gate arms' contrasts with `abl_ref` are cross-window.)"
+    L = ["| ablation arm | Δ TGC vs `abl_ref` [95% CI] | Δ SGC vs `abl_ref` [95% CI] | bootstrap p | Holm (primary) |",
+         "|---|---|---|---|---|"]
+    for a, v in vr.items():
+        L.append(f"| `{a}` ({P.METHOD_NAMES[a]}) | {pct(v['d_tgc'])} {ci(v['ci_tgc'])} | {pct(v['d_sgc'])} "
+                 f"{ci(v['ci_sgc'])} | {v['p_tgc']:.4f} | {'significant' if v['holm_significant_tgc'] else 'not significant'} |")
+    return "\n".join(L)
+
+
+def main_table_abl(res: dict) -> str:
+    L = ["| rank | arm | TGC [95% CI] | SGC | Δ TGC vs seed [95% CI] | Δ TGC vs `abl_ref` [95% CI] | not separable from top | missing |",
+         "|---|---|---|---|---|---|---|---|"]
+    vr = res.get("vs_ref") or {}
+    for r in res["ranking"]:
+        a = r["arm"]
+        x, v, w = res["arms"][a], res["vs_seed"].get(a), vr.get(a)
+        L.append(f"| {r['rank']} | `{a}` {P.METHOD_NAMES[a]} | {pct(x['tgc'])} {ci(r['ci_tgc'])} | {pct(x['sgc'])} | "
+                 + (f"{pct(v['d_tgc'])} {ci(v['ci_tgc'])}" if v else "—") + " | "
+                 + (f"{pct(w['d_tgc'])} {ci(w['ci_tgc'])}" if w else "—")
+                 + f" | {'yes' if r['not_separable_from_top'] else 'no'} | {x['missing']} |")
+    return "\n".join(L)
+
+
+def combined_abl(res: dict) -> str:
+    n = len(_arms())
+    return "\n\n".join([
+        f"# AppWorld TEST_ABL results: {n} arms, test_normal × {res['trials']} trials, one window", setup_abl(res),
+        "## Primary: each ablation − `abl_ref` (Holm over the primary contrasts)", ref_table(res),
+        "## Main table (ranked by TGC; % of tasks / scenarios)", main_table_abl(res),
+        "## By difficulty", difficulty_table(res),
+        "## Stochastic behaviour (5 trials)", stoch_table(res),
+        flaky_summary(res).replace("over the 13 arms", f"over the {n} arms"),
+        "## Trial-count sensitivity", sensitivity_table(res),
+        f"## All {len(res['pairs'])} pairs (row − column; Holm over all pairs, secondary)", pair_matrix(res),
+        "## Agent tokens, steps, latency and infra (per episode)", cost_table(res),
+        "## The ablation study's own window (context)", earlier_table(res), ABL_DEVIATIONS, ABL_LIMITS]) + "\n"
+
+
+def arm_body_abl(res: dict, a: str) -> str:
+    x, s = res["arms"][a], res["stochastic"][a]
+    r = next(r for r in res["ranking"] if r["arm"] == a)
+    v, w = res["vs_seed"].get(a), (res.get("vs_ref") or {}).get(a)
+    K, n = res["trials"], len(_arms())
+    b = x["by_difficulty"]
+    e = res["earlier_windows"].get(a, {})
+    d = getattr(P, "FINAL_DIR_NAME", "final")
+    lead = (f"**This arm.** TGC **{pct(x['tgc'])}** {ci(r['ci_tgc'])}, SGC **{pct(x['sgc'])}**; rank **{r['rank']} of "
+            f"{n}** ({'not separable from the top arm' if r['not_separable_from_top'] else 'separable from the top arm'}).")
+    if w:
+        lead += (f" **Primary contrast, Δ vs `abl_ref`:** TGC {pct(w['d_tgc'])} {ci(w['ci_tgc'])}, SGC {pct(w['d_sgc'])} "
+                 f"{ci(w['ci_sgc'])} (Holm over the primary contrasts: "
+                 f"{'significant' if w['holm_significant_tgc'] else 'not significant'}).")
+    if v:
+        lead += f" Δ vs seed: TGC {pct(v['d_tgc'])} {ci(v['ci_tgc'])}, SGC {pct(v['d_sgc'])} {ci(v['ci_sgc'])}."
+    if a == "seed":
+        lead += " This is the baseline arm."
+    if a == "abl_ref":
+        lead += " This is the reference arm: every primary contrast is measured against it."
+    parts = [f"## Results — {P.METHOD_NAMES[a]} (`{a}`)", setup_abl(res), lead,
+             "**All arms** (ranked by TGC)\n\n" + main_table_abl(res),
+             "| difficulty | TGC | SGC |\n|---|---|---|\n" + "\n".join(
+                 f"| {k} (n={b[k]['n']}) | {pct(b[k]['tgc'])} | {pct(b[k]['sgc'])} |" for k in ("Easy", "Medium", "Hard")),
+             f"**Stochastic behaviour (5 trials).** Tasks passing 0/1/2/3/4/5 of 5: "
+             f"{'/'.join(str(s['pass_count_distribution'][str(i)]) for i in range(K + 1))}; stable {pct(s['stable_share'])}%, "
+             f"flaky {pct(s['flaky_share'])}%. pass@k: {' / '.join(pct(s['pass_at_k'][str(k)]) for k in range(1, K + 1))}; "
+             f"pass^k: {' / '.join(pct(s['pass_hat_k'][str(k)]) for k in range(1, K + 1))}. Within-task share of "
+             f"variance {pct(s['within_share_of_variance'])}%. TGC from the first 1..5 trials: "
+             + ", ".join(pct(res["trial_sensitivity"][str(k)]["tgc"][a]) for k in range(1, K + 1)) + ".",
+             f"**Agent cost.** Prompt tokens/episode {x['prompt_tokens']['mean']:,.0f} (p90 {x['prompt_tokens']['p90']:,.0f}), "
+             f"completion {x['completion_tokens']['mean']:,.0f}, steps {x['steps']['mean']:.1f}, "
+             f"{x['episode_seconds']['mean']:.0f} s/episode (p90 {x['episode_seconds']['p90']:.0f}); max prompt "
+             f"{x['max_prompt_tokens']:,}; step-cap {x['step_cap_hits']}, token-cap {x['token_cap_hits']}, context-exceeded "
+             f"{x['context_exceeded']}; infra retries {x['infra_retries']}, missing cells {x['missing']}. Cost: n/a "
+             "(RITS is unpriced; no optimizer).",
+             f"**The ablation study's own window (context, not paired):** TGC {pct(e.get('tgc'))} ({e.get('label', 'n/a')}). "
+             f"This window's TGC from its first 2 trials: {pct(res['trial_sensitivity']['2']['tgc'][a])}.",
+             f"Full tables (all arms, every pair): [`docs/TEST_ABL_STATE/{d}/RESULTS.md`]({ABL_RESULTS_URL.format(d=d)}).",
+             ABL_DEVIATIONS, ABL_LIMITS]
+    return "\n\n".join(parts) + "\n"
+
+
 def main() -> int:
+    if getattr(P, "TESTABL", False):
+        d = getattr(P, "FINAL_DIR_NAME", "final")
+        res = P.read_json(P.PUSHED / d / "analysis.json")
+        for a in _arms():
+            P.atomic_write(P.PUSHED / a / "RESULTS.md", arm_body_abl(res, a))
+        print(json.dumps({a: len((P.PUSHED / a / "RESULTS.md").read_text()) for a in _arms()}))
+        if "--post" in sys.argv:
+            import post
+            out = post.post_all("results", "{NAME} results", lambda a: (P.PUSHED / a / "RESULTS.md").read_text(),
+                                arms=_arms())
+            print(json.dumps(out))
+        return 0
     res = P.read_json(P.PUSHED / "final" / "analysis.json")
     for a in P.ARMS:
         P.atomic_write(P.PUSHED / a / "RESULTS.md", arm_body(res, a))

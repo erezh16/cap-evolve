@@ -334,3 +334,11 @@ Window 1 waits for the gate run (plan §8.1): gate searches running (abl_naivega
 ```json
 {"cp": 40, "prev_cp": 39, "prev_commit": "e002885e822d4994cb90b8cd75eb0996b5739243", "utc": "2026-10-28T19:09:21Z", "kind": "result", "phase": "W", "done_through": "B0..B3", "next": "P3/window1", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "e002885e822d4994cb90b8cd75eb0996b5739243", "open_decisions": [], "memory": {"used_pct": 28.58, "peak_pct": 45.67, "state": "OK", "stale": false}}
 ```
+
+## TB-0041 · 2026-10-28T19:13Z · W posted abl_cc_best · posted
+
+Posted 'Claude code, best evaluated candidate hourly status' on #942 (abl_cc_best): https://github.com/skillberry-ai/cap-evolve/issues/942#issuecomment-6478232370
+
+```json
+{"cp": 41, "prev_cp": 40, "prev_commit": "76976c2be44fa6d25b7cb28e20664dcb47fb25d6", "utc": "2026-10-28T19:13:29Z", "kind": "posted", "phase": "W", "done_through": "B0..B3", "next": "P3/window1", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "e002885e822d4994cb90b8cd75eb0996b5739243", "open_decisions": [], "memory": {"used_pct": 20.01, "peak_pct": 45.67, "state": "OK", "stale": false}, "post": "abl_cc_best/status_20261028T191320", "url": "https://github.com/skillberry-ai/cap-evolve/issues/942#issuecomment-6478232370"}
+```

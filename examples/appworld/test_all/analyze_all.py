@@ -37,8 +37,12 @@ ARMS = tuple(P.ARMS)
 K = P.FINAL_TRIALS
 DIFF = {1: "Easy", 2: "Medium", 3: "Hard"}
 B = int(os.environ.get("AW_BOOTSTRAP", 10000))
-FINAL = P.AW_STATE / "final"
-OUT = P.PUSHED / "final"
+FINAL = P.AW_STATE / getattr(P, "FINAL_DIR_NAME", "final")
+OUT = P.PUSHED / getattr(P, "FINAL_DIR_NAME", "final")
+TESTABL = getattr(P, "TESTABL", False)
+if TESTABL:                                # TEST_ABL §11: the window's own arms (window 2: the gate arms)
+    ARMS = tuple(P.WINDOW_ARMS)
+PRIMARY = tuple(a for a in ARMS if a not in ("seed", "abl_ref")) if TESTABL else ()
 
 
 # ---------------------------------------------------------------- data
@@ -154,7 +158,18 @@ def _git_json(spec: str) -> dict:
     return json.loads(r.stdout) if r.returncode == 0 else {}
 
 
+def earlier_abl() -> dict:
+    """TEST_ABL §11: each arm's TGC in the ablation study's own final window (2 trials, seeds 5000 + k): context."""
+    a = _git_json("fork/eval-abl:docs/ABLATION_STATUS_STATE/final/analysis.json").get("arms", {})
+    out = {k: {"tgc": (a.get(k) or {}).get("tgc"), "trials": 2,
+               "label": "other window: ablation study's final window (2026-10-27, 2 trials, seeds 5000+k)"} for k in ARMS}
+    out["_seed_in_other_windows"] = {"ablation window": (a.get("seed") or {}).get("tgc")}
+    return out
+
+
 def earlier() -> dict:
+    if TESTABL:
+        return earlier_abl()
     out = {}
     rest = _git_json("origin/eval-rest:docs/EVAL_APPWORLD_REST_STATE/final/analysis.json").get("arms", {})
     ev5 = _git_json("origin/eval5:docs/EVAL_APPWORLD_5_STATE/final/analysis.json").get("arms", {})
@@ -249,7 +264,7 @@ def main() -> int:
     hk = holm({k: v["p_tgc"] for k, v in res["pairs"].items()})
     for k, v in res["pairs"].items():
         v["holm_significant_tgc"] = hk[k]
-    for a in ARMS[1:]:
+    for a in (ARMS[1:] if ARMS[0] == "seed" else ()):
         v = res["pairs"][f"seed − {a}"]
         res["vs_seed"][a] = {"d_tgc": -v["d_tgc"], "ci_tgc": [-v["ci_tgc"][1], -v["ci_tgc"][0]],
                              "d_sgc": -v["d_sgc"], "ci_sgc": [-v["ci_sgc"][1], -v["ci_sgc"][0]],
@@ -269,17 +284,40 @@ def main() -> int:
     res["ranking"] = [{"rank": i + 1, "arm": a, "tgc": res["arms"][a]["tgc"], "ci_tgc": own_ci[a],
                        "not_separable_from_top": a == top or (lambda c: c[0] <= 0 <= c[1])(diff_ci(top, a))}
                       for i, a in enumerate(rank)]
-    res["noise_check"] = {"harnesslens − seed": {k: v for k, v in res["pairs"]["seed − harnesslens"].items()
-                                                 if k not in ("a", "b")} | {
-        "d_tgc": res["arms"]["harnesslens"]["tgc"] - res["arms"]["seed"]["tgc"],
-        "ci_tgc": [-res["pairs"]["seed − harnesslens"]["ci_tgc"][1], -res["pairs"]["seed − harnesslens"]["ci_tgc"][0]],
-        "d_sgc": res["arms"]["harnesslens"]["sgc"] - res["arms"]["seed"]["sgc"],
-        "ci_sgc": [-res["pairs"]["seed − harnesslens"]["ci_sgc"][1], -res["pairs"]["seed − harnesslens"]["ci_sgc"][0]],
-        "label": "two byte-identical artifacts in one window: a direct measure of within-window noise"}}
+    if TESTABL:
+        # §11 primary: each ablation − abl_ref, Holm over the primary set (5 in window 1); window 2 has no abl_ref cells
+        # in this window, so its primary contrasts are cross-window and done by analyze_cross.py (addendum).
+        prim = {}
+        for a in PRIMARY if "abl_ref" in ARMS else ():
+            key = f"abl_ref − {a}" if f"abl_ref − {a}" in res["pairs"] else f"{a} − abl_ref"
+            v = res["pairs"][key]
+            sg = -1 if key.startswith("abl_ref ") else 1
+            c, cs = v["ci_tgc"], v["ci_sgc"]
+            prim[a] = {"d_tgc": sg * v["d_tgc"], "ci_tgc": c if sg == 1 else [-c[1], -c[0]], "p_tgc": v["p_tgc"],
+                       "d_sgc": sg * v["d_sgc"], "ci_sgc": cs if sg == 1 else [-cs[1], -cs[0]]}
+        hp = holm({a: v["p_tgc"] for a, v in prim.items()})
+        for a, v in prim.items():
+            v["holm_significant_tgc"] = hp[a]
+        res["vs_ref"] = prim
+        for x, y in (("abl_prompt", "abl_tools"), ("abl_notrace", "abl_tracescore")):
+            if x in ARMS and y in ARMS:
+                res.setdefault("secondary_pairs", {})[f"{x} − {y}"] = res["pairs"].get(f"{x} − {y}")
+        res["noise_check"] = {"label": "no seed-identical arm in this window (abl_cc excluded, plan D2); TEST_ALL's "
+                                       "harnesslens − seed within-window noise check is quoted as context"}
+    else:
+        res["noise_check"] = {"harnesslens − seed": {k: v for k, v in res["pairs"]["seed − harnesslens"].items()
+                                                     if k not in ("a", "b")} | {
+            "d_tgc": res["arms"]["harnesslens"]["tgc"] - res["arms"]["seed"]["tgc"],
+            "ci_tgc": [-res["pairs"]["seed − harnesslens"]["ci_tgc"][1], -res["pairs"]["seed − harnesslens"]["ci_tgc"][0]],
+            "d_sgc": res["arms"]["harnesslens"]["sgc"] - res["arms"]["seed"]["sgc"],
+            "ci_sgc": [-res["pairs"]["seed − harnesslens"]["ci_sgc"][1], -res["pairs"]["seed − harnesslens"]["ci_sgc"][0]],
+            "label": "two byte-identical artifacts in one window: a direct measure of within-window noise"}}
     for n in range(1, K + 1):
         tr = range(n)
         row = {"tgc": {a: tgc(succ, a, ids, tr) for a in ARMS}, "vs_seed": {}}
-        for a in ARMS[1:]:
+        if TESTABL and "abl_ref" in ARMS:
+            row["vs_ref"] = {a: {"d_tgc": row["tgc"][a] - row["tgc"]["abl_ref"]} for a in PRIMARY}
+        for a in (ARMS[1:] if "seed" in ARMS else ()):
             dt, _ = boot_pair(succ, a, "seed", scen, picks[:2000], tr)
             row["vs_seed"][a] = {"d_tgc": row["tgc"][a] - row["tgc"]["seed"], "ci_tgc": ci(dt),
                                  "bootstrap_resamples": 2000}
@@ -312,17 +350,19 @@ def main() -> int:
     res["window_wall"] = [P._dt.datetime.utcfromtimestamp(rec[0].stat().st_mtime).isoformat() + "Z",
                           P._dt.datetime.utcfromtimestamp(rec[-1].stat().st_mtime).isoformat() + "Z"] if rec else None
     m = P.manifest()
-    res["manifest"] = {k: m.get(k) for k in ("final_order", "issues", "hourly_offset_s", "seed_equals_harnesslens_bytewise")}
+    res["manifest"] = {k: m.get(k) for k in (getattr(P, "ORDER_KEY", "final_order"), "issues", "hourly_offset_s",
+                                             "seed_equals_harnesslens_bytewise")}
+    res["manifest"]["final_order"] = m.get(getattr(P, "ORDER_KEY", "final_order"))
     res["artifacts"] = {a: {"rule": v["rule"], "expected": v["expected"], "computed": v["computed"], "source": v["source"],
                             "surfaces_searched": P.SURFACES_OF[a], "surfaces_changed": P.SURFACES_CHANGED[a]}
-                        for a, v in (m.get("artifacts") or {}).items()}
+                        for a, v in (m.get("artifacts") or {}).items() if a in ARMS}
     res["lint"] = {a: {"pass": v["pass"], "violations": v["violations"]} for a, v in (m.get("lint") or {}).items()}
     res["spend_per_provider"] = {"RITS (agent, unpriced)": "n/a (unpriced); agent tokens per arm in `arms`",
                                  "optimizer": "none (no optimizer in this plan)"}
     P.write_json(OUT / "analysis.json", res)
     sys.path.insert(0, str(Path(__file__).resolve().parent))
     import report_all as report
-    md = report.combined(res)
+    md = report.combined_abl(res) if TESTABL else report.combined(res)
     P.atomic_write(OUT / "RESULTS.md", md)
     print(json.dumps({"written": [str(OUT / "analysis.json"), str(OUT / "RESULTS.md")], "records": d["n_records"],
                       "missing": {a: res["arms"][a]["missing"] for a in ARMS}}))
