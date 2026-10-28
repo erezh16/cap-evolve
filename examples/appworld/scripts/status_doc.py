@@ -272,11 +272,18 @@ def _push(ps: dict) -> None:
 # ---------------------------------------------------------------- heartbeat / abort
 
 def runner_pid() -> int | None:
-    try:
-        pid = int((P.AW_STATE / "RUNNING.pid").read_text().split()[0])
-    except (FileNotFoundError, ValueError, IndexError):
-        return None
-    return pid
+    """The phase runner the heartbeat watches: the window's RUNNING.pid, else (ablations) the P4 runner or after_p4.
+    ABLATIONS_GATE.md G6: the hourly check must see the searches too, not only the window."""
+    cands = [P.AW_STATE / "RUNNING.pid"]
+    if P.LEDGER_ID == "ABL":
+        cands += [P.AW_STATE / "p4" / "RUNNER.pid", P.AW_STATE / "AFTER_P4.pid"]
+    pids = []
+    for f in cands:
+        try:
+            pids.append(int(f.read_text().split()[0]))
+        except (FileNotFoundError, ValueError, IndexError):
+            continue
+    return next((x for x in pids if pid_alive(x)), pids[0] if pids else None)
 
 
 def pid_alive(pid: int | None) -> bool:

@@ -101,13 +101,15 @@ def status_body(c: str) -> str:
              + (" (guard sample stale)" if mem.get("stale") else ""),
              f"- last ledger checkpoint: {P.LEDGER_ID}-{int(last.get('cp', 0)):04d} ({last.get('utc')}), "
              f"phase {last.get('phase')}, next `{last.get('next')}`",
-             f"- ETA: {pr.get('eta') or _eta_default()}",
+             f"- ETA: {pr.get('eta') or _eta_default(c)}",
              *window_lines(c), "",
              "Counts and aggregates only. No test-set score of any arm is posted before the final window completes."]
     return "\n".join(lines)
 
 
-def _eta_default() -> str:
+def _eta_default(c: str = "") -> str:
+    if c in getattr(P, "GATE_ARMS", ()):
+        return "addendum §G9 projection: about 13–16 h in total for the two gate arms; per-arm ETA once its search runs"
     if ABL:
         return "plan §17 projection: about 26–33 h in total; per-arm ETA once its search runs"
     if P.LEDGER_PREFIX == "CE2":
@@ -117,8 +119,9 @@ def _eta_default() -> str:
 
 def window_lines(c: str) -> list[str]:
     """Final-window progress, counts only (§8: no test score of any arm before the analysis)."""
-    rec_dir = P.AW_STATE / "final" / "records"
-    order = P.read_json(P.AW_STATE / "final" / "order.json")
+    fdir = P.AW_STATE / ("final_gate" if c in getattr(P, "GATE_ARMS", ()) else "final")   # ABLATIONS_GATE.md G7
+    rec_dir = fdir / "records"
+    order = P.read_json(fdir / "order.json")
     if not order or not rec_dir.exists():
         return []
     recs = list(rec_dir.glob("*.json"))
@@ -129,8 +132,8 @@ def window_lines(c: str) -> list[str]:
     started = min((p.stat().st_mtime for p in recs), default=time.time())
     eta = (f"; about {left / max(1, len(recent)):.1f} h left at the last hour's rate"
            if recent and left and time.time() - started >= 3600 else "")
-    return [f"- final window (168 test_normal × {len(P.ARMS)} arms × 2 trials): {len(recs)}/{len(order)} cells done{eta}; "
-            f"this arm {mine}/336. No test score is shown before the window completes."]
+    return [f"- final window (168 test_normal × {len({x['arm'] for x in order})} arms × 2 trials): {len(recs)}/{len(order)} cells done{eta}; "
+            f"this arm {mine}/{2 * 168}. No test score is shown before the window completes."]
 
 
 def _last_post_age(c: str) -> float:

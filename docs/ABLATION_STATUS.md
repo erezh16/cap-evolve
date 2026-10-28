@@ -5943,3 +5943,11 @@ Posted 'Cap evolve naive gate hourly status' on #939 (abl_naivegate): https://gi
 ```json
 {"cp": 721, "prev_cp": 720, "prev_commit": "5c368d8b35ac1395054025bdb47fcce7823593b3", "utc": "2026-10-28T11:13:46Z", "kind": "posted", "phase": "P0", "done_through": "P9/post", "next": "P1/gate B1", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "b30521e51eaf193fa77864f766e3053f358dd3f6", "open_decisions": [], "memory": {"used_pct": 2.69, "peak_pct": 5.28, "state": "OK", "stale": false}, "post": "abl_naivegate/status_20261028T1113", "url": "https://github.com/skillberry-ai/cap-evolve/issues/939#issuecomment-6467515608"}
 ```
+
+## ABL-0722 · 2026-10-28T11:16Z · P1 gate arms: hourly posts and run watch · repair
+
+Hourly status posts restarted for the gate arms only: autopost.py and the heartbeat loop run again (nohup), next to memguard. Posts go only to issues with no results post, so #938 (abl_nogate) and #939 (abl_naivegate); #930 to #935 stay closed to posts. First forced status post on both at 11:13 UTC. That post wrongly showed the first window's 2688 cells as this arm's window, and the base plan's ETA. Fixed in autopost.py: the gate arms read their own window (AW_STATE/final_gate, G7) and the addendum's G9 ETA; post.py names the addendum in the footer. Fixed in status_doc.runner_pid: the heartbeat's stall check used to see only the window's RUNNING.pid; it now also checks the P4 runner's and after_p4's pid files, so a dead search is reported as stalled within the 25-minute silence window. Every 60 s the heartbeat also checks that each issue's last post is under 60 minutes old, and restarts memguard or autopost if either is down.
+
+```json
+{"cp": 722, "prev_cp": 721, "prev_commit": "c2614bdf9252c5d425df0f1e7ab64b91e49a9930", "utc": "2026-10-28T11:16:00Z", "kind": "repair", "phase": "P1", "done_through": "P9/post", "next": "P1/gate B1", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "b30521e51eaf193fa77864f766e3053f358dd3f6", "open_decisions": [], "memory": {"used_pct": 2.74, "peak_pct": 5.28, "state": "OK", "stale": false}}
+```

@@ -28,7 +28,8 @@ def post(cand: str, key: str, title: str, body: str) -> str | None:
     if f"{cand}/{key}" in done:
         return None
     if P.LEDGER_ID == "ABL":
-        ref = (f"Plan: `docs/ABLATIONS.md`; ledger: `docs/{P.LEDGER.name}` on branch `{P.BRANCH}` of the "
+        ref = (f"Plan: `docs/ABLATIONS.md`" + (" + addendum `docs/ABLATIONS_GATE.md`" if cand in getattr(P, "GATE_ARMS", ()) else "")
+               + f"; ledger: `docs/{P.LEDGER.name}` on branch `{P.BRANCH}` of the "
                f"`erezh16/cap-evolve` fork.")
     elif P.LEDGER_PREFIX == "CE2":
         plan = "EVAL_APPWORLD_CE3.md` (base plan `docs/EVAL_APPWORLD_CE2.md`)" if P.LEDGER_ID == "CE3" else "EVAL_APPWORLD_CE2.md`"
