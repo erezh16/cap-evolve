@@ -310,3 +310,11 @@ Posted 'Cap-evolve full (reference) hourly status' on #941 (abl_ref): https://gi
 ```json
 {"cp": 37, "prev_cp": 36, "prev_commit": "bd2a69eda0f23606ea5bca9472c5166035ae2b4d", "utc": "2026-10-28T19:06:45Z", "kind": "posted", "phase": "P0", "done_through": "B0..B3", "next": "B4 window code; P2 acceptance", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "bd2a69eda0f23606ea5bca9472c5166035ae2b4d", "open_decisions": [], "memory": {"used_pct": 27.41, "peak_pct": 45.67, "state": "OK", "stale": false}, "post": "abl_ref/status_20261028T190640", "url": "https://github.com/skillberry-ai/cap-evolve/issues/941#issuecomment-6478091731"}
 ```
+
+## TB-0038 · 2026-10-28T19:07Z · W waiting for the gate run (window 1) · result
+
+Window 1 waits for the gate run (plan §8.1): gate searches running (abl_naivegate).
+
+```json
+{"cp": 38, "prev_cp": 37, "prev_commit": "cb0b20e8143d4f476d3eba9c35c55a422b41c132", "utc": "2026-10-28T19:07:15Z", "kind": "result", "phase": "W", "done_through": "B0..B3", "next": "P3/window1", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "cb0b20e8143d4f476d3eba9c35c55a422b41c132", "open_decisions": [], "memory": {"used_pct": 30.02, "peak_pct": 45.67, "state": "OK", "stale": false}}
+```
