@@ -5903,3 +5903,11 @@ User request (2026-10-28): two more cap-evolve ablation arms under docs/ABLATION
 ```json
 {"cp": 716, "prev_cp": 715, "prev_commit": "a02c52fad3849bbefe2cd5c3d9ef2630b213a546", "utc": "2026-10-28T11:13:14Z", "kind": "decision", "phase": "P0", "done_through": "P9/post", "next": "P1/gate B1", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "72876a3522a3ef3583db1326dfa1e231a2542196", "open_decisions": [], "memory": {"used_pct": 3.55, "peak_pct": 5.28, "state": "OK", "stale": false}, "arms": ["abl_nogate", "abl_naivegate"], "issues": {"abl_nogate": 938, "abl_naivegate": 939}, "k_se": {"abl_nogate": -100000, "abl_naivegate": 0}}
 ```
+
+## ABL-0717 · 2026-10-28T11:13Z · P0 R1.4 deny rules missing in base · error
+
+At the start of the gate-arm work (2026-10-28) the orchestrating session's /workspace/worktrees/base/.claude/settings.local.json had 0 deny rules (the full copy was in settings.local.json.abl-r1-backup-20261027). In this session no sealed-set path was opened before the repair: only plan, ledger, pushed state, code and gate.py were read, and the pushed per-arm progress.json files (counts only).
+
+```json
+{"cp": 717, "prev_cp": 716, "prev_commit": "b30521e51eaf193fa77864f766e3053f358dd3f6", "utc": "2026-10-28T11:13:16Z", "kind": "error", "phase": "P0", "done_through": "P9/post", "next": "P1/gate B1", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "b30521e51eaf193fa77864f766e3053f358dd3f6", "open_decisions": [], "memory": {"used_pct": 3.55, "peak_pct": 5.28, "state": "OK", "stale": false}}
+```
