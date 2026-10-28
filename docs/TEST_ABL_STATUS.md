@@ -366,3 +366,11 @@ Posted 'Cap-evolve full (reference): build and acceptance done' on #941 (abl_ref
 ```json
 {"cp": 44, "prev_cp": 43, "prev_commit": "e1878d422b5cdd16e15d6535fa75003dee1b62a8", "utc": "2026-10-28T19:16:37Z", "kind": "posted", "phase": "P2", "done_through": "P2/T1,T2,T4-T10", "next": "P2/T3 then P3/window1 (launch_when_clear.py waiting for the gate run)", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "a407702300d0bfa6f06c7bd42f3232d63e3ae2b6", "open_decisions": [], "memory": {"used_pct": 3.82, "peak_pct": 45.67, "state": "OK", "stale": false}, "post": "abl_ref/accept_done", "url": "https://github.com/skillberry-ai/cap-evolve/issues/941#issuecomment-6478298934"}
 ```
+
+## TB-0045 · 2026-10-28T19:16Z · P2 posted abl_cc_best · posted
+
+Posted 'Claude code, best evaluated candidate: build and acceptance done' on #942 (abl_cc_best): https://github.com/skillberry-ai/cap-evolve/issues/942#issuecomment-6478300641
+
+```json
+{"cp": 45, "prev_cp": 44, "prev_commit": "d565b2bdbe0baa6566a252643e4de2de4af05298", "utc": "2026-10-28T19:16:42Z", "kind": "posted", "phase": "P2", "done_through": "P2/T1,T2,T4-T10", "next": "P2/T3 then P3/window1 (launch_when_clear.py waiting for the gate run)", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "a407702300d0bfa6f06c7bd42f3232d63e3ae2b6", "open_decisions": [], "memory": {"used_pct": 3.85, "peak_pct": 45.67, "state": "OK", "stale": false}, "post": "abl_cc_best/accept_done", "url": "https://github.com/skillberry-ai/cap-evolve/issues/942#issuecomment-6478300641"}
+```
