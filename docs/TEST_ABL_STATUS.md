@@ -222,3 +222,11 @@ Posted 'Cap evolve tools only hourly status' on #944 (abl_tools): https://github
 ```json
 {"cp": 26, "prev_cp": 25, "prev_commit": "7a8c69b4b525c7e9a6e4d35f6b236a1c8d29b740", "utc": "2026-10-28T17:26:43Z", "kind": "posted", "phase": "P0", "done_through": "B0..B3", "next": "B4 window code; P2 acceptance", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "016bcda89b03e6c91a45557cd83771aad216e12e", "open_decisions": [], "memory": {"used_pct": 26.04, "peak_pct": 29.23, "state": "OK", "stale": false}, "post": "abl_tools/status_20261028T172640", "url": "https://github.com/skillberry-ai/cap-evolve/issues/944#issuecomment-6475926183"}
 ```
+
+## TB-0027 · 2026-10-28T17:33Z · P0 posted abl_notrace · posted
+
+Posted 'Cap evolve no traces hourly status' on #945 (abl_notrace): https://github.com/skillberry-ai/cap-evolve/issues/945#issuecomment-6476072728
+
+```json
+{"cp": 27, "prev_cp": 26, "prev_commit": "c736f5a706c001630568ffc4582405343e6561e5", "utc": "2026-10-28T17:33:25Z", "kind": "posted", "phase": "P0", "done_through": "B0..B3", "next": "B4 window code; P2 acceptance", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "016bcda89b03e6c91a45557cd83771aad216e12e", "open_decisions": [], "memory": {"used_pct": 16.94, "peak_pct": 29.23, "state": "OK", "stale": false}, "post": "abl_notrace/status_20261028T173320", "url": "https://github.com/skillberry-ai/cap-evolve/issues/945#issuecomment-6476072728"}
+```
