@@ -6541,3 +6541,11 @@ Isolation scan (counts only): abl_nogate: test-id hits 0; models ['aws/claude-so
 ```json
 {"cp": 794, "prev_cp": 793, "prev_commit": "a62106320f1aa4ae371567394baa81f9a33019ce", "utc": "2026-10-28T19:21:22Z", "kind": "result", "phase": "P6", "done_through": "P6/scan", "next": "P7/final", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {"STATE/isolation_scan.json": "c158f21a8ede9f92eac8d7fb0129240813e9c1651cad41edad480d95935b6c07"}, "code": "573f9c6d89fa088ab07146b847b334fe655da00e", "open_decisions": [], "memory": {"used_pct": 8.99, "peak_pct": 48.95, "state": "OK", "stale": false}}
 ```
+
+## ABL-0795 · 2026-10-28T19:23Z · P5 gate arms: dev diagnostic · result
+
+P5 for the gate champions (57 dev tasks, 1 trial, seed 100; all records cache hits of their search runs, 0 fresh): abl_nogate 0.8421, abl_naivegate 0.8421. Dev is part of the search set, so this is a fit metric (selection-biased).
+
+```json
+{"cp": 795, "prev_cp": 794, "prev_commit": "6cee65ba61fa557547b4a54318682fe2dc265a77", "utc": "2026-10-28T19:23:24Z", "kind": "result", "phase": "P5", "done_through": "P5/gate dev", "next": "P6/gate scan", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {"STATE/p5dev_gate/progress.json": "094febef10ea4e38c37f9a0b21437c4bfd72bdd7fdba833077390991966caa0f"}, "code": "6cee65ba61fa557547b4a54318682fe2dc265a77", "open_decisions": [], "memory": {"used_pct": 5.49, "peak_pct": 48.95, "state": "OK", "stale": false}}
+```
