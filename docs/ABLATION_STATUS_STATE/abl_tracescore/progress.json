@@ -91,6 +91,7 @@
  "baseline_val": 0.4013605442176871,
  "baseline_label": "seed, shared P3 baseline",
  "best_search_score": 0.7482993197278912,
+ "champion_val": 0.7482993197278912,
  "best_search_label": "val = train ∪ dev (147), a fit metric, selection-biased",
  "metric_calls": 1029,
  "capevolve_optimizer_usd": 121.28158150000003,
