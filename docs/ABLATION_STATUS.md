@@ -6089,3 +6089,11 @@ Next: P4/gate searches.
 ```json
 {"cp": 739, "prev_cp": 738, "prev_commit": "33100de28640a5c928bf5039c29ccbe18b2a7e4b", "utc": "2026-10-28T13:11:43Z", "kind": "heartbeat", "phase": "P4", "done_through": "P2/gate", "next": "P4/gate searches", "arm": "abl_naivegate", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "92163dfd239c99b679a7af04cf5e1023e234b94f", "open_decisions": [], "memory": {"used_pct": 26.63, "peak_pct": 48.95, "state": "OK", "stale": false}, "runner": "alive"}
 ```
+
+## ABL-0740 · 2026-10-28T13:12Z · P4 posted abl_nogate · posted
+
+Posted 'Cap evolve no gate 25% of B' on #938 (abl_nogate): https://github.com/skillberry-ai/cap-evolve/issues/938#issuecomment-6469893169
+
+```json
+{"cp": 740, "prev_cp": 739, "prev_commit": "a1823fe2bf9d27d7e3967227ccd60479b16709fa", "utc": "2026-10-28T13:12:12Z", "kind": "posted", "phase": "P4", "done_through": "P2/gate", "next": "P4/gate searches", "arm": "abl_naivegate", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "92163dfd239c99b679a7af04cf5e1023e234b94f", "open_decisions": [], "memory": {"used_pct": 26.51, "peak_pct": 48.95, "state": "OK", "stale": false}, "post": "abl_nogate/m4_budget_25", "url": "https://github.com/skillberry-ai/cap-evolve/issues/938#issuecomment-6469893169"}
+```
