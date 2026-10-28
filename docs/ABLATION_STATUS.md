@@ -6581,3 +6581,11 @@ Posted 'abl_nogate: searches done, window started' on #938 (abl_nogate): https:/
 ```json
 {"cp": 799, "prev_cp": 798, "prev_commit": "a98ef8bfbe225db63f824a5ad6084defc6009c7e", "utc": "2026-10-28T19:26:51Z", "kind": "posted", "phase": "P7", "done_through": "P6/gate", "next": "P7/gate window cells", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "26dc66a6ce2303c22a7e44ed867ce57ca22354c9", "open_decisions": [], "memory": {"used_pct": 24.23, "peak_pct": 48.95, "state": "OK", "stale": false}, "post": "abl_nogate/m_gate_window_start", "url": "https://github.com/skillberry-ai/cap-evolve/issues/938#issuecomment-6478524254"}
 ```
+
+## ABL-0800 · 2026-10-28T19:26Z · P7 posted abl_naivegate · posted
+
+Posted 'abl_naivegate: searches done, window started' on #939 (abl_naivegate): https://github.com/skillberry-ai/cap-evolve/issues/939#issuecomment-6478525312
+
+```json
+{"cp": 800, "prev_cp": 799, "prev_commit": "9d8385390473566658092058045c453c632b1015", "utc": "2026-10-28T19:26:55Z", "kind": "posted", "phase": "P7", "done_through": "P6/gate", "next": "P7/gate window cells", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "26dc66a6ce2303c22a7e44ed867ce57ca22354c9", "open_decisions": [], "memory": {"used_pct": 24.23, "peak_pct": 48.95, "state": "OK", "stale": false}, "post": "abl_naivegate/m_gate_window_start", "url": "https://github.com/skillberry-ai/cap-evolve/issues/939#issuecomment-6478525312"}
+```
