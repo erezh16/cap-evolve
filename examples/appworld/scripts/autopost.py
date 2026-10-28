@@ -197,12 +197,22 @@ def check_ages(every: int) -> list[str]:
 # ---------------------------------------------------------------- TEST_ALL (docs/TEST_ALL.md §12.2): 13 staggered timers
 
 TA_STAGES = {"P0": "build", "P1": "build", "P2": "acceptance", "P3": "window", "P4": "analysis", "P5": "results"}
+if getattr(P, "TESTABL", False):
+    TA_STAGES |= {"W": "waiting for the gate run (window 1 starts after its searches and its own final window, plan §8.1)",
+                  "P6": "window 2", "P7": "analysis (window 2)"}
+
+
+def ta_arms() -> list[str]:
+    """Arms with an open issue (TEST_ABL: window 1's 7, plus the gate arms once theirs exist)."""
+    if getattr(P, "TESTABL", False):
+        return [a for a in P.TIMER_ORDER if a in P.ISSUES]
+    return list(P.ARMS)
 
 
 def ta_offsets() -> dict[str, int]:
     """Arm i's offset i × 276 s into each UTC hour, from manifest.json (recorded in B0, so a restart keeps them)."""
     m = P.manifest().get("hourly_offset_s") or {}
-    return {a: int(m.get(a, P.HOURLY_OFFSET_S[a])) for a in P.ARMS}
+    return {a: int(m.get(a, P.HOURLY_OFFSET_S[a])) for a in ta_arms()}
 
 
 def ta_slot(arm: str, now: float) -> float:
@@ -229,9 +239,10 @@ def ta_status_lines(arm: str) -> list[str]:
     mem = P.memstate()
     w = ta_window()
     a = w["per_arm"].get(arm) or {}
-    per = P.FINAL_CELLS // len(P.ARMS)
+    per = 168 * P.FINAL_TRIALS
     eta = (f"about {w['eta_h']} h left at the last hour's rate ({w['rate_per_h']} cells/h)" if w["eta_h"] is not None
-           else "n/a until the window has run for an hour" if w["done"] else "n/a (window not started; projection §13: about 36 to 42 h)")
+           else "n/a until the window has run for an hour" if w["done"] else ("n/a (window not started; projection §13: about 23 h at 24 slots)" if getattr(P, "TESTABL", False)
+                 else "n/a (window not started; projection §13: about 36 to 42 h)"))
     return [f"- stage: {TA_STAGES.get(last.get('phase'), last.get('phase'))} (next: `{last.get('next')}`)",
             f"- this arm: {a.get('done', 0)}/{per} cells done; infra retries {a.get('infra_retries', 0)}, "
             f"missing cells {a.get('infra_missing', 0)}",
@@ -255,7 +266,7 @@ def ta_due(now: float) -> list[str]:
     """Arms whose slot of this hour has passed and that have not posted since it, earliest slot first; arms whose
     results comment is posted are done."""
     posts = P.read_json(post.POSTS, {}) or {}
-    due = [a for a in P.ARMS if f"{a}/results" not in posts and now >= ta_slot(a, now) and ta_last_post(a) < ta_slot(a, now)]
+    due = [a for a in ta_arms() if f"{a}/results" not in posts and now >= ta_slot(a, now) and ta_last_post(a) < ta_slot(a, now)]
     return sorted(due, key=lambda a: ta_slot(a, now))
 
 
@@ -265,8 +276,8 @@ def ta_milestones() -> list[tuple[str, str, object]]:
     out = []
     if w["done"] > 0:
         out.append(("window_started", "{NAME}: window started", lambda a: (
-            f"**{P.METHOD_NAMES[a]} (`{a}`): the TEST_ALL window has started** (13 arms × 168 test_normal tasks × 5 "
-            "trials = 10,920 cells, one shuffled order).\n\n" + "\n".join(ta_status_lines(a)))))
+            f"**{P.METHOD_NAMES[a]} (`{a}`): the {P.EVAL_NAME} window has started** ({len(P.WINDOW_ARMS)} arms × 168 "
+            f"test_normal tasks × {P.FINAL_TRIALS} trials = {P.FINAL_CELLS:,} cells, one shuffled order).\n\n" + "\n".join(ta_status_lines(a)))))
     for q in range(1, 10):
         if w["done"] >= q * P.FINAL_CELLS // 10:
             out.append((f"window_{10 * q}pct", f"{{NAME}}: window {10 * q}% done", lambda a, q=q: (
@@ -285,7 +296,7 @@ def ta_once(now: float | None = None, dry: bool = False) -> list[str]:
     out = []
     posts = P.read_json(post.POSTS, {}) or {}
     for key, title, body in ta_milestones():
-        arms = [a for a in P.ARMS if f"{a}/{key}" not in posts]
+        arms = [a for a in ta_arms() if f"{a}/{key}" not in posts]
         if arms and not dry:
             res = post.post_all(key, title, body, arms=arms)
             for a, u in res.items():
@@ -315,7 +326,7 @@ def ta_schedule(now: float | None = None) -> dict[str, str]:
     """For T10's dry run: each arm's next due time (UTC)."""
     now = now or time.time()
     res = {}
-    for a in P.ARMS:
+    for a in ta_arms():
         s = ta_slot(a, now)
         nxt = s if ta_last_post(a) < s else s + 3600
         if nxt < now:
@@ -328,7 +339,7 @@ def ta_late(grace_s: int = 300) -> list[str]:
     """For the heartbeat: arms whose last post is older than 60 minutes plus the grace, results not yet posted."""
     posts = P.read_json(post.POSTS, {}) or {}
     now = time.time()
-    return [a for a in P.ARMS if f"{a}/results" not in posts and ta_last_post(a) and now - ta_last_post(a) > 3600 + grace_s]
+    return [a for a in ta_arms() if f"{a}/results" not in posts and ta_last_post(a) and now - ta_last_post(a) > 3600 + grace_s]
 
 
 def ta_main() -> int:
@@ -340,7 +351,7 @@ def ta_main() -> int:
         print("\n".join(ta_once(dry="--dry-run" in sys.argv)))
         return 0
     (P.AW_STATE / "AUTOPOST.pid").write_text(str(os.getpid()))
-    P.progress_log("autopost", "-", f"start pid {os.getpid()}: 13 timers, offsets {ta_offsets()}")
+    P.progress_log("autopost", "-", f"start pid {os.getpid()}: {len(ta_offsets())} timers, offsets {ta_offsets()}")
     while True:
         try:
             for line in ta_once():

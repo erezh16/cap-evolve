@@ -1,0 +1,335 @@
+{
+ "artifacts": {
+  "seed": {
+   "rule": "S",
+   "expected": "85a0da9cec2206a7bc683c11d60b5cb0acac7328d43c6e9197324d1e45971f3c",
+   "computed": "85a0da9cec2206a7bc683c11d60b5cb0acac7328d43c6e9197324d1e45971f3c",
+   "source": "local",
+   "source_path": "/workspace/worktrees/eval-abl/examples/appworld/seed_capability",
+   "surfaces_present": {
+    "P": true,
+    "T_helpers": true,
+    "T_notes": true,
+    "M_playbook": false,
+    "M_retrieval": false
+   },
+   "scored_rule_s": "85a0da9cec2206a7bc683c11d60b5cb0acac7328d43c6e9197324d1e45971f3c",
+   "scored_files": {
+    "policy/instructions.txt": "c41f7852217d46586047a38f68e88b827cb9dcbe624e9651f9db8301547a534b",
+    "tools/api_notes.json": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+    "tools/helpers.py": "2bfd81ebbb2ac8a9e0813030ef4dd6fd8b058a6c2e36480f86f75f8afc1c52fb"
+   }
+  },
+  "abl_ref": {
+   "rule": "S",
+   "expected": "54a4f3799ae887761849d5b96e7da0f0e0e4939000ac18c528c60b5d652790c2",
+   "computed": "54a4f3799ae887761849d5b96e7da0f0e0e4939000ac18c528c60b5d652790c2",
+   "source": "local",
+   "source_path": "/workspace/worktrees/eval-abl/docs/ABLATION_STATUS_STATE/abl_ref/artifact",
+   "surfaces_present": {
+    "P": true,
+    "T_helpers": true,
+    "T_notes": true,
+    "M_playbook": false,
+    "M_retrieval": false
+   },
+   "scored_rule_s": "54a4f3799ae887761849d5b96e7da0f0e0e4939000ac18c528c60b5d652790c2",
+   "scored_files": {
+    "policy/instructions.txt": "428e6b9124ec48af606dd6bfe51228eddffcfe914f2758e0da13cb659b08dc31",
+    "tools/api_notes.json": "34dfad3769f79e2ca4eaf511fc40d0fd453583a147f3af8e57b33058a3901c1b",
+    "tools/helpers.py": "7d9c117ac7a6f2fdf9d870455021ae2740c1c1de921627fff1ee2e3d3514081c"
+   }
+  },
+  "abl_cc_best": {
+   "rule": "S",
+   "expected": "a2b6434e76a0109310d94d88fb193a0ece2435e98d0a12d443b6cc4a6f31ca71",
+   "computed": "a2b6434e76a0109310d94d88fb193a0ece2435e98d0a12d443b6cc4a6f31ca71",
+   "source": "local",
+   "source_path": "/workspace/worktrees/eval-abl/docs/ABLATION_STATUS_STATE/abl_cc_best/artifact",
+   "surfaces_present": {
+    "P": true,
+    "T_helpers": true,
+    "T_notes": true,
+    "M_playbook": false,
+    "M_retrieval": false
+   },
+   "scored_rule_s": "a2b6434e76a0109310d94d88fb193a0ece2435e98d0a12d443b6cc4a6f31ca71",
+   "scored_files": {
+    "policy/instructions.txt": "9e40af16b29c6d4860bb7a2756d3ecda2fa3efefd62697f246fa91da746bc777",
+    "tools/api_notes.json": "f9ca94ebaf95cc006ce4cb460f4fe825dddbc32377e7b6b010f9da993ed4aafd",
+    "tools/helpers.py": "c2ecf72d34666ad6d27e7cfcf3fb15c8caff11b62a1e5561aa48e83182dd386e"
+   }
+  },
+  "abl_prompt": {
+   "rule": "S",
+   "expected": "f979201fc17b5e55725b5032b411a486af837b470997a1bbfb40a818ba850eaa",
+   "computed": "f979201fc17b5e55725b5032b411a486af837b470997a1bbfb40a818ba850eaa",
+   "source": "local",
+   "source_path": "/workspace/worktrees/eval-abl/docs/ABLATION_STATUS_STATE/abl_prompt/artifact",
+   "surfaces_present": {
+    "P": true,
+    "T_helpers": true,
+    "T_notes": true,
+    "M_playbook": false,
+    "M_retrieval": false
+   },
+   "scored_rule_s": "f979201fc17b5e55725b5032b411a486af837b470997a1bbfb40a818ba850eaa",
+   "scored_files": {
+    "policy/instructions.txt": "ea2e6e2a7ae6682353aa8e2f3d750536424e732f7d424c0ff0298a66a9d0adfc",
+    "tools/api_notes.json": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+    "tools/helpers.py": "2bfd81ebbb2ac8a9e0813030ef4dd6fd8b058a6c2e36480f86f75f8afc1c52fb"
+   }
+  },
+  "abl_tools": {
+   "rule": "S",
+   "expected": "d78dcf6138cd9f41c9ec819aaa43c0c78f6b68bdc983d04058ba64b8731c0434",
+   "computed": "d78dcf6138cd9f41c9ec819aaa43c0c78f6b68bdc983d04058ba64b8731c0434",
+   "source": "local",
+   "source_path": "/workspace/worktrees/eval-abl/docs/ABLATION_STATUS_STATE/abl_tools/artifact",
+   "surfaces_present": {
+    "P": true,
+    "T_helpers": true,
+    "T_notes": true,
+    "M_playbook": false,
+    "M_retrieval": false
+   },
+   "scored_rule_s": "d78dcf6138cd9f41c9ec819aaa43c0c78f6b68bdc983d04058ba64b8731c0434",
+   "scored_files": {
+    "policy/instructions.txt": "c41f7852217d46586047a38f68e88b827cb9dcbe624e9651f9db8301547a534b",
+    "tools/api_notes.json": "e6661562a99fd76167da3f765b8e3d7a9602d7fbf5af3c32d4e3aeb36da0d0ed",
+    "tools/helpers.py": "2bfd81ebbb2ac8a9e0813030ef4dd6fd8b058a6c2e36480f86f75f8afc1c52fb"
+   }
+  },
+  "abl_notrace": {
+   "rule": "S",
+   "expected": "973ebcb4af6b3bddc83a597c6eedb12e65c03a7da34a4b81fba01c63da9723c8",
+   "computed": "973ebcb4af6b3bddc83a597c6eedb12e65c03a7da34a4b81fba01c63da9723c8",
+   "source": "local",
+   "source_path": "/workspace/worktrees/eval-abl/docs/ABLATION_STATUS_STATE/abl_notrace/artifact",
+   "surfaces_present": {
+    "P": true,
+    "T_helpers": true,
+    "T_notes": true,
+    "M_playbook": false,
+    "M_retrieval": false
+   },
+   "scored_rule_s": "973ebcb4af6b3bddc83a597c6eedb12e65c03a7da34a4b81fba01c63da9723c8",
+   "scored_files": {
+    "policy/instructions.txt": "e19b10dfa1579a46e234b68910388b8e1ab928ccaec0db5a5855c93956979eb2",
+    "tools/api_notes.json": "72b969afe4e411665d027e7f255497ed485a1deb952789d65054c7f0a4db840a",
+    "tools/helpers.py": "ea66bf34b411041b3e926fee1058eb8ae03a73c742445a681ced1c8763c75940"
+   }
+  },
+  "abl_tracescore": {
+   "rule": "S",
+   "expected": "c2da5909d55fac51bdc26ef678b53d302c2184869a144182db3a6431ff28327c",
+   "computed": "c2da5909d55fac51bdc26ef678b53d302c2184869a144182db3a6431ff28327c",
+   "source": "local",
+   "source_path": "/workspace/worktrees/eval-abl/docs/ABLATION_STATUS_STATE/abl_tracescore/artifact",
+   "surfaces_present": {
+    "P": true,
+    "T_helpers": true,
+    "T_notes": true,
+    "M_playbook": false,
+    "M_retrieval": false
+   },
+   "scored_rule_s": "c2da5909d55fac51bdc26ef678b53d302c2184869a144182db3a6431ff28327c",
+   "scored_files": {
+    "policy/instructions.txt": "3c61a357b267965cd70fc96d932704602fd659d489da4d281b7e125d923809dd",
+    "tools/api_notes.json": "80668fc0e728a925b77d802621144ed42a64d94b06ee3e0ad9d44148032d0b0d",
+    "tools/helpers.py": "ee718d595dbec8c7780261125cec97a87517751171f3a0e2e6ffc9a8443bab95"
+   }
+  }
+ },
+ "seed_equals_harnesslens_bytewise": null,
+ "lint": {
+  "seed": {
+   "pass": true,
+   "violations": [],
+   "disclosed_exception": [],
+   "sizes": {
+    "policy/instructions.txt": {
+     "chars": 11350,
+     "lines": 371,
+     "tokens_o200k": 2745
+    },
+    "tools/helpers.py": {
+     "chars": 174,
+     "lines": 4,
+     "tokens_o200k": 40
+    },
+    "tools/api_notes.json": {
+     "chars": 3,
+     "lines": 1,
+     "tokens_o200k": 1
+    }
+   }
+  },
+  "abl_ref": {
+   "pass": true,
+   "violations": [],
+   "disclosed_exception": [],
+   "sizes": {
+    "policy/instructions.txt": {
+     "chars": 28996,
+     "lines": 487,
+     "tokens_o200k": 7026
+    },
+    "tools/helpers.py": {
+     "chars": 18232,
+     "lines": 390,
+     "tokens_o200k": 4825
+    },
+    "tools/api_notes.json": {
+     "chars": 9202,
+     "lines": 43,
+     "tokens_o200k": 2138
+    }
+   }
+  },
+  "abl_cc_best": {
+   "pass": true,
+   "violations": [],
+   "disclosed_exception": [],
+   "sizes": {
+    "policy/instructions.txt": {
+     "chars": 21306,
+     "lines": 401,
+     "tokens_o200k": 5109
+    },
+    "tools/helpers.py": {
+     "chars": 565,
+     "lines": 18,
+     "tokens_o200k": 141
+    },
+    "tools/api_notes.json": {
+     "chars": 3552,
+     "lines": 29,
+     "tokens_o200k": 818
+    }
+   }
+  },
+  "abl_prompt": {
+   "pass": true,
+   "violations": [],
+   "disclosed_exception": [],
+   "sizes": {
+    "policy/instructions.txt": {
+     "chars": 27910,
+     "lines": 427,
+     "tokens_o200k": 6631
+    },
+    "tools/helpers.py": {
+     "chars": 174,
+     "lines": 4,
+     "tokens_o200k": 40
+    },
+    "tools/api_notes.json": {
+     "chars": 3,
+     "lines": 1,
+     "tokens_o200k": 1
+    }
+   }
+  },
+  "abl_tools": {
+   "pass": true,
+   "violations": [],
+   "disclosed_exception": [],
+   "sizes": {
+    "policy/instructions.txt": {
+     "chars": 11350,
+     "lines": 371,
+     "tokens_o200k": 2745
+    },
+    "tools/helpers.py": {
+     "chars": 174,
+     "lines": 4,
+     "tokens_o200k": 40
+    },
+    "tools/api_notes.json": {
+     "chars": 12775,
+     "lines": 50,
+     "tokens_o200k": 3010
+    }
+   }
+  },
+  "abl_notrace": {
+   "pass": true,
+   "violations": [],
+   "disclosed_exception": [],
+   "sizes": {
+    "policy/instructions.txt": {
+     "chars": 19820,
+     "lines": 389,
+     "tokens_o200k": 4770
+    },
+    "tools/helpers.py": {
+     "chars": 16827,
+     "lines": 378,
+     "tokens_o200k": 4434
+    },
+    "tools/api_notes.json": {
+     "chars": 12706,
+     "lines": 56,
+     "tokens_o200k": 2787
+    }
+   }
+  },
+  "abl_tracescore": {
+   "pass": true,
+   "violations": [],
+   "disclosed_exception": [],
+   "sizes": {
+    "policy/instructions.txt": {
+     "chars": 31983,
+     "lines": 439,
+     "tokens_o200k": 7599
+    },
+    "tools/helpers.py": {
+     "chars": 17627,
+     "lines": 397,
+     "tokens_o200k": 4745
+    },
+    "tools/api_notes.json": {
+     "chars": 13221,
+     "lines": 57,
+     "tokens_o200k": 3083
+    }
+   }
+  }
+ },
+ "hourly_offset_s": {
+  "seed": 0,
+  "abl_ref": 400,
+  "abl_cc_best": 800,
+  "abl_prompt": 1200,
+  "abl_tools": 1600,
+  "abl_notrace": 2000,
+  "abl_tracescore": 2400,
+  "abl_nogate": 2800,
+  "abl_naivegate": 3200
+ },
+ "issues": {
+  "seed": 940,
+  "abl_ref": 941,
+  "abl_cc_best": 942,
+  "abl_prompt": 943,
+  "abl_tools": 944,
+  "abl_notrace": 945,
+  "abl_tracescore": 946
+ },
+ "plan": "docs/TEST_ABL.md",
+ "window1_arms": [
+  "seed",
+  "abl_ref",
+  "abl_cc_best",
+  "abl_prompt",
+  "abl_tools",
+  "abl_notrace",
+  "abl_tracescore"
+ ],
+ "window2_arms_pending": [
+  "abl_nogate",
+  "abl_naivegate"
+ ]
+}

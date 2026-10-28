@@ -27,7 +27,10 @@ def post(cand: str, key: str, title: str, body: str) -> str | None:
     done = P.read_json(POSTS, {}) or {}
     if f"{cand}/{key}" in done:
         return None
-    if P.TESTALL:
+    if getattr(P, "TESTABL", False):
+        ref = (f"Plan: `docs/TEST_ABL.md` and ledger `docs/{P.LEDGER.name}`, both on branch `{P.BRANCH}` of the "
+               f"`erezh16/cap-evolve` fork.")
+    elif P.TESTALL:
         ref = (f"Plan: `docs/TEST_ALL.md` (branch `cap-evolve-impr2`); ledger: `docs/{P.LEDGER.name}` on branch "
                f"`{P.BRANCH}` of the `erezh16/cap-evolve` fork.")
     elif P.LEDGER_PREFIX == "CE2":
@@ -54,6 +57,11 @@ def post(cand: str, key: str, title: str, body: str) -> str | None:
              f"Posted '{title}' on #{P.ISSUES[cand]} ({cand}): {url}", extra={"post": f"{cand}/{key}", "url": url},
              subject=f"posted {cand} {key}")
     return url
+
+
+def _post_arms() -> list[str]:
+    """TEST_ABL: the arms whose issue is open; TEST_ALL: all arms."""
+    return [a for a in P.TIMER_ORDER if a in P.ISSUES] if getattr(P, "TESTABL", False) else list(P.ARMS)
 
 
 class PostFailed(RuntimeError):
@@ -93,7 +101,7 @@ def post_all(key: str, title: str, body: str, arms=None, gap_s: float = 3.0) -> 
     entries and do not stop the remaining arms."""
     import time
     out = {}
-    for i, c in enumerate(arms or P.ARMS):
+    for i, c in enumerate(arms or _post_arms()):
         b = body(c) if callable(body) else body.replace("{CAND}", c).replace("{NAME}", P.METHOD_NAMES[c])
         try:
             out[c] = post(c, key, title.replace("{NAME}", P.METHOD_NAMES[c]), b)
@@ -102,7 +110,7 @@ def post_all(key: str, title: str, body: str, arms=None, gap_s: float = 3.0) -> 
             S.append("error", prev.get("phase", "?"), f"post failed {c}", f"Milestone post '{key}' on {c}: {e}.",
                      extra={"arm": c, "post": f"{c}/{key}"}, subject=f"post failed {c} {key}")
             out[c] = None
-        if out[c] and i < len(arms or P.ARMS) - 1:
+        if out[c] and i < len(arms or _post_arms()) - 1:
             time.sleep(gap_s)
     return out
 
@@ -142,7 +150,7 @@ def main() -> int:
         for c, u in post_all(a.key, a.title, body).items():
             print(c, u or "(already posted or failed)")
         return 0
-    for c in ((P.ARMS if P.TESTALL else P.CANDIDATES) if a.cand == "all" else [a.cand]):
+    for c in ((_post_arms() if P.TESTALL else P.CANDIDATES) if a.cand == "all" else [a.cand]):
         if a.queue:
             print(c, "queued", queue(c, a.key, a.title, body.replace("{CAND}", c)))
         else:
