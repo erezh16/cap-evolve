@@ -5927,3 +5927,11 @@ Every runner was dead (all pid files). memguard.py was restarted first (R2; MEMS
 ```json
 {"cp": 719, "prev_cp": 718, "prev_commit": "784c8b640f0c0a5e7e0b83d092e3c098a48ffc77", "utc": "2026-10-28T11:13:19Z", "kind": "resume", "phase": "P0", "done_through": "P9/post", "next": "P1/gate B1", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "b30521e51eaf193fa77864f766e3053f358dd3f6", "open_decisions": [], "memory": {"used_pct": 3.62, "peak_pct": 5.28, "state": "OK", "stale": false}}
 ```
+
+## ABL-0720 · 2026-10-28T11:13Z · P0 posted abl_nogate · posted
+
+Posted 'Cap evolve no gate hourly status' on #938 (abl_nogate): https://github.com/skillberry-ai/cap-evolve/issues/938#issuecomment-6467514690
+
+```json
+{"cp": 720, "prev_cp": 719, "prev_commit": "681d08fc2b23d287f911b37405619b2c0f14a4a1", "utc": "2026-10-28T11:13:43Z", "kind": "posted", "phase": "P0", "done_through": "P9/post", "next": "P1/gate B1", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "b30521e51eaf193fa77864f766e3053f358dd3f6", "open_decisions": [], "memory": {"used_pct": 2.66, "peak_pct": 5.28, "state": "OK", "stale": false}, "post": "abl_nogate/status_20261028T1113", "url": "https://github.com/skillberry-ai/cap-evolve/issues/938#issuecomment-6467514690"}
+```
