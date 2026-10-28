@@ -567,3 +567,11 @@ Posted 'Cap evolve traces and score only hourly status' on #946 (abl_tracescore)
 ```json
 {"cp": 69, "prev_cp": 68, "prev_commit": "be6f0f6d9659ac6fe2c9818d9a2f52460b17b1e6", "utc": "2026-10-28T20:40:04Z", "kind": "posted", "phase": "W", "done_through": "P2/T1,T2,T4-T10", "next": "P3/window1", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 24.13, "peak_pct": 45.67, "state": "OK", "stale": false}, "post": "abl_tracescore/status_20261028T204000", "url": "https://github.com/skillberry-ai/cap-evolve/issues/946#issuecomment-6480166584"}
 ```
+
+## TB-0070 · 2026-10-28T20:40Z · W waiting for the gate run (window 1) · result
+
+Window 1 waits for the gate run (plan §8.1): a gate-run window or P5-P9 chain is alive.
+
+```json
+{"cp": 70, "prev_cp": 69, "prev_commit": "f9d6c03df967bfff2958ad92ab7be2c9a989fd1c", "utc": "2026-10-28T20:40:32Z", "kind": "result", "phase": "W", "done_through": "P2/T1,T2,T4-T10", "next": "P3/window1", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 24.12, "peak_pct": 45.67, "state": "OK", "stale": false}}
+```
