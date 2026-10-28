@@ -34,7 +34,10 @@ def main() -> int:
         raise SystemExit("a13_real: P3 is not done")
     ids = E.split_ids("train") + E.split_ids("dev")
     res = {"arms": {}}
-    for arm in ("abl_ref", "abl_prompt", "abl_tools", "abl_notrace", "abl_tracescore"):
+    # ABLATIONS_GATE.md G6 P2: --arms limits the run to the named arms (the gate arms); the abl_cc daemon part then
+    # runs only if abl_cc is named
+    only = sys.argv[sys.argv.index("--arms") + 1].split(",") if "--arms" in sys.argv else None
+    for arm in only or ("abl_ref", "abl_prompt", "abl_tools", "abl_notrace", "abl_tracescore"):
         saved = {k: os.environ.get(k) for k in ("AW_ABL_TOOLS_LINT",)}
         os.environ.update(SWITCH.get(arm, {}))
         try:
@@ -49,6 +52,8 @@ def main() -> int:
         finally:
             for k, v in saved.items():
                 os.environ.pop(k, None) if v is None else os.environ.__setitem__(k, v)
+    if only and "abl_cc" not in only:
+        return _fresh_and_write(res, ids)
     # abl_cc: the daemon in real mode on a throwaway workdir
     st = P.AW_STATE / "abl_cc"
     work = st / "accept" / "a13_work"
@@ -85,6 +90,20 @@ def main() -> int:
                  and res["abl_cc_daemon"]["state"] == "done" and res["abl_cc_daemon"]["fresh"] == 0
                  and res["abl_cc_daemon"]["rollouts_used"] == 0 and res["seed_rerun_refused"])
     P.write_json(P.AW_STATE / "acceptance" / "a13_real.json", res)
+    print(json.dumps(res))
+    return 0 if res["ok"] else 1
+
+
+def _fresh_and_write(res: dict, ids: list) -> int:
+    """The gate arms' A13 (no abl_cc daemon part): cache hits for each named arm, then SeedRerunRefused."""
+    try:
+        E.evaluate("acc_a13_fresh", E.materialize("acc_a13_fresh", {}), ids[:1], phase="search", tag="a13-fresh", seed=101)
+        res["seed_rerun_refused"] = False
+    except E.SeedRerunRefused:
+        res["seed_rerun_refused"] = True
+    res["ok"] = (all(v["same_tree_is_seed"] and v["records"] == 147 and v["all_cache_hits"] and v["counted"] == 0
+                     for v in res["arms"].values()) and res["seed_rerun_refused"])
+    P.write_json(P.AW_STATE / "acceptance" / f"a13_real_{'_'.join(sorted(res['arms']))}.json", res)
     print(json.dumps(res))
     return 0 if res["ok"] else 1
 

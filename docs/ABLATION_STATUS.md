@@ -5967,3 +5967,11 @@ A-ABL-SAME (rule Q4) PASS for all seven cap-evolve arms: abl_nogate and abl_naiv
 ```json
 {"cp": 724, "prev_cp": 723, "prev_commit": "bdd394f8cdcbcd363de126019f6bc5a431bf7a97", "utc": "2026-10-28T11:24:05Z", "kind": "result", "phase": "P2", "done_through": "P9/post", "next": "P2/gate A13 A9", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "bdd394f8cdcbcd363de126019f6bc5a431bf7a97", "open_decisions": [], "memory": {"used_pct": 2.81, "peak_pct": 10.17, "state": "OK", "stale": false}}
 ```
+
+## ABL-0725 · 2026-10-28T11:26Z · P2 gate arms: A13 on the real cache · result
+
+A13 PASS for abl_nogate and abl_naivegate (abl/a13_real.py --arms, new flag; the abl_cc daemon part is skipped when abl_cc is not named): a candidate dir identical to the seed, evaluated on all 147 ids through the shared evaluator, phase search: 147 records, all cache hits of the P3 baseline, 0 counted, TGC from cache 0.4014 (= the seed baseline); a fresh seed episode raised SeedRerunRefused. A9 is running, one arm after the other. Note: a first attempt ran both A9 calls at once; it was stopped before any result because the two calls share the planting dirs. check_a9.py cleanup removed every planted file and dir (37 files, 24 dirs) and relocked root_full (mode 000); the stopped calls' results were deleted, unread.
+
+```json
+{"cp": 725, "prev_cp": 724, "prev_commit": "2c9a8c642fce78878f82d11688748febdda5a8ac", "utc": "2026-10-28T11:26:34Z", "kind": "result", "phase": "P2", "done_through": "P9/post", "next": "P2/gate A9", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "2c9a8c642fce78878f82d11688748febdda5a8ac", "open_decisions": [], "memory": {"used_pct": 3.31, "peak_pct": 10.17, "state": "OK", "stale": false}}
+```
