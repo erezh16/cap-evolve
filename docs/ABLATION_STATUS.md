@@ -6139,3 +6139,11 @@ Posted 'Cap evolve no gate iteration 2' on #938 (abl_nogate): https://github.com
 ```json
 {"cp": 745, "prev_cp": 744, "prev_commit": "bf30c9cb18601369552956c93f71af7ae5646880", "utc": "2026-10-28T13:51:52Z", "kind": "posted", "phase": "P4", "done_through": "P2/gate", "next": "P4/gate searches", "arm": "abl_nogate", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "92163dfd239c99b679a7af04cf5e1023e234b94f", "open_decisions": [], "memory": {"used_pct": 27.67, "peak_pct": 48.95, "state": "OK", "stale": false}, "post": "abl_nogate/iter_2", "url": "https://github.com/skillberry-ai/cap-evolve/issues/938#issuecomment-6470819996"}
 ```
+
+## ABL-0746 · 2026-10-28T14:11Z · P4 posted abl_nogate · posted
+
+Posted 'Cap evolve no gate hourly status' on #938 (abl_nogate): https://github.com/skillberry-ai/cap-evolve/issues/938#issuecomment-6471276967
+
+```json
+{"cp": 746, "prev_cp": 745, "prev_commit": "e725d52c25db648cfc8a0420ffe40572c707c6a3", "utc": "2026-10-28T14:11:27Z", "kind": "posted", "phase": "P4", "done_through": "P2/gate", "next": "P4/gate searches", "arm": "abl_nogate", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "92163dfd239c99b679a7af04cf5e1023e234b94f", "open_decisions": [], "memory": {"used_pct": 26.94, "peak_pct": 48.95, "state": "OK", "stale": false}, "post": "abl_nogate/status_20261028T1411", "url": "https://github.com/skillberry-ai/cap-evolve/issues/938#issuecomment-6471276967"}
+```
