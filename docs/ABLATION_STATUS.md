@@ -6509,3 +6509,11 @@ Posted 'Cap evolve naive gate iteration 6' on #939 (abl_naivegate): https://gith
 ```json
 {"cp": 790, "prev_cp": 789, "prev_commit": "e8baefb6b005210e6a25bdc7d7caabf9c77f631e", "utc": "2026-10-28T19:16:39Z", "kind": "posted", "phase": "P4", "done_through": "P2/gate", "next": "P4/gate searches", "arm": "abl_naivegate", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "573f9c6d89fa088ab07146b847b334fe655da00e", "open_decisions": [], "memory": {"used_pct": 3.85, "peak_pct": 48.95, "state": "OK", "stale": false}, "post": "abl_naivegate/iter_6", "url": "https://github.com/skillberry-ai/cap-evolve/issues/939#issuecomment-6478299443"}
 ```
+
+## ABL-0791 · 2026-10-28T19:16Z · P4 isolation scan · result
+
+Isolation scan (counts only): abl_naivegate: test-id hits 0; models ['aws/claude-sonnet-5-5'], other models []; J1 in 6 iteration(s) ok=True; K on the command line ['0'] ok=True. Literal-string counts per location are in the pushed scan file.
+
+```json
+{"cp": 791, "prev_cp": 790, "prev_commit": "207ea97879b2455c8e0b1fb1fb8701d755fece79", "utc": "2026-10-28T19:16:49Z", "kind": "result", "phase": "P4", "done_through": "P2/gate", "next": "P4/gate searches", "arm": "abl_naivegate", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {"STATE/isolation_scan.json": "3762375f6d536553e9c48c232fc36d2cf57c95fbeaa9d0754377977e00e06a2d"}, "code": "573f9c6d89fa088ab07146b847b334fe655da00e", "open_decisions": [], "memory": {"used_pct": 3.8, "peak_pct": 48.95, "state": "OK", "stale": false}}
+```

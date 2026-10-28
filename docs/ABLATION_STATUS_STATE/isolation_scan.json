@@ -1804,5 +1804,189 @@
    "k_ok": true,
    "imp_all_ok": true
   }
+ },
+ "abl_naivegate": {
+  "locations": {
+   "claude -p results": {
+    "files": 6,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "arm state (driver)": {
+    "files": 367,
+    "files_hit": 1,
+    "counts": {
+     "root_full": 3,
+     "ground_truth": 3,
+     "src/appworld/apps": 1,
+     "aw_rest": 2,
+     "aw_ce2": 2,
+     "aw_ce3": 2,
+     "aw_abl/arms/abl_ref": 1,
+     "aw_abl/arms/abl_cc": 1,
+     "aw_abl/arms/abl_prompt": 1,
+     "aw_abl/arms/abl_tools": 1,
+     "aw_abl/arms/abl_notrace": 1,
+     "aw_abl/arms/abl_tracescore": 1,
+     "aw_abl/arms/abl_nogate": 1
+    }
+   },
+   "optimizer workdirs (run dir work/)": {
+    "files": 1200,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "run dir events": {
+    "files": 1,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "frozen artifact": {
+    "files": 4,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "claude transcripts projects/egate--capevolve-run-abl-naivegate-s0-work-a9-ws": {
+    "files": 4,
+    "files_hit": 3,
+    "counts": {
+     "root_full": 37,
+     "ground_truth": 29,
+     "src/appworld/apps": 12,
+     "aw_rest": 19,
+     "aw_ce2": 13,
+     "aw_ce3": 13,
+     "aw_abl/arms/abl_ref": 12,
+     "aw_abl/arms/abl_cc": 12,
+     "aw_abl/arms/abl_prompt": 12,
+     "aw_abl/arms/abl_tools": 12,
+     "aw_abl/arms/abl_notrace": 12,
+     "aw_abl/arms/abl_tracescore": 12,
+     "aw_abl/arms/abl_nogate": 12
+    }
+   },
+   "claude transcripts projects/e--capevolve-run-abl-naivegate-s0-work-cand-0005": {
+    "files": 10,
+    "files_hit": 4,
+    "counts": {
+     "root_full": 10,
+     "aw_rest": 10
+    }
+   },
+   "claude transcripts projects/e--capevolve-run-abl-naivegate-s0-work-cand-0003": {
+    "files": 10,
+    "files_hit": 4,
+    "counts": {
+     "root_full": 38,
+     "aw_rest": 38
+    }
+   },
+   "claude transcripts projects/e--capevolve-run-abl-naivegate-s0-work-cand-0002": {
+    "files": 15,
+    "files_hit": 5,
+    "counts": {
+     "root_full": 18,
+     "aw_rest": 18
+    }
+   },
+   "claude transcripts projects/e--capevolve-run-abl-naivegate-s0-work-cand-0006": {
+    "files": 1,
+    "files_hit": 1,
+    "counts": {
+     "root_full": 4,
+     "aw_rest": 4
+    }
+   },
+   "claude transcripts projects/e--capevolve-run-abl-naivegate-s0-work-cand-0004": {
+    "files": 17,
+    "files_hit": 4,
+    "counts": {
+     "root_full": 12,
+     "aw_rest": 12
+    }
+   },
+   "claude transcripts projects/ms-abl-naivegate--capevolve-run-abl-naivegate-s0": {
+    "files": 0,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "claude transcripts projects/e--capevolve-run-abl-naivegate-s0-work-cand-0001": {
+    "files": 17,
+    "files_hit": 5,
+    "counts": {
+     "root_full": 14,
+     "aw_rest": 14
+    }
+   },
+   "claude transcripts claude-10037/egate--capevolve-run-abl-naivegate-s0-work-a9-ws": {
+    "files": 1,
+    "files_hit": 1,
+    "counts": {
+     "root_full": 8,
+     "ground_truth": 5,
+     "aw_rest": 2
+    }
+   },
+   "claude transcripts claude-10037/e--capevolve-run-abl-naivegate-s0-work-cand-0005": {
+    "files": 17,
+    "files_hit": 3,
+    "counts": {
+     "root_full": 6,
+     "aw_rest": 6
+    }
+   },
+   "claude transcripts claude-10037/e--capevolve-run-abl-naivegate-s0-work-cand-0001": {
+    "files": 35,
+    "files_hit": 4,
+    "counts": {
+     "root_full": 10,
+     "aw_rest": 10
+    }
+   },
+   "claude transcripts claude-10037/e--capevolve-run-abl-naivegate-s0-work-cand-0002": {
+    "files": 22,
+    "files_hit": 4,
+    "counts": {
+     "root_full": 10,
+     "aw_rest": 10
+    }
+   },
+   "claude transcripts claude-10037/e--capevolve-run-abl-naivegate-s0-work-cand-0003": {
+    "files": 15,
+    "files_hit": 3,
+    "counts": {
+     "root_full": 20,
+     "aw_rest": 20
+    }
+   },
+   "claude transcripts claude-10037/e--capevolve-run-abl-naivegate-s0-work-cand-0006": {
+    "files": 1,
+    "files_hit": 0,
+    "counts": {}
+   },
+   "claude transcripts claude-10037/e--capevolve-run-abl-naivegate-s0-work-cand-0004": {
+    "files": 19,
+    "files_hit": 3,
+    "counts": {
+     "root_full": 6,
+     "aw_rest": 6
+    }
+   }
+  },
+  "test_id_hits": 0,
+  "isolation_breach": false,
+  "ce2": {
+   "model_usage_keys": {
+    "aws/claude-sonnet-5-5": 6
+   },
+   "other_models": [],
+   "j1_iterations": 6,
+   "j1_all_ok": true,
+   "k_se_cmdline": [
+    "0"
+   ],
+   "k_ok": true,
+   "imp_all_ok": true
+  }
  }
 }
