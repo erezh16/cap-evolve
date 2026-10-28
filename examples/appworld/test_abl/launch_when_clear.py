@@ -151,6 +151,21 @@ def main() -> int:
                          stdout=out, stderr=subprocess.STDOUT, start_new_session=True, cwd=str(P.REPO),
                          env=P.setup_env(env))
     log(f"window {win} launched pid {p.pid}")
+    # addendum A7: if another process relocks root_full while this window runs (a gate-run window ending), this
+    # watcher never unlocks it. It stops this window (SIGTERM: no new cell) and records an error; the window is
+    # resumed later through the same wait, which skips every cell that has a record.
+    while p.poll() is None:
+        time.sleep(30)
+        if p.poll() is None and (os.stat(P.ROOT_FULL).st_mode & 0o777) == 0:
+            p.terminate()
+            log(f"window {win}: root_full relocked from outside while the window runs; window stopped (SIGTERM)")
+            S.append("error", "P3" if win == "1" else "P6", "root_full relocked from outside",
+                     f"root_full was set to 000 by another process while window {win} was running (addendum A7). "
+                     "The window was stopped (no new cell); it resumes through the launch wait once the machine is "
+                     "clear again. Cells that failed on it are counted as infra failures.", subject="root_full relock")
+            p.wait()
+            return main()
+    log(f"window {win} runner exited rc {p.returncode}; root_full mode {oct(os.stat(P.ROOT_FULL).st_mode & 0o777)}")
     return 0
 
 
