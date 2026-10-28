@@ -6397,3 +6397,11 @@ P4 abl_nogate: iteration 6: val 0.7823 (parent 0.7891); paired Δ̄ -0.0068, SE 
 ```json
 {"cp": 776, "prev_cp": 775, "prev_commit": "2f9bc364fc2efa80665d5c14d0782f9411a8583f", "utc": "2026-10-28T18:48:10Z", "kind": "result", "phase": "P4", "done_through": "P2/gate", "next": "P4/gate searches", "arm": "abl_nogate", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {"STATE/abl_nogate/progress.json": "3beecb21bde5c17d07b7cbec28b3071c4c39beacfef5efba16203f89635187eb"}, "code": "92163dfd239c99b679a7af04cf5e1023e234b94f", "open_decisions": [], "memory": {"used_pct": 25.1, "peak_pct": 48.95, "state": "OK", "stale": false}, "iteration": 6, "verdict": {"candidate": "cand_0006", "accept": true, "val": 0.782312925170068, "parent_val": 0.7891156462585034, "indecisive": false, "kind": "step", "delta": -0.0068, "se": 0.0392, "k_se": -100000.0, "bar": -3920.8218, "would_pass_k1": false}}
 ```
+
+## ABL-0777 · 2026-10-28T18:48Z · P4 posted abl_nogate · posted
+
+Posted 'Cap evolve no gate iteration 6' on #938 (abl_nogate): https://github.com/skillberry-ai/cap-evolve/issues/938#issuecomment-6477665611
+
+```json
+{"cp": 777, "prev_cp": 776, "prev_commit": "e423893a6b230cb8f87a0747aede5c4659506209", "utc": "2026-10-28T18:48:13Z", "kind": "posted", "phase": "P4", "done_through": "P2/gate", "next": "P4/gate searches", "arm": "abl_nogate", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "92163dfd239c99b679a7af04cf5e1023e234b94f", "open_decisions": [], "memory": {"used_pct": 27.71, "peak_pct": 48.95, "state": "OK", "stale": false}, "post": "abl_nogate/iter_6", "url": "https://github.com/skillberry-ai/cap-evolve/issues/938#issuecomment-6477665611"}
+```
