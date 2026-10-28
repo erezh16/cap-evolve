@@ -615,3 +615,11 @@ Window 1 waits for the gate run (plan §8.1): a gate-run window or P5-P9 chain i
 ```json
 {"cp": 75, "prev_cp": 74, "prev_commit": "60ca8ed6ad2b6c57b419a114e4708effd44615ed", "utc": "2026-10-28T21:10:54Z", "kind": "result", "phase": "W", "done_through": "P2/T1,T2,T4-T10", "next": "P3/window1", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 24.17, "peak_pct": 45.67, "state": "OK", "stale": false}}
 ```
+
+## TB-0076 · 2026-10-28T21:13Z · W posted abl_cc_best · posted
+
+Posted 'Claude code, best evaluated candidate hourly status' on #942 (abl_cc_best): https://github.com/skillberry-ai/cap-evolve/issues/942#issuecomment-6480834346
+
+```json
+{"cp": 76, "prev_cp": 75, "prev_commit": "6d97ffd79c2b78870af294f185170c7bc1504a9e", "utc": "2026-10-28T21:13:36Z", "kind": "posted", "phase": "W", "done_through": "P2/T1,T2,T4-T10", "next": "P3/window1", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 24.06, "peak_pct": 45.67, "state": "OK", "stale": false}, "post": "abl_cc_best/status_20261028T211320", "url": "https://github.com/skillberry-ai/cap-evolve/issues/942#issuecomment-6480834346"}
+```
