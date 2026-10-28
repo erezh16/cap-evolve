@@ -6573,3 +6573,11 @@ P7 gate window started (window.py gate-final, pid in AW_STATE/RUNNING.pid, watch
 ```json
 {"cp": 798, "prev_cp": 797, "prev_commit": "26dc66a6ce2303c22a7e44ed867ce57ca22354c9", "utc": "2026-10-28T19:26:25Z", "kind": "phase_start", "phase": "P7", "done_through": "P6/gate", "next": "P7/gate window cells", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {"STATE/manifest.json": "bae029a6b32d87faa4ec32de8b9efde829c983df51a613b2ef5aae87113cf23a"}, "code": "26dc66a6ce2303c22a7e44ed867ce57ca22354c9", "open_decisions": [], "memory": {"used_pct": 24.14, "peak_pct": 48.95, "state": "OK", "stale": false}}
 ```
+
+## ABL-0799 · 2026-10-28T19:26Z · P7 posted abl_nogate · posted
+
+Posted 'abl_nogate: searches done, window started' on #938 (abl_nogate): https://github.com/skillberry-ai/cap-evolve/issues/938#issuecomment-6478524254
+
+```json
+{"cp": 799, "prev_cp": 798, "prev_commit": "a98ef8bfbe225db63f824a5ad6084defc6009c7e", "utc": "2026-10-28T19:26:51Z", "kind": "posted", "phase": "P7", "done_through": "P6/gate", "next": "P7/gate window cells", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "26dc66a6ce2303c22a7e44ed867ce57ca22354c9", "open_decisions": [], "memory": {"used_pct": 24.23, "peak_pct": 48.95, "state": "OK", "stale": false}, "post": "abl_nogate/m_gate_window_start", "url": "https://github.com/skillberry-ai/cap-evolve/issues/938#issuecomment-6478524254"}
+```
