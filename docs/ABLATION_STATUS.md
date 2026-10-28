@@ -6525,3 +6525,11 @@ Posted 'Cap evolve naive gate isolation scan' on #939 (abl_naivegate): https://g
 ```json
 {"cp": 792, "prev_cp": 791, "prev_commit": "1f12037065b15d99fdd94f7b86e004d23e024ca9", "utc": "2026-10-28T19:17:18Z", "kind": "posted", "phase": "P4", "done_through": "P2/gate", "next": "P4/gate searches", "arm": "abl_naivegate", "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "573f9c6d89fa088ab07146b847b334fe655da00e", "open_decisions": [], "memory": {"used_pct": 3.59, "peak_pct": 48.95, "state": "OK", "stale": false}, "post": "abl_naivegate/m4_scanned", "url": "https://github.com/skillberry-ai/cap-evolve/issues/939#issuecomment-6478313741"}
 ```
+
+## ABL-0793 · 2026-10-28T19:17Z · P4 gate searches done · phase_done
+
+P4 done for the gate arms (abl_nogate, abl_naivegate): search, freeze, isolation scan and reset check finished. Next: G6 P5/P6 and the gate window (G7), started by hand after a check (R5); after_p4.py is NOT started (it is the first wave's P5-P9).
+
+```json
+{"cp": 793, "prev_cp": 792, "prev_commit": "c9109b090b9a3dd0d7652a11da29552a80aa8215", "utc": "2026-10-28T19:17:41Z", "kind": "phase_done", "phase": "P4", "done_through": "P4/gate searches", "next": "P5/gate dev", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "573f9c6d89fa088ab07146b847b334fe655da00e", "open_decisions": [], "memory": {"used_pct": 3.7, "peak_pct": 48.95, "state": "OK", "stale": false}}
+```
