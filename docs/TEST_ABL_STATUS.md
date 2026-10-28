@@ -863,3 +863,11 @@ Posted 'Cap evolve prompt only: window started' on #943 (abl_prompt): https://gi
 ```json
 {"cp": 106, "prev_cp": 105, "prev_commit": "0f1a21fceb487df749a820a4f8d5a04704460f9e", "utc": "2026-10-28T23:29:45Z", "kind": "posted", "phase": "P3", "done_through": "P2/T1,T2,T4-T10", "next": "P3/window1", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 44.79, "peak_pct": 45.67, "state": "OK", "stale": false}, "post": "abl_prompt/window_started", "url": "https://github.com/skillberry-ai/cap-evolve/issues/943#issuecomment-6483433693"}
 ```
+
+## TB-0107 · 2026-10-28T23:29Z · P3 posted abl_tools · posted
+
+Posted 'Cap evolve tools only: window started' on #944 (abl_tools): https://github.com/skillberry-ai/cap-evolve/issues/944#issuecomment-6483435174
+
+```json
+{"cp": 107, "prev_cp": 106, "prev_commit": "70f60bb4c40a190f580db916aecbc140181f9220", "utc": "2026-10-28T23:29:51Z", "kind": "posted", "phase": "P3", "done_through": "P2/T1,T2,T4-T10", "next": "P3/window1", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 44.82, "peak_pct": 45.67, "state": "OK", "stale": false}, "post": "abl_tools/window_started", "url": "https://github.com/skillberry-ai/cap-evolve/issues/944#issuecomment-6483435174"}
+```
