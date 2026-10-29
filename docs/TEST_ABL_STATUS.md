@@ -3265,3 +3265,11 @@ Posted 'seed agent: window 50% done' on #940 (seed): https://github.com/skillber
 ```json
 {"cp": 389, "prev_cp": 388, "prev_commit": "3ad614503462af283d7fb0a02629945bb378e721", "utc": "2026-10-29T11:03:53Z", "kind": "posted", "phase": "P3", "done_through": "final/2928", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 44.76, "peak_pct": 63.31, "state": "OK", "stale": false}, "post": "seed/window_50pct", "url": "https://github.com/skillberry-ai/cap-evolve/issues/940#issuecomment-6494936095"}
 ```
+
+## TB-0390 · 2026-10-29T11:03Z · P3 posted abl_ref · posted
+
+Posted 'Cap-evolve full (reference): window 50% done' on #941 (abl_ref): https://github.com/skillberry-ai/cap-evolve/issues/941#issuecomment-6494937873
+
+```json
+{"cp": 390, "prev_cp": 389, "prev_commit": "1d85f28bb6b99e5eed6fe3a22e264a3c868d4658", "utc": "2026-10-29T11:03:58Z", "kind": "posted", "phase": "P3", "done_through": "final/2928", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 44.77, "peak_pct": 63.31, "state": "OK", "stale": false}, "post": "abl_ref/window_50pct", "url": "https://github.com/skillberry-ai/cap-evolve/issues/941#issuecomment-6494937873"}
+```
