@@ -4871,3 +4871,11 @@ Next: final remaining cells.
 ```json
 {"cp": 578, "prev_cp": 577, "prev_commit": "82bd966e451fb257f6df01aaaedd4fc0a9870704", "utc": "2026-10-29T18:49:04Z", "kind": "result", "phase": "P3", "done_through": "final/4588", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/final/progress.json": "f0a1c4dc78c90452700230bd7b38ddfa7bac79ca2bf4f2d68b327df85db338c6"}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 45.06, "peak_pct": 92.61, "state": "OK", "stale": false}, "window": {"window": "final", "cells_total": 5880, "cells_done": 4588, "order_sha256": "b6198022056314527fd71a2c5eae463ee68b159c751679a369baff6495038772"}}
 ```
+
+## TB-0579 · 2026-10-29T18:53Z · P3 posted abl_naivegate · posted
+
+Posted 'Cap evolve naive gate hourly status' on #949 (abl_naivegate): https://github.com/skillberry-ai/cap-evolve/issues/949#issuecomment-6505597273
+
+```json
+{"cp": 579, "prev_cp": 578, "prev_commit": "ee15b36285fe517d5f076d7df9d5915ceaff1111", "utc": "2026-10-29T18:53:28Z", "kind": "posted", "phase": "P3", "done_through": "final/4588", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 45.03, "peak_pct": 92.61, "state": "OK", "stale": false}, "post": "abl_naivegate/status_20261029T185320", "url": "https://github.com/skillberry-ai/cap-evolve/issues/949#issuecomment-6505597273"}
+```
