@@ -3535,3 +3535,12 @@ Next: final remaining cells.
 ```json
 {"cp": 421, "prev_cp": 420, "prev_commit": "ce30a219b9dc2d8479817e6a46142261f8d7d05a", "utc": "2026-10-29T12:09:17Z", "kind": "result", "phase": "P3", "done_through": "final/3153", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/final/progress.json": "f915c978f64e1b250a1b0460239b361142fdd6da27e05d001c89e215bbf57e2e"}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 43.21, "peak_pct": 63.31, "state": "OK", "stale": false}, "window": {"window": "final", "cells_total": 5880, "cells_done": 3153, "order_sha256": "b6198022056314527fd71a2c5eae463ee68b159c751679a369baff6495038772"}}
 ```
+
+## TB-0422 · 2026-10-29T12:13Z · P3 posted abl_cc_best · posted
+
+Posted 'Claude code, best evaluated candidate hourly status' on #942 (abl_cc_best): https://github.com/skillberry-ai/cap-evolve/issues/942#issuecomment-6496344173
+Push note: 1 earlier checkpoint commit(s) were not pushed (and the repository exists.); this checkpoint pushes them.
+
+```json
+{"cp": 422, "prev_cp": 421, "prev_commit": "237e10c70d869fd28f6890be865209d141f1289b", "utc": "2026-10-29T12:13:22Z", "kind": "posted", "phase": "P3", "done_through": "final/3153", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 43.53, "peak_pct": 63.31, "state": "OK", "stale": false}, "post": "abl_cc_best/status_20261029T121320", "url": "https://github.com/skillberry-ai/cap-evolve/issues/942#issuecomment-6496344173"}
+```
