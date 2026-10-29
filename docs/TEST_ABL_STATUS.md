@@ -3509,3 +3509,12 @@ Next: final remaining cells.
 ```json
 {"cp": 418, "prev_cp": 417, "prev_commit": "968358ba01ea212d0c63976bdb31447c61ff3596", "utc": "2026-10-29T12:02:05Z", "kind": "result", "phase": "P3", "done_through": "final/3130", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/final/progress.json": "7f4a61b79d3f4cc28edc4dd5803c9cbbef0d57015f5667e785f926a36b987d8c"}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 44.95, "peak_pct": 63.31, "state": "OK", "stale": false}, "window": {"window": "final", "cells_total": 5880, "cells_done": 3130, "order_sha256": "b6198022056314527fd71a2c5eae463ee68b159c751679a369baff6495038772"}}
 ```
+
+## TB-0419 · 2026-10-29T12:07Z · P3 hourly post failed abl_ref · error
+
+Hourly status on abl_ref: comment on #941 (abl_ref) failed: HTTP 0, exit 1.
+Push note: 1 earlier checkpoint commit(s) were not pushed (and the repository exists.); this checkpoint pushes them.
+
+```json
+{"cp": 419, "prev_cp": 418, "prev_commit": "ac4d5eb34b0804b1d2d17669a21a42e7a254271f", "utc": "2026-10-29T12:07:17Z", "kind": "error", "phase": "P3", "done_through": "final/3130", "next": "final/cells", "arm": "abl_ref", "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 42.22, "peak_pct": 63.31, "state": "OK", "stale": false}}
+```
