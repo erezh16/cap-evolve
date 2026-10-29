@@ -4420,3 +4420,11 @@ Posted 'Claude code, best evaluated candidate: window 70% done' on #942 (abl_cc_
 ```json
 {"cp": 525, "prev_cp": 524, "prev_commit": "d6f6243cde7df457b2ace7a2300fd0ee88cb25e2", "utc": "2026-10-29T16:34:56Z", "kind": "posted", "phase": "P3", "done_through": "final/4109", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 44.88, "peak_pct": 63.31, "state": "OK", "stale": false}, "post": "abl_cc_best/window_70pct", "url": "https://github.com/skillberry-ai/cap-evolve/issues/942#issuecomment-6502528631"}
 ```
+
+## TB-0526 · 2026-10-29T16:35Z · P3 posted abl_prompt · posted
+
+Posted 'Cap evolve prompt only: window 70% done' on #943 (abl_prompt): https://github.com/skillberry-ai/cap-evolve/issues/943#issuecomment-6502530718
+
+```json
+{"cp": 526, "prev_cp": 525, "prev_commit": "83d93eb86def71d1010680d29fec4fab8a09bbc3", "utc": "2026-10-29T16:35:02Z", "kind": "posted", "phase": "P3", "done_through": "final/4109", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 44.92, "peak_pct": 63.31, "state": "OK", "stale": false}, "post": "abl_prompt/window_70pct", "url": "https://github.com/skillberry-ai/cap-evolve/issues/943#issuecomment-6502530718"}
+```
