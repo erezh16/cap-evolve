@@ -4939,3 +4939,12 @@ Posted 'Claude code, best evaluated candidate hourly status' on #942 (abl_cc_bes
 ```json
 {"cp": 586, "prev_cp": 585, "prev_commit": "0e89593b9aae22878a0444e7caadcd0efe880015", "utc": "2026-10-29T19:13:38Z", "kind": "posted", "phase": "P3", "done_through": "final/4650", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 43.83, "peak_pct": 92.61, "state": "OK", "stale": false}, "post": "abl_cc_best/status_20261029T191320", "url": "https://github.com/skillberry-ai/cap-evolve/issues/942#issuecomment-6506031469"}
 ```
+
+## TB-0587 · 2026-10-29T19:14Z · P3 final window · result
+
+final window: 18 cells since the last entry; 4668/5880 done (abl_cc_best 662, abl_notrace 671, abl_prompt 681, abl_ref 666, abl_tools 683, abl_tracescore 646, seed 659); infra still missing 3, retries 80.
+Next: final remaining cells.
+
+```json
+{"cp": 587, "prev_cp": 586, "prev_commit": "07fdce32801bb93083c27694f57ce134396f26b0", "utc": "2026-10-29T19:14:13Z", "kind": "result", "phase": "P3", "done_through": "final/4668", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/final/progress.json": "c04a82cb7e24fcca2755071c2340ad3940fd4446619d15951596fe046df07b36"}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 44.92, "peak_pct": 92.61, "state": "OK", "stale": false}, "window": {"window": "final", "cells_total": 5880, "cells_done": 4668, "order_sha256": "b6198022056314527fd71a2c5eae463ee68b159c751679a369baff6495038772"}}
+```
