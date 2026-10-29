@@ -1,7 +1,7 @@
 {
  "window": "final",
  "cells_total": 5880,
- "cells_done": 3769,
+ "cells_done": 3772,
  "per_arm": {
   "seed": {
    "done": 538,
@@ -16,7 +16,7 @@
    "context_exceeded": 0
   },
   "abl_ref": {
-   "done": 527,
+   "done": 529,
    "infra_missing": 2,
    "infra_retries": 21,
    "context_exceeded": 0
@@ -34,7 +34,7 @@
    "context_exceeded": 0
   },
   "abl_cc_best": {
-   "done": 520,
+   "done": 521,
    "infra_missing": 0,
    "infra_retries": 1,
    "context_exceeded": 0
