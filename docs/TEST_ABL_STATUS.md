@@ -2252,3 +2252,11 @@ Posted 'Cap evolve no traces: window 30% done' on #945 (abl_notrace): https://gi
 ```json
 {"cp": 270, "prev_cp": 269, "prev_commit": "284c66ea6f696498cfded3ebda3b3c87032e8ae1", "utc": "2026-10-29T05:59:51Z", "kind": "posted", "phase": "P3", "done_through": "final/1739", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 43.83, "peak_pct": 49.38, "state": "OK", "stale": false}, "post": "abl_notrace/window_30pct", "url": "https://github.com/skillberry-ai/cap-evolve/issues/945#issuecomment-6489235414"}
 ```
+
+## TB-0271 · 2026-10-29T05:59Z · P3 posted abl_tracescore · posted
+
+Posted 'Cap evolve traces and score only: window 30% done' on #946 (abl_tracescore): https://github.com/skillberry-ai/cap-evolve/issues/946#issuecomment-6489236613
+
+```json
+{"cp": 271, "prev_cp": 270, "prev_commit": "bbe9f4755c8d976d92b667b5cbc2b10f27a4073e", "utc": "2026-10-29T05:59:56Z", "kind": "posted", "phase": "P3", "done_through": "final/1739", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 44.88, "peak_pct": 49.38, "state": "OK", "stale": false}, "post": "abl_tracescore/window_30pct", "url": "https://github.com/skillberry-ai/cap-evolve/issues/946#issuecomment-6489236613"}
+```
