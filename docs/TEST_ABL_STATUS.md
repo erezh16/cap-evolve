@@ -3518,3 +3518,11 @@ Push note: 1 earlier checkpoint commit(s) were not pushed (and the repository ex
 ```json
 {"cp": 419, "prev_cp": 418, "prev_commit": "ac4d5eb34b0804b1d2d17669a21a42e7a254271f", "utc": "2026-10-29T12:07:17Z", "kind": "error", "phase": "P3", "done_through": "final/3130", "next": "final/cells", "arm": "abl_ref", "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 42.22, "peak_pct": 63.31, "state": "OK", "stale": false}}
 ```
+
+## TB-0420 · 2026-10-29T12:07Z · P3 posted abl_ref · posted
+
+Posted 'Cap-evolve full (reference) hourly status' on #941 (abl_ref): https://github.com/skillberry-ai/cap-evolve/issues/941#issuecomment-6496217643
+
+```json
+{"cp": 420, "prev_cp": 419, "prev_commit": "8c5126173e4fb7eca707806fdc39262da70cfa99", "utc": "2026-10-29T12:07:39Z", "kind": "posted", "phase": "P3", "done_through": "final/3130", "next": "final/cells", "arm": "abl_ref", "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 43.11, "peak_pct": 63.31, "state": "OK", "stale": false}, "post": "abl_ref/status_20261029T120640", "url": "https://github.com/skillberry-ai/cap-evolve/issues/941#issuecomment-6496217643"}
+```
