@@ -5140,3 +5140,12 @@ Next: final remaining cells.
 ```json
 {"cp": 610, "prev_cp": 609, "prev_commit": "bcf1b59c93f6ace8f05ccf8428882e1815bc8fbf", "utc": "2026-10-29T19:54:29Z", "kind": "result", "phase": "P3", "done_through": "final/4829", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/final/progress.json": "fa263fbe5e290bed1089b85f1a781dc228e6c426e4737f1798d9e31f8e287dc4"}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 45.01, "peak_pct": 92.61, "state": "OK", "stale": false}, "window": {"window": "final", "cells_total": 5880, "cells_done": 4829, "order_sha256": "b6198022056314527fd71a2c5eae463ee68b159c751679a369baff6495038772"}}
 ```
+
+## TB-0611 · 2026-10-29T19:59Z · P3 final window · result
+
+final window: 16 cells since the last entry; 4845/5880 done (abl_cc_best 685, abl_notrace 695, abl_prompt 701, abl_ref 692, abl_tools 710, abl_tracescore 671, seed 691); infra still missing 3, retries 83.
+Next: final remaining cells.
+
+```json
+{"cp": 611, "prev_cp": 610, "prev_commit": "9b4645ea47f0f78fda62f7730216eeedc3ce7a45", "utc": "2026-10-29T19:59:31Z", "kind": "result", "phase": "P3", "done_through": "final/4845", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/final/progress.json": "ea1f29583caa309bd8ec1ee2a93da9adc8c01b06b5d0ad064969af46f0487f24"}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 42.05, "peak_pct": 92.61, "state": "OK", "stale": false}, "window": {"window": "final", "cells_total": 5880, "cells_done": 4845, "order_sha256": "b6198022056314527fd71a2c5eae463ee68b159c751679a369baff6495038772"}}
+```
