@@ -1515,3 +1515,11 @@ Next: final remaining cells.
 ```json
 {"cp": 183, "prev_cp": 182, "prev_commit": "399c57127c3377dd58ba16c877de8eabfd2f0626", "utc": "2026-10-29T02:28:49Z", "kind": "result", "phase": "P3", "done_through": "final/914", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/final/progress.json": "55611943228060666c3ced721fb8c962fd1b84e591994ae2495af3936177bda0"}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 44.78, "peak_pct": 45.67, "state": "OK", "stale": false}, "window": {"window": "final", "cells_total": 5880, "cells_done": 914, "order_sha256": "b6198022056314527fd71a2c5eae463ee68b159c751679a369baff6495038772"}}
 ```
+
+## TB-0184 · 2026-10-29T02:33Z · P3 posted abl_notrace · posted
+
+Posted 'Cap evolve no traces hourly status' on #945 (abl_notrace): https://github.com/skillberry-ai/cap-evolve/issues/945#issuecomment-6486289699
+
+```json
+{"cp": 184, "prev_cp": 183, "prev_commit": "65cb43a864aba07886f2fe44719ed3111ad88cc3", "utc": "2026-10-29T02:33:24Z", "kind": "posted", "phase": "P3", "done_through": "final/914", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 44.79, "peak_pct": 45.67, "state": "OK", "stale": false}, "post": "abl_notrace/status_20261029T023320", "url": "https://github.com/skillberry-ai/cap-evolve/issues/945#issuecomment-6486289699"}
+```
