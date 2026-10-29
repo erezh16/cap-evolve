@@ -4216,3 +4216,12 @@ Posted 'Cap evolve no traces hourly status' on #945 (abl_notrace): https://githu
 ```json
 {"cp": 501, "prev_cp": 500, "prev_commit": "89cddb3c459cb14650b7b295c513c67a25a87ab7", "utc": "2026-10-29T15:33:31Z", "kind": "posted", "phase": "P3", "done_through": "final/3875", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 47.41, "peak_pct": 63.31, "state": "OK", "stale": false}, "post": "abl_notrace/status_20261029T153320", "url": "https://github.com/skillberry-ai/cap-evolve/issues/945#issuecomment-6501057055"}
 ```
+
+## TB-0502 · 2026-10-29T15:37Z · P3 final window · result
+
+final window: 21 cells since the last entry; 3896/5880 done (abl_cc_best 535, abl_notrace 573, abl_prompt 572, abl_ref 542, abl_tools 576, abl_tracescore 539, seed 559); infra still missing 2, retries 66.
+Next: final remaining cells.
+
+```json
+{"cp": 502, "prev_cp": 501, "prev_commit": "48827a221756e6e359c45ffb4d44f2bb22948b1d", "utc": "2026-10-29T15:37:44Z", "kind": "result", "phase": "P3", "done_through": "final/3896", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/final/progress.json": "3839c0f38d9435f96ceb117a2fed0fe8f12cc21ef3e6fcf5b683c43e7d6f3c2d"}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 47.49, "peak_pct": 63.31, "state": "OK", "stale": false}, "window": {"window": "final", "cells_total": 5880, "cells_done": 3896, "order_sha256": "b6198022056314527fd71a2c5eae463ee68b159c751679a369baff6495038772"}}
+```
