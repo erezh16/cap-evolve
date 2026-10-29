@@ -1,24 +1,24 @@
 {
  "window": "final",
  "cells_total": 5880,
- "cells_done": 389,
+ "cells_done": 413,
  "per_arm": {
   "abl_tools": {
-   "done": 53,
+   "done": 61,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
   },
   "abl_prompt": {
-   "done": 65,
+   "done": 67,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
   },
   "abl_ref": {
-   "done": 51,
+   "done": 55,
    "infra_missing": 0,
-   "infra_retries": 1,
+   "infra_retries": 2,
    "context_exceeded": 0
   },
   "abl_tracescore": {
@@ -28,19 +28,19 @@
    "context_exceeded": 0
   },
   "seed": {
-   "done": 65,
+   "done": 67,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
   },
   "abl_notrace": {
-   "done": 54,
+   "done": 57,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
   },
   "abl_cc_best": {
-   "done": 49,
+   "done": 54,
    "infra_missing": 0,
    "infra_retries": 0,
    "context_exceeded": 0
