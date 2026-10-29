@@ -1212,3 +1212,11 @@ Next: final remaining cells.
 ```json
 {"cp": 147, "prev_cp": 146, "prev_commit": "31378db1028abd4b5f9a85539af563043a3bd482", "utc": "2026-10-29T01:13:25Z", "kind": "result", "phase": "P3", "done_through": "final/508", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/final/progress.json": "be5a96365635e8f9139730650f5d2234b9a3282d3d0136c95e5eb45c54ce3938"}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 42.0, "peak_pct": 45.67, "state": "OK", "stale": false}, "window": {"window": "final", "cells_total": 5880, "cells_done": 508, "order_sha256": "b6198022056314527fd71a2c5eae463ee68b159c751679a369baff6495038772"}}
 ```
+
+## TB-0148 · 2026-10-29T01:13Z · P3 posted abl_cc_best · posted
+
+Posted 'Claude code, best evaluated candidate hourly status' on #942 (abl_cc_best): https://github.com/skillberry-ai/cap-evolve/issues/942#issuecomment-6485113977
+
+```json
+{"cp": 148, "prev_cp": 147, "prev_commit": "3fe79fad467836bf1774f19264aee032b71877df", "utc": "2026-10-29T01:13:35Z", "kind": "posted", "phase": "P3", "done_through": "final/508", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 44.87, "peak_pct": 45.67, "state": "OK", "stale": false}, "post": "abl_cc_best/status_20261029T011320", "url": "https://github.com/skillberry-ai/cap-evolve/issues/942#issuecomment-6485113977"}
+```
