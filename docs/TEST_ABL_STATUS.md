@@ -3544,3 +3544,12 @@ Push note: 1 earlier checkpoint commit(s) were not pushed (and the repository ex
 ```json
 {"cp": 422, "prev_cp": 421, "prev_commit": "237e10c70d869fd28f6890be865209d141f1289b", "utc": "2026-10-29T12:13:22Z", "kind": "posted", "phase": "P3", "done_through": "final/3153", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 43.53, "peak_pct": 63.31, "state": "OK", "stale": false}, "post": "abl_cc_best/status_20261029T121320", "url": "https://github.com/skillberry-ai/cap-evolve/issues/942#issuecomment-6496344173"}
 ```
+
+## TB-0423 · 2026-10-29T12:16Z · P3 final window · result
+
+final window: 24 cells since the last entry; 3177/5880 done (abl_cc_best 442, abl_notrace 462, abl_prompt 471, abl_ref 445, abl_tools 468, abl_tracescore 427, seed 462); infra still missing 1, retries 49.
+Next: final remaining cells.
+
+```json
+{"cp": 423, "prev_cp": 422, "prev_commit": "aae354a2d61d1ef8e99e88194d94505f3c9ce073", "utc": "2026-10-29T12:16:27Z", "kind": "result", "phase": "P3", "done_through": "final/3177", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/final/progress.json": "6ea06e278206b75c332e938354977716ed6e97562b11d80a3b081402612bd5f9"}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 44.95, "peak_pct": 63.31, "state": "OK", "stale": false}, "window": {"window": "final", "cells_total": 5880, "cells_done": 3177, "order_sha256": "b6198022056314527fd71a2c5eae463ee68b159c751679a369baff6495038772"}}
+```
