@@ -6412,3 +6412,11 @@ Next: final2 remaining cells.
 ```json
 {"cp": 761, "prev_cp": 760, "prev_commit": "d691e1eada152399c400a5ec4e4dd8175c7ab034", "utc": "2026-10-30T02:35:04Z", "kind": "result", "phase": "P6", "done_through": "final2/822", "next": "final2/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/final2/progress.json": "5cc4565416ca74638a4d028ab2c7030d6a541d5d16d608232700bd0562bdfd47"}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 7.98, "peak_pct": 92.61, "state": "OK", "stale": false}, "window": {"window": "final2", "cells_total": 1680, "cells_done": 822, "order_sha256": "9451061cba48e4d29674c4f2a5ec1d7f54d404b18dd60198d136f38c6ab1188c"}}
 ```
+
+## TB-0762 · 2026-10-30T02:35Z · P6 window stalled · error
+
+No new window cell for 15 minutes while the runner (pid 1635998) is alive (plan section 8 stall rule). Memory 8.37%, guard OK. Investigating: memory, RITS reachability, worker processes.
+
+```json
+{"cp": 762, "prev_cp": 761, "prev_commit": "c2645888ae655764aae84ca777f9b0dd264b0915", "utc": "2026-10-30T02:35:46Z", "kind": "error", "phase": "P6", "done_through": "final2/822", "next": "final2/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 8.37, "peak_pct": 92.61, "state": "OK", "stale": false}}
+```
