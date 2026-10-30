@@ -6305,3 +6305,11 @@ Analysis of window 1 done: docs/TEST_ABL_STATE/final/analysis.json and RESULTS.m
 ```json
 {"cp": 748, "prev_cp": 747, "prev_commit": "8ea4ad296331a5eb28e09fca906a5204436be106", "utc": "2026-10-30T02:18:45Z", "kind": "phase_done", "phase": "P4", "done_through": "final/5880", "next": "P5/results window 1", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/final/analysis.json": "75acc00e8150f8ac06c6401964738a2e1ddf8a8bf29b0b19c514ec16f3533e6b"}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 3.65, "peak_pct": 92.61, "state": "OK", "stale": false}}
 ```
+
+## TB-0749 · 2026-10-30T02:18Z · P4 posted seed · posted
+
+Posted 'seed agent results' on #940 (seed): https://github.com/skillberry-ai/cap-evolve/issues/940#issuecomment-6513342326
+
+```json
+{"cp": 749, "prev_cp": 748, "prev_commit": "c522853619024d7d82b78141dcf73e969c5d0ce5", "utc": "2026-10-30T02:18:48Z", "kind": "posted", "phase": "P4", "done_through": "final/5880", "next": "P5/results window 1", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 3.52, "peak_pct": 92.61, "state": "OK", "stale": false}, "post": "seed/results", "url": "https://github.com/skillberry-ai/cap-evolve/issues/940#issuecomment-6513342326"}
+```
