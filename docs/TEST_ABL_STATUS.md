@@ -6361,3 +6361,11 @@ Posted 'Cap evolve traces and score only results' on #946 (abl_tracescore): http
 ```json
 {"cp": 755, "prev_cp": 754, "prev_commit": "e952087290a51cff4e507173a92f93714ee59668", "utc": "2026-10-30T02:19:21Z", "kind": "posted", "phase": "P4", "done_through": "final/5880", "next": "P5/results window 1", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 3.61, "peak_pct": 92.61, "state": "OK", "stale": false}, "post": "abl_tracescore/results", "url": "https://github.com/skillberry-ai/cap-evolve/issues/946#issuecomment-6513349373"}
 ```
+
+## TB-0756 · 2026-10-30T02:19Z · P5 results posted window 1 · phase_done
+
+Results comments posted on the issues of window 1's arms, and a pointer on each arm's search issue.
+
+```json
+{"cp": 756, "prev_cp": 755, "prev_commit": "5b8be8c5c843ec1ec768774fe7cced7dc4158ab2", "utc": "2026-10-30T02:19:51Z", "kind": "phase_done", "phase": "P5", "done_through": "final/5880", "next": "window 2", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 3.49, "peak_pct": 92.61, "state": "OK", "stale": false}}
+```
