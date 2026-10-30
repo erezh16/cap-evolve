@@ -6265,3 +6265,11 @@ Posted 'Cap evolve tools only: window done' on #944 (abl_tools): https://github.
 ```json
 {"cp": 743, "prev_cp": 742, "prev_commit": "1d332b7eced6d383053fd298ced725034861274d", "utc": "2026-10-30T02:14:43Z", "kind": "posted", "phase": "P3", "done_through": "final/5880", "next": "P4/analysis", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 3.45, "peak_pct": 92.61, "state": "OK", "stale": false}, "post": "abl_tools/window_done", "url": "https://github.com/skillberry-ai/cap-evolve/issues/944#issuecomment-6513287771"}
 ```
+
+## TB-0744 · 2026-10-30T02:14Z · P3 posted abl_notrace · posted
+
+Posted 'Cap evolve no traces: window done' on #945 (abl_notrace): https://github.com/skillberry-ai/cap-evolve/issues/945#issuecomment-6513289321
+
+```json
+{"cp": 744, "prev_cp": 743, "prev_commit": "c6296fb22bc77fbbf2dd141a3a8707454932107c", "utc": "2026-10-30T02:14:49Z", "kind": "posted", "phase": "P3", "done_through": "final/5880", "next": "P4/analysis", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 3.45, "peak_pct": 92.61, "state": "OK", "stale": false}, "post": "abl_notrace/window_done", "url": "https://github.com/skillberry-ai/cap-evolve/issues/945#issuecomment-6513289321"}
+```
