@@ -447,5 +447,13 @@
   "trials": 5,
   "trial_seeds": "7000 + trial",
   "infra_retries": 3
+ },
+ "final_order2": {
+  "seed": 2026102802,
+  "sha256": "9451061cba48e4d29674c4f2a5ec1d7f54d404b18dd60198d136f38c6ab1188c",
+  "cells": 1680,
+  "trials": 5,
+  "trial_seeds": "7000 + trial",
+  "infra_retries": 3
  }
 }

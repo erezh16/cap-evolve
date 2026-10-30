@@ -6369,3 +6369,11 @@ Results comments posted on the issues of window 1's arms, and a pointer on each 
 ```json
 {"cp": 756, "prev_cp": 755, "prev_commit": "5b8be8c5c843ec1ec768774fe7cced7dc4158ab2", "utc": "2026-10-30T02:19:51Z", "kind": "phase_done", "phase": "P5", "done_through": "final/5880", "next": "window 2", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 3.49, "peak_pct": 92.61, "state": "OK", "stale": false}}
 ```
+
+## TB-0757 · 2026-10-30T02:19Z · P2 T3 order (window 2) · result
+
+T3 (window 2 order): seed 2026102802, cells 1680, per arm [840], sha256 9451061cba48e4d2…, reproducible True, each cell once True, root_full relocked True: PASS.
+
+```json
+{"cp": 757, "prev_cp": 756, "prev_commit": "1eeb46288042d040db0e72837f01346f7227ad66", "utc": "2026-10-30T02:19:54Z", "kind": "result", "phase": "P2", "done_through": "final/5880", "next": "window 2", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 3.49, "peak_pct": 92.61, "state": "OK", "stale": false}, "t3": {"seed": 2026102802, "trials": 5, "arms": 2, "tasks": 168, "cells": 1680, "sha256": "9451061cba48e4d29674c4f2a5ec1d7f54d404b18dd60198d136f38c6ab1188c", "reproducible": true, "each_cell_once": true, "idx_ok": true, "per_arm": [840], "root_full_relocked": true, "matches_manifest": true, "ok": true}}
+```
