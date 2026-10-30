@@ -6420,3 +6420,12 @@ No new window cell for 15 minutes while the runner (pid 1635998) is alive (plan 
 ```json
 {"cp": 762, "prev_cp": 761, "prev_commit": "c2645888ae655764aae84ca777f9b0dd264b0915", "utc": "2026-10-30T02:35:46Z", "kind": "error", "phase": "P6", "done_through": "final2/822", "next": "final2/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 8.37, "peak_pct": 92.61, "state": "OK", "stale": false}}
 ```
+
+## TB-0763 · 2026-10-30T02:40Z · P6 window final2 · result
+
+window final2: 278 cells since the last entry; 1100/1680 done (abl_naivegate 560, abl_nogate 540); infra still missing 1100, retries 0.
+Next: final2 remaining cells.
+
+```json
+{"cp": 763, "prev_cp": 762, "prev_commit": "38cc1b889935e8c56be219e14a9574a760b1eaa2", "utc": "2026-10-30T02:40:07Z", "kind": "result", "phase": "P6", "done_through": "final2/1100", "next": "final2/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/final2/progress.json": "aec71efcf1abf5930a619f47f91b6df4824fbcd15210f3c954a1d5b42b00c32b"}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 8.32, "peak_pct": 92.61, "state": "OK", "stale": false}, "window": {"window": "final2", "cells_total": 1680, "cells_done": 1100, "order_sha256": "9451061cba48e4d29674c4f2a5ec1d7f54d404b18dd60198d136f38c6ab1188c"}}
+```
