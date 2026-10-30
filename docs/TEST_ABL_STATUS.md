@@ -6144,3 +6144,11 @@ No new window cell for 15 minutes while the runner (pid 1150725) is alive (plan 
 ```json
 {"cp": 728, "prev_cp": 727, "prev_commit": "32f60b78a499d7707b313a8a7e59651c56b3e1db", "utc": "2026-10-30T01:14:38Z", "kind": "error", "phase": "P3", "done_through": "final/5879", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 5.43, "peak_pct": 92.61, "state": "OK", "stale": false}}
 ```
+
+## TB-0729 · 2026-10-30T01:20Z · P3 posted abl_prompt · posted
+
+Posted 'Cap evolve prompt only hourly status' on #943 (abl_prompt): https://github.com/skillberry-ai/cap-evolve/issues/943#issuecomment-6512559434
+
+```json
+{"cp": 729, "prev_cp": 728, "prev_commit": "d9054e3281ca732f153584c8084d1e2c8bc2910f", "utc": "2026-10-30T01:20:04Z", "kind": "posted", "phase": "P3", "done_through": "final/5879", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 5.45, "peak_pct": 92.61, "state": "OK", "stale": false}, "post": "abl_prompt/status_20261030T012000", "url": "https://github.com/skillberry-ai/cap-evolve/issues/943#issuecomment-6512559434"}
+```
