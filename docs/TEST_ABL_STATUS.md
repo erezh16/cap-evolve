@@ -6136,3 +6136,11 @@ Posted 'Claude code, best evaluated candidate hourly status' on #942 (abl_cc_bes
 ```json
 {"cp": 727, "prev_cp": 726, "prev_commit": "005ea88dab40da7ca380117f9b827d84b9fc2772", "utc": "2026-10-30T01:13:20Z", "kind": "posted", "phase": "P3", "done_through": "final/5879", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 5.43, "peak_pct": 92.61, "state": "OK", "stale": false}, "post": "abl_cc_best/status_20261030T011320", "url": "https://github.com/skillberry-ai/cap-evolve/issues/942#issuecomment-6512467164"}
 ```
+
+## TB-0728 · 2026-10-30T01:14Z · P3 window stalled · error
+
+No new window cell for 15 minutes while the runner (pid 1150725) is alive (plan section 8 stall rule). Memory 5.43%, guard OK. Investigating: memory, RITS reachability, worker processes.
+
+```json
+{"cp": 728, "prev_cp": 727, "prev_commit": "32f60b78a499d7707b313a8a7e59651c56b3e1db", "utc": "2026-10-30T01:14:38Z", "kind": "error", "phase": "P3", "done_through": "final/5879", "next": "final/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 5.43, "peak_pct": 92.61, "state": "OK", "stale": false}}
+```
