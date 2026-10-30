@@ -6536,3 +6536,12 @@ Posted 'Cap evolve no gate hourly status' on #948 (abl_nogate): https://github.c
 ```json
 {"cp": 775, "prev_cp": 774, "prev_commit": "2e8c210510799b4154a1b76b9aa356f5f9347615", "utc": "2026-10-30T04:46:51Z", "kind": "posted", "phase": "P6", "done_through": "final2/1680", "next": "P7/analysis window 2", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 3.54, "peak_pct": 92.61, "state": "OK", "stale": false}, "post": "abl_nogate/status_20261030T044640", "url": "https://github.com/skillberry-ai/cap-evolve/issues/948#issuecomment-6515208670"}
 ```
+
+## TB-0776 · 2026-10-30T04:53Z · P6 posted abl_naivegate · posted
+
+Posted 'Cap evolve naive gate hourly status' on #949 (abl_naivegate): https://github.com/skillberry-ai/cap-evolve/issues/949#issuecomment-6515287915
+Push note: 1 earlier checkpoint commit(s) were not pushed (and the repository exists.); this checkpoint pushes them.
+
+```json
+{"cp": 776, "prev_cp": 775, "prev_commit": "20bd18fccbe94af5b5ecfac0cec66580a6ba3874", "utc": "2026-10-30T04:53:23Z", "kind": "posted", "phase": "P6", "done_through": "final2/1680", "next": "P7/analysis window 2", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 3.54, "peak_pct": 92.61, "state": "OK", "stale": false}, "post": "abl_naivegate/status_20261030T045320", "url": "https://github.com/skillberry-ai/cap-evolve/issues/949#issuecomment-6515287915"}
+```
