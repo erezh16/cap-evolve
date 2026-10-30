@@ -1,7 +1,7 @@
 {
  "window": "final",
  "cells_total": 5880,
- "cells_done": 5879,
+ "cells_done": 5880,
  "per_arm": {
   "seed": {
    "done": 840,
@@ -16,9 +16,9 @@
    "context_exceeded": 0
   },
   "abl_ref": {
-   "done": 839,
+   "done": 840,
    "infra_missing": 5,
-   "infra_retries": 41,
+   "infra_retries": 44,
    "context_exceeded": 0
   },
   "abl_prompt": {
