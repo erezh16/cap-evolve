@@ -6385,3 +6385,12 @@ Window 2 starts: the gate run's P7 window has completed. 1,680 cells, 24 global 
 ```json
 {"cp": 758, "prev_cp": 757, "prev_commit": "e8be79296f5c9784157fb87a5f895abe263c3171", "utc": "2026-10-30T02:19:57Z", "kind": "phase_start", "phase": "P6", "done_through": "final/5880", "next": "P6/window2", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 3.59, "peak_pct": 92.61, "state": "OK", "stale": false}}
 ```
+
+## TB-0759 · 2026-10-30T02:24Z · P6 window final2 · result
+
+window final2: 264 cells since the last entry; 264/1680 done (abl_naivegate 133, abl_nogate 131); infra still missing 264, retries 0.
+Next: final2 remaining cells.
+
+```json
+{"cp": 759, "prev_cp": 758, "prev_commit": "fc35a67f8de86e518e6d76ea25d5a217faa12e27", "utc": "2026-10-30T02:24:58Z", "kind": "result", "phase": "P6", "done_through": "final2/264", "next": "final2/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/final2/progress.json": "afba4d42a4dcc1e61362c275149ae80d510db4294ee630edcca4bdcefde53076"}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 8.47, "peak_pct": 92.61, "state": "OK", "stale": false}, "window": {"window": "final2", "cells_total": 1680, "cells_done": 264, "order_sha256": "9451061cba48e4d29674c4f2a5ec1d7f54d404b18dd60198d136f38c6ab1188c"}}
+```

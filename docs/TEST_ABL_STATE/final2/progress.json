@@ -1,0 +1,20 @@
+{
+ "window": "final2",
+ "cells_total": 1680,
+ "cells_done": 264,
+ "per_arm": {
+  "abl_naivegate": {
+   "done": 133,
+   "infra_missing": 133,
+   "infra_retries": 0,
+   "context_exceeded": 0
+  },
+  "abl_nogate": {
+   "done": 131,
+   "infra_missing": 131,
+   "infra_retries": 0,
+   "context_exceeded": 0
+  }
+ },
+ "order_sha256": "9451061cba48e4d29674c4f2a5ec1d7f54d404b18dd60198d136f38c6ab1188c"
+}
