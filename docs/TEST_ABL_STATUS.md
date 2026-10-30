@@ -6545,3 +6545,13 @@ Push note: 1 earlier checkpoint commit(s) were not pushed (and the repository ex
 ```json
 {"cp": 776, "prev_cp": 775, "prev_commit": "20bd18fccbe94af5b5ecfac0cec66580a6ba3874", "utc": "2026-10-30T04:53:23Z", "kind": "posted", "phase": "P6", "done_through": "final2/1680", "next": "P7/analysis window 2", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 3.54, "peak_pct": 92.61, "state": "OK", "stale": false}, "post": "abl_naivegate/status_20261030T045320", "url": "https://github.com/skillberry-ai/cap-evolve/issues/949#issuecomment-6515287915"}
 ```
+
+## TB-0777 · 2026-10-30T05:19Z · P6 heartbeat · heartbeat
+
+No checkpoint for 25 min. Phase P6, last result: final2/1680.
+Runner: no runner. Last log line: `2026-10-30T05:18:00Z | memguard | - | sample 3.54% (1159 MB) state OK peak 92.6%`.
+Next: P7/analysis window 2.
+
+```json
+{"cp": 777, "prev_cp": 776, "prev_commit": "f0d23a2929157f202310aea80c49b14bc965df06", "utc": "2026-10-30T05:19:00Z", "kind": "heartbeat", "phase": "P6", "done_through": "final2/1680", "next": "P7/analysis window 2", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "383d1584ee1492369a9c1d77e6bc0c4dc08509d1", "open_decisions": [], "memory": {"used_pct": 3.54, "peak_pct": 92.61, "state": "OK", "stale": false}, "runner": "none"}
+```
