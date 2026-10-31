@@ -8456,3 +8456,13 @@ Next: none (gate arms complete).
 ```json
 {"cp": 994, "prev_cp": 993, "prev_commit": "37d3dd79ea10ffe5738c49e21d794e481ef632af", "utc": "2026-10-31T07:01:12Z", "kind": "heartbeat", "phase": "P9", "done_through": "P9/gate", "next": "none (gate arms complete)", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "5d3d1088e11f68cda9b4ed9df70432092c3b5309", "open_decisions": [], "memory": {"used_pct": 3.57, "peak_pct": 92.61, "state": "OK", "stale": false}, "runner": "stalled"}
 ```
+
+## ABL-0995 · 2026-10-31T07:26Z · P9 heartbeat · heartbeat
+
+No checkpoint for 25 min. Phase P9, last result: P9/gate.
+Runner: stalled (pid 882156 not running). Last log line: `2026-10-31T07:26:01Z | memguard | - | sample 3.57% (1170 MB) state OK peak 92.6%`.
+Next: none (gate arms complete).
+
+```json
+{"cp": 995, "prev_cp": 994, "prev_commit": "e0757a69cad065474094106091631bd7a3641dd5", "utc": "2026-10-31T07:26:14Z", "kind": "heartbeat", "phase": "P9", "done_through": "P9/gate", "next": "none (gate arms complete)", "arm": null, "counts": {"seed_baseline": 147}, "spend": {}, "artifacts": {}, "code": "5d3d1088e11f68cda9b4ed9df70432092c3b5309", "open_decisions": [], "memory": {"used_pct": 3.57, "peak_pct": 92.61, "state": "OK", "stale": false}, "runner": "stalled"}
+```
