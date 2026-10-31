@@ -7517,3 +7517,13 @@ Posted 'Cap evolve naive gate hourly status' on #949 (abl_naivegate): https://gi
 ```json
 {"cp": 884, "prev_cp": 883, "prev_commit": "55ec86ea43146eb0d7935decab5c2612ea4a8304", "utc": "2026-10-31T07:53:36Z", "kind": "posted", "phase": "P6", "done_through": "final2/1680", "next": "P7/analysis window 2", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "ec6975d7047df7f98b842c3c87ecc7276e136204", "open_decisions": [], "memory": {"used_pct": 3.57, "peak_pct": 92.61, "state": "OK", "stale": false}, "post": "abl_naivegate/status_20261031T075320", "url": "https://github.com/skillberry-ai/cap-evolve/issues/949#issuecomment-6540839533"}
 ```
+
+## TB-0885 · 2026-10-31T08:18Z · P6 heartbeat · heartbeat
+
+No checkpoint for 25 min. Phase P6, last result: final2/1680.
+Runner: no runner. Last log line: `2026-10-31T08:18:25Z | memguard | - | sample 3.57% (1168 MB) state OK peak 92.6%`.
+Next: P7/analysis window 2.
+
+```json
+{"cp": 885, "prev_cp": 884, "prev_commit": "cfa541cdd9e20a88d955f703b2fcce467c66e21b", "utc": "2026-10-31T08:18:57Z", "kind": "heartbeat", "phase": "P6", "done_through": "final2/1680", "next": "P7/analysis window 2", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "ec6975d7047df7f98b842c3c87ecc7276e136204", "open_decisions": [], "memory": {"used_pct": 3.57, "peak_pct": 92.61, "state": "OK", "stale": false}, "runner": "none"}
+```
