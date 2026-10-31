@@ -7509,3 +7509,11 @@ Posted 'Cap evolve no gate hourly status' on #948 (abl_nogate): https://github.c
 ```json
 {"cp": 883, "prev_cp": 882, "prev_commit": "88a56ebc78a3f8b9f66cbce5d570709f216121df", "utc": "2026-10-31T07:46:53Z", "kind": "posted", "phase": "P6", "done_through": "final2/1680", "next": "P7/analysis window 2", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "ec6975d7047df7f98b842c3c87ecc7276e136204", "open_decisions": [], "memory": {"used_pct": 3.64, "peak_pct": 92.61, "state": "OK", "stale": false}, "post": "abl_nogate/status_20261031T074640", "url": "https://github.com/skillberry-ai/cap-evolve/issues/948#issuecomment-6540780658"}
 ```
+
+## TB-0884 · 2026-10-31T07:53Z · P6 posted abl_naivegate · posted
+
+Posted 'Cap evolve naive gate hourly status' on #949 (abl_naivegate): https://github.com/skillberry-ai/cap-evolve/issues/949#issuecomment-6540839533
+
+```json
+{"cp": 884, "prev_cp": 883, "prev_commit": "55ec86ea43146eb0d7935decab5c2612ea4a8304", "utc": "2026-10-31T07:53:36Z", "kind": "posted", "phase": "P6", "done_through": "final2/1680", "next": "P7/analysis window 2", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "ec6975d7047df7f98b842c3c87ecc7276e136204", "open_decisions": [], "memory": {"used_pct": 3.57, "peak_pct": 92.61, "state": "OK", "stale": false}, "post": "abl_naivegate/status_20261031T075320", "url": "https://github.com/skillberry-ai/cap-evolve/issues/949#issuecomment-6540839533"}
+```
