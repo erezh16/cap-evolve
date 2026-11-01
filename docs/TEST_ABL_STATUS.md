@@ -8926,3 +8926,12 @@ Posted 'Cap evolve no gate hourly status' on #948 (abl_nogate): https://github.c
 ```json
 {"cp": 1042, "prev_cp": 1041, "prev_commit": "2e94ea478ad2bca96e101f73d20c7b6f88959557", "utc": "2026-11-01T17:46:58Z", "kind": "posted", "phase": "P6", "done_through": "final2/362", "next": "final2/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "93b1c1d546f1d53e231f06e399e189f25e61d2fa", "open_decisions": [], "memory": {"used_pct": 44.86, "peak_pct": 47.65, "state": "OK", "stale": false}, "post": "abl_nogate/status_20261101T174640", "url": "https://github.com/skillberry-ai/cap-evolve/issues/948#issuecomment-6561589367"}
 ```
+
+## TB-1043 · 2026-11-01T17:48Z · P6 window final2 · result
+
+window final2: 27 cells since the last entry; 389/1680 done (abl_naivegate 194, abl_nogate 195); infra still missing 0, retries 1.
+Next: final2 remaining cells.
+
+```json
+{"cp": 1043, "prev_cp": 1042, "prev_commit": "010570299876526a84101536141f1bbdda446ba0", "utc": "2026-11-01T17:48:07Z", "kind": "result", "phase": "P6", "done_through": "final2/389", "next": "final2/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/final2/progress.json": "332ce72b588be4bc6de057afe73a8c479f922053359e2402f69c8ba2dfc54945"}, "code": "93b1c1d546f1d53e231f06e399e189f25e61d2fa", "open_decisions": [], "memory": {"used_pct": 44.91, "peak_pct": 47.65, "state": "OK", "stale": false}, "window": {"window": "final2", "cells_total": 1680, "cells_done": 389, "order_sha256": "9451061cba48e4d29674c4f2a5ec1d7f54d404b18dd60198d136f38c6ab1188c"}}
+```
