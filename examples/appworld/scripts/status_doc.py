@@ -389,7 +389,11 @@ def watch_once_ta(autopost) -> None:
             P.progress_log("ledger", "heartbeat", f"late post on {a} failed: {e}"[:300])
     st["late"] = late
     # §8 stall rule: the runner is alive but no new cell record for 15 minutes (file times only; nothing is opened)
-    rec = P.AW_STATE / "final" / "records"
+    # A21: the stall rule watches the window whose records changed last (final/ or final2/); RUNNING.pid carries the
+    # same tag for both windows, so the directory mtime decides
+    dirs = [P.AW_STATE / d / "records" for d in ("final", "final2") if (P.AW_STATE / d / "records").exists()]
+    win_dir = max(dirs, key=lambda d: d.stat().st_mtime).parent.name if dirs else "final"
+    rec = P.AW_STATE / win_dir / "records"
     if pid_alive(runner_pid()) and rec.exists():
         newest = max((p.stat().st_mtime for p in rec.glob("*.json")), default=None)
         started = (P.AW_STATE / "RUNNING.pid").stat().st_mtime
