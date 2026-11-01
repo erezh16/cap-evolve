@@ -8695,3 +8695,11 @@ Posted 'Cap evolve naive gate: correction on window 2' on #949 (abl_naivegate): 
 ```json
 {"cp": 1015, "prev_cp": 1014, "prev_commit": "af02097b0968a7f45c5c871d04db2823574977b9", "utc": "2026-11-01T16:27:19Z", "kind": "posted", "phase": "P6", "done_through": "final2/1680", "next": "P7/analysis window 2", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "b33ebcecbedbb722220d766bae24bddd0de9bc76", "open_decisions": [], "memory": {"used_pct": 6.04, "peak_pct": 92.61, "state": "OK", "stale": false}, "post": "abl_naivegate/w2_correction", "url": "https://github.com/skillberry-ai/cap-evolve/issues/949#issuecomment-6560663938"}
 ```
+
+## TB-1016 · 2026-11-01T16:27Z · P2 T3 order (window 2) · result
+
+T3 (window 2 order): seed 2026102802, cells 1680, per arm [840], sha256 9451061cba48e4d2…, reproducible True, each cell once True, root_full relocked True: PASS.
+
+```json
+{"cp": 1016, "prev_cp": 1015, "prev_commit": "6848c33e078220db4281cdde8283c091fec9e675", "utc": "2026-11-01T16:27:38Z", "kind": "result", "phase": "P2", "done_through": "final2/1680", "next": "P7/analysis window 2", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "b33ebcecbedbb722220d766bae24bddd0de9bc76", "open_decisions": [], "memory": {"used_pct": 5.93, "peak_pct": 92.61, "state": "OK", "stale": false}, "t3": {"seed": 2026102802, "trials": 5, "arms": 2, "tasks": 168, "cells": 1680, "sha256": "9451061cba48e4d29674c4f2a5ec1d7f54d404b18dd60198d136f38c6ab1188c", "reproducible": true, "each_cell_once": true, "idx_ok": true, "per_arm": [840], "root_full_relocked": true, "matches_manifest": true, "ok": true}}
+```
