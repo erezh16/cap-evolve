@@ -9108,3 +9108,12 @@ Next: final2 remaining cells.
 ```json
 {"cp": 1063, "prev_cp": 1062, "prev_commit": "237249a07009d111accf28bfffc01ea52790b37b", "utc": "2026-11-01T18:53:34Z", "kind": "result", "phase": "P6", "done_through": "final2/721", "next": "final2/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/final2/progress.json": "074d7d880ee0a72b491113f7c3cd8b9627e59641bbc9c256f07271fa6b748e9e"}, "code": "93b1c1d546f1d53e231f06e399e189f25e61d2fa", "open_decisions": [], "memory": {"used_pct": 42.2, "peak_pct": 47.65, "state": "OK", "stale": false}, "window": {"window": "final2", "cells_total": 1680, "cells_done": 721, "order_sha256": "9451061cba48e4d29674c4f2a5ec1d7f54d404b18dd60198d136f38c6ab1188c"}}
 ```
+
+## TB-1064 · 2026-11-01T18:58Z · P6 window final2 · result
+
+window final2: 23 cells since the last entry; 744/1680 done (abl_naivegate 374, abl_nogate 370); infra still missing 0, retries 3.
+Next: final2 remaining cells.
+
+```json
+{"cp": 1064, "prev_cp": 1063, "prev_commit": "22921bd2a4e5aebf64cb6960a04a23a6a0a03a8d", "utc": "2026-11-01T18:58:35Z", "kind": "result", "phase": "P6", "done_through": "final2/744", "next": "final2/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/final2/progress.json": "54ba7d733ef2db38ee340fc4d91d0ec61bdc714b44d40303f8e60686429c9852"}, "code": "93b1c1d546f1d53e231f06e399e189f25e61d2fa", "open_decisions": [], "memory": {"used_pct": 42.32, "peak_pct": 47.65, "state": "OK", "stale": false}, "window": {"window": "final2", "cells_total": 1680, "cells_done": 744, "order_sha256": "9451061cba48e4d29674c4f2a5ec1d7f54d404b18dd60198d136f38c6ab1188c"}}
+```
