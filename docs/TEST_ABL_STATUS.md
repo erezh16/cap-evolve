@@ -8679,3 +8679,11 @@ Next: P7/analysis window 2.
 ```json
 {"cp": 1013, "prev_cp": 1012, "prev_commit": "3a552825500e34e3ff40d2a22aef8fff4aae54e1", "utc": "2026-11-01T16:19:12Z", "kind": "heartbeat", "phase": "P6", "done_through": "final2/1680", "next": "P7/analysis window 2", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "ec6975d7047df7f98b842c3c87ecc7276e136204", "open_decisions": [], "memory": {"used_pct": 7.08, "peak_pct": 92.61, "state": "OK", "stale": false}, "runner": "none"}
 ```
+
+## TB-1014 · 2026-11-01T16:27Z · P6 posted abl_nogate · posted
+
+Posted 'Cap evolve no gate: correction on window 2' on #948 (abl_nogate): https://github.com/skillberry-ai/cap-evolve/issues/948#issuecomment-6560662830
+
+```json
+{"cp": 1014, "prev_cp": 1013, "prev_commit": "b33ebcecbedbb722220d766bae24bddd0de9bc76", "utc": "2026-11-01T16:27:13Z", "kind": "posted", "phase": "P6", "done_through": "final2/1680", "next": "P7/analysis window 2", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "b33ebcecbedbb722220d766bae24bddd0de9bc76", "open_decisions": [], "memory": {"used_pct": 6.09, "peak_pct": 92.61, "state": "OK", "stale": false}, "post": "abl_nogate/w2_correction", "url": "https://github.com/skillberry-ai/cap-evolve/issues/948#issuecomment-6560662830"}
+```
