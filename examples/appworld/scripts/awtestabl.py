@@ -18,6 +18,7 @@ except (FileNotFoundError, ValueError):
     _M = {}
 
 ARMS = ("seed", "abl_ref", "abl_cc_best", "abl_prompt", "abl_tools", "abl_notrace", "abl_tracescore")
+ARMS_W1 = ARMS
 GATE_ARMS = ("abl_nogate", "abl_naivegate")
 # Plan §3.2: empty until both gate champions are frozen, reset, scanned and the gate run's P7 is done.
 WINDOW2_ARMS: tuple = tuple(_M.get("window2_arms") or ())

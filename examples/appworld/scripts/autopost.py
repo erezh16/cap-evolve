@@ -219,25 +219,38 @@ def ta_slot(arm: str, now: float) -> float:
     return (now // 3600) * 3600 + ta_offsets()[arm]
 
 
-def ta_window() -> dict:
-    """Window counts only: per-arm counts from final/progress.json (written by the runner); the ETA from how many
+def _win_of(arm: str | None) -> tuple[str, int, int]:
+    """TEST_ABL: (state dir, cells, arms) of the window an arm is scored in (A20); TEST_ALL: the one window."""
+    if getattr(P, "TESTABL", False) and arm in getattr(P, "GATE_ARMS", ()):
+        n = len(P.WINDOW2_ARMS) or 2
+        return "final2", 168 * n * P.FINAL_TRIALS, n
+    if getattr(P, "TESTABL", False):
+        n = len(getattr(P, "ARMS_W1", P.ARMS))
+        return "final", 168 * n * P.FINAL_TRIALS, n
+    return "final", P.FINAL_CELLS, len(P.ARMS)
+
+
+def ta_window(arm: str | None = None) -> dict:
+    """Window counts only: per-arm counts from <window>/progress.json (written by the runner); the ETA from how many
     record files appeared in the last hour (file times only; no record is opened)."""
-    pr = P.read_json(P.PUSHED / "final" / "progress.json", {}) or {}
-    rec_dir = P.AW_STATE / "final" / "records"
+    d, cells, _ = _win_of(arm)
+    pr = P.read_json(P.PUSHED / d / "progress.json", {}) or {}
+    rec_dir = P.AW_STATE / d / "records"
     times = [p.stat().st_mtime for p in rec_dir.glob("*.json")] if rec_dir.exists() else []
     done = len(times)
     recent = sum(1 for t in times if t > time.time() - 3600)
-    left = P.FINAL_CELLS - done
+    left = cells - done
     eta = None
     if recent and left and times and time.time() - min(times) >= 3600:
         eta = round(left / recent, 1)
-    return {"per_arm": pr.get("per_arm") or {}, "done": done, "left": left, "eta_h": eta, "rate_per_h": recent}
+    return {"per_arm": pr.get("per_arm") or {}, "done": done, "left": left, "eta_h": eta, "rate_per_h": recent,
+            "cells": cells}
 
 
 def ta_status_lines(arm: str) -> list[str]:
     last = S.last_entry()
     mem = P.memstate()
-    w = ta_window()
+    w = ta_window(arm)
     a = w["per_arm"].get(arm) or {}
     per = 168 * P.FINAL_TRIALS
     eta = (f"about {w['eta_h']} h left at the last hour's rate ({w['rate_per_h']} cells/h)" if w["eta_h"] is not None
@@ -246,7 +259,7 @@ def ta_status_lines(arm: str) -> list[str]:
     return [f"- stage: {TA_STAGES.get(last.get('phase'), last.get('phase'))} (next: `{last.get('next')}`)",
             f"- this arm: {a.get('done', 0)}/{per} cells done; infra retries {a.get('infra_retries', 0)}, "
             f"missing cells {a.get('infra_missing', 0)}",
-            f"- whole window: {w['done']}/{P.FINAL_CELLS} cells done; ETA {eta}",
+            f"- whole window: {w['done']}/{w['cells']} cells done; ETA {eta}",
             f"- memory: {mem.get('used_pct')}% of {mem.get('limit_MB')} MB used (peak {mem.get('peak_pct')}%), guard "
             f"{mem.get('state')}" + (" (guard sample stale)" if mem.get("stale") else ""),
             f"- last ledger entry: {P.LEDGER_ID}-{int(last.get('cp', 0)):04d} ({last.get('utc')}), phase {last.get('phase')}",
@@ -270,22 +283,33 @@ def ta_due(now: float) -> list[str]:
     return sorted(due, key=lambda a: ta_slot(a, now))
 
 
-def ta_milestones() -> list[tuple[str, str, object]]:
-    """Window milestones (§12.2), derived from counts: started, every 10%, done. Each is keyed, posted once per arm."""
-    w = ta_window()
+def ta_milestones() -> list[tuple[str, str, object, list[str]]]:
+    """Window milestones (§12.2), derived from each window's own counts: started, every 10%, done. Each is keyed and
+    posted once per arm, only on the arms scored in that window (A20). Window 2's keys carry a `w2_` prefix, so the
+    window-1 milestones wrongly posted on the gate issues (A20) do not block the real ones."""
     out = []
-    if w["done"] > 0:
-        out.append(("window_started", "{NAME}: window started", lambda a: (
-            f"**{P.METHOD_NAMES[a]} (`{a}`): the {P.EVAL_NAME} window has started** ({len(P.WINDOW_ARMS)} arms × 168 "
-            f"test_normal tasks × {P.FINAL_TRIALS} trials = {P.FINAL_CELLS:,} cells, one shuffled order).\n\n" + "\n".join(ta_status_lines(a)))))
-    for q in range(1, 10):
-        if w["done"] >= q * P.FINAL_CELLS // 10:
-            out.append((f"window_{10 * q}pct", f"{{NAME}}: window {10 * q}% done", lambda a, q=q: (
-                f"**{P.METHOD_NAMES[a]} (`{a}`): window {10 * q}% done.**\n\n" + "\n".join(ta_status_lines(a)))))
-    if w["done"] >= P.FINAL_CELLS:
-        out.append(("window_done", "{NAME}: window done", lambda a: (
-            f"**{P.METHOD_NAMES[a]} (`{a}`): the window is complete.** The analysis (P4) runs next; results follow "
-            "in one comment per issue.\n\n" + "\n".join(ta_status_lines(a)))))
+    groups = [("", [a for a in ta_arms() if a not in getattr(P, "GATE_ARMS", ())])]
+    if getattr(P, "TESTABL", False):
+        groups.append(("w2_", [a for a in ta_arms() if a in P.GATE_ARMS]))
+    for pre, arms in groups:
+        if not arms:
+            continue
+        w = ta_window(arms[0])
+        n = _win_of(arms[0])[2]
+        if w["done"] > 0:
+            out.append((f"{pre}window_started", "{NAME}: window started", lambda a, w=w, n=n: (
+                f"**{P.METHOD_NAMES[a]} (`{a}`): the {P.EVAL_NAME} window has started** ({n} arms × 168 test_normal "
+                f"tasks × {P.FINAL_TRIALS} trials = {w['cells']:,} cells, one shuffled order).\n\n"
+                + "\n".join(ta_status_lines(a))), arms))
+        for q in range(1, 10):
+            if w["done"] >= q * w["cells"] // 10:
+                out.append((f"{pre}window_{10 * q}pct", f"{{NAME}}: window {10 * q}% done", lambda a, q=q: (
+                    f"**{P.METHOD_NAMES[a]} (`{a}`): window {10 * q}% done.**\n\n" + "\n".join(ta_status_lines(a))),
+                    arms))
+        if w["done"] >= w["cells"]:
+            out.append((f"{pre}window_done", "{NAME}: window done", lambda a: (
+                f"**{P.METHOD_NAMES[a]} (`{a}`): the window is complete.** The analysis runs next; results follow "
+                "in one comment per issue.\n\n" + "\n".join(ta_status_lines(a))), arms))
     return out
 
 
@@ -295,8 +319,8 @@ def ta_once(now: float | None = None, dry: bool = False) -> list[str]:
     now = now or time.time()
     out = []
     posts = P.read_json(post.POSTS, {}) or {}
-    for key, title, body in ta_milestones():
-        arms = [a for a in ta_arms() if f"{a}/{key}" not in posts]
+    for key, title, body, group in ta_milestones():
+        arms = [a for a in group if f"{a}/{key}" not in posts]
         if arms and not dry:
             res = post.post_all(key, title, body, arms=arms)
             for a, u in res.items():

@@ -83,6 +83,14 @@ def window(win: str, cells: int) -> int:
                                  start_new_session=True, cwd=str(P.REPO), env=env)
                 time.sleep(30)
             time.sleep(60)
+        prog = P.read_json(P.PUSHED / d / "progress.json", {}) or {}
+        miss = sum(int(v.get("infra_missing") or 0) for v in (prog.get("per_arm") or {}).values())
+        if miss > 0.10 * cells:
+            S.append("error", "P3" if win == "1" else "P6", f"window {win} invalid",
+                     f"Window {win} ended with {miss}/{cells} cells infra-missing (> 10%): it is not analysed and "
+                     "nothing is posted. Investigate, set the records aside, and relaunch (addendum A20).",
+                     subject=f"window {win} invalid")
+            return 4
         mark(f"w{win}_window")
     if f"w{win}_analysis" not in done():
         rc = run([str(P.VENV_PY), "-I", str(EX / "test_all" / "analyze_all.py")], dict(env, AW_RELOCK="1"),

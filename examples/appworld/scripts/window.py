@@ -49,7 +49,7 @@ if getattr(P, "TESTABL", False):        # TEST_ABL §8.2: window 1 or 2 (AW_WIND
     WINDOW_ARMS = tuple(P.WINDOW_ARMS)
 FINAL_DIR = getattr(P, "FINAL_DIR_NAME", "final")
 ORDER_KEY = getattr(P, "ORDER_KEY", "final_order")
-ART = P.AW_STATE / FINAL_DIR / "artifacts"
+ART = P.AW_STATE / "final" / "artifacts"      # one verified store for both windows (fetch_artifacts.ART; A20)
 KEEP = ("success", "num_tests", "pass_count", "n_steps", "prompt_tokens", "completion_tokens", "max_prompt_tokens",
         "termination", "collateral_damage", "complete_task_called", "api_errors", "trimmed_steps", "fs_probe",
         "episode_seconds", "attempt")
