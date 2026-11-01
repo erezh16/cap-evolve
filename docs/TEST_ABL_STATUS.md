@@ -9370,3 +9370,11 @@ Next: final2 remaining cells.
 ```json
 {"cp": 1093, "prev_cp": 1092, "prev_commit": "e4e882965e54f7526d05526a57314364cae65a2f", "utc": "2026-11-01T20:44:17Z", "kind": "result", "phase": "P6", "done_through": "final2/1308", "next": "final2/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/final2/progress.json": "1d0dc731174d4bbf43697bf10946a0c50acdb85577f976f25c4975569be2a891"}, "code": "93b1c1d546f1d53e231f06e399e189f25e61d2fa", "open_decisions": [], "memory": {"used_pct": 44.86, "peak_pct": 91.44, "state": "OK", "stale": false}, "window": {"window": "final2", "cells_total": 1680, "cells_done": 1308, "order_sha256": "9451061cba48e4d29674c4f2a5ec1d7f54d404b18dd60198d136f38c6ab1188c"}}
 ```
+
+## TB-1094 · 2026-11-01T20:46Z · P6 posted abl_nogate · posted
+
+Posted 'Cap evolve no gate hourly status' on #948 (abl_nogate): https://github.com/skillberry-ai/cap-evolve/issues/948#issuecomment-6563662277
+
+```json
+{"cp": 1094, "prev_cp": 1093, "prev_commit": "c2259073b50f74aacc902816f17b01b7aac0d259", "utc": "2026-11-01T20:46:46Z", "kind": "posted", "phase": "P6", "done_through": "final2/1308", "next": "final2/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "93b1c1d546f1d53e231f06e399e189f25e61d2fa", "open_decisions": [], "memory": {"used_pct": 45.08, "peak_pct": 91.44, "state": "OK", "stale": false}, "post": "abl_nogate/status_20261101T204640", "url": "https://github.com/skillberry-ai/cap-evolve/issues/948#issuecomment-6563662277"}
+```
