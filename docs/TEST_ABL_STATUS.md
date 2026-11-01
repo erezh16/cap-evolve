@@ -8391,3 +8391,13 @@ Next: P7/analysis window 2.
 ```json
 {"cp": 981, "prev_cp": 980, "prev_commit": "ff989b92855c1e13866b36400460e882348f2502", "utc": "2026-11-01T08:18:39Z", "kind": "heartbeat", "phase": "P6", "done_through": "final2/1680", "next": "P7/analysis window 2", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "ec6975d7047df7f98b842c3c87ecc7276e136204", "open_decisions": [], "memory": {"used_pct": 3.59, "peak_pct": 92.61, "state": "OK", "stale": false}, "runner": "none"}
 ```
+
+## TB-0982 · 2026-11-01T08:43Z · P6 heartbeat · heartbeat
+
+No checkpoint for 25 min. Phase P6, last result: final2/1680.
+Runner: no runner. Last log line: `2026-11-01T08:43:32Z | memguard | - | sample 3.58% (1174 MB) state OK peak 92.6%`.
+Next: P7/analysis window 2.
+
+```json
+{"cp": 982, "prev_cp": 981, "prev_commit": "2bbfbfe4dadafa619e432d1d8df9b813717a4e26", "utc": "2026-11-01T08:43:41Z", "kind": "heartbeat", "phase": "P6", "done_through": "final2/1680", "next": "P7/analysis window 2", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "ec6975d7047df7f98b842c3c87ecc7276e136204", "open_decisions": [], "memory": {"used_pct": 3.58, "peak_pct": 92.61, "state": "OK", "stale": false}, "runner": "none"}
+```
