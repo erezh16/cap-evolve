@@ -8711,3 +8711,11 @@ Window 2 starts: the gate run's P7 window has completed. 1,680 cells, 24 global 
 ```json
 {"cp": 1017, "prev_cp": 1016, "prev_commit": "97482ab7b2964c1e3c3763c6eb0815ca07e28858", "utc": "2026-11-01T16:27:40Z", "kind": "phase_start", "phase": "P6", "done_through": "final2/1680", "next": "P6/window2", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "b33ebcecbedbb722220d766bae24bddd0de9bc76", "open_decisions": [], "memory": {"used_pct": 5.93, "peak_pct": 92.61, "state": "OK", "stale": false}}
 ```
+
+## TB-1018 · 2026-11-01T16:29Z · P6 posted abl_nogate · posted
+
+Posted 'Cap evolve no gate: window started' on #948 (abl_nogate): https://github.com/skillberry-ai/cap-evolve/issues/948#issuecomment-6560684739
+
+```json
+{"cp": 1018, "prev_cp": 1017, "prev_commit": "76542a8bd4ef429832847f5b5ab236b56fd4bb5c", "utc": "2026-11-01T16:29:04Z", "kind": "posted", "phase": "P6", "done_through": "final2/1680", "next": "P6/window2", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "b33ebcecbedbb722220d766bae24bddd0de9bc76", "open_decisions": [], "memory": {"used_pct": 47.13, "peak_pct": 92.61, "state": "OK", "stale": false}, "post": "abl_nogate/w2_window_started", "url": "https://github.com/skillberry-ai/cap-evolve/issues/948#issuecomment-6560684739"}
+```
