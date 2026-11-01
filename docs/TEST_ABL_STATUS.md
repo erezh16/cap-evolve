@@ -8703,3 +8703,11 @@ T3 (window 2 order): seed 2026102802, cells 1680, per arm [840], sha256 9451061c
 ```json
 {"cp": 1016, "prev_cp": 1015, "prev_commit": "6848c33e078220db4281cdde8283c091fec9e675", "utc": "2026-11-01T16:27:38Z", "kind": "result", "phase": "P2", "done_through": "final2/1680", "next": "P7/analysis window 2", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "b33ebcecbedbb722220d766bae24bddd0de9bc76", "open_decisions": [], "memory": {"used_pct": 5.93, "peak_pct": 92.61, "state": "OK", "stale": false}, "t3": {"seed": 2026102802, "trials": 5, "arms": 2, "tasks": 168, "cells": 1680, "sha256": "9451061cba48e4d29674c4f2a5ec1d7f54d404b18dd60198d136f38c6ab1188c", "reproducible": true, "each_cell_once": true, "idx_ok": true, "per_arm": [840], "root_full_relocked": true, "matches_manifest": true, "ok": true}}
 ```
+
+## TB-1017 · 2026-11-01T16:27Z · P6 window 2 start · phase_start
+
+Window 2 starts: the gate run's P7 window has completed. 1,680 cells, 24 global slots in this run's own pool, trial seeds 7000 + k; root_full is unlocked by window.py for the window and relocked at its end.
+
+```json
+{"cp": 1017, "prev_cp": 1016, "prev_commit": "97482ab7b2964c1e3c3763c6eb0815ca07e28858", "utc": "2026-11-01T16:27:40Z", "kind": "phase_start", "phase": "P6", "done_through": "final2/1680", "next": "P6/window2", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "b33ebcecbedbb722220d766bae24bddd0de9bc76", "open_decisions": [], "memory": {"used_pct": 5.93, "peak_pct": 92.61, "state": "OK", "stale": false}}
+```
