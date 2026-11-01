@@ -8762,3 +8762,11 @@ No new window cell for 15 minutes while the runner (pid 2177165) is alive (plan 
 ```json
 {"cp": 1023, "prev_cp": 1022, "prev_commit": "2c30dad03ff0705f44f3baf0660da28156bc0b4f", "utc": "2026-11-01T16:43:24Z", "kind": "error", "phase": "P6", "done_through": "final2/69", "next": "final2/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "b33ebcecbedbb722220d766bae24bddd0de9bc76", "open_decisions": [], "memory": {"used_pct": 47.4, "peak_pct": 92.61, "state": "OK", "stale": false}}
 ```
+
+## TB-1024 · 2026-11-01T16:46Z · P6 posted abl_nogate · posted
+
+Posted 'Cap evolve no gate hourly status' on #948 (abl_nogate): https://github.com/skillberry-ai/cap-evolve/issues/948#issuecomment-6560886548
+
+```json
+{"cp": 1024, "prev_cp": 1023, "prev_commit": "93b1c1d546f1d53e231f06e399e189f25e61d2fa", "utc": "2026-11-01T16:46:48Z", "kind": "posted", "phase": "P6", "done_through": "final2/69", "next": "final2/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "93b1c1d546f1d53e231f06e399e189f25e61d2fa", "open_decisions": [], "memory": {"used_pct": 46.35, "peak_pct": 47.62, "state": "OK", "stale": false}, "post": "abl_nogate/status_20261101T164640", "url": "https://github.com/skillberry-ai/cap-evolve/issues/948#issuecomment-6560886548"}
+```
