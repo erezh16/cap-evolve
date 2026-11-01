@@ -9482,3 +9482,11 @@ Posted 'Cap evolve no gate: window 90% done' on #948 (abl_nogate): https://githu
 ```json
 {"cp": 1106, "prev_cp": 1105, "prev_commit": "e896b9295cdb2371ec6120b64eb4a1eef9d76134", "utc": "2026-11-01T21:25:28Z", "kind": "posted", "phase": "P6", "done_through": "final2/1510", "next": "final2/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "93b1c1d546f1d53e231f06e399e189f25e61d2fa", "open_decisions": [], "memory": {"used_pct": 42.45, "peak_pct": 91.44, "state": "OK", "stale": false}, "post": "abl_nogate/w2_window_90pct", "url": "https://github.com/skillberry-ai/cap-evolve/issues/948#issuecomment-6564105004"}
 ```
+
+## TB-1107 · 2026-11-01T21:25Z · P6 posted abl_naivegate · posted
+
+Posted 'Cap evolve naive gate: window 90% done' on #949 (abl_naivegate): https://github.com/skillberry-ai/cap-evolve/issues/949#issuecomment-6564106073
+
+```json
+{"cp": 1107, "prev_cp": 1106, "prev_commit": "34d0a8c363a5cc6b59e35b08df5f7b1bfb8b7e32", "utc": "2026-11-01T21:25:33Z", "kind": "posted", "phase": "P6", "done_through": "final2/1510", "next": "final2/cells", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "93b1c1d546f1d53e231f06e399e189f25e61d2fa", "open_decisions": [], "memory": {"used_pct": 44.96, "peak_pct": 91.44, "state": "OK", "stale": false}, "post": "abl_naivegate/w2_window_90pct", "url": "https://github.com/skillberry-ai/cap-evolve/issues/949#issuecomment-6564106073"}
+```
