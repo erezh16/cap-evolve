@@ -9578,3 +9578,11 @@ Next: P7/analysis window 2.
 ```json
 {"cp": 1117, "prev_cp": 1116, "prev_commit": "e6a46032dcb4a522dfd80e615487f7334e355624", "utc": "2026-11-01T22:06:55Z", "kind": "phase_done", "phase": "P6", "done_through": "final2/1680", "next": "P7/analysis window 2", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/final2/progress.json": "8298be9702814f46411f33975d91eaa887d610cd29b3799452a7241ef9ae1a64"}, "code": "93b1c1d546f1d53e231f06e399e189f25e61d2fa", "open_decisions": [], "memory": {"used_pct": 4.85, "peak_pct": 91.44, "state": "OK", "stale": false}, "window": {"window": "final2", "cells_total": 1680, "cells_done": 1680, "order_sha256": "9451061cba48e4d29674c4f2a5ec1d7f54d404b18dd60198d136f38c6ab1188c"}}
 ```
+
+## TB-1118 · 2026-11-01T22:07Z · P6 posted abl_nogate · posted
+
+Posted 'Cap evolve no gate: window done' on #948 (abl_nogate): https://github.com/skillberry-ai/cap-evolve/issues/948#issuecomment-6564578376
+
+```json
+{"cp": 1118, "prev_cp": 1117, "prev_commit": "af6454909b4fe4a7a4da7ec905854efb19da30e0", "utc": "2026-11-01T22:07:09Z", "kind": "posted", "phase": "P6", "done_through": "final2/1680", "next": "P7/analysis window 2", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "93b1c1d546f1d53e231f06e399e189f25e61d2fa", "open_decisions": [], "memory": {"used_pct": 3.56, "peak_pct": 91.44, "state": "OK", "stale": false}, "post": "abl_nogate/w2_window_done", "url": "https://github.com/skillberry-ai/cap-evolve/issues/948#issuecomment-6564578376"}
+```
