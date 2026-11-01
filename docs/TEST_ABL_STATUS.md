@@ -8185,3 +8185,11 @@ Next: P7/analysis window 2.
 ```json
 {"cp": 958, "prev_cp": 957, "prev_commit": "9bce835d19ba945a6d8d6c093b47a9b623bd17ae", "utc": "2026-11-01T02:44:15Z", "kind": "heartbeat", "phase": "P6", "done_through": "final2/1680", "next": "P7/analysis window 2", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "ec6975d7047df7f98b842c3c87ecc7276e136204", "open_decisions": [], "memory": {"used_pct": 3.58, "peak_pct": 92.61, "state": "OK", "stale": false}, "runner": "none"}
 ```
+
+## TB-0959 · 2026-11-01T02:46Z · P6 posted abl_nogate · posted
+
+Posted 'Cap evolve no gate hourly status' on #948 (abl_nogate): https://github.com/skillberry-ai/cap-evolve/issues/948#issuecomment-6552499437
+
+```json
+{"cp": 959, "prev_cp": 958, "prev_commit": "0760f8351220ef21cd3c9d12a4e741f74a1854a8", "utc": "2026-11-01T02:46:51Z", "kind": "posted", "phase": "P6", "done_through": "final2/1680", "next": "P7/analysis window 2", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "ec6975d7047df7f98b842c3c87ecc7276e136204", "open_decisions": [], "memory": {"used_pct": 3.58, "peak_pct": 92.61, "state": "OK", "stale": false}, "post": "abl_nogate/status_20261101T024640", "url": "https://github.com/skillberry-ai/cap-evolve/issues/948#issuecomment-6552499437"}
+```
