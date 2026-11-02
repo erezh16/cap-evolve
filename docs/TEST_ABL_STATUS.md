@@ -9944,3 +9944,11 @@ Posted 'Cap evolve naive gate hourly status' on #949 (abl_naivegate): https://gi
 ```json
 {"cp": 1158, "prev_cp": 1157, "prev_commit": "443ddfaf0c4299ec2f8e83e811d10cc50198f58e", "utc": "2026-11-02T07:53:33Z", "kind": "posted", "phase": "P6", "done_through": "final2/1680", "next": "P7/analysis window 2", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "93b1c1d546f1d53e231f06e399e189f25e61d2fa", "open_decisions": [], "memory": {"used_pct": 3.53, "peak_pct": 91.44, "state": "OK", "stale": false}, "post": "abl_naivegate/status_20261102T075320", "url": "https://github.com/skillberry-ai/cap-evolve/issues/949#issuecomment-6571970285"}
 ```
+
+## TB-1159 · 2026-11-02T08:11Z · P7 analysis window 2 · phase_done
+
+Analysis of window 2 done: docs/TEST_ABL_STATE/final2/analysis.json and RESULTS.md, and one RESULTS.md draft per arm (aggregates only).
+
+```json
+{"cp": 1159, "prev_cp": 1158, "prev_commit": "dd768395761a12ec826bb1873f6ddd22165e3869", "utc": "2026-11-02T08:11:55Z", "kind": "phase_done", "phase": "P7", "done_through": "final2/1680", "next": "P5/results window 2", "arm": null, "counts": {}, "spend": {}, "artifacts": {"STATE/final2/analysis.json": "af31191b95f76b9ee178b21c35b804e83bd90aeccf7ca42068ad533dc90cb269"}, "code": "dd768395761a12ec826bb1873f6ddd22165e3869", "open_decisions": [], "memory": {"used_pct": 6.25, "peak_pct": 91.44, "state": "OK", "stale": false}}
+```
