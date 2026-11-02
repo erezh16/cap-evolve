@@ -9984,3 +9984,11 @@ Posted 'Cap evolve no gate: cross-window comparison with abl_ref and the seed' o
 ```json
 {"cp": 1163, "prev_cp": 1162, "prev_commit": "4dc960f72584fb96a0ce9655527b816722921d84", "utc": "2026-11-02T08:15:27Z", "kind": "posted", "phase": "P7", "done_through": "final2/1680", "next": "done", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "dd768395761a12ec826bb1873f6ddd22165e3869", "open_decisions": [], "memory": {"used_pct": 6.17, "peak_pct": 91.44, "state": "OK", "stale": false}, "post": "abl_nogate/results_cross", "url": "https://github.com/skillberry-ai/cap-evolve/issues/948#issuecomment-6572338265"}
 ```
+
+## TB-1164 · 2026-11-02T08:15Z · P7 posted abl_naivegate · posted
+
+Posted 'Cap evolve naive gate: cross-window comparison with abl_ref and the seed' on #949 (abl_naivegate): https://github.com/skillberry-ai/cap-evolve/issues/949#issuecomment-6572340038
+
+```json
+{"cp": 1164, "prev_cp": 1163, "prev_commit": "8ceb1b26fbbada8442939ccef7b4f888a7aa4d1b", "utc": "2026-11-02T08:15:33Z", "kind": "posted", "phase": "P7", "done_through": "final2/1680", "next": "done", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "8ceb1b26fbbada8442939ccef7b4f888a7aa4d1b", "open_decisions": [], "memory": {"used_pct": 6.24, "peak_pct": 91.44, "state": "OK", "stale": false}, "post": "abl_naivegate/results_cross", "url": "https://github.com/skillberry-ai/cap-evolve/issues/949#issuecomment-6572340038"}
+```
