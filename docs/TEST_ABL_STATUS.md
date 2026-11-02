@@ -9976,3 +9976,11 @@ Results comments posted on the issues of window 2's arms, and a pointer on each 
 ```json
 {"cp": 1162, "prev_cp": 1161, "prev_commit": "a1e493f130f14e474b4dda61b767523f3eb7eb78", "utc": "2026-11-02T08:12:15Z", "kind": "phase_done", "phase": "P7", "done_through": "final2/1680", "next": "done", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "dd768395761a12ec826bb1873f6ddd22165e3869", "open_decisions": [], "memory": {"used_pct": 6.33, "peak_pct": 91.44, "state": "OK", "stale": false}}
 ```
+
+## TB-1163 · 2026-11-02T08:15Z · P7 posted abl_nogate · posted
+
+Posted 'Cap evolve no gate: cross-window comparison with abl_ref and the seed' on #948 (abl_nogate): https://github.com/skillberry-ai/cap-evolve/issues/948#issuecomment-6572338265
+
+```json
+{"cp": 1163, "prev_cp": 1162, "prev_commit": "4dc960f72584fb96a0ce9655527b816722921d84", "utc": "2026-11-02T08:15:27Z", "kind": "posted", "phase": "P7", "done_through": "final2/1680", "next": "done", "arm": null, "counts": {}, "spend": {}, "artifacts": {}, "code": "dd768395761a12ec826bb1873f6ddd22165e3869", "open_decisions": [], "memory": {"used_pct": 6.17, "peak_pct": 91.44, "state": "OK", "stale": false}, "post": "abl_nogate/results_cross", "url": "https://github.com/skillberry-ai/cap-evolve/issues/948#issuecomment-6572338265"}
+```
