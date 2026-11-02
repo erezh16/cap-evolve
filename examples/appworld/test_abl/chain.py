@@ -45,10 +45,21 @@ def mark(step: str) -> None:
 
 
 def pid_alive(name: str) -> bool:
+    """Alive and not a zombie (A23: a launcher this chain started, then exited, stays <defunct> until reaped)."""
     try:
-        return S.pid_alive(int((P.AW_STATE / name).read_text().split()[0]))
+        pid = int((P.AW_STATE / name).read_text().split()[0])
     except (FileNotFoundError, ValueError, IndexError):
         return False
+    try:
+        os.waitpid(pid, os.WNOHANG)                  # reap our own exited child, if it is one
+    except ChildProcessError:
+        pass
+    try:
+        if Path(f"/proc/{pid}/stat").read_text().split(")")[-1].split()[0] == "Z":
+            return False
+    except (FileNotFoundError, IndexError):
+        return False
+    return S.pid_alive(pid)
 
 
 def n_records(d: str) -> int:
