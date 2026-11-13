@@ -6,7 +6,7 @@ tau2-bench airline, run through tau2's own runner with a user simulator.
 
 | Key | Value |
 |---|---|
-| Bench names | `tau2`; settings: none, or the config variant (`agentopt`, `agentopt-v2`…`v4`, `smoke`, `itest`) |
+| Bench names | `tau2`; settings: none, or the config variant (`agentopt`, `agentopt-v2`…`v4`, `smoke`, `itest`), or the CI tier (`smoke`, `full`); CI tiers are also `<setting>` values for CI runs, written without `_` or `-` (§2.3 slot rule: `full_verified` → `fullverified`) |
 | Code | `benchmarks/tau2/template/` (`adapter.py`, `capevolve.yaml`); `benchmarks/tau2/examples/airline/` (`adapters/adapter.py`, `adapters/gateway.py`, `capevolve*.yaml`, `*split*.json`, `setup.sh`, `run.sh`, `smoke.sh`, `itest.sh`, `export_run_artifacts.sh`, `PROMPT.md`, `DEMO.md`); CI `ci/benchmarks/tau2/{smoke,full,integration}/` |
 | Reward | tau2 `reward_info.reward`, binary per trial in airline (DB × COMMUNICATE). Success: reward = 1. Group metric: pass^k (`final.json` `pass_k`). Secondary: `db_match`. Published metric: `runmeta.reward_metric` |
 | Infra rule | published: drop. Detectors: `metadata.termination_reason` in `INFRASTRUCTURE_ERROR`, `UNEXPECTED_ERROR`, `TIMEOUT`; user-simulator `###STOP###` leak; `metadata.error_kind` |

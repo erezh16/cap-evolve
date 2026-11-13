@@ -6,7 +6,7 @@ tau2 airline on pinned vanilla tau2, with a direct arm and a blackbox delivery a
 
 | Key | Value |
 |---|---|
-| Bench names | `tau2_sierra`, `tau2_sierra_blackbox`, `tau2_blackbox`, run-dir names `sierra`, `direct`, `blackbox`; settings: `direct`, `blackbox` |
+| Bench names | `tau2_sierra`, `tau2_sierra_blackbox`, `tau2_blackbox`, run-dir names `sierra`, `direct`, `blackbox`; settings: `direct`, `blackbox`, or the CI tier (`smoke`); CI tiers are also `<setting>` values for CI runs, written without `_` or `-` (§2.3 slot rule: `full_verified` → `fullverified`) |
 | Code | `benchmarks/tau2/examples/sierra_airline/{direct,blackbox}/` (`adapters/adapter.py`, `direct/adapters/tau2_tailoring.py`, `capevolve.yaml`, split files, `optimizer/INSTRUCTIONS.md`, `PROJECT.md`, `setup.sh`, `run.sh`), `benchmarks/tau2/examples/sierra_airline/PROMPT.md`; `skills/interventions/llm-proxies/blackbox/` (`scripts/blackbox_env.py`); CI `ci/benchmarks/tau2_sierra/{smoke,full,integration}/`, `ci/benchmarks/tau2_sierra_blackbox/`; `tau2_blackbox` at `8860d243a^:ci/benchmarks/tau2_blackbox` |
 | Reward | as `tau2-airline`; direct adds `raw.db_match` |
 | Infra rule | as `tau2-airline` |

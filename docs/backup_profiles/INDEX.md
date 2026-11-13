@@ -11,7 +11,7 @@ the table below. It gives the profile file. Values shared by every benchmark are
 
 **Status.** Every profile listed here is a draft. Each was written from the benchmark's adapter,
 configs, CI tiers and committed results (for retired benchmarks, from their code at the last commit
-that had it, and from their records). None has yet been checked against a backup of a real run.
+that had it, and from their records). The first backup (20261113T135349Z, git and GitHub-API sources only) checked the profiles marked below.
 The first backup of each benchmark does that check (`docs/BACKUP_BOX.md` §4), and records the result
 in the Status column. Paths are relative to the cap-evolve repo unless stated otherwise.
 
@@ -39,17 +39,17 @@ A bench name not in this table gets a new profile (`docs/BACKUP_BOX.md` §4) bef
 | Profile | Status |
 |---|---|
 | [`appworld.md`](appworld.md) | draft, not yet checked against a real run |
-| [`tau2-airline.md`](tau2-airline.md) | draft, not yet checked against a real run |
-| [`tau2-sierra-airline.md`](tau2-sierra-airline.md) | draft, not yet checked against a real run |
-| [`skillsbench.md`](skillsbench.md) | draft, not yet checked against a real run |
-| [`spreadsheetbench.md`](spreadsheetbench.md) | draft, not yet checked against a real run |
+| [`tau2-airline.md`](tau2-airline.md) | checked against `2026-10-13-tau2-airline-capevolve-15102fc-smoke-s0-gptoss120b-claudeopus48` (backup 20261113T135349Z), corrected |
+| [`tau2-sierra-airline.md`](tau2-sierra-airline.md) | checked against `2026-10-13-tau2-sierra-airline-capevolve-none-blackbox-s0-claudehaiku45-claudeopus55` (backup 20261113T135349Z), corrected |
+| [`skillsbench.md`](skillsbench.md) | checked against `2026-07-30-skillsbench-capevolve-762994d-smoke-s0-claudesonnet45-claudesonnet46` (backup 20261113T135349Z), corrected |
+| [`spreadsheetbench.md`](spreadsheetbench.md) | checked against `2026-08-02-spreadsheetbench-capevolve-221df0b-full-s0-gpt5.5-claudeopus48` (backup 20261113T135349Z), corrected |
 | [`swebench-lite.md`](swebench-lite.md) | draft, not yet checked against a real run |
-| [`swebench-verified-harbor.md`](swebench-verified-harbor.md) | draft, not yet checked against a real run |
-| [`rfe-creator.md`](rfe-creator.md) | draft, not yet checked against a real run |
-| [`parsec-rca.md`](parsec-rca.md) | draft, not yet checked against a real run |
-| [`toy.md`](toy.md) | draft, not yet checked against a real run |
-| [`generic.md`](generic.md) | draft, not yet checked against a real run |
-| [`tau2-custom-airline.md`](tau2-custom-airline.md) | draft, not yet checked against a real run |
-| [`epic-creator.md`](epic-creator.md) | draft, not yet checked against a real run |
-| [`epic-decompose.md`](epic-decompose.md) | draft, not yet checked against a real run |
-| [`rh-swebench.md`](rh-swebench.md) | draft, not yet checked against a real run |
+| [`swebench-verified-harbor.md`](swebench-verified-harbor.md) | checked against `2026-10-08-swebench-verified-harbor-capevolve-none-full-s0.r200-none-none` (backup 20261113T135349Z), corrected |
+| [`rfe-creator.md`](rfe-creator.md) | checked against `2026-09-15-rfe-creator-capevolve-none-local-s0-none-none` (backup 20261113T135349Z), corrected |
+| [`parsec-rca.md`](parsec-rca.md) | checked against `2026-10-16-parsec-rca-capevolve-none-v6g2e1-s0-claudesonnet46-claudeopus5` (backup 20261113T135349Z) |
+| [`toy.md`](toy.md) | checked against `2026-06-16-toy-capevolve-none-none-s0-none-none` (backup 20261113T135349Z) |
+| [`generic.md`](generic.md) | checked against `2026-08-22-generic-capevolve-none-agentopt-s0-gptoss120b-none` (backup 20261113T135349Z), corrected |
+| [`tau2-custom-airline.md`](tau2-custom-airline.md) | checked against `2026-09-29-tau2-custom-airline-capevolve-none-full-s0-none-none` (backup 20261113T135349Z), corrected |
+| [`epic-creator.md`](epic-creator.md) | checked against `2026-10-28-epic-creator-capevolve-none-full-s0-none-none` (backup 20261113T135349Z), corrected |
+| [`epic-decompose.md`](epic-decompose.md) | checked against `2026-10-13-epic-decompose-capevolve-none-full-s0-none-none` (backup 20261113T135349Z), corrected |
+| [`rh-swebench.md`](rh-swebench.md) | checked against `2026-08-05-rh-swebench-capevolve-none-full-s0-none-none` (backup 20261113T135349Z), corrected |

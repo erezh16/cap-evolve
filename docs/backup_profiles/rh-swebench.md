@@ -6,7 +6,7 @@ cap-evolve optimizing a Claude Code coding agent on 119 SWE-bench Verified tasks
 
 | Key | Value |
 |---|---|
-| Bench names | `rh-swebench`, `rh-swebench-v4`; runs `manual__full-rh-swebench-v4`, `manual__full-rh-swebench-v4__full-rh-swebench`; settings: `v4` |
+| Bench names | `rh-swebench`, `rh-swebench-v4`; runs `manual__full-rh-swebench-v4`, `manual__full-rh-swebench-v4__full-rh-swebench`; settings: `v4`, or the record tier (`full`); CI tiers are also `<setting>` values for CI runs, written without `_` or `-` (§2.3 slot rule: `full_verified` → `fullverified`) |
 | Code | as `swebench-verified-harbor`, at the run's commit (`unverified`: the commit is not in the record) |
 | Reward | resolved, on 119 SWE-bench Verified tasks; the published result is val, a fit metric (0.580 → 0.765, branch `results/rh-swe-bench-image-and-reorder` README). Success: resolved |
 | Infra rule | as `swebench-verified-harbor` |

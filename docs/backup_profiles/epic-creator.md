@@ -6,7 +6,7 @@ Epic creation from intake documents, by a GLM 5.3 agent in a Claude Code harness
 
 | Key | Value |
 |---|---|
-| Bench names | `epic-creator`; experiment `epic-intake-v1`; settings: none |
+| Bench names | `epic-creator`; experiment `epic-intake-v1`; settings: none, or the record tier (`full`); CI tiers are also `<setting>` values for CI runs, written without `_` or `-` (§2.3 slot rule: `full_verified` → `fullverified`) |
 | Code | `unverified`: no adapter in any cap-evolve branch. `may_exist_at`: the owner's project `/Users/avalappi/Documents/ET/ACE/cap-evolve/.capevolve/project/` and the ACE repo on the owner's machine |
 | Reward | per case `score.raw.verdicts`: deterministic checks (`budget_check`, `artifact_contract`, `dag_valid`, `implementation_type_rules`, `mandated_acceptance_criteria`, `run_report_consistent`, `review_discipline`, …) combined into a reward in [0, 1] (`unverified`: the combination rule is in the adapter). Success: reward = 1. Group metric: pass rate per check |
 | Infra rule | as `_core.md` |
