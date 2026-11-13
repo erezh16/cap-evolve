@@ -6,7 +6,7 @@ SkillsBench tasks run by BenchFlow (`bench eval run`), with Claude Code as the a
 
 | Key | Value |
 |---|---|
-| Bench names | `skillsbench`; experiments `runnable-subset-43`, `task-by-task-43`, `task-by-task-87` (a sweep: one unit per task); settings: none, or the experiment name |
+| Bench names | `skillsbench`; experiments `runnable-subset-43`, `task-by-task-43`, `task-by-task-87` (a sweep: one unit per task); settings: none, the experiment name, or the CI tier (`smoke`, `pilot`, `full`; `local` for hand-published records `<id>__local-…`); CI tiers are also `<setting>` values for CI runs, written without `_` or `-` (§2.3 slot rule: `full_verified` → `fullverified`) |
 | Code | `benchmarks/skillsbench/template/` (`adapter.py`, `capevolve.yaml`); `benchmarks/skillsbench/examples/shared_skills/` (`adapters/adapter.py`, `capevolve*.yaml`, `split_ids.json`, `smoke_split.json`, `setup.sh`, `run.sh`, `smoke.sh`, `optimizer/INSTRUCTIONS.md`, `seed_capability/`); CI `ci/benchmarks/skillsbench/{smoke,full}/` |
 | Reward | verifier `reward.txt`, else `result*.json`/`*scored*.json`, else CTRF all-pass: binary (`adapters/adapter.py`). Success: every verifier test passes. Group metric: pass^k; CTRF per-test pass counts as a secondary partial metric |
 | Infra rule | published: drop. Detectors: no reward found, launch failure, timeout (`SKILLSBENCH_TASK_TIMEOUT × waves + 600`) |

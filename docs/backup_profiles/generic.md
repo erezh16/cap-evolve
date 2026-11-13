@@ -6,7 +6,7 @@ A system prompt over user-supplied tasks (a JSONL file, or a HuggingFace dataset
 
 | Key | Value |
 |---|---|
-| Bench names | `jsonl_litellm` → `generic-jsonl`; `huggingface_litellm` → `generic-hf`; settings: `SCORING` (`exact`, `contains`, `regex`) |
+| Bench names | `jsonl_litellm` → `generic-jsonl`; `huggingface_litellm` → `generic-hf`; settings: `SCORING` (`exact`, `contains`, `regex`); committed run dir `docs/evidence/end-to-end/` (agent-optimize date-normalisation run, 2026-08-22; removed from main in `a6d828587`, still on many branches) uses this profile |
 | Code | `benchmarks/generic/jsonl_litellm/template/` (`adapter.py`, `capevolve.yaml`, `tasks.jsonl`, `seed_capability/`), `benchmarks/generic/huggingface_litellm/template/` (same); `benchmarks/_shared/model_config.py` (must be copied next to the adapter) |
 | Reward | `SCORING` exact / contains / regex against the target: binary. Success: reward = 1. Group metric: `not applicable: no grouping` |
 | Infra rule | as `_core.md` (an LLM error sets `Rollout.error`) |

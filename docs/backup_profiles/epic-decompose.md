@@ -6,7 +6,7 @@ Epic decomposition into sub-epics, by a GLM 5.3 agent, scored by checks and a ju
 
 | Key | Value |
 |---|---|
-| Bench names | `epic-decompose`; experiment `epic-glm53-v5`; settings: none |
+| Bench names | `epic-decompose`; experiment `epic-glm53-v5`; settings: none, or the record tier (`full`); CI tiers are also `<setting>` values for CI runs, written without `_` or `-` (§2.3 slot rule: `full_verified` → `fullverified`) |
 | Code | `unverified`: no adapter in any cap-evolve branch. `may_exist_at`: `/Users/avalappi/Documents/ET/ACE/cap-evolve/.capevolve/project/` and the ACE repo on the owner's machine |
 | Reward | checks plus a judge (record note "judge overflow fixed in this run"); test n = 10. Success: reward = 1 (`unverified`) |
 | Infra rule | as `_core.md` |

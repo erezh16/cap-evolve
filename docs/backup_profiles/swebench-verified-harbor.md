@@ -6,7 +6,7 @@ Any Harbor dataset, run through Harbor with Claude Code as the agent; CI `sweben
 
 | Key | Value |
 |---|---|
-| Bench names | `swebench` (CI), `swebench-verified` (runs `200`–`202__full-swebench-verified`, replicate `s<k>` from `/private/tmp/ce-runs/s<k>/`); other Harbor datasets: `harbor-<dataset>`; settings: `registry` or `packaged` mode |
+| Bench names | `swebench` (CI), `swebench-verified` (runs `200`–`202__full-swebench-verified`, replicate `s<k>` from `/private/tmp/ce-runs/s<k>/`); other Harbor datasets: `harbor-<dataset>`; settings: `registry` or `packaged` mode, or the CI tier (`smoke`, `pilot`, `full`); CI tiers are also `<setting>` values for CI runs, written without `_` or `-` (§2.3 slot rule: `full_verified` → `fullverified`) |
 | Code | `benchmarks/generic/harbor/template/` (`adapter.py`, `capevolve.yaml`, `seed_capability/`); `capevolve_harbor/` (`run.py`, `results.py`, `tasks.py`); CI `ci/benchmarks/swebench/{smoke,pilot,full}/` (`overrides.env` with `SWEBENCH_ADAPTER=harbor`, `split_ids.json`), `ci/benchmarks/swebench/utils/` |
 | Reward | verifier `reward.json["reward"]`, else `reward.txt` (`capevolve_harbor/results.py`); resolved 1/0 for SWE-bench, possibly partial for other datasets. Success: reward ≥ 1. Group metric: repo, from the instance-id prefix |
 | Infra rule | published: drop. Detector: `exception_info` with no reward (a trial with a reward and an exception, for example an agent timeout, counts as measured) |
