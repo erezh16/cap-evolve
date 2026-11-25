@@ -32,7 +32,8 @@ Other open items:
   The permission classifier blocked `kill -KILL` and `docker rm -f` as "interfering with workloads". If the host
   rebooted, they may be gone anyway.
 - **Monitoring is gone.** The previous agent's hourly job was session-only and died with its session. You must
-  set up your own (see §6).
+  set up your own (see §6). **Every hourly tick must update the progress issue
+  [#1023](https://github.com/skillberry-ai/cap-evolve/issues/1023)** as well as the unfinished benchmark issues.
 
 ---
 
@@ -203,8 +204,12 @@ It must be applied on top of `ssb_patch.py` (timing and token stamping). The pat
 ## 5. Progress reporting: what went wrong, and the issues to report on
 
 **Where progress is reported:**
-- **#1001, #1002, #1003:** one issue per benchmark, with hourly status and the final report.
-- **#975:** the parent progress issue (agent-optimize baseline study). It gets **one** connecting comment when all three are done, a table mapping each benchmark to its issue and result. Nothing has been posted on #975 yet.
+- **[#1023](https://github.com/skillberry-ai/cap-evolve/issues/1023): the dedicated progress issue for this whole effort.**
+  - Created 2026-11-25 by the operator's request; it is linked from #975 ([comment](https://github.com/skillberry-ai/cap-evolve/issues/975#issuecomment-7172681191)).
+  - Its body has the overall status table, blockers, incidents and a link to this handoff.
+  - **The hourly job posts an update here every hour** (see §6).
+- **#1001, #1002, #1003:** one issue per benchmark, with hourly status (unfinished ones only) and the final report.
+- **#975:** the parent study issue (agent-optimize baselines). It already links to #1023. It gets **one** more connecting comment when all three are done: a table mapping each benchmark to its issue and result, saying the scores are per benchmark and not comparable.
 
 **The previous agent's hourly reporting had repeated gaps.** base3 §5 requires an hourly comment on every unfinished issue, and the first attempt on OpenShift already lost 15 h this way. The cause each time was the monitoring session, not the runs: the hourly job was session-only, it fires only while the session is idle, and the session died or was busy.
 
@@ -228,7 +233,13 @@ Every gap was disclosed afterwards on the issues, with the timeline rebuilt from
 ## 6. Monitoring you must set up
 
 - **Hourly status:** base3 §5 asks for a **durable** hourly job. The previous agent's CronCreate with `durable: true` still came back session-only, and recurring jobs expire after 7 days. Re-create the job in your session and tell the operator it is session-only if that happens again. The host cannot post to GitHub (`gh` there has no github.com auth), so posting must come from your session.
-- **Every hourly comment** states STATE explicitly (running / terminated / blocked / completed), plus:
+- **Each hourly tick posts on the progress issue [#1023](https://github.com/skillberry-ai/cap-evolve/issues/1023)**, every hour, including when blocked:
+  - a compact table with one row per benchmark (state, progress, ETA or blocker) and links to that hour's benchmark-issue comments;
+  - any operator decision still pending;
+  - any gap since the last tick (name it first, see §5).
+
+  Then it posts on each unfinished benchmark issue (#1001, #1003).
+- **Every hourly benchmark comment** states STATE explicitly (running / terminated / blocked / completed), plus:
   - the stall verdict with its basis;
   - PID alive;
   - infra count;
@@ -237,7 +248,7 @@ Every gap was disclosed afterwards on the issues, with the timeline rebuilt from
   - progress;
   - partial per-trial scores where visible;
   - an ETA from the measured rate.
-- **Skip duplicates:** when blocked and nothing changes, post at most every few hours.
+- **Skip duplicates:** when blocked and nothing changes, benchmark issues get a comment at most every few hours. The progress issue #1023 still gets its hourly line.
 - **End-of-run waits:** a background wait on each run's PID, so final reports are posted promptly. Background tasks have a time limit; re-arm them each hourly tick.
 
 ---
@@ -287,5 +298,6 @@ numbers were computed. Adapt it for swe_bench (Harbor `result.json`: `agent_resu
 
 When all three are done:
 1. Post a connecting comment on **#975**: a table of benchmark → issue → result, saying the scores are per benchmark and not comparable.
+   Post the same table as the final update on the progress issue **#1023**, and update its body's status table. Close #1023 only if the operator agrees.
 2. Delete your hourly job.
 3. Ask the operator about cleanup on the host: leftover containers, the `~/b3` dirs, the crontab line writing `status_history.jsonl`, and the watchdog/janitor processes.
