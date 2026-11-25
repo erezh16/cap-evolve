@@ -32,7 +32,7 @@ Other open items:
   The permission classifier blocked `kill -KILL` and `docker rm -f` as "interfering with workloads". If the host
   rebooted, they may be gone anyway.
 - **Monitoring is gone.** The previous agent's hourly job was session-only and died with its session. You must
-  set up your own (see §5).
+  set up your own (see §6).
 
 ---
 
@@ -200,7 +200,32 @@ It must be applied on top of `ssb_patch.py` (timing and token stamping). The pat
 
 ---
 
-## 5. Monitoring you must set up
+## 5. Progress reporting: what went wrong, and the issues to report on
+
+**Where progress is reported:**
+- **#1001, #1002, #1003:** one issue per benchmark, with hourly status and the final report.
+- **#975:** the parent progress issue (agent-optimize baseline study). It gets **one** connecting comment when all three are done, a table mapping each benchmark to its issue and result. Nothing has been posted on #975 yet.
+
+**The previous agent's hourly reporting had repeated gaps.** base3 §5 requires an hourly comment on every unfinished issue, and the first attempt on OpenShift already lost 15 h this way. The cause each time was the monitoring session, not the runs: the hourly job was session-only, it fires only while the session is idle, and the session died or was busy.
+
+| gap with no hourly comments (UTC) | length | cause |
+|---|---|---|
+| 11-21 08:27 → 17:26 | about 9 h | queued ticks never ran (session busy/away); the 8.5 h gateway outage went unnoticed and sealed a void test |
+| 11-22 02:27 → 07:55 | about 5.5 h | same; the stop-mode watchdog stopped both runs and nobody relaunched them |
+| 11-23 04:27 → 06:27 | about 2 h | same (runs were paused, no harm) |
+| 11-23 17:30 → 11-24 10:20 | about 17 h | the session process exited; background waits were lost; restarted only the next morning |
+| 11-24 13:27 onward | — | host unreachable; comments deliberately reduced to about every 8 h (last 11-24 21:27), with the issues saying so |
+
+Every gap was disclosed afterwards on the issues, with the timeline rebuilt from the host's own logs:
+`~/b3/status_history.jsonl` (hourly host crontab snapshot), `gw_watchdog.log` and `run.log`.
+
+**What to do differently:**
+- **Treat a missed tick as an incident.** On every wake-up, compare the time of the last posted comment with now. If more than about 70 min have passed, post a catch-up comment that names the gap first.
+- **Prefer a durable mechanism** that survives your session. If yours is session-only, tell the operator at once and re-create it at every session start.
+- **Keep the host-side crontab snapshot.** It is the only record that survives a monitoring gap.
+- **Never post a comment from a file you did not just write** (the stale-file mistake, §4).
+
+## 6. Monitoring you must set up
 
 - **Hourly status:** base3 §5 asks for a **durable** hourly job. The previous agent's CronCreate with `durable: true` still came back session-only, and recurring jobs expire after 7 days. Re-create the job in your session and tell the operator it is session-only if that happens again. The host cannot post to GitHub (`gh` there has no github.com auth), so posting must come from your session.
 - **Every hourly comment** states STATE explicitly (running / terminated / blocked / completed), plus:
@@ -217,7 +242,7 @@ It must be applied on top of `ssb_patch.py` (timing and token stamping). The pat
 
 ---
 
-## 6. Deviations already disclosed on the issues (repeat in the final reports)
+## 7. Deviations already disclosed on the issues (repeat in the final reports)
 
 - **All three:** private project bases (intake `--force`, not the shared `.capevolve/`).
 - **All three:** `CAPEVOLVE_ERRORED_TRIAL_POLICY=drop`.
@@ -243,7 +268,7 @@ plus the conventions recorded in the earlier #1001–#1003 comments.
 
 ---
 
-## 7. Final reports and closing
+## 8. Final reports and closing
 
 For each of #1001 and #1003, per base3 §6:
 - the headline as mean ± std over the 5 trial means;
@@ -252,7 +277,7 @@ For each of #1001 and #1003, per base3 §6:
 - a per-trial table;
 - per-episode mean ± std;
 - provenance (SHAs, dataset revision, package versions, Docker 29.10.0, host);
-- deviations (§6 above).
+- deviations (§7 above).
 
 Every number must come from the run's own files. For skillsbench, `base3-cont/sb_report.py` shows how the
 numbers were computed. Adapt it for swe_bench (Harbor `result.json`: `agent_result.n_input_tokens`,
