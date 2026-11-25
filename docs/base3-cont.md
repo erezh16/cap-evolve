@@ -68,7 +68,7 @@ Then post a status comment on #1001 and #1003 (reboot or not, process state, wha
 | `~/.local/bin/{bench,harbor}` | benchflow 0.6.4, harbor 0.26.0 (uv tools) |
 | `~/b3/data/ssb/spreadsheetbench_verified_400` | data; `diff -rq`-identical to HF `KAKA22/SpreadsheetBench@ab0b742b…` |
 | `~/b3/skillsbench` | SkillsBench clone @ `bf3793e9ec20e9682e6f18dbf4de3c69163dc9c7` |
-| `~/b3/{ssb,sb,swe}/base/project` | intake-scaffolded projects (project-local adapters with the deviations in §6) |
+| `~/b3/{ssb,sb,swe}/base/project` | intake-scaffolded projects (project-local adapters with the deviations in §7) |
 | `~/b3/{ssb,swe}/env.sh`, `run*.sh`, `run.pid`, `run.log` | env and launchers (copies in `base3-cont/launchers.md`) |
 | `~/b3/ssb/run_base/run_real2` | **current spreadsheetbench run dir** (val reused from `run_real`; test not sealed) |
 | `~/b3/swe/run_base/run_real3` | **current swe_bench run dir** (val complete; test in progress) |
